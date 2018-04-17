@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/everettjf
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://everettjf.github.io
+  * I am everettjf (https://keybase.io/everettjf) on keybase.
+  * I have a public key ASAKRlLZhhEqvPkwm6hB66Pw1ViMI3ZZp7PCBvOkvTT4qgo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01200a4652d986112abcf9309ba841eba3f0d5588c237659a7b3c206f3a4bd34f8aa0a",
+      "host": "keybase.io",
+      "kid": "01200a4652d986112abcf9309ba841eba3f0d5588c237659a7b3c206f3a4bd34f8aa0a",
+      "uid": "db6d2d1212e354b7289ce0028d76ed19",
+      "username": "everettjf"
+    },
+    "merkle_root": {
+      "ctime": 1514735006,
+      "hash": "098f31d8652a2c1222cece4366a7499d1c1d9556307dcc0a25965fd64fdb4eacfe02833c00381fb58c6dcbef8d70cb287c6966860aef0081b89ce3ef0c2db253",
+      "hash_meta": "0952eea5da69295965f6bc5a8576e502f7436b4123f98f4da2168bb67c6219dc",
+      "seqno": 1872708
+    },
+    "service": {
+      "hostname": "everettjf.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.38"
+  },
+  "ctime": 1514735019,
+  "expire_in": 504576000,
+  "prev": "91492226cedbbf56a0848db3f8a872eabc92d6a9dc650b76c3d931a93df252a8",
+  "seqno": 26,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgCkZS2YYRKrz5MJuoQeuj8NVYjCN2WaezwgbzpL00+KoKp3BheWxvYWTFA017ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwMGE0NjUyZDk4NjExMmFiY2Y5MzA5YmE4NDFlYmEzZjBkNTU4OGMyMzc2NTlhN2IzYzIwNmYzYTRiZDM0ZjhhYTBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwMGE0NjUyZDk4NjExMmFiY2Y5MzA5YmE4NDFlYmEzZjBkNTU4OGMyMzc2NTlhN2IzYzIwNmYzYTRiZDM0ZjhhYTBhIiwidWlkIjoiZGI2ZDJkMTIxMmUzNTRiNzI4OWNlMDAyOGQ3NmVkMTkiLCJ1c2VybmFtZSI6ImV2ZXJldHRqZiJ9LCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTUxNDczNTAwNiwiaGFzaCI6IjA5OGYzMWQ4NjUyYTJjMTIyMmNlY2U0MzY2YTc0OTlkMWMxZDk1NTYzMDdkY2MwYTI1OTY1ZmQ2NGZkYjRlYWNmZTAyODMzYzAwMzgxZmI1OGM2ZGNiZWY4ZDcwY2IyODdjNjk2Njg2MGFlZjAwODFiODljZTNlZjBjMmRiMjUzIiwiaGFzaF9tZXRhIjoiMDk1MmVlYTVkYTY5Mjk1OTY1ZjZiYzVhODU3NmU1MDJmNzQzNmI0MTIzZjk4ZjRkYTIxNjhiYjY3YzYyMTlkYyIsInNlcW5vIjoxODcyNzA4fSwic2VydmljZSI6eyJob3N0bmFtZSI6ImV2ZXJldHRqZi5naXRodWIuaW8iLCJwcm90b2NvbCI6Imh0dHBzOiJ9LCJ0eXBlIjoid2ViX3NlcnZpY2VfYmluZGluZyIsInZlcnNpb24iOjF9LCJjbGllbnQiOnsibmFtZSI6ImtleWJhc2UuaW8gZ28gY2xpZW50IiwidmVyc2lvbiI6IjEuMC4zOCJ9LCJjdGltZSI6MTUxNDczNTAxOSwiZXhwaXJlX2luIjo1MDQ1NzYwMDAsInByZXYiOiI5MTQ5MjIyNmNlZGJiZjU2YTA4NDhkYjNmOGE4NzJlYWJjOTJkNmE5ZGM2NTBiNzZjM2Q5MzFhOTNkZjI1MmE4Iiwic2Vxbm8iOjI2LCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQJGFDrGhcPRFkkff01NLcLhmgDAkPc7EnnRevAhPmDzhr9440vCWXNeVcAQLfa2ZmJNxpia/soHsnd/x+HnN/Amoc2lnX3R5cGUgpGhhc2iCpHR5cGUIpXZhbHVlxCATAM0hJV49K2b1+FQcHy7M9aJXov/yvkInWesh8VbH66N0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/everettjf
+
+==================================================================

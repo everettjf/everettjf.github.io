@@ -1,0 +1,22 @@
+name: everettjf
+description: 安全爱好者;面向性能编程;
+meta_description: "I'm everettjf & iOS/Windows Developer & interested in Reverse Engineering"
+
+markdown: kramdown
+highlighter: pygments
+logo: false
+paginate: 5
+baseurl: ''
+domain_name: 'https://everettjf.github.io'
+google_analytics: 'UA-111349332-1'
+plugins:
+  - jekyll-paginate
+
+# Details for the RSS feed generator
+url:            'https://everettjf.github.io'
+author:         'everettjf'
+authorimage: /images/everettjf.png
+
+permalink: /:year/:month/:day/:title/
+location: 'Beijing, China'
+excerpt_separator:  '<!-- more -->'

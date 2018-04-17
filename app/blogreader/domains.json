@@ -1,0 +1,71 @@
+{
+    "domains": [
+        {
+            "aspects": [
+                {
+                    "id": 2,
+                    "name": "文章",
+                    "zindex": 1
+                },
+                {
+                    "id": 1,
+                    "name": "博客",
+                    "zindex": 0
+                },
+                {
+                    "id": 3,
+                    "name": "教程",
+                    "zindex": 0
+                },
+                {
+                    "id": 7,
+                    "name": "社区",
+                    "zindex": 0
+                },
+                {
+                    "id": 8,
+                    "name": "源码",
+                    "zindex": 0
+                },
+                {
+                    "id": 9,
+                    "name": "工具",
+                    "zindex": 0
+                },
+                {
+                    "id": 10,
+                    "name": "大牛堂",
+                    "zindex": 0
+                },
+                {
+                    "id": 11,
+                    "name": "增强现实",
+                    "zindex": 0
+                },
+                {
+                    "id": 12,
+                    "name": "书",
+                    "zindex": 0
+                },
+                {
+                    "id": 13,
+                    "name": "算法",
+                    "zindex": 0
+                },
+                {
+                    "id": 14,
+                    "name": "安全",
+                    "zindex": 0
+                },
+                {
+                    "id": 15,
+                    "name": "RAC",
+                    "zindex": 0
+                }
+            ],
+            "id": 1,
+            "name": "iOS",
+            "zindex": 0
+        }
+    ]
+}
