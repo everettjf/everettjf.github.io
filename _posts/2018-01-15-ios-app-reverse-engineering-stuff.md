@@ -204,6 +204,15 @@ AttackingBYODEnterpriseMobileSecuritySolutions
 - http://7xibfi.com1.z0.glb.clouddn.com/uploads/default/original/2X/2/2a09f6db6d0f0a0cbefdfddf545cbc3c0fdcce8e.pdf
 - https://www.blackhat.com/docs/us-16/materials/us-16-Tan-Bad-For-Enterprise-Attacking-BYOD-Enterprise-Mobile-Security-Solutions.pdf
 - http://iosre.com/t/topic/8179
+- https://sushi2k.gitbooks.io/the-owasp-mobile-security-testing-guide/content/0x06j-Testing-Resiliency-Against-Reverse-Engineering.html
+
+## OWASP Mobile Security Testing Guide
+https://www.gitbook.com/book/b-mueller/the-owasp-mobile-security-testing-guide
+
+## iOS 安全 Wiki
+
+https://legacy.gitbook.com/book/wizardforcel/ios-sec-wiki/details
+http://security.ios-wiki.com
 
 ## 其他
 
@@ -215,9 +224,7 @@ https://github.com/michalmalik/osx-re-101
 https://github.com/kpwn/iOSRE
 https://github.com/pandazheng/IosHackStudy
 
-http://security.ios-wiki.com
 http://www.droidsec.cn/category/ios%e5%ae%89%e5%85%a8%e6%94%bb%e9%98%b2/
-
 
 https://github.com/nygard
 https://github.com/saurik
