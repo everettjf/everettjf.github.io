@@ -148,6 +148,9 @@ https://github.com/AloneMonkey/dumpdecrypted
 - https://github.com/BlueCocoa/class-dump/
 - https://github.com/Maximus-/class-dump-swift
 
+### Hikari 
+
+https://github.com/HikariObfuscator/Hikari
 
 ### Reveal
 
@@ -255,4 +258,8 @@ https://azeria-labs.com/writing-arm-shellcode/
 
 ## ARM汇编 iOS调试进阶
 https://zhuanlan.zhihu.com/c_142064221
+
+# 论坛
+
+<http://iosre.com>
 
