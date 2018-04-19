@@ -15,7 +15,7 @@ comments: true
 
 
 # 新的
-- 域名：http://snows.link/
+- 域名：<http://snows.link/>
 - 名称：雪花书签
 - 服务器提供商：vultr
 

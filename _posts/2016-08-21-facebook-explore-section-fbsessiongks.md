@@ -39,7 +39,7 @@ fbsessiongks的部分内容如下：
 实验性质的功能开关。gks 为 Gate Keepers 缩写。为了辅助测试。
 
 Facebook 员工提到Gate Keepers：（文章中搜索gate keeper）
-https://www.facebook.com/notes/facebook-engineering/building-and-testing-at-facebook/10151004157328920/
+<https://www.facebook.com/notes/facebook-engineering/building-and-testing-at-facebook/10151004157328920/>
 
 与FBInjectable不同的是，这里的功能都是具有实验性质，且都只是BOOL类型（FBInjectable是有具体的配置功能，可提供详细的参数数值）。有专门的FBExperimentManager类管理、统计、上报各种日志。
 

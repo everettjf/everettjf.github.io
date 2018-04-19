@@ -97,7 +97,7 @@ The order of initialization is as follows:
 
 # 代码
 
-创建一个动态库，使用CaptainHook （https://github.com/rpetrich/CaptainHook ，只有一个头文件，使用也很简单）。
+创建一个动态库，使用CaptainHook （<https://github.com/rpetrich/CaptainHook> ，只有一个头文件，使用也很简单）。
 
 
 ```

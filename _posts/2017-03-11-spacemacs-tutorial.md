@@ -10,7 +10,7 @@ comments: true
 
 # 背景
 
-官网：http://spacemacs.org/
+官网：<http://spacemacs.org/>
 
 # 安装
 
@@ -33,7 +33,7 @@ rm .emacs
 第二步：
 
 ```
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+git clone <https://github.com/syl20bnr/spacemacs> ~/.emacs.d
 ```
 
 第三步：
@@ -217,7 +217,7 @@ dotspacemacs-fullscreen-at-startup t 全屏最大化
 
 ## 安装SourceCodePro字体
 
-https://github.com/adobe-fonts/source-code-pro
+<https://github.com/adobe-fonts/source-code-pro>
 
 ## nyan cat
 
@@ -319,7 +319,7 @@ When I develop tweaks for jailbreak iOS , the source file extension is .xm , 
 
 ## tip 4 : insert code snippet
 
-spacemacs include [yasnippet](https://github.com/joaotavora/yasnippet) automaticly, we could download the snippets from https://github.com/AndreaCrotti/yasnippet-snippets
+spacemacs include [yasnippet](https://github.com/joaotavora/yasnippet) automaticly, we could download the snippets from <https://github.com/AndreaCrotti/yasnippet-snippets>
 
 Just copy the snippets folder to `~/.spacemacs.d` as below :
 

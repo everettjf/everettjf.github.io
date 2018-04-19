@@ -259,7 +259,7 @@ FBNavigationBarConfiguration
 
 可以使用 `__attribute((used,section("segmentname,sectionname")))` 关键字把某个变量的放入特殊的section中。 
 
-attribute 参考 http://gcc.gnu.org/onlinedocs/gcc-3.2/gcc/Variable-Attributes.html
+attribute 参考 <http://gcc.gnu.org/onlinedocs/gcc-3.2/gcc/Variable-Attributes.html>
 
 例如：
 
@@ -283,7 +283,7 @@ PS:文章修改：上面代码unused改为used。不需要引用，即可避免r
 
 Demo中模仿了这个机制。
 
-代码： https://github.com/everettjf/Yolo/tree/master/FBInjectableTest
+代码： <https://github.com/everettjf/Yolo/tree/master/FBInjectableTest>
 
 ![](/media/14717165824862.jpg)
 
@@ -348,7 +348,7 @@ char * kNoteDisplayDefaultConfiguration FBInjectableDATA = "+[NoteDisplayDefault
 
 # 探索中遇到的困难
 
-http://iosre.com/t/facebook-app-fbinjectable-section/4685
+<http://iosre.com/t/facebook-app-fbinjectable-section/4685>
 
 当时还没有些Demo，以为需要手动修改，但写Demo的过程中才恍然大悟。
 

@@ -11,8 +11,8 @@ comments: true
 
 # Basic Information
  - Name : SDWebImage
- - Site : https://github.com/rs/SDWebImage
- - Repo : https://github.com/rs/SDWebImage
+ - Site : <https://github.com/rs/SDWebImage>
+ - Repo : <https://github.com/rs/SDWebImage>
  - Revision : 0da78a4ce6485d8d4c23d348d355fabad7c227f3
  - Description : 
 经典的、异步下载图片的、带缓存的库
@@ -248,7 +248,7 @@ NSOperation相比GCD的优势，可配置并行最大线程数
         if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_5_1) {
             // Make sure to run the runloop in our background thread so it can process downloaded data
             // Note: we use a timeout to work around an issue with NSURLConnection cancel under iOS 5
-            //       not waking up the runloop, leading to dead threads (see https://github.com/rs/SDWebImage/issues/466)
+            //       not waking up the runloop, leading to dead threads (see <https://github.com/rs/SDWebImage/issues/466)>
             CFRunLoopRunInMode(kCFRunLoopDefaultMode, 10, false);
         }
         else {
@@ -381,7 +381,7 @@ KVO
  - Note : 
 
 ``` c
-        // The following code is from http://www.cocoaintheshell.com/2011/05/progressive-images-download-imageio/
+        // The following code is from <http://www.cocoaintheshell.com/2011/05/progressive-images-download-imageio/>
         // Thanks to the author @Nyx0uf
 
         // Get the total bytes downloaded
@@ -430,7 +430,7 @@ KVO
 ```
 
 
-关于Orientation ，参考这篇文章 http://feihu.me/blog/2015/how-to-handle-image-orientation-on-iOS/
+关于Orientation ，参考这篇文章 <http://feihu.me/blog/2015/how-to-handle-image-orientation-on-iOS/>
 
 
 ## 19. SDImageCache.m
@@ -440,7 +440,7 @@ KVO
  - Note : 
 
 ``` c
-// See https://github.com/rs/SDWebImage/pull/1141 for discussion
+// See <https://github.com/rs/SDWebImage/pull/1141> for discussion
 @interface AutoPurgeCache : NSCache
 @end
 
@@ -938,9 +938,9 @@ KeyType 和 ObjectType 。Objective C还有这个语法呀。类似泛型。
 
 NSDictionary的声明。泛型中的协变和逆变。
 
-参考这篇文章：http://blog.sunnyxx.com/2015/06/12/objc-new-features-in-2015/
+参考这篇文章：<http://blog.sunnyxx.com/2015/06/12/objc-new-features-in-2015/>
 
-https://msdn.microsoft.com/zh-cn/library/dd799517.aspx
+<https://msdn.microsoft.com/zh-cn/library/dd799517.aspx>
 
 
 ## 35. SDWebImageManager.m

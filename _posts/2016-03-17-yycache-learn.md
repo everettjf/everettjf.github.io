@@ -12,13 +12,13 @@ comments: true
 
 # Basic Information
  - Name : YYCache
- - Site : https://github.com/ibireme/YYCache
- - Repo : https://github.com/ibireme/YYCache
+ - Site : <https://github.com/ibireme/YYCache>
+ - Repo : <https://github.com/ibireme/YYCache>
  - Revision : f433c3455121bd0308cd6f551613c7ec629e937a
  - Description : 
 在内存与磁盘上性能都不错的缓存库。
 
-这是作者的设计思路介绍：http://blog.ibireme.com/2015/10/26/yycache/
+这是作者的设计思路介绍：<http://blog.ibireme.com/2015/10/26/yycache/>
 
 <!-- more -->
 
@@ -266,7 +266,7 @@ CFMutableDictionaryRef 用法mark。
 
 
 这里老版本使用了OSSpinLock，现在已经更换为pthread_mutex_lock，原因见作者的文章， 
-http://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/
+<http://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/>
 
 
 
@@ -840,7 +840,7 @@ sqlite3_stmt 根据sql缓存起来
  - 每次获取16个不经常访问的数据
  - 逐个删除（文件或数据库记录），看剩余大小是否满足目标大小
 
-PS : 这里 Desc 是个bug。 应该是Asc 。见：https://github.com/ibireme/YYCache/issues/37
+PS : 这里 Desc 是个bug。 应该是Asc 。见：<https://github.com/ibireme/YYCache/issues/37>
 
 
 

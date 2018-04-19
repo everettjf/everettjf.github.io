@@ -48,7 +48,7 @@ TEXT 是代码段，DATA是数据段，RODATA是只读数据段。Facebook把代
 
 查看Apple的审核要求：
 
-https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/SubmittingTheApp.html
+<https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/SubmittingTheApp.html>
 
 ![](/media/14712795366819.jpg)
 
@@ -85,11 +85,11 @@ man ld：
 
 还有个小小担心，Objective C Runtime与这些常量有什么关系吗？修改了常量的段（segment）名字为什么对程序运行没有影响。
 
-代码：https://opensource.apple.com/tarballs/objc4/objc4-680.tar.gz
+代码：<https://opensource.apple.com/tarballs/objc4/objc4-680.tar.gz>
 
 代码中搜索 methname methtype 都没有相关信息，大概推测 runtime 没有对这些常量的获取做针对性的处理。
 
-在 https://github.com/llvm-mirror/llvm 搜索 objc_methname 或 objc_methtype ， objc_methtype只在一些test中搜索到。而 objc_methname 除了test中使用，还在 ARC 的优化器中使用。
+在 <https://github.com/llvm-mirror/llvm> 搜索 objc_methname 或 objc_methtype ， objc_methtype只在一些test中搜索到。而 objc_methname 除了test中使用，还在 ARC 的优化器中使用。
 
 修改segment会影响这个优化器吗？
 
@@ -118,7 +118,7 @@ getSection 来自 GlobalVariable的父类 GlobalObject。
 
 # 参考工程
 
-代码： https://github.com/everettjf/Yolo/tree/master/FBInjectableTest
+代码： <https://github.com/everettjf/Yolo/tree/master/FBInjectableTest>
 
 ![](/media/14717179771404.jpg)
 
@@ -134,12 +134,12 @@ segment的权限，可以通过下面的链接参数改为VM_PROT_READ.
 
 # 其他资料
 
-- http://stackoverflow.com/questions/4753100/max-size-of-an-ios-application
-- WWDC App 瘦身： https://developer.apple.com/videos/play/wwdc2015/404/
+- <http://stackoverflow.com/questions/4753100/max-size-of-an-ios-application>
+- WWDC App 瘦身： <https://developer.apple.com/videos/play/wwdc2015/404/>
 - 《程序员的自我修养-链接、装载与库》
 - 《链接器与加载器》
-- https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/MachOTopics/0-Introduction/introduction.html
-- OS X ABI Mach-O File Format Reference https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/MachORuntime/index.html
+- <https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/MachOTopics/0-Introduction/introduction.html>
+- OS X ABI Mach-O File Format Reference <https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/MachORuntime/index.html>
 
 
 

@@ -64,7 +64,7 @@ TabBarController -> Navigation Controller -> Session View Controller -> Message 
 
 # 同类问题
 
- - https://segmentfault.com/q/1010000002490506
+ - <https://segmentfault.com/q/1010000002490506>
 
 
 
@@ -72,7 +72,7 @@ TabBarController -> Navigation Controller -> Session View Controller -> Message 
 
 Stackoverflow 有类似问题 
 
- - http://stackoverflow.com/questions/22285861/uibutton-touch-down-action-not-called-when-touch-down-but-called-when-touch-move
+ - <http://stackoverflow.com/questions/22285861/uibutton-touch-down-action-not-called-when-touch-down-but-called-when-touch-move>
 
  
 类似原因如下：

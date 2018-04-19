@@ -85,11 +85,11 @@ optional arguments:
 ## 原理
 
 
-1. 根据 https://github.com/CocoaPods/Specs 可或许所有repo，全部下载后，根据 spec.json文件，获取库中的头文件(.h)文件。
+1. 根据 <https://github.com/CocoaPods/Specs> 可或许所有repo，全部下载后，根据 spec.json文件，获取库中的头文件(.h)文件。
 2. 记录头文件与Pod名称的关系到本地数据库中。
 3. 逐个比较。
 
-相关代码 https://github.com/everettjf/supotato/tree/master/podtool
+相关代码 <https://github.com/everettjf/supotato/tree/master/podtool>
 
 
 ## 总结

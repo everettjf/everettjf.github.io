@@ -267,8 +267,8 @@ Provisioning Profiles中增加一个 iOS Distribution(AdInHouse)
 
 # 相关文档
 
-- fastlane：https://github.com/KrauseFx/fastlane/tree/master/docs
-- shenzhen : https://github.com/nomad/shenzhen
+- fastlane：<https://github.com/KrauseFx/fastlane/tree/master/docs>
+- shenzhen : <https://github.com/nomad/shenzhen>
 
 # 其他途径
 1. Jenkins的xcode插件：Jenkins有个xcode插件，网上有些文章，不过自己没有使用。不知道能否
@@ -292,7 +292,7 @@ CFBundleIdentifier 建议使用 $(PRODUCT_BUNDLE_IDENTIFIER) 代替原有的 $(B
 sh "sed -i '' 's/com.xxx.xxx/com.xxx.yyy/g' path/project.pbxproj"
 ~~~
 
-为此给fast lane提了一个issue : https://github.com/KrauseFx/fastlane/issues/684
+为此给fast lane提了一个issue : <https://github.com/KrauseFx/fastlane/issues/684>
 
 fastlane很快会提供更新的方式。
 感谢fastlane的开发者squarefrog和KrauseFx。

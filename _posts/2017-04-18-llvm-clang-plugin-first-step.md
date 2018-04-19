@@ -14,11 +14,11 @@ Environment : macOS
 
 ```
 mkdir ~/clang-llvm && cd ~/clang-llvm
-git clone http://llvm.org/git/llvm.git
+git clone <http://llvm.org/git/llvm.git>
 cd llvm/tools
-git clone http://llvm.org/git/clang.git
+git clone <http://llvm.org/git/clang.git>
 cd clang/tools
-git clone http://llvm.org/git/clang-tools-extra.git extra
+git clone <http://llvm.org/git/clang-tools-extra.git> extra
 ```
 
 <!-- more -->
@@ -27,7 +27,7 @@ git clone http://llvm.org/git/clang-tools-extra.git extra
 
 ```
 cd ~/clang-llvm
-git clone https://github.com/martine/ninja.git
+git clone <https://github.com/martine/ninja.git>
 cd ninja
 git checkout release
 ./bootstrap.py
@@ -40,7 +40,7 @@ Your default cmake may not contain `ninja support`, so build cmake ourself.
 
 ```
 cd ~/clang-llvm
-git clone https://gitlab.kitware.com/cmake/cmake.git
+git clone <https://gitlab.kitware.com/cmake/cmake.git>
 cd cmake
 ./bootstrap
 make
@@ -79,14 +79,14 @@ will continue...
 # Ref
 
 - [Introduction to the Clang AST](https://www.youtube.com/watch?v=VqCkCDFLSsc) (youtube video)
-- https://clang.llvm.org/docs/LibASTMatchersTutorial.html
-- https://clang.llvm.org/docs/ClangPlugins.html
-- https://clang.llvm.org/docs/RAVFrontendAction.html
-- http://clang.llvm.org/docs/ExternalClangExamples.html
+- <https://clang.llvm.org/docs/LibASTMatchersTutorial.html>
+- <https://clang.llvm.org/docs/ClangPlugins.html>
+- <https://clang.llvm.org/docs/RAVFrontendAction.html>
+- <http://clang.llvm.org/docs/ExternalClangExamples.html>
 
 All came from :
-- https://clang.llvm.org/docs/index.html
-- http://llvm.org/docs/index.html
+- <https://clang.llvm.org/docs/index.html>
+- <http://llvm.org/docs/index.html>
 
 # 吐槽
 

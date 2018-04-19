@@ -41,13 +41,13 @@ comments: true
 
 Xcode插件的文章：
 
-http://studentdeng.github.io/blog/2014/02/21/xcode-plugin-fun/
-http://www.poboke.com/study/write-a-xcode-plugin-to-auto-select-all-targets.html
-http://www.onevcat.com/2013/02/xcode-plugin/
+<http://studentdeng.github.io/blog/2014/02/21/xcode-plugin-fun/>
+<http://www.poboke.com/study/write-a-xcode-plugin-to-auto-select-all-targets.html>
+<http://www.onevcat.com/2013/02/xcode-plugin/>
 
 Mac开发的文章：
 
-http://www.raywenderlich.com/17811/how-to-make-a-simple-mac-app-on-os-x-10-7-tutorial-part-13
+<http://www.raywenderlich.com/17811/how-to-make-a-simple-mac-app-on-os-x-10-7-tutorial-part-13>
 
 还看了几个插件的源码。
 
@@ -101,7 +101,7 @@ XBookmarkEntity *bookmark = [[XBookmarkEntity alloc]initWithSourcePath:sourcePat
 
 ## 发布到 Alcatraz
 挺简单，修改配置文件，创建一个 Pull Request 就可以。
-见 https://github.com/supermarin/alcatraz-packages 的README。
+见 <https://github.com/supermarin/alcatraz-packages> 的README。
 
 # 结语
 目前仅是完成了基本功能，还有几个需要优化和完善的地方。
@@ -120,7 +120,7 @@ XBookmarkEntity *bookmark = [[XBookmarkEntity alloc]initWithSourcePath:sourcePat
 - 0.2版，实现了快速定位代码行。
 - 0.3版，增加了快捷键自定义，以及代码行前面的标识。
 
-开发XBookmark的过程很开心，第一次Merge PullRequest（感谢https://github.com/langyapojun 解决了Xcode7支持问题），以前没有开发过公开的工具（闷头开发，5年眨眼过去），今年尝试改变，为开源贡献点代码。
+开发XBookmark的过程很开心，第一次Merge PullRequest（感谢<https://github.com/langyapojun> 解决了Xcode7支持问题），以前没有开发过公开的工具（闷头开发，5年眨眼过去），今年尝试改变，为开源贡献点代码。
 
 关于Xcode7支持的问题，我还挺纳闷，自己开发一直都是Xcode7（Xcode6升级到的Xcode7），为什么没有那个id也可以正常用呢。我得研究研究去……
 

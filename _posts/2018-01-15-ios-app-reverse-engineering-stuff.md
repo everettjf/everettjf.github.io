@@ -31,26 +31,26 @@ comments: true
 
 ### frida
 
-官网 https://www.frida.re/
+官网 <https://www.frida.re/>
 
 > Dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers. Inject your own scripts into black box processes. Hook any function, spy on crypto APIs or trace private application code, no source code needed. Edit, hit save, and instantly see the results. All without compilation steps or program restarts.
 
 ### cycript
 
-http://www.cycript.org/ 
+<http://www.cycript.org/ >
 > Cycript allows developers to explore and modify running applications on either iOS or Mac OS X using a hybrid of Objective-C++ and JavaScript syntax through an interactive console that features syntax highlighting and tab completion.
 
 ### chisel (lldb script)
 
-https://github.com/facebook/chisel
+<https://github.com/facebook/chisel>
 
 > Chisel is a collection of LLDB commands to assist debugging iOS apps.
 
-最常用的就是`pview`和`pvc`两个命令了。 所有支持的命令可以参考Wiki：https://github.com/facebook/chisel/wiki 。
+最常用的就是`pview`和`pvc`两个命令了。 所有支持的命令可以参考Wiki：<https://github.com/facebook/chisel/wiki> 。
 
 ### MonkeyDev
 
-https://github.com/AloneMonkey/MonkeyDev
+<https://github.com/AloneMonkey/MonkeyDev>
 
 > 原有iOSOpenDev的升级，非越狱插件开发集成神器！
 1. 可以使用Xcode开发CaptainHook Tweak、Logos Tweak 和 Command-line Tool，在越狱机器开发插件，这是原来iOSOpenDev功能的迁移和改进。
@@ -63,7 +63,7 @@ https://github.com/AloneMonkey/MonkeyDev
 
 ### passionfruit
 
-https://github.com/chaitin/passionfruit
+<https://github.com/chaitin/passionfruit>
 
 基于frida开发，逆向必备，可以很容易看到第三方应用的各类信息。
 
@@ -81,7 +81,7 @@ https://github.com/chaitin/passionfruit
 
 ### objection
 
-https://github.com/sensepost/objection
+<https://github.com/sensepost/objection>
 
 基于frida的工具集。
 
@@ -89,7 +89,7 @@ https://github.com/sensepost/objection
 
 ### theos
 
-https://github.com/theos/theos
+<https://github.com/theos/theos>
 
 提供了各类逆向开发的模板及工具。
 
@@ -97,13 +97,13 @@ https://github.com/theos/theos
 
 ### HookZz
 
-https://github.com/jmpews/HookZz
+<https://github.com/jmpews/HookZz>
 
 > a hook framework for arm/arm64/ios/android
 
 ### AppleTrace
 
-https://github.com/everettjf/AppleTrace
+<https://github.com/everettjf/AppleTrace>
 
 > Objective C message tracing tool for iOS/macOS based on HookZz
 
@@ -112,7 +112,7 @@ https://github.com/everettjf/AppleTrace
 ### dump
 #### frida-ios-dump
 
-https://github.com/AloneMonkey/frida-ios-dump
+<https://github.com/AloneMonkey/frida-ios-dump>
 
 可以很方便的dump应用。可替代 Clutch。 
 
@@ -121,13 +121,13 @@ https://github.com/AloneMonkey/frida-ios-dump
 
 #### Clutch
 
-https://github.com/KJCracks/Clutch
+<https://github.com/KJCracks/Clutch>
 
 > Fast iOS executable dumper
 
 #### dumpdecrypted 
 
-https://github.com/AloneMonkey/dumpdecrypted
+<https://github.com/AloneMonkey/dumpdecrypted>
 
 在原版的基础上增加了dump 动态库的功能。
 
@@ -139,22 +139,22 @@ https://github.com/AloneMonkey/dumpdecrypted
 
 #### class-dump/class-dump-z/classdump-dyld
 
-- https://github.com/nygard/class-dump
-- https://code.google.com/archive/p/networkpx/wikis/class_dump_z.wiki
-- https://github.com/limneos/classdump-dyld
+- <https://github.com/nygard/class-dump>
+- <https://code.google.com/archive/p/networkpx/wikis/class_dump_z.wiki>
+- <https://github.com/limneos/classdump-dyld>
 
 #### swift class dump
 
-- https://github.com/BlueCocoa/class-dump/
-- https://github.com/Maximus-/class-dump-swift
+- <https://github.com/BlueCocoa/class-dump/>
+- <https://github.com/Maximus-/class-dump-swift>
 
 ### Hikari 
 
-https://github.com/HikariObfuscator/Hikari
+<https://github.com/HikariObfuscator/Hikari>
 
 ### Reveal
 
-https://revealapp.com/
+<https://revealapp.com/>
 
 ### IDA
 
@@ -166,13 +166,13 @@ https://revealapp.com/
 
 ### Flex
 
-https://github.com/Flipboard/FLEX
+<https://github.com/Flipboard/FLEX>
 
 ### 其他
 
 strings、nm、weak_classdump
 
-http://iphonedevwiki.net/index.php/Reverse_Engineering_Tools
+<http://iphonedevwiki.net/index.php/Reverse_Engineering_Tools>
 
 
 
@@ -182,31 +182,31 @@ http://iphonedevwiki.net/index.php/Reverse_Engineering_Tools
 
 
 ## iOS应用逆向工程
-中文：http://item.jd.com/11670145.html
-英文：https://github.com/iosre/iOSAppReverseEngineering
+中文：<http://item.jd.com/11670145.html>
+英文：<https://github.com/iosre/iOSAppReverseEngineering>
 
 ![](/media/15238973309470.jpg)
 
 ## Hacking iOS Applications
-http://iosre.com/t/hacking-ios-applications/8014
+<http://iosre.com/t/hacking-ios-applications/8014>
 ![](/media/15238972865910.jpg)
 
 ## security.ios-wiki.com
-https://wizardforcel.gitbooks.io/ios-sec-wiki/
+<https://wizardforcel.gitbooks.io/ios-sec-wiki/>
 
 ## Advanced Apple Debugging & Reverse Engineering
-https://store.raywenderlich.com/products/advanced-apple-debugging-and-reverse-engineering
+<https://store.raywenderlich.com/products/advanced-apple-debugging-and-reverse-engineering>
 ![](/media/15238973574830.jpg)
 
 ## Reverse Engineering for Beginners
 
-https://beginners.re/
-中文 https://item.jd.com/12166962.html
+<https://beginners.re/>
+中文 <https://item.jd.com/12166962.html>
 ![](/media/15238974244634.jpg)
 
 ## Beginner's Guide to Exploitation on ARM 
 
-http://zygosec.com/Products/
+<http://zygosec.com/Products/>
 ![](/media/15238974543754.jpg)
 
 # 资料
@@ -216,48 +216,48 @@ http://zygosec.com/Products/
 
 AttackingBYODEnterpriseMobileSecuritySolutions
 
-- http://7xibfi.com1.z0.glb.clouddn.com/uploads/default/original/2X/2/2a09f6db6d0f0a0cbefdfddf545cbc3c0fdcce8e.pdf
-- https://www.blackhat.com/docs/us-16/materials/us-16-Tan-Bad-For-Enterprise-Attacking-BYOD-Enterprise-Mobile-Security-Solutions.pdf
-- http://iosre.com/t/topic/8179
-- https://sushi2k.gitbooks.io/the-owasp-mobile-security-testing-guide/content/0x06j-Testing-Resiliency-Against-Reverse-Engineering.html
+- <http://7xibfi.com1.z0.glb.clouddn.com/uploads/default/original/2X/2/2a09f6db6d0f0a0cbefdfddf545cbc3c0fdcce8e.pdf>
+- <https://www.blackhat.com/docs/us-16/materials/us-16-Tan-Bad-For-Enterprise-Attacking-BYOD-Enterprise-Mobile-Security-Solutions.pdf>
+- <http://iosre.com/t/topic/8179>
+- <https://sushi2k.gitbooks.io/the-owasp-mobile-security-testing-guide/content/0x06j-Testing-Resiliency-Against-Reverse-Engineering.html>
 
 ## OWASP Mobile Security Testing Guide
-https://www.gitbook.com/book/b-mueller/the-owasp-mobile-security-testing-guide
+<https://www.gitbook.com/book/b-mueller/the-owasp-mobile-security-testing-guide>
 
 ## iOS 安全 Wiki
 
-https://legacy.gitbook.com/book/wizardforcel/ios-sec-wiki/details
-http://security.ios-wiki.com
+<https://legacy.gitbook.com/book/wizardforcel/ios-sec-wiki/details>
+<http://security.ios-wiki.com>
 
 ## 其他
 
-http://iphonedevwiki.net/
-http://www.cydiasubstrate.com/
-https://www.theiphonewiki.com/
+<http://iphonedevwiki.net/>
+<http://www.cydiasubstrate.com/>
+<https://www.theiphonewiki.com/>
 
-https://github.com/michalmalik/osx-re-101
-https://github.com/kpwn/iOSRE
-https://github.com/pandazheng/IosHackStudy
+<https://github.com/michalmalik/osx-re-101>
+<https://github.com/kpwn/iOSRE>
+<https://github.com/pandazheng/IosHackStudy>
 
-http://www.droidsec.cn/category/ios%e5%ae%89%e5%85%a8%e6%94%bb%e9%98%b2/
+<http://www.droidsec.cn/category/ios%e5%ae%89%e5%85%a8%e6%94%bb%e9%98%b2/>
 
-https://github.com/nygard
-https://github.com/saurik
+<https://github.com/nygard>
+<https://github.com/saurik>
 
 
 # PWN
 
 ## 安全类入门文章
-https://www.fuzzysecurity.com/tutorials.html
+<https://www.fuzzysecurity.com/tutorials.html>
 
 ## 入门pwn
-http://pwnable.kr/
+<http://pwnable.kr/>
 
 ## Iot安全 AzeriaLabs
-https://azeria-labs.com/writing-arm-shellcode/
+<https://azeria-labs.com/writing-arm-shellcode/>
 
 ## ARM汇编 iOS调试进阶
-https://zhuanlan.zhihu.com/c_142064221
+<https://zhuanlan.zhihu.com/c_142064221>
 
 # 论坛
 

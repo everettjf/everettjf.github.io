@@ -369,13 +369,13 @@ _GLOBAL__sub_I_XXXXX.cpp (in Demo) + 1
 
 详细参考这篇文章 
 
-- http://www.jamiegrove.com/software/fixing-bugs-using-os-x-crash-logs-and-atos-to-symbolicate-and-find-line-numbers
+- <http://www.jamiegrove.com/software/fixing-bugs-using-os-x-crash-logs-and-atos-to-symbolicate-and-find-line-numbers>
 或者
-- https://everettjf.github.io/2015/09/09/ios-plcrashreporter#dsym
+- <https://everettjf.github.io/2015/09/09/ios-plcrashreporter#dsym>
 
 # 代码
 
-https://github.com/everettjf/Yolo/tree/master/HookCppInitilizers
+<https://github.com/everettjf/Yolo/tree/master/HookCppInitilizers>
 
 
 # 总结

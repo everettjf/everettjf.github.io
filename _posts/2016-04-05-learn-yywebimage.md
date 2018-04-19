@@ -11,8 +11,8 @@ comments: true
 
 # Basic Information
  - Name : YYWebImage
- - Site : https://github.com/ibireme/YYWebImage
- - Repo : https://github.com/ibireme/YYWebImage
+ - Site : <https://github.com/ibireme/YYWebImage>
+ - Repo : <https://github.com/ibireme/YYWebImage>
  - Revision : c97ef715462aa8f94ecaa55564aa4514cc39ae89
  - Description : 
 YYKit 组件之一。新出炉的WebImage。

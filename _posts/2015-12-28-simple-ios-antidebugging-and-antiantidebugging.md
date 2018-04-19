@@ -40,7 +40,7 @@ int main(int argc, char * argv[]) {
 
 ## 去掉保护
 
-参考文章 https://everettjf.github.io/2015/12/20/amap-ios-client-kill-anti-debugging-protect/
+参考文章 <https://everettjf.github.io/2015/12/20/amap-ios-client-kill-anti-debugging-protect/>
 
 
 # RESTRICT section
@@ -69,15 +69,15 @@ int main(int argc, char * argv[]) {
 5. Cydia中安装 `AppSync`。
 
 
-在这篇文章中 http://www.iosre.com/t/tweak-app-app-tweak/438
+在这篇文章中 <http://www.iosre.com/t/tweak-app-app-tweak/438>
 
 
 参考文章 
 
-1. http://www.iosre.com/t/tweak-app-app-tweak/438
-2. http://www.samdmarshall.com/blog/blocking_code_injection_on_ios_and_os_x.html155
-3. http://geohot.com/e7writeup.html50
-4. http://www.opensource.apple.com/source/dyld/dyld-210.2.3/src/dyld.cpp42
-5. https://theiphonewiki.com/wiki/Launchd.conf_untether17
-6. http://navillezhang.me/
+1. <http://www.iosre.com/t/tweak-app-app-tweak/438>
+2. <http://www.samdmarshall.com/blog/blocking_code_injection_on_ios_and_os_x.html155>
+3. <http://geohot.com/e7writeup.html50>
+4. <http://www.opensource.apple.com/source/dyld/dyld-210.2.3/src/dyld.cpp42>
+5. <https://theiphonewiki.com/wiki/Launchd.conf_untether17>
+6. <http://navillezhang.me/>
 

@@ -40,7 +40,7 @@ comments: true
 
 ~~~
 打开下面的链接，下载Raw，就可以导入iTerm2的Colors里了。
-https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/schemes/Monokai%20Soda.itermcolors
+<https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/schemes/Monokai%20Soda.itermcolors>
 ~~~
 
 ### zsh

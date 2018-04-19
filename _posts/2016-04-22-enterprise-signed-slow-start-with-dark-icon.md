@@ -70,5 +70,5 @@ App启动过程一般是这样的：App图标颜色会首先变暗，变暗后�
 
 stackoverflow 有问类似问题的，但问题原因不一样。
 
-http://stackoverflow.com/questions/29589285/why-ios-apps-signed-with-development-or-enterprise-certificates-launch-slower
+<http://stackoverflow.com/questions/29589285/why-ios-apps-signed-with-development-or-enterprise-certificates-launch-slower>
 

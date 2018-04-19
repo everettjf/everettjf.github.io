@@ -52,8 +52,8 @@ class-dump -s -S -H --arch armv7 AlipayWallet.decrypted -o dumpAlipay
 
 参考
 
-- https://github.com/iosre/iOSAppReverseEngineering
-- http://objccn.io/issue-19-2/
+- <https://github.com/iosre/iOSAppReverseEngineering>
+- <http://objccn.io/issue-19-2/>
 
 帮助
 
@@ -175,7 +175,7 @@ p (char*)$x1
 
 ## cycript
 
-参考： http://www.cycript.org/manual/
+参考： <http://www.cycript.org/manual/>
 
 开始
 
@@ -236,7 +236,7 @@ AppSync
 
 ## dumpdecrypted
 
-https://github.com/stefanesser/dumpdecrypted
+<https://github.com/stefanesser/dumpdecrypted>
 
 例子
 
@@ -251,7 +251,7 @@ everettjfs-iPhone:/var/mobile/Containers/Data/Application/72AB36DD-2E9B-47C0-969
 
 ## theos
 
-https://github.com/theos/theos
+<https://github.com/theos/theos>
 
 开始
 
@@ -261,13 +261,13 @@ everettjf@e WeChatVoiceSaver (master)]$ ~/sec/theos/bin/nic.pl
 
 ## chisel
 
-参考：https://github.com/facebook/chisel
+参考：<https://github.com/facebook/chisel>
 
 
 ## usbmuxd
 
-- https://cgit.sukimashita.com/usbmuxd.git/snapshot/usbmuxd-1.0.8.tar.gz
-- https://cgit.sukimashita.com/usbmuxd.git/
+- <https://cgit.sukimashita.com/usbmuxd.git/snapshot/usbmuxd-1.0.8.tar.gz>
+- <https://cgit.sukimashita.com/usbmuxd.git/>
 
 First:
 

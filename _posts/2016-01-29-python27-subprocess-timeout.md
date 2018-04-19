@@ -79,9 +79,9 @@ command.run(timeout=15)
 
 # 参考资料：
 
-- http://stackoverflow.com/questions/1191374/using-module-subprocess-with-timeout
-- http://stackoverflow.com/questions/4789837/how-to-terminate-a-python-subprocess-launched-with-shell-true
-- http://www.cnblogs.com/zhaoyl/archive/2012/07/07/2580749.html
+- <http://stackoverflow.com/questions/1191374/using-module-subprocess-with-timeout>
+- <http://stackoverflow.com/questions/4789837/how-to-terminate-a-python-subprocess-launched-with-shell-true>
+- <http://www.cnblogs.com/zhaoyl/archive/2012/07/07/2580749.html>
 
 
 

@@ -16,13 +16,13 @@ comments: true
 
 ## Step 1. yalu
 
-https://yalu.qwertyoruiop.com/
+<https://yalu.qwertyoruiop.com/>
 
-http://www.cydiaimpactor.com/
+<http://www.cydiaimpactor.com/>
 
 ## Step 2. Fix cydia error
 
-http://www.iblogapple.com/2016/12/31/fix-cydia-error-could-not-open-file-varlibdpkgstatus-ios-10-jailbreak/
+<http://www.iblogapple.com/2016/12/31/fix-cydia-error-could-not-open-file-varlibdpkgstatus-ios-10-jailbreak/>
 
 <!-- more -->
 
@@ -31,16 +31,16 @@ http://www.iblogapple.com/2016/12/31/fix-cydia-error-could-not-open-file-varlibd
 
 Connect via `usbmux`.
 
-https://www.reddit.com/r/jailbreak/comments/5r2mwr/tutorial_how_to_use_dropbear_ssh_via_usb_on/
+<https://www.reddit.com/r/jailbreak/comments/5r2mwr/tutorial_how_to_use_dropbear_ssh_via_usb_on/>
 
 ## Step 4. AppSync
 
-1. Add `http://cydia.angelxwind.net/` to cydia source.
+1. Add `<http://cydia.angelxwind.net/`> to cydia source.
 2. Search `AppSync Unified iOS10` and install.
 
 ## Step 5. KStore
 
-1. Add `http://repo.xarold.com` to cydia source.
+1. Add `<http://repo.xarold.com`> to cydia source.
 2. Search `kStore` and install.
 3. Reboot and Re-Jailbreak.
 

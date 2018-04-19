@@ -9,13 +9,13 @@ tags:
 comments: true
 ---
 
-最近学习了 https://azeria-labs.com/ 出的ARM Exploit教程，最后作者出了几个挑战题目，以下是的解题思路。
+最近学习了 <https://azeria-labs.com/> 出的ARM Exploit教程，最后作者出了几个挑战题目，以下是的解题思路。
 
-题目在这： https://azeria-labs.com/part-3-stack-overflow-challenges/
+题目在这： <https://azeria-labs.com/part-3-stack-overflow-challenges/>
 
 # 环境
 
-1. 直接使用作者提供的虚拟机 https://azeria-labs.com/arm-lab-vm/
+1. 直接使用作者提供的虚拟机 <https://azeria-labs.com/arm-lab-vm/>
 2. armv6 树莓派
 
 <!-- more -->
@@ -159,7 +159,7 @@ r11是Frame Pointer地址（栈底），sp是栈顶，一般函数内的变量�
 
 也就是覆盖到上图的地址。从第一个0x31算下（假设输入是很多1111111），也就是需要17*4的字符，最后四个字符是`\n\r\n\r`。
 
-怎么设置环境变量是`\n\r`呢？参考Stack Overflow的回答 https://stackoverflow.com/questions/41309822/how-do-i-actually-write-n-r-to-an-environment-variable
+怎么设置环境变量是`\n\r`呢？参考Stack Overflow的回答 <https://stackoverflow.com/questions/41309822/how-do-i-actually-write-n-r-to-an-environment-variable>
 
 以下答案都可以了：
 
@@ -229,7 +229,7 @@ printf '11111111111111111111111111111111111111111111111111111111111111111111\x4c
 
 先看代码与stack4一样，不同的是：这次我们要执行自己的shellcode。
 
-shellcode 我们就用之前章节的 https://azeria-labs.com/writing-arm-shellcode/
+shellcode 我们就用之前章节的 <https://azeria-labs.com/writing-arm-shellcode/>
 
 ```
 printf '11111111111111111111111111111111111111111111111111111111111111111111\x4c\x04\x01\x00' | ./stack5

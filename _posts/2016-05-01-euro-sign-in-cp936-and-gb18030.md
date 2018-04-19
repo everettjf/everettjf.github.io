@@ -21,7 +21,7 @@ comments: true
 
 - 部分业务数据库中的信息不是utf-8，而是PC客户端存入的cp936（数据库是SQL Server）
 - 部分信息iOS拿到的是cp936编码的文字。
-- 文字中包含欧元符号 € 。（https://en.wikipedia.org/wiki/Euro）
+- 文字中包含欧元符号 € 。（<https://en.wikipedia.org/wiki/Euro）>
 - iOS把cp936当做gb18030解码（主要是受gbk转utf-8影响，网上一把这类文章）
 - cp936中如果有欧元符号，则会返回nil。
 <!-- more -->
@@ -39,18 +39,18 @@ Windows的CP936并符合标准的GBK定义。
 > Windows CP936 code page 0x80 to represent the euro symbol in the GB18030 encoding 0x80 encoding, with other locations to represent the euro symbol. This can be understood to be a little problem on the GB18030 backward compatibility; also be understood as 0x80 CP936 expansion of GBK, GB18030 is only compatible and GBK.
 
 
-search 0x80 in https://en.wikipedia.org/wiki/Code_page_936
+search 0x80 in <https://en.wikipedia.org/wiki/Code_page_936>
 
-http://www.databasesql.info/article/8106207727/
+<http://www.databasesql.info/article/8106207727/>
 
 
 > Microsoft later added the euro sign to Codepage 936 and assigned the code 0x80 to it. This is not a valid code point in GBK 1.0.
 
-https://en.wikipedia.org/wiki/GBK
+<https://en.wikipedia.org/wiki/GBK>
 
-https://msdn.microsoft.com/zh-cn/goglobal/cc305153
+<https://msdn.microsoft.com/zh-cn/goglobal/cc305153>
 
-https://msdn.microsoft.com/zh-cn/goglobal/bb688113.aspx
+<https://msdn.microsoft.com/zh-cn/goglobal/bb688113.aspx>
 
 ## 解决办法
 

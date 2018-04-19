@@ -34,8 +34,8 @@ comments: true
 多账号App的IAP支付失败的一种情况的处理。
 见这两个提问：
 
-- http://stackoverflow.com/questions/34872020/apple-in-app-purchase-how-to-detect-the-owner-of-the-payment-in-an-multi-user
-- https://segmentfault.com/q/1010000004320362
+- <http://stackoverflow.com/questions/34872020/apple-in-app-purchase-how-to-detect-the-owner-of-the-payment-in-an-multi-user>
+- <https://segmentfault.com/q/1010000004320362>
 
 *有时间找到解决办法后，再补充到这里*
 

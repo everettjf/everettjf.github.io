@@ -39,13 +39,13 @@ comments: true
 
 如果这个数据是字符串，我们可以通过字符串获取类名；如果是函数地址，我们可以直接调用。
 
-（关于 Facebook 的段 FBInjectable 的含义，可以参考文章 https://everettjf.github.io/2016/08/20/facebook-explore-section-fbinjectable ）
+（关于 Facebook 的段 FBInjectable 的含义，可以参考文章 <https://everettjf.github.io/2016/08/20/facebook-explore-section-fbinjectable> ）
 
 那么如何创建FBInjectable段呢？
 
 可以使用 __attribute((used,section("segmentname,sectionname"))) 关键字把某个变量的放入特殊的section中。
 
-（attribute 参考 http://gcc.gnu.org/onlinedocs/gcc-3.2/gcc/Variable-Attributes.html ）
+（attribute 参考 <http://gcc.gnu.org/onlinedocs/gcc-3.2/gcc/Variable-Attributes.html> ）
 
 例如：
 
@@ -161,6 +161,6 @@ QWLoadableFunctionEnd(FooObject)
 
 # 参考代码
 
-https://github.com/everettjf/Yolo/tree/master/LoadableMacro
+<https://github.com/everettjf/Yolo/tree/master/LoadableMacro>
 
 

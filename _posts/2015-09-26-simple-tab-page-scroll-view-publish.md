@@ -15,7 +15,7 @@ comments: true
 想到最近自己开发的一个简单的Tab页面，尝试完善一下，做的更通用一些，放到CocoaPods上。
 
 # 最终
-使用方法及代码见：https://github.com/everettjf/Yolo/tree/master/EVTTabPageScrollView
+使用方法及代码见：<https://github.com/everettjf/Yolo/tree/master/EVTTabPageScrollView>
 
 ![demo](https://everettjf.github.io/images/extern/EVTTabPageScrollView.gif)
 <!-- more -->
@@ -24,7 +24,7 @@ comments: true
 # 步骤
 
 1. 创建模板工程
-    参考链接：https://guides.cocoapods.org/making/using-pod-lib-create.html
+    参考链接：<https://guides.cocoapods.org/making/using-pod-lib-create.html>
     ```
     pod lib create MyLibrary
     ```
@@ -39,7 +39,7 @@ comments: true
     $ pod trunk register orta@cocoapods.org 'Orta Therox' --description='macbook air'
     $ pod trunk push EVTTabPageScrollView.podspec
     ```
-    参考链接：https://guides.cocoapods.org/making/getting-setup-with-trunk
+    参考链接：<https://guides.cocoapods.org/making/getting-setup-with-trunk>
 
 # 其他
 这个还很简单，仅作为自己试用CocoaPods的例子。

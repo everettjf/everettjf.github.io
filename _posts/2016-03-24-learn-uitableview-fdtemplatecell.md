@@ -13,12 +13,12 @@ comments: true
 
 # Basic Information
  - Name : UITableView-FDTemplateLayoutCell
- - Site : https://github.com/forkingdog/UITableView-FDTemplateLayoutCell
- - Repo : https://github.com/forkingdog/UITableView-FDTemplateLayoutCell
+ - Site : <https://github.com/forkingdog/UITableView-FDTemplateLayoutCell>
+ - Repo : <https://github.com/forkingdog/UITableView-FDTemplateLayoutCell>
  - Revision : e3ee86ce419d18d3ff735056f1474f2863e43003
  - Description : 
 简单易用的UITableViewCell自动高度。
-作者的博客文章 http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/
+作者的博客文章 <http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/>
 
 <!-- more -->
 

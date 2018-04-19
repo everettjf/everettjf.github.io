@@ -129,10 +129,10 @@ comments: true
 
 - 学习了源码SDWebImage YYCache YYModel MJRefresh Aspects Masonry等。
 - 看了书《iOS应用安全攻防实战》《Objective C编程之道路》《黑客攻防技术宝典》《OpenCV编程入门》《程序员的数学》
-- 钦慕设计导航 https://admire.so ：开发了Python后台。
+- 钦慕设计导航 <https://admire.so> ：开发了Python后台。
 - LifeMail：进度50%、没有开源，没有开发完成。
-- 代码学习平台：开发了 https://github.com/everettjf/XSourceNote 但后来发现意义不大，或者说做的体验不好，放弃了。
-- 番茄阅读：https://github.com/everettjf/TomatoRead 后来阿里云的服务器到期后，没有继续维护。
+- 代码学习平台：开发了 <https://github.com/everettjf/XSourceNote> 但后来发现意义不大，或者说做的体验不好，放弃了。
+- 番茄阅读：<https://github.com/everettjf/TomatoRead> 后来阿里云的服务器到期后，没有继续维护。
 - 博客基本每月一篇。年底写了几篇文章，发到了内网，也凑个数吧。
 
 ## 没做

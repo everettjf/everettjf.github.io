@@ -52,7 +52,6 @@ def main():
         y = process(d)
         print y
 
-        break
 
         with open(f, 'w') as g:
             g.write(y)
