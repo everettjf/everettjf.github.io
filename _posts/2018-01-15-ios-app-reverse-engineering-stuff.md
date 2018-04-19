@@ -95,7 +95,19 @@ https://github.com/theos/theos
 
 > A cross-platform suite of tools for building and deploying software for iOS and other platforms.
 
+### HookZz
 
+https://github.com/jmpews/HookZz
+
+> a hook framework for arm/arm64/ios/android
+
+### AppleTrace
+
+https://github.com/everettjf/AppleTrace
+
+> Objective C message tracing tool for iOS/macOS based on HookZz
+
+![](https://camo.githubusercontent.com/7991cda34b6822b4fc1339cc5f4deb0257d41723/68747470733a2f2f657665726574746a662e6769746875622e696f2f73747566662f6170706c6574726163652f6170706c6574726163652e676966)
 
 ### dump
 #### frida-ios-dump
