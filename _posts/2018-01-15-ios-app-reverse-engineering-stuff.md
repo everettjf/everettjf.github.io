@@ -209,6 +209,19 @@ strings、nm、weak_classdump
 <http://zygosec.com/Products/>
 ![](/media/15238974543754.jpg)
 
+## *OSInternals
+
+- Volume I - User Mode
+- Volume III - Security & Insecurity
+
+据说Volume II 今年(2018年）秋天出来。
+
+<http://newosxbook.com/>
+
+![](/media/15241510739720.jpg)
+
+
+
 # 资料
 
 
