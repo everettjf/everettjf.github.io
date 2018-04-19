@@ -34,7 +34,7 @@ everettjfs-iPhone:/var/mobile/Containers/Bundle/Application/9DB7CE45-3B4C-42A3-9
 
 ## 去掉 ptrace 和 __RESTRICT section 两个保护
 
-参见：https://everettjf.github.io/2015/12/28/simple-ios-antidebugging-and-antiantidebugging/
+参见：<https://everettjf.github.io/2015/12/28/simple-ios-antidebugging-and-antiantidebugging/>
 
 破掉保护后就可以使用cycript了。
 

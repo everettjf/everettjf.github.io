@@ -28,7 +28,7 @@ comments: true
 
 然而，此时一个”老想法“又来了。前段时间看了”最强大脑“后自己也学习起魔方。想来做一个辅助还原魔方的App会更有创意。
 
-做这个App的想法在这次hackathon之前就有，也做了一些调查，当然重点是想使用AR来辅助还原魔方。AR自然想到了Vuforia，然而Vuforia只能识别marker，对于魔方这种每个面的颜色组成会变化，且需要识别出颜色来，Vuforia做不到（或者我没找到办法）。于是OpenCV登场。找到了这个 https://github.com/AndroidSteve/Rubik-Cube-Wizard ，这个App主要用在 Google Glass上，且作者没有计划移植到手机上（https://github.com/AndroidSteve/Rubik-Cube-Wizard/tree/master/Rubik%20Solver/docs）。
+做这个App的想法在这次hackathon之前就有，也做了一些调查，当然重点是想使用AR来辅助还原魔方。AR自然想到了Vuforia，然而Vuforia只能识别marker，对于魔方这种每个面的颜色组成会变化，且需要识别出颜色来，Vuforia做不到（或者我没找到办法）。于是OpenCV登场。找到了这个 <https://github.com/AndroidSteve/Rubik-Cube-Wizard> ，这个App主要用在 Google Glass上，且作者没有计划移植到手机上<https://github.com/AndroidSteve/Rubik-Cube-Wizard/tree/master/Rubik%20Solver/docs>
 
 想来我可以做。但发现大量OpenCV的使用。后来投入较多时间去学习OpenCV。照着 Rubik-Cube-Wizard 的Java代码翻译……
 
@@ -57,15 +57,15 @@ comments: true
 
 - 语音，可以使用讯飞识别。
 - 拍照，也就是每个面都拍照。识别出固定位置的颜色。
-- 视频，类似这个 https://github.com/bluquar/cubr。
+- 视频，类似这个 <https://github.com/bluquar/cubr>
 - AR，就是Rubik-Cube-Wizard这个了。
 
 
 # 还原算法
 
-https://github.com/muodov/kociemba
+<https://github.com/muodov/kociemba>
 
-最后，做出来使用按钮、语音的方式。代码在这里。https://github.com/xfteam/xfrubiks
+最后，做出来使用按钮、语音的方式。代码在这里。<https://github.com/xfteam/xfrubiks>
 
 
 

@@ -29,21 +29,21 @@ comments: true
 - 我们可以这样
   - 先学习《集体智慧编程》，然后就可以写代码做项目了。
   - 业余时间，做个爬虫。（集体智慧编程中的例子）
-  - 补充理论知识。线性代数、微积分、数理统计。见这里的各种教程（http://www.cppblog.com/everett/archive/2013/08/24/202737.html）
+  - 补充理论知识。线性代数、微积分、数理统计。见这里的各种教程（<http://www.cppblog.com/everett/archive/2013/08/24/202737.html）>
   - 之后，现在不知道，以后再写。
 - 横冲直撞
   - 仍需静下心来，潜心研究，一步一脚印。
 - 七月算法
-  - 学习SVM时，看到july的svm博客文章 http://blog.csdn.net/v_july_v/article/details/7624837。
+  - 学习SVM时，看到july的svm博客文章 <http://blog.csdn.net/v_july_v/article/details/7624837>
   - 现在july创办了七月算法。可以去学习下。
-  - 机器学习课程，真的想参加一下。http://www.julyedu.com/course/index/category/machinelearning.html
+  - 机器学习课程，真的想参加一下。<http://www.julyedu.com/course/index/category/machinelearning.html>
 
 # 流水账
 
 - 2013年上半年，在[一位同事](1)的带领下，看到《机器学习实战》一书。当时的学习总结(http://www.cppblog.com/everett/archive/2013/08/24/202736.html)
-- 2013年下半年，学习各种理论，http://www.cppblog.com/everett/archive/2013/08/24/202737.html
+- 2013年下半年，学习各种理论，<http://www.cppblog.com/everett/archive/2013/08/24/202737.html>
 - 2014年上半年，集体智慧编程、模式分类、数据之魅。
-- 2014年12月份，Ruby版本的基于SVM的病毒分类器，代码https://github.com/everettjf/RubySVMVirusScanner。
+- 2014年12月份，Ruby版本的基于SVM的病毒分类器，代码<https://github.com/everettjf/RubySVMVirusScanner。>
 - 2014年下半年至今（2015年7月份），几乎暂停了一年时间。
   + 这段时间没有经住好奇心和互联网行业吸引，学习了渗透测试、Android和iOS开发。
   + 消耗了大量时间和精力，并没有达到心中的圣地麦加。
