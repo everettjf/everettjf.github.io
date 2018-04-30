@@ -103,7 +103,7 @@ b ptrace
 列举模块
 
 ```
-image -o -f
+image list -o -f
 ```
 
 lldb基础命令
