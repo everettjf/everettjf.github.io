@@ -43,6 +43,10 @@ Objective C 的+load方法：dyld会在pre-main阶段，逐个调用当前image�
 
 如何统计+load方法的耗时，可以参考文章<http://everettjf.com/2017/01/06/a-method-of-hook-objective-c-load/>
 
+如何看到所有+load方法，最手动的方法可以是：通过hopper查看。如下图：
+![](/media/15270382965409.jpg)
+
+
 
 ### `C++ static initializers` 和 `C/C++ __attribute__(constructor) functions`
 
