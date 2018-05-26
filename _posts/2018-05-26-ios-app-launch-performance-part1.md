@@ -18,7 +18,7 @@ comments: true
 4. iOS应用启动性能优化(4)-原理
 5. iOS应用启动性能优化(5)-总结
 
-**这是第一篇文章，文章都很简短，不要有什么期望**
+**文章都很简短，这是第一篇文章，不要有什么期望哈**
 
 <!-- more -->
 
@@ -53,7 +53,7 @@ Objective C 的+load方法：dyld会在pre-main阶段，逐个调用当前image�
 ![](/media/15270382965409.jpg)
 
 
-如何统计+load方法的耗时，可以参考文章<http://everettjf.com/2017/01/06/a-method-of-hook-objective-c-load/>
+如何统计+load方法的耗时，可以参考文章<https://everettjf.com/2017/01/06/a-method-of-hook-objective-c-load/>
 
 
 # static initializers
