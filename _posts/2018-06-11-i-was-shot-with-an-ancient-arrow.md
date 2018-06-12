@@ -8,8 +8,9 @@ tags:
 comments: true
 ---
 
+c u in the next world
 
-
+<!-- more -->
 
 
 ![shotwithancientarro](/media/shotwithancientarrow.jpg)
