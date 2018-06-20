@@ -53,7 +53,7 @@ Objective C 的+load方法：dyld会在pre-main阶段，逐个调用当前image�
 ![](/media/15270382965409.jpg)
 
 
-如何统计+load方法的耗时，可以参考文章<https://everettjf.com/2017/01/06/a-method-of-hook-objective-c-load/>
+如何统计+load方法的耗时，可以参考文章<https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/>
 
 
 # static initializers
@@ -62,7 +62,7 @@ Objective C 的+load方法：dyld会在pre-main阶段，逐个调用当前image�
 
 这类代码在+load方法之后，main方法之前执行。
 
-`C++ static initializers` ： 是在使用C++ （或者Objective C++）编写的代码中容易产生的，参考[这篇文章](http://everettjf.com/2017/02/06/a-method-of-hook-static-initializers/) 中的”有哪些方法可以产生initializer？“。
+`C++ static initializers` ： 是在使用C++ （或者Objective C++）编写的代码中容易产生的，参考[这篇文章](http://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/) 中的”有哪些方法可以产生initializer？“。
 
 `C/C++ __attribute__(constructor) functions`  ：参考代码如下，
 
@@ -78,12 +78,12 @@ __attribute__((constructor)) void calledFirst(){
 ![](/media/15273514962124.jpg)
 
 
-如何统计这类initializers的耗时，可以参考文章<https://everettjf.com/2017/02/06/a-method-of-hook-static-initializers/>
+如何统计这类initializers的耗时，可以参考文章<https://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/>
 
 
 # pre-main的替代方案
 
-为了实现这类代码的“可审计耗时”，有个或许可行的替代方案，参考文章<https://everettjf.com/2017/03/06/a-method-of-delay-premain-code/>
+为了实现这类代码的“可审计耗时”，有个或许可行的替代方案，参考文章<https://everettjf.github.io/2017/03/06/a-method-of-delay-premain-code/>
 
 
 # 参考
