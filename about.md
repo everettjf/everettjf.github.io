@@ -3,7 +3,7 @@ layout: page
 title: About me 
 ---
 
-I'm everettjf & iOS/macOS/Windows Developer & interested in Reverse Engineering
+I'm everettjf & iOS/Android/Windows Developer & Interested in Reverse Engineering and App Performance
 
 
 [GitHub](https://github.com/everettjf) | [Weibo](https://weibo.com/everettjf) 
