@@ -10,4 +10,4 @@ I'm everettjf & iOS/Android/Windows Developer & Interested in Reverse Engineerin
 
 欢迎关注微信公众号：性能优化很有趣
 
-[fun](/images/fun.jpg)
+![fun](/images/fun.jpg)
