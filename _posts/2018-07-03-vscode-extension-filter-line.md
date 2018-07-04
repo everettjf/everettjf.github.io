@@ -28,12 +28,14 @@ For English article , please visit [here](https://medium.com/@everettjf/vscode-e
 
 这种情况下就逐渐写了一些脚本来过滤日志，例如把下面的日志：
 
-![](/media/15306869648275.jpg)
+
+![](/media/15307124731455.jpg)
 
 
 通过正则匹配，翻译成下面这样：
 
-![](/media/15306873603934.jpg)
+
+![](/media/15307124830202.jpg)
 
 这样就通俗易懂了，过滤后一眼就看出问题时间。缓解了眼部压力，生活美好了很多。
 
@@ -57,7 +59,8 @@ For English article , please visit [here](https://medium.com/@everettjf/vscode-e
 1. 下载vscode，https://code.visualstudio.com/
 2. 搜索插件，点击Install
 
-![](/media/15306870660262.png)
+![](/media/15307125087674.jpg)
+
 
 
 3. 安装完成后，点击Reload。
@@ -67,28 +70,32 @@ For English article , please visit [here](https://medium.com/@everettjf/vscode-e
 打开一个文件夹，例如 ~/log2eoml 文件夹，把日志log.txt放到这个文件夹中。可以直接参考这个[demo](https://github.com/everettjf/vscode-filter-line/raw/master/demo.zip)，解压后把demo/log2eoml文件夹拖拽到vscode中。
 
 1、打开log2eoml文件夹，并打开foo.log
+![](/media/15307125928088.jpg)
 ![](/media/15306872946057.jpg)
 
 
 2、运行 command+shift+p ，输入 filter line by config file （或者filter config），选择 `Filter Line By Config File` ，如下图。
+![](/media/15307126136726.jpg)
 
-![](/media/15306873091127.jpg)
 
 3、回车，就生成了新的文件foo.log.filterline.log ，并自动打开了。这里就是过滤、翻译好的日志。
-![](/media/15306873359780.jpg)
+
+![](/media/15307126242712.jpg)
 
 
 # 原理
 
 打开 log2eoml/.vscode/filterline.eoml文件，
 
-![](/media/15306874281185.jpg)
+
+
+![](/media/15307126453529.jpg)
 
 配置文件格式很简单：
 
 1. type是general，指通用类型。
 2. prefix 是匹配前缀的正则表达式。这里就是为了匹配每一行的时间、线程等信息。
-![](/media/15306874523111.jpg)
+![](/media/15307126797868.jpg)
 
 
 3. rules是过滤、翻译（替换）的规则。
