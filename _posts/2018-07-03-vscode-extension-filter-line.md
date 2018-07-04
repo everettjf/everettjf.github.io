@@ -78,7 +78,7 @@ For English article , please visit [here](https://medium.com/@everettjf/vscode-e
 ![](media/15306873359780.jpg)
 
 
-## 原理
+# 原理
 
 打开 log2eoml/.vscode/filterline.eoml文件，
 
@@ -97,7 +97,7 @@ For English article , please visit [here](https://medium.com/@everettjf/vscode-e
 6. flag是全局的标记。例如app进入后台，则在所有行都加个标记，会前台时取消这个标记。
 7. until 是匹配到某行时，后面紧跟的几行连续输出原始内容，直到某一行匹配正则表达式。
 
-## 更多格式
+# 更多格式
 
 filterline.eoml是一种格式，还可以使用filterline.json。例如[这个文件](https://github.com/everettjf/vscode-filter-line/blob/master/demo/log2json/.vscode/filterline.json) 。
 
@@ -107,7 +107,7 @@ eoml是自创的一个简单格式，主要是为了解决json中正则表达式
 
 更多信息可以参考 <https://github.com/everettjf/vscode-filter-line>
 
-## 结语
+# 结语
 
 日志的翻译（替换）节省了大量排查问题的时间，过去的时间让我更快的定位了问题。相信也能加快大家定位问题的时间。
 
