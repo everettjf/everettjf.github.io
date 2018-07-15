@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "使用Cydia安 AppleTrace Tweak"
+title: "使用 Cydia 安装 AppleTrace Tweak"
 categories:
   - 工具
 tags:
