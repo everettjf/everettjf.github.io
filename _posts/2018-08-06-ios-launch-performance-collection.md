@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS应用启动性能优化资料汇总"
+title: "iOS应用启动性能优化资料"
 categories:
   - doc
 tags:

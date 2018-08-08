@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS时间获取方法汇总"
+title: "iOS时间获取方法"
 categories:
   - guide
 tags:

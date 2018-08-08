@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS应用逆向工程资料汇总"
+title: "iOS应用逆向工程资料"
 categories:
   - 逆向
 tags:
