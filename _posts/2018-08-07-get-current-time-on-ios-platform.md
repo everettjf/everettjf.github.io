@@ -72,7 +72,9 @@ double uptimeInMilliseconds = 0.0;
 double uptime = uptimeInMilliseconds / 1000.0;
 NSLog(@"uptime = %@",@(uptime));
 
-    
+
+// clock
+// 只是用于计算时间差
 // Returns the approximate processor time used by the process since the beginning of an implementation-defined era related to the program's execution. To convert result value to seconds, divide it by CLOCKS_PER_SEC.
 clock_t clockvalue = clock();
     
