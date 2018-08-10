@@ -37,7 +37,7 @@ NSLog(@"timestamp = %@",@(timestamp));
 
 ## CFAbsoluteTimeGetCurrent
 
-```    
+```
 // GMT
 // 距离 Jan 1 2001 00:00:00 GMT 的时间
 CFAbsoluteTime cftime = CFAbsoluteTimeGetCurrent();
