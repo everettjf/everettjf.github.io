@@ -15,6 +15,8 @@ comments: true
 
 # 代码段
 
+## NSDate
+
 ```
 
 // NSDate
@@ -30,25 +32,42 @@ NSLog(@"interval2001 = %@",@(interval2001));
 // 距离 00:00:00 UTC on 1 January 1970 的时间
 NSTimeInterval timestamp = [date timeIntervalSince1970];
 NSLog(@"timestamp = %@",@(timestamp));
-    
+
+```
+
+## CFAbsoluteTimeGetCurrent
+
+```    
 // GMT
 // 距离 Jan 1 2001 00:00:00 GMT 的时间
 CFAbsoluteTime cftime = CFAbsoluteTimeGetCurrent();
 NSLog(@"cftime = %@",@(cftime));
     
-    
+```
+
+## CACurrentMediaTime
+
+```
 // Absolute
 // 系统睡眠时会停止
 // 距离开机时间
 CFTimeInterval catime = CACurrentMediaTime();
 NSLog(@"catime = %@",@(catime));
-    
+```
+
+## NSProcessInfo
+
+```
 // Absolute
 // 系统睡眠时会停止
 // NSProcessInfo
 NSTimeInterval processSystemUptime = [NSProcessInfo processInfo].systemUptime;
 NSLog(@"uptime from NSProcessInfo = %@",@(processSystemUptime));
+```
 
+## mach_absolute_time
+
+```
 // Absolute
 // On iOS mach_absolute_time stops while the device is sleeping.
 // https://developer.apple.com/library/archive/qa/qa1398/_index.html
@@ -71,25 +90,38 @@ double uptimeInMilliseconds = 0.0;
 }
 double uptime = uptimeInMilliseconds / 1000.0;
 NSLog(@"uptime = %@",@(uptime));
+```
 
+## clock
 
+```
 // clock
 // 只是用于计算时间差
 // Returns the approximate processor time used by the process since the beginning of an implementation-defined era related to the program's execution. To convert result value to seconds, divide it by CLOCKS_PER_SEC.
 clock_t clockvalue = clock();
-    
-    
+```
+
+## getrusage
+
+```
 // returns information describing the resources utilized by the current process, or all its terminated child processes.
 struct rusage process_usage_info;
 int getrures = getrusage(RUSAGE_SELF, &process_usage_info);
 NSLog(@"user time used = %@",@(process_usage_info.ru_utime.tv_sec * 1000 + process_usage_info.ru_utime.tv_usec));
 NSLog(@"system time used = %@",@(process_usage_info.ru_stime.tv_sec * 1000 + process_usage_info.ru_stime.tv_usec));
+```
 
+## time
+
+```
 // time
 time_t timeresult = time(NULL);
 NSLog(@"timeresult (s)= %ju", timeresult);
+```
 
+## gettimeofday
 
+```
 // gettimeofday
 // microseconds since Jan. 1, 1970
 {
@@ -98,7 +130,11 @@ NSLog(@"timeresult (s)= %ju", timeresult);
     double timems = (uint64_t)tv.tv_sec * 1000 + (uint64_t)tv.tv_usec / 1000;
     NSLog(@"timeofday time (ms) = %@",@(timems));
 }
+```
 
+## clock_gettime
+
+```
 // clock_gettime
 // Returns monotonically growing number of ticks in microseconds since some
 // unspecified starting point.
@@ -114,7 +150,11 @@ NSLog(@"timeresult (s)= %ju", timeresult);
         NSLog(@"clock_gettime value = %@",@(clockgettimevalue));
     }
 }
-    
+```
+
+## sysctl
+
+```
 // a timestamp of when the system last booted, also changes when the system clock is changed,
 {
     struct timeval boottime;
@@ -123,8 +163,6 @@ NSLog(@"timeresult (s)= %ju", timeresult);
     int kr = sysctl(mib, sizeof(mib)/sizeof(int), &boottime, &size, nullptr, 0);
     NSLog(@"boottime sysctl = %@", @(boottime.tv_sec * 1000 + boottime.tv_usec));
 }
-
-   
 ```
 
 # 总结

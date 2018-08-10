@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "create thread on ios platform"
+title: "iOS线程创建方法"
 categories:
   - 
 tags:
