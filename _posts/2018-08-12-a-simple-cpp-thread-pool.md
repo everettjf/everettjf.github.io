@@ -29,7 +29,7 @@ comments: true
 
 如图：
 
-![](media/15340064020238.jpg)
+![](/media/15340064020238.jpg)
 
 
 
