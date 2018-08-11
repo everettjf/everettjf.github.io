@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "一个简单的C++11线程池"
+title: "C++实现简单的线程池"
 categories:
   - guide
 tags:
@@ -9,7 +9,7 @@ comments: true
 ---
 
 
-启动优化中，尽量能不在主线程就不在主线程。放到子线程又尽量不要同事并发，挨个来，给主线程多一些执行机会。那么一种方法是使用线程池。
+启动优化中，尽量能不在主线程就不在主线程。放到子线程又尽量不要密集并发，挨个来，给主线程多一些执行机会。那么一种方法是使用线程池。
 
 <!-- more -->
 
@@ -149,6 +149,8 @@ ThreadPool::~ThreadPool()
 
 # 使用方法
 
+
+参考代码位置：<https://github.com/bukuzao/bukuzao/tree/master/sample/ThreadPoolSample>
 
 ```
     ThreadPool pool(2);
