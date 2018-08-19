@@ -169,5 +169,10 @@ NSLog(@"timeresult (s)= %ju", timeresult);
 
 计算耗时，一般可以使用 `CACurrentMediaTime()` ，这样可以避免系统时间微调带来的误差（例如App启动过程中系统会自动微调对准时间，多几秒少几秒这样）。
 
-代码段只是罗列，未做详细解释......
+最后，动态库中使用CACurrentMediaTime，需要链接QuartzCore.framework。
+
+![](/media/15346417934621.jpg)
+
+就这样，简单易用。
+
 
