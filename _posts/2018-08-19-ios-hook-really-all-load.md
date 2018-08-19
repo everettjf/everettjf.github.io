@@ -236,5 +236,8 @@ Hopper中看到Category中的+load，最终的符号没有体现出来。
 
 两年，眨眼而过，而是是非非，却历历在目。一念起万水千山，一念灭沧海桑田。勇往直前，少年。
 
+欢迎关注订阅号《性能优化很有趣》：
+![bukuzao](https://everettjf.github.io/images/fun.jpg)
+
 
 
