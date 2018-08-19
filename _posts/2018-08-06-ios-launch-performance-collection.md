@@ -92,10 +92,12 @@ comments: true
     <https://everettjf.github.io/2018/05/26/ios-app-launch-performance-part1/>
     仅仅是pre-main阶段的思路。作者说有后续的文章，但很久没动静了，不知道在搞什么。
 
-10. 一种 hook objective c +load 的方法
+10. Hook所有+load方法
     
-    <https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/>
-    这篇文章的hook比较麻烦，其实还可以参考上面的一篇文章 <https://www.jianshu.com/p/c14987eee107>，这里有批量hook +load的代码。（未来我也有计划会把这些相关代码整理到一个repo中）
+    一种 hook objective c +load 的方法 <https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/>
+    
+    Hook所有+load方法（包括Category）
+ <https://everettjf.github.io/2018/08/19/ios-hook-really-all-load/>
     
 11. 一种 hook C++ static initializers 的方法
     
