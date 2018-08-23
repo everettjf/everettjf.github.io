@@ -136,7 +136,7 @@ TaskDeclare(TTRenderTask)
 ```
 
 
-最后，使用os_signpost 可以看到：
+最后，使用os_signpost （os_signpost可以参考文章 https://everettjf.github.io/2018/08/13/os-signpost-tutorial/ ）可以看到：
 
 ![](/media/15350423765697.jpg)
 
