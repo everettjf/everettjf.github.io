@@ -238,5 +238,8 @@ Hopper中看到Category中的+load，最终的符号没有体现出来。
 欢迎关注订阅号《性能优化很有趣》：
 ![bukuzao](https://everettjf.github.io/images/fun.jpg)
 
+# 补充
+
+*同事告知Hook所有+load有性能更好的方法，但不便于公开了了。哈。*
 
 
