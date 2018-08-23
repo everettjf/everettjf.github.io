@@ -152,3 +152,7 @@ TaskDeclare(TTRenderTask)
 这篇文章确实简单的不能再简单了。有点水。哈。
 
 
+
+欢迎关注订阅号《性能优化很有趣》：
+![bukuzao](https://everettjf.github.io/images/fun.jpg)
+
