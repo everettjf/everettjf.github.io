@@ -1,11 +1,11 @@
 name: everettjf
 description: 性能优化很有趣
-meta_description: "I'm everettjf & iOS/Windows Developer & interested in Reverse Engineering"
+meta_description: "I'm everettjf & Android/iOS/Windows Developer & Interested in Reverse Engineering and App Performance"
 
 markdown: kramdown
 highlighter: pygments
 logo: false
-paginate: 5
+paginate: 10
 baseurl: ''
 domain_name: 'https://everettjf.github.io'
 google_analytics: 'UA-111349332-1'
