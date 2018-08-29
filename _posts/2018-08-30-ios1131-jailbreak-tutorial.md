@@ -55,6 +55,7 @@ comments: true
 
 ## 创建App IDs
 ![](/media/15355609710371.jpg)
+假设App ID 使用 com.everettjf.myios11iphone6s。
 
 注意选择Multipath
 ![](/media/15355609398145.jpg)
