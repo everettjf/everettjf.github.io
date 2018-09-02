@@ -1,6 +1,6 @@
 ---
 layout: post
-title: iOS调试速查表
+title: iOS调试速查表 (iOS Debug Cheatsheet)
 categories: Skill
 comments: true
 ---
@@ -17,7 +17,11 @@ comments: true
 
 ## common
 
+ssh免密码：
 
+```
+ssh-copy-id -i /Users/everettjf/.ssh/id_rsa root@localhost -p 2222
+```
 
 查找进程：
 
@@ -285,3 +289,5 @@ ssh root@localhost -p 2222
 ---
 
 PS：[文章首次发布于iosre.com](http://iosre.com/t/debug/3778)
+
+
