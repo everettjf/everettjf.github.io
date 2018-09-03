@@ -97,6 +97,9 @@ viewWillAppear时，左下角加一个UIButton就行了，事件可以调用 DDP
 <http://apt.thebigboss.org/stats.php?dev=everettjf>
 ![](/media/15359897424719.jpg)
 
+# 源码
+
+<https://github.com/everettjf/iBooksLookUpCloser>
 
 
 # 总结
