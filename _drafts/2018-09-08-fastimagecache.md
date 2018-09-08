@@ -20,4 +20,6 @@ comments: true
 # 参考
 
 - Getting Pixels onto the Screen <https://www.objc.io/issues/3-views/moving-pixels-onto-the-screen/>
+- Optimizing 2D Graphics and Animation Performance
+ <https://developer.apple.com/videos/play/wwdc2012/506/>
 
