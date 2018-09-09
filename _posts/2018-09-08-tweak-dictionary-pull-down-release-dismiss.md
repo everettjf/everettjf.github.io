@@ -30,7 +30,7 @@ iBooksLookUpCloser 发布到bigboss后的第二天，一位老外朋友就发来
 
 
 
-# Remove View Controller
+# Remote View Controller
 
 iBooks打开查单词的界面，cycript查看VC，如下：
 
