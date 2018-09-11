@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "FastImageCache 简介"
+title: "FastImageCache 原理"
 categories:
   - 性能优化
 tags:
@@ -9,7 +9,7 @@ comments: true
 ---
 
 
-FastImageCache 是一个使用空间换时间的加速图片加载/渲染的库。官方（<https://github.com/path/FastImageCache>）的README比较详细的解释了原理。这篇文章就结合源码再次温习一遍。
+FastImageCache 是一个使用空间换时间的加速图片加载/渲染的库。官方（<https://github.com/path/FastImageCache>）的README比较详细的解释了原理。这篇文章就结合源码再次温习一遍最核心的部分。
 
 
 <!-- more -->
@@ -23,7 +23,7 @@ FastImageCache 是一个使用空间换时间的加速图片加载/渲染的库�
 3. 隐式的CATransaction检测到了layer tree的改变。
 4. 下一个主线程run loop，Core Animation 会提交这个隐式的CATransaction，引起图像数据的copy。
 
-跟进图像的不同，copy过程可能包含如下步骤：
+根据图像的不同，copy过程可能包含如下步骤：
 
 1. 申请用于文件读写和解压的内存。
 2. 从磁盘读取文件内容到内存。
