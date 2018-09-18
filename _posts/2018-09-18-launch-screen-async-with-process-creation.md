@@ -27,7 +27,7 @@ iOS 11.3.1 越狱
 越狱步骤见：<https://everettjf.github.io/2018/08/30/ios1131-jailbreak-tutorial/>
 其他越狱手机一样可以完成下面的步骤。
 
-*这里打个小广告：购买可越狱的手机可以联系微信“xueba-"，我刚从他这买了个iPhone6S 11.3.1，目前使用一切正常。*
+*这里打个小广告：购买可越狱的手机可以联系微信“467444"，我刚从他这买了个iPhone6S 11.3.1，目前使用一切正常。*
 
 
 # 基础
@@ -282,5 +282,10 @@ step-in 之后是这样
 其实本来是想继续探索到App进程的创建流程，是怎么通知launchd把App进程启动的，但dyld_shared_cache总是不能分析完成，就暂时这样吧，继续前行，有空再回顾。
 
 有趣，但也挺耗费时间的额～
+
+
+
+欢迎关注订阅号《性能优化很有趣》：
+![bukuzao](https://everettjf.github.io/images/fun.jpg)
 
 
