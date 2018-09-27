@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MMKV中的简单LRU缓存"
+title: "MMKV中的简单LRU缓存(LRUCache)"
 categories:
   - 性能优化
 tags:
