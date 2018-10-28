@@ -8,8 +8,7 @@ tags:
 comments: true
 ---
 
-前段时间的《初步探索LaunchScreen》使用IDA和lldb探索了下部分SpringBoard。这篇文章再用AppleTrace初步探索下SpringBoard。
-
+前段时间的《初步探索LaunchScreen》使用IDA和lldb探索了下部分SpringBoard。这篇文章再用AppleTrace初步探索下SpringBoard。AppleTrace 目前使用了HookZz来inline hook objc_msgSend。可用于分析每个Objective C的方法耗时，和调用关系。
 
 <!-- more -->
 
