@@ -23,11 +23,10 @@ USB Keyboard 是一个输入法应用，通过USB连接iPhone到Mac后，可以�
 
 于是我找了一些现成的App，要么太贵，要么配对太复杂，要么不稳定，要么不支持中文。直到有一天逛GitHub看到一个古老的库PeerTalk。通过连接USB线可以立即实现配对，省去了输入IP、查找蓝牙等配对的过程，可谓是简单直接迅速。
 
-于是，订阅号《性能优化很有趣》到现在接近1个月没写文章了～业余时间都在断断续续开发QVKeyboard了。
 
 # 环境
 
-目前QVKeyboard移动端只有iOS，PC端只有macOS。未来可能会根据需要适配Android和Windows平台。
+目前USB Keyboard移动端只有iOS，PC端只有macOS。未来可能会根据需要适配Android和Windows平台。
 
 # 安装
 
@@ -50,9 +49,9 @@ macOS Client :
 
 # 使用方法
 
-1. iOS上QVKeyboard安装后，打开“设置 - 通用 - 键盘 - 键盘 - 添加新键盘“，在”第三方键盘“区域点击”QVKeyboard“。
-2. 再次点击QVKeyboard，点击”允许完全访问“，然后”允许“。
-3. 打开任意一个app可输入文字的界面，切换输入法到QVKeyboard。
+1. iOS上USB Keyboard安装后，打开“设置 - 通用 - 键盘 - 键盘 - 添加新键盘“，在”第三方键盘“区域点击”USB Keyboard“。
+2. 再次点击USB Keyboard，点击”允许完全访问“，然后”允许“。
+3. 打开任意一个app可输入文字的界面，切换输入法到USB Keyboard。
 4. 现在键盘会如下显示：
 ![](/media/15402274921197.jpg)
 5. 打开macOS端
