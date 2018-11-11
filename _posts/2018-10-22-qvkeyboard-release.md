@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "QVKeyboard 通过macOS给iOS打字的输入法应用"
+title: "USB Keyboard 通过macOS给iOS打字的输入法应用"
 categories:
   - 产品
 tags:
@@ -8,11 +8,9 @@ tags:
 comments: true
 ---
 
-QVKeyboard（七维输入法）是一个输入法应用，通过USB连接iPhone到Mac后，可以实现在Mac端打字，iPhone上输入。
+*USB Keyboard 原名 QVKeyboard，改名或许是为了更容易记录和搜索*
 
-原价6元，限时1块钱哦（限时3天,2018.10.23-2018.10.25）。
-
-
+USB Keyboard 是一个输入法应用，通过USB连接iPhone到Mac后，可以实现在Mac端打字，iPhone上输入。
 
 <!-- more -->
 
@@ -27,8 +25,6 @@ QVKeyboard（七维输入法）是一个输入法应用，通过USB连接iPhone�
 
 于是，订阅号《性能优化很有趣》到现在接近1个月没写文章了～业余时间都在断断续续开发QVKeyboard了。
 
-> QVKeyboard 中文名是：七维输入法。目前App还没有本地化，只有英文，但已经完全不影响使用，就提前开始发出来啦。七维 是我曾经在蚂蚁时的花名，为了纪念这个想了很久才确定下来的花名，这个我第一个正式的收费App就用这个花名了。当时起“七维”花名的含义是：根据 M-theory ，宇宙是十一维空间，有七维空间我们是感受不到但真实存在的。要不断探索，探索那感受不到的七维空间。当然平时开玩笑说，一到六维都被占用了，所以到了七维。哈。
-
 # 环境
 
 目前QVKeyboard移动端只有iOS，PC端只有macOS。未来可能会根据需要适配Android和Windows平台。
@@ -37,7 +33,7 @@ QVKeyboard（七维输入法）是一个输入法应用，通过USB连接iPhone�
 
 iOS App : 
 1. <https://itunes.apple.com/cn/app/qvkeyboard/id1439106456>
-2. 搜索 `qvkb` 或 `七维输入法` 或 `qvkeyboard` 都可以到。
+2. 搜索 `qvkb` 或 `usbkeyboard` 或 `qvkeyboard` 都可以到。
 
 ![](/media/15402514895616.jpg)
 ![](/media/15402515094809.jpg)
