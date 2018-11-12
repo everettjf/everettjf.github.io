@@ -67,7 +67,7 @@ NSLog(@"pthread_threadid_np = %llu",tid);
 
 # 总结
 
-那么以后就开心大胆的用这两个方法咯。
+那么以后就开心大胆的用这两个方法咯，其中 pthread_threadid_np 与 NSLog 中的线程ID相同，效果看来更佳。
 
 ```
 pthread_t tid = pthread_self()
