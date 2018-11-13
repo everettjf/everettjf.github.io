@@ -139,7 +139,7 @@ Xcode 也需要彻底退出，重新打开。
 
 例如我这里叫`MyCodeFriendPackage`，你如果创建需要用个别的名字啦。
 
-### 2）第二步，创建GitHub Pages。
+### 2）第二步，创建GitHub Pages
 
 访问 <https://github.com/qvcodefriend/helloworld> 点击Fork，并选择刚才创建的组织。如下图（Emmmm...我的创建的组织有点多...）
 
