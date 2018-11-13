@@ -270,7 +270,7 @@ Code Friend 目前只是一个MVP版本，未来会随着使用不断完善。�
 
 Code Friend 自发布到11月13号最高一次到了Mac App Store 的Developer Tools 类别的Top 12 Free。貌似这个榜的竞争不是那么激烈。
 
-建了一个Code Friend Feedback群，如果使用中有问题，欢迎加入。二维码就不放这里了哈，你肯定能找到啦 :)
+建了一个Code Friend Feedback群，如果使用中有问题，欢迎加入，欢迎随时交流想法。二维码就不放这里了哈，你肯定能找到啦 :)
 
 
 欢迎关注订阅号《性能优化很有趣》：
