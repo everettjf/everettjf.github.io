@@ -188,7 +188,7 @@ iOS上有多种线程创建方法，上面只是一种C++的实现。GitHub还�
 - <https://github.com/tghosgor/threadpool11>
 
 
-欢迎关注订阅号《性能优化很有趣》：
+欢迎关注订阅号《优化很有趣》：
 ![bukuzao](https://everettjf.github.io/images/fun.jpg)
 
 

@@ -108,7 +108,7 @@ viewWillAppear时，左下角加一个UIButton就行了，事件可以调用 DDP
 
 很入门，但解决了自己的需求，很开森。
 
-欢迎关注订阅号《性能优化很有趣》：
+欢迎关注订阅号《优化很有趣》：
 ![bukuzao](https://everettjf.github.io/images/fun.jpg)
 
 
