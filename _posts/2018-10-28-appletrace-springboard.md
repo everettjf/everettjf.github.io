@@ -99,7 +99,7 @@ SpringBoard我们能Trace，其他App更是可以了。可以参考过去的文�
 
 ![](/images/planet.jpg)
 
-欢迎关注订阅号《优化很有趣》：
+欢迎关注订阅号《this很有趣》：
 ![](/images/fun.jpg)
 
 

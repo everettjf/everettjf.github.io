@@ -77,6 +77,6 @@ pthread_threadid_np(NULL, &tid);
 ```
 
 
-欢迎关注订阅号《优化很有趣》：
+欢迎关注订阅号《this很有趣》：
 ![](/images/fun.jpg)
 

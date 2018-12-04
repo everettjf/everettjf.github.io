@@ -158,7 +158,7 @@ iOS12 开始更加关注性能的苹果团队，也发现了直观展示的重�
 
 ![](/media/15341777359950.jpg)
 
-欢迎关注订阅号《优化很有趣》：
+欢迎关注订阅号《this很有趣》：
 ![bukuzao](https://everettjf.github.io/images/fun.jpg)
 
 

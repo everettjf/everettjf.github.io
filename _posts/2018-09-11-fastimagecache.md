@@ -166,7 +166,7 @@ inline size_t FICByteAlignForCoreAnimation(size_t bytesPerRow) {
 如果我们仅仅为了优化App的首页加载速度，可以有一个超级精简的版本。如果你需要，那么来做一个吧。
 
 
-欢迎关注订阅号《优化很有趣》：
+欢迎关注订阅号《this很有趣》：
 ![bukuzao](https://everettjf.github.io/images/fun.jpg)
 
 

@@ -184,6 +184,6 @@ public:
 LeetCode 中就有个类似的题目 <https://leetcode.com/problems/lru-cache/description/> 可以练习一下。
 
 
-欢迎关注订阅号《优化很有趣》：
+欢迎关注订阅号《this很有趣》：
 ![bukuzao](/images/fun.jpg)
 
