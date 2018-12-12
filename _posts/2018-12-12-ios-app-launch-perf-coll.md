@@ -2,7 +2,7 @@
 layout: post
 title: "过去一段时间的iOS启动优化文章目录"
 categories:
-  - 汇总
+  - 性能优化
 tags:
   - 汇总
 comments: true
