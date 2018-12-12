@@ -73,7 +73,7 @@ main函数到didFinishLaunching，再到首页显示完成的阶段。
 - Profile-Guided Optimization (PGO) 
 - Improving Locality of Reference
 
-这两点仅仅提下名字，如果要执行，还是很有意思的，可自行搜索。
+这两点仅仅提下名字吧，如果要执行，还是很有意思的，可自行搜索。
 
 ## 总结
 
