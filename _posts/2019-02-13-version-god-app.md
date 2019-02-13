@@ -104,8 +104,13 @@ python rank.py emergency-release-count data/20190213/appinfo
 
 那么谁是版本帝……
 
-以上数据可见
+爬虫代码见
+https://github.com/everettjf/chatterbox
+
+数据可见
 https://github.com/everettjf/chatterbox/tree/master/spider/result
+
+---
 
 嗯，有趣 :)
 
