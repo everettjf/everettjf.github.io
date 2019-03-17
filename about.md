@@ -3,7 +3,7 @@ layout: page
 title: About me 
 ---
 
-I am everettjf, a fullstack developer.
+I am everettjf, fullstack developer.
 
 In the past, I am interested in reverse engineering and app performance.
 
