@@ -38,18 +38,17 @@ Pubspec Dependency Search
 
 安装地址：
 
-https://marketplace.visualstudio.com/items?itemName=everettjf.pubspec-dependency-search
+<https://marketplace.visualstudio.com/items?itemName=everettjf.pubspec-dependency-search>
 
 源码：
 
-https://github.com/everettjf/vscode-pubspec-dependency-search
+<https://github.com/everettjf/vscode-pubspec-dependency-search>
 
 
 原理：
 
-原理很简单，vscode扩展解析pubspec.yaml 中的 dependencies 后， 通过 CodeLensProvider 告诉vscode要加入链接的位置。
-
-链接就是拼凑出 url ： https://pub.dartlang.org/packages?q=flutter 使用浏览器打开。
+1. 原理很简单，vscode扩展解析pubspec.yaml 中的 dependencies 后， 通过 CodeLensProvider 告诉vscode要加入链接的位置。
+2. 链接就是拼凑出 url ： https://pub.dartlang.org/packages?q=flutter 使用浏览器打开。
 
 
 
