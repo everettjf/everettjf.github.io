@@ -19,8 +19,10 @@ A Free C++ Book
     1. 输入输出
     2. 容器
     3. 多线程
-    2. Forwarding Reference
+    4. type_traits
+    4. std::move
     1. [可变参数模板函数](https://mp.weixin.qq.com/s/iiLXYGrT3TaCe8esSM1gtw)
+    2. Forwarding Reference
     2. 可变参数模板类
 1. Algorithm
     1. 排序
