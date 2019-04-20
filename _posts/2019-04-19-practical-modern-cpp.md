@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[WIP]Practical Modern C++"
+title: "Practical Modern C++"
 categories:
   - Book
 tags:
@@ -22,7 +22,7 @@ A Free C++ Book
     4. type_traits
     4. std::move
     1. [可变参数模板函数](https://mp.weixin.qq.com/s/iiLXYGrT3TaCe8esSM1gtw)
-    2. Forwarding Reference
+    2. [Forwarding Reference](https://mp.weixin.qq.com/s/i6ksTraN1h_o5ZMTVRtvZA)
     2. 可变参数模板类
 1. Algorithm
     1. 排序
