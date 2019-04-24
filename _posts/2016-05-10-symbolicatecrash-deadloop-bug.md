@@ -12,9 +12,7 @@ comments: true
 
 # 背景
 
-[去年写过一篇文章](
-<https://everettjf.github.io/2015/09/09/ios-plcrashreporter>
-)，里面讲了如何使用symbolicatecrash工具符号化崩溃信息。
+[去年写过一篇文章](https://everettjf.github.io/2015/09/09/ios-plcrashreporter)，里面讲了如何使用symbolicatecrash工具符号化崩溃信息。
 
 当时基于这个方法，给公司的产品实现了一个自动符号化崩溃信息的小系统。
 

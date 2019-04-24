@@ -200,7 +200,14 @@ Binary Images:
 
 ~~~ 
     - 干脆把这个藏得这么深得工具也复制一份出来。
-cd /Applications/Xcode.app/Contents/SharedFrameworks/DTDeviceKitBase.framework/Versions/A/Resources/
+
+Xcode7.2 及以前：
+/Applications/Xcode.app/Contents/SharedFrameworks/DTDeviceKitBase.framework/Versions/A/Resources/symbolicatecrash
+
+Xcode 7.3
+/Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/symbolicatecrash
+
+cd /Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/
 cp symbolicatecrash ~/Desktop
     - 设置DEVELOPER_DIR。
 export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
