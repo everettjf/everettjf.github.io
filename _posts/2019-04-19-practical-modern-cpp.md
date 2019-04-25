@@ -17,7 +17,7 @@ A Free C++ Book
 
 1. Basis
     1. 输入输出
-    2. array vector
+    2. [array vector](https://zhuanlan.zhihu.com/p/63780726)
     3. 多线程
     4. type_traits
     4. std::move
