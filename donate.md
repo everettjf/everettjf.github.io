@@ -2,17 +2,17 @@
 
 Buy Me a Coffee :)
 
-Paypal
+## Paypal
 
 <https://www.paypal.me/everettjf>
 
 
-Wechat
+## Wechat
 
-关注[订阅号](/bukuzao)后，赞助任意原创文章 :)
+关注以下微信订阅号后，赞助任意原创文章 :)
 
-![wechat](/images/fun.png)
+![wechat](/images/fun.jpg)
 
-Alipay
+## Alipay
 
 ![alipay](/images/alipay-donate.png)
