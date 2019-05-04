@@ -11,8 +11,8 @@ Wechat
 
 关注[订阅号](/bukuzao)后，赞助任意原创文章 :)
 
-![wechat](/image/fun.png)
+![wechat](/images/fun.png)
 
 Alipay
 
-![alipay](/image/alipay-donate.png)
+![alipay](/images/alipay-donate.png)
