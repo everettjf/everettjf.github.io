@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Practical Modern C++"
+title: "[WIP]Practical Modern C++"
 categories:
   - Book
 tags:
@@ -13,7 +13,7 @@ A Free C++ Book
 
 <!-- more -->
 
-*WIP*
+*Work In Progress*
 
 1. Basis
     1. 输入输出
