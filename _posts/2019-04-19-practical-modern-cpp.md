@@ -18,7 +18,8 @@ A Free C++ Book
 1. Basis
     1. 输入输出
     2. [array vector](https://zhuanlan.zhihu.com/p/63780726)
-    3. 多线程
+    3. list
+    4. 多线程
     4. type_traits
     4. std::move
     1. [可变参数模板函数](https://mp.weixin.qq.com/s/iiLXYGrT3TaCe8esSM1gtw)
