@@ -36,7 +36,7 @@ comments: true
 
 ## 安装
 
-剪贴板输入法已经登陆AppStore，点击文章最下角的`查看原文`安装 或者 [这里下载安装](https://itunes.apple.com/cn/app/id1463618135)
+剪贴板输入法已经登陆AppStore，点击 [这里下载安装](https://itunes.apple.com/cn/app/id1463618135)
 
 
 ## 配置
