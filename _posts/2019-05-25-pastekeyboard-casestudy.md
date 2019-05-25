@@ -41,12 +41,10 @@ comments: true
 
 ![](/media/15587900773707.jpg)
 
-那段时间我一直忙着开发[Messier](https://everettjf.github.io/2019/05/06/messier/)。
-
 
 # 开发
 
-直到5月14日，终于有了时间，我开始开发。在我的gitlab上创建了项目。由于有了之前USBKeyboard的代码，很快开发完成。
+那段时间我一直忙着开发[Messier](https://everettjf.github.io/2019/05/06/messier/)。直到5月14日，终于有了时间，我开始开发。在我的gitlab上创建了项目。由于有了之前USBKeyboard的代码，很快开发完成。
 
 ![](/media/15587905334989.jpg)
 
