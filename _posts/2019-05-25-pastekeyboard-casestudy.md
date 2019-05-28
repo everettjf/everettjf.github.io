@@ -10,9 +10,14 @@ tags:
 comments: true
 ---
 
+**剪贴板输入法现已转让**，详见：<https://mp.weixin.qq.com/s/0dqe4Rj_pUGXwzRUKsj7iQ>
+
+
 `剪贴板输入法`自发布以来的这5天里，发生了一些事情，让我得到了一些宝贵的经验，在此复盘一下，分享给大家。这是一篇`不那么技术`的文章，但却是宝贵的经验。
 
 <!-- more -->
+
+**源码已失效**
 
 发生的这些事情也让我决定把代码`开源`，开源协议`WTFPL`。开源地址为：
 [https://github.com/pastekeyboard/pastekb-ios](https://github.com/pastekeyboard/pastekb-ios) 当然开源也并非一时冲动，主要还是因为这是一个`Idea类型`的app，而非`技术类型`的app。
@@ -110,7 +115,7 @@ comments: true
 
 # 接受现实
 
-经过我的各种思考和理解，准确的说这`不是抄袭`，只是`Idea Copy`。强调一下：
+经过我的各种思考和理解，准确的说这`不是抄袭`，只是`Idea Copy`，或许两个app都是copy的JSBox。强调一下：
 
 - `Idea Copy`
 - `Idea Copy`

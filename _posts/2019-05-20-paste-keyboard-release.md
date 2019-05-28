@@ -10,10 +10,9 @@ tags:
 comments: true
 ---
 
+**剪贴板输入法现已转让**，详见：<https://mp.weixin.qq.com/s/0dqe4Rj_pUGXwzRUKsj7iQ>
+
 剪贴板输入法（Paste Keyboard），用于解决微信朋友圈粘贴大量文本时被自动折叠为一行的问题。使用剪贴板输入法，可以让朋友圈文字不再被折叠。
-
-**现已开源**，GitHub [https://github.com/pastekeyboard/pastekb-ios](https://github.com/pastekeyboard/pastekb-ios)
-
 
 <!-- more -->
 
