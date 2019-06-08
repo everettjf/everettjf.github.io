@@ -1,6 +1,6 @@
 ---
 layout: post
-title: " 🎉剪贴板输入法🎈，让朋友圈文字不再被折叠"
+title: "剪贴板输入法，让朋友圈文字不再被折叠"
 categories:
   - 工具
 tags:
