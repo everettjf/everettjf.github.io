@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Availability Checking 内部实现"
+title: "探索 Availability Checking 内部实现"
 categories:
   - 原理
 tags:
@@ -52,7 +52,7 @@ void test_available() {
 
 ![](/media/15604434575850.jpg)
 
-看下反编译的代码：
+看下反编译的伪代码：
 ![](/media/15604436909250.jpg)
 
 可知调用了 `___isOSVersionAtLeast` 这个函数，`0xb`就是`iOS 11`，估计后面两个`0x0`就是第二位和第三位版本了。
@@ -144,7 +144,7 @@ https://github.com/llvm-mirror/clang/blob/master/include/clang/AST/Availability.
 
 ## 再总结
 
-了解了这个本质，以后用起来就更自信了。很有趣。
+了解了这个本质，以后用起来就更自信了哈。很有趣。
 
 ---
 
