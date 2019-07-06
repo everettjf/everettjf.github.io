@@ -7,7 +7,7 @@ All my products（以下产品基本按照「先收费后免费，先闭源后�
 
 <!-- more -->
 
-### 温馨提示
+### 温馨提示(WarmHello)
 
 - 介绍：这个应用可以在手机连接Wi-Fi时（例如：到家或到公司）发送一条自定义通知（例如：喝杯水），[详细介绍](https://warmhello.github.io/)
 - 平台：iOS
@@ -23,6 +23,14 @@ All my products（以下产品基本按照「先收费后免费，先闭源后�
 - 开源：[开源](https://github.com/everettjf/USBKeyboard)
 - 下载地址：[AppStore下载地址](https://itunes.apple.com/cn/app/id1439106456)
 
+
+### FolderSizeView
+
+- 介绍：TreeMap展示文件夹内文件大小的占比，[详细介绍](https://everettjf.github.io/2019/07/07/foldersizeview/)
+- 平台：macOS/Windows(Will)
+- 费用；免费
+- 开源：不开源
+- 下载地址：[GitHub](https://github.com/foldersizeview/foldersizeview.github.io/releases)
 
 ### Messier
 
@@ -79,16 +87,16 @@ All my products（以下产品基本按照「先收费后免费，先闭源后�
 
 ### CodeFriend
 
-- 介绍：Xcode插件，使用Javascript开发Xcode插件。[详细介绍](https://everettjf.github.io/2018/11/13/codefriend-tutorial/)
+- 介绍：Xcode插件，使用Javascript开发Xcode插件。[详细介绍](https://everettjf.github.io/2018/11/13/codefriend-tutorial/) 由于Xcode插件系统的鸡肋，目前仅仅可以当作玩具。
 - 平台：macOS
 - 费用：免费
 - 开源：开源
 - 下载地址：Mac App Store 搜索「Code Friend」
 
 
-### 我砸
+### 我砸(woza)
 
-- 介绍：越狱iOS的砸壳工具，类似clutch、dump-decrypted。是AloneMonkey开发的frida-ios-dump的node版本。使用 TypeScript开发。
+- 介绍：越狱iOS的砸壳工具，类似clutch、dump-decrypted。是AloneMonkey开发的frida-ios-dump的node版本。使用 TypeScript开发。目前基本不维护，未来可能就不好用了。
 - 平台：macOS
 - 费用：免费
 - 开源：开源 [woza](https://github.com/woza-lab/woza) 和 [woza-desktop](https://github.com/woza-lab/woza-desktop)
