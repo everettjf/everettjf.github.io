@@ -71,7 +71,7 @@ comments: true
 然后我也进行了初步宣传，下面罗列下宣传的途径：
 
 1. 博客文章 [🎉剪贴板输入法🎈，让朋友圈文字不再被折叠](https://everettjf.github.io/2019/05/20/paste-keyboard-release/)
-2. 微信订阅号`首先很有趣`[订阅号文章](https://mp.weixin.qq.com/s/doSRnlrKseP6pahhxy2SkA)。
+2. 微信订阅号[订阅号文章](https://mp.weixin.qq.com/s/doSRnlrKseP6pahhxy2SkA)。
 3. 我的朋友圈
 4. 我的微博
 5. 两个微信群（一个独立开发者的群，一个经常聊天的小群）
