@@ -4,11 +4,6 @@ title: Buy me a coffee
 ---
 
 
-
-## Buy Me a coffee
-
-
-
 ### Paypal
 
 <https://www.paypal.me/everettjf>
@@ -24,4 +19,6 @@ title: Buy me a coffee
 
 ---
 
-[> Back](./)
+感谢您的赞赏，由于赞赏方式的原因，我可能不能及时的说一声谢谢。
+
+谢谢 :)
