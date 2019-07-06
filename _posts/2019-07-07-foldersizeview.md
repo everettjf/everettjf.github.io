@@ -28,6 +28,7 @@ FolderSizeView可以使用TreeMap方式展示一个文件夹内文件大小的�
 
 [GitHub下载地址](https://github.com/foldersizeview/foldersizeview.github.io/releases)
 
+[百度网盘下载地址](https://pan.baidu.com/s/1Z3liMYEQo844Kgjpmc3vEA)
 
 
 ## 使用方法
@@ -57,6 +58,8 @@ FolderSizeView可以使用TreeMap方式展示一个文件夹内文件大小的�
 太简单了，文章也写完了。
 
 如有需要交流这个软件，关注订阅号`首先很有趣`，点击菜单`Folder`加群。
+
+> 再补充下，有哪位大佬知道微信订阅号怎么加留言啊～文章都是单向输出，长此以往，不是办法呀。为了解决交流的问题，以后部分文章也会发到知乎上，地址 zhihu.com/people/bukuzao 
 
 ---
 
