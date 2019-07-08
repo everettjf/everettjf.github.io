@@ -20,15 +20,14 @@ FolderSizeView可以使用TreeMap方式展示一个文件夹内文件大小的�
 
 <!-- more -->
 
+## 系统支持
+
+macOS和Windows
 
 ## 下载地址
 
-- 目前支持macOS
-- Windows也可以支持，就看有没有人提出这个需求吧
 
 [GitHub下载地址](https://github.com/foldersizeview/foldersizeview.github.io/releases)
-
-[百度网盘下载地址](https://pan.baidu.com/s/1Z3liMYEQo844Kgjpmc3vEA)
 
 
 ## 使用方法
@@ -44,6 +43,17 @@ FolderSizeView可以使用TreeMap方式展示一个文件夹内文件大小的�
 
 ![](/media/15624355630220.jpg)
 
+## 选项
+
+通过菜单`Action->Group by file extension`可开启通过文件类型分组。如下图：
+
+![](/media/15626040281694.jpg)
+
+通过菜单`Action->Sunburst Mode`，可使用旭日图展示（一般情况下TreeMap图就足够了，旭日图在文件很多的情况下显示效果不好）。如下图：
+
+![](/media/15626040706222.jpg)
+
+
 
 ## 源码
 
@@ -51,15 +61,14 @@ FolderSizeView可以使用TreeMap方式展示一个文件夹内文件大小的�
 
 ## 补充
 
-目前0.1版本是周末快速开发出的，遍历文件夹都是在主线程递归实现，文件夹内容太多的话，一般是要崩溃滴。但日常分析个App的安装包啥的，都木有问题。
+目前版本是快速开发出的，遍历文件夹都是在主线程递归实现，文件夹内容太多的话，一般是要崩溃滴。但日常分析个App的安装包啥的，都木有问题。
+
 
 ## 总结
 
 太简单了，文章也写完了。
 
 如有需要交流这个软件，关注订阅号`首先很有趣`，点击菜单`Folder`加群。
-
-> 再补充下，有哪位大佬知道微信订阅号怎么加留言啊～文章都是单向输出，长此以往，不是办法呀。为了解决交流的问题，以后部分文章也会发到知乎上，地址 zhihu.com/people/bukuzao 
 
 ---
 
