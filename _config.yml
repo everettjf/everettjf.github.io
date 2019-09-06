@@ -3,7 +3,7 @@ description: 首先很有趣
 meta_description: "I am everettjf, a fullstack developer"
 
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 logo: false
 paginate: 10
 baseurl: ''
