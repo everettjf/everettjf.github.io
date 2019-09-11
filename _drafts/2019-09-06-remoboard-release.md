@@ -31,22 +31,18 @@ comments: true
 
 手机端有不少优秀的`编程环境`，例如JSBox、Pythonista，以及最近新出的Robomaster（使用Python控制RoboMaster S1），使用远程输入法，可以比较方便的完成手机端编程。
 
-## 视频介绍
-
-
-// todo
 
 ## 下载地址
 
 手机端
 
 - iOS [AppStore](https://apps.apple.com/cn/app/id1474458879)
-- Android [酷安](https://www.coolapk.com/apk/241412) 或 [PlayStore](https://play.google.com/store/apps/details?id=com.everettjf.remoboard)
+- Android [酷安](https://www.coolapk.com/apk/241412) 或 [Google PlayStore](https://play.google.com/store/apps/details?id=com.everettjf.remoboard)
 
 电脑端
 
-- macOS [Download](https://github.com/remoboard/remoboard.github.io/releases)
-- Windows [Download](https://github.com/remoboard/remoboard.github.io/releases)
+- macOS [GitHubRelease](https://github.com/remoboard/remoboard.github.io/releases)
+- Windows [GitHubRelease](https://github.com/remoboard/remoboard.github.io/releases) 或 [百度云](https://pan.baidu.com/s/1fBn8fB8c5bq_I8fnuHTvAQ)
 
 
 ## 使用方法
@@ -93,16 +89,14 @@ Windows端：
 
 ### iOS使用
 
+提前注意哈：`为了简化上手步骤，先确保手机和电脑都连接到了Wi-Fi`
+
 
 (1) 在手机上，打开任意可以输入文字的应用，长按左下角切换到远程输入法
 
 ![](/media/15677900349799.jpg)
 
 现在，远程输入法会显示一个`连接码，以及IP地址`。
-
-- `当然前提是确保iPhone连接到了Wi-Fi`，当然不连接Wi-Fi也行，下文有蓝牙连接方式
-- `当然前提是确保iPhone连接到了Wi-Fi`，当然不连接Wi-Fi也行，下文有蓝牙连接方式
-- `当然前提是确保iPhone连接到了Wi-Fi`，当然不连接Wi-Fi也行，下文有蓝牙连接方式
 
 ![](/media/15677901020861.jpg)
 
@@ -111,7 +105,7 @@ Windows端：
 ![](/media/15677901643408.jpg)
 
 
-输入法手机上显示的连接码, 然后点击 Connect. 如果一切正常，则连接成功。如果连接失败，请检查手机和电脑是否连接在同一个内网中（电脑可以ping通手机的IP地址）。
+输入法手机上显示的连接码, 然后点击「连接」. 如果一切正常，则连接成功。如果连接失败，请检查手机和电脑是否连接在同一个内网中（电脑可以ping通手机的IP地址）。
 
 ![](/media/15677902102892.jpg)
 
@@ -119,12 +113,22 @@ Windows端：
 
 ### Android使用
 
-Android在输入时，切换到远程输入法。
+(1) Android在输入时，切换到远程输入法。
 ![](/media/15677903289940.jpg)
 
 同样显示连接码，在电脑端输入连接即可。
 
 ![](/media/15677903674581.jpg)
+
+(2) 打开macOS上的远程输入法
+
+![](/media/15677901643408.jpg)
+
+
+输入法手机上显示的连接码, 然后点击「连接」. 如果一切正常，则连接成功。如果连接失败，请检查手机和电脑是否连接在同一个内网中（电脑可以ping通手机的IP地址）。
+
+![](/media/15677902102892.jpg)
+
 
 ## 官网
 
@@ -133,7 +137,7 @@ Android在输入时，切换到远程输入法。
 这是官网教程 [https://remoboard.app/zhcn/](https://remoboard.app/zhcn/)
 
 
-## 三种输入模式
+## 输入模式
 
 ![](/media/15677904928723.jpg)
 
@@ -150,7 +154,7 @@ Android在输入时，切换到远程输入法。
 
 (3) 即时输入模式（编程模式）
 
-这种模式下，文字会边打边发送，很适合一些手机端的编程应用。
+这种模式下，文字会边打边发送，很适合一些手机端的编程应用。个人认为这个模式还是比较有意思的，可能会适合`JSBox`或`纯纯写作`这样的应用。
 
 ![](/media/15677905271431.jpg)
 
@@ -178,14 +182,16 @@ Android在输入时，切换到远程输入法。
 
 ## 开发计划
 
-（1）稳定性：目前闪退还是经常出现，尤其是Android和Windows端，未来我会随着自己的使用，逐渐完善。
+（1）易用性：目前闪退还是偶尔出现，尤其是Android和Windows端，未来我会随着自己的使用，逐渐完善和优化。
 
 （2）WEB连接模式：有些场合不太方便下载电脑端，因此可以考虑手机作为一个小型WEB服务器，需要远程输入时，访问手机的WEB服务器来发送文字。这也是一个有趣的实现远程输入的方法。
+
+（3）双向传输消息：目前仅「电脑向手机发送文字」，未来可能考虑「反过来」实现一些有趣的功能。
 
 
 ## 历史
 
-去年我开发了一个[USBKeyboard](https://everettjf.github.io/2018/10/22/qvkeyboard-release/)，这个输入法需要手机和电脑通过「USB」连接才可以输入，有意思吧，哈。当时就有网友说能否支持「无线输入」，于是断断续续今年就开发了这个「远程输入法」。
+去年我开发了一个[USBKeyboard](https://everettjf.github.io/2018/10/22/qvkeyboard-release/)，这个输入法需要手机和电脑通过「USB」连接才可以输入，当时就有网友说能否支持「无线输入」，于是断断续续今年就开发了这个「远程输入法」。
 
 最近又恰逢我学习Android开发，因此iOS/Android/macOS/Windows四个平台就都支持了。
 
