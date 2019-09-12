@@ -3,7 +3,7 @@ layout: page
 title: My Products
 ---
 
-All my products（以下产品基本按照「先收费后免费，先闭源后开源」的顺序排列）
+All my products
 
 <!-- more -->
 
@@ -31,6 +31,18 @@ All my products（以下产品基本按照「先收费后免费，先闭源后�
 - 开源：不开源
 - 下载地址：[AppStore下载地址](https://itunes.apple.com/cn/app/id1467762785)
 
+
+### FolderSizeView
+
+![](/media/15624372775559.jpg)
+
+
+- 介绍：TreeMap展示文件夹内文件大小的占比，[详细介绍](https://everettjf.github.io/2019/07/07/foldersizeview/)
+- 平台：macOS/Windows(Will)
+- 费用；免费
+- 开源：不开源
+- 下载地址：[GitHub](https://github.com/foldersizeview/foldersizeview.github.io/releases)
+
 ### USB Keyboard
 
 ![](/media/15624372586781.jpg)
@@ -43,16 +55,6 @@ All my products（以下产品基本按照「先收费后免费，先闭源后�
 - 下载地址：[AppStore下载地址](https://itunes.apple.com/cn/app/id1439106456)
 
 
-### FolderSizeView
-
-![](/media/15624372775559.jpg)
-
-
-- 介绍：TreeMap展示文件夹内文件大小的占比，[详细介绍](https://everettjf.github.io/2019/07/07/foldersizeview/)
-- 平台：macOS/Windows(Will)
-- 费用；免费
-- 开源：不开源
-- 下载地址：[GitHub](https://github.com/foldersizeview/foldersizeview.github.io/releases)
 
 ### Messier
 
