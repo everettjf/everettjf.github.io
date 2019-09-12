@@ -44,8 +44,8 @@ comments: true
 
 电脑端
 
-- macOS [GitHubRelease](https://github.com/remoboard/remoboard.github.io/releases)
-- Windows [GitHubRelease](https://github.com/remoboard/remoboard.github.io/releases) 或 [百度云](https://pan.baidu.com/s/1fBn8fB8c5bq_I8fnuHTvAQ)
+- macOS [GitHubRelease](https://github.com/remoboard/remoboard.github.io/releases) 或 [百度云](https://pan.baidu.com/s/1F0LpkM4FJeYssJXmRGb6kA)
+- Windows [GitHubRelease](https://github.com/remoboard/remoboard.github.io/releases) 或 [百度云](https://pan.baidu.com/s/1F0LpkM4FJeYssJXmRGb6kA)
 
 
 ## 使用方法
@@ -81,8 +81,9 @@ macOS端：
 
 ![](/media/15677898790466.jpg)
 
-解压 RemoboardMac.zip，把 Remoboard.app 拖动到 ~/Applications.
-![](/media/15677898877420.jpg)
+解压 RemoboardMac.zip，双击 Remoboard.dmg ，把Remoboard.app拖入Applications。
+
+![](/media/15682472458141.jpg)
 
 Windows端：
 
