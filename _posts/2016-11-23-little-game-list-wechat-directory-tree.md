@@ -6,14 +6,10 @@ comments: true
 ---
 
 
-
-
----
-
-
 项目越大，就越需要合理的组织文件目录层次。
 
 逆向微信的过程中，经常看到一些“输出日志”的方法调用，而且带有完整的路径。例如：
+
 <!-- more -->
 
 ```
@@ -39,6 +35,6 @@ $ strings WeChat > strings_wechat.txt
 ![](/media/14798366527896.jpg)
 
 
-[脚本地址](https://github.com/everettjf/Yolo/tree/master/ListWechatDirTree)
+[脚本地址](https://github.com/everettjf/Yolo/tree/master/ListWeChatDirTree)
 
-[输出的微信文件层次](https://github.com/everettjf/Yolo/tree/master/ListWechatDirTree/wechat_tree.txt)
+[输出的微信文件层次](https://github.com/everettjf/Yolo/tree/master/ListWeChatDirTree/wechat_tree.txt)
