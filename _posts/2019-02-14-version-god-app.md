@@ -114,7 +114,7 @@ https://github.com/everettjf/chatterbox/tree/master/spider/result
 
 嗯，有趣 :)
 
-欢迎关注订阅号《首先很有趣》：
+欢迎关注订阅号「首先很有趣」：
 ![](/images/fun.jpg)
 
 

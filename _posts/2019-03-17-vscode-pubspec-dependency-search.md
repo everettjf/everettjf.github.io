@@ -76,7 +76,7 @@ Pubspec Dependency Search
 
 嗯，有趣 :)
 
-欢迎关注订阅号《首先很有趣》：
+欢迎关注订阅号「首先很有趣」：
 ![](/images/fun.jpg)
 
 

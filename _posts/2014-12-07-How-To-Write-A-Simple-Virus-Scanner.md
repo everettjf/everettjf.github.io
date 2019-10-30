@@ -56,7 +56,7 @@ comments: true
 
 此外，也可以参考开源杀毒软件[ClamAntiVirus](http://www.clamav.net/)的病毒特征的分类，如图：
 
-![alt text](/stuff/2014/clamav_signature.png 'ClamAV Signature')
+![alt text](/stuff/2014/clamav_signature.png)
 
 当然，以上分类并不严格，也没有一个分类标准。我认为，可以统称为*“恶意程序”*。
 
@@ -144,7 +144,7 @@ comments: true
 - Portable Executable
 - PE由Unix中的Common Object File Format（COFF）格式修改而来
 
-![alt text](/stuff/2014/pe.png 'pe')
+![alt text](/stuff/2014/pe.png)
 
 > * Windows  PE
 > * Linux  ELF
@@ -221,9 +221,11 @@ WireShark
   * 导入函数SetWindowsHook或CreateRemoteThread就像人拿着一把枪了，对世界危害就大了。
 2. 节的类比
   * .text .rdata .data .rsrc .reloc就像一个穿着正常的好人。
-  ![alt text](/stuff/2014/goodman.png 'good man')
+  
+  ![alt text](/stuff/2014/goodman.png)
   * .upx .upx1 就像是一个坏人了。
-  ![alt text](/stuff/2014/badman.png 'bad man')
+
+  ![alt text](/stuff/2014/badman.png)
 
 ### 机器学习
 - SVM - Support Vector Machine 支持向量机

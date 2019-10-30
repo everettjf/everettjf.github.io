@@ -176,7 +176,7 @@ NSLog(@"timeresult (s)= %ju", timeresult);
 就这样，简单易用。
 
 
-欢迎关注订阅号《首先很有趣》：
+欢迎关注订阅号「首先很有趣」：
 ![bukuzao](https://everettjf.github.io/images/fun.jpg)
 
 

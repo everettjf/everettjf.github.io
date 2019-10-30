@@ -43,7 +43,7 @@ comments: true
 - 2013年上半年，在[一位同事](1)的带领下，看到《机器学习实战》一书。当时的学习总结(http://www.cppblog.com/everett/archive/2013/08/24/202736.html)
 - 2013年下半年，学习各种理论，<http://www.cppblog.com/everett/archive/2013/08/24/202737.html>
 - 2014年上半年，集体智慧编程、模式分类、数据之魅。
-- 2014年12月份，Ruby版本的基于SVM的病毒分类器，代码<https://github.com/everettjf/RubySVMVirusScanner。>
+- 2014年12月份，Ruby版本的基于SVM的病毒分类器，代码<https://github.com/everettjf/RubySVMVirusScanner>
 - 2014年下半年至今（2015年7月份），几乎暂停了一年时间。
   + 这段时间没有经住好奇心和互联网行业吸引，学习了渗透测试、Android和iOS开发。
   + 消耗了大量时间和精力，并没有达到心中的圣地麦加。
