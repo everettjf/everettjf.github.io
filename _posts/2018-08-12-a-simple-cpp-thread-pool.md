@@ -150,7 +150,7 @@ ThreadPool::~ThreadPool()
 # 使用方法
 
 
-参考代码位置：<https://github.com/bukuzao/bukuzao/tree/master/sample/ThreadPoolSample>
+参考代码位置：<https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/ThreadPoolSample>
 
 ```
     ThreadPool pool(2);
@@ -189,7 +189,7 @@ iOS上有多种线程创建方法，上面只是一种C++的实现。GitHub还�
 
 
 欢迎关注订阅号「首先很有趣」：
-![bukuzao](https://everettjf.github.io/images/fun.jpg)
+![happyhackingstudio](https://everettjf.github.io/images/fun.jpg)
 
 
 

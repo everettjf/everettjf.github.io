@@ -167,9 +167,9 @@ public:
 
 # 代码
 
-- 加了点注释的LRUCache代码 <https://github.com/bukuzao/bukuzao/blob/master/sample/LRUCacheSample/LRUCacheSample/LRUCache.hpp> 
+- 加了点注释的LRUCache代码 <https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/LRUCacheSample/LRUCacheSample/LRUCache.hpp> 
 - MMKV中LRUCache的实现 <https://github.com/Tencent/MMKV/blob/master/iOS/MMKV/MMKV/LRUCache.hpp>
-- 测试代码在这里 <https://github.com/bukuzao/bukuzao/blob/master/sample/LRUCacheSample/LRUCacheSample/main.mm>
+- 测试代码在这里 <https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/LRUCacheSample/LRUCacheSample/main.mm>
 
 # 其他缓存策略
 
@@ -185,5 +185,5 @@ LeetCode 中就有个类似的题目 <https://leetcode.com/problems/lru-cache/de
 
 
 欢迎关注订阅号「首先很有趣」：
-![bukuzao](/images/fun.jpg)
+![happyhackingstudio](/images/fun.jpg)
 

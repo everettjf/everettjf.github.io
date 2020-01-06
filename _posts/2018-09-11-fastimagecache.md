@@ -167,6 +167,6 @@ inline size_t FICByteAlignForCoreAnimation(size_t bytesPerRow) {
 
 
 欢迎关注订阅号「首先很有趣」：
-![bukuzao](https://everettjf.github.io/images/fun.jpg)
+![happyhackingstudio](https://everettjf.github.io/images/fun.jpg)
 
 

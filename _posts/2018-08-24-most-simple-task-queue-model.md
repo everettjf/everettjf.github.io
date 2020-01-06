@@ -143,7 +143,7 @@ TaskDeclare(TTRenderTask)
 
 示例代码见：
 
-<https://github.com/bukuzao/bukuzao/blob/master/sample/TaskSample/TaskSample/Task/TKKTaskManager.m>
+<https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/TaskSample/TaskSample/Task/TKKTaskManager.m>
 
 总结，
 
@@ -154,5 +154,5 @@ TaskDeclare(TTRenderTask)
 
 
 欢迎关注订阅号「首先很有趣」：
-![bukuzao](https://everettjf.github.io/images/fun.jpg)
+![happyhackingstudio](https://everettjf.github.io/images/fun.jpg)
 

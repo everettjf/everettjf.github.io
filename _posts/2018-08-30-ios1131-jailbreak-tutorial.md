@@ -127,5 +127,5 @@ comments: true
 有了这台越狱设备，能玩耍的事情就多了，对探索性能优化的方法可以起到辅助作用。关于iOS逆向工程方面的书籍可以参考《iOS应用逆向工程》和《iOS应用逆向与安全》。
 
 欢迎关注订阅号「首先很有趣」：
-![bukuzao](https://everettjf.github.io/images/fun.jpg)
+![happyhackingstudio](https://everettjf.github.io/images/fun.jpg)
 

@@ -244,7 +244,7 @@ graph-base64-encoded:
 
 # 代码 
 
-<https://github.com/bukuzao/bukuzao/blob/master/sample/AppFrequencyReport/AppFrequencyReport/AppFrequencyReport.xm>
+<https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/AppFrequencyReport/AppFrequencyReport/AppFrequencyReport.xm>
 
 # dyld_shared_cache
 
@@ -286,6 +286,6 @@ step-in 之后是这样
 
 
 欢迎关注订阅号「首先很有趣」：
-![bukuzao](https://everettjf.github.io/images/fun.jpg)
+![happyhackingstudio](https://everettjf.github.io/images/fun.jpg)
 
 

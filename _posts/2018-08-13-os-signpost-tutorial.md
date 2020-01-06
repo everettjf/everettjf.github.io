@@ -148,7 +148,7 @@ iOS12 开始更加关注性能的苹果团队，也发现了直观展示的重�
 
 # 代码
 
-代码参考： <https://github.com/bukuzao/bukuzao/blob/master/sample/SignPostSample/SignPostSample/AppDelegate.m>
+代码参考： <https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/SignPostSample/SignPostSample/AppDelegate.m>
 
 # 总结
 
@@ -159,6 +159,6 @@ iOS12 开始更加关注性能的苹果团队，也发现了直观展示的重�
 ![](/media/15341777359950.jpg)
 
 欢迎关注订阅号「首先很有趣」：
-![bukuzao](https://everettjf.github.io/images/fun.jpg)
+![happyhackingstudio](https://everettjf.github.io/images/fun.jpg)
 
 

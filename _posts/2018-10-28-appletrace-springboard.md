@@ -75,7 +75,7 @@ Chrome浏览器打开`chrome://tracing`，把`trace.json`拖入即可。
 
 <https://github.com/everettjf/AppleTrace/blob/master/appletrace/appletrace/src/objc/hook_objc_msgSend.m>
 
-上面SpringBoard的trace.json见：<https://github.com/bukuzao/bukuzao/blob/master/stuff/appletracedata.tar.gz>
+上面SpringBoard的trace.json见：<https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/stuff/appletracedata.tar.gz>
 
 
 # 其他App

@@ -63,7 +63,7 @@ NSLog(@"pthread_threadid_np = %llu",tid);
 
 # 参考代码
 
-<https://github.com/bukuzao/bukuzao/blob/master/sample/ThreadNumberDemo/ThreadNumberDemo/AppDelegate.m>
+<https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/ThreadNumberDemo/ThreadNumberDemo/AppDelegate.m>
 
 # 总结
 

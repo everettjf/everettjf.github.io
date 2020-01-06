@@ -44,7 +44,7 @@ void test_available() {
 }
 ```
 
-例子代码[见这里](https://github.com/bukuzao/bukuzao/blob/master/sample/avaliabletest/avaliabletest/AppDelegate.m)
+例子代码[见这里](https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/avaliabletest/avaliabletest/AppDelegate.m)
 
 ## 逆向看看
 

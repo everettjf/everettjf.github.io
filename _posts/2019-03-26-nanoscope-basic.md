@@ -86,7 +86,7 @@ nanoscope start --package=com.everettjf.hellonanoscope
 
 # 示例
 
-下载[这个文件](https://github.com/bukuzao/bukuzao/blob/master/android/nanoscope_sample_html.zip)，解析就是上文的html。
+下载[这个文件](https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/android/nanoscope_sample_html.zip)，解析就是上文的html。
 可以按字母 `w a s d`，放大缩小查看耗时。
 
 

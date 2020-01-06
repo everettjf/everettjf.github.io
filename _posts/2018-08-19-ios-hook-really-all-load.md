@@ -226,7 +226,7 @@ Hopper中看到Category中的+load，最终的符号没有体现出来。
 
 # 工程代码
 
-完成工程及代码在这里 <https://github.com/bukuzao/bukuzao/blob/master/sample/LoadCostSample/LoadRuler/LoadRuler/LoadRuler.mm>
+完成工程及代码在这里 <https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/LoadCostSample/LoadRuler/LoadRuler/LoadRuler.mm>
 
 代码初期编写时参考了佳乐同学的代码 <https://github.com/joy0304/Joy-Demo/blob/master/HookLoad/LDAPMLoadMonitor.m>，但佳乐同学的代码没有处理Category的情况。
 
@@ -236,7 +236,7 @@ Hopper中看到Category中的+load，最终的符号没有体现出来。
 两年，眨眼而过，而是是非非，却历历在目。一念起万水千山，一念灭沧海桑田。勇往直前，少年。
 
 欢迎关注订阅号「首先很有趣」：
-![bukuzao](https://everettjf.github.io/images/fun.jpg)
+![happyhackingstudio](https://everettjf.github.io/images/fun.jpg)
 
 # 补充
 
