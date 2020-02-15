@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "探索系列: 为什么dispatch_once中的OC异常不会断到main函数中"
+title: "探索系列: dispatch_once与NSAssert"
 categories:
   - tips
 tags:
