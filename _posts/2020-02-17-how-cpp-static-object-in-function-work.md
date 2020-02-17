@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "探索系列：函数中的C++静态变量是线程安全吗？"
+title: "探索系列: 函数中的C++静态变量是线程安全吗？"
 categories:
   - cpp
 tags:
