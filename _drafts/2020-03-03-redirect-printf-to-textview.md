@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "bitcode"
+title: "redirect printf to textview"
 categories:
   - 
 tags:

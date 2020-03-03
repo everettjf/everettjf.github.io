@@ -5,4 +5,5 @@ if [ -z $articletitle ];then
   exit
 fi
 
-rake post title="$articletitle"
+#rake post title="$articletitle"
+rake draft title="$articletitle"
