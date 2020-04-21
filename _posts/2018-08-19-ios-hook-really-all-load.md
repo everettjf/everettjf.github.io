@@ -10,6 +10,9 @@ tags:
 comments: true
 ---
 
+本文仅供学习参考，但介绍的方法性能不好。推荐使用 <https://github.com/huakucha/TTAnalyzeLoadTime> ，这个性能会更好。
+
+---
 
 大概两年前刚开始做性能优化工作，为了Hook所有+load方法，是用Hopper先列出所有+load，然后使用CaptainHook在动态库中逐个指定类名来Hook每一个+load方法。写了一篇文章，先后发表到了内网（ATA）和博客，博客文章地址是： <https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/> 。
 
