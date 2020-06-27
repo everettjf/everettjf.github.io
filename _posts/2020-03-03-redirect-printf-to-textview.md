@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "探索系列: 重定向标准输出"
+title: "重定向标准输出"
 categories:
   - stdout
 tags:

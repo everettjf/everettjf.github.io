@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "探索系列: 主线程queue名称变了"
+title: "主线程queue名称变了"
 categories:
   - source
 tags:

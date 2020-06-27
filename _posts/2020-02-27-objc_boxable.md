@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "探索系列: objc_boxable"
+title: "objc_boxable"
 categories:
   - discovery
 tags:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "探索系列: 使用 __asm__ 重命名符号"
+title: "使用 __asm__ 重命名符号"
 categories:
   - 
 tags:

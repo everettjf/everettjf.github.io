@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "探索系列: NSAssert与dispatch_once"
+title: "NSAssert与dispatch_once"
 categories:
   - tips
 tags:
