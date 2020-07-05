@@ -67,17 +67,9 @@ int counter __asm__("counter_v1") = 0;
 - http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0491f/Cacgegch.html
 - https://stackoverflow.com/questions/1034852/adding-leading-underscores-to-assembly-symbols-with-gcc-on-win32
 
-## 交流群
 
-是的，我又创建交流群了～一个人探索这些偏底层的技术细节，独乐乐不如众乐乐，大家一起探索一起交流。如果群满了，加我微信 everettjf，备注：加群。
+---
 
-![](/media/15817739945151.jpg)
+大家喜欢的话，就关注下订阅号，以示鼓励：
 
-
-广告时间到。
-
-抖音团队招iOS开发，初级、中级、高级开发都有需要，欢迎随时联系我（ 微信：everettjf ），`北京、深圳`可以直接来我的部门，`上海`可以推荐到同事部门。工作内容就是`抖音iOS App的业务、性能、稳定性等方方面面`的开发。`入职后的方向看你的兴趣`。
-
-如果不好意思联系我，可以直接扫描下面的二维码选择职位投递。
-
-![](/media/15814340338261.jpg)
+![](/images/fun.jpg)
