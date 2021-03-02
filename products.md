@@ -8,19 +8,31 @@ All my products
 <!-- more -->
 
 
+### ScriptWidget
+
+
+- 简介：ScriptWidget可以让用户通过编写类似ReactJS中Label样式的JavaScript代码，创作iOS14 Widget。
+- 文章介绍：https://sspai.com/post/65435
+- 费用：核心功能免费，内购
+- 开源：不开源
+- 下载地址：见[官方网站](https://scriptwidget.app)
+
+
 ### 远程输入法(Remoboard，Remote Keyboard)
 
 ![](/media/15677059768790.jpg)
 
-- 介绍：这是一个输入法应用，使用这个应用可以实现「电脑打字，手机输入」。手机端支持iOS/Android，电脑端支持macOS/Windows。介绍见[官方网站](https://remoboard.app)
+- 介绍：这是一个输入法应用，使用这个应用可以实现「电脑打字，手机输入」。手机端支持iOS/Android，电脑端支持macOS/Windows。介绍见[官方网站](https://remoboard.github.io)
 - 平台：iOS/Android/macOS/Windows
-- 费用：免费（未来计划增加内购）
+- 费用：核心功能免费（可能未来有内购）
 - 开源：不开源
-- 下载地址：见[官方网站](https://remoboard.app)
+- 下载地址：见[官方网站](https://remoboard.github.io)
 
 
 
 ### 温馨提示(WarmHello)
+
+*已经下线*
 
 ![](/media/15624372435248.jpg)
 
@@ -45,6 +57,8 @@ All my products
 
 ### USB Keyboard
 
+*已经下线*
+
 ![](/media/15624372586781.jpg)
 
 
@@ -65,7 +79,7 @@ All my products
 - 平台：iOS/macOS 越狱或开发
 - 费用：免费
 - 开源：不开源
-- 下载地址：[官网](https://messier.app/)
+- 下载地址：[官网](https://messier-app.github.io/)
 
 
 ### AppleTrace
@@ -161,7 +175,9 @@ All my products
 - 下载地址：[GitHub](https://github.com/everettjf/NaturalScrollMouseForWindows)
 
 
-### 剪贴板输入法【已转让】
+### 剪贴板输入法
+
+*已转让*
 
 ![](/media/15624376100979.jpg)
 
@@ -172,7 +188,10 @@ All my products
 - 开源：闭源(曾经开源)
 - 下载地址：[AppStore下载连接](https://itunes.apple.com/cn/app/id1463618135)
 
-### 番茄阅读【已下线】
+### 番茄阅读
+
+
+*已经下线*
 
 ![](/media/15624377009605.jpg)
 
@@ -187,5 +206,5 @@ All my products
 
 ---
 
-Time flies ...
+Time fly ...
 
