@@ -67,6 +67,6 @@ USB Keyboard 是一个输入法应用，通过USB连接iPhone到Mac后，可以�
 Emmmmm...广告时间到...
 
 
-欢迎关注订阅号「首先很有趣」：
+欢迎关注订阅号「客户端技术评论」：
 ![](/images/fun.jpg)
 
