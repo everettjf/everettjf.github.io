@@ -167,6 +167,6 @@ NSLog(@"%p",self);
 实现了这个功能，用iBooks或Safari看英文更愉快了，开森。
 
 
-欢迎关注订阅号「首先很有趣」：
+欢迎关注订阅号「客户端技术评论」：
 ![happyhackingstudio](https://everettjf.github.io/images/fun.jpg)
 
