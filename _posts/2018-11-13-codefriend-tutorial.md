@@ -274,6 +274,6 @@ Code Friend 自发布到11月13号最高一次到了Mac App Store 的Developer T
 
 
 欢迎关注订阅号「客户端技术评论」：
-![](/images/fun.jpg)
+![](/images/fun.png)
 
 

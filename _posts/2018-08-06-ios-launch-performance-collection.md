@@ -170,6 +170,6 @@ comments: true
 
 如果读者有兴趣，可以关注下，任何问题欢迎交流（公众号内会有微信群），不同于现在有些收费文章或者群，目前或者未来没有任何计划收费，主要是我还太菜哈，只想多多交流，共同进步。
 
-![happyhackingstudio](https://everettjf.github.io/images/fun.jpg)
+![happyhackingstudio](https://everettjf.github.io/images/fun.png)
 
 

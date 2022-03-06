@@ -77,7 +77,7 @@ Pubspec Dependency Search
 嗯，有趣 :)
 
 欢迎关注订阅号「客户端技术评论」：
-![](/images/fun.jpg)
+![](/images/fun.png)
 
 
 

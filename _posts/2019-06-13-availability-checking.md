@@ -150,7 +150,7 @@ https://github.com/llvm-mirror/clang/blob/master/include/clang/AST/Availability.
 
 欢迎订阅 :)
 
-![](/images/fun.jpg)
+![](/images/fun.png)
 
 
 

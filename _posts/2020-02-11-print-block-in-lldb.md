@@ -123,6 +123,6 @@ Enjoy :)
 
 大家喜欢的话，就关注下订阅号，以示鼓励：
 
-![](/images/fun.jpg)
+![](/images/fun.png)
 
 

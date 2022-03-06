@@ -78,5 +78,5 @@ pthread_threadid_np(NULL, &tid);
 
 
 欢迎关注订阅号「客户端技术评论」：
-![](/images/fun.jpg)
+![](/images/fun.png)
 

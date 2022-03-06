@@ -130,6 +130,6 @@ https://stackoverflow.com/questions/8412630/how-to-execute-a-piece-of-code-only-
 
 大家喜欢的话，就关注下订阅号，以示鼓励：
 
-![](/images/fun.jpg)
+![](/images/fun.png)
 
 

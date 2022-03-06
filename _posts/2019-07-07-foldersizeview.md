@@ -75,7 +75,7 @@ macOS和Windows
 
 欢迎订阅 :)
 
-![](/images/fun.jpg)
+![](/images/fun.png)
 
 
 

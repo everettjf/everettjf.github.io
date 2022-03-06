@@ -104,6 +104,6 @@ Emmm...这次不开源了。
 
 
 欢迎关注订阅号「客户端技术评论」：
-![](/images/fun.jpg)
+![](/images/fun.png)
 
 

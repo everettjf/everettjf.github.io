@@ -92,7 +92,7 @@ comments: true
 
 也要关注我的微信订阅号哈 :)
 
-![wechatgroup](/images/fun.jpg)
+![wechatgroup](/images/fun.png)
 
 
 

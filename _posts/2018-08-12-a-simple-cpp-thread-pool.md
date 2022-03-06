@@ -189,7 +189,7 @@ iOS上有多种线程创建方法，上面只是一种C++的实现。GitHub还�
 
 
 欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](https://everettjf.github.io/images/fun.jpg)
+![happyhackingstudio](https://everettjf.github.io/images/fun.png)
 
 
 

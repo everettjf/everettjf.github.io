@@ -11,4 +11,4 @@ Now, I am interested in anything in the universe.
 
 [Email](mailto:everettjf@live.com),[GitHub](https://github.com/everettjf),[Twitter](https://twitter.com/everettjf),[WeChat](/images/mywechat.jpg) 
 
-![fun](/images/fun.jpg)
+![fun](/images/fun.png)

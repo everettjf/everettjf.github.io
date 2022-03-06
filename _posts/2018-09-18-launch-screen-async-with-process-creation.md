@@ -286,6 +286,6 @@ step-in 之后是这样
 
 
 欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](https://everettjf.github.io/images/fun.jpg)
+![happyhackingstudio](https://everettjf.github.io/images/fun.png)
 
 

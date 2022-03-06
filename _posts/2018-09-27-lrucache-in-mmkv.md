@@ -185,5 +185,5 @@ LeetCode 中就有个类似的题目 <https://leetcode.com/problems/lru-cache/de
 
 
 欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](/images/fun.jpg)
+![happyhackingstudio](/images/fun.png)
 
