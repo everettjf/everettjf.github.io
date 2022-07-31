@@ -23,7 +23,7 @@ comments: true
 
 
 > 看到略有“冲动”，今天就给大家翻译一波。
-> 注意：翻译不是按字原版翻译，会略做小修改，保持愿意不变。
+> 注意：翻译不是按字原版翻译，会略做小修改，保持原意不变。
 > 所谓“略有冲动”，其实是我半年前也看了一眼Deno文档中的 Embedding Deno https://deno.land/manual/embedding_deno 然而这里啥也木有写，就直接让去看 deno_core 的文档 https://crates.io/crates/deno_core 也木有个入门教程啥的，当时由于我的Rust技术太菜，也就没继续玩耍下去。
 
 好了废话不多说，开始翻译。
