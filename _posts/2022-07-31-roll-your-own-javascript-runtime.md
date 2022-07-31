@@ -53,7 +53,7 @@ cargo 1.62.0 (a748cf5a3 2022-06-08)
 首先，让我们创建一个新的Rust项目，名为runjs：
 
 ```
-$ cargo init runjs
+$ cargo new runjs
      Created binary (application) package
 ```
 
