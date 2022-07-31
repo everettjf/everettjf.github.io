@@ -39,7 +39,7 @@ comments: true
 这篇教程假设读者掌握了以下知识：
 
 - Rust的基础知识
-- JavaScrit事件循环的基础知识
+- JavaScript事件循环的基础知识
 
 确保电脑上安装了Rust（和cargo，cargo会自动安装），版本至少1.62.0 。可以访问 https://www.rust-lang.org/learn/get-started 来安装。
 
