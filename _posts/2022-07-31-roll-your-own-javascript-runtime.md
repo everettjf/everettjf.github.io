@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[翻译]使用deno_core开发一个JavaScript运行时"
+title: "使用deno_core开发一个JavaScript运行时"
 categories:
   - deno
 tags:
