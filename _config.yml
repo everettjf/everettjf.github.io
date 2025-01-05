@@ -1,20 +1,19 @@
-name: everettjf
-description: Pale Blue Dot
-meta_description: "developer everettjf"
+name: Everett
+description: Full Stack Developer
+meta_description: "Full Stack Developer Everett"
 
 markdown: kramdown
 highlighter: rouge
 logo: false
-paginate: 10
+paginate: 5
 baseurl: ''
 domain_name: 'https://everettjf.github.io'
-google_analytics: 'UA-111349332-1'
 plugins:
   - jekyll-paginate
 
 # Details for the RSS feed generator
 url:            'https://everettjf.github.io'
-author:         'everettjf'
+author:         'Everett'
 authorimage: /images/everettjf.png
 
 permalink: /:year/:month/:day/:title/
