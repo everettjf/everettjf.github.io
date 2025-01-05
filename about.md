@@ -7,9 +7,12 @@ I am everettjf, fullstack developer.
 
 Happy to be here.
 
-Free free to contact me.
+Live in Cupertino, CA.
 
-[Email](mailto:everettjf@live.com),[GitHub](https://github.com/everettjf),[WeChat](/images/mywechat.jpg) 
+Free free to contact me for a hiking.
+
+
+[GitHub](https://github.com/everettjf),[Email](mailto:everettjf@live.com),[WeChat](/images/mywechat.jpg) 
 
 
 
