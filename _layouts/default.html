@@ -19,6 +19,13 @@
     <!-- Customisation  -->
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
 
+    <!-- Favicon settings -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/images/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/images/favicon.ico">
+    <link rel="manifest" href="{{ site.baseurl }}/images/site.webmanifest">
+
 </head>
 <body class="{% if page.post_class %}{{page.post_class}}{% else %}home-template{% endif %}">
 
@@ -29,7 +36,7 @@
               {{"now" | date: "%Y"}} &bull; All rights reserved.
       </section>
       <section class="poweredby">Made with Jekyll using 
-        <a href="http://github.com/rosario/kasper">Kasper theme</a>
+        <a href="https://github.com/rosario/kasper" target="_blank">Kasper theme</a>
       </section>
     </footer>
     
