@@ -5,7 +5,9 @@ title: About me
 
 I am everettjf, fullstack developer.
 
-Live is the matter.
+Happy to be here.
+
+Free free to contact me.
 
 [Email](mailto:everettjf@live.com),[GitHub](https://github.com/everettjf),[WeChat](/images/mywechat.jpg) 
 

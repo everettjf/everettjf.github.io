@@ -364,12 +364,5 @@ $ cargo run
 > https://github.com/denoland/roll-your-own-javascript-runtime
 
 
----
-
-
-# 最后
-
-上面翻译就结束了。很简单的一个例子，但是一个不错的开端。我创建了一个`Carbon & Rust 交流群`如果有兴趣交流，可以加我微信（与博客同名）拉入群。
-
 
 

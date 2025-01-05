@@ -178,8 +178,8 @@ body {
     max-height: 100%;
     font-family: "Merriweather", serif;
     letter-spacing: 0.01rem;
-    font-size: 1.8rem;
-    line-height: 1.75em;
+    font-size: 1.6rem;
+    line-height: 1.6em;
     color: #3A4145;
     -webkit-font-feature-settings: 'kern' 1;
     -moz-font-feature-settings: 'kern' 1;
@@ -201,23 +201,23 @@ h4, h5, h6 {
     -o-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
     color: #2E2E2E;
     line-height: 1.15em;
-    margin: 0 0 0.4em 0;
+    margin: 0 0 0.3em 0;
     font-family: "Open Sans", sans-serif;
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 3.6rem;
     letter-spacing: -2px;
     text-indent: -3px;
 }
 
 h2 {
-    font-size: 3.6rem;
+    font-size: 2.8rem;
     letter-spacing: -1px;
 }
 
 h3 {
-    font-size: 3rem;
+    font-size: 2.4rem;
 }
 
 h4 {
@@ -245,7 +245,7 @@ p, ul, ol, dl {
     -webkit-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
     -moz-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
     -o-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
-    margin: 0 0 1.75em 0;
+    margin: 0 0 1.2rem 0;
 }
 
 ol, ul {
@@ -662,7 +662,7 @@ margin on the iframe, cause it breaks stuff. */
 /* The details of your blog. Defined in ghost/settings/ */
 .page-title {
     margin: 10px 0 10px 0;
-    font-size: 5rem;
+    font-size: 3.6rem;
     letter-spacing: -1px;
     font-weight: 700;
     font-family: "Open Sans", sans-serif;
@@ -671,7 +671,7 @@ margin on the iframe, cause it breaks stuff. */
 
 .page-description {
     margin: 0;
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 1.5em;
     font-weight: 400;
     font-family: "Merriweather", serif;
@@ -718,8 +718,8 @@ margin on the iframe, cause it breaks stuff. */
     position: relative;
     width: 85%;
     max-width: 900px;
-    margin: 4rem auto;
-    padding-bottom: 4rem;
+    margin: 2.5rem auto;
+    padding-bottom: 2.5rem;
     border-bottom: #EBF2F6 1px solid;
     word-break: break-word;
     hyphens: none;
@@ -745,7 +745,7 @@ margin on the iframe, cause it breaks stuff. */
 }
 
 body:not(.post-template) .post-title {
-    font-size: 3.6rem;
+    font-size: 2.8rem;
 }
 
 .post-title a {
@@ -754,8 +754,8 @@ body:not(.post-template) .post-title {
 
 .post-excerpt p {
     margin: 0;
-    font-size: 0.9em;
-    line-height: 1.7em;
+    font-size: 1.5rem;
+    line-height: 1.6em;
 }
 
 .read-more {
@@ -764,9 +764,9 @@ body:not(.post-template) .post-title {
 
 .post-meta {
     display: block;
-    margin: 1.75rem 0 0 0;
+    margin: 1.2rem 0 0 0;
     font-family: "Open Sans", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     line-height: 2.2rem;
     color: #9EABB3;
 }
@@ -1778,3 +1778,29 @@ body:not(.post-template) .post-title {
    End of file. Animations should be the last thing here. Do not add stuff
    below this point, or it will probably fuck everything up.
    ========================================================================== */
+
+/* 调整文章标题大小 */
+.post-card-title {
+    font-size: 1.8rem;  /* 从 2.2rem 减小 */
+}
+
+/* 调整文章摘要字体大小 */
+.post-card-excerpt {
+    font-size: 1rem;    /* 从 1.2rem 减小 */
+    line-height: 1.5;
+}
+
+/* 调整文章元信息(日期、作者等)字体大小 */
+.post-card-meta {
+    font-size: 0.9rem;  /* 从 1rem 减小 */
+}
+
+/* 如果有特色文章/置顶文章，也相应调整其字体 */
+.featured-post .post-card-title {
+    font-size: 2rem;    /* 从 2.6rem 减小 */
+}
+
+/* 调整导航菜单字体大小 */
+.nav-current {
+    font-size: 1rem;    /* 从 1.2rem 减小 */
+}

@@ -203,10 +203,4 @@ Windows端：
 
 最近又恰逢我学习Android开发，因此iOS/Android/macOS/Windows四个平台就都支持了。
 
-## 反馈
-
-可以邮件到 everettjf@live.com 反馈问题，或者关注微信订阅号「客户端技术评论」，发送「远程输入」加群交流。
-
-![](/media/15677909543642.jpg)
-
 
