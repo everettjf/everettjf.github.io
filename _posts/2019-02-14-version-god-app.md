@@ -100,7 +100,7 @@ python rank.py emergency-release-count data/20190213/appinfo
 
 # 总结
 
- 不同App的节奏还真是差别挺大～
+不同App的节奏还真是差别挺大～
 
 那么谁是版本帝……
 
