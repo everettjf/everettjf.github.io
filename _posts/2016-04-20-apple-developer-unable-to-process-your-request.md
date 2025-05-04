@@ -7,7 +7,7 @@ comments: true
 
 
 
-前端时间发现自己的Apple Developer账号不能在 <https://developer.apple.com> 登录了。
+前段时间发现自己的Apple Developer账号不能在 <https://developer.apple.com> 登录了。
 
 只要登录就提示下图：
 
