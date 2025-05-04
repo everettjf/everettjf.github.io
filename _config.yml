@@ -5,7 +5,7 @@ meta_description: "Full Stack Developer Everett"
 markdown: kramdown
 highlighter: rouge
 logo: false
-paginate: 5
+paginate: 10
 baseurl: ''
 domain_name: 'https://everettjf.github.io'
 plugins:
