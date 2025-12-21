@@ -1,6 +1,6 @@
 ---
 layout: post
-title: In-App Purchase - One Pitfall and One Unresolved Question
+title: In-App Purchase Notes
 categories: Skill
 comments: true
 ---

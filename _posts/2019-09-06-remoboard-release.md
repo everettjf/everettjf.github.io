@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Remote Input Method Released, Type on Phone Using Computer"
+title: "Remote Input Method - Type on Phone Using Computer"
 categories:
   - Product
 tags:

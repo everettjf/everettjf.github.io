@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Exploring Facebook iOS Client - Section RODATA
+title: Facebook iOS Client - Section RODATA
 categories: Skill
 comments: true
 --- 

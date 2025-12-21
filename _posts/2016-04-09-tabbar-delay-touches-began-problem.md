@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TabBar Position Secondary Page touchesBegan Delayed Call
+title: TabBar touchesBegan Delayed Call
 categories: Skill
 comments: true
 ---

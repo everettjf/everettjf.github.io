@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Quickly Print Block Parameter Signatures in Objective-C Methods Using lldb"
+title: "Print Block Parameter Signatures in Objective-C Methods Using lldb"
 categories:
   - lldb
 tags:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to Write a Simple RSS Reader App
+title: How to Write a RSS Reader App
 categories: Skill
 comments: true
 ---

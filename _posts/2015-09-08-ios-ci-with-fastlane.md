@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Implementing iOS Continuous Integration with fastlane
+title: iOS Continuous Integration with fastlane
 categories: Skill
 comments: true
 ---

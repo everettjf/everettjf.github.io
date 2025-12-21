@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Exploring SpringBoard Using AppleTrace"
+title: "SpringBoard Analysis Using AppleTrace"
 categories:
   - Tool
 tags:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: One Year Summary After Switching from Windows to iOS Development
+title: One Year iOS Development Summary
 categories: Essay
 comments: true
 ---

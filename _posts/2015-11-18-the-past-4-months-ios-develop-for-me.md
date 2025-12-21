@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Summary of 5 Months After Switching to iOS Development
+title: 5 Months iOS Development Summary
 categories: Skill
 comments: true
 ---

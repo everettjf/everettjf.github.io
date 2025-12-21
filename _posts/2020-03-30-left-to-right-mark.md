@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Exploring Hidden Symbol in ?WhatsApp App Name"
+title: "Hidden Symbol in ?WhatsApp App Name"
 categories:
   - Exploration
 tags:

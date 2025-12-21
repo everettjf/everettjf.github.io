@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS 11.3.1 Jailbreak Steps Notes"
+title: "iOS 11.3.1 Jailbreak Steps"
 categories:
   - Jailbreak
 tags:

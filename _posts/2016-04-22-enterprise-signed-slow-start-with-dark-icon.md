@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Enterprise Certificate Signed App Slow Startup (Stuck on Dark Icon for N Seconds)
+title: Enterprise Certificate Signed App Slow Startup
 categories: Skill
 comments: true
 ---

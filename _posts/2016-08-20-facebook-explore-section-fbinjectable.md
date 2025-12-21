@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Exploring Facebook iOS Client - Section FBInjectable
+title: Facebook iOS Client - Section FBInjectable
 categories: Skill
 comments: true
 --- 

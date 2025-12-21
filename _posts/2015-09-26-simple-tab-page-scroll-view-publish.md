@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TabPageScrollView Development Notes
+title: TabPageScrollView Notes
 categories: Skill
 comments: true
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to Quickly List All +load Methods in App"
+title: "How to List All +load Methods in App"
 categories:
   - lldb
 tags:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: SDWebImage Learning Notes
+title: SDWebImage Notes
 categories: Skill
 comments: true
 ---

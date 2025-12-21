@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AppleTrace with MonkeyDev Trace Any App"
+title: "AppleTrace with MonkeyDev"
 categories:
   - Tool
 tags:

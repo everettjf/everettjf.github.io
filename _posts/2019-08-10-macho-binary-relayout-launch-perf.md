@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Launch Speed Optimization: MachO Binary File Reordering"
+title: "Launch Performance Optimization: MachO Binary File Reordering"
 categories:
   - Optimization
 tags:

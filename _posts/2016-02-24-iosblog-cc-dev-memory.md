@@ -1,6 +1,6 @@
 ---
 layout: post
-title: iOS Blog Selection - Origin, Mission and Reflection
+title: iOS Blog Selection
 categories: Essay
 comments: true
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Remote Input Method New Version Released, Type on Phone Using Browser"
+title: "Remote Input Method - Type on Phone Using Browser"
 categories:
   - Product
 tags:

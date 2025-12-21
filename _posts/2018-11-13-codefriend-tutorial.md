@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Code Friend: Developing Xcode Extensions Using JavaScript"
+title: "Xcode Extensions Using JavaScript"
 categories:
   - Tool
 tags:

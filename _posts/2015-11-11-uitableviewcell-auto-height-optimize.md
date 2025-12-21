@@ -1,6 +1,6 @@
 ---
 layout: post
-title: UITableViewCell Auto Height Calculation Optimization Summary
+title: UITableViewCell Auto Height Calculation Optimization
 categories: Skill
 comments: true
 ---

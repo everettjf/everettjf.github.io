@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MachOExplorer Alpha Release"
+title: "MachOExplorer Alpha"
 categories:
   - Tool
 tags:

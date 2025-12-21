@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Preliminary Exploration of LaunchScreen"
+title: "LaunchScreen Analysis"
 categories:
   - Reverse Engineering
 tags:

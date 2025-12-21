@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "filterline Command Line Version"
+title: "filterline Command Line"
 categories:
   - Tool
 tags:

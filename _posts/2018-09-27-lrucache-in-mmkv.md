@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Simple LRU Cache (LRUCache) in MMKV"
+title: "LRU Cache (LRUCache) in MMKV"
 categories:
   - Performance Optimization
 tags:

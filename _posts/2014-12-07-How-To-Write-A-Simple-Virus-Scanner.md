@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to Write a Simple Virus Scanner"
+title: "How to Write a Virus Scanner"
 tags: Security
 categories: Skill
 comments: true

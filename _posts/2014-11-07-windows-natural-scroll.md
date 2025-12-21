@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Implementing Natural Scrolling for Mouse Wheel on Windows"
+title: "Natural Scrolling for Mouse Wheel on Windows"
 comments: true
 categories: Skill
 ---

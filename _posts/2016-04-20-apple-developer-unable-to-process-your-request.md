@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Apple Developer Login Error, Resolved via 400 Phone Call
+title: Apple Developer Login Error Resolution
 categories: Skill
 comments: true
 ---

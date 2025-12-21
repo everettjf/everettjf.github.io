@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Building a JavaScript Runtime with deno_core"
+title: "JavaScript Runtime with deno_core"
 categories:
   - deno
 tags:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: YYWebImage Learning Notes
+title: YYWebImage Notes
 categories: Skill
 comments: true
 ---

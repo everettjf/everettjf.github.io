@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A Method to Hook C++ Static Initializers"
+title: "Hook C++ Static Initializers"
 categories:
   - Skill
 tags:

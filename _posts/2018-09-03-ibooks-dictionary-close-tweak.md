@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Add Close Button to iBooks Dictionary Interface"
+title: "iBooks Dictionary Interface Close Button"
 categories:
   - Reverse Engineering
 tags:

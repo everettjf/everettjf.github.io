@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Adding Timeout to subprocess Calling Perl Script in Python 2.7
+title: subprocess Timeout in Python 2.7
 categories: Skill
 comments: true
 ---

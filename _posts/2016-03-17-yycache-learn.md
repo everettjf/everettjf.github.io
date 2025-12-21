@@ -1,6 +1,6 @@
 ---
 layout: post
-title: YYCache Learning Notes
+title: YYCache Notes
 categories: Skill
 comments: true
 ---

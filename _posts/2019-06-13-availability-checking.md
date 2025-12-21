@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Exploring Availability Checking Internal Implementation"
+title: "Availability Checking Internal Implementation"
 categories:
   - Principles
 tags:

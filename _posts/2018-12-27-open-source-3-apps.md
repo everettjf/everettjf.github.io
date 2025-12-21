@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "End of Year, Open Source 3 Small Apps"
+title: "Open Source 3 Small Apps"
 categories:
   - Open Source
 tags:

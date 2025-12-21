@@ -1,6 +1,6 @@
 ---
 layout: post
-title: SegmentFault Hackathon 2015 Beijing Summary
+title: SegmentFault Hackathon 2015 Beijing
 categories: Essay
 comments: true
 ---

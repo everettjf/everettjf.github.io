@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Exploring WeChat Chat UI Logic Implementation
+title: WeChat Chat UI Logic Implementation
 categories: Skill
 comments: true
 ---

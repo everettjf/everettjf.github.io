@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Who Is the App Version King"
+title: "App Version Comparison Tool"
 categories:
   - Tool
 tags:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Simple AntiDebugging and AntiAntiDebugging
+title: AntiDebugging and AntiAntiDebugging
 categories: Skill
 comments: true
 ---

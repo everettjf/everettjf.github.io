@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Nanoscope Basic Usage"
+title: "Nanoscope Usage"
 categories:
   - Performance Optimization
 tags:

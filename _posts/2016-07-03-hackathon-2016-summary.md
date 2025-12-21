@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Segmentfault Hackathon 2016 Summary
+title: Segmentfault Hackathon 2016
 categories: Essay
 comments: true
 ---

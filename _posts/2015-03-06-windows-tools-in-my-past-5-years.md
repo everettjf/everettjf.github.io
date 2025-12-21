@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Summary of Tools Used for Windows C++ Development Over 5 Years"
+title: "Windows C++ Development Tools (5 Years)"
 categories: Skill
 comments: true
 ---

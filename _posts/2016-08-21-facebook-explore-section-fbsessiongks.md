@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Exploring Facebook iOS Client - Section fbsessiongks
+title: Facebook iOS Client - Section fbsessiongks
 categories: Skill
 comments: true
 --- 

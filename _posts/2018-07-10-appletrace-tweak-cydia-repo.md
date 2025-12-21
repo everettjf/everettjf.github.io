@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Install AppleTrace Tweak Using Cydia"
+title: "AppleTrace Tweak Installation via Cydia"
 categories:
   - Tool
 tags:

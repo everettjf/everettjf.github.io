@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS App Launch Performance Optimization Articles Directory"
+title: "iOS App Launch Performance Articles"
 categories:
   - Performance Optimization
 tags:

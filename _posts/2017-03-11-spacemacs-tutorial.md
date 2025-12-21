@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Spacemacs Getting Started Summary
+title: Spacemacs Getting Started
 categories: Skill
 comments: true
 ---

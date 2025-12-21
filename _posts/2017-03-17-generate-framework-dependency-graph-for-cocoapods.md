@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Generate CocoaPods Dependency Graph"
+title: "CocoaPods Dependency Graph"
 categories:
   - Skill
 tags:

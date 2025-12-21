@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Multi-Process in iOS, Pull Down to Close System Dictionary Interface"
+title: "Close System Dictionary Interface in iOS"
 categories:
   - Reverse Engineering
 tags:

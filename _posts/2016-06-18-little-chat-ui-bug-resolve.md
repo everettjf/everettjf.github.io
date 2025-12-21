@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A Small Animation Issue When Chat Interface Keyboard Hides
+title: Chat Interface Keyboard Animation Issue
 categories: Skill
 comments: true
 ---

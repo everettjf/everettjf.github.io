@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Simplest Startup Task Classification"
+title: "Startup Task Classification"
 categories:
   - Performance Optimization
 tags:

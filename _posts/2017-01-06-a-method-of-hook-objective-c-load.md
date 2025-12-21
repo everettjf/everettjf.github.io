@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A Method to Hook Objective C +load"
+title: "Hook Objective C +load"
 categories:
   - Skill
 tags:

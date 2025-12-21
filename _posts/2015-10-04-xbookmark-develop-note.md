@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Xcode Bookmark Plugin XBookmark Development Notes
+title: Xcode Bookmark Plugin XBookmark Notes
 categories: Skill
 comments: true
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Experienced Running Android on iPhone"
+title: "Running Android on iPhone"
 categories:
   - First Look
 tags:

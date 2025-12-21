@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "USB Keyboard Input Method App for Typing on iOS from macOS"
+title: "USB Keyboard Input Method for iOS"
 categories:
   - Product
 tags:

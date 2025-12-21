@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Redis Usage Summary"
+title: "Redis Usage"
 categories: Skill
 comments: true
 ---

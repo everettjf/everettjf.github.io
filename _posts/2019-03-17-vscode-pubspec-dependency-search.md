@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "vscode Extension Quick Open Documentation for pubspec Dependencies"
+title: "vscode Extension for pubspec Dependencies"
 categories:
   - Extension
 tags:

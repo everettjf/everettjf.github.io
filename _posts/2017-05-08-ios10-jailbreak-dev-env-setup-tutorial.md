@@ -1,6 +1,6 @@
 ---
 layout: post
-title: iOS10 Jailbreak Development Environment Setup Tutorial
+title: iOS10 Jailbreak Development Environment Setup
 categories: Skill
 comments: true
 ---

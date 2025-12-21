@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A Method to Delay premain Code"
+title: "Delay premain Code"
 categories:
   - Skill
 tags:

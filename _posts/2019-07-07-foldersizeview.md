@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "FolderSizeView A Slightly Better TreeMap Tool for Displaying Folder Contents"
+title: "FolderSizeView - TreeMap Tool for Displaying Folder Contents"
 categories:
   - Tool
 tags:

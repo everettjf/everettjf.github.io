@@ -1,6 +1,6 @@
 ---
 layout: post
-title: LLVM Clang Plugin Development First Step
+title: LLVM Clang Plugin Development
 categories: Skill
 comments: true
 ---

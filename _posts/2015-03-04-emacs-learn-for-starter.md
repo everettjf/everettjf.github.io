@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pitfalls and Notes for Emacs Beginners"
+title: "Emacs Beginner Notes"
 categories: Skill
 comments: true
 ---

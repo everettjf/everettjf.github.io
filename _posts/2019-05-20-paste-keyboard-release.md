@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Clipboard Input Method, Make Moments Text No Longer Folded"
+title: "Clipboard Input Method"
 categories:
   - Tool
 tags:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A Simple C++ Thread Pool Implementation"
+title: "C++ Thread Pool Implementation"
 categories:
   - guide
 tags:

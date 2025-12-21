@@ -1,6 +1,6 @@
 ---
 layout: post
-title: UITableView-FDTemplateLayoutCell Learning Notes
+title: UITableView-FDTemplateLayoutCell Notes
 categories: Skill
 comments: true
 ---
