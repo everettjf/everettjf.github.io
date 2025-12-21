@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "C++实现简单的线程池"
+title: "A Simple C++ Thread Pool Implementation"
 categories:
   - guide
 tags:
@@ -9,35 +9,35 @@ comments: true
 ---
 
 
-启动优化中，尽量能不在主线程就不在主线程。放到子线程又尽量不要密集并发，挨个来，给主线程多一些执行机会。那么一种方法是使用线程池。
+In startup optimization, try not to be on main thread if possible. Put in child thread and try not to intensively concurrency, one by one, give main thread more execution opportunities. Then one method is to use thread pool.
 
 <!-- more -->
 
 
-# 介绍
+# Introduction
 
-这是Wikipedia上的定义：
+This is definition on Wikipedia:
 
 > In computer programming, a thread pool is a software design pattern for achieving concurrency of execution in a computer program. Often also called a replicated workers or worker-crew model,[1] a thread pool maintains multiple threads waiting for tasks to be allocated for concurrent execution by the supervising program. By maintaining a pool of threads, the model increases performance and avoids latency in execution due to frequent creation and destruction of threads for short-lived tasks.[2] The number of available threads is tuned to the computing resources available to the program, such as parallel processors, cores, memory, and network sockets.[3]
 
 
-> 一种线程使用模式。线程过多会带来调度开销，进而影响缓存局部性和整体性能。而线程池维护着多个线程，等待着监督管理者分配可并发执行的任务。这避免了在处理短时间任务时创建与销毁线程的代价。线程池不仅能够保证内核的充分利用，还能防止过分调度。可用线程数量应该取决于可用的并发处理器、处理器内核、内存、网络sockets等的数量。 例如，线程数一般取cpu数量+2比较合适，线程数过多会导致额外的线程切换开销。
+> A thread usage pattern. Too many threads brings scheduling overhead, affecting cache locality and overall performance. Thread pool maintains multiple threads, waiting for supervisor to assign concurrently executable tasks. This avoids cost of creating and destroying threads when handling short-lived tasks. Thread pool not only ensures full utilization of kernel, but also prevents excessive scheduling. Available thread count should depend on available concurrent processors, processor cores, memory, network sockets, etc. For example, thread count generally cpu count + 2 is appropriate, too many threads causes additional thread switching overhead.
 
-- 英文 <https://en.wikipedia.org/wiki/Thread_pool>
-- 中文 <https://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B%E6%B1%A0>
+- English <https://en.wikipedia.org/wiki/Thread_pool>
+- Chinese <https://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B%E6%B1%A0>
 
 
-如图：
+As shown:
 
 ![](/media/15340064020238.jpg)
 
 
 
-# 实现
+# Implementation
 
-这篇2012年的文章 <http://progsch.net/wordpress/?p=81> 讲了一种简单的实现，是使用 C++11 实现的。下面的实现在这篇文章的代码上稍微进行了一点优化。
+This 2012 article <http://progsch.net/wordpress/?p=81> describes a simple implementation, implemented using C++11. Implementation below slightly optimizes code from this article.
 
-直接放代码了。
+Directly put code.
 
 
 *ThreadPool.h*
@@ -147,10 +147,9 @@ ThreadPool::~ThreadPool()
 ```
 
 
-# 使用方法
+# Usage
 
-
-参考代码位置：<https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/ThreadPoolSample>
+Reference code location: <https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/ThreadPoolSample>
 
 ```
     ThreadPool pool(2);
@@ -161,7 +160,7 @@ ThreadPool::~ThreadPool()
 ```
 
 
-测试代码如下：
+Test code:
 
 ```
     static ThreadPool pool(2);
@@ -179,16 +178,16 @@ ThreadPool::~ThreadPool()
 ```
 
 
-# 其他
+# Others
 
 
-iOS上有多种线程创建方法，上面只是一种C++的实现。GitHub还有其他简单的实现：
+iOS has multiple thread creation methods, above is just one C++ implementation. GitHub also has other simple implementations:
 
 - <https://github.com/nbsdx/ThreadPool>
 - <https://github.com/tghosgor/threadpool11>
 
 
-欢迎关注订阅号「客户端技术评论」：
+Welcome to follow subscription account "Client Technology Review":
 ![happyhackingstudio](https://everettjf.github.io/images/fun.png)
 
 

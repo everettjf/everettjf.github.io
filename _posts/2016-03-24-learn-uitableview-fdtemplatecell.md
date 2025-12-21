@@ -1,13 +1,9 @@
 ---
 layout: post
-title: UITableView-FDTemplateLayoutCell note
+title: UITableView-FDTemplateLayoutCell Learning Notes
 categories: Skill
 comments: true
 ---
-
-
-
-
 
 
 
@@ -17,13 +13,13 @@ comments: true
  - Repo : <https://github.com/forkingdog/UITableView-FDTemplateLayoutCell>
  - Revision : e3ee86ce419d18d3ff735056f1474f2863e43003
  - Description : 
-简单易用的UITableViewCell自动高度。
-作者的博客文章 <http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/>
+Simple and easy-to-use UITableViewCell auto height.
+Author's blog article <http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/>
 
 <!-- more -->
 
 # Global Note
-简单易用，但在一些复杂界面（例如聊天窗口）中使用时还是需要考虑更多优化问题。
+Simple and easy to use, but when used in some complex interfaces (such as chat windows), more optimization issues need to be considered.
 
 
 # File Notes
@@ -39,7 +35,7 @@ comments: true
 ```
 
 
-__kindof XXXClass 可以这么用
+__kindof XXXClass can be used this way
 
 
 ## 1. UITableView+FDTemplateLayoutCell.h
@@ -53,7 +49,7 @@ __kindof XXXClass 可以这么用
 ```
 
 
-UITableView的extension
+UITableView extension
 
 
 ## 2. UITableView+FDTemplateLayoutCell.h
@@ -79,7 +75,7 @@ UITableView的extension
 ```
 
 
-使用 UITableViewCell 模板Cell计算高度，通过 fd_isTemplateLayoutCell 可在Cell内部判断当前是否是模板Cell。可以省去一些与高度无关的操作。
+Using UITableViewCell template cell to calculate height, can check inside the cell if it's currently a template cell via fd_isTemplateLayoutCell. Can skip some operations unrelated to height.
 
 
 ## 3. UITableView+FDTemplateLayoutCell.m
@@ -101,13 +97,12 @@ UITableView的extension
 ```
 
 
-使用runtime增加属性的实现。
+Implementation of adding properties using runtime.
 
-SEL类型的_cmd ， 每个方法内部都有，表示方法自身。
-因此，可以NSStringFromSelector(_cmd)返回当前方法名称。
+SEL type _cmd, exists inside each method, represents the method itself.
+Therefore, NSStringFromSelector(_cmd) returns the current method name.
 
-使用 get的SEL（也就是_cmd）作为objc_getAssociatedObject的key。值得学习。但要注意set中也要用相同的key，也就是@selector(fd_isTemplateLayoutCell)。
-
+Using the getter's SEL (i.e., _cmd) as the key for objc_getAssociatedObject. Worth learning. But note that set must also use the same key, which is @selector(fd_isTemplateLayoutCell).
 
 
 
@@ -130,7 +125,7 @@ SEL类型的_cmd ， 每个方法内部都有，表示方法自身。
 ```
 
 
-指定索引定义数组的方式。oc的小技巧真不少。
+Specifying index to define array. OC has many tricks.
 
 
 ## 5. UITableView+FDTemplateLayoutCell.m
@@ -151,8 +146,8 @@ SEL类型的_cmd ， 每个方法内部都有，表示方法自身。
 ```
 
 
-AutoLayout 计算Size的方法 systemLayoutSizeFittingSize。
-这里新增一个宽度的约束，计算高度后再移除掉。 不错的想法。
+AutoLayout method to calculate Size: systemLayoutSizeFittingSize.
+Here add a width constraint, calculate height, then remove it. Good idea.
 
 
 ## 6. UITableView+FDTemplateLayoutCell.m
@@ -168,7 +163,7 @@ AutoLayout 计算Size的方法 systemLayoutSizeFittingSize。
 ```
 
 
-不使用AutoLayout的情况下，使用sizeThatFits来获取大小。自定义cell需要实现这个函数。
+When not using AutoLayout, use sizeThatFits to get size. Custom cells need to implement this function.
 
 
 ## 7. UITableView+FDTemplateLayoutCell.m
@@ -203,12 +198,12 @@ AutoLayout 计算Size的方法 systemLayoutSizeFittingSize。
 ```
 
 
-关键的函数。
+Key function.
 
-- 给当前TableView关联一个可变字典。
-- 每一种 CellIdentifier 一个Key。
-- 用于存储模板Cell。
-- 模板Cell用于在内存中构建Cell，并对这个模板Cell计算高度。
+- Associate a mutable dictionary with the current TableView.
+- One Key for each CellIdentifier.
+- Used to store template cells.
+- Template cells are used to build cells in memory and calculate height for this template cell.
 
 
 ## 8. UITableView+FDIndexPathHeightCache.m
@@ -222,7 +217,7 @@ typedef NSMutableArray<NSMutableArray<NSNumber *> *> FDIndexPathHeightsBySection
 ```
 
 
-缓存高度。每个section一个数组。
+Cache heights. One array per section.
 
 
 ## 9. UITableView+FDIndexPathHeightCache.m
@@ -237,7 +232,7 @@ typedef NSMutableArray<NSMutableArray<NSNumber *> *> FDIndexPathHeightsBySection
 ```
 
 
-横屏竖屏各自缓存。
+Separate cache for portrait and landscape.
 
 
 ## 10. UITableView+FDIndexPathHeightCache.m
@@ -251,7 +246,7 @@ typedef NSMutableArray<NSMutableArray<NSNumber *> *> FDIndexPathHeightsBySection
 ```
 
 
-判断横竖屏
+Check portrait or landscape
 
 
 ## 11. UITableView+FDIndexPathHeightCache.m
@@ -273,7 +268,7 @@ typedef NSMutableArray<NSMutableArray<NSNumber *> *> FDIndexPathHeightsBySection
 ```
 
 
-CGFLOAT_IS_DOUBLE 注意这个。
+Note CGFLOAT_IS_DOUBLE.
 
 
 ## 12. UITableView+FDIndexPathHeightCache.m
@@ -287,7 +282,7 @@ CGFLOAT_IS_DOUBLE 注意这个。
 ```
 
 
-这个没看懂啊 NSMethodSignature
+Don't understand this NSMethodSignature
 
 
 ## 13. UITableView+FDIndexPathHeightCache.m
@@ -313,7 +308,7 @@ static void __FD_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void (
 ```
 
 
-一个奇技淫巧。看来这样可以在栈回朔中显示出这个“提示用的”方法名称。
+A clever trick. Looks like this can display this "hint" method name in stack traces.
 
 
 ## 14. UITableView+FDIndexPathHeightCache.m
@@ -348,9 +343,9 @@ static void __FD_TEMPLATE_LAYOUT_CELL_PRIMARY_CALL_IF_CRASH_NOT_OUR_BUG__(void (
 ```
 
 
-神奇的load方法。当第一次看到load方法，惊呼Objective C真是太灵活了。
+Amazing load method. When I first saw the load method, exclaimed that Objective C is so flexible.
 
-load 文档参考如下：
+load documentation reference:
 
 ```
 Invoked whenever a class or category is added to the Objective-C runtime; implement this method to perform class-specific behavior upon loading.
@@ -361,8 +356,8 @@ All +load methods in your image.
 All C++ static initializers and C/C++ __attribute__(constructor) functions in your image.
 All initializers in frameworks that link to you.
 In addition:
-A class’s +load method is called after all of its superclasses’ +load methods.
-A category +load method is called after the class’s own +load method.
+A class's +load method is called after all of its superclasses' +load methods.
+A category +load method is called after the class's own +load method.
 In a custom implementation of load you can therefore safely message other unrelated classes from the same image, but any load methods implemented by those classes may not have run yet.
 
 ```
@@ -385,11 +380,11 @@ In a custom implementation of load you can therefore safely message other unrela
 ```
 
 
-method_exchangeImplementations 可以交换两个Method。
+method_exchangeImplementations can exchange two Methods.
 
-类似做Windows开发时的API HOOK（detours、mhook），这Objective C的Runtime都给提供好了，更上层一些。
+Similar to API HOOK when doing Windows development (detours, mhook), Objective C's Runtime provides this, more high-level.
 
-俗称“swizzle method”。
+Commonly called "swizzle method".
 
 
 ## 16. UITableView+FDKeyedHeightCache.m
@@ -414,7 +409,7 @@ method_exchangeImplementations 可以交换两个Method。
 ```
 
 
-每个TableView关联一个高度缓存
+Associate a height cache with each TableView
 
 
 ## 17. UITableView+FDTemplateLayoutCellDebug.h
@@ -428,7 +423,7 @@ method_exchangeImplementations 可以交换两个Method。
 ```
 
 
-附加功能推荐用Category这种方式增加。
+Recommend using Category to add additional functionality.
 
 
 
@@ -439,5 +434,4 @@ method_exchangeImplementations 可以交换两个Method。
 
 ---
 *Generated by [XSourceNote](https://github.com/everettjf/XSourceNote) at 2016-03-29 15:42:35 +0000*
-
 

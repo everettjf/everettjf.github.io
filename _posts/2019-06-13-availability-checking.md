@@ -1,21 +1,21 @@
 ---
 layout: post
-title: "探索 Availability Checking 内部实现"
+title: "Exploring Availability Checking Internal Implementation"
 categories:
-  - 原理
+  - Principles
 tags:
-  - 原理
+  - Principles
 comments: true
 ---
 
-这篇文章我们一步一步探索`@avaliable`的本质。
+This article step by step explores `@avaliable`'s essence.
 
-[WWDC 2017: What's New in LLVM](https://developer.apple.com/videos/play/wwdc2017/411/) 中苹果介绍了一种新的API可用性检查方法，使用`@avaliable`等类似的语法。详细可见这篇文档 [Marking API Availability in Objective-C
+[WWDC 2017: What's New in LLVM](https://developer.apple.com/videos/play/wwdc2017/411/) Apple introduced a new API availability checking method, using `@avaliable` and similar syntax. Details see this document [Marking API Availability in Objective-C
 ](https://developer.apple.com/documentation/swift/objective-c_and_c_code_customization/marking_api_availability_in_objective-c)
 
 <!-- more -->
 
-其中 `@available()`可用于判断语句中，如下：
+Among them `@available()` can be used in conditional statements, as below:
 
 ```
 if (@available(iOS 11, *)) {
@@ -25,12 +25,12 @@ if (@available(iOS 11, *)) {
 }
 ```
 
-相信这也是大家最熟悉的，那么`@avaliable`到底是什么呢？
+Believe this is also most familiar to everyone, then what is `@avaliable`?
 
 
-## 最简单的例子
+## Simplest Example
 
-我们新建一个iOS工程，然后AppDelegate里调用下如下代码：
+We create a new iOS project, then in AppDelegate call code below:
 
 ```
 void test_available() {
@@ -44,31 +44,31 @@ void test_available() {
 }
 ```
 
-例子代码[见这里](https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/avaliabletest/avaliabletest/AppDelegate.m)
+Example code [see here](https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/avaliabletest/avaliabletest/AppDelegate.m)
 
-## 逆向看看
+## Reverse to See
 
-编译（模拟器即可）后，使用Hopper打开生成的可执行文件，找到这个 test_available，如图：
+After compilation (simulator is fine), use Hopper to open generated executable, find this test_available, as shown:
 
 ![](/media/15604434575850.jpg)
 
-看下反编译的伪代码：
+Look at decompiled pseudo code:
 ![](/media/15604436909250.jpg)
 
-可知调用了 `___isOSVersionAtLeast` 这个函数，`0xb`就是`iOS 11`，估计后面两个`0x0`就是第二位和第三位版本了。
+Can see called `___isOSVersionAtLeast` this function, `0xb` is `iOS 11`, estimate following two `0x0` are second and third version digits.
 
-然后Hopper找到这个函数，
+Then Hopper finds this function,
 
 ![](/media/15604441390827.jpg)
 
-一眼看去，猜测大概就是`dispatch_once`里获取了当前系统的版本，然后赋值给`_GlobalMajor`、`_GlobalMinor`和`_GlobalSubminor`三个全局变量。
+At a glance, guess roughly in `dispatch_once` got current system version, then assigned to `_GlobalMajor`, `_GlobalMinor` and `_GlobalSubminor` three global variables.
 
-那么`dispatch_once`里是怎么获取的系统版本呢？Hopper的反汇编出的伪代码似乎看不出`block`中执行了什么了。切换到汇编代码视图，可见：
+Then how does `dispatch_once` get system version? Hopper's disassembled pseudo code seems can't see what `block` executed. Switch to assembly code view, can see:
 
 ![](/media/15604447370360.jpg)
 
 
-这里调用了 `_parseSystemVersionPList`函数，继续看这个函数：
+Here called `_parseSystemVersionPList` function, continue looking at this function:
 ![](/media/15604448185191.jpg)
 
 ![](/media/15604451451816.jpg)
@@ -77,29 +77,29 @@ void test_available() {
 ![](/media/15604449285315.jpg)
 
 
-看到有对这个文件的操作`/System/Library/CoreServices/SystemVersion.plist`，而且有个`fopen`。那我们运行Xcode，断点到这个fopen。
+See operation on this file `/System/Library/CoreServices/SystemVersion.plist`, and there's a `fopen`. Then run Xcode, breakpoint at this fopen.
 
 ![](/media/15604452404549.jpg)
 
-这个文件路径如下：
+This file path:
 
 ```
 /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/System/Library/CoreServices/SystemVersion.plist
 ```
 
-我们打开看看，
+We open to see,
 
 ![](/media/15604453014853.jpg)
 
-那就明白咯，最终是访问这个文件，获取其中的`ProductVersion`，并通过`sscanf`解析出三个`_GlobalMajor`、`_GlobalMinor`和`_GlobalSubminor`三个数值。
+Then understand, finally is accessing this file, get `ProductVersion` in it, and through `sscanf` parse out three `_GlobalMajor`, `_GlobalMinor` and `_GlobalSubminor` three values.
 
 
-> sscanf 好古老呀，看到他，好像回到了刚学C语言的那一年。
+> sscanf so old, seeing it, seems back to year just learned C language.
 
 
-## 阶段总结
+## Stage Summary
 
-从目前的分析来看，`@available(iOS 11, *)`最终将变为如下伪代码：
+From current analysis, `@available(iOS 11, *)` finally becomes following pseudo code:
 
 ```
 _GlobalMajor
@@ -123,32 +123,32 @@ BOOL ___isOSVersionAtLeast(major,minor,subminor) {
 }
 ```
 
-## Clang 怎么处理
+## How Clang Handles
 
 
-相关代码我们从这里搜`https://github.com/llvm-mirror/clang/`，
+Related code we search from `https://github.com/llvm-mirror/clang/`,
 
-用于表示avaliable的AST：`AvailabilitySpec`。
+AST for representing avaliable: `AvailabilitySpec`.
 
 https://github.com/llvm-mirror/clang/blob/master/include/clang/AST/Availability.h
 
 ![](/media/15604461673229.jpg)
 
-还搜到了创建函数的代码，
+Also found code for creating function,
 
 ![](/media/15604462205628.jpg)
 
 
-具体我对llvm也不是太熟，就不细说了（也说不出来哈），感兴趣自行搜索啦。
+Specifically I'm not too familiar with llvm, won't elaborate (also can't say), interested search yourself.
 
 
-## 再总结
+## Summary Again
 
-了解了这个本质，以后用起来就更自信了哈。很有趣。
+Understanding this essence, using in future will be more confident. Very interesting.
 
 ---
 
-欢迎订阅 :)
+Welcome to subscribe :)
 
 ![](/images/fun.png)
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "如何快速列出App的所有+load方法"
+title: "How to Quickly List All +load Methods in App"
 categories:
   - lldb
 tags:
@@ -11,25 +11,25 @@ comments: true
 ---
 
 
-`Objective C +load` 方法是个神奇又邪恶的方法。
+`Objective C +load` method is a magical and evil method.
 
 <!-- more -->
 
-- 当新手得到它时，会惊讶于它的神奇。
-- 当高手得到它时，会沉迷其中无法自拔。
-- 当老手得到它时，会惊恐于它的邪恶。
+- When beginners get it, will be amazed by its magic.
+- When experts get it, will be addicted unable to extricate.
+- When veterans get it, will be terrified by its evil.
 
-多数大型App都已经或者正在想办法去摆脱它。那么，如果快速看到你的App中有多少+load方法，看看中毒有多深。
+Most large Apps already or are trying to get rid of it. Then, how to quickly see how many +load methods in your App, see how deep the poison.
 
-假设如下场景：
+Assume scenario below:
 
-一天你在愉快的用Xcode调试程序，
+One day you happily debugging program with Xcode,
 
-打开Xcode，按下F5，
+Open Xcode, press F5,
 
-突然，你想看一下App中的+load方法有多少？
+Suddenly, you want to see how many +load methods in App?
 
-点击一下Pause，然后输入
+Click Pause, then input
 
 ```
 br s -r "\+\[.+ load\]$"
@@ -37,7 +37,7 @@ br s -r "\+\[.+ load\]$"
 
 ![-w352](/media/15880051383019.jpg)
 
-然后输入
+Then input
 
 ```
 br list
@@ -46,43 +46,43 @@ br list
 ![-w930](/media/15880052076002.jpg)
 
 
-或许你会惊讶，原来我的App中+load这么多（或者少）
+Perhaps you'll be surprised, turns out my App has so many (or few) +load methods
 
 
-## 原理
+## Principle
 
-使用了lldb的breakpoint命令。
+Used lldb's breakpoint command.
 
 ![-w576](/media/15880053337758.jpg)
 
 ```
-br s -r "正则"
-就是 
-breakpoint set -r "正则"
+br s -r "regex"
+is 
+breakpoint set -r "regex"
 ```
 
-通过正则匹配符号设置断点。
+Set breakpoint through regex matching symbols.
 
-## 小问题
+## Small Question
 
-那么想想，如果这些+load方法中的代码出现了crash，你的crash监控（bugly等等）能监控到吗？
+Then think, if code in these +load methods crashes, can your crash monitoring (bugly, etc.) monitor it?
 
-当然得到的90%的回答是：不会Crash的。
+Of course 90% answer is: Won't Crash.
 
-让我想起了特朗普的一句话：我的"代码"很完美。
+Makes me think of Trump's words: My "code" is perfect.
 
-哈哈 :)
+Haha :)
 
-## 总结
+## Summary
 
-很有趣:)
+Very interesting:)
 
-哎，我好菜，我要去学习《基于桥的全量方法Hook》了
+Ah, I'm so inexperienced, I need to learn "Bridge-based Full Method Hook" now
 
 http://satanwoo.github.io/2020/04/26/TrampolineHookOpenSource/
 
 ---
 
-大家喜欢的话，就关注下订阅号，以示鼓励：
+If everyone likes, follow subscription account to encourage:
 
 ![](/images/fun.png)

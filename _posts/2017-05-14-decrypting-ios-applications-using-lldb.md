@@ -1,11 +1,10 @@
 ---
 layout: post
-title: 使用 lldb 手动解密 iOS AppStore App
+title: Decrypting iOS Applications Using lldb
 categories: Skill
 comments: true
 ---
  
-
 
 
 In book : Hacking iOS Applications
@@ -14,12 +13,12 @@ In book : Hacking iOS Applications
 
 ---
 
-补充：
+Addition:
 
-既然lldb支持python script，那么可以通过脚本更加自动一些。
+Since lldb supports python script, can make it more automatic through scripts.
 
-有了这个想法，但一直没投入时间去写。
+Had this idea, but never invested time to write it.
 
-后来，0xbbc实现了这个功能。 [传送门](https://blog.0xbbc.com/2017/08/dumpdecrypted-in-lldb/)
+Later, 0xbbc implemented this functionality. [Link](https://blog.0xbbc.com/2017/08/dumpdecrypted-in-lldb/)
 
 <!-- more -->

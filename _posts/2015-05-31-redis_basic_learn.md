@@ -1,21 +1,18 @@
 ---
 layout: post
-title: "redis使用方式总结"
+title: "Redis Usage Summary"
 categories: Skill
 comments: true
 ---
 
 
 
+Notes from "Redis Getting Started Guide."
+*Note: Which type to use depends on the specific situation. The following is just one approach.*
 
-
-
-《redis入门指南》笔记。
-*注意：使用何种类型取决于具体情境，以下仅是某一种方式。*
-
-# 数据类型
+# Data Types
 1. string
-  字符串类型（就是最简单的key-value）
+  String type (simplest key-value)
 
 ~~~
   SET bar 1
@@ -24,7 +21,7 @@ comments: true
 <!-- more -->
 
 2. hash
-  散列类型(key-field1-value1-field2-value2...)
+  Hash type (key-field1-value1-field2-value2...)
 
 ~~~
   HSET car price 500
@@ -33,11 +30,11 @@ comments: true
 ~~~
 
 3. list
-  列表类型(key-value1-value2...)
+  List type (key-value1-value2...)
 
 ~~~
-  链表实现，靠近两端数据获取速度快，而元素增多后，访问中间数据速度较慢。
-  更适合“新鲜事”、“日志”这种访问中间元素较少的情况。
+  Linked list implementation. Fast access to data near both ends, but slower access to middle elements as the list grows.
+  More suitable for "news feed" or "logs" where middle elements are rarely accessed.
 
   LPUSH numbers 1 2 3
   RPUSH numbers 6 5 4
@@ -47,7 +44,7 @@ comments: true
 ~~~
 
 4. set
-  集合类型(key-member1-member2...)
+  Set type (key-member1-member2...)
 
 ~~~
   SADD letters a b c
@@ -60,7 +57,7 @@ comments: true
 ~~~
 
 5. zset
-  有序集合类型(key-score1-member1-score2-memeber2...)
+  Sorted set type (key-score1-member1-score2-member2...)
 
 ~~~
   ZADD scoreboard 89 Tom 68 Peter 100 David
@@ -69,8 +66,8 @@ comments: true
   ZRANGE scoreboard 60 90 WITHSCORES
 ~~~
 
-# 博客系统实现
-1. 博客名称存储
+# Blog System Implementation
+1. Blog name storage
 
 ~~~
   key = blog.name
@@ -80,7 +77,7 @@ comments: true
   GET blog.name
 ~~~
 
-2. 文章自增ID
+2. Post auto-increment ID
 
 ~~~
   key = posts:count
@@ -89,7 +86,7 @@ comments: true
   $postID = INCR posts:count
 ~~~
 
-3. 文章访问量统计
+3. Post view count statistics
 
 ~~~
   key = post:$postID:page.view
@@ -98,7 +95,7 @@ comments: true
   $pageViewCount = INCR post:10:page.view
 ~~~
 
-4. 文章数据（方式一:数据存储为json）
+4. Post data (Method 1: Store data as JSON)
 
 ~~~
   key = post:$postID:data
@@ -109,7 +106,7 @@ comments: true
   GET post:10:data $jsonData
 ~~~
 
-5. 文章数据（方式二：哈希）
+5. Post data (Method 2: Hash)
 
 ~~~
   key = post:$postID
@@ -121,22 +118,22 @@ comments: true
   HSET post:10 time Now()
 ~~~
 
-6. 文章缩略名
+6. Post slug
 
 ~~~
   key = slug.to.id
   type = hash
   e.g.
-  $isSlugAvaliable = HSETNX slug.to.id $newSlug 10
+  $isSlugAvailable = HSETNX slug.to.id $newSlug 10
 ~~~
 
-7. 存储文章ID（方式一：列表）
+7. Store post IDs (Method 1: List)
 
 ~~~
   key = posts:list
   type = list
   e.g.
-  列表可方便分页及删除文章
+  Lists make pagination and post deletion convenient
   LPUSH posts:list 10
   $postsIDs = LRANGE posts:list,$start,$end
   for each $id in $postsIDs
@@ -144,17 +141,17 @@ comments: true
     $title = $post.title
 ~~~
 
-8. 存储文章ID，按时间排序（方式二：有序集合）
+8. Store post IDs, sorted by time (Method 2: Sorted set)
 
 ~~~
   key = posts:createtime
   type = zset
   e.g.
-  有序集合存储文章id与创建时间（unix时间）
-  ZREVRANGEBYSCORE 还可或许时间段内的文章
+  Sorted set stores post id and creation time (Unix time)
+  ZREVRANGEBYSCORE can also get posts within a time range
 ~~~
 
-9. 存储评论列表
+9. Store comment list
 
 ~~~
   key = post:$postID:comments
@@ -164,7 +161,7 @@ comments: true
   LPUSH post:10:comments,$serializedComment
 ~~~
 
-10. 存储日志
+10. Store logs
 
 ~~~
   key = logs
@@ -173,10 +170,10 @@ comments: true
   LPUSH logs $serializedLog
 ~~~
 
-11. 存储标签
+11. Store tags
 
 ~~~
-  一个文章的所有标签都不同，且没有排列顺序要求。
+  All tags for a post are different, and there's no ordering requirement.
   key = post:$postID:tags
   type = set
   e.g.
@@ -184,7 +181,7 @@ comments: true
   $tags = SMEMBERS post:10:tags
 ~~~
 
-12. 列出指定一个或多个标签下所有文章
+12. List all posts under one or more specified tags
 
 ~~~
   key = tag:$tagName:posts
@@ -198,7 +195,7 @@ comments: true
   $postsIDsBothWithTagJavaMysql = SINTER tag:java:posts tag:mysql:posts
 ~~~
 
-13. 按照点击量排序
+13. Sort by view count
 
 ~~~
   key = posts:view
@@ -210,4 +207,3 @@ comments: true
   for each $id in $postsIDs
     $postData = HGETALL post:$id
 ~~~
-

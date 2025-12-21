@@ -1,36 +1,33 @@
 ---
 layout: post
-title:  € euro sign 在编码 cp936 和 gb18030 下的坑
+title: € Euro Sign Pitfall in cp936 and gb18030 Encoding
 categories: Skill
 comments: true
 ---
 
 
 
+Product's first AppStore review passed, encountered a "magical" bug during New Year, App would crash when displaying certain special characters. Later found the cause after various attempts.
 
 
+## First Layer Cause
 
-产品第一次AppStore审核通过，过年时遇到一个“神奇”的bug，在显示某些特殊字符时App会崩溃。后来经过各种尝试找到原因。
+A function returned NSString as nil, user didn't check for nil, causing crash.
 
+## Second Layer Cause
 
-## 第一层原因
-
-一个函数返回的NSString为nil，使用者没有判断nil，导致崩溃。
-
-## 第二层原因
-
-- 部分业务数据库中的信息不是utf-8，而是PC客户端存入的cp936（数据库是SQL Server）
-- 部分信息iOS拿到的是cp936编码的文字。
-- 文字中包含欧元符号 € 。（<https://en.wikipedia.org/wiki/Euro）>
-- iOS把cp936当做gb18030解码（主要是受gbk转utf-8影响，网上一把这类文章）
-- cp936中如果有欧元符号，则会返回nil。
+- Some business database information is not utf-8, but cp936 stored by PC client (database is SQL Server)
+- Some information iOS gets is cp936 encoded text.
+- Text contains euro symbol €. (<https://en.wikipedia.org/wiki/Euro)>
+- iOS treats cp936 as gb18030 decoding (mainly influenced by gbk to utf-8 conversion, many such articles online)
+- If cp936 has euro symbol, will return nil.
 <!-- more -->
 
-## 第三层原因
+## Third Layer Cause
 
-Windows的CP936并符合标准的GBK定义。
+Windows CP936 doesn't conform to standard GBK definition.
 
-> Windows中CP936代码页使用0x80来表示欧元符号，而在GB18030编码中没有使用0x80编码位
+> Windows CP936 code page uses 0x80 to represent euro symbol, while GB18030 encoding doesn't use 0x80 encoding position
 
 
 > Code page 936 is not identical to GBK because a code page encodes characters while the GBK only defines code points. In addition, the Euro sign (€), encoded as 0x80 in CP936, is not defined in GBK.
@@ -52,13 +49,13 @@ search 0x80 in <https://en.wikipedia.org/wiki/Code_page_936>
 
 <https://msdn.microsoft.com/zh-cn/goglobal/bb688113.aspx>
 
-## 解决办法
+## Solution
 
-并没有找到一个靠谱的编码转换工具（iconv貌似可以，但据同事说比较麻烦、且坑较多，使用的话未知风险太多）
+Didn't find a reliable encoding conversion tool (iconv seems possible, but colleague said it's troublesome and has many pitfalls, too many unknown risks if used)
 
-手动替换0x80。
+Manually replace 0x80.
 
-关键代码如下：
+Key code:
 
 ``` c
 @implementation NSString(EncodingUtil)
@@ -121,7 +118,7 @@ search 0x80 in <https://en.wikipedia.org/wiki/Code_page_936>
 ```
 
 
-测试代码： 
+Test code: 
 
 
 ``` c
@@ -169,9 +166,9 @@ char szBadName[101];
 
 
 
-# 总结
+# Summary
 
-这个问题不是普遍问题，应该99.99%的App不会遇到。可是我遇到了……
+This problem is not common, 99.99% of Apps won't encounter it. But I did...
 
 That's all.
 

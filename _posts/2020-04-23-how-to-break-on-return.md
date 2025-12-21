@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "如何断点到函数的return"
+title: "How to Breakpoint at Function's return"
 categories:
   - lldb
 tags:
@@ -10,11 +10,11 @@ tags:
 comments: true
 ---
 
-有一个代码行很多的复杂函数，内部有很多return，单步调试很慢，如何快速找到哪一行return了？
+Has a complex function with many code lines, internally has many returns, step debugging very slow, how to quickly find which line returned?
 
 <!-- more -->
 
-例如代码：
+For example code:
 
 ```
 void foo() {
@@ -52,35 +52,34 @@ int main(int argc, const char * argv[]) {
     foo();
     return 0;
 }
-
 ```
 
-假设foo是个很长很复杂有很多return的函数，如何知道是通过哪一行return的呢？
+Assume foo is a very long complex function with many returns, how to know which line returned?
 
-可以使用lldb的断点
+Can use lldb's breakpoint
 
 ```
 breakpoint set -p return
-或者
+or
 br set -p return
 ```
 
-首先在foo第一行加断点
+First add breakpoint at foo's first line
 
 ![](/media/15875739886610.jpg)
 
-断点触发后，控制台输入 `br set -p return`
+After breakpoint triggers, console input `br set -p return`
 ![](/media/15875740456070.jpg)
 
-然后continue，就会断点到函数return的那一行了。
+Then continue, will breakpoint at function's return line.
 
 ![](/media/15875741244090.jpg)
 
 
-很有趣~
+Very interesting~
 
 ---
 
-大家喜欢的话，就关注下订阅号，以示鼓励：
+If everyone likes, follow subscription account to encourage:
 
 ![](/images/fun.png)

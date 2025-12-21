@@ -1,21 +1,21 @@
 ---
 layout: post
-title: "C++类中的ObjC对象什么时候dealloc"
+title: "When Does ObjC Object in C++ Class dealloc"
 categories:
-  - 探索
+  - Exploration
 tags:
   - objc
   - dealloc
 comments: true
 ---
 
-在使用Objective C++时，可以用C++的struct或者class存储Objective C对象。
+When using Objective C++, can use C++'s struct or class to store Objective C objects.
 
 
 <!-- more -->
 
 
-例如：
+For example:
 
 ```
 struct CppStruct {
@@ -23,9 +23,9 @@ struct CppStruct {
 };
 ```
 
-那么突然想，如果CppStruct析构了，MyObject会dealloc吗？不用多想，肯定也会。但如何做到的呢？
+Then suddenly think, if CppStruct destructs, will MyObject dealloc? Don't need to think much, definitely will. But how is it done?
 
-写段代码验证下，
+Write code to verify,
 
 ```
 
@@ -73,52 +73,51 @@ int main(int argc, const char * argv[]) {
 }
 ```
 
-如下输出
+Output below
 
 ![](/media/15871350384682.jpg)
 
-可知，MyObject确实dealloc了。
+Can know, MyObject indeed dealloced.
 
-那么，断点到dealloc，看看怎么调用到的。
+Then, breakpoint at dealloc, see how called.
 
 ![](/media/15871351008102.jpg)
 
-看到上图有两个 `~CppStruct()`，其中一个调用了 `objc_storeStrong`，objc_storeStrong 进一步触发了MyObject的dealloc。
+See figure above has two `~CppStruct()`, one called `objc_storeStrong`, objc_storeStrong further triggered MyObject's dealloc.
 
 ![](/media/15871352168452.jpg)
 
-从上图可知，一定是编译器生成了objc_storeStrong调用的代码。
+From figure above can know, compiler must generated objc_storeStrong call code.
 
 ![](/media/15871352826095.jpg)
 
-看下Disassembly，确实生成了objc_storeStrong调用代码。
+Look at Disassembly, indeed generated objc_storeStrong call code.
 ![](/media/15871353987126.jpg)
 
-进一步实锤。
+Further confirmed.
 
-LLVM 怎么去生成的这个逻辑，就不去翻了哈。
+How LLVM generates this logic, won't search ha.
 
-## 参考
+## References
 
-上面调试中用了可编译的objc runtime，GitHub上有很多，可以如下搜索对应objc版本即可：
+Above debugging used compilable objc runtime, GitHub has many, can search corresponding objc version:
 
 https://github.com/search?q=objc+779.1
 https://github.com/LGCooci/objc4_debug
 
 
-## 总结
+## Summary
 
-以后可以大胆的用C++ struct 存储Objective C对象了。
+In future can boldly use C++ struct to store Objective C objects.
 
 
 ---
 
 
-很有趣 :)
+Very interesting :)
 
 ---
 
-大家喜欢的话，就关注下订阅号，以示鼓励：
+If everyone likes, follow subscription account to encourage:
 
 ![](/images/fun.png)
-

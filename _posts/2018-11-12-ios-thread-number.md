@@ -1,20 +1,20 @@
 ---
 layout: post
-title: "线程标识获取方法"
+title: "Thread Identifier Retrieval Methods"
 categories:
-  - 性能优化
+  - Performance Optimization
 tags:
-  - 线程
+  - Thread
 comments: true
 ---
 
-性能优化的开发中经常需要获取线程标识，这篇文章简单罗列和对比了四种获取线程标识的方法。
+Performance optimization development often needs to get thread identifiers, this article simply lists and compares four methods to get thread identifiers.
 
 <!-- more -->
 
-# 四种方法
+# Four Methods
 
-这四种方法如下：
+These four methods:
 
 ```
 // <NSThread: 0x283903000>{number = 1, name = main}
@@ -26,12 +26,12 @@ comments: true
 // 0x10268ab80
 pthread_t tid = pthread_self()
 
-// 687599 （这与NSLog中的线程ID相同）
+// 687599 (This is same as thread ID in NSLog)
 uint64_t tid;
 pthread_threadid_np(NULL, &tid);
 ```
 
-格式化输出的代码如下：
+Formatted output code:
 
 ```
 NSLog(@"[[NSThread currentThread] description] = %@", [[NSThread currentThread] description]);
@@ -42,9 +42,9 @@ pthread_threadid_np(NULL, &tid);
 NSLog(@"pthread_threadid_np = %llu",tid);
 ```
 
-# 耗时对比
+# Time Consumption Comparison
 
-这是我在 iPhone7 iOS12 下主线程和子线程各10000次的耗时:
+This is my time consumption on iPhone7 iOS12 main thread and child thread each 10000 times:
 
 ```
 -----main thread-----
@@ -59,15 +59,15 @@ NSLog(@"pthread_threadid_np = %llu",tid);
 0.04883333167526871ms - pthread_threadid_np
 ```
 
-可见，`[[NSThread currentThread] description]` 应该是内部字符串操作较多，相对耗时。其他三种方法耗时都很少。
+Can see, `[[NSThread currentThread] description]` should have more internal string operations, relatively time-consuming. Other three methods all have very little time consumption.
 
-# 参考代码
+# Reference Code
 
 <https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/ThreadNumberDemo/ThreadNumberDemo/AppDelegate.m>
 
-# 总结
+# Summary
 
-那么以后就开心大胆的用这两个方法咯，其中 pthread_threadid_np 与 NSLog 中的线程ID相同，效果看来更佳。
+Then in future happily boldly use these two methods, among them pthread_threadid_np is same as thread ID in NSLog, effect looks better.
 
 ```
 pthread_t tid = pthread_self()
@@ -77,6 +77,5 @@ pthread_threadid_np(NULL, &tid);
 ```
 
 
-欢迎关注订阅号「客户端技术评论」：
+Welcome to follow subscription account "Client Technology Review":
 ![](/images/fun.png)
-

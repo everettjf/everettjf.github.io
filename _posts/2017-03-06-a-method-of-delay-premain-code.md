@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "一种延迟 premain code 的方法"
+title: "A Method to Delay premain Code"
 categories:
   - Skill
 tags:
@@ -12,42 +12,42 @@ comments: true
 
 
 
-下面三种方法可以让代码在main函数之前执行：
+The following three methods can make code execute before main function:
 
 1. All +load methods
 2. All C++ static initializers 
 3. All C/C++ __attribute__(constructor) functions
 
 
-# main函数之前执行的问题
+# Problems with Code Executing Before main Function
 
-1. 无法Patch
-2. 不能审计耗时
-3. 调用UIKit相关方法会导致部分类提早初始化
-4. 主线程执行，完全阻塞式执行
+1. Cannot Patch
+2. Cannot audit time consumption
+3. Calling UIKit related methods causes some classes to initialize early
+4. Executes on main thread, completely blocking execution
 
 
 <!-- more -->
 
-# 如何解决这些问题
+# How to Solve These Problems
 
-能否提供一种便捷的方法把main函数之前的代码移植到main函数之后。
+Can we provide a convenient method to migrate code before main function to after main function.
 
-## 想法来源
+## Idea Source
 
-发现 Facebook 有个新增的段 FBInjectable ，学习这个段的含义可以知道：可以在编译及链接时期把一些数据放到自定义段中，然后程序中获取段的数据。
+Found Facebook has a new segment FBInjectable, learning this segment's meaning can know: can put some data into custom segment at compile and link time, then program gets segment's data.
 
-如果这个数据是字符串，我们可以通过字符串获取类名；如果是函数地址，我们可以直接调用。
+If this data is string, we can get class name through string; if function address, we can directly call.
 
-（关于 Facebook 的段 FBInjectable 的含义，可以参考文章 <https://everettjf.github.io/2016/08/20/facebook-explore-section-fbinjectable> ）
+(About Facebook's segment FBInjectable meaning, can reference article <https://everettjf.github.io/2016/08/20/facebook-explore-section-fbinjectable> )
 
-那么如何创建FBInjectable段呢？
+Then how to create FBInjectable segment?
 
-可以使用 __attribute((used,section("segmentname,sectionname"))) 关键字把某个变量的放入特殊的section中。
+Can use __attribute((used,section("segmentname,sectionname"))) keyword to put a variable into special section.
 
-（attribute 参考 <http://gcc.gnu.org/onlinedocs/gcc-3.2/gcc/Variable-Attributes.html> ）
+(attribute reference <http://gcc.gnu.org/onlinedocs/gcc-3.2/gcc/Variable-Attributes.html> )
 
-例如：
+For example:
 
 ```
 char * kString1 __attribute((used,section("__DATA,FBInjectable"))) = "string 1";
@@ -55,11 +55,11 @@ char * kString2 __attribute((used,section("__DATA,FBInjectable"))) = "string 2";
 char * kString3 __attribute((used,section("__DATA,FBInjectable"))) = "string 3";
 ```
 
-编译后，可以在程序的 DATA segment下新建 FBInjectable section，并把kString1,kString2,kString3 三个变量的地址作为 FBInjectable section 内容。
+After compilation, can create FBInjectable section under program's DATA segment, and put kString1,kString2,kString3 three variables' addresses as FBInjectable section content.
 
-## 如何应用
+## How to Apply
 
-模仿Facebook的代码，下面这段代码可以把函数地址（varSampleObject的值）的地址放到QWLoadable段中。
+Imitating Facebook's code, code below can put function address (varSampleObject's value)'s address into QWLoadable segment.
 
 ```
 typedef void (*QWLoadableFunctionTemplate)();
@@ -69,11 +69,11 @@ static void QWLoadableSampleFunction(){
 static QWLoadableFunctionTemplate varSampleObject __attribute((used, section("__DATA,QWLoadable"))) = QWLoadableSampleFunction;
 ```
 
-然后主程序在启动时通过getsectiondata获取到QWLoadable的内容，并逐个调用。
+Then main program at startup gets QWLoadable's content through getsectiondata, and calls one by one.
 
-## 进一步完善
+## Further Improvement
 
-为了能标记每个函数的名字，可以让函数内部传出，如下：
+To mark each function's name, can let function internally pass out, as below:
 
 ```
 typedef int (*QWLoadableFunctionCallback)(const char *);
@@ -89,10 +89,10 @@ static QWLoadableFunctionTemplate varSampleObject __attribute((used, section("__
 
 ```
 
-这样函数通过 QWLoadableCallback 告诉外部自己的“标识”，并给予外部过滤自己（不调用）的能力。
+This way function tells external its "identifier" through QWLoadableCallback, and gives external ability to filter itself (not call).
 
 
-## 启动时调用
+## Call at Startup
 
 ```
 
@@ -136,9 +136,9 @@ static void QWLoadableRun(){
 }
 ```
 
-## 改造
+## Refactoring
 
-调用方可以像下面这样，把原来在+load中的代码移植到两个宏（QWLoadableFunctionBegin 和 QWLoadableFunctionEnd）之间。
+Caller can like below, migrate code originally in +load to between two macros (QWLoadableFunctionBegin and QWLoadableFunctionEnd).
 
 ```
 QWLoadableFunctionBegin(FooObject)
@@ -148,19 +148,18 @@ QWLoadableFunctionEnd(FooObject)
 ```
 
 
-# 动态库
+# Dynamic Libraries
 
-动态库是独立的个体，所以需要单独处理动态库中的QWLoadable的段。
+Dynamic libraries are independent entities, so need to separately handle QWLoadable segments in dynamic libraries.
 
 
-# 性能
+# Performance
 
-把+load等main函数之前的代码移植到了main函数之后，但也新增了一个读取section的耗时。
+Migrated +load and other code before main function to after main function, but also added a time cost for reading section.
 
-经过测试，100个函数地址的读取，在iPhone5的设备上读取不到1ms。新增了这不到1ms的耗时（这1ms也是可审计的），带来了所有启动阶段行为的可审计，以及最重要的Patch能力。
+After testing, reading 100 function addresses, on iPhone5 device reads less than 1ms. Added this less than 1ms time cost (this 1ms is also auditable), brings auditability of all startup stage behaviors, and most importantly Patch capability.
 
-# 参考代码
+# Reference Code
 
 <https://github.com/everettjf/Yolo/tree/master/LoadableMacro>
-
 

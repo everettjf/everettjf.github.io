@@ -1,48 +1,46 @@
 ---
 layout: post
-title: 支付宝语音保存Tweak
+title: Alipay Wallet Chat Voice Save Tweak
 categories: Skill
 comments: true
 ---
 
 
 
+# Background
+Alipay group voice. Recently finished reading "iOS Application Reverse Engineering" this book, thought I could try writing a tweak to save voices in chats.
 
+# Environment
 
-# 背景
-支付宝群语音。近期正好看完了《iOS应用逆向工程》这本书，想来可以试试写个tweak，保存聊天中的语音。
+1. iPhone 5, iOS 8.3, jailbroken.
+2. Alipay 9.3.
 
-# 环境
-
-1. iPhone 5，iOS 8.3，越狱。
-2. 支付宝9.3 。
-
-使用iPhone5主要是因为CPU是32位，32位arm汇编。IDA免费版不能反汇编64位程序。其次也是我初学，这本书中的例子也都是32位汇编，对我来说更简单点。
+Using iPhone 5 mainly because the CPU is 32-bit, 32-bit arm assembly. IDA free version can't disassemble 64-bit programs. Also, I'm a beginner, and the examples in this book are all 32-bit assembly, simpler for me.
 
 <!-- more -->
 
-# 去掉保护
+# Remove Protection
 
-## 获取 AppBundleIdentifier
+## Get AppBundleIdentifier
 
-进入 AlipayWallet.app 目录，
+Enter AlipayWallet.app directory,
 
 ~~~
 everettjfs-iPhone:/var/mobile/Containers/Bundle/Application/9DB7CE45-3B4C-42A3-9D4D-49A3A5122903/AlipayWallet.app root# cat Info.plist | grep com.
     <string>com.alipay.iphoneclient</string>
 ~~~
 
-## 去掉 ptrace 和 __RESTRICT section 两个保护
+## Remove ptrace and __RESTRICT section Two Protections
 
-参见：<https://everettjf.github.io/2015/12/28/simple-ios-antidebugging-and-antiantidebugging/>
+See: <https://everettjf.github.io/2015/12/28/simple-ios-antidebugging-and-antiantidebugging/>
 
-破掉保护后就可以使用cycript了。
+After breaking the protection, can use cycript.
 
 
-# 分析
+# Analysis
 
-## 砸壳
-使用 dumpdecripted
+## Decrypt
+Using dumpdecrypted
 
 ~~~
 everettjfs-iPhone:~ root# cycript -p AlipayWallet
@@ -59,9 +57,9 @@ $ class-dump -s -S -H --arch armv7 AlipayWallet.decrypted -o dumpAlipay
 ~~~
 
 
-## 找到语音对应的UITableViewCell
+## Find Voice Corresponding UITableViewCell
 
-打开支付宝，切换到聊天界面。保持聊天对话的对方有语音消息。
+Open Alipay, switch to chat interface. Keep chat with the other party having voice messages.
 
 ~~~
 everettjfs-iPhone:~ root# cycript -p AlipayWallet
@@ -73,20 +71,20 @@ cy# [[UIApp keyWindow] recursiveDescription]
    ......
 ~~~
 
-可以把语音时长作为关键字，例如搜索`1''`，可以找到：
+Can use voice duration as keyword, for example search `1''`, can find:
 
 ~~~
 <UILabel: 0xe2a1900; frame = (141 65.316; 15 14); text = '1'''; userInteractionEnabled = NO; layer = <_UILabelLayer: 0xe2a19e0>>
 ~~~
 
-进而可以找到对应的UITableViewCell：
+Then can find the corresponding UITableViewCell:
 
 ~~~
 <CTMessageCell: 0x39ecc00; baseClass = UITableViewCell; frame = (0 285; 320 99); ......
 ~~~
 
-于是，从class-dump的文件中找到CTMessageCell的头文件：
-这时就要火眼金睛啦。找到以下信息：
+So, find CTMessageCell header file from class-dump files:
+Now need sharp eyes. Find the following information:
 
 ~~~
 @property(retain, nonatomic) APChatMedia *voiceObj; // @synthesize voiceObj=_voiceObj;
@@ -95,9 +93,9 @@ cy# [[UIApp keyWindow] recursiveDescription]
 - (void)playAudio;
 ~~~
 
-可以直接在cycript中调用来验证数据是不是要找的。
+Can directly call in cycript to verify if the data is what we're looking for.
 
-这个APChatMedia，很有意思。看下头文件。
+This APChatMedia is interesting. Look at the header file.
 
 ~~~
 @interface APChatMedia : NSObject
@@ -105,7 +103,7 @@ cy# [[UIApp keyWindow] recursiveDescription]
 @property(retain, nonatomic) NSString *url; // @synthesize url=_url;
 ~~~
 
-url可以获取到一个字符串。开始看到url我还很高兴，难道就这么简单，难道这就是下载语音文件的url，可惜不是啊）
+url can get a string. Initially seeing url I was happy, could it be this simple, could this be the URL to download the voice file? Unfortunately not)
 
 ~~~
 cy# [#0x3022400 voiceObj]
@@ -114,19 +112,19 @@ cy# [#0xb226710 url]
 @"ww4fd1rfRDShBo_4K6rqfwAAACMAAQED"
 ~~~
 
-又看到APChatMedia的data，难道这就是语音数据，可惜这个值总是nil。
+Also saw APChatMedia's data, could this be the voice data? Unfortunately this value is always nil.
 
-看来得找别的办法，看看playAudio这个方法吧。
+Looks like need to find another way, let's look at the playAudio method.
 
-## 上lldb和IDA
+## Use lldb and IDA
 
-lldb中找到 CTMessageCell playAudio 的地址，下断点，点击一条语音，果然断下来。
+In lldb, find CTMessageCell playAudio's address, set breakpoint, click a voice, sure enough breaks.
 
-分析playAudio的代码，内部会调用 APPlayManager 的play:FinishCallback。
+Analyzing playAudio's code, internally calls APPlayManager's play:FinishCallback.
 
 ![playFinishCallback](http://d.pr/i/1jTaR+)
 
-APChatMedia会作为第一个参数传进入。
+APChatMedia is passed in as the first parameter.
 
 ~~~
 (lldb) br s -a 0x00D3EFD6
@@ -150,7 +148,7 @@ AlipayWallet`___lldb_unnamed_function68838$$AlipayWallet:
 <APChatMedia: 0xc7e7b90>
 ~~~
 
-到APPlayManager的play:FinishCallback看下，发现会从VoiceCache中获取音频数据。
+Looking at APPlayManager's play:FinishCallback, found it gets audio data from VoiceCache.
 
 ~~~
 - (id)queryVoiceDataForKey:(id)arg1 formatType:(unsigned int)arg2;
@@ -169,9 +167,9 @@ lldb) p (char*)$r1
 
 ![VoiceCache](http://d.pr/i/13z9A+)
 
-其实到这里，queryVoiceDataForKey 返回的 NSData 就是要获取的音频数据了。保存下来，拿到电脑上就行啦。
+Actually, at this point, queryVoiceDataForKey's returned NSData is the audio data we want to get. Save it and get it to the computer.
 
-## 步骤总结
+## Step Summary
 
 1. CTMessageCell.playAudio
 2. APPlayManager.playFinishCallback  (param : [CTMessageCell voiceObj])
@@ -179,23 +177,23 @@ lldb) p (char*)$r1
 4. VoiceCache.queryVoiceDataForKey:formatType:
 
 
-## 如何获取语音的时间戳
+## How to Get Voice Timestamp
 
-有了语音数据，如何保存个合适的名字。因为分享会有很多语音，需要区分出语音的先后（支付宝的收藏又是体验很差）。
+With voice data, how to save with an appropriate name. Because sharing will have many voices, need to distinguish the order of voices (Alipay's favorites feature has poor UX).
 
-于是看CTMessageCell的头文件，再看父类PKCell，可以看到有聊天对方的信息，
+So look at CTMessageCell's header file, then look at parent class PKCell, can see there's chat partner information,
 
 ~~~
 @property(retain, nonatomic) APContactInfo *contactInfo; // @synthesize contactInfo=_contactInfo;
 ~~~
 
-再看父类PKBaseCell，会发现有个
+Then look at parent class PKBaseCell, will find there's
 
 ~~~
 @property(retain, nonatomic) NSDictionary *chatDataSource; // @synthesize chatDataSource=_chatDataSource;
 ~~~
 
-cycript打印出来：
+Print in cycript:
 
 ~~~
 chatDataSource
@@ -203,39 +201,38 @@ cy# [#0x319c400 chatDataSource]
 @{"alignmentType":0,"templateData":@{"l":12,"v":"FGAegsGqTTaAB3n80shI_gAAACMAAQED"},"id":"12","originId":"12","data":@{"displayName":"everettjf","sessionId":"2088002664597371","bizImage":"Local_Image_CHAT.left","hintName":"everettjf","timeLine":#"2015-12-24 15:56:27 +0000","HeadIcon":"http://tfs.alipayobjects.com/images/partner/T1IJphXc4XXXXXXXXX_160X160","action":"0","seed":"2088002664597371@145097258940385","cellSelected":"0","userType":"1","userID":"2088122631212590","v":"FGAegsGqTTaAB3n80shI_gAAACMAAQED","bizMemo":"[\xe8\xaf\xad\xe9\x9f\xb3]","fromUId":"2088002664597371","l":12,"fromLoginId":"eve***@outlook.com","bizType":"CHAT","bizRemind":"","toUId":"2088122631212590","clientMsgID":"2088002664597371@145097258940385","link":"","msgID":151224235627370001,"toLoginId":"","localId":6},"headerText":"Thursday 11:56 PM","msgType":0}
 ~~~
 
-可以看到 `timeLine` 就是这条信息的时间戳。
+Can see `timeLine` is this message's timestamp.
 
 
-# 源码
+# Source Code
 
-好了，大功告成，写个tweak吧。
+Alright, mission accomplished, write a tweak.
 
-把保存的代码放到了收藏按钮中。hook 收藏的方法 `- (void)collectMenu:(id)arg1`。
+Put the save code in the favorite button. Hook the favorite method `- (void)collectMenu:(id)arg1`.
 
-参见代码：
+See code:
 
 [https://github.com/everettjf/Yolobroccoli/AlipayWalletChatVoiceSaver](https://github.com/everettjf/Yolobroccoli/AlipayWalletChatVoiceSaver)
 
-# 补充
+# Additions
 
-## 音频格式
-语音格式，把语音复制出来后，用二进制编辑工具iHex打开，可以看到是wav格式。
+## Audio Format
+Voice format, after copying out the voice, open with binary editor iHex, can see it's wav format.
 
-## Wifi下自动下载语音
+## Auto Download Voice on WiFi
 
-上面我们每次都从VoiceCache中获取音频数据，应该是因为在Wifi下，语音会自动下载，下载后自动就放到了VoiceCache中。
+Above we always get audio data from VoiceCache, should be because on WiFi, voices automatically download, after downloading automatically put into VoiceCache.
 
-通过可以在 APVoiceManager 的下面方法增加断点，就可以发现每次都自动下载，具体就不分析了。
+Can add breakpoint in APVoiceManager's following method, will find it always auto downloads, won't analyze in detail.
 
 ~~~
 - (void)downLoadAudioWithCloudId:(id)arg1 downLoadHandler:(CDUnknownBlockType)arg2;
 ~~~
 
 
-# 总结
+# Summary
 
-虽然远没有《iOS应用逆向工程》最后一章的例子复杂，但也作为自己看完这本书的小小的句号吧，既是句号，也是新的起点。这本书的内容也只是引导自己走进了iOS逆向的大门，入门而已。
+Although far from as complex as the example in the last chapter of "iOS Application Reverse Engineering", this serves as a small period after finishing this book, both a period and a new starting point. This book's content only guides me into the door of iOS reverse engineering, just getting started.
 
-期待未来……
-
+Looking forward to the future...
 

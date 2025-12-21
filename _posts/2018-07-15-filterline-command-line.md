@@ -1,43 +1,43 @@
 ---
 layout: post
-title: "filterline 命令行版本"
+title: "filterline Command Line Version"
 categories:
-  - 工具
+  - Tool
 tags:
   - filterline
 comments: true
 ---
 
-开发了VSCode Extension <https://github.com/everettjf/vscode-filter-line> 后，节省了大量我工作中总要看日志排查问题的时间，也想分享给大家使用。但每个人都有自己习惯和喜欢的编辑器。于是，要不要开发个SublimeText插件？Vim插件？Atom插件？想来想去，干脆做成命令行版本的。
+After developing VSCode Extension <https://github.com/everettjf/vscode-filter-line> , saved a lot of time I always need to look at logs to troubleshoot problems, also want to share for everyone to use. But everyone has their own habits and favorite editors. So, should I develop a SublimeText extension? Vim extension? Atom extension? Thought and thought, simply make it command line version.
 
 <!-- more -->
 
-# 代码
+# Code
 
 https://github.com/everettjf/filterline
 
 
-# 安装
+# Installation
 
 ```
 npm install -g filterline
 ```
 
-# 使用
+# Usage
 
 ```
 filterline <filepath>
 ```
 
-# 配置文件查找顺序
+# Configuration File Search Order
 
-例如执行这个命令
+For example execute this command
 
 ```
 filterline /Users/everettjf/log/demo/log0eoml/foo.log
 ```
 
-会按照下面的顺序查找配置文件
+Will search configuration files in following order
 
 ```
   '/Users/everettjf/log/demo/log0eoml/filterline.eoml',
@@ -56,12 +56,12 @@ filterline /Users/everettjf/log/demo/log0eoml/foo.log
   '/Users/everettjf/log/.vscode/filterline.json' 
 ```
 
-配置文件的格式见 <https://github.com/everettjf/vscode-filter-line>
+Configuration file format see <https://github.com/everettjf/vscode-filter-line>
 
 
-# 好了
+# Done
 
-所有人都可以用了～
+Everyone can use it～
 
 
 

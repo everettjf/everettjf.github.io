@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "使用deno_core开发一个JavaScript运行时"
+title: "Building a JavaScript Runtime with deno_core"
 categories:
   - deno
 tags:
@@ -11,9 +11,9 @@ comments: true
 
 
 
-> 如果不了解Deno，可以先看看官网 https://deno.land/ 。简单来说，Deno是一个更安全的Node （名字都是反过来的,no_de -> de_no），和Node是一个创始人。
+> If you're not familiar with Deno, check out the official website at https://deno.land/. In short, Deno is a more secure alternative to Node (the name is literally Node reversed: no_de -> de_no), created by the same founder as Node.
 
-前两天，Deno博客发布了一篇文章《Roll your own JavaScript runtime》 
+A couple of days ago, the Deno blog published an article titled "Roll your own JavaScript runtime"
 
 > https://deno.com/blog/roll-your-own-javascript-runtime
 
@@ -22,42 +22,42 @@ comments: true
 ![](/media/16592798557784.jpg)
 
 
-> 看到略有“冲动”，今天就给大家翻译一波。
-> 注意：翻译不是按字原版翻译，会略做小修改，保持原意不变。
-> 所谓“略有冲动”，其实是我半年前也看了一眼Deno文档中的 Embedding Deno https://deno.land/manual/embedding_deno 然而这里啥也木有写，就直接让去看 deno_core 的文档 https://crates.io/crates/deno_core 也木有个入门教程啥的，当时由于我的Rust技术太菜，也就没继续玩耍下去。
+> I was inspired to write this learning note after reading the article.
+> Note: This is not a word-for-word translation, but rather a learning record with minor modifications while preserving the original meaning.
+> The "inspiration" came from the fact that about six months ago, I looked at Deno's documentation on Embedding Deno (https://deno.land/manual/embedding_deno), but it didn't have much content—it just pointed to the deno_core documentation (https://crates.io/crates/deno_core) without any getting started tutorial. At the time, my Rust skills weren't strong enough, so I didn't continue exploring.
 
-好了废话不多说，开始翻译。
+Without further ado, let's get started.
 
-# 正文
+# Main Content
 
-这篇文章介绍如何创建一个自定义的JavaScript运行时。叫做runjs。可以把它想象成一个非常简单的Deno。这篇文章的一个目标是开发一个命令行程序，实现执行本地的JavaScript文件，可以读文件、写文件、删文件，以及一个console API。
+This article explains how to create a custom JavaScript runtime called runjs. Think of it as a very simple version of Deno. The goal is to develop a command-line program that can execute local JavaScript files, with the ability to read, write, and delete files, plus a console API.
 
-开始咯。
+Let's begin.
 
-# 必备条件
+# Prerequisites
 
-这篇教程假设读者掌握了以下知识：
+This tutorial assumes you have knowledge of:
 
-- Rust的基础知识
-- JavaScript事件循环的基础知识
+- Basic Rust
+- Basic understanding of JavaScript event loops
 
-确保电脑上安装了Rust（和cargo，cargo会自动安装），版本至少1.62.0 。可以访问 https://www.rust-lang.org/learn/get-started 来安装。
+Make sure you have Rust installed (cargo is automatically installed with Rust) with version 1.62.0 or higher. Visit https://www.rust-lang.org/learn/get-started to install it.
 
 ```
 $ cargo --version
 cargo 1.62.0 (a748cf5a3 2022-06-08)
 ```
 
-# 创建工程
+# Creating the Project
 
-首先，让我们创建一个新的Rust项目，名为runjs：
+First, let's create a new Rust project called runjs:
 
 ```
 $ cargo new runjs
      Created binary (application) package
 ```
 
-进入runjs文件夹，并用编辑器打开。确保一切正常。
+Navigate to the runjs folder and open it in your editor. Make sure everything works:
 
 ```
 $ cd runjs
@@ -68,12 +68,12 @@ $ cargo run
 Hello, world!
 ```
 
-哦啦！现在开始创建咱们自己的JavaScript运行时啦。
+Perfect! Now let's start building our own JavaScript runtime.
 
 
-# 依赖库
+# Dependencies
 
-下一步，添加依赖 deno_core 和 tokio 。
+Next, add the dependencies deno_core and tokio:
 
 ```
 $ cargo add deno_core
@@ -84,7 +84,7 @@ $ cargo add tokio --features=full
       Adding tokio v1.19.2 to dependencies.
 ```
 
-现在`Cargo.toml`文件的内容应该是下面这样：
+Your `Cargo.toml` file should now look like this:
 
 ```
 [package]
@@ -99,15 +99,15 @@ deno_core = "0.142.0"
 tokio = { version = "1.19.2", features = ["full"] }
 ```
 
-`deno_core` 是Deno团队开发的一个Rust库（crate），它抽象了V8 JavaScript引擎的接口。V8是一个包含很多API的复杂工程，为了更简单的使用V8，deno_core提供了JsRuntime结构，封装了V8引擎的实例（也叫做Isolate），支持了事件循环。
+`deno_core` is a Rust crate developed by the Deno team that abstracts the V8 JavaScript engine interface. V8 is a complex project with many APIs. To make V8 easier to use, deno_core provides the `JsRuntime` struct, which wraps a V8 engine instance (also called an Isolate) and supports event loops.
 
-`tokio`是一个异步Rust运行时，我们用它实现事件循环（event loop）。Tokio可以用来和系统的socket和文件系统交互。deno_core和tokio两者一起可以实现JavaScript的Promise映射到Rust的Future（也就是JS中的async/await映射到Rust的async/await）。
+`tokio` is an asynchronous Rust runtime that we'll use to implement the event loop. Tokio can interact with system sockets and the file system. Together, deno_core and tokio enable mapping JavaScript Promises to Rust Futures (i.e., JS async/await maps to Rust async/await).
 
-有了JavaScript引擎和一个事件循环之后，我们就能创建一个JavaScript运行时了。
+With a JavaScript engine and an event loop, we can create a JavaScript runtime.
 
-# Hello,runjs!
+# Hello, runjs!
 
-现在开始写一个异步的Rust函数，创建一个JsRuntime实例用于JavaScript的执行。
+Now let's write an async Rust function that creates a JsRuntime instance for executing JavaScript:
 
 ```
 // main.rs
@@ -132,9 +132,9 @@ fn main() {
 }
 ```
 
-这里有很多可以展开说的。异步的run_js函数创建了一个JsRuntime实例，这个实例使用了基于文件系统的模块加载器（deno_core::FsModuleLoader）。接着，我们用js_rutime加载了一个模块（main_module），然后执行（mod_evaluate），以及运行起一个事件循环（run_event_loop）。
+There's a lot to unpack here. The async `run_js` function creates a `JsRuntime` instance that uses a file system-based module loader (`deno_core::FsModuleLoader`). Then, we load a module (`main_module`) with `js_runtime`, evaluate it (`mod_evaluate`), and run an event loop (`run_event_loop`).
 
-这个run_js函数包含了JavaScript代码执行的所有生命周期。但首先，我们需要创建一个单线程的tokio运行时来执行run_js函数：
+The `run_js` function encompasses the entire lifecycle of JavaScript code execution. But first, we need to create a single-threaded tokio runtime to execute the `run_js` function:
 
 ```
 // main.rs
@@ -149,22 +149,22 @@ fn main() {
 }
 ```
 
-让我们开始执行一些JavaScript代码。创建一个example.js，我们让它输出Hello runjs!：
+Let's execute some JavaScript code. Create an `example.js` file that outputs "Hello runjs!":
 
 ```
 // example.js
 Deno.core.print("Hello runjs!");
 ```
 
-> 注意：example.js在工程的根文件夹，cargo run 会让根文件夹作为工作目录(working directory)。
+> Note: `example.js` is in the project root folder. `cargo run` uses the root folder as the working directory.
 
 ![](/media/16592798777424.jpg)
 
 
 
-注意这里我们用了`Deno.core`中的`print`函数，`Deno.core`是`deno_core`提供的一个全局有效的内置对象。
+Note that we're using the `print` function from `Deno.core`. `Deno.core` is a globally available built-in object provided by `deno_core`.
 
-现在运行。
+Now let's run it:
 
 ```
 $ cargo run
@@ -173,11 +173,11 @@ $ cargo run
 Hello runjs!⏎
 ```
 
-成功啦！我们仅用了25行代码就创建了一个可以执行本地文件的简单的JavaScript运行时。当然这个运行时现在还做不了太多事情（例如，不支持console.log）。现在我们已经把V8 JavaScript引擎和tokio集成到了我们的工程中。
+Success! We've created a simple JavaScript runtime that can execute local files with just 25 lines of code. Of course, this runtime can't do much yet (for example, it doesn't support `console.log`). We've now integrated the V8 JavaScript engine and tokio into our project.
 
-# 添加console API
+# Adding the Console API
 
-让我们开始实现console API。首先创建`src/runtime.js`文件，这个文件可以实现全局的console对象。
+Let's implement the console API. First, create a `src/runtime.js` file that implements the global console object:
 
 ```
 // src/runtime.js
@@ -199,16 +199,16 @@ Hello runjs!⏎
 })(globalThis);
 ```
 
-> 注意，这个runtime.js在src文件夹中。
+> Note: This `runtime.js` file is in the `src` folder.
 
 ![](/media/16592798868051.jpg)
 
 
-console.log和console.error函数可以接受多个参数，序列化为JSON（我们可以这样查看非原生的JS对象），并给每条消息加上前缀log或error。这是个“有点古老”的JavaScript文件了，就像在ES modules诞生之前在写浏览器里的JavaScript代码。
+The `console.log` and `console.error` functions can accept multiple arguments, serialize them to JSON (so we can view non-native JS objects), and prefix each message with "log" or "error". This is a somewhat "old-school" JavaScript file, like writing JavaScript in the browser before ES modules existed.
 
-这里用了[IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)来执行代码是为了避免污染全局空间。否则，argsToMessage这个辅助函数会在我们运行时里全局有效了。
+We use an [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) to execute the code to avoid polluting the global scope. Otherwise, the `argsToMessage` helper function would be globally available in our runtime.
 
-现在让我们每次运行时都执行这段代码：
+Now let's execute this code every time we run:
 
 ```
 let mut js_runtime = deno_core::JsRuntime::new(deno_core::RuntimeOptions {
@@ -218,9 +218,9 @@ let mut js_runtime = deno_core::JsRuntime::new(deno_core::RuntimeOptions {
 + js_runtime.execute_script("[runjs:runtime.js]",  include_str!("./runtime.js")).unwrap();
 ```
 
-> 注意，这里include_str!是把main.rs同级目录下（也就是src目录下）的runtime.js的内容读取出来。
+> Note: `include_str!` reads the contents of `runtime.js` from the same directory as `main.rs` (i.e., the `src` directory).
 
-最后，在example.js中可以调用新增的console API了。
+Finally, we can call the new console API in `example.js`:
 
 ```
 - Deno.core.print("Hello runjs!");
@@ -228,7 +228,7 @@ let mut js_runtime = deno_core::JsRuntime::new(deno_core::RuntimeOptions {
 + console.error("Boom!");
 ```
 
-执行：
+Run it:
 
 ```
 $ cargo run
@@ -239,9 +239,9 @@ $ cargo run
 ```
 
 
-# 添加文件系统API
+# Adding File System APIs
 
-首先更新runtime.js文件：
+First, update the `runtime.js` file:
 
 ```
 };
@@ -262,11 +262,11 @@ $ cargo run
 ```
 
 
-我们添加了一个新的全局对象runjs，有三个方法：readFile writeFile和removeFile。前两个是异步的，最后一个是同步的。
+We've added a new global object `runjs` with three methods: `readFile`, `writeFile`, and `removeFile`. The first two are async, and the last one is synchronous.
 
-你估计要纳闷`core.opAsync`和`core.opSync`是什么了，它们是deno_core提供的绑定JavaScript和Rust函数的机制。当JavaScript中调用它们时，deno_core将查找有`#[op]`属性的同名Rust函数。
+You might be wondering what `core.opAsync` and `core.opSync` are. They're mechanisms provided by `deno_core` to bind JavaScript and Rust functions. When called from JavaScript, `deno_core` will look for a Rust function with the same name marked with the `#[op]` attribute.
 
-让我们更新main.rs来看看实际效果：
+Let's update `main.rs` to see it in action:
 
 ```
 + use deno_core::op;
@@ -293,7 +293,7 @@ use std::rc::Rc;
 + }
 ```
 
-我们定义了三个JavaScript可以调用的`ops`，但是要想让JavaScript代码可以调用，我们还需要给JsRuntime注册一个extension。
+We've defined three `ops` that JavaScript can call, but to make them available to JavaScript code, we need to register an extension with `JsRuntime`:
 
 ```
 async fn run_js(file_path: &str) -> Result<(), AnyError> {
@@ -312,9 +312,9 @@ async fn run_js(file_path: &str) -> Result<(), AnyError> {
     });
 ```
 
-我们可以通过`Extensions`来配置JsRuntime，暴露Rust函数给JavaScript，还可以做一些更高级的事情（加载额外的JavaScript代码等）。
+We can configure `JsRuntime` with `Extensions` to expose Rust functions to JavaScript, and do more advanced things (like loading additional JavaScript code).
 
-再次更新example.js：
+Update `example.js` again:
 
 ```
 console.log("Hello", "runjs!");
@@ -337,7 +337,7 @@ console.error("Boom!");
 +
 ```
 
-运行它：
+Run it:
 
 ```
 $ cargo run
@@ -353,13 +353,13 @@ $ cargo run
 ```
 
 
-🎉恭喜，我们的runjs运行时现在支持文件系统了。注意我们这里用了很少的代码就实现了JavaScript调用Rust代码：deno_core把JavaScript和Rust之前的通信都搞定了。
+🎉 Congratulations! Our runjs runtime now supports the file system. Notice how we implemented JavaScript calling Rust code with very little code: `deno_core` handles all the communication between JavaScript and Rust.
 
-# 总结
+# Summary
 
-在这个简短的例子中，我们实现了一个集成了强大JavaScript引擎（V8）和一个高效事件循环（tokio）的Rust项目。
+In this brief example, we've implemented a Rust project that integrates a powerful JavaScript engine (V8) with an efficient event loop (tokio).
 
-完整的例子代码，可以参考：denoland's GitHub 
+For the complete example code, check out denoland's GitHub:
 
 > https://github.com/denoland/roll-your-own-javascript-runtime
 

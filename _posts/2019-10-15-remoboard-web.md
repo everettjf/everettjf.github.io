@@ -1,32 +1,32 @@
 ---
 layout: post
-title: "远程输入法新版发布，用浏览器给手机打字"
+title: "Remote Input Method New Version Released, Type on Phone Using Browser"
 categories:
-  - 产品
+  - Product
 tags:
-  - 产品
-  - 输入法
-  - 作品
+  - Product
+  - Input Method
+  - Work
 comments: true
 ---
 
-感谢:
+Thanks:
 
-- [少数派:「远程输入法」新版发布，用浏览器给手机打字]( https://sspai.com/post/57008)
-- [异次元: 远程输入法 - 用电脑键盘给手机打字的创意效率应用！省蓝牙键盘钱了](https://www.iplaysoft.com/remoboard.html)
-- [最美应用: 这款 APP 终于解决了困扰我这么多年的麻烦](https://mp.weixin.qq.com/s/PLWkVuEdJCk6cLGEQVZDbw)
-- [虚拟框架：远程输入法发布啦，用电脑给手机打字](https://mp.weixin.qq.com/s/wC7clnEAGCHA09zrVd2s4w)
-- [小众软件：这个脑洞有点大：远程输入法，用电脑给手机打字](https://www.appinn.com/remoboard/amp/)
+- [Minority: "Remote Input Method" New Version Released, Type on Phone Using Browser]( https://sspai.com/post/57008)
+- [iPlaySoft: Remote Input Method - Creative Efficiency App for Typing on Phone Using Computer Keyboard! Saves Bluetooth Keyboard Money](https://www.iplaysoft.com/remoboard.html)
+- [Most Beautiful App: This APP Finally Solved Trouble That Bothered Me So Many Years](https://mp.weixin.qq.com/s/PLWkVuEdJCk6cLGEQVZDbw)
+- [Virtual Framework: Remote Input Method Released, Type on Phone Using Computer](https://mp.weixin.qq.com/s/wC7clnEAGCHA09zrVd2s4w)
+- [Minority Software: This Idea Is Big: Remote Input Method, Type on Phone Using Computer](https://www.appinn.com/remoboard/amp/)
 
-还有感谢「PriceTag」等媒体的宣传。
+Also thanks to "PriceTag" and other media's promotion.
 
 ---
 
-`远程输入法` 是一个输入法应用，可以实现`使用电脑给手机打字`，让手机打字更快。使用远程输入法时，手机端会显示一个网址，在电脑浏览器中访问这个网址，即可开始输入。浏览器中输入的文字发送到手机，从而实现电脑给手机打字。
+`Remote Input Method` is an input method app, can implement `using computer to type on phone`, make phone typing faster. When using Remote Input Method, phone client will display a URL, access this URL in computer browser, can start input. Text entered in browser sent to phone, thus implementing typing on phone using computer.
 
-手机端支持iOS和Android，电脑上只要有浏览器即可（也就支持macOS/Windows/Linux三个平台了）。
+Mobile client supports iOS and Android, computer just needs browser (so supports macOS/Windows/Linux three platforms).
 
-远程输入法在英文系统显示为 `Remoboard`，即含义为 Remote Keyboard。
+Remote Input Method displays as `Remoboard` in English systems, meaning Remote Keyboard.
 
 ![](/media/15711544847169.jpg)
 
@@ -35,156 +35,155 @@ comments: true
 <!-- more -->
 
 
-通常情况下我们并不需要远程输入，但可能在以下场景中，远程输入法可以帮上忙：
+Normally we don't need remote input, but in following scenarios, Remote Input Method can help:
 
-## 场景
+## Scenarios
 
-场景一：
+Scenario one:
 
-一款应用只有手机版本，没有电脑版本（或者不想购买电脑版本哈），而这个应用的使用需要「大量的文字输入工作」。
+An app only has mobile version, no computer version (or don't want to purchase computer version ha), and this app's usage needs "lots of text input work".
 
-1. 例如iOS平台的DayOne日记应用，我购买了iOS版本但不想购买macOS版本了，平时就可以用远程输入法来写日记。
-2. 又例如微信聊天，很多公司的工作电脑是不让安装微信电脑端的，此时用远程输入法可以加快聊天。（快点聊完，快点回到工作）（对我来说，偶尔会有网友私聊问问题，简短的文字又不能表述清楚，我是想回答又不想回答，有了远程输入法，就能快速打字啦）
-3. 搭配Android平台优秀的文本写作应用「纯纯写作」，也可以加快写作的速度。
+1. For example iOS platform's DayOne diary app, I purchased iOS version but don't want to purchase macOS version, usually can use Remote Input Method to write diary.
+2. Also for example WeChat chat, many company work computers don't allow installing WeChat computer client, at this time using Remote Input Method can speed up chatting. (Finish chatting quickly, quickly return to work) (For me, occasionally netizens private message ask questions, short text can't express clearly, I want to answer and don't want to answer, with Remote Input Method, can type quickly)
+3. Paired with Android platform's excellent text writing app "Pure Writing", can also speed up writing speed.
 
-场景二：
+Scenario two:
 
-手机端有不少优秀的`编程环境`，例如JSBox、Pythonista，以及最近新出的Robomaster（使用Python控制RoboMaster S1），使用远程输入法，可以比较方便的完成手机端编程。
+Mobile end has many excellent `programming environments`, for example JSBox, Pythonista, and recently new Robomaster (using Python to control RoboMaster S1), using Remote Input Method, can relatively conveniently complete mobile programming.
 
-场景三：
+Scenario three:
 
-甚至Android智能电视上也可以安装输入法，然后手机浏览器访问输入网址，加快电视上的文字输入速度。
+Even Android smart TVs can install input method, then phone browser accesses input URL, speed up text input speed on TV.
 
-## 下载地址
+## Download Address
 
 - iOS [AppStore](https://apps.apple.com/cn/app/id1474458879)
-- Android [酷安](https://www.coolapk.com/apk/241412) 或 [Google PlayStore](https://play.google.com/store/apps/details?id=com.everettjf.remoboard)
+- Android [Coolapk](https://www.coolapk.com/apk/241412) or [Google PlayStore](https://play.google.com/store/apps/details?id=com.everettjf.remoboard)
 
-## 快速上手
+## Quick Start
 
-### iOS 快速上手
+### iOS Quick Start
 
-(1) 从AppStore下载远程输入法 [AppStore](https://apps.apple.com/cn/app/id1474458879)
+(1) Download Remote Input Method from AppStore [AppStore](https://apps.apple.com/cn/app/id1474458879)
 
-(2) 打开 `设置>通用>键盘>键盘>添加新键盘`
+(2) Open `Settings>General>Keyboard>Keyboards>Add New Keyboard`
 
-(3) 点`远程输入法`
+(3) Click `Remote Input Method`
 
 ![](/media/15711565435200.jpg)
 
-(4) 键盘安装完毕
+(4) Keyboard installation complete
 
 ![](/media/15711565507727.jpg)
 
-(5) 再次在刚才完成的界面点击`远程输入法`，如下图所示`启用 允许完全访问`
+(5) Again click `Remote Input Method` in interface just completed, as shown below `Enable Allow Full Access`
 
 ![](/media/15711565163725.jpg)
 
-(6) 现在安装已经完成，在可输入文字的地方，切换到「远程输入法」，即可看到一个网址（首先确保Wi-Fi已经连接），在电脑浏览器中打开这个地址，即可开始输入啦。
+(6) Now installation complete, in place that can input text, switch to "Remote Input Method", can see a URL (first ensure Wi-Fi already connected), open this address in computer browser, can start input.
 
-注意：
-1. 需要确保手机和电脑连接入一个网络中，电脑上ping通手机的IP地址。
-2. 浏览器中输入下图完整的网址，例如：http://192.168.31.11:7777
+Note:
+1. Need to ensure phone and computer connected to one network, computer can ping phone's IP address.
+2. In browser input complete URL in figure below, for example: http://192.168.31.11:7777
 
 ![](/media/15711566433576.jpg)
 
-补充：如果macOS和iOS登录了相同的AppleId，则可以使用「复制」和「接力」更快捷的在电脑上打开网址。见文章最后。
+Addition: If macOS and iOS logged into same AppleId, can use "Copy" and "Handoff" to more quickly open URL on computer. See end of article.
 
-### Android 快速上手
+### Android Quick Start
 
-（1）从 [酷安](https://www.coolapk.com/apk/241412) 或 [Google PlayStore](https://play.google.com/store/apps/details?id=com.everettjf.remoboard) 安装，然后打开应用，点击启用输入法
+(1) Install from [Coolapk](https://www.coolapk.com/apk/241412) or [Google PlayStore](https://play.google.com/store/apps/details?id=com.everettjf.remoboard), then open app, click Enable Input Method
 
 ![](/media/15711572903292.jpg)
 
 ![](/media/15711572968980.jpg)
 
-这里可能会「提示重启」，一般情况下点击「确定」无视即可。
+Here might "prompt restart", normally click "OK" ignore.
 
 ![](/media/15711573164862.jpg)
 
-（2）切换输入法
+(2) Switch Input Method
 
 ![](/media/15711573239250.jpg)
 
-（3）现在安装已经完成，在可输入文字的地方，切换到「远程输入法」，即可看到一个网址（首先确保Wi-Fi已经连接），在电脑浏览器中打开这个地址，即可开始输入啦。
+(3) Now installation complete, in place that can input text, switch to "Remote Input Method", can see a URL (first ensure Wi-Fi already connected), open this address in computer browser, can start input.
 
-注意：
-1. 需要确保手机和电脑连接入一个网络中，电脑上ping通手机的IP地址。
-2. 浏览器中输入下图完整的网址，例如：http://192.168.31.11:7777
+Note:
+1. Need to ensure phone and computer connected to one network, computer can ping phone's IP address.
+2. In browser input complete URL in figure below, for example: http://192.168.31.11:7777
 
 ![](/media/15711573337744.jpg)
 
 
-## 输入模式
+## Input Modes
 
 
-### 输入模式
+### Input Modes
 
-有三种输入模式：
+Has three input modes:
 
 ![](/media/15711573669509.jpg)
 
-(1) 标准输入模式
+(1) Standard Input Mode
 
-这种模式下可以输入「一行文字」，然后「按回车发送」。
+In this mode can input "one line of text", then "press Enter to send".
 
 ![](/media/15711573759717.jpg)
 
-(2) 多行输入模式
+(2) Multi-line Input Mode
 
-这种模式下，可以「输入或粘贴多行文字」，「点击按钮」发送。
+In this mode, can "input or paste multi-line text", "click button" to send.
 
 ![](/media/15711573838602.jpg)
 
-(3) 编程输入模式
+(3) Programming Input Mode
 
 ![](/media/15711573928921.jpg)
 
-这种模式下，文字会边打边发送，很适合一些手机端的编程应用。
+In this mode, text will send while typing, very suitable for some mobile programming apps.
 
-## 输入小技巧
+## Input Tips
 
-三种输入模式中，当输入文本框内容为空时，还支持以下按键：
+In three input modes, when input text box content is empty, also supports following keys:
 
-1. 退格键：删除手机上的文字
-2. 按键左和右：向左 和 向右 移动光标
-3. 按键上和下：向左 和 向右 移动 20 个字符。如果手机上的左或右不够20个字符，不会移动。
+1. Backspace: Delete text on phone
+2. Left and right keys: Move cursor left and right
+3. Up and down keys: Move left and right 20 characters. If phone's left or right not enough 20 characters, won't move.
 4. 
 ![](/media/15711582888909.jpg)
 
 
 
-## 复制和接力
+## Copy and Handoff
 
-iOS 输入法上会有个「复制」和「接力」按钮，目前的使用场景主要是：iOS配合macOS，且登录了「相同AppleID」。
+iOS input method will have "Copy" and "Handoff" buttons, current usage scenario mainly: iOS paired with macOS, and logged into "same AppleID".
 
 ![](/media/15711562848185.jpg)
 
-当点击「复制」时，iOS的剪贴板内容会同步到macOS，在macOS上打开浏览器，粘贴到地址栏打开即可开始输入。
+When click "Copy", iOS clipboard content will sync to macOS, open browser on macOS, paste into address bar to open can start input.
 
-但点击「接力」时，由于系统限制，会先跳转到「远程输入法的主界面」，此时macOS上的Dock上会出现一个「浏览器的图标」，点击即可打开对应的网址。
+But when click "Handoff", due to system restrictions, will first jump to "Remote Input Method's main interface", at this time macOS Dock will appear a "browser icon", click to open corresponding URL.
 
 ![-w190](/media/15711562470401.jpg)
 
 
-## 实验室
+## Laboratory
 
-远程输入法首次发布时，我写过一篇[文章介绍](https://everettjf.github.io/2019/09/06/remoboard-release/)，那时还没有现在「浏览器输入」的方式。使用了更古老的「安装电脑端软件」的方式，使用方式上更麻烦，而且「稳定性也不太好」。因此这次新版本我把这两个连接模式移动到了「实验室」中。
+When Remote Input Method first released, I wrote an [article introduction](https://everettjf.github.io/2019/09/06/remoboard-release/), at that time didn't have current "browser input" method. Used older "install computer client software" method, usage more troublesome, and "stability also not good". So this new version I moved these two connection modes to "Laboratory".
 
-实验室中包含「连接模式」切换的功能，可以切换为「蓝牙」和「IP」连接模式。关于这两个模式，计划如下：
+Laboratory contains "Connection Mode" switching functionality, can switch to "Bluetooth" and "IP" connection modes. About these two modes, plans:
 
-1. 蓝牙连接模式：未来会逐步优化。
-2. IP连接模式：即将废弃。根据情况，逐步替换为Web连接模式中的Http接口。
+1. Bluetooth connection mode: Future will gradually optimize.
+2. IP connection mode: Will be deprecated. According to situation, gradually replace with Web connection mode's Http interface.
 
-简单来说，「实验室」中的功能，暂时不建议使用哈。
-
-
-## 免费
-
-目前完全免费，现有功能未来也不会收费。如果可能，未来会开发一些小的收费功能。
+Simply put, functionality in "Laboratory", temporarily not recommended to use ha.
 
 
-## 总结
+## Free
 
-希望大家玩的愉快，如果可以的话，帮忙推荐给更多朋友使用哦 :)
+Currently completely free, existing functionality future also won't charge. If possible, future will develop some small paid functionality.
 
+
+## Summary
+
+Hope everyone enjoys, if possible, help recommend to more friends to use :)

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS时间获取方法"
+title: "iOS Time Retrieval Methods"
 categories:
   - guide
 tags:
@@ -9,11 +9,11 @@ comments: true
 ---
 
 
-整理一些和获取时间有关的方法
+Organize some methods related to getting time
 
 <!-- more -->
 
-# 代码段
+# Code Snippets
 
 ## NSDate
 
@@ -24,12 +24,12 @@ NSDate *date = [NSDate date];
 NSLog(@"date = %@",date);
 
 // UTC
-// 距离 00:00:00 UTC on 1 January 2001 的时间
+// Time since 00:00:00 UTC on 1 January 2001
 NSTimeInterval interval2001 = [date timeIntervalSinceReferenceDate];
 NSLog(@"interval2001 = %@",@(interval2001));
     
 // UTC
-// 距离 00:00:00 UTC on 1 January 1970 的时间
+// Time since 00:00:00 UTC on 1 January 1970
 NSTimeInterval timestamp = [date timeIntervalSince1970];
 NSLog(@"timestamp = %@",@(timestamp));
 
@@ -39,7 +39,7 @@ NSLog(@"timestamp = %@",@(timestamp));
 
 ```
 // GMT
-// 距离 Jan 1 2001 00:00:00 GMT 的时间
+// Time since Jan 1 2001 00:00:00 GMT
 CFAbsoluteTime cftime = CFAbsoluteTimeGetCurrent();
 NSLog(@"cftime = %@",@(cftime));
     
@@ -49,8 +49,8 @@ NSLog(@"cftime = %@",@(cftime));
 
 ```
 // Absolute
-// 系统睡眠时会停止
-// 距离开机时间
+// Stops when system sleeps
+// Time since boot
 CFTimeInterval catime = CACurrentMediaTime();
 NSLog(@"catime = %@",@(catime));
 ```
@@ -59,7 +59,7 @@ NSLog(@"catime = %@",@(catime));
 
 ```
 // Absolute
-// 系统睡眠时会停止
+// Stops when system sleeps
 // NSProcessInfo
 NSTimeInterval processSystemUptime = [NSProcessInfo processInfo].systemUptime;
 NSLog(@"uptime from NSProcessInfo = %@",@(processSystemUptime));
@@ -73,7 +73,7 @@ NSLog(@"uptime from NSProcessInfo = %@",@(processSystemUptime));
 // https://developer.apple.com/library/archive/qa/qa1398/_index.html
 // https://stackoverflow.com/questions/1450737/what-is-mach-absolute-time-based-on-on-iphone
 // uint64_t abstime = mach_absolute_time();
-// 系统睡眠时会停止
+// Stops when system sleeps
 double uptimeInMilliseconds = 0.0;
 {
     const int64_t kOneMillion = 1000 * 1000;
@@ -96,7 +96,7 @@ NSLog(@"uptime = %@",@(uptime));
 
 ```
 // clock
-// 只是用于计算时间差
+// Only for calculating time difference
 // Returns the approximate processor time used by the process since the beginning of an implementation-defined era related to the program's execution. To convert result value to seconds, divide it by CLOCKS_PER_SEC.
 clock_t clockvalue = clock();
 ```
@@ -165,18 +165,18 @@ NSLog(@"timeresult (s)= %ju", timeresult);
 }
 ```
 
-# 总结
+# Summary
 
-计算耗时，一般可以使用 `CACurrentMediaTime()` ，这样可以避免系统时间微调带来的误差（例如App启动过程中系统会自动微调对准时间，多几秒少几秒这样）。
+For calculating time consumption, generally can use `CACurrentMediaTime()` , this way can avoid errors from system time fine-tuning (for example during App startup system will automatically fine-tune to align time, a few seconds more or less).
 
-最后，动态库中使用CACurrentMediaTime，需要链接QuartzCore.framework。
+Finally, using CACurrentMediaTime in dynamic library, need to link QuartzCore.framework.
 
 ![](/media/15346417934621.jpg)
 
-就这样，简单易用。
+That's it, simple and easy to use.
 
 
-欢迎关注订阅号「客户端技术评论」：
+Welcome to follow subscription account "Client Technology Review":
 ![happyhackingstudio](https://everettjf.github.io/images/fun.png)
 
 

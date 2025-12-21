@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "NSAssert与dispatch_once"
+title: "NSAssert and dispatch_once"
 categories:
   - tips
 tags:
@@ -11,124 +11,124 @@ tags:
 comments: true
 ---
 
-相信大家公司的代码中多多少少存在一些断言（例如NSAssert）。一种常见的断言场景是：SDK的开发者为了避免SDK的初始化方法与功能接口，会在功能接口中判断是否已经初始化，否则就触发断言。当然还有各种各样其他场景。
+Believe everyone's company code more or less has some assertions (for example NSAssert). A common assertion scenario: SDK developers to avoid SDK's initialization methods and functional interfaces, will judge in functional interfaces if already initialized, otherwise trigger assertion. Of course also various other scenarios.
 
 <!-- more -->
 
-## 探索 NSAssert
+## Exploring NSAssert
 
-本文探索下Objective C的断言方法NSAssert的一种现象。这个现象比较细节，不太好描述，咱们就直接聊吧。
+This article explores a phenomenon of Objective C's assertion method NSAssert. This phenomenon is quite detailed, not easy to describe, let's directly talk.
 
-假设有下面的断言：
+Assume has assertion below:
 
 ```
 NSAssert(NO, @"should not call this");
 ```
 
-当断言代码有源码时，触发时如下图：
+When assertion code has source code, when triggered as below:
 
 ![](/media/15817696181069.jpg)
 
-完整的callstack如下：
+Complete callstack:
 
 ![](/media/15817696740923.jpg)
 
-由于有源码，Xcode很智能的把编辑器定位到了NSAssert的那一行。同时我们也知道了另一个信息，NSAssert其实就是产生了一个Exception，Exception会触发 `objc_exception_throw` 这个c函数。
+Since has source code, Xcode intelligently positions editor to NSAssert's line. Also we know another information, NSAssert actually produces an Exception, Exception will trigger `objc_exception_throw` this C function.
 
 
-## 与GCD作用
+## Interaction with GCD
 
-但如果公司内推行过把Pod转为静态库（为了加快编译速度，一般团队人数多的产品都会这么做），NSAssert那一行没有源码，那很可能Callstack会如下图：
+But if company promoted converting Pods to static libraries (to speed up compilation, generally teams with many people do this), NSAssert line has no source code, then likely Callstack will be as below:
 ![](/media/15817699224837.jpg)
 
 
-当然并不是只有没源码时会像上图这样。如果断言在GCD的一些block中，而且上下文也没有源码，也会像上图这样。例如下面的代码，就会导致Xcode不能断点到代码行。
+Of course not only when no source code will be like above. If assertion in GCD's some blocks, and context also has no source code, will also be like above. For example code below, will cause Xcode can't breakpoint to code line.
 
 ![](/media/15817701224885.jpg)
 
 
-为什么会这样呢？看下详细的Callstack：
+Why like this? Look at detailed Callstack:
 
 ![](/media/15817701588263.jpg)
 
-仔细看了看，这里并没有 `objc_exception_throw`。那我们加上符号断点看下。
+Carefully looked, here doesn't have `objc_exception_throw`. Then we add symbol breakpoint to see.
 
 ![](/media/15817706969228.jpg)
 
 
-没问题，这个方法是调用了的。我们看下`objc_exception_throw`的实现。
+No problem, this method is called. We look at `objc_exception_throw`'s implementation.
 https://opensource.apple.com/tarballs/objc4/ 
-下载最新的代码。找到这个方法，如下。
+Download latest code. Find this method, as below.
 
 ![](/media/15817716916654.jpg)
 
-看完似乎没啥想法。
+After reading seems no ideas.
 
-我们再看看GCD的这两个方法，
+We look at GCD's these two methods again,
 
 ![](/media/15817718460206.jpg)
 
 
-再从这里找到 libdispatch 的代码：
+Then find libdispatch's code from here:
 https://opensource.apple.com/tarballs/libdispatch/
 
 ![](/media/15817719822396.jpg)
 
 
-这下就明白了，_dispatch_client_callout 把GCD block中的OC Exception捕获了，然后直接 objc_terminate。也就是这里，导致Callstack断开了。
+Now understand, _dispatch_client_callout catches OC Exception in GCD block, then directly objc_terminate. That is here, causes Callstack to break.
 
-这个问题暂告于段落。
+This problem temporarily ends here.
 
 ## dispatch_once
 
-为了启动优化，我写了一个启动器的代码，为了避免内部代码执行多次，增加了一个 dispatch_once。启动器中执行各类启动逻辑。然而，有一段时间，总有人说我的代码Crash。
+For startup optimization, I wrote a launcher's code, to avoid internal code executing multiple times, added a dispatch_once. Launcher executes various startup logic. However, for a period, always people said my code Crash.
 
-大概情况如下：
+Rough situation:
 
 ![](/media/15817723562511.jpg)
 
-左侧myRunner表示启动器。从上图看，确实Crash到了我的代码中。
+Left myRunner represents launcher. From figure above, indeed Crashed in my code.
 
-然而实际情况呢？
+But actual situation?
 
 ![](/media/15817724251639.jpg)
 
-因为dispatch_once中的代码throw了OC异常。一般大公司初期这种情况经常遇到，后期一般都会针对断言专门开发一些代码用来定位Owner，结果由于 dispatch_once 导致都找到了我。
+Because code in dispatch_once threw OC exception. Generally large companies early stage this situation often encountered, later stage generally will specifically develop some code for assertions to locate Owner, result due to dispatch_once all found me.
 
-最简单的解决方法是，加个异常断点。（也就是符号断点 objc_exception_throw）
+Simplest solution is, add an exception breakpoint. (That is symbol breakpoint objc_exception_throw)
 
 ![](/media/15817726052193.jpg)
 
-别小看这个操作哈，我见过很多开发同学不知道这个操作（这可能是小公司iOS同学进入大公司的第一个必备技能）。
+Don't underestimate this operation ha, I've seen many development classmates don't know this operation (this might be small company iOS classmates' first essential skill entering large companies).
 
-再想下原因，看下Callstack
+Think about reason again, look at Callstack
 
 ![](/media/15817728005548.jpg)
 
-还是存在 _dispatch_client_callout 。但稍微不同之处是，dispatch_once的这个方法是inline的，写到了头文件里
+Still exists _dispatch_client_callout . But slightly different is, dispatch_once's this method is inline, written in header file
 
 ![](/media/15817728648084.jpg)
 
-Xcode会尝试在Callstack中找到最后一个有匹配代码的行，并定位到这行，显示给开发者。
+Xcode will try to find last line with matching code in Callstack, and position to this line, display to developer.
 
-## 怎么解决 
+## How to Solve 
 
-原因弄清楚了。那怎么绕过这个问题呢？目前看来不是用GCD即可。
+Reason clarified. Then how to bypass this problem? Currently seems not using GCD is fine.
 
-例如：C++的std::call_once。
+For example: C++'s std::call_once.
 
 ![](/media/15817731685041.jpg)
 
-再例如利用static变量的自带锁（这个可以写篇文章探索一下）
+Also for example use static variable's built-in lock (this can write an article to explore)
 
 ![](/media/15817731588446.jpg)
 
-更多方法参考：
+More methods reference:
 https://stackoverflow.com/questions/8412630/how-to-execute-a-piece-of-code-only-once
 
 
 
-大家喜欢的话，就关注下订阅号，以示鼓励：
+If everyone likes, follow subscription account to encourage:
 
 ![](/images/fun.png)
 

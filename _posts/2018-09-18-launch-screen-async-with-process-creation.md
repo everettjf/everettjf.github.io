@@ -1,93 +1,93 @@
 ---
 layout: post
-title: "初步探索LaunchScreen"
+title: "Preliminary Exploration of LaunchScreen"
 categories:
-  - 逆向工程
+  - Reverse Engineering
 tags:
-  - 逆向工程
-  - 性能优化
+  - Reverse Engineering
+  - Performance Optimization
 comments: true
 ---
 
 
 # tl;dr
 
-点击App图标后，iOS系统的桌面SpringBoard会先创建LaunchScreen，然后创建App对应的进程。那么可以这样认为：LaunchScreen的加载是不占用App进程自身感知到的启动时间的。LaunchScreen是SpringBoard为了用户体验，提前在进程启动之前展示给用户看的。
+After clicking App icon, iOS system's desktop SpringBoard will first create LaunchScreen, then create App's corresponding process. Then can think: LaunchScreen's loading doesn't occupy App process's own perceived startup time. LaunchScreen is SpringBoard showing to users in advance before process startup for user experience.
 
-当然严格来说，LaunchScreen的加载占用了系统的CPU等资源，也会对App的启动时间有一定的影响。
+Of course strictly speaking, LaunchScreen's loading occupies system CPU and other resources, also has certain impact on App's startup time.
 
 <!-- more -->
 
 
-下面是简要的探索过程。
+Below is brief exploration process.
 
-# 环境
+# Environment
 
-iOS 11.3.1 越狱
-越狱步骤见：<https://everettjf.github.io/2018/08/30/ios1131-jailbreak-tutorial/>
-其他越狱手机一样可以完成下面的步骤。
+iOS 11.3.1 Jailbroken
+Jailbreak steps see: <https://everettjf.github.io/2018/08/30/ios1131-jailbreak-tutorial/>
+Other jailbroken phones can also complete steps below.
 
-*这里打个小广告：购买可越狱的手机可以联系微信“467444"，我刚从他这买了个iPhone6S 11.3.1，目前使用一切正常。*
+*Small ad here: To purchase jailbreakable phone can contact WeChat "467444", I just bought an iPhone6S 11.3.1 from him, currently using everything normal.*
 
 
-# 基础
+# Basics
 
-步骤中用到了下面的基础，可以在遇到问题时参考这三个链接：
+Steps use basics below, can reference these three links when encountering problems:
 
-- iOS11下使用Xcode调试目标进程 <http://iosre.com/t/ios-11-app/12838>
-- iOS调试速查表 <https://everettjf.github.io/2016/05/25/my-ios-debug-cheatsheet/>
+- Using Xcode to debug target process on iOS11 <http://iosre.com/t/ios-11-app/12838>
+- iOS Debugging Cheatsheet <https://everettjf.github.io/2016/05/25/my-ios-debug-cheatsheet/>
 - chisel <https://github.com/facebook/chisel>
 
-# 开始
+# Start
 
-手机打开到桌面，连接到电脑，打开一个空工程，Xcode attach 到 SpringBoard，打印ViewControllers和Views（chisel 的 pvc 和 pviews 命令）。
+Phone open to desktop, connect to computer, open an empty project, Xcode attach to SpringBoard, print ViewControllers and Views (chisel's pvc and pviews commands).
 
 ![](/media/15368514201663.jpg)
 
 
 ![](/media/15368514662364.jpg)
 
-可以看到就几个关键信息：
+Can see just a few key information:
 SBIconController
 SBHomeScreenViewController
 SBRootIconListView
 SBIconView
 
-class-dump出SpringBoard 翻一翻。
+class-dump SpringBoard browse.
 
-通过 SBIconView 可以看到这个Delegate的 `- (void)iconTapped:(SBIconView *)arg1;`
+Through SBIconView can see this Delegate's `- (void)iconTapped:(SBIconView *)arg1;`
 
 ![](/media/15372804209839.jpg)
 
-打印出delegate
+Print delegate
 
 ![](/media/15368521079726.jpg)
 
-得知 SBIconController 就是delegate，果然头文件中看到了实现。
+Know SBIconController is delegate, indeed saw implementation in header file.
 
 ![](/media/15372805530299.jpg)
 
 
-IDA打开SpringBoard，看iconTapped的实现：
+IDA open SpringBoard, look at iconTapped implementation:
 
 ![](/media/15372805997145.jpg)
 
-头文件搜索下prepareToLaunchTappedIcon:completionHandler:
+Header file search prepareToLaunchTappedIcon:completionHandler:
 
 ![](/media/15372806353243.jpg)
 
 
-再IDA
+IDA again
 
 ![](/media/15372806969756.jpg)
 
 
-从上面的sub_10017A874中，
+From sub_10017A874 above,
 
 ![](/media/15372807139428.jpg)
 
 
-再看_launchFromIconView
+Look at _launchFromIconView
 
 
 ![](/media/15372807382658.jpg)
@@ -98,37 +98,37 @@ IDA打开SpringBoard，看iconTapped的实现：
 
 # FrontBoard
 
-网络搜索FBWorkspaceEventQueue可马上知道，现在到了FrontBoard.framework。
+Network search FBWorkspaceEventQueue can immediately know, now at FrontBoard.framework.
 
-在这个目录找到 /Users/everettjf/Library/Developer/Xcode/iOS DeviceSupport/11.3.1 (15E302)/Symbols/System/Library/PrivateFrameworks
+Find in this directory /Users/everettjf/Library/Developer/Xcode/iOS DeviceSupport/11.3.1 (15E302)/Symbols/System/Library/PrivateFrameworks
 
 ![](/media/15370071911618.jpg)
 
 
-IDA单独分析FrontBoard，
+IDA separately analyze FrontBoard,
 ![](/media/15372808864772.jpg)
 
-很多分析不出的代码。那么就lldb调试。
+Many code can't analyze. Then lldb debug.
 
 
-# 继续调试
+# Continue Debugging
 
-先符号断点
+First symbol breakpoint
 
 ![](/media/15372809320131.jpg)
 
-找到那几个不能识别的BL的指令，地址断点：
+Find those unrecognized BL instructions, address breakpoint:
 
 ![](/media/15372810094474.jpg)
 ![](/media/15372810160502.jpg)
 
-看来就是arrayWithObjects，然后传给executeOrInsertEvents:atPosition:
+Looks like arrayWithObjects, then pass to executeOrInsertEvents:atPosition:
 
-再继续
+Continue
 
 ![](/media/15372810336405.jpg)
 
-还是好多不识别的，挨个地址断点，重复 `po $x0 , p (char*)$x1 , po $x2`
+Still many unrecognized, address breakpoint one by one, repeat `po $x0 , p (char*)$x1 , po $x2`
 
 ![](/media/15372810418000.jpg)
 
@@ -208,41 +208,41 @@ graph-base64-encoded:
 ![](/media/15371102270464.jpg)
 
 
-.... 此处省略 ....
+.... Omitted here ....
 
 
-# 最后
+# Finally
 
-最后找到了 `-[FBSynchronizedTransactionGroup _performSynchronizedCommit:]` 和 `-[FBApplicationUpdateScenesTransaction _performSynchronizedCommit:]`
-和 `+[FBSceneManager synchronizeChanges:]`
+Finally found `-[FBSynchronizedTransactionGroup _performSynchronizedCommit:]` and `-[FBApplicationUpdateScenesTransaction _performSynchronizedCommit:]`
+and `+[FBSceneManager synchronizeChanges:]`
 
 ![](/media/15371976746085.jpg)
 ![](/media/15371981536631.jpg)
 
 
-# 暂时停止一下
+# Temporarily Stop
 
-好了先不继续了。
+OK stop for now.
 
-# 编写tweak
+# Write tweak
 
-经过各种hook，最终发现，如果我们把 `-[FBSynchronizedTransactionGroup _performSynchronizedCommit:]` hook了，直接返回。
+After various hooks, finally discovered, if we hook `-[FBSynchronizedTransactionGroup _performSynchronizedCommit:]`, directly return.
 
-或者 `-[FBSynchronizedTransactionGroup addSynchronizedTransaction:]` 直接返回。
+Or `-[FBSynchronizedTransactionGroup addSynchronizedTransaction:]` directly return.
 
-都能实现一个效果：
+Can both achieve an effect:
 
-1. LaunchScreen启动了，但不消失。
-2. App的进程不存在。（`ps ax` 中看不到App的进程）
+1. LaunchScreen started, but doesn't disappear.
+2. App's process doesn't exist. (Can't see App's process in `ps ax`)
 
-# 结论
+# Conclusion
 
-那么我们可以这么认为：
+Then we can think:
 
-> 点击App图标后，iOS系统的桌面SpringBoard会先创建LaunchScreen，然后创建App对应的进程。那么可以这样认为：LaunchScreen的加载是不占用App进程自身感知到的启动时间的。LaunchScreen是SpringBoard为了用户体验，提前在进程启动之前展示给用户看的。
+> After clicking App icon, iOS system's desktop SpringBoard will first create LaunchScreen, then create App's corresponding process. Then can think: LaunchScreen's loading doesn't occupy App process's own perceived startup time. LaunchScreen is SpringBoard showing to users in advance before process startup for user experience.
 
 
-# 代码 
+# Code 
 
 <https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/AppFrequencyReport/AppFrequencyReport/AppFrequencyReport.xm>
 
@@ -250,42 +250,43 @@ graph-base64-encoded:
 
  ![](/media/15372810336405.jpg)
 
-其实这些BL IDA是可以正常识别的，只是因为我只分析了FrontBoard一个动态库。其实可以直接分析 `/System/Library/Caches/com.apple.dyld/dyld_shared_cache_arm64` ，但据说分析这个要30多GB的控件。我也试着用IDA和Hopper来分析，但由于太大，各种姿势都是分析不完，要么出错，要么一直卡住了。
+Actually these BL IDA can normally recognize, just because I only analyzed FrontBoard one dynamic library. Actually can directly analyze `/System/Library/Caches/com.apple.dyld/dyld_shared_cache_arm64` , but rumor says analyzing this needs 30+ GB space. I also tried using IDA and Hopper to analyze, but because too large, various postures all can't finish analyzing, either error, or stuck.
 
-不过目前还好，得出这一个结论哈。有空再继续探索。
+But currently OK, got this conclusion. Will continue exploring when there's time.
 
 
-# 小片段
+# Small Fragment
 
-还是这些不识别的BL
+Still these unrecognized BL
 
 ![](/media/15372823772453.jpg)
 
 
-step-in 之后是这样
+step-in after is like this
 
 ![](/media/15372824009233.jpg)
 
-再step-in 是这样
+step-in again is like this
 
 ![](/media/15372824261308.jpg)
 
 
-通过两个跳转，貌似这是dyld_shared_cache的特性，还没深入查找资料。看起来这样是可以省去动态绑定的过程了。
+Through two jumps, seems this is dyld_shared_cache's characteristic, haven't deeply searched materials. Looks like this can save dynamic binding process.
 
-这就是fishhook 不能hook UIKit等系统库的objc_msgSend的原因啦。
+This is why fishhook can't hook UIKit and other system libraries' objc_msgSend.
 
-有空继续研究啦 :)
+Will continue researching when there's time :)
 
-# 总结
+# Summary
 
-其实本来是想继续探索到App进程的创建流程，是怎么通知launchd把App进程启动的，但dyld_shared_cache总是不能分析完成，就暂时这样吧，继续前行，有空再回顾。
+Actually originally wanted to continue exploring to App process creation flow, how to notify launchd to start App process, but dyld_shared_cache always can't finish analyzing, just temporarily like this, continue forward, will review when there's time.
 
-有趣，但也挺耗费时间的额～
+Interesting, but also quite time-consuming～
 
 
 
-欢迎关注订阅号「客户端技术评论」：
+
+Welcome to follow subscription account "Client Technology Review":
 ![happyhackingstudio](https://everettjf.github.io/images/fun.png)
 
 

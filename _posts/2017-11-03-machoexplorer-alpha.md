@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MachOExplorer Alpha 发布"
+title: "MachOExplorer Alpha Release"
 categories:
   - Tool
 tags:
@@ -12,40 +12,38 @@ comments: true
 
 
 
-
-经过半年多断断续续的开发，最近终于发布一个测试版本。
+After more than half a year of intermittent development, recently finally released a beta version.
 
 <!-- more -->
 
-# 背景
+# Background
 
 <http://iosre.com/t/machoview/7627>
 <http://iosre.com/t/machoview/5456>
 
-# 功能
+# Features
 
-## 当前版本支持：
+## Current Version Supports:
 
-1. 基本的MachO 文件的解析。类似MachOView查看的所有元素。
+1. Basic MachO file parsing. Similar to all elements viewed by MachOView.
 
-## 马上支持
+## Coming Soon
 
-1. 地址对应的符号的解析。
-2. Windows 版本
+1. Symbol resolution for addresses.
+2. Windows version
 
-## 未来会支持
+## Future Will Support
 
-1. 编辑
+1. Editing
 
 
-# 下载地址
+# Download
 
 [https://github.com/everettjf/MachOExplorer/releases](https://github.com/everettjf/MachOExplorer/releases)
 
-# 代码
+# Code
 
 [https://github.com/everettjf/MachOExplorer](https://github.com/everettjf/MachOExplorer
 )
-
 
 

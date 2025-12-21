@@ -1,63 +1,60 @@
 ---
 layout: post
-title: UITableViewCell自动高度计算优化总结
+title: UITableViewCell Auto Height Calculation Optimization Summary
 categories: Skill
 comments: true
 ---
 
 
 
+# Background
 
-
-
-# 背景
-
-- 一个主播聊天室，大量观众能发送大量的消息，赠送一些道具也会导致产生大量的道具消息。这里假设消息很多的情况：`每秒5条消息到来`。
-- 消息使用NSAttributedString实现，`消息中包含不同大小的图片和文字`。
-- 消息到来后，`自动滚动到最后一条消息`。
-- 全局消息列表（存储最近500条消息，到达500条后直接删除最早的300条）
+- A live streaming chat room where many viewers can send many messages, and sending props also generates many prop messages. Assume a scenario with many messages: `5 messages per second`.
+- Messages are implemented using NSAttributedString, `messages contain images and text of different sizes`.
+- After messages arrive, `automatically scroll to the last message`.
+- Global message list (stores the most recent 500 messages, when reaching 500, directly delete the earliest 300)
 
 <!-- more -->
 
-# 要求
-- 不能占用大量CPU。
-- 在大量消息到来的情况下，界面不能卡顿。
+# Requirements
+- Cannot consume a lot of CPU.
+- Interface cannot lag when many messages arrive.
 
-# 功能实现
+# Implementation
 
 
-## 自动计算高度
-使用一个不错的开源库
+## Auto Calculate Height
+Using a good open-source library
 [UITableView-FDTemplateLayoutCell](https://github.com/forkingdog/UITableView-FDTemplateLayoutCell)
 
-这个开源库在数据较少时没有问题，但当数据（消息）不断增加时，会导致高度计算量大增。
+This open-source library works fine when there's less data, but when data (messages) keep increasing, it causes a huge increase in height calculations.
 
-## 高度计算占用CPU的原因
-自动布局的高度计算速度慢。这个函数：`systemLayoutSizeFittingSize`计算慢。
+## Why Height Calculation Consumes CPU
+Auto layout height calculation is slow. This function: `systemLayoutSizeFittingSize` is slow to calculate.
 
 
-# 使用estimated效果不好
+# Using estimated Doesn't Work Well
 
 ~~~
 - (CGFloat)tableView:(UITableView * _Nonnull)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath
 
 ~~~
-估计高度，会减少很多高度的计算量，每当Cell需要显示的时候才会计算高度。但大量消息的到来会导致Cell抖动，看起来很不舒服。
+Estimated height reduces a lot of height calculations, only calculating height when a Cell needs to be displayed. But many messages arriving causes Cell jitter, which looks very uncomfortable.
 
-因为新增Cell是先按照估计高度显示，如果实际所需高度与估计高度不同，会在Cell显示后，再有个调整高度的过程（会有个简单的动画效果。这个效果如果在新增一条消息时很不多，但如果大量消息很短的间隔到来，就会导致Cell跳动起来）
+Because new Cells are first displayed at estimated height, if the actual required height differs from the estimated height, there will be an adjustment process after the Cell is displayed (with a simple animation effect. This effect is fine when adding one message, but if many messages arrive in short intervals, it causes Cells to jump)
 
-# 使用缓存
+# Using Cache
 
-不能使用IndexPath缓存：如果使用IndexPath缓存，则当消息到达500条，删除最早300条时，会导致所有Cell都需要重新计算高度。然而，剩余的那200条消息是已经计算过的。
+Cannot use IndexPath cache: If using IndexPath cache, when messages reach 500 and the earliest 300 are deleted, all Cells need to recalculate height. However, the remaining 200 messages have already been calculated.
 
-由于消息一旦产生就不会变化，可将计算后的Cell高度再一次缓存到消息中。
+Since messages don't change once created, calculated Cell heights can be cached in the messages.
 
 ~~~c
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger row = [indexPath row];
     MessageEntity *msg = self.data[row];
     if(msg.heightCache > 0){
-   		//当缓存有缓存的高度时，直接返回对应的高度
+   		//When cache has cached height, directly return the corresponding height
         return msg.heightCache;
     }
 
@@ -71,7 +68,7 @@ comments: true
 }
 ~~~
 
-或者，如果消息有一个唯一id，可以使用id缓存。
+Or, if messages have a unique id, you can use id cache.
 
 ~~~c
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -82,13 +79,12 @@ comments: true
 }
 ~~~
 
-# 自动滚动
-由于消息产生速度过快，比滚动到最后一行的速度还快。因此，增加个延迟。并过滤到延迟到来之前的滚动请求。
+# Auto Scroll
+Since messages are generated too fast, faster than scrolling to the last row. Therefore, add a delay. And filter out scroll requests that arrive before the delay.
 
 
-# 参考文章
+# References
 <http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/>
-
 
 
 

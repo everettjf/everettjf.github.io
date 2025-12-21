@@ -1,76 +1,76 @@
 ---
 layout: post
-title: iOS博客精选 来源、使命及反思
+title: iOS Blog Selection - Origin, Mission and Reflection
 categories: Essay
 comments: true
 ---
 
 
 
-2016年5月19日补充：《iOS博客精选》App已经完成，并重命名为 [番茄阅读](https://everettjf.github.io/2016/05/13/how-to-write-a-simple-feed-reader)。(AppStore中App命名不能包含Apple公司的产品商标，因此不能包含iOS)
+Added on May 19, 2016: The "iOS Blog Selection" App has been completed and renamed to [Tomato Read](https://everettjf.github.io/2016/05/13/how-to-write-a-simple-feed-reader). (App names in AppStore cannot contain Apple company product trademarks, so cannot contain iOS)
 
 
-# 近况
+# Recent Status
 
-Warning:本篇博客较为啰嗦，但或许能提供些什么。
+Warning: This blog post is quite verbose, but might provide something.
 
-前不久又将很久之前的想法缩小了开发范围，最终产出了 [http://iosblog.cc](http://iosblog.cc) 这个网站。
+Not long ago, I narrowed down the development scope of a long-held idea and finally produced the website [http://iosblog.cc](http://iosblog.cc).
 
-**iOS博客精选** ，目标是收集各种iOS开发大小牛的博客，附带收集少量经典文章及系列教程。
+**iOS Blog Selection**, goal is to collect blogs from various iOS development experts, along with collecting a small amount of classic articles and series tutorials.
 
-网站使用Python的Django框架，数据库为MySQL。源码见 [https://github.com/everettjf/TomatoRead/](https://github.com/everettjf/TomatoRead/)
+Website uses Python's Django framework, database is MySQL. Source code at [https://github.com/everettjf/TomatoRead/](https://github.com/everettjf/TomatoRead/)
 <!-- more -->
 
-组成部分：
+Components:
 
-1. Web：也就是看到的 <http://iosblog.cc>
-2. Chrome 扩展：辅助维护人员添加网站的 Chrome扩展插件。
-3. iOS客户端（即将开发）：提供博客订阅及网址手机端的查看。
+1. Web: That is <http://iosblog.cc>
+2. Chrome Extension: Chrome extension plugin to assist maintainers in adding websites.
+3. iOS Client (to be developed): Provides blog subscription and website viewing on mobile.
 
-作为一名iOS程序猿，这也算是**全栈**了。依靠大学时期ASP制作网站的底子，学起Django来还算轻松。这3个组成部分，已经完成的前两部分都不是我擅长的，未开发的第三部分是我工作中擅长的。
+As an iOS programmer, this is considered **full-stack**. Relying on the foundation of making websites with ASP in college, learning Django was relatively easy. Of these 3 components, the first two parts that are completed are not my strengths, the third part not yet developed is what I'm good at in work.
 
-马上开始第三部分开发，目标是作为我学习iOS开发以来的第一个上架AppStore的作品。
-
-
-# 历史
-
-看似简单的 <http://iosblog.cc> ，有个很冗长的历史，这个历史充分体现了我对开发个人作品的经验不足，或者说充分体现了一个看似简单的想法变为现实的艰难过程（这里艰难或许主要原因在于我的想法的实现在我的熟悉的技能栈之外）。
-
-见这里 <https://github.com/everettjf/TomatoRead/releases>
-
-- 2015年6月份，使用Golang的Beego开发了第一个版本。数据库使用了ssdb。尝鲜的语言，尝鲜的数据库。这时的想法是：实现多人的网址博客系统。另外，前端使用了AngularJS，也是尝鲜。
-- 2015年8月份，来北京之前，改为PHP的Laravel框架重构了一版本。（5、6、7这三个月，裸辞在家，实践自由职业，但恰好没有接任何单子，反而与一位想创业者”合作“，在实现一个摄影O2O平台，当时为了后期容易其他人员加入，选择了PHP开发。这个选择后来证明是正确的，我来北京工作，交接给了他人，或许PHP很容易找到交接的人）（短暂的自由职业，其实没有尝试到真正的自由职业，只是体验了下创业的第一步）
-- 2015年11月份，虽然来到北京做了iOS开发，还是”愚昧“的要实现这个想法，使用Flask又重写了一遍，数据库使用了MongoDB（想在想想我那时是不是着魔了，脑子进水了，体验各种技术玩呢啊，耗费了大把青春）。还做了个小记录：[这里](https://everettjf.github.io/2015/11/05/mostlikelink-beta-publish)。这时起名：<http://mostlike.link> ，最喜欢的链接。
-- 仍然是11月份，月底，又改名 **雪花链接** <http://snows.link，（小经验：域名总会想到更好的，没到最后想好还是先不要买域名了）。这次支持了多人注册（GitHub账号注册），每个人可以使用Chrome插件（也上传到Chrome商店）添加链接。这个版本算是功能较全的版本，基本使用已经没有问题。且发布到了V2EX上，大家还是给了很多鼓励。[见这里](http://www.v2ex.com/t/240956)。这次在V2EX上，认识了> [wantline](http://www.v2ex.com/member/wantline) ，我们想法十分相似，于是合作。
-- 12月份，与wantline及团队沟通想法。
-- 2016年1月重新开发，这次吸取以前的教训，决定使用我更熟悉的Python语言，以及更成熟的框架Django，以及MySQL。
-- 2016年3月中旬，经过断断续续的开发、交流。钦慕 [https://admire.so](https://admire.so) 上线。2月份时，觉得钦慕如果包含设计与iOS，有点不伦不类，不够专一。且由于新的设计要求重新制作网站的大图标，导致我没有那么多时间去维护每个网站的图标。于是决定 钦慕 专注于设计。而我获取了一份很早的代码（大概是1月底），经过简单的改造 成为 iOS博客精选 [http://iosblog.cc](http://iosblog.cc) ，这由于这个版本较老，而且很简单，钦慕之后已经做了大量的修改和新特性增加，且为了让我这个“古老”的仓库有个归宿 <https://github.com/everettjf/TomatoRead> ， 决定将此代码开源。（代码质量不好，仅供初学者了解大概思路）
+Starting the third part development soon, goal is to be my first AppStore-listed work since learning iOS development.
 
 
-# 反思
+# History
 
-一个看似简单的想法，却前后开发了这么久，却最终还没有实现，只是看似走在了正确的道路上。
+The seemingly simple <http://iosblog.cc> has a very lengthy history, which fully reflects my lack of experience in developing personal works, or fully reflects the difficult process of turning a seemingly simple idea into reality (the difficulty here is perhaps mainly because the implementation of my idea is outside my familiar skill stack).
 
-- 是要快速实现想法，还是要尝鲜新技术
-- 快速实现想法，那就选择成熟的技术、框架
-- 尝鲜？那就折腾去吧
-- 多想，多设计，不要一上来就写代码
-- 想法要从简，想想怎么以最简单的方式实现想法的核心功能
-- 精简想法，去掉那些不关键、不核心的东西
-- 想法的实现技术最好是自己擅长的
-- 确定要投入大量的业余时间吗，确定吗？
+See here <https://github.com/everettjf/TomatoRead/releases>
 
-
-# 未来
-
-## 钦慕
-
-未来大量时间会投入到钦慕的开发中，逐渐将最初的想法以更合适的方式融入。（不忘初心）
+- June 2015, used Golang's Beego to develop the first version. Database used ssdb. New language, new database. The idea at this time was: implement a multi-user URL blog system. Also, frontend used AngularJS, also new.
+- August 2015, before coming to Beijing, changed to PHP's Laravel framework and refactored a version. (May, June, July these three months, quit job at home, practiced freelancing, but happened to not take any orders, instead "cooperated" with someone who wanted to start a business, implementing a photography O2O platform. At that time, to make it easier for other people to join later, chose PHP development. This choice later proved correct, I came to Beijing to work, handed it over to others, perhaps PHP is easy to find people to hand over to) (Brief freelancing, actually didn't experience real freelancing, just experienced the first step of entrepreneurship)
+- November 2015, although came to Beijing doing iOS development, still "foolishly" wanted to implement this idea, used Flask to rewrite again, database used MongoDB (thinking about it now, was I possessed then, brain dead, experiencing various technologies for fun, wasted a lot of youth). Also made a small record: [here](https://everettjf.github.io/2015/11/05/mostlikelink-beta-publish). At this time named: <http://mostlike.link>, favorite links.
+- Still November, end of month, renamed again to **Snow Links** <http://snows.link, (Tip: domain names always think of better ones, don't buy domain names until you've thought it through). This version supported multi-user registration (GitHub account registration), each person could use Chrome plugin (also uploaded to Chrome store) to add links. This version was relatively feature-complete, basic usage was no problem. And published to V2EX, everyone gave a lot of encouragement. [See here](http://www.v2ex.com/t/240956). This time on V2EX, met [wantline](http://www.v2ex.com/member/wantline), our ideas were very similar, so we cooperated.
+- December, communicated ideas with wantline and team.
+- January 2016, redeveloped, this time learned from previous lessons, decided to use Python which I'm more familiar with, and more mature framework Django, and MySQL.
+- Mid-March 2016, after intermittent development and communication. Admire [https://admire.so](https://admire.so) went online. In February, felt that if Admire included both design and iOS, it was a bit neither here nor there, not focused enough. And because new design requirements required remaking the website's large icons, I didn't have that much time to maintain each website's icons. So decided Admire focuses on design. And I got a very early copy of the code (around end of January), after simple modification became iOS Blog Selection [http://iosblog.cc](http://iosblog.cc). Because this version is older and very simple, and Admire has already made a lot of modifications and new features, and to give this "ancient" repository a home <https://github.com/everettjf/TomatoRead>, decided to open source this code. (Code quality is not good, only for beginners to understand the general idea)
 
 
-## iOS博客精选
+# Reflection
 
-专注于iOS博客，日常不断维护。
-iOS客户端会首先尝试开发，试错。力争尽快上线第一个版本。
+A seemingly simple idea, but developed for so long, and still hasn't been fully realized, just seems to be on the right path.
+
+- Should quickly implement ideas, or try new technologies
+- Quickly implement ideas, then choose mature technologies and frameworks
+- Try new things? Then go ahead and experiment
+- Think more, design more, don't start writing code immediately
+- Ideas should be simplified, think about how to implement the core functionality of the idea in the simplest way
+- Streamline ideas, remove those non-critical, non-core things
+- The technology to implement ideas is best what you're good at
+- Are you sure you want to invest a lot of spare time? Are you sure?
+
+
+# Future
+
+## Admire
+
+Will invest a lot of time in Admire's development in the future, gradually integrate the original idea in a more appropriate way. (Don't forget the original intention)
+
+
+## iOS Blog Selection
+
+Focus on iOS blogs, continuously maintain daily.
+iOS client will be tried first, trial and error. Strive to launch the first version as soon as possible.
 
 

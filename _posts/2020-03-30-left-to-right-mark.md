@@ -1,112 +1,112 @@
 ---
 layout: post
-title: "探索?WhatsApp应用名称中的隐藏符号"
+title: "Exploring Hidden Symbol in ?WhatsApp App Name"
 categories:
-  - 探索
+  - Exploration
 tags:
   - unicode
 comments: true
 ---
 
-欢迎大家观看这期的“走近科学之WhatsApp神秘符号”～
+Welcome everyone to watch this episode of "Approaching Science: WhatsApp Mysterious Symbol"～
 
 <!-- more -->
 
 
-## 案发现场
+## Crime Scene
 
-大概半年甚至更久之前，在使用frida-ios-dump时，偶然发现WhatsApp这个应用的名称有点奇怪。
+About half a year or even longer ago, when using frida-ios-dump, accidentally discovered WhatsApp app's name a bit strange.
 
-> frida-ios-dump 是一款越狱iOS上的App砸壳工具（也可以列出iOS的应用列表）。
-> 地址：https://github.com/AloneMonkey/frida-ios-dump
+> frida-ios-dump is a jailbreak iOS App decryption tool (can also list iOS app list).
+> Address: https://github.com/AloneMonkey/frida-ios-dump
 
-仔细看下图的WhatsApp：
+Carefully look at WhatsApp in figure below:
 ![](/media/15855012198617.jpg)
 
-WhatsApp的名称左侧对齐与其他App不同。
+WhatsApp's name left alignment different from other Apps.
 
-... 多少次匆匆擦肩而过 ... 多少次视如不存在 ...
+... How many times hurriedly passed by ... How many times treated as non-existent ...
 
-直到今天我终于好奇了一次，想看看这里为什么没有对齐。
+Until today I finally got curious once, want to see why not aligned here.
 
 
-## 开始
+## Start
 
-砸，砸一下试试。
+Smash, try smashing.
 
 ```
 python dump.py net.whatsapp.WhatsApp
 ```
 
-砸完，如下图。出现个问号。`?WhatsApp.ipa`，问号是什么。
+After smashing, as below. Appears a question mark. `?WhatsApp.ipa`, what is question mark.
 
 ![](/media/15855017374127.jpg)
 
-准备`mv`到其他文件夹研究下，就在此刻...
+Prepare `mv` to other folder to research, at this moment...
 
 ![](/media/15855018704881.jpg)
 
-神秘字符`\342\200\216`出现了，正好奇着...
+Mysterious character `\342\200\216` appeared, just curious...
 
-## 一搜
+## Search
 
-随手一搜 ... 还真搜到了 :)
+Casually searched ... really found :)
 
 ![](/media/15855020124999.jpg)
 
 > https://graphemica.com/200E
 
-打开一看，还真有含义咧～ `left-to-right mark` 
+Open to see, really has meaning～ `left-to-right mark` 
 
 ![](/media/15855021218820.jpg)
 
-## 真相大白
+## Truth Revealed
 
-Wikipedia也有解释
+Wikipedia also has explanation
 
 > The left-to-right mark (LRM) is a control character (an invisible formatting character) used in computerized typesetting (including word processing in a program like Microsoft Word) of text that contains a mixture of left-to-right text (such as English or Russian) and right-to-left text (such as Arabic, Persian or Hebrew). It is used to set the way adjacent characters are grouped with respect to text direction.
 
 > https://en.wikipedia.org/wiki/Left-to-right_mark
 
-贴个翻译：
+Paste translation:
 
-> 左至右符号（Left-to-right mark,LRM）是一种控制字符，或者说是不可见的排版符号。用于计算机的双向文稿排版中。
+> Left-to-right mark (Left-to-right mark,LRM) is a control character, or invisible typesetting symbol. Used in computer bidirectional text typesetting.
 
-我再大白话说一句。Left-to-right mark 是个不可见的符号，用来在 `从右向左`的排版语言（例如阿拉伯语）中包含`从左向右`的文字。
+I say in plain language. Left-to-right mark is an invisible symbol, used to include `left-to-right` text in `right-to-left` typesetting languages (for example Arabic).
 
-下图的例子就比较清晰了：在使用了LRM符号后，阿拉伯语（从右向左）中包含了显示的`C++`（从左向右）。
+Example in figure below is clearer: after using LRM symbol, Arabic (right-to-left) contains displayed `C++` (left-to-right).
 
 ![](/media/15855024011241.jpg)
 
 
-## 扩展阅读
+## Extended Reading
 
-有 `Left-to-right mark`，也有 `Right-to-left mark`。
+Has `Left-to-right mark`, also has `Right-to-left mark`.
 
 > https://en.wikipedia.org/wiki/Right-to-left_mark
 
 
-## 进一步
+## Further
 
-把WhatsApp的`Info.plist`文件拿出来看一眼，似乎没什么特别。
+Take WhatsApp's `Info.plist` file out to look, seems nothing special.
 
-![](/media/15855026225466.jpg)
+![](/media/15855026225476.jpg)
 
-用二进制编辑器看一下。
+Look with binary editor.
 
 ![](/media/15855027112567.jpg)
 
-`\342\200\216` 就是 `0xE2 0x80 0x8E (e2808e)`
+`\342\200\216` is `0xE2 0x80 0x8E (e2808e)`
 
 ![](/media/15855027969727.jpg)
 
 
-这样在代码中获取 `CFBundleDisplayName` 并与其他本地化的语言拼接后，就能保证WhatsApp的顺序从左至右了。
+This way in code getting `CFBundleDisplayName` and concatenating with other localized languages, can ensure WhatsApp's order from left to right.
 
 ---
 
-很有趣 :)
+Very interesting :)
 
-大家喜欢的话，就关注下订阅号，以示鼓励：
+If everyone likes, follow subscription account to encourage:
 
 ![](/images/fun.png)

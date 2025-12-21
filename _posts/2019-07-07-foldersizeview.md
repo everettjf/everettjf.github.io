@@ -1,79 +1,79 @@
 ---
 layout: post
-title: "FolderSizeView 更好用一点的TreeMap展示文件夹内容的工具"
+title: "FolderSizeView A Slightly Better TreeMap Tool for Displaying Folder Contents"
 categories:
-  - 工具
+  - Tool
 tags:
-  - 工具
+  - Tool
 comments: true
 ---
 
-FolderSizeView可以使用TreeMap方式展示一个文件夹内文件大小的占比情况。
+FolderSizeView can use TreeMap method to display file size proportion situation within a folder.
 
 ![](/media/15624354225784.jpg)
 
 
-## 背景
+## Background
 
-经常有分析一个文件夹内文件占用大小的需求（例如分析移动App的安装包大小），一直以来 [GrandPerspective](http://grandperspectiv.sourceforge.net/) 基本满足了这个需求，但使用时时常希望能看到`文件夹的父子关系`，FolderSizeView就解决了这个小需求。
+Often have need to analyze file size occupation within a folder (for example analyze mobile App's installation package size), all along [GrandPerspective](http://grandperspectiv.sourceforge.net/) basically met this need, but when using often hope to see `folder's parent-child relationships`, FolderSizeView solved this small need.
 
 
 <!-- more -->
 
-## 系统支持
+## System Support
 
-macOS和Windows
+macOS and Windows
 
-## 下载地址
-
-
-[GitHub下载地址](https://github.com/foldersizeview/foldersizeview.github.io/releases)
+## Download Address
 
 
-## 使用方法
+[GitHub Download Address](https://github.com/foldersizeview/foldersizeview.github.io/releases)
 
-第一步打开软件
+
+## Usage
+
+Step one open software
 
 ![](/media/15624354676264.jpg)
 
 
-第二步把要分析的文件夹扔进去
+Step two drag folder to analyze in
 
-例如我把Wechat.app扔进去，则展示如下图了。
+For example I drag Wechat.app in, then displays as below.
 
 ![](/media/15624355630220.jpg)
 
-## 选项
+## Options
 
-通过菜单`Action->Group by file extension`可开启通过文件类型分组。如下图：
+Through menu `Action->Group by file extension` can enable grouping by file type. As below:
 
 ![](/media/15626040281694.jpg)
 
-通过菜单`Action->Sunburst Mode`，可使用旭日图展示（一般情况下TreeMap图就足够了，旭日图在文件很多的情况下显示效果不好）。如下图：
+Through menu `Action->Sunburst Mode`, can use sunburst chart display (normally TreeMap chart is sufficient, sunburst chart when files many display effect not good). As below:
 
 ![](/media/15626040706222.jpg)
 
 
 
-## 源码
+## Source Code
 
-~~木有，嘿嘿。~~
+~~None, hehe.~~
 
-有了 <https://github.com/foldersizeview/foldersizeview>
+Has <https://github.com/foldersizeview/foldersizeview>
 
-## 补充
+## Addition
 
-目前版本是快速开发出的，`遍历文件夹都是在主线程递归实现，文件夹内容太多的话，一般是要崩溃滴`。但日常分析个App的安装包啥的，都木有问题。
+Current version is quickly developed, `traversing folders all recursively implemented on main thread, if folder content too much, generally will crash`. But daily analyzing App installation packages, etc., all no problem.
 
 
-## 总结
+## Summary
 
-太简单了，文章也写完了。
+Too simple, article also finished.
 
 
 ---
 
-欢迎订阅 :)
+Welcome to subscribe :)
 
 ![](/images/fun.png)
 

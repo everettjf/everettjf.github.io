@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "重定向标准输出"
+title: "Redirect Standard Output"
 categories:
   - stdout
 tags:
@@ -10,11 +10,12 @@ tags:
 comments: true
 ---
 
-看到一处代码挺有意思，iOS项目中把printf打印的内容重定向到了UITextView中。
+Saw code quite interesting, iOS project redirects printf printed content to UITextView.
 
 <!-- more -->
 
-代码抽出来后，挺简单。
+Code extracted, quite simple.
+
 
 
 
@@ -44,7 +45,7 @@ void set_redirect_output(print_cbk_t f)
 
 ```
 
-然后在ViewController中类似如下使用：
+Then in ViewController use similar to below:
 
 
 ```
@@ -82,7 +83,7 @@ static void current_output(const char* buff, int len) {
 ```
 
 
-运行后，printf就到了UITextView中。
+After running, printf goes to UITextView.
 
 
 ![](/media/15832504339122.jpg)
@@ -90,22 +91,22 @@ static void current_output(const char* buff, int len) {
 
 
 
-原理似乎也没啥可讲的，本身c库就提供支持。
+Principle seems nothing to explain, C library itself provides support.
 
 ```
     setvbuf(stdout, 0, _IOLBF, 0); // stdout: line-buffered
     setvbuf(stderr, 0, _IONBF, 0); // stderr: unbuffered
 ```
 
-然后这两个函数把标准输出设置为“按行缓冲”和“不缓冲”。也就是进入stdout和stderr的内容都按行或直接输出。这样UITextView就接收到的比较及时了。
+Then these two functions set standard output to "line-buffered" and "unbuffered". That is content entering stdout and stderr all output by line or directly. This way UITextView receives more timely.
 
 
 ---
 
-水文写起来就是轻松愉快啊~ 有趣就好~
+Writing water articles is relaxed and pleasant~ Interesting is good~
 
 ---
 
-大家喜欢的话，就关注下订阅号，以示鼓励：
+If everyone likes, follow subscription account to encourage:
 
 ![](/images/fun.png)

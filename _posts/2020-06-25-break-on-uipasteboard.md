@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "LLDB 断点 UIPasteboard 的所有方法"
+title: "LLDB Breakpoint All UIPasteboard Methods"
 categories:
   - lldb
 tags:
@@ -8,27 +8,27 @@ tags:
 comments: true
 ---
 
-iOS14 新增了一个保护隐私的功能，当前App读取其他App复制到剪贴板中的内容时，会有个短暂的提示。如下图：
+iOS14 added a privacy protection feature, when current App reads content other Apps copied to clipboard, will have a brief prompt. As below:
 ![-w431](/media/15930990964673.jpg)
 
 
-可以通过断点 UIPasteboard 的所有方法来检查App中与剪贴板有关的所有行为。
+Can breakpoint all UIPasteboard methods to check all clipboard-related behaviors in App.
 
-断点一个UIPasteboard的所有方法可以用如下命令：
+Breakpoint all UIPasteboard methods can use command below:
 
 ```
 breakpoint set -r '\[UIPasteboard .*\]$'
 ```
 
-先断点到main，然后lldb终端输入以上命令。
+First breakpoint at main, then input above command in lldb terminal.
 
 ![-w728](/media/15930999653054.jpg)
 
-（上图只截图了一部分UIPasteboard的方法）
+(Figure above only screenshotted part of UIPasteboard methods)
 
 
-## 总结
+## Summary
 
-嗯，大家小试一下～ 会发现除了我们自己调用，系统也偶尔会触发UIPasteboard相关调用。
+Hmm, everyone try～ Will discover besides our own calls, system also occasionally triggers UIPasteboard related calls.
 
-很有趣～
+Very interesting～

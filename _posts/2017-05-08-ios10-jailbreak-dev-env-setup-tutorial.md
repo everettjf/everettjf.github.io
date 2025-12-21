@@ -1,6 +1,6 @@
 ---
 layout: post
-title: iOS10 越狱开发环境搭建
+title: iOS10 Jailbreak Development Environment Setup Tutorial
 categories: Skill
 comments: true
 ---

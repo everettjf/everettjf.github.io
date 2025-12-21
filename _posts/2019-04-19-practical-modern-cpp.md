@@ -16,17 +16,17 @@ A Free C++ Book
 *Work In Progress*
 
 1. Basis
-    1. 输入输出
+    1. Input Output
     2. [array vector](https://zhuanlan.zhihu.com/p/63780726)
     3. list
-    4. 多线程
+    4. Multithreading
     4. type_traits
     4. std::move
-    1. [可变参数模板函数](https://mp.weixin.qq.com/s/iiLXYGrT3TaCe8esSM1gtw)
+    1. [Variadic Template Functions](https://mp.weixin.qq.com/s/iiLXYGrT3TaCe8esSM1gtw)
     2. [Forwarding Reference](https://mp.weixin.qq.com/s/i6ksTraN1h_o5ZMTVRtvZA)
-    2. 可变参数模板类
+    2. Variadic Template Classes
 1. Algorithm
-    1. 排序
+    1. Sorting
 1. Library
     1. Boost
     1. Folly
@@ -48,5 +48,4 @@ A Free C++ Book
     1. C++20
 1. Debug C++
 1. Reverse Engineering C++
-
 

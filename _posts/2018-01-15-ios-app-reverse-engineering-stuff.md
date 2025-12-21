@@ -1,37 +1,37 @@
 ---
 layout: post
-title: "iOS应用逆向工程资料"
+title: "iOS App Reverse Engineering Resources"
 categories:
-  - 逆向
+  - Reverse Engineering
 tags:
-  - 逆向
+  - Reverse Engineering
 comments: true
 ---
 
 
-> 又是很久不逆向App了，近期有点需求需要看看其他App怎么实现的，想来复习一下。以及这两年也有若干常用工具发生了变化，产生了一些新的工具。这篇文章总结下基础的App逆向的方法、工具和一些书籍。以后有新的发现也会尽量更新到这篇文章。
+> Haven't reverse engineered Apps for a long time, recently have some needs to see how other Apps implement things, want to review. Also these two years several commonly used tools have changed, some new tools emerged. This article summarizes basic App reverse engineering methods, tools and some books. Will try to update this article when there are new discoveries.
 
 <!-- more -->
 
-# 环境
+# Environment
 
-## 硬件
+## Hardware
 
-1. iOS系统的iPhone或iPad
-2. macOS系统的MacBook等
+1. iPhone or iPad with iOS system
+2. MacBook etc. with macOS system
 
-## 越狱
+## Jailbreak
 
-手机是否可以越狱可通过这个网站来确定： <https://canijailbreak.com/> 越狱用的软件也有链接可下载。
+Whether phone can be jailbroken can be determined through this website: <https://canijailbreak.com/> Jailbreak software also has links to download.
 
 ![](/media/15238902335157.jpg)
 
-## 工具
+## Tools
 
 
 ### frida
 
-官网 <https://www.frida.re/>
+Official site <https://www.frida.re/>
 
 > Dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers. Inject your own scripts into black box processes. Hook any function, spy on crypto APIs or trace private application code, no source code needed. Edit, hit save, and instantly see the results. All without compilation steps or program restarts.
 
@@ -46,26 +46,26 @@ comments: true
 
 > Chisel is a collection of LLDB commands to assist debugging iOS apps.
 
-最常用的就是`pview`和`pvc`两个命令了。 所有支持的命令可以参考Wiki：<https://github.com/facebook/chisel/wiki> 。
+Most commonly used are `pview` and `pvc` commands. All supported commands can reference Wiki: <https://github.com/facebook/chisel/wiki> .
 
 ### MonkeyDev
 
 <https://github.com/AloneMonkey/MonkeyDev>
 
-> 原有iOSOpenDev的升级，非越狱插件开发集成神器！
-1. 可以使用Xcode开发CaptainHook Tweak、Logos Tweak 和 Command-line Tool，在越狱机器开发插件，这是原来iOSOpenDev功能的迁移和改进。
-2. 只需拖入一个砸壳应用，自动集成class-dump、restore-symbol、Reveal、Cycript和注入的动态库并重签名安装到非越狱机器。
-3. 支持调试自己编写的动态库和第三方App
-4. 支持通过CocoaPods第三方应用集成SDK以及非越狱插件，简单来说就是通过CocoaPods搭建了一个非越狱插件商店。
+> Upgrade of original iOSOpenDev, non-jailbreak plugin development integration tool!
+1. Can use Xcode to develop CaptainHook Tweak, Logos Tweak and Command-line Tool, develop plugins on jailbroken devices, this is migration and improvement of original iOSOpenDev functionality.
+2. Just drag in a decrypted app, automatically integrate class-dump, restore-symbol, Reveal, Cycript and injected dynamic library and re-sign install to non-jailbroken device.
+3. Support debugging self-written dynamic libraries and third-party Apps
+4. Support integrating SDK and non-jailbreak plugins through CocoaPods for third-party apps, simply put is building a non-jailbreak plugin store through CocoaPods.
 
-新生力量，诞生于2017年。已经是分析闭源应用的必备工具。
+New force, born in 2017. Already essential tool for analyzing closed-source apps.
 
 
 ### passionfruit
 
 <https://github.com/chaitin/passionfruit>
 
-基于frida开发，逆向必备，可以很容易看到第三方应用的各类信息。
+Based on frida development, essential for reverse engineering, can easily see various information of third-party apps.
 
 * Cross plarform web GUI!
 * Also supports non-jailbroken device (see Non-jailbroken device).
@@ -75,7 +75,7 @@ comments: true
 * Capture screenshot.
 * Checksec: see if target app is encrypted, and has enabled PIE, ARC and stack canary.
 * App sandbox file browser. Directly preview images, SQLite databases and plist files on device. You can always download the file for further investigation.
-* 等等
+* etc.
 
 ![](/media/15238939581774.png)
 
@@ -83,7 +83,7 @@ comments: true
 
 <https://github.com/sensepost/objection>
 
-基于frida的工具集。
+Toolset based on frida.
 
 > objection is a runtime mobile exploration toolkit, powered by Frida. It was built with the aim of helping assess mobile applications and their security posture without the need for a jailbroken or rooted mobile device.
 
@@ -91,7 +91,7 @@ comments: true
 
 <https://github.com/theos/theos>
 
-提供了各类逆向开发的模板及工具。
+Provides various reverse engineering development templates and tools.
 
 > A cross-platform suite of tools for building and deploying software for iOS and other platforms.
 
@@ -114,7 +114,7 @@ comments: true
 
 <https://github.com/AloneMonkey/frida-ios-dump>
 
-可以很方便的dump应用。可替代 Clutch。 
+Can dump apps very conveniently. Can replace Clutch. 
 
 > pull decrypted ipa from jailbreak device
 
@@ -129,7 +129,7 @@ comments: true
 
 <https://github.com/AloneMonkey/dumpdecrypted>
 
-在原版的基础上增加了dump 动态库的功能。
+Added dump dynamic library functionality on original basis.
 
 > Dumps decrypted mach-o files from encrypted applications、framework or app extensions.
 
@@ -158,19 +158,19 @@ comments: true
 
 ### IDA
 
-神器
+Essential tool
 
 ### Hopper
 
-轻量级反编译
+Lightweight decompiler
 
 ### Flex
 
 <https://github.com/Flipboard/FLEX>
 
-### 其他
+### Others
 
-strings、nm、weak_classdump
+strings, nm, weak_classdump
 
 <http://iphonedevwiki.net/index.php/Reverse_Engineering_Tools>
 
@@ -178,12 +178,12 @@ strings、nm、weak_classdump
 
 
 
-# 书籍
+# Books
 
 
-## iOS应用逆向工程
-中文：<http://item.jd.com/11670145.html>
-英文：<https://github.com/iosre/iOSAppReverseEngineering>
+## iOS App Reverse Engineering
+Chinese: <http://item.jd.com/11670145.html>
+English: <https://github.com/iosre/iOSAppReverseEngineering>
 
 ![](/media/15238973309470.jpg)
 
@@ -201,7 +201,7 @@ strings、nm、weak_classdump
 ## Reverse Engineering for Beginners
 
 <https://beginners.re/>
-中文 <https://item.jd.com/12166962.html>
+Chinese <https://item.jd.com/12166962.html>
 ![](/media/15238974244634.jpg)
 
 ## Beginner's Guide to Exploitation on ARM 
@@ -214,7 +214,7 @@ strings、nm、weak_classdump
 - Volume I - User Mode
 - Volume III - Security & Insecurity
 
-据说Volume II 今年(2018年）秋天出来。
+Rumor says Volume II will come out this fall (2018).
 
 <http://newosxbook.com/>
 
@@ -222,10 +222,10 @@ strings、nm、weak_classdump
 
 
 
-# 资料
+# Resources
 
 
-## 反调试资料、Hook检测
+## Anti-debugging Resources, Hook Detection
 
 AttackingBYODEnterpriseMobileSecuritySolutions
 
@@ -237,12 +237,12 @@ AttackingBYODEnterpriseMobileSecuritySolutions
 ## OWASP Mobile Security Testing Guide
 <https://www.gitbook.com/book/b-mueller/the-owasp-mobile-security-testing-guide>
 
-## iOS 安全 Wiki
+## iOS Security Wiki
 
 <https://legacy.gitbook.com/book/wizardforcel/ios-sec-wiki/details>
 <http://security.ios-wiki.com>
 
-## 其他
+## Others
 
 <http://iphonedevwiki.net/>
 <http://www.cydiasubstrate.com/>
@@ -260,19 +260,19 @@ AttackingBYODEnterpriseMobileSecuritySolutions
 
 # PWN
 
-## 安全类入门文章
+## Security Introduction Articles
 <https://www.fuzzysecurity.com/tutorials.html>
 
-## 入门pwn
+## PWN Introduction
 <http://pwnable.kr/>
 
-## Iot安全 AzeriaLabs
+## IoT Security AzeriaLabs
 <https://azeria-labs.com/writing-arm-shellcode/>
 
-## ARM汇编 iOS调试进阶
+## ARM Assembly iOS Debugging Advanced
 <https://zhuanlan.zhihu.com/c_142064221>
 
-# 论坛
+# Forums
 
 <http://iosre.com>
 

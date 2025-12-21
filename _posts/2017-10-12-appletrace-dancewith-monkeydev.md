@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AppleTrace 搭配 MonkeyDev Trace任意App"
+title: "AppleTrace with MonkeyDev Trace Any App"
 categories:
   - Tool
 tags:
@@ -8,28 +8,28 @@ tags:
 comments: true
 ---
 
-AppleTrace搭配MonkeyDev可实现Trace任意App
+AppleTrace with MonkeyDev can Trace any App
 
-(关联文章：<https://everettjf.github.io/2017/09/21/appletrace/> )
+(Related article: <https://everettjf.github.io/2017/09/21/appletrace/> )
 
-# 结果演示：
+# Result Demo:
 
 ![appletrace](http://everettjf.github.io/stuff/appletrace/appletrace.gif)
 
 <!-- more -->
 
-# 环境：
-arm64（仅在arm64环境下）
+# Environment:
+arm64 (only in arm64 environment)
 
-# 工具：
+# Tools:
 
 - MonkeyDev <https://github.com/AloneMonkey/MonkeyDev>
 - AppleTrace <https://github.com/everettjf/AppleTrace>
 
-# 步骤：
+# Steps:
 
-1. 首先使用MonkeyDev创建MonkeyApp
-2. 新建Podfile
+1. First use MonkeyDev to create MonkeyApp
+2. Create Podfile
 
     ```
     source '<https://github.com/AloneMonkey/MonkeyDevSpecs.git'>
@@ -38,14 +38,13 @@ arm64（仅在arm64环境下）
          pod 'AppleTrace'
     end
     ```
-3. 把第三方App的ipa放入 MonkeyDev指定的Target目录中。
-4. 运行
-5. 从沙盒 Library目录中复制出 appletracedata目录
-6. 按照 <https://github.com/everettjf/AppleTrace> README中的步骤可生成 trace.html
+3. Put third-party App's ipa into MonkeyDev specified Target directory.
+4. Run
+5. Copy appletracedata directory from sandbox Library directory
+6. Follow steps in <https://github.com/everettjf/AppleTrace> README can generate trace.html
 
-# 结果
+# Result
 
 <https://github.com/everettjf/Yolo/raw/master/WeChatAppleTrace/Result/WeChatStartup.zip>
 
-解压上面的zip文件，打开trace.html，按快捷键 w a s d 可缩放移动，就像在玩 CS，是吧。
-
+Extract zip file above, open trace.html, press shortcut keys w a s d to zoom and move, just like playing CS, right.

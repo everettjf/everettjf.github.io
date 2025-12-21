@@ -1,92 +1,92 @@
 ---
 layout: post
-title: "剪贴板输入法，让朋友圈文字不再被折叠"
+title: "Clipboard Input Method, Make Moments Text No Longer Folded"
 categories:
-  - 工具
+  - Tool
 tags:
-  - 工具
-  - 输入法
-  - 剪贴板
+  - Tool
+  - Input Method
+  - Clipboard
 comments: true
 ---
 
-**剪贴板输入法现已转让**，详见：<https://mp.weixin.qq.com/s/0dqe4Rj_pUGXwzRUKsj7iQ>
+**Clipboard Input Method has been transferred**, see: <https://mp.weixin.qq.com/s/0dqe4Rj_pUGXwzRUKsj7iQ>
 
-剪贴板输入法（Paste Keyboard），用于解决微信朋友圈粘贴大量文本时被自动折叠为一行的问题。使用剪贴板输入法，可以让朋友圈文字不再被折叠。
+Clipboard Input Method (Paste Keyboard), used to solve WeChat Moments pasting large amounts of text automatically folded to one line problem. Using Clipboard Input Method, can make Moments text no longer folded.
 
 <!-- more -->
 
-## 背景
+## Background
 
-当网上看到一段文字很好，想直接复制粘贴分享到微信朋友圈时，你会发现发出的朋友圈会被折叠为一行。如下图：
+When see a good text online, want to directly copy paste share to WeChat Moments, you'll find published Moments will be folded to one line. As below:
 
 ![](/media/15583135121912.jpg)
 
-微信的初衷是好的，为了鼓励大家原创和真实的分享。
+WeChat's original intent is good, to encourage everyone's original and authentic sharing.
 
-微信有个简单的算法来判断“何时折叠”，大概可能是：判断有没有文本的输入过程。
+WeChat has a simple algorithm to judge "when to fold", roughly might be: judge if there's text input process.
 
 
-## 使用剪贴板输入法避免
+## Using Clipboard Input Method to Avoid
 
-使用剪贴板输入法输入后，可见不被折叠了。如下图：
+After using Clipboard Input Method to input, can see not folded. As below:
 
 ![](/media/15583137647734.jpg)
 
 
 
-## 安装
+## Installation
 
-剪贴板输入法已经登陆AppStore，点击 [这里下载安装](https://itunes.apple.com/cn/app/id1463618135)
+Clipboard Input Method has landed on AppStore, click [here to download and install](https://itunes.apple.com/cn/app/id1463618135)
 
 
-## 配置
+## Configuration
 
-(1) 首先，打开 `设置-通用-键盘-键盘`，点击 添加新键盘，选择剪贴板输入法。
+(1) First, open `Settings-General-Keyboard-Keyboards`, click Add New Keyboard, select Clipboard Input Method.
 
 ![](/media/15583141966690.jpg)
 
 
-(2) 然后，打开 `设置-通用-键盘-键盘-剪贴板输入法`，启用`允许完全访问`。
+(2) Then, open `Settings-General-Keyboard-Keyboards-Clipboard Input Method`, enable `Allow Full Access`.
 ![](/media/15583142336541.jpg)
 
 
-## 使用
+## Usage
 
-（1）先从任意地方`复制一段文字`。
+(1) First `copy a text` from anywhere.
 
-（2）然后，进入一个可以输入文字的地方，例如微信朋友圈。
+(2) Then, enter a place that can input text, for example WeChat Moments.
 
-（3）切换输入法到`剪贴板输入法`。
+(3) Switch input method to `Clipboard Input Method`.
 ![](/media/15583147714698.jpg)
 
-（4）剪贴板输入法会自动获取`系统剪贴板中的文字`，并简略显示。此时点击`输入`即可开始输入。
+(4) Clipboard Input Method will automatically get `text in system clipboard`, and briefly display. At this time click `Input` can start input.
 ![](/media/15583149056002.jpg)
 
-（5）输入完成后发表。文本就不会被折叠啦。:)
+(5) After input completes publish. Text won't be folded. :)
 
 
-## 输入进度和速度
+## Input Progress and Speed
 
 ![](/media/15583150167015.jpg)
 
 
-## 完整截图
+## Complete Screenshot
 
 ![](/media/15583149389435.jpg)
 
-## 总结
+## Summary
 
-平时浏览朋友圈经常看到一些文字被折叠，总觉得有那么一点点别扭。直到某一天看到微博有人分享了一下模拟输入的想法（微博有点久了，没有翻到……），于是记录了一个TODO。有了之前开发`USB Keyboard`的基础代码，这次开发比较快速，从周五晚上开始开发，到周一早上审核通过。苹果也很给力，一次审核通过。
+Usually browsing Moments often see some text folded, always feel a bit awkward. Until one day saw Weibo someone shared idea of simulating input (Weibo post a bit old, couldn't find...), so recorded a TODO. With previous `USB Keyboard` development's base code, this development was relatively fast, from Friday night started development, to Monday morning review passed. Apple also very helpful, one review passed.
 
-~~原价6元，现价免费哦~~ 6块钱太贵，那就免费咯 :)
+~~Original price 6 yuan, now free~~ 6 yuan too expensive, then free :)
 
-大家觉得好用，多多分享哦～
+Everyone thinks it's good, share more～
 
 ---
 
 
-也要关注我的微信订阅号哈 :)
+Also follow my WeChat subscription account :)
 
 ![wechatgroup](/images/fun.png)
 

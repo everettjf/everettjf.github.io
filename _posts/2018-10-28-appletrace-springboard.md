@@ -1,90 +1,89 @@
 ---
 layout: post
-title: "使用AppleTrace探索SpringBoard"
+title: "Exploring SpringBoard Using AppleTrace"
 categories:
-  - 工具
+  - Tool
 tags:
-  - 探索
+  - Exploration
 comments: true
 ---
 
-前段时间的《初步探索LaunchScreen》使用IDA和lldb探索了下部分SpringBoard。这篇文章再用AppleTrace初步探索下SpringBoard。AppleTrace 目前使用了HookZz来inline hook objc_msgSend。可用于分析每个Objective C的方法耗时，和调用关系。
+Previous "Preliminary Exploration of LaunchScreen" used IDA and lldb to explore part of SpringBoard. This article uses AppleTrace to preliminarily explore SpringBoard. AppleTrace currently uses HookZz to inline hook objc_msgSend. Can be used to analyze each Objective C method's time consumption, and call relationships.
 
 <!-- more -->
 
-# 背景
+# Background
 
-AppleTrace 是大概去年（2017年）9月份业余时间开发（或者叫组装）的一个“性能”分析工具。“性能”是加了引号，因为本意是想用来分析性能，但由于对性能影响较大，结果只能拿来参考。或者说可以拿来分析方法之间的相对耗时。
+AppleTrace is a "performance" analysis tool developed (or called assembled) in spare time around September last year (2017). "Performance" is in quotes, because original intent was to use for performance analysis, but due to large impact on performance, results can only be used for reference. Or can be used to analyze relative time consumption between methods.
 
-以前写过三篇文章：
+Previously wrote three articles:
 
-1. AppleTrace 性能分析工具： <https://everettjf.github.io/2017/09/21/appletrace/>
-2. AppleTrace 搭配 MonkeyDev Trace任意App ： <https://everettjf.github.io/2017/10/12/appletrace-dancewith-monkeydev/>
-3. 使用 Cydia 安装 AppleTrace Tweak : <https://everettjf.github.io/2018/07/10/appletrace-tweak-cydia-repo/>
+1. AppleTrace Performance Analysis Tool: <https://everettjf.github.io/2017/09/21/appletrace/>
+2. AppleTrace with MonkeyDev Trace Any App: <https://everettjf.github.io/2017/10/12/appletrace-dancewith-monkeydev/>
+3. Install AppleTrace Tweak Using Cydia: <https://everettjf.github.io/2018/07/10/appletrace-tweak-cydia-repo/>
 
-*哇，竟然写过三篇文章，AppleTrace真能凑数呀*
+*Wow, actually wrote three articles, AppleTrace really can make up numbers*
 
-前段时间的《初步探索LaunchScreen》使用IDA和lldb探索了下部分SpringBoard。这篇文章十分简单的介绍下怎么用AppleTrace探索SpringBoard。
+Previous "Preliminary Exploration of LaunchScreen" used IDA and lldb to explore part of SpringBoard. This article very simply introduces how to use AppleTrace to explore SpringBoard.
 
-地址是： <https://github.com/everettjf/AppleTrace> 。
+Address: <https://github.com/everettjf/AppleTrace> .
 
-当然写这篇文章的原由是因为，AppleTrace一直把catapult和hookzz当作submodule，但因为catapult仓库太大，导致初次下载以及切换分支时等待时间太长；hookzz的接口变动又太频繁，每次更新hookzz都要改代码。于是今天把这两个submodule删除了，找了一个可用的hookzz代码，把代码直接放进了仓库。
+Of course reason for writing this article is because, AppleTrace always treated catapult and hookzz as submodules, but because catapult repository too large, causes initial download and branch switching wait time too long; hookzz's interface changes too frequent, each time updating hookzz need to change code. So today deleted these two submodules, found a usable hookzz code, put code directly into repository.
 
 
-# 怎么做
+# How to Do
 
-1、使用MonkeyDev创建Tweak项目（例如CaptainHookTweak）
+1. Use MonkeyDev to create Tweak project (for example CaptainHookTweak)
 ![](/media/15407405728323.jpg)
-2、把AppleTrace的objc_msgSend hook相关的文件拖入
+2. Drag AppleTrace's objc_msgSend hook related files in
 
 ![](/media/15407406419494.jpg)
 
 
-3、 配置IP地址后，cmd+r就可以安装到越狱的手机上了。
+3. After configuring IP address, cmd+r can install to jailbroken phone.
 
-4、 SpringBoard重启后就会自动记录所有Objective C的方法调用了。
+4. After SpringBoard restarts will automatically record all Objective C method calls.
 
-5、 打开目录 `/var/mobile/Library/appletracedata`，由于SpringBoard的权限特殊性，获取Library目录的位置到了这里。
+5. Open directory `/var/mobile/Library/appletracedata`, due to SpringBoard's permission special nature, Library directory location is here.
 
 ![](/media/15407408143752.jpg)
 
 
-6、 复制出这些文件。
+6. Copy out these files.
 
-复制的方法很多。例如可以`tar -zcvf x.tar.gz appletracedata/`然后`scp`出来。
+Copy methods many. For example can `tar -zcvf x.tar.gz appletracedata/` then `scp` out.
 
 
-7、 使用AppleTrace的merge.py脚本处理成`trace.json`文件。
+7. Use AppleTrace's merge.py script process into `trace.json` file.
 
-Chrome浏览器打开`chrome://tracing`，把`trace.json`拖入即可。
+Chrome browser open `chrome://tracing`, drag `trace.json` in.
 
 ![](/media/15407410472870.jpg)
 
 
-# 还有什么
+# What Else
 
-由于目前的代码会（尝试）主动过滤一些“非当前可执行文件”的方法，目前看到基本都是`SB`开头的类。
+Since current code will (try to) actively filter some "non-current executable file" methods, currently see basically all classes starting with `SB`.
 
 
 ![](/media/15407411728754.jpg)
 
 
-*真实满屏幕的SB啊 :) 很提神*
+*Really full screen of SB :) Very refreshing*
 
-下一步可以扩大范围，不过滤或者少过滤。具体代码可见：
+Next step can expand scope, don't filter or filter less. Specific code see:
 
 <https://github.com/everettjf/AppleTrace/blob/master/appletrace/appletrace/src/objc/hook_objc_msgSend.m>
 
-上面SpringBoard的trace.json见：<https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/stuff/appletracedata.tar.gz>
+Above SpringBoard's trace.json see: <https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/stuff/appletracedata.tar.gz>
 
 
-# 其他App
+# Other Apps
 
-SpringBoard我们能Trace，其他App更是可以了。可以参考过去的文章，如何Trace任意App。
+SpringBoard we can Trace, other Apps even more can. Can reference past articles, how to Trace any App.
 
 
-# 总结
+# Summary
 
-这篇文章很简短，主要广而告之下AppleTrace也是一个探索的工具，很有意思。
-
+This article is very short, mainly advertise that AppleTrace is also an exploration tool, very interesting.
 

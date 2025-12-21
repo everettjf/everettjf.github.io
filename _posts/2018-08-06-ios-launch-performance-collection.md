@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS应用启动性能优化资料"
+title: "iOS App Launch Performance Resources"
 categories:
   - doc
 tags:
@@ -8,7 +8,7 @@ tags:
 comments: true
 ---
 
-发现好资料就整理到这里，*随时更新，最后一次更新2018年8月19日*
+Found good resources, organize here, *updated anytime, last update August 19, 2018*
 
 <!-- more -->
 
@@ -17,151 +17,151 @@ comments: true
 
 1. Optimizing App Startup Time
     
-    必看官方资料，从底层到上层 <https://developer.apple.com/videos/play/wwdc2016/406/>
+    Must-see official resource, from low-level to high-level <https://developer.apple.com/videos/play/wwdc2016/406/>
     
 2. App Startup Time: Past, Present, and Future
     
-    dyld层面的优化 <https://developer.apple.com/videos/play/wwdc2017/413/>
+    dyld-level optimization <https://developer.apple.com/videos/play/wwdc2017/413/>
     
 3. Optimizing I/O for Performance and Battery Life
     
-    IO是启动性能的重要影响部分 <https://developer.apple.com/videos/play/wwdc2016/719/>
+    IO is important impact part of startup performance <https://developer.apple.com/videos/play/wwdc2016/719/>
     
 4. Practical Approaches to Great App Performance
     
-    现场一步一步解决性能问题 <https://developer.apple.com/videos/play/wwdc2018/407/>
+    On-site step by step solving performance problems <https://developer.apple.com/videos/play/wwdc2018/407/>
     
 5. Using Time Profiler in Instruments
     
-    TimeProfiler是必备好帮手 <https://developer.apple.com/videos/play/wwdc2016/418/>
+    TimeProfiler is essential good helper <https://developer.apple.com/videos/play/wwdc2016/418/>
     
 6. High Performance Auto Layout
     
-    App首页如果是AutoLayout的，那么以后看来不是问题了 <https://developer.apple.com/videos/play/wwdc2018/220/>
+    If App home page uses AutoLayout, then in future seems not a problem <https://developer.apple.com/videos/play/wwdc2018/220/>
     
 7. Core Image: Performance, Prototyping, and Python
     
-    首页当然也有大量的图片，了解Core Image <https://developer.apple.com/videos/play/wwdc2018/719/>
+    Home page of course also has lots of images, understand Core Image <https://developer.apple.com/videos/play/wwdc2018/719/>
 
-# 文章
+# Articles
 
-**以下文章仅仅是收集，各家之谈，不要全信，也不要反对，各有道理，学习思路即可。**
+**Below articles are just collection, various opinions, don't fully believe, don't oppose, each has reason, learn ideas.**
 
-1. 即刻技术团队：iOS app 启动速度研究实践
+1. Jike Tech Team: iOS app startup speed research practice
     
-    地址 <https://zhuanlan.zhihu.com/p/38183046?from=1086193010&wm=3333_2001&weiboauthoruid=1690182120>
-    学习思路。
-
-2. iOS Dynamic Framework 对App启动时间影响实测
+    Address <https://zhuanlan.zhihu.com/p/38183046?from=1086193010&wm=3333_2001&weiboauthoruid=1690182120>
+    Learn ideas.
+    
+2. iOS Dynamic Framework Impact on App Startup Time Actual Test
     
     <https://www.jianshu.com/p/3263009e9228>
-    动态库的测试。可知：启动过程中尽量不要加载动态库了。
-
+    Dynamic library testing. Can know: try not to load dynamic libraries during startup.
+    
 3. Optimizing Facebook for iOS start time
     
     <https://code.fb.com/ios/optimizing-facebook-for-ios-start-time/>
-    Facebook的思路。虽然Facebook的启动很慢。
+    Facebook's ideas. Although Facebook's startup is very slow.
     
-4. Bugly: iOS App 启动性能优化
+4. Bugly: iOS App Launch Performance Optimization
     
     <https://mp.weixin.qq.com/s/Kf3EbDIUuf0aWVT-UCEmbA>
-    这篇文章最后透露了一个很给力的思路。强烈推荐仔细看文章最后。
+    This article finally reveals a very powerful idea. Strongly recommend carefully reading article end.
     
-5. 今日头条iOS客户端启动速度优化
+5. Toutiao iOS Client Startup Speed Optimization
     
     <https://techblog.toutiao.com/2017/01/17/iosspeed/>
-    文章开头的信息很多，但减少代码量，貌似很难行得通。
+    Article beginning has lots of information, but reducing code amount, seems hard to implement.
     
-6. 如何精确度量 iOS App 的启动时间
+6. How to Precisely Measure iOS App's Startup Time
     
     <https://www.jianshu.com/p/c14987eee107>
-    文章的思路可参考。
-
-7. 优化 App 的启动时间
+    Article's ideas can reference.
+    
+7. Optimizing App's Startup Time
     
     <http://yulingtianxia.com/blog/2016/10/30/Optimizing-App-Startup-Time/>
-    主要是对WWDC的笔记，但仍然很给力。南萧玉，北子棋。这篇文章就是南萧玉所作。
+    Mainly notes on WWDC, but still very powerful. South Xiaoyu, North Ziqi. This article is by South Xiaoyu.
     
-8. 手淘iOS性能优化探索
+8. Taobao iOS Performance Optimization Exploration
     
     <https://github.com/izhangxb/GMTC/blob/master/%E5%85%A8%E7%90%83%E7%A7%BB%E5%8A%A8%E6%8A%80%E6%9C%AF%E5%A4%A7%E4%BC%9AGMTC%202017%20PPT/%E6%89%8B%E6%B7%98iOS%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2%20.pdf>
-    这是GMTC 2017手机淘宝专家的技术分享，可以参考。
-
-9. iOS应用启动性能优化(1)-premain
+    This is GMTC 2017 Taobao expert's technical sharing, can reference.
+    
+9. iOS App Launch Performance Optimization (1) - premain
     
     <https://everettjf.github.io/2018/05/26/ios-app-launch-performance-part1/>
-    仅仅是pre-main阶段的思路。作者说有后续的文章，但很久没动静了，不知道在搞什么。
-
-10. Hook所有+load方法
+    Only premain stage ideas. Author says has follow-up articles, but no movement for long time, don't know what's going on.
     
-    一种 hook objective c +load 的方法 <https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/>
+10. Hook All +load Methods
     
-    Hook所有+load方法（包括Category）
+    A method to hook objective c +load <https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/>
+    
+    Hook All +load Methods (Including Category)
  <https://everettjf.github.io/2018/08/19/ios-hook-really-all-load/>
     
-11. 一种 hook C++ static initializers 的方法
+11. A Method to Hook C++ Static Initializers
     
     <https://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/>
-    这篇文章的hook方法，有较大的可能是我首创，强烈推荐。手淘的分享中也提了这个方法。
-
-12. 一种延迟 premain code 的方法
+    This article's hook method, has high possibility I created it first, strongly recommend. Taobao's sharing also mentioned this method.
+    
+12. A Method to Delay premain Code
     
     <https://everettjf.github.io/2017/03/06/a-method-of-delay-premain-code/>
-    通过学习Facebook的App中特有的section（参考文章 <https://everettjf.github.io/2016/08/20/facebook-explore-section-fbinjectable/> ），发现的一种思路。
-
+    Through learning Facebook's App's unique section (reference article <https://everettjf.github.io/2016/08/20/facebook-explore-section-fbinjectable/> ), discovered idea.
     
-# 工具
+    
+
+# Tools
 
 1. TimeProfiler
     
-    都知道是啥。
+    Everyone knows what it is.
     
 2. AppleTrace
     
     <https://github.com/everettjf/AppleTrace>
-    使用 HookZz hook了objc_msgSend，会有较大性能损耗，但可根据相对比例来知道大概的耗时占比。另外也手动定义开始结尾生成chrome tracing。
+    Using HookZz hooked objc_msgSend, will have large performance cost, but can know approximate time consumption ratio based on relative proportion. Also manually define start and end to generate chrome tracing.
     
 3. DTrace
     
-    只能用于模拟器。使用方法可参考这本书：Advanced Apple Debugging & Reverse Engineering <https://store.raywenderlich.com/products/advanced-apple-debugging-and-reverse-engineering>
+    Can only be used on simulator. Usage method can reference this book: Advanced Apple Debugging & Reverse Engineering <https://store.raywenderlich.com/products/advanced-apple-debugging-and-reverse-engineering>
     
-4. Xcode 环境变量
+4. Xcode Environment Variables
     
-    DYLD_PRINT_STATISTIC 及其他类似环境变量 <https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/LoggingDynamicLoaderEvents.html>
+    DYLD_PRINT_STATISTIC and other similar environment variables <https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/LoggingDynamicLoaderEvents.html>
 
-# 代码
+# Code
 
 1. FastImageCache
     
     <https://github.com/path/FastImageCache>
-    优化图片加载的速度。空间换时间。
+    Optimize image loading speed. Space for time.
+    
 
-
-# 偏门古董
+# Obscure Antiques
 
 1. Code Size Performance Guidelines
     
     <https://developer.apple.com/library/archive/documentation/Performance/Conceptual/CodeFootprint/Articles/MachOOverview.html>
-    页面最下面提出的思路很好，但文章是gcc时代的了。有没有clang时代对应的呢。
+    Page bottom's ideas are good, but article is from gcc era. Is there corresponding for clang era?
     Improving Locality of Reference <https://developer.apple.com/library/archive/documentation/Performance/Conceptual/CodeFootprint/Articles/ImprovingLocality.html#//apple_ref/doc/uid/20001862-CJBJFIDD>
 
-# 书籍
+# Books
 
 1. Pro iOS Apps Performance Optimization
     
-    貌似比较古老，仅参考。
+    Seems relatively old, only reference.
     
 2. iOS and macOS Performance Tuning
     
-    很细致，我正在看。有中文翻译版。
+    Very detailed, I'm reading. Has Chinese translation.
     
 3. High Performance iOS Apps
     
-    有中文翻译版。
+    Has Chinese translation.
 
 
 
+# Summary
 
-# 总结
-
-上面的文章我都看过，或者至少是正在看，总结下来，辅助大家优化启动性能。
+Above articles I've all read, or at least reading, summarize here, assist everyone optimizing startup performance.

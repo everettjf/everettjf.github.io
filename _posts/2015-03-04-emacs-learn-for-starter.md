@@ -1,80 +1,77 @@
 ---
 layout: post
-title: "emacs新手遇到的坑，以及笔记"
+title: "Pitfalls and Notes for Emacs Beginners"
 categories: Skill
 comments: true
 ---
 
 
 
+As a Windows programmer and a beginner with vim and markdown, I suddenly entered another "world" with OS X, Emacs, and org-mode, and encountered some pitfalls that I'm recording here.
 
-
-
-作为一名windows程序猿、vim、markdown新手。忽然进入另一个“世界，遇到osx、emac、org，遇到了一些坑，记录下来。
-
-## 安装
-- MacOS
+## Installation
+- macOS
 
 ~~~
     brew install emacs --with-cocoa
     brew linkapps emacs
 
-    然后重新打开iTerm2，输入emacs就可以在终端运行emacs了。
-    也在Applications里有了emacs项。
+    Then reopen iTerm2, type emacs to run emacs in the terminal.
+    Emacs will also appear in Applications.
 ~~~
 <!-- more -->
 
-## 坑
+## Pitfalls
 
-- windows8.1下emacs24.4部分中文显示为“方块”。
-    在.emacs文件中（或者prelude的init.el文件中）加入下面一行：
+- On Windows 8.1, emacs 24.4 displays some Chinese characters as "squares".
+    Add the following line to the .emacs file (or prelude's init.el file):
 
 ~~~
 (set-fontset-font "fontset-default" 'gb18030 '("Microsoft YaHei" . "unicode-bmp"))
 ~~~
 
-- .emacs文件和.emacs.d文件夹中的init.el同时存在，只有.emacs文件生效。
+- When both .emacs file and init.el in .emacs.d folder exist, only the .emacs file takes effect.
 ~~~
-当使用prelude时，需要删除.emacs文件(如何使两者都有效？)
-~~~
-
-- osx10.10.1（界面英文）terminal下使用brew安装emacs，中文显示问号。
-
-~~~
-系统切换为中文，解决。（不切换如何解决，暂不想研究了）
+When using prelude, you need to delete the .emacs file (How to make both effective?)
 ~~~
 
-- osx下，terminal或iterm下meta按键问题
-
-  - terminal下
+- On OS X 10.10.1 (English interface), using brew to install emacs in terminal, Chinese characters display as question marks.
 
 ~~~
-终端->偏好设置->描述文件->键盘
-最下方选择“使用Option键作为Meta键”
+Switch system to Chinese to fix. (How to fix without switching? Not interested in researching for now)
 ~~~
 
-  - iterm
+- Meta key issue in terminal or iterm on OS X
+
+  - In terminal
 
 ~~~
-Preferences -> Profiles 然后选择当前的profile -> Keys
-最下面都选择+Esc
+Terminal -> Preferences -> Profiles -> Keyboard
+At the bottom, select "Use Option key as Meta key"
+~~~
+
+  - In iterm
+
+~~~
+Preferences -> Profiles then select current profile -> Keys
+At the bottom, select +Esc for both
 Left option key acts as : +Esc
-Rigth option key acts as : +Esc
+Right option key acts as : +Esc
 ~~~
 
-- 如何找到.emacs文件的存放位置（尤其是windows下）
+- How to find the location of the .emacs file (especially on Windows)
 
 ~~~
     C-X C-F ~/
 ~~~
 
-## 笔记
+## Notes
 
-- prelude推荐
+- Prelude recommendation
 
-  - Github地址：[https://github.com/bbatsov/prelude](https://github.com/bbatsov/prelude)
-  - 其他没有试过，作为新手，prelude给了我能量。
-  - 安装prelude
+  - GitHub: [https://github.com/bbatsov/prelude](https://github.com/bbatsov/prelude)
+  - Haven't tried others, as a beginner, prelude gave me energy.
+  - Installing prelude
 
 ~~~
 git clone git://github.com/bbatsov/prelude.git path/to/local/repo
@@ -82,34 +79,33 @@ ln -s path/to/local/repo ~/.emacs.d
 cd ~/.emacs.d
 ~~~
 
-samples中复制出prelude_modules.el，并启动emacs。
+Copy prelude_modules.el from samples and start emacs.
 
-- 关于evil与中文输入法
+- About evil and Chinese input method
 
-  - 中文输入法切换与vim本身的各种模式切换太别扭了（这也是想体验下emacs的原因之一吧）
-  - 如果编写程序还是可以启用evil
+  - Switching Chinese input method and vim's various mode switches is too awkward (this is also one reason I wanted to try emacs)
+  - You can still enable evil when writing code
 
 ~~~
-启用或关闭evil-mode
+Enable or disable evil-mode
 M-x evil-mode
 ~~~
 
-- osx下交换capslock与ctrl
+- Swap capslock and ctrl on OS X
 
-  - 系统偏好设置->键盘->键盘->修饰键（右下角）
+  - System Preferences -> Keyboard -> Keyboard -> Modifier Keys (bottom right)
 
-- 按键重复速度
+- Key repeat speed
 
-  - 系统偏好设置->键盘->键盘->调整按键重复（到最快）
+  - System Preferences -> Keyboard -> Keyboard -> Adjust key repeat (to fastest)
 
-- 安装主题monokai
-很喜欢monokai这个主题
+- Installing monokai theme
+I really like the monokai theme
 
 ~~~
 M-x package-install
 monokai-theme
 
 M-x customize-theme
-选择monokai后，save settings，就ok啦。
+Select monokai, then save settings, and you're done.
 ~~~
-
