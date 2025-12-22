@@ -1,8 +1,16 @@
 ---
 layout: post
 title: "Natural Scrolling for Mouse Wheel on Windows"
+categories:
+  - Skill
+tags:
+  - windows
+  - tools
+  - development
+  - tutorial
+  - C++
+
 comments: true
-categories: Skill
 ---
 
 

@@ -1,7 +1,15 @@
 ---
 layout: post
 title: € Euro Sign Pitfall in cp936 and gb18030 Encoding
-categories: Skill
+categories:
+  - Skill
+tags:
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

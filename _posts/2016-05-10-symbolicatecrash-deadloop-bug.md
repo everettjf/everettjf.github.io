@@ -1,7 +1,15 @@
 ---
 layout: post
 title: symbolicatecrash Deadloop Bug
-categories: Skill
+categories:
+  - System Programming
+tags:
+  - assembly
+  - symbol
+  - obfuscation
+  - C
+  - low-level
+
 comments: true
 ---
 

@@ -19,10 +19,12 @@ title: Archive
 </header>
 <main id="content" class="content" role="main">
 
-    <article class="post">
+    <article class="post archive-list">
     {% for post in site.posts %}
-    {{ post.date | date_to_string }} <a href="{{ post.url }}">{{ post.title }}</a><br/>
-
+    <div class="archive-item">
+        <span class="archive-date">{{ post.date | date_to_string }}</span>
+        <a href="{{ post.url }}" class="archive-link">{{ post.title }}</a>
+    </div>
     {% endfor %}
     </article>
 </main>

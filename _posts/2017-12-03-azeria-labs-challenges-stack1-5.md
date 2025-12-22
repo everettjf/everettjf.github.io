@@ -2,10 +2,14 @@
 layout: post
 title: "Azeria Labs Challenges Stack1-5"
 categories:
-  - CTF
+  - Skill
 tags:
-  - CTF
-  - AzeriaLabs
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

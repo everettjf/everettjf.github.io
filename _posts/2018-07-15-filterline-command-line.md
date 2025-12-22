@@ -2,9 +2,12 @@
 layout: post
 title: "filterline Command Line"
 categories:
-  - Tool
+  - Tools
 tags:
-  - filterline
+  - tools
+  - product
+  - iOS
+
 comments: true
 ---
 

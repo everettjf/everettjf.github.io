@@ -2,10 +2,14 @@
 layout: post
 title: "Hook Objective C +load"
 categories:
-  - Skill
+  - Reverse Engineering
 tags:
   - hook
-  - performance
+  - reverse-engineering
+  - iOS
+  - runtime
+  - method-swizzling
+
 comments: true
 ---
 

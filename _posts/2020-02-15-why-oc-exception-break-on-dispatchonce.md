@@ -2,12 +2,14 @@
 layout: post
 title: "NSAssert and dispatch_once"
 categories:
-  - tips
+  - Skill
 tags:
-  - oc
-  - exception
-  - tips
-  - ios
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

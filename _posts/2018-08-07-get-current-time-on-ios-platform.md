@@ -2,9 +2,12 @@
 layout: post
 title: "iOS Time Retrieval Methods"
 categories:
-  - guide
+  - iOS Development
 tags:
-  - time
+  - iOS
+  - development
+  - mobile
+
 comments: true
 ---
 

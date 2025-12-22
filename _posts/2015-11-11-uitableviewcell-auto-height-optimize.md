@@ -1,7 +1,15 @@
 ---
 layout: post
 title: UITableViewCell Auto Height Calculation Optimization
-categories: Skill
+categories:
+  - iOS Development
+tags:
+  - iOS
+  - UITableView
+  - UI
+  - performance
+  - optimization
+
 comments: true
 ---
 

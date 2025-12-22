@@ -2,10 +2,12 @@
 layout: post
 title: "Nanoscope Usage"
 categories:
-  - Performance Optimization
+  - Tools
 tags:
-  - Tool
-  - Android
+  - tools
+  - product
+  - iOS
+
 comments: true
 ---
 

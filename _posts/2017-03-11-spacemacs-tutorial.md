@@ -1,7 +1,15 @@
 ---
 layout: post
 title: Spacemacs Getting Started
-categories: Skill
+categories:
+  - Skill
+tags:
+  - emacs
+  - editor
+  - tools
+  - productivity
+  - tutorial
+
 comments: true
 ---
 

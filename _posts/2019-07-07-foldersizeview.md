@@ -2,9 +2,12 @@
 layout: post
 title: "FolderSizeView - TreeMap Tool for Displaying Folder Contents"
 categories:
-  - Tool
+  - Tools
 tags:
-  - Tool
+  - tools
+  - product
+  - iOS
+
 comments: true
 ---
 

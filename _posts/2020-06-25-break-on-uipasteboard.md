@@ -5,6 +5,11 @@ categories:
   - lldb
 tags:
   - iOS14
+  - lldb
+  - debugging
+  - iOS
+  - UIPasteboard
+
 comments: true
 ---
 

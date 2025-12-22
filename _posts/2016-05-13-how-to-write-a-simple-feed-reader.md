@@ -1,7 +1,15 @@
 ---
 layout: post
 title: How to Write a RSS Reader App
-categories: Skill
+categories:
+  - Skill
+tags:
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

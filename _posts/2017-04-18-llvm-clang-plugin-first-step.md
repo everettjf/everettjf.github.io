@@ -1,7 +1,15 @@
 ---
 layout: post
 title: LLVM Clang Plugin Development
-categories: Skill
+categories:
+  - Skill
+tags:
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

@@ -2,10 +2,14 @@
 layout: post
 title: "MachOExplorer Alpha"
 categories:
-  - Tool
+  - Reverse Engineering
 tags:
-  - Tool
-  - Security
+  - macho
+  - binary
+  - reverse-engineering
+  - iOS
+  - analysis
+
 comments: true
 ---
 

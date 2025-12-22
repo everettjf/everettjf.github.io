@@ -1,9 +1,15 @@
 ---
 layout: post
 title: Facebook iOS Client - Section RODATA
-categories: Skill
+categories:
+  - iOS Development
+tags:
+  - iOS
+  - development
+  - mobile
+
 comments: true
---- 
+---
 
 
 

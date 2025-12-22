@@ -1,7 +1,13 @@
 ---
 layout: post
 title: iOS10 Jailbreak Development Environment Setup
-categories: Skill
+categories:
+  - iOS Development
+tags:
+  - iOS
+  - development
+  - mobile
+
 comments: true
 ---
 

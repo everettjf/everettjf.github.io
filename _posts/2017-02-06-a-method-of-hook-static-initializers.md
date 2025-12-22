@@ -2,10 +2,14 @@
 layout: post
 title: "Hook C++ Static Initializers"
 categories:
-  - Skill
+  - Reverse Engineering
 tags:
-  - performance
   - hook
+  - reverse-engineering
+  - iOS
+  - runtime
+  - method-swizzling
+
 comments: true
 ---
 

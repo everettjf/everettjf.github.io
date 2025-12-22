@@ -1,7 +1,15 @@
 ---
 layout: post
 title: Enterprise Certificate Signed App Slow Startup
-categories: Skill
+categories:
+  - Skill
+tags:
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

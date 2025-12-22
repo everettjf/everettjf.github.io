@@ -2,9 +2,14 @@
 layout: post
 title: "iBooks Dictionary Interface Close Button"
 categories:
-  - Reverse Engineering
+  - Skill
 tags:
-  - Getting Started
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

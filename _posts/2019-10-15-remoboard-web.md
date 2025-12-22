@@ -2,11 +2,14 @@
 layout: post
 title: "Remote Input Method - Type on Phone Using Browser"
 categories:
-  - Product
+  - Skill
 tags:
-  - Product
-  - Input Method
-  - Work
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

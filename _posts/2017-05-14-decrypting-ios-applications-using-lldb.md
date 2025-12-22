@@ -1,7 +1,14 @@
 ---
 layout: post
 title: iOS Application Decryption Using lldb
-categories: Skill
+categories:
+  - lldb
+tags:
+  - lldb
+  - debugging
+  - iOS
+  - breakpoint
+
 comments: true
 ---
  

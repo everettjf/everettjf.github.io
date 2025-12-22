@@ -1,7 +1,15 @@
 ---
 layout: post
 title: UITableView-FDTemplateLayoutCell Notes
-categories: Skill
+categories:
+  - iOS Development
+tags:
+  - iOS
+  - UITableView
+  - UI
+  - performance
+  - optimization
+
 comments: true
 ---
 

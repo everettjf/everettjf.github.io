@@ -2,10 +2,14 @@
 layout: post
 title: "AppleTrace Tweak Installation via Cydia"
 categories:
-  - Tool
+  - Tools
 tags:
   - appletrace
-  - tweak
+  - tracing
+  - performance
+  - iOS
+  - tools
+
 comments: true
 ---
 

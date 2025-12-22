@@ -2,10 +2,14 @@
 layout: post
 title: "Xcode Extensions Using JavaScript"
 categories:
-  - Tool
+  - Web Development
 tags:
-  - XcodeExtension
-  - CodeFriend
+  - javascript
+  - runtime
+  - deno
+  - V8
+  - web
+
 comments: true
 ---
 

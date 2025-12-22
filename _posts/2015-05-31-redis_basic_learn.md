@@ -1,7 +1,15 @@
 ---
 layout: post
 title: "Redis Usage"
-categories: Skill
+categories:
+  - Skill
+tags:
+  - redis
+  - database
+  - cache
+  - backend
+  - tutorial
+
 comments: true
 ---
 

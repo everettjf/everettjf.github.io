@@ -2,11 +2,14 @@
 layout: post
 title: "VSCode Extension Filter Line"
 categories:
-  - Tool
+  - Skill
 tags:
-  - vscode
-  - filterline
-  - log
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

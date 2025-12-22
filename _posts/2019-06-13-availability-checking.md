@@ -2,9 +2,14 @@
 layout: post
 title: "Availability Checking Internal Implementation"
 categories:
-  - Principles
+  - Skill
 tags:
-  - Principles
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

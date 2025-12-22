@@ -1,7 +1,15 @@
 ---
 layout: post
 title: Alipay Wallet Chat Voice Save Tweak
-categories: Skill
+categories:
+  - Skill
+tags:
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

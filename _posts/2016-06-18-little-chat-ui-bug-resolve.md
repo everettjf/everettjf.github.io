@@ -1,7 +1,15 @@
 ---
 layout: post
 title: Chat Interface Keyboard Animation Issue
-categories: Skill
+categories:
+  - Skill
+tags:
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

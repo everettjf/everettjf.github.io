@@ -2,9 +2,14 @@
 layout: post
 title: "Hidden Symbol in ?WhatsApp App Name"
 categories:
-  - Exploration
+  - System Programming
 tags:
-  - unicode
+  - assembly
+  - symbol
+  - obfuscation
+  - C
+  - low-level
+
 comments: true
 ---
 

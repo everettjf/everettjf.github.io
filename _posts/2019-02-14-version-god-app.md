@@ -2,10 +2,14 @@
 layout: post
 title: "App Version Comparison Tool"
 categories:
-  - Tool
+  - Skill
 tags:
-  - Tool
-  - Entertainment
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

@@ -1,7 +1,15 @@
 ---
 layout: post
 title: Header File Classification Tool
-categories: Essay
+categories:
+  - Skill
+tags:
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

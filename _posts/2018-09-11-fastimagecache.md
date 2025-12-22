@@ -2,9 +2,14 @@
 layout: post
 title: "FastImageCache Principles"
 categories:
-  - Performance Optimization
+  - Skill
 tags:
-  - image
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

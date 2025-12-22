@@ -1,7 +1,14 @@
 ---
 layout: post
 title: How WeChat Source Files Are Organized
-categories: Skill
+categories:
+  - Reverse Engineering
+tags:
+  - reverse-engineering
+  - security
+  - iOS
+  - analysis
+
 comments: true
 ---
 

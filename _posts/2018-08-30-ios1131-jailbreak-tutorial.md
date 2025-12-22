@@ -2,9 +2,12 @@
 layout: post
 title: "iOS 11.3.1 Jailbreak Steps"
 categories:
-  - Jailbreak
+  - iOS Development
 tags:
-  - Reverse Engineering
+  - iOS
+  - development
+  - mobile
+
 comments: true
 ---
 

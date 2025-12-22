@@ -1,7 +1,13 @@
 ---
 layout: post
 title: 5 Months iOS Development Summary
-categories: Skill
+categories:
+  - iOS Development
+tags:
+  - iOS
+  - development
+  - mobile
+
 comments: true
 ---
 

@@ -1,7 +1,13 @@
 ---
 layout: post
 title: One Year iOS Development Summary
-categories: Essay
+categories:
+  - iOS Development
+tags:
+  - iOS
+  - development
+  - mobile
+
 comments: true
 ---
 

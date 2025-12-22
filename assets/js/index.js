@@ -40,12 +40,26 @@
         function updateImageWidth() {
             var $this = $(this),
                 contentWidth = $postContent.outerWidth(), // Width of the content
-                imageWidth = this.naturalWidth; // Original image resolution
+                imageWidth = this.naturalWidth, // Original image resolution
+                altText = $this.attr('alt') || '';
 
-            if (imageWidth >= contentWidth) {
-                $this.addClass('full-img');
+            // Check if image has width parameter in alt text (e.g., -w431, -w728)
+            var widthMatch = altText.match(/-w(\d+)/);
+            if (widthMatch) {
+                var specifiedWidth = parseInt(widthMatch[1], 10);
+                // If specified width is close to or larger than content width, make it full width
+                if (specifiedWidth >= contentWidth * 0.9) {
+                    $this.addClass('full-img');
+                } else {
+                    $this.removeClass('full-img');
+                }
             } else {
-                $this.removeClass('full-img');
+                // Original logic: if image is larger than content, make it full width
+                if (imageWidth >= contentWidth) {
+                    $this.addClass('full-img');
+                } else {
+                    $this.removeClass('full-img');
+                }
             }
         }
 

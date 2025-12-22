@@ -1,7 +1,15 @@
 ---
 layout: post
 title: subprocess Timeout in Python 2.7
-categories: Skill
+categories:
+  - Skill
+tags:
+  - python
+  - programming
+  - scripting
+  - automation
+  - tutorial
+
 comments: true
 ---
 

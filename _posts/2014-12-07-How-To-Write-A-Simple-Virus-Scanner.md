@@ -1,8 +1,14 @@
 ---
 layout: post
 title: "How to Write a Virus Scanner"
-tags: Security
-categories: Skill
+categories:
+  - Security
+tags:
+  - security
+  - protection
+  - iOS
+  - reverse-engineering
+
 comments: true
 ---
 

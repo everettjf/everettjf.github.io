@@ -2,9 +2,14 @@
 layout: post
 title: "os_signpost API Introduction"
 categories:
-  - Performance
+  - Skill
 tags:
-  - Performance Optimization
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

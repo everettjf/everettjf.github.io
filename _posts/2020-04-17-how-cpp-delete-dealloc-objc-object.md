@@ -2,10 +2,14 @@
 layout: post
 title: "When Does ObjC Object in C++ Class dealloc"
 categories:
-  - Exploration
+  - Skill
 tags:
-  - objc
-  - dealloc
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

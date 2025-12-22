@@ -4,10 +4,12 @@ title: "CocoaPods Dependency Graph"
 categories:
   - Skill
 tags:
-  - tool
-  - podspec
-  - cocoapods
-  - graphviz
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

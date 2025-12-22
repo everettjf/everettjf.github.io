@@ -2,11 +2,14 @@
 layout: post
 title: "How to List All +load Methods in App"
 categories:
-  - lldb
+  - Skill
 tags:
-  - lldb
-  - load
-  - breakpoint
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

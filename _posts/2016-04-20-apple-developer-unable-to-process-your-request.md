@@ -1,7 +1,15 @@
 ---
 layout: post
 title: Apple Developer Login Error Resolution
-categories: Skill
+categories:
+  - Skill
+tags:
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

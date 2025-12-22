@@ -4,9 +4,11 @@ title: "Print Block Parameter Signatures in Objective-C Methods Using lldb"
 categories:
   - lldb
 tags:
-  - zlldb
-  - block
-  - oc
+  - lldb
+  - debugging
+  - iOS
+  - breakpoint
+
 comments: true
 ---
 

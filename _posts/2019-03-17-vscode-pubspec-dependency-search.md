@@ -2,9 +2,14 @@
 layout: post
 title: "vscode Extension for pubspec Dependencies"
 categories:
-  - Extension
+  - Skill
 tags:
-  - vscode
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

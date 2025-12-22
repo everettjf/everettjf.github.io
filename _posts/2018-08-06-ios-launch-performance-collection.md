@@ -2,9 +2,12 @@
 layout: post
 title: "iOS App Launch Performance Resources"
 categories:
-  - doc
+  - iOS Development
 tags:
-  - doc
+  - iOS
+  - development
+  - mobile
+
 comments: true
 ---
 

@@ -1,7 +1,15 @@
 ---
 layout: post
 title: "macOS Starter Kit for Windows Programmers"
-categories: Skill
+categories:
+  - Skill
+tags:
+  - windows
+  - tools
+  - development
+  - tutorial
+  - C++
+
 comments: true
 ---
 

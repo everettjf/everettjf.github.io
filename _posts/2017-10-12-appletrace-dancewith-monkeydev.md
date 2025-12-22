@@ -2,9 +2,14 @@
 layout: post
 title: "AppleTrace with MonkeyDev"
 categories:
-  - Tool
+  - Tools
 tags:
-  - Tool
+  - appletrace
+  - tracing
+  - performance
+  - iOS
+  - tools
+
 comments: true
 ---
 

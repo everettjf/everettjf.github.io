@@ -2,10 +2,12 @@
 layout: post
 title: "AppleTrace Performance Analysis Tool"
 categories:
-  - Dev
+  - Performance Optimization
 tags:
-  - appletrace
   - performance
+  - optimization
+  - iOS
+
 comments: true
 ---
 

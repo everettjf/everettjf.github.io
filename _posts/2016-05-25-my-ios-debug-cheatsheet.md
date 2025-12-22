@@ -1,7 +1,13 @@
 ---
 layout: post
 title: iOS Debug Cheatsheet
-categories: Skill
+categories:
+  - iOS Development
+tags:
+  - iOS
+  - development
+  - mobile
+
 comments: true
 ---
 

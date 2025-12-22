@@ -1,7 +1,15 @@
 ---
 layout: post
 title: Xcode Bookmark Plugin XBookmark Notes
-categories: Skill
+categories:
+  - Tools
+tags:
+  - xbookmark
+  - tools
+  - iOS
+  - product
+  - bookmark
+
 comments: true
 ---
 

@@ -2,9 +2,12 @@
 layout: post
 title: "Running Android on iPhone"
 categories:
-  - First Look
+  - iOS Development
 tags:
-  - sandcastle
+  - iOS
+  - development
+  - mobile
+
 comments: true
 ---
 

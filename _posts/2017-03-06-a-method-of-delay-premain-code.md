@@ -4,8 +4,12 @@ title: "Delay premain Code"
 categories:
   - Skill
 tags:
-  - FBInjectable
-  - performance
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

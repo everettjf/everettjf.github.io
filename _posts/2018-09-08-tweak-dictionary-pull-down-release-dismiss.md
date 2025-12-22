@@ -2,9 +2,12 @@
 layout: post
 title: "Close System Dictionary Interface in iOS"
 categories:
-  - Reverse Engineering
+  - iOS Development
 tags:
-  - Reverse Engineering
+  - iOS
+  - development
+  - mobile
+
 comments: true
 ---
 

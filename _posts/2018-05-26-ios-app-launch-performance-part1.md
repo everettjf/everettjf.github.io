@@ -2,9 +2,12 @@
 layout: post
 title: "iOS App Launch Performance Optimization (1) - premain"
 categories:
-  - Performance Optimization
+  - iOS Development
 tags:
-  - Performance Optimization
+  - iOS
+  - development
+  - mobile
+
 comments: true
 ---
 

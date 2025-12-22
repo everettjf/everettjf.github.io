@@ -2,9 +2,14 @@
 layout: post
 title: "Thread Identifier Retrieval Methods"
 categories:
-  - Performance Optimization
+  - Skill
 tags:
-  - Thread
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

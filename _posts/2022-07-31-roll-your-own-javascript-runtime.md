@@ -2,10 +2,14 @@
 layout: post
 title: "JavaScript Runtime with deno_core"
 categories:
-  - deno
+  - Web Development
 tags:
-  - rust
+  - javascript
+  - runtime
   - deno
+  - V8
+  - web
+
 comments: true
 ---
 

@@ -1,7 +1,15 @@
 ---
 layout: post
 title: "Windows C++ Development Tools (5 Years)"
-categories: Skill
+categories:
+  - Skill
+tags:
+  - windows
+  - tools
+  - development
+  - tutorial
+  - C++
+
 comments: true
 ---
 

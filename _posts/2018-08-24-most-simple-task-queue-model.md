@@ -2,9 +2,14 @@
 layout: post
 title: "Startup Task Classification"
 categories:
-  - Performance Optimization
+  - Skill
 tags:
-  - Simple
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

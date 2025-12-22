@@ -2,11 +2,14 @@
 layout: post
 title: "Are C++ Static Variables in Functions Thread Safe?"
 categories:
-  - cpp
+  - Skill
 tags:
-  - cpp
-  - threadsafe
-  - local-object
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

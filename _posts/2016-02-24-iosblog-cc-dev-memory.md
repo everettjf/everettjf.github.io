@@ -1,7 +1,13 @@
 ---
 layout: post
 title: iOS Blog Selection
-categories: Essay
+categories:
+  - iOS Development
+tags:
+  - iOS
+  - development
+  - mobile
+
 comments: true
 ---
 

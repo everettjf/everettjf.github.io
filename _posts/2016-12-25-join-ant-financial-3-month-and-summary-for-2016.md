@@ -1,7 +1,14 @@
 ---
 layout: post
 title: 2016 Summary
-categories: Essay
+categories:
+  - Essay
+tags:
+  - essay
+  - reflection
+  - experience
+  - career
+
 comments: true
 ---
 

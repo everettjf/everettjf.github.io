@@ -2,9 +2,14 @@
 layout: post
 title: "Launch Performance Optimization: MachO Binary File Reordering"
 categories:
-  - Optimization
+  - Performance Optimization
 tags:
-  - Launch Speed Optimization
+  - performance
+  - launch
+  - optimization
+  - iOS
+  - startup
+
 comments: true
 ---
 

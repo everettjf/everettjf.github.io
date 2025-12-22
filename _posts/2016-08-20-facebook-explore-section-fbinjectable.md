@@ -1,10 +1,15 @@
 ---
 layout: post
 title: Facebook iOS Client - Section FBInjectable
-categories: Skill
-comments: true
---- 
+categories:
+  - iOS Development
+tags:
+  - iOS
+  - development
+  - mobile
 
+comments: true
+---
 ---
  
 # Phenomenon

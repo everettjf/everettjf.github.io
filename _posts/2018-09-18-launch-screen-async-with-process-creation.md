@@ -2,10 +2,14 @@
 layout: post
 title: "LaunchScreen Analysis"
 categories:
-  - Reverse Engineering
-tags:
-  - Reverse Engineering
   - Performance Optimization
+tags:
+  - performance
+  - launch
+  - optimization
+  - iOS
+  - startup
+
 comments: true
 ---
 

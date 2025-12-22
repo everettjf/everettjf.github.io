@@ -2,11 +2,14 @@
 layout: post
 title: "Hook All +load Methods (Including Category)"
 categories:
-  - Performance Optimization
+  - Reverse Engineering
 tags:
-  - Performance Optimization
-  - load
-  - category
+  - hook
+  - reverse-engineering
+  - iOS
+  - runtime
+  - method-swizzling
+
 comments: true
 ---
 

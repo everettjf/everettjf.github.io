@@ -1,7 +1,15 @@
 ---
 layout: post
 title: "vim emacs Common Shortcut Comparison"
-categories: Skill
+categories:
+  - Skill
+tags:
+  - emacs
+  - editor
+  - tools
+  - productivity
+  - tutorial
+
 comments: true
 ---
 

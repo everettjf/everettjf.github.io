@@ -2,11 +2,14 @@
 layout: post
 title: "Redirect Standard Output"
 categories:
-  - stdout
+  - Skill
 tags:
-  - redirect
-  - stdout
-  - stderr
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 

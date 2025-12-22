@@ -1,7 +1,13 @@
 ---
 layout: post
 title: iOS Crash Collection and Analysis
-categories: Skill
+categories:
+  - iOS Development
+tags:
+  - iOS
+  - development
+  - mobile
+
 comments: true
 ---
 

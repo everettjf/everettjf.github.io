@@ -2,11 +2,14 @@
 layout: post
 title: "Clipboard Input Method"
 categories:
-  - Tool
+  - Skill
 tags:
-  - Tool
-  - Input Method
-  - Clipboard
+  - tutorial
+  - learning
+  - guide
+  - development
+  - tools
+
 comments: true
 ---
 
