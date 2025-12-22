@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Thread Identifier Retrieval Methods"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

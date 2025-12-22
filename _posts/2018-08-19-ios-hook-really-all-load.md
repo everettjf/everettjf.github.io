@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Hook All +load Methods (Including Category)"
-categories:
-  - Reverse Engineering
 tags:
   - hook
   - reverse-engineering

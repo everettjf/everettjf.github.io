@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Redis Usage"
-categories:
-  - Skill
 tags:
   - redis
   - database

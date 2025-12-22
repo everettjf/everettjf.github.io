@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Redirect Standard Output"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

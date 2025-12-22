@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Delay premain Code"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

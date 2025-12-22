@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "vim emacs Common Shortcut Comparison"
-categories:
-  - Skill
 tags:
   - emacs
   - editor

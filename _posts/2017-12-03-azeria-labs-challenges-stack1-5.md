@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Azeria Labs Challenges Stack1-5"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

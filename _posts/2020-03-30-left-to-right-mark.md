@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Hidden Symbol in ?WhatsApp App Name"
-categories:
-  - System Programming
 tags:
   - assembly
   - symbol

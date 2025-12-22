@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "iOS 11.3.1 Jailbreak Steps"
-categories:
-  - iOS Development
 tags:
   - iOS
   - development

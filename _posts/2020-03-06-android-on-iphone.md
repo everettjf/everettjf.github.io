@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Running Android on iPhone"
-categories:
-  - iOS Development
 tags:
   - iOS
   - development

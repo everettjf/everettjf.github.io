@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "VSCode Extension Filter Line"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

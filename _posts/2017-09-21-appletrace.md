@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "AppleTrace Performance Analysis Tool"
-categories:
-  - Performance Optimization
 tags:
   - performance
   - optimization

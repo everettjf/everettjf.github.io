@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Clipboard Input Method"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

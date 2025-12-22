@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "iBooks Dictionary Interface Close Button"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

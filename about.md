@@ -3,16 +3,10 @@ layout: page
 title: About me 
 ---
 
-I am everettjf, fullstack developer.
+I am Everett, a Full Stack Developer based in Cupertino, CA.
 
-Happy to be here.
+Feel free to contact me via the links below:
 
-Live in Cupertino, CA.
-
-Free free to contact me for a hiking.
-
-
-[GitHub](https://github.com/everettjf),[Email](mailto:everettjf@live.com),[WeChat](/images/mywechat.jpg) 
-
-
-
+- [GitHub](https://github.com/everettjf)
+- [Email](mailto:everettjf@live.com)
+- [WeChat](/images/mywechat.jpg)

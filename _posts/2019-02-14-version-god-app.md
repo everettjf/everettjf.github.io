@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "App Version Comparison Tool"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

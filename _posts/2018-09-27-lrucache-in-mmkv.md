@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "LRU Cache (LRUCache) in MMKV"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

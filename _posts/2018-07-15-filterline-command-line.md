@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "filterline Command Line"
-categories:
-  - Tools
 tags:
   - tools
   - product

@@ -1,8 +1,6 @@
 ---
 layout: post
 title: WeChat Chat UI Logic Implementation
-categories:
-  - Reverse Engineering
 tags:
   - reverse-engineering
   - security

@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "AppleTrace with MonkeyDev"
-categories:
-  - Tools
 tags:
   - appletrace
   - tracing

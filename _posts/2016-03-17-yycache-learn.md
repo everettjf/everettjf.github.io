@@ -1,8 +1,6 @@
 ---
 layout: post
 title: YYCache Notes
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

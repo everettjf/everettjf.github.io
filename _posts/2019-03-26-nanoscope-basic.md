@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Nanoscope Usage"
-categories:
-  - Tools
 tags:
   - tools
   - product

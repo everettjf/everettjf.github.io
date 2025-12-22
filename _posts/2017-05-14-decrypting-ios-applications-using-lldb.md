@@ -1,8 +1,6 @@
 ---
 layout: post
 title: iOS Application Decryption Using lldb
-categories:
-  - lldb
 tags:
   - lldb
   - debugging

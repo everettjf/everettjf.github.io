@@ -1,8 +1,6 @@
 ---
 layout: post
 title: SDWebImage Notes
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

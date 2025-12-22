@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Segmentfault Hackathon 2016
-categories:
-  - Essay
 tags:
   - essay
   - reflection

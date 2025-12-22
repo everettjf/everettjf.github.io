@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Hook C++ Static Initializers"
-categories:
-  - Reverse Engineering
 tags:
   - hook
   - reverse-engineering

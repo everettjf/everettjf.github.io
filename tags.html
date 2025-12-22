@@ -1,0 +1,79 @@
+---
+layout: default
+title: Tags
+---
+
+<header class="main-header {% if page.cover %}" style="background-image: url({{ page.cover }}) {%else%}no-cover{% endif %}">
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">{{ site.name }}</h1>
+            <h2 class="page-description">
+                <a href='{{ site.baseurl }}/'> Home </a>;
+                <a href='{{ site.baseurl }}/archive'> Archive </a>;
+                <a href='{{ site.baseurl }}/tags'> Tags </a>;
+                <a href='https://xnu.app' target="_blank"> Product </a>;
+                <a href='https://github.com/everettjf' target="_blank"> GitHub </a>;
+                <a href='{{ site.baseurl }}/about'> About </a>;
+            </h2>
+        </div>
+    </div>
+</header>
+<main id="content" class="content" role="main">
+
+    <!-- Tags Cloud -->
+    <article class="post archive-list">
+        <div class="tags-cloud">
+            {% assign all_tags = site.posts | map: 'tags' | flatten | uniq | sort %}
+            {% for tag in all_tags %}
+            {% assign posts_with_tag = "" | split: "," %}
+            {% for post in site.posts %}
+                {% if post.tags contains tag %}
+                    {% assign posts_with_tag = posts_with_tag | push: post %}
+                {% endif %}
+            {% endfor %}
+            {% if posts_with_tag.size > 0 %}
+            {% assign size = posts_with_tag.size %}
+            {% if size <= 2 %}
+                {% assign size_class = 'tag-size-1' %}
+            {% elsif size <= 5 %}
+                {% assign size_class = 'tag-size-2' %}
+            {% elsif size <= 10 %}
+                {% assign size_class = 'tag-size-3' %}
+            {% elsif size <= 20 %}
+                {% assign size_class = 'tag-size-4' %}
+            {% else %}
+                {% assign size_class = 'tag-size-5' %}
+            {% endif %}
+            <a href="#tag-{{ tag | slugify }}" class="tag-cloud-item {{ size_class }}">
+                {{ tag }} ({{ posts_with_tag.size }})
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </article>
+
+    <!-- Tags List -->
+    <article class="post archive-list">
+    {% assign all_tags = site.posts | map: 'tags' | flatten | uniq | sort %}
+    {% for tag in all_tags %}
+    {% assign posts_with_tag = "" | split: "," %}
+    {% for post in site.posts %}
+        {% if post.tags contains tag %}
+            {% assign posts_with_tag = posts_with_tag | push: post %}
+        {% endif %}
+    {% endfor %}
+    {% if posts_with_tag.size > 0 %}
+    <div class="archive-tag-group" id="tag-{{ tag | slugify }}">
+        <h2 class="archive-tag-title">{{ tag }}<span class="archive-tag-count"> ({{ posts_with_tag.size }})</span></h2>
+        {% for post in posts_with_tag %}
+        <div class="archive-item">
+            <span class="archive-date">{{ post.date | date_to_string }}</span>
+            <a href="{{ post.url }}" class="archive-link">{{ post.title }}</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endfor %}
+    </article>
+</main>
+

@@ -1,8 +1,6 @@
 ---
 layout: post
 title: TabBar touchesBegan Delayed Call
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

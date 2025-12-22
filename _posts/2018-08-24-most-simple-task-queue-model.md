@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Startup Task Classification"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning
@@ -17,9 +15,7 @@ An "old" App, work to do during startup continuously accumulates, code in didFin
 
 <!-- more -->
 
-Tasks during App startup can be simply divided into following categories:
-
-1. Tasks that must initialize earliest on main thread
+Tasks during App startup can be simply divided into following 1. Tasks that must initialize earliest on main thread
 2. Tasks that can execute on child thread
 3. Main thread tasks that can execute in parallel with tasks in 2
 4. Tasks that can execute on child thread after home page displays

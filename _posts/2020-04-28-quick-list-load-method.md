@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "How to List All +load Methods in App"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

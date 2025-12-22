@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "How to Write a Virus Scanner"
-categories:
-  - Security
 tags:
   - security
   - protection

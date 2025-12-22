@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "USB Keyboard Input Method for iOS"
-categories:
-  - iOS Development
 tags:
   - iOS
   - development

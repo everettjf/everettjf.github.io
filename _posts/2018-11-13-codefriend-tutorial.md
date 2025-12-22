@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Xcode Extensions Using JavaScript"
-categories:
-  - Web Development
 tags:
   - javascript
   - runtime

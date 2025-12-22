@@ -1,8 +1,6 @@
 ---
 layout: post
 title: YYWebImage Notes
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

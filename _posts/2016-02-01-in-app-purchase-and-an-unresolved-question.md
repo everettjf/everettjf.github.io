@@ -1,8 +1,6 @@
 ---
 layout: post
 title: In-App Purchase Notes
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

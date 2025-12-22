@@ -1,8 +1,6 @@
 ---
 layout: post
 title: symbolicatecrash Deadloop Bug
-categories:
-  - System Programming
 tags:
   - assembly
   - symbol

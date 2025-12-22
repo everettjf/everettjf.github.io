@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "FastImageCache Principles"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

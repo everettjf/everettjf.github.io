@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Facebook iOS Client - Section FBInjectable
-categories:
-  - iOS Development
 tags:
   - iOS
   - development

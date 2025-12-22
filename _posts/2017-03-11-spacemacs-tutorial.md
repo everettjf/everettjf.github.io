@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Spacemacs Getting Started
-categories:
-  - Skill
 tags:
   - emacs
   - editor

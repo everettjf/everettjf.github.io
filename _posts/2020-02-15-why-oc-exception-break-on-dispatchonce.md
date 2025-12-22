@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "NSAssert and dispatch_once"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

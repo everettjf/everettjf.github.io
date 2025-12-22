@@ -1,8 +1,6 @@
 ---
 layout: post
 title: How WeChat Source Files Are Organized
-categories:
-  - Reverse Engineering
 tags:
   - reverse-engineering
   - security

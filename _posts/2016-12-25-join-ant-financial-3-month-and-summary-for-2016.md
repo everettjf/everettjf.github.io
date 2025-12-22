@@ -1,8 +1,6 @@
 ---
 layout: post
 title: 2016 Summary
-categories:
-  - Essay
 tags:
   - essay
   - reflection

@@ -1,8 +1,6 @@
 ---
 layout: post
 title: UITableView-FDTemplateLayoutCell Notes
-categories:
-  - iOS Development
 tags:
   - iOS
   - UITableView

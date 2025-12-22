@@ -1,8 +1,6 @@
 ---
 layout: post
 title: iOS Crash Collection and Analysis
-categories:
-  - iOS Development
 tags:
   - iOS
   - development

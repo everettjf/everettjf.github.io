@@ -1,8 +1,6 @@
 ---
 layout: post
 title: iOS Continuous Integration with fastlane
-categories:
-  - iOS Development
 tags:
   - iOS
   - CI/CD

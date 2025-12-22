@@ -1,8 +1,6 @@
 ---
 layout: post
 title: iOS Blog Selection
-categories:
-  - iOS Development
 tags:
   - iOS
   - development

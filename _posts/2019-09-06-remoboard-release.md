@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Remote Input Method - Type on Phone Using Computer"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

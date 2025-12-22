@@ -1,8 +1,6 @@
 ---
 layout: post
 title: SegmentFault Hackathon 2015 Beijing
-categories:
-  - Essay
 tags:
   - essay
   - reflection

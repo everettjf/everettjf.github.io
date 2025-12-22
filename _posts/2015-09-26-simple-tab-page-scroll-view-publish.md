@@ -1,8 +1,6 @@
 ---
 layout: post
 title: TabPageScrollView Notes
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

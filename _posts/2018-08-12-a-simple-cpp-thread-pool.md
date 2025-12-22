@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "C++ Thread Pool Implementation"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Emacs Beginner Notes"
-categories:
-  - Skill
 tags:
   - emacs
   - editor

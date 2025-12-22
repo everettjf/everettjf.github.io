@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Rename Symbols Using __asm__"
-categories:
-  - System Programming
 tags:
   - assembly
   - symbol

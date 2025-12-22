@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "os_signpost API Introduction"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

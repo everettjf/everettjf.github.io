@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Close System Dictionary Interface in iOS"
-categories:
-  - iOS Development
 tags:
   - iOS
   - development

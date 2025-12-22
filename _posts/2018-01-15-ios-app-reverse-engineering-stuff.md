@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "iOS App Reverse Engineering Resources"
-categories:
-  - iOS Development
 tags:
   - iOS
   - development

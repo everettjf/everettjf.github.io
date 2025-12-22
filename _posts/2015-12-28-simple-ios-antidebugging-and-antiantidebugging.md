@@ -1,8 +1,6 @@
 ---
 layout: post
 title: AntiDebugging and AntiAntiDebugging
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

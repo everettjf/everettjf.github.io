@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "CocoaPods Dependency Graph"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

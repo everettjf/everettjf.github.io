@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Hook Objective C +load"
-categories:
-  - Reverse Engineering
 tags:
   - hook
   - reverse-engineering

@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Open Source 3 Small Apps"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

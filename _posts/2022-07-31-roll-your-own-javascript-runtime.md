@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "JavaScript Runtime with deno_core"
-categories:
-  - Web Development
 tags:
   - javascript
   - runtime

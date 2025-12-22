@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "How to Breakpoint at Function's return"
-categories:
-  - lldb
 tags:
   - lldb
   - debugging

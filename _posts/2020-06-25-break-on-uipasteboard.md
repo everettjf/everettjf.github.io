@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "LLDB Breakpoint All UIPasteboard Methods"
-categories:
-  - lldb
 tags:
   - iOS14
   - lldb

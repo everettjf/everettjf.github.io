@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "SpringBoard Analysis Using AppleTrace"
-categories:
-  - Tools
 tags:
   - appletrace
   - tracing

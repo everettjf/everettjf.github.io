@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "LaunchScreen Analysis"
-categories:
-  - Performance Optimization
 tags:
   - performance
   - launch

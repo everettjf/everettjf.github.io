@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Header File Classification Tool
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "MachOExplorer Alpha"
-categories:
-  - Reverse Engineering
 tags:
   - macho
   - binary

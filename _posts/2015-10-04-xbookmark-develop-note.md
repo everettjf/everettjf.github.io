@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Xcode Bookmark Plugin XBookmark Notes
-categories:
-  - Tools
 tags:
   - xbookmark
   - tools

@@ -1,8 +1,6 @@
 ---
 layout: post
 title: XSourceNote Xcode Source Code Notes Plugin
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

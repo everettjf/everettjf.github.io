@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Launch Performance Optimization: MachO Binary File Reordering"
-categories:
-  - Performance Optimization
 tags:
   - performance
   - launch

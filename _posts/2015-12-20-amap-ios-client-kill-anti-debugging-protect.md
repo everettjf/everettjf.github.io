@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Anti ptrace - An Anti-Debugging Method
-categories:
-  - Skill
 tags:
   - tutorial
   - learning

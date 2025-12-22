@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Availability Checking Internal Implementation"
-categories:
-  - Skill
 tags:
   - tutorial
   - learning
