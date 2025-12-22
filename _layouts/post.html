@@ -56,6 +56,12 @@ post_class: post-template
 
         </footer>
 
+        {% if page.comments %}
+        <section class="comments">
+            {% include disqus.html %}
+        </section>
+        {% endif %}
+
     </article>
 
 </main>
