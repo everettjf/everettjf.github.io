@@ -17,6 +17,8 @@ comments: true
 
 **Alma** is a desktop **AI Provider orchestration and management application**. It has recently received widespread praise on X, and the author is very active. The development pace is extremely fast, with releases coming like rain. I've been playing around with this software recently and deeply appreciate the author's solid technical foundation.
 
+<!-- more -->
+
 On its official website ([https://alma.now/](https://alma.now/)), it positions itself very directly:
 
 > **Elegant AI Provider Orchestration**

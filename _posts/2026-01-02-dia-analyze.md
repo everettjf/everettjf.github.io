@@ -18,6 +18,8 @@ It's another browser product from The Browser Company, currently targeting macOS
 
 From a user experience perspective, Dia continues some of Arc's design philosophy; but if you dig into the Dia.app bundle contents, you'll find that its engineering structure and system integration are quite "traditional" and interesting.
 
+<!-- more -->
+
 This article doesn't discuss whether the experience is good or bad, nor does it predict future directions. It does one thing:
 
 > **Examine how Dia is actually built from a technical perspective.**
