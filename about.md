@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 
-I am everettjf, a fullstack developer based in Cupertino, CA.
+I am Everett, a fullstack developer based in Cupertino, CA.
 
 Feel free to reach out — happy to grab a coffee or go hiking.
 
