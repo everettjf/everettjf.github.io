@@ -1,30 +1,27 @@
 ---
 layout: post
-title: TabBar touchesBegan Delayed Call
-tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+title: TabBar位置的二级页面touchesBegan被延迟调用
+categories: Skill
 comments: true
 ---
 
 
 
-# Problem
 
-Recently developing voice messaging functionality similar to WeChat, ViewController structure as follows:
+
+
+# 问题
+
+最近开发类似微信发语音的功能，ViewController 如下：
 
 TabBarController -> Navigation Controller -> Session View Controller -> Message View Controller
 
-- SessionViewController implements session list page
-- MessageViewController implements message list page
+- SessionViewController 实现会话列表页面
+- MessageViewController 实现消息列表页面
 
 <!-- more -->
 
-Clicking a session in the session list page will push to the message list page with TabBar hidden. Related code:
+在会话列表页面点击某一会话，会隐藏TabBar的方式Push到消息列表页面。相关代码如下：
 
 ```
     MessageViewController *vc = [[MessageViewController alloc]init];
@@ -34,7 +31,7 @@ Clicking a session in the session list page will push to the message list page w
 ```
 
 
-Place a recording View at the bottom of MessageViewController (TabBar position). This View responds to touch down:
+在MessageViewController最下面（TabBar位置）放置录音的View。此View响应按下时间：
 
 ```
 
@@ -45,11 +42,11 @@ Place a recording View at the bottom of MessageViewController (TabBar position).
 }
 ```
 
-However, touchesBegan cannot be called immediately when finger presses down, but only after finger lifts or moves.
+然而，touchesBegan在手指按下时并不能马上得到调用，而是在手指抬起或者移动后才能被调用。
 
-# Solution
+# 解决办法
 
-Set MessageViewController's self.navigationController.interactivePopGestureRecognizer.delaysTouchesBegan to NO.
+设置MessageViewController的self.navigationController.interactivePopGestureRecognizer.delaysTouchesBegan为NO。
 
 ```
 -(void)viewDidAppear:(BOOL)animated{
@@ -65,26 +62,27 @@ Set MessageViewController's self.navigationController.interactivePopGestureRecog
 
 ```
 
-# Similar Problems
+# 同类问题
 
  - <https://segmentfault.com/q/1010000002490506>
 
 
 
-# Related Issues
+# 类似问题
 
-Stackoverflow has similar issues 
+Stackoverflow 有类似问题 
 
  - <http://stackoverflow.com/questions/22285861/uibutton-touch-down-action-not-called-when-touch-down-but-called-when-touch-move>
 
  
-Similar reasons:
+类似原因如下：
+
 
 > Because a scroll view has no scroll bars, it must know whether a touch signals an intent to scroll versus an intent to track a subview in the content. To make this determination, it temporarily intercepts a touch-down event by starting a timer and, before the timer fires, seeing if the touching finger makes any movement. If the timer fires without a significant change in position, the scroll view sends tracking events to the touched subview of the content view. If the user then drags their finger far enough before the timer elapses, the scroll view cancels any tracking in the subview and performs the scrolling itself. Subclasses can override the touchesShouldBegin:withEvent:inContentView:, pagingEnabled, and touchesShouldCancelInContentView: methods (which are called by the scroll view) to affect how the scroll view handles scrolling gestures.
 
-# Summary
+# 总结
 
-The delay is because gestures need to know whether to scroll or just tap.
+delay的原因是由于手势需要知道是要滑动还是仅仅点击。
 
 
 

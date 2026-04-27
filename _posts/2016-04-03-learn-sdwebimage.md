@@ -1,15 +1,11 @@
 ---
 layout: post
-title: SDWebImage Notes
-tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+title: SDWebImage note
+categories: Skill
 comments: true
 ---
+
+
 
 
 
@@ -19,7 +15,7 @@ comments: true
  - Repo : <https://github.com/rs/SDWebImage>
  - Revision : 0da78a4ce6485d8d4c23d348d355fabad7c227f3
  - Description : 
-Classic library for async image downloading with caching
+经典的、异步下载图片的、带缓存的库
 
 <!-- more -->
 
@@ -51,7 +47,7 @@ Classic library for async image downloading with caching
 ```
 
 
-Convenient dispatch_main to ensure main thread execution
+方便的dispatch_main 保证主线程运行
 
 
 ## 1. SDWebImageDownloader.m
@@ -65,7 +61,7 @@ Convenient dispatch_main to ensure main thread execution
 ```
 
 
-Check if a class exists
+判断某个类是否存在
 
 
 ## 2. SDWebImageDownloader.m
@@ -82,7 +78,7 @@ Check if a class exists
 ```
 
 
-Dynamically call singleton method
+动态调用单例方法
 
 
 ## 3. SDWebImageDownloader.m
@@ -97,7 +93,7 @@ Dynamically call singleton method
 ```
 
 
-NSOperation advantage over GCD, can configure max concurrent thread count
+NSOperation相比GCD的优势，可配置并行最大线程数
 
 
 ## 4. SDWebImageDownloader.m
@@ -113,7 +109,7 @@ NSOperation advantage over GCD, can configure max concurrent thread count
 ```
 
 
-Dynamically configure execution Class this way.
+这么动态配置执行的Class。
 
 
 ## 5. SDWebImageDownloader.m
@@ -129,7 +125,7 @@ Dynamically configure execution Class this way.
 
         _barrierQueue = dispatch_queue_create("com.hackemist.SDWebImageDownloaderBarrierQueue", DISPATCH_QUEUE_CONCURRENT);
 
-Convenient sync method in concurrent queue.
+在并行queue中的很方便的同步方法。
 
 
 ## 6. SDWebImageDownloader.m
@@ -153,7 +149,7 @@ Convenient sync method in concurrent queue.
 ```
 
 
-Each URL corresponds to multiple callback addresses. May request the same URL address multiple times simultaneously, avoid duplicate downloads.
+每个URL对应多个回调地址。可能同时多次请求相同URL地址，避免重复下载。
 
 
 ## 7. SDWebImageDownloader.m
@@ -172,7 +168,7 @@ Each URL corresponds to multiple callback addresses. May request the same URL ad
 ```
 
 
-Start download. If Last In First Out, set the last added task's dependency to the current task to add.
+启动下载。如果是Last In First Out，则把最后一个添加的任务的依赖设置为当前要添加的任务。
 
 
 ## 8. SDWebImageDownloaderOperation.m
@@ -186,7 +182,7 @@ Start download. If Last In First Out, set the last added task's dependency to th
 ```
 
 
-Background task ID
+后台任务ID
 
 
 ## 9. SDWebImageDownloaderOperation.m
@@ -215,7 +211,7 @@ Background task ID
 ```
 
 
-Background, ensure task cancellation
+后台，保证任务取消
 
 
 ## 10. SDWebImageDownloaderOperation.m
@@ -229,7 +225,7 @@ Background, ensure task cancellation
 ```
 
 
-NSURLConnection that initiates download operation
+发起下载操作的NSURLConnection
 
 
 ## 11. SDWebImageDownloaderOperation.m
@@ -266,9 +262,9 @@ NSURLConnection that initiates download operation
 ```
 
 
-Start download. NSRunLoopRun() starts background thread's runloop. NSURLConnection depends on RunLoop.
+发起下载。NSRunLoopRun()  启动后台线程的runloop。NSURLConnection 依赖RunLoop。
 
-SDWebImage is an old library, compatible with iOS 5.1 and below.
+SDWebImage是个古老的库，兼容iOS5.1以下。
 
 
 ## 12. SDWebImageDownloaderOperation.m
@@ -294,7 +290,7 @@ SDWebImage is an old library, compatible with iOS 5.1 and below.
 ```
 
 
-First cancel Connection, then stop RunLoop.
+先cancel Connection，然后停止RunLoop。
 
 
 ## 13. SDWebImageDownloaderOperation.m
@@ -338,7 +334,7 @@ KVO
 ```
 
 
-Looks like there's a 304 Not Modified pitfall.
+看来有个 304 Not Modified 坑。
 
 
 ## 15. SDWebImageDownloaderOperation.m
@@ -360,7 +356,7 @@ Looks like there's a 304 Not Modified pitfall.
 ```
 
 
-304, then directly return cached image
+304 ,则直接返回缓存中的图片
 
 
 ## 16. SDWebImageDownloaderOperation.m
@@ -375,7 +371,7 @@ Looks like there's a 304 Not Modified pitfall.
 ```
 
 
-Receive data. self.imageData is allocated from didReceiveResponse.
+收到数据。self.imageData 是从didReceiveResponse中开辟。
 
 
 ## 17. SDWebImageDownloaderOperation.m
@@ -399,7 +395,7 @@ Receive data. self.imageData is allocated from didReceiveResponse.
 ```
 
 
-Progressive image loading... drawing progressively in memory
+渐进的加载图片……内存中绘制渐进效果的图片
 
 
 ## 18. SDWebImageDownloaderOperation.m
@@ -434,7 +430,7 @@ Progressive image loading... drawing progressively in memory
 ```
 
 
-About Orientation, reference this article <http://feihu.me/blog/2015/how-to-handle-image-orientation-on-iOS/>
+关于Orientation ，参考这篇文章 <http://feihu.me/blog/2015/how-to-handle-image-orientation-on-iOS/>
 
 
 ## 19. SDImageCache.m
@@ -469,7 +465,7 @@ About Orientation, reference this article <http://feihu.me/blog/2015/how-to-hand
 ```
 
 
-Clear cache on memory warning
+内存警告时清空缓存
 
 
 ## 20. SDImageCache.m
@@ -498,7 +494,7 @@ BOOL ImageDataHasPNGPreffix(NSData *data) {
 ```
 
 
-PNG file prefix
+png文件前缀
 
 
 ## 21. SDImageCache.m
@@ -514,8 +510,8 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 ```
 
 
-FOUNDATION_STATIC_INLINE can learn to use.
-Image cost calculation method.
+FOUNDATION_STATIC_INLINE 可以学习用用。
+图片的cost计算方式。
 
 
 ## 22. SDImageCache.m
@@ -529,7 +525,7 @@ Image cost calculation method.
 ```
 
 
-[self new] learned. Can research the difference with [XXXX new].
+[self new] 学习了。可以研究下 与[XXXX new]的区别。
 
 
 ## 23. SDImageCache.m
@@ -543,7 +539,7 @@ Image cost calculation method.
 ```
 
 
-Memory cache is NSCache.
+内存的缓存是NSCache。
 
 
 ## 24. SDImageCache.m
@@ -587,7 +583,7 @@ _ioQueue = dispatch_queue_create("com.hackemist.SDWebImageCache", DISPATCH_QUEUE
 ```
 
 
-Disk cache file name
+磁盘缓存文件名称
 
 
 ## 26. SDImageCache.m
@@ -626,12 +622,12 @@ Disk cache file name
 ```
 
 
-When disk caching and need to recalculate, determine PNG. Two methods to determine PNG.
+磁盘缓存时，且需要recalculate时，判断png。两种方法判断png。
 
-- Whether has alpha channel. alpha.
-- Whether has PNG format magic number prefix.
+- 是否有透明通道。alpha。
+- 是否有png的格式magic number前缀。
 
-PS: If need to load gif, note here not to recalculate, otherwise after loading from disk again it won't be a gif file (becomes jpg file).
+PS：如果需要加载gif，这里注意不要recalculate，否则 再次从磁盘加载后就不是gif文件了（变为jpg文件）。
 
 
 ## 27. SDImageCache.m
@@ -647,7 +643,7 @@ PS: If need to load gif, note here not to recalculate, otherwise after loading f
 ```
 
 
-sharedManager is thread-safe
+sharedManager 线程安全的哦
 
 
 ## 28. SDWebImageCompat.m
@@ -695,7 +691,7 @@ inline UIImage *SDScaledImageForKey(NSString *key, UIImage *image) {
 ```
 
 
-Scale image. When storing locally, store scaled image
+缩放图片。本地存储时，存储缩放的图片
 
 
 ## 29. NSData+ImageContentType.m
@@ -737,7 +733,7 @@ Scale image. When storing locally, store scaled image
 ```
 
 
-Determine image type from file header
+从文件头判断图片类型
 
 
 ## 30. UIImage+GIF.m
@@ -793,7 +789,7 @@ Determine image type from file header
 ```
 
 
-Use CGImageSourceCreateWithData to read Gif file
+使用CGImageSourceCreateWithData 读取Gif文件
 
 
 ## 31. SDWebImageDecoder.m
@@ -868,7 +864,7 @@ Use CGImageSourceCreateWithData to read Gif file
 ```
 
 
-Decode image, optimize image loading speed
+decode image，优化图片加载速度
 
 
 ## 32. SDImageCache.m
@@ -912,7 +908,7 @@ Decode image, optimize image loading speed
 ```
 
 
-Use file system metadata like file time and size to clean up files
+利用文件系统存储文件的时间、大小等元数据来清理文件
 
 
 ## 33. NSFileManager.h
@@ -926,7 +922,7 @@ Use file system metadata like file time and size to clean up files
 ```
 
 
-KeyType and ObjectType. Objective C has this syntax too. Similar to generics.
+KeyType 和 ObjectType 。Objective C还有这个语法呀。类似泛型。
 
 
 ## 34. NSDictionary.h
@@ -940,9 +936,9 @@ KeyType and ObjectType. Objective C has this syntax too. Similar to generics.
 ```
 
 
-NSDictionary declaration. Covariance and contravariance in generics.
+NSDictionary的声明。泛型中的协变和逆变。
 
-Reference this article: <http://blog.sunnyxx.com/2015/06/12/objc-new-features-in-2015/>
+参考这篇文章：<http://blog.sunnyxx.com/2015/06/12/objc-new-features-in-2015/>
 
 <https://msdn.microsoft.com/zh-cn/library/dd799517.aspx>
 
@@ -961,7 +957,7 @@ Reference this article: <http://blog.sunnyxx.com/2015/06/12/objc-new-features-in
 ```
 
 
-Store failed URLs
+存储失败的url
 
 
 ## 36. SDWebImageManager.m
@@ -982,7 +978,7 @@ Store failed URLs
 ```
 
 
-Correct parameter type. Check parameter type. NSNull.
+纠正参数类型。判断参数类型。NSNull。
 
 
 ## 37. SDWebImageManager.m
@@ -997,7 +993,7 @@ Correct parameter type. Check parameter type. NSNull.
 ```
 
 
-NSArray actually has this method, Objective C is really developer-friendly.
+NSArray竟然有这个方法，Objective C真的开发者友好啊。
 
 
 ## 38. UIImage+MultiFormat.m
@@ -1031,7 +1027,7 @@ NSArray actually has this method, Objective C is really developer-friendly.
 ```
 
 
-Get orientation from Data
+从Data获取orientation
 
 
 ## 39. UIView+WebCacheOperation.m
@@ -1053,7 +1049,7 @@ Get orientation from Data
 ```
 
 
-Associate an operation set with each UIView. (Mainly used when Cell reuses, or when repeatedly loading url image for UIImageView, cancel previous loading tasks)
+每个UIView关联一个operation集合。（主要用于在Cell重用，或者对UIImageView重复加载url image时，取消之前的加载任务）
 
 
 ## 40. UIView+WebCacheOperation.m
@@ -1068,7 +1064,7 @@ Associate an operation set with each UIView. (Mainly used when Cell reuses, or w
 
 
 conformsToProtocol:@protocol
- learned.
+ 学习了。
 
 
 ## 41. UIImageView+WebCache.m
@@ -1085,7 +1081,7 @@ conformsToProtocol:@protocol
 ```
 
 
-Looks like new version SDWebImage integrated indicator functionality.
+看来新版本SDWebImage集成了indicator功能。
 
 
 ## 42. UIImageView+WebCache.m
@@ -1101,7 +1097,7 @@ Looks like new version SDWebImage integrated indicator functionality.
 ```
 
 
-Cancel previous loading operation for current imageview.
+cancel掉之前对当前imageview的加载操作。
 
 
 
@@ -1112,4 +1108,5 @@ Cancel previous loading operation for current imageview.
 
 ---
 *Generated by [XSourceNote](https://github.com/everettjf/XSourceNote) at 2016-04-03 07:11:39 +0000*
+
 

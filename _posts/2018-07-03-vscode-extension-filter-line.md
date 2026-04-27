@@ -1,16 +1,14 @@
 ---
 layout: post
 title: "VSCode Extension Filter Line"
+categories:
+  - 工具
 tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+  - vscode
+  - filterline
+  - log
 comments: true
 ---
-
 
 
 
@@ -18,106 +16,107 @@ For English article , please visit [here](https://medium.com/@everettjf/vscode-e
 
 
 
-# Background
+# 背景
 
-Daily work troubleshooting problems inevitably involves looking at client logs. After logs are collected, need to carefully look at key information in logs with wide eyes, some problems can't be determined by a single log line, need to find clues from multiple log lines.
+日常工作中排查问题少不了看客户端日志。日志采集上来后，又要瞪大眼睛仔细看日志中的关键信息，有些问题还不是某一行日志可以判断出原因的，需要针对多行日志找线索。
 
 
 <!-- more -->
 
 
-# Scripts
+# 脚本
 
-In this situation gradually wrote some scripts to filter logs, for example convert logs below:
+这种情况下就逐渐写了一些脚本来过滤日志，例如把下面的日志：
 
 
 ![](/media/15307124731455.jpg)
 
 
-Through regex matching, translate to below:
+通过正则匹配，翻译成下面这样：
 
 
 ![](/media/15307124830202.jpg)
 
-This way is easy to understand, after filtering can see problem time at a glance. Relieved eye strain, life improved a lot.
+这样就通俗易懂了，过滤后一眼就看出问题时间。缓解了眼部压力，生活美好了很多。
 
-# Why vscode
+# 怎么是vscode
 
-These two years looking at logs, from initial TextWrangler to sublime to emacs to vim to atom, used all of them, until later found vscode opens large files very smoothly, been using vscode since.
+这两年看日志，从最初的TextWrangler到sublime到emacs到vim到atom，各种都使用了一遍，直到后来发现vscode打开大文件很流畅，就一直使用vscode了。
 
-# vscode Extension
+# vscode插件
 
-Recently generalized daily translation scripts, wrote a vscode extension `Filter Line`, share for everyone to use.
+最近把日常翻译的脚本通用化，写了一个vscode 插件 `Filter Line`，分享给大家使用。
 
-Extension supports filtering and translating logs line by line based on single string, single regex, and more flexible configuration files.
+插件支持根据单个字符串、单个正则、以及更为灵活的配置文件来逐行过滤、翻译日志。
 
-Reference animation:
+参考动图：
 
 ![byconfigfile.gif](https://github.com/everettjf/vscode-filter-line/raw/master/img/byconfigfile.gif)
 
 
-## Install Extension
+## 安装插件
 
-1. Download vscode, https://code.visualstudio.com/
-2. Search extension, click Install
+1. 下载vscode，https://code.visualstudio.com/
+2. 搜索插件，点击Install
 
 ![](/media/15307125087674.jpg)
 
 
 
-3. After installation completes, click Reload.
+3. 安装完成后，点击Reload。
 
-##  Usage
+##  使用
 
-Open a folder, for example ~/log2eoml folder, put log log.txt into this folder. Can directly reference this [demo](https://github.com/everettjf/vscode-filter-line/raw/master/demo.zip), after extracting drag demo/log2eoml folder into vscode.
+打开一个文件夹，例如 ~/log2eoml 文件夹，把日志log.txt放到这个文件夹中。可以直接参考这个[demo](https://github.com/everettjf/vscode-filter-line/raw/master/demo.zip)，解压后把demo/log2eoml文件夹拖拽到vscode中。
 
-1. Open log2eoml folder, and open foo.log
+1、打开log2eoml文件夹，并打开foo.log
 ![](/media/15307125928088.jpg)
 ![](/media/15306872946057.jpg)
 
 
-2. Run command+shift+p, input filter line by config file (or filter config), select `Filter Line By Config File`, as below.
+2、运行 command+shift+p ，输入 filter line by config file （或者filter config），选择 `Filter Line By Config File` ，如下图。
 ![](/media/15307126136726.jpg)
 
 
-3. Press Enter, generates new file foo.log.filterline.log, and automatically opens. This is filtered, translated logs.
+3、回车，就生成了新的文件foo.log.filterline.log ，并自动打开了。这里就是过滤、翻译好的日志。
 
 ![](/media/15307126242712.jpg)
 
 
-# Principle
+# 原理
 
-Open log2eoml/.vscode/filterline.eoml file,
+打开 log2eoml/.vscode/filterline.eoml文件，
 
 
 
 ![](/media/15307126453529.jpg)
 
-Configuration file format is simple:
+配置文件格式很简单：
 
-1. type is general, refers to general type.
-2. prefix is regex expression matching prefix. Here is to match each line's time, thread and other information.
+1. type是general，指通用类型。
+2. prefix 是匹配前缀的正则表达式。这里就是为了匹配每一行的时间、线程等信息。
 ![](/media/15307126797868.jpg)
 
 
-3. rules are filtering, translation (replacement) rules.
-4. src is matching regex. dest is string to replace with.
-5. tag is prefix added to output when matched. Certain special lines, for example crash, can obviously add an emoji icon.
-6. flag is global marker. For example app enters background, then add marker to all lines, when returns to foreground cancel this marker.
-7. until is when matching a line, following several lines continuously output original content, until a line matches regex expression.
+3. rules是过滤、翻译（替换）的规则。
+4. src是匹配的正则。dest是要替换成什么的字符串。
+5. tag 是匹配到时，输出中增加的前缀。某些特殊行，例如闪退，可以明显的加个emoji图标。
+6. flag是全局的标记。例如app进入后台，则在所有行都加个标记，会前台时取消这个标记。
+7. until 是匹配到某行时，后面紧跟的几行连续输出原始内容，直到某一行匹配正则表达式。
 
-# More Formats
+# 更多格式
 
-filterline.eoml is one format, can also use filterline.json. For example [this file](https://github.com/everettjf/vscode-filter-line/blob/master/demo/log2json/.vscode/filterline.json) .
+filterline.eoml是一种格式，还可以使用filterline.json。例如[这个文件](https://github.com/everettjf/vscode-filter-line/blob/master/demo/log2json/.vscode/filterline.json) 。
 
-eoml is a simple format I created, mainly to solve problem of regex expressions in json needing escaping.
+eoml是自创的一个简单格式，主要是为了解决json中正则表达式还需要转义的问题。
 
-More log filtering demos, can reference <https://github.com/everettjf/vscode-filter-line/tree/master/demo>
+更多日志过滤的demo，可以参考 <https://github.com/everettjf/vscode-filter-line/tree/master/demo>
 
-More information can reference <https://github.com/everettjf/vscode-filter-line>
+更多信息可以参考 <https://github.com/everettjf/vscode-filter-line>
 
-# Conclusion
+# 结语
 
-Log translation (replacement) saved a lot of troubleshooting time, past time let me locate problems faster. Believe can also speed up everyone's problem location time.
+日志的翻译（替换）节省了大量排查问题的时间，过去的时间让我更快的定位了问题。相信也能加快大家定位问题的时间。
 
-Can also relieve eye fatigue～～
+还可以缓解眼部疲劳～～
+

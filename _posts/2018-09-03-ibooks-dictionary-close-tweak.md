@@ -1,40 +1,37 @@
 ---
 layout: post
-title: "iBooks Dictionary Interface Close Button"
+title: "iBooks 查单词界面增加关闭按钮"
+categories:
+  - 逆向
 tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+  - 入门
 comments: true
 ---
 
 
-Subway time always use iBooks to read e-books, too many unknown words, also like using iBooks' built-in long press word click Look Up (query) button to look up words. Also because used to holding phone with left hand, right hand holding subway handle... After looking up word, close button is at top right. This article simply explains how to add a "Done" button at bottom left. As below:
+地铁时间一直使用iBooks看电子书，不认识的单词太多，也就很喜欢使用iBooks自带的长按单词点击Look Up（查询）按钮来查单词。又由于习惯了左手拿手机，右手扶地铁把手……查完单词后，关闭按钮在右上角。这篇文章就简单讲下怎么在左下角加上个“Done”按钮。如下图：
 
 ![screen](/media/screen.jpg)
 
-So I look up words more frequently.
+于是我查单词更勤快了。
 
 <!-- more -->
 
-# Environment
+# 环境
 
-- Jailbroken iOS (screenshots below didn't use iOS11.3.1 jailbroken two days ago, but all are universal)
+- 越狱的iOS（下面的截图里没有用前两天越狱的iOS11.3.1，但都是通用的）
 
-# Steps
+# 步骤
 
-## View iBooks Basic Information
+## 查看iBooks基本信息
 
-Using passionfruit, easily see. iBooks executable file path and name.
+用passionfruit，很容易看到。iBooks可执行文件路径和名称。
 
 ![](/media/15358613467616.jpg)
 
-## Find Dictionary ViewController
+## 找到查单词的ViewController
 
-Using cycript find BKLookupViewController.
+使用cycript 找到 BKLookupViewController。
 
 ![](/media/15359889155719.jpg)
 
@@ -47,7 +44,7 @@ Using cycript find BKLookupViewController.
 
 ## class-dump
 
-scp copy out executable file iBooks and dynamic libraries in Frameworks folder, `class-dump -S -s -H iBooks -o ibooksheader` dump headers, can see BKLookupViewController inherits from DDParsecCollectionViewController. BKLookupViewController itself doesn't have many methods, then look at this class DDParsecCollectionViewController.
+scp复制出可执行文件iBooks和Frameworks文件夹下的动态库，`class-dump -S -s -H iBooks -o ibooksheader` dump出头文件，可以看到 BKLookupViewController 继承自 DDParsecCollectionViewController。BKLookupViewController 本身没有多少方法，那么就看下这个类 DDParsecCollectionViewController。
 
 
 ```
@@ -63,13 +60,13 @@ scp copy out executable file iBooks and dynamic libraries in Frameworks folder, 
 @end
 ```
 
-However DDParsecCollectionViewController can't be found in dynamic libraries in Frameworks. Search, turns out is private library DataDetectorsUI.framework.
+然而 DDParsecCollectionViewController 在Frameworks中的动态库中也找不到。搜一下，原来是个私有库 DataDetectorsUI.framework。
 
-Header file already has ready-made.
+头文件已经有了现成的。
 
 <https://github.com/nst/iOS-Runtime-Headers/blob/master/PrivateFrameworks/DataDetectorsUI.framework/DDParsecCollectionViewController.h>
 
-Glance, can hook this viewWillAppear.
+扫一眼，可以hook这个viewWillAppear。
 
 ![](/media/15359892415400.jpg)
 
@@ -77,42 +74,43 @@ Glance, can hook this viewWillAppear.
 
 ## MonkeyDev
 
-MonkeyDev greatly facilitates jailbreak development, create a CaptainHook Tweak project.
+MonkeyDev大大方便了越狱开发，创建一个CaptainHook Tweak工程。
 ![](/media/15359891883821.jpg)
 
-When viewWillAppear, add a UIButton at bottom left, event can call DDParsecCollectionViewController's method doneButtonPressed.
+viewWillAppear时，左下角加一个UIButton就行了，事件可以调用 DDParsecCollectionViewController的方法doneButtonPressed。
 
-Code reference: <https://github.com/everettjf/iBooksLookUpCloser/blob/master/ibookslookupcloser/ibookslookupcloser.mm>
+代码参考： <https://github.com/everettjf/iBooksLookUpCloser/blob/master/ibookslookupcloser/ibookslookupcloser.mm>
 
-Note Other Linker Flags add `-undefined dynamic_lookup`.
+注意 Other Linker Flags 加上 `-undefined dynamic_lookup`。
 
-## Publish to bigboss
+## 发布到bigboss
 
 
-<http://thebigboss.org/hosting-repository-cydia/submit-your-app> Follow prompts upload.
+<http://thebigboss.org/hosting-repository-cydia/submit-your-app> 按照提示就上传上去啦。
 
-24-48 hours will be approved.
+24-48小时就会审核通过。
 
-This is introduction:
+这是介绍：
 <http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=ibookslookupcloserDp>
 
-This is download count:
+这是下载次数：
 <http://apt.thebigboss.org/stats.php?dev=everettjf>
 ![](/media/15359897424719.jpg)
 
-# Source Code
+# 源码
 
 <https://github.com/everettjf/iBooksLookUpCloser>
 
 
-# Summary
+# 总结
 
-This article doesn't have much relationship with performance optimization, but always feel reverse engineering and performance optimization are neighbors, mutually influence.
+这篇文章和性能优化关系不大，但自己总感觉逆向工程和性能优化就是个邻居，相互有影响。
 
-Very beginner, but solved own needs, very happy.
+很入门，但解决了自己的需求，很开森。
 
-Welcome to follow subscription account "Client Technology Review":
+欢迎关注订阅号「客户端技术评论」：
 ![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+
 
 
 

@@ -18,7 +18,6 @@ cover: '/images/PaleBlueDot.jpg'
             <h1 class="page-title">{{ site.name }}</h1>
             <h2 class="page-description">
                 <a href='{{ site.baseurl }}/archive'> Archive </a>;
-                <a href='{{ site.baseurl }}/tags'> Tags </a>;
                 <a href='https://xnu.app' target="_blank"> Product </a>;
                 <a href='https://github.com/everettjf' target="_blank"> GitHub </a>;
                 <a href='{{ site.baseurl }}/about'> About </a>;
@@ -46,8 +45,8 @@ cover: '/images/PaleBlueDot.jpg'
             {{ post.excerpt | strip_html }} <a class="read-more" href="{{ post.url }}"> ...</a>
         </section>
         <footer class="post-meta">
-            {% if post.tags.size > 0 %} 
-                {{ post.tags | array_to_sentence_string }} 
+            {% if post.categories.size > 0 %} 
+                {{ post.categories | array_to_sentence_string }} 
             {% endif %}
             <time class="post-date" datetime="{{ post.date | date:"%Y-%m-%d" }}">
                 {{ post.date | date_to_string }}
@@ -61,7 +60,6 @@ cover: '/images/PaleBlueDot.jpg'
 
     <div style="text-align: center; margin: 20px 0; font-size: 14px; color: #999;">
         <a href='{{ site.baseurl }}/archive' style="color: #999;"> Archive </a>;
-        <a href='{{ site.baseurl }}/tags' style="color: #999;"> Tags </a>;
         <a href='https://xnu.app' target="_blank" style="color: #999;"> Product </a>;
         <a href='https://github.com/everettjf' target="_blank" style="color: #999;"> GitHub </a>;
         <a href='{{ site.baseurl }}/about' style="color: #999;"> About </a>;

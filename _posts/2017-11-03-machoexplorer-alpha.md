@@ -1,51 +1,51 @@
 ---
 layout: post
-title: "MachOExplorer Alpha"
+title: "MachOExplorer Alpha 发布"
+categories:
+  - Tool
 tags:
-  - macho
-  - binary
-  - reverse-engineering
-  - iOS
-  - analysis
-
+  - Tool
+  - Security
 comments: true
 ---
 
 
 
 
-After more than half a year of intermittent development, recently finally released a beta version.
+
+经过半年多断断续续的开发，最近终于发布一个测试版本。
 
 <!-- more -->
 
-# Background
+# 背景
 
 <http://iosre.com/t/machoview/7627>
 <http://iosre.com/t/machoview/5456>
 
-# Features
+# 功能
 
-## Current Version Supports:
+## 当前版本支持：
 
-1. Basic MachO file parsing. Similar to all elements viewed by MachOView.
+1. 基本的MachO 文件的解析。类似MachOView查看的所有元素。
 
-## Coming Soon
+## 马上支持
 
-1. Symbol resolution for addresses.
-2. Windows version
+1. 地址对应的符号的解析。
+2. Windows 版本
 
-## Future Will Support
+## 未来会支持
 
-1. Editing
+1. 编辑
 
 
-# Download
+# 下载地址
 
 [https://github.com/everettjf/MachOExplorer/releases](https://github.com/everettjf/MachOExplorer/releases)
 
-# Code
+# 代码
 
 [https://github.com/everettjf/MachOExplorer](https://github.com/everettjf/MachOExplorer
 )
+
 
 

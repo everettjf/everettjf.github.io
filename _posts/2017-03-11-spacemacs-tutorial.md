@@ -1,207 +1,202 @@
 ---
 layout: post
-title: Spacemacs Getting Started
-tags:
-  - emacs
-  - editor
-  - tools
-  - productivity
-  - tutorial
-
+title: Spacemacs 入门总结
+categories: Skill
 comments: true
 ---
 
 
 
-# Background
 
-Official site: <http://spacemacs.org/>
+# 背景
 
-# Installation
+官网：<http://spacemacs.org/>
 
-Step zero:
-Install latest emacs.
+# 安装
+
+第零步:
+安装最新的emacs。
 
 ```
 brew install emacs --with-cocoa
 ```
 <!-- more -->
 
-Step one:
-First ensure Home directory has no .emacs file and .emacs.d directory, can execute command below to delete first.
+第一步：
+首先确保Home目录下没有.emacs文件和.emacs.d目录，可以先执行下面的命令删除。
 
 ```
 rm -rf .emacs.d
 rm .emacs
 ```
 
-Step two:
+第二步：
 
 ```
 git clone <https://github.com/syl20bnr/spacemacs> ~/.emacs.d
 ```
 
-Step three:
+第三步：
 
-Run emacs.
-Wait a moment, there will be three questions, all press Enter for defaults.
+运行emacs。
+稍等片刻会有三个提问，都回车默认即可。
 
-# Basic Concepts
-
-```
-C-n means press Ctrl key while pressing letter key n.
-M-x means press Option key (alt key) while pressing letter key x.
-<spc> f f means press space key, letter key f, letter key f in sequence.
-<ret> Enter.
-```
-
-# Basic Operations
-
-## Cancel Command
+# 基本概念
 
 ```
-C-g If error occurs while inputting a shortcut, can use this to cancel.
+C-n 表示Ctrl键的同时，按下字母键n。
+M-x 表示Option键（alt键）的同时，按下字母键x。
+<spc> f f 表示先后按下空格键、字母键f、字母键f。
+<ret> 回车。
 ```
 
-## Cursor Up Down Left Right
+# 基本操作
+
+## 取消命令
 
 ```
-Up k or C-p
-Down j or C-n
-Left h or C-b
-Right l or C-f
+C-g 如果在输入某个快捷键中途出错，可以用这个取消。
 ```
 
-(pnbf is previous, next, backward, forward)
+## 光标上下左右
 
-## Open or New File
+```
+上 k 或者 C-p
+下 j 或者 C-n
+左 h 或者 C-b
+右 l 或者 C-f
+```
+
+（pnbf就是previous、next、backward、forward）
+
+## 打开或新建文件
 
 ```
 <spc> f f
 ```
 
-## Save File
+## 保存文件
 
 ```
 <spc> s s
 ```
 
-## Switch Between Multiple Files
+## 多个文件间切换
 
 ```
-<spc> b b List all open files
+<spc> b b 列出所有打开的文件
 ```
 
-Then C-n, C-p to select, or input characters to filter, finally <ret>.
+然后C-n、C-p选择，或者输入字符过滤，最后<ret>。
 
-## Return to Previous Open File
+## 回到上一个打开的文件
 
 ```
 <spc> <tab>
 ```
 
-Can execute multiple times to switch back and forth.
+可以多次执行来回切换。
 
-## Split Screen, Move Focus, Close Current Split
-
-```
-<spc> w / Right split
-<spc> w - Bottom split
-<spc> w V Right split, and move focus to right
-<spc> w S Bottom split, and move focus to bottom
-<spc> w d Exit current split
-<spc> 1 Switch to numbered split 1, 2, 3, 4 and so on, each split has number at bottom left
-<spc> w m Keep only current split
-```
-
-
-## How to Change Font Size
+## 分屏，移动焦点，关闭当前分屏
 
 ```
-<spc> z x Pop up options, = zoom in, - zoom out, 0 restore
+<spc> w / 右侧分屏
+<spc> w - 下侧分屏
+<spc> w V 右侧分屏，并移动焦点到右侧
+<spc> w S 下侧分屏，并移动焦点到下侧
+<spc> w d 退出当前分屏
+<spc> 1 切换到编号1的分屏,2、3、4以此类推，每个分屏左下角有编号
+<spc> w m 只保留当前分屏
 ```
 
 
-## Open .spacemacs Configuration File
+## 如何改变字体大小
+
+```
+<spc> z x 弹出选项，=放大，-缩小，0恢复
+```
+
+
+## 打开.spacemacs配置文件
 
 ```
 <spc> f e d
 ```
 
-## Search
+## 搜索
 
 ```
-// When file content is not much, basically enough. But when file content is large (e.g., file 1MB+) it's slow
+// 文件内容不多时，基本够用。但文件内容较多（例如文件1MB以上）就慢了
 <spc> s s
 
-// Use grep, good performance, suitable for large files
-<spc> s g b For all currently open buffers
-<spc> s g g For current file
+// 使用grep，性能好，适合大文件
+<spc> s g b 对当前打开的所有buffers
+<spc> s g g 对当前文件
 
-// Use ag, even better performance
-<spc> s a b For all currently open buffers
-<spc> s a a For current file
+// 使用ag，性能更好
+<spc> s a b 对当前打开的所有buffers
+<spc> s a a 对当前文件
 ```
 
-## Replace
+## 替换
 
 ```
 M-x replace-string
 ```
 
-## Edit
+## 编辑
 
 ```
-u Undo
-C-r Redo
+u 撤销
+C-r 重做
 
-g c c Comment, uncomment
+g c c 注释、反注释
 ```
 
-## Directory Tree
+## 目录树
 
 ```
-<spc> f t Open close directory tree
-<spc> p t Locate to project directory
+<spc> f t 打开关闭目录树
+<spc> p t 定位到工程目录
 ```
 
-## project Project
+## project工程
 
-Create .projectile blank file in some directory, or folder containing .git directory will automatically be recognized as project root directory.
+在某个目录下创建.projectile空白文件，或者包含.git目录的文件夹会自动识别为工程根目录。
 
 
 ```
-<spc> / Search within project
-<spc> * Search within project for text at current cursor
-<spc> p R Replace within project
-<spc> p f Locate file within project
+<spc> / 工程内查找
+<spc> * 工程内查找当前光标所在文字
+<spc> p R 工程内替换
+<spc> p f 工程内定位文件
 
-<spc> p p Switch between multiple projects
+<spc> p p 多个工程切换
 ```
 
-Project list exists in file below:
+工程列表存在于下面的文件：
 
 ```
 .emacs.d\.cache\projectile-bookmarks.eld
 ```
 
-Space separated.
+空格分隔。
 
-# Basic Configuration
+# 基本配置
 
-## Default Window Maximized
+## 默认窗口最大化
 
-Modify either item below in configuration file
+配置文件中修改以下任意一项
 
 ```
-dotspacemacs-maximized-at-startup t Maximize
-dotspacemacs-fullscreen-at-startup t Full screen maximize
+dotspacemacs-maximized-at-startup t 最大化
+dotspacemacs-fullscreen-at-startup t 全屏最大化
 ```
 
 
-## Select layer
+## 选择layer
 
-Modify in configuration file
+配置文件中修改
 
 ```
    dotspacemacs-configuration-layers
@@ -220,7 +215,7 @@ Modify in configuration file
      )
 ```
 
-## Install SourceCodePro Font
+## 安装SourceCodePro字体
 
 <https://github.com/adobe-fonts/source-code-pro>
 
@@ -231,26 +226,26 @@ Modify in configuration file
              colors-enable-nyan-cat-progress-bar t)
 ```
 
-# Daily Small Needs
+# 日常小需求
 
-## Filter Logs
+## 过滤日志
 
-1. Drag large file into emacs.
-2. `<spc> s g b` can grep.
+1. 把大文件拖入emacs。
+2. `<spc> s g b` 可以grep。
 
-## Fuzzy Locate File in Folder
+## 模糊定位文件夹中的文件
 
-1. Create .projectile blank file in target folder.
-2. `<spc> p f` locate file.
+1. 在目标文件夹创建.projectile空白文件。
+2. `<spc> p f`定位文件。
 
 
-## Find, Replace All Files in Folder
+## 查找、替换文件夹中的所有文件
 
-1. Create .projectile blank file in target folder.
-2. `<spc> /` search in folder.
-3. `<spc> p R` replace within project.
+1. 在目标文件夹创建.projectile空白文件。
+2. `<spc> /`文件夹中查找。
+3. `<spc> p R`工程内替换。
 
-## logos Syntax
+## logos 语法
 
 ```
 
@@ -260,15 +255,15 @@ Modify in configuration file
 ```
 
 
-# Later Additions
+# 后续补充
 
-*Added January 2018, perhaps last addition. Because for my usage habits, I found SpaceVim can completely replace spacemacs*
+*2018年1月补充，或许是最后一次补充。因为对我的使用习惯来说，我发现SpaceVim完全可以替代spacemacs了*
 
 ## tip 1 : commit repo by magit
 
-It was almost one year since I ,as a really nood for emacs, feel disappointed for spacemacs, all because of that I can not commit my git repo ( using magit).
+It was almost one year since I ,as a really nood for emacs, feel disappointed for spacemacs, all because of that I can not commit my git repo ( using magit).
 
-Today I finally complete it. This is the phases below :
+Today I finally complete it. This is the phases below :
 
 `SPC g s` to see the status of current project
 
@@ -277,9 +272,9 @@ Today I finally complete it. This is the phases below :
 ![](/media/15170499901101.jpg)
 `c c` to commit, and edit the commit message ( must add some words)
 ![](/media/15170500042869.jpg)
-`, ,` to really commit
+`, ,` to really commit
 ![](/media/15170500180458.jpg)
-Yes , I can.
+Yes , I can.
 
 
 And I also can push origin master by `P p`
@@ -288,7 +283,7 @@ And I also can push origin master by `P p`
 
 ## tip 2 : use atom-one-dark-theme for spacemacs
 
-Since atom-one-dark-them has not been included in any layers , we can add this package in additional region below :
+Since atom-one-dark-them has not been included in any layers , we can add this package in additional region below :
 
 ```
 dotspacemacs-additional-packages '(
@@ -296,7 +291,7 @@ dotspacemacs-additional-packages '(
                                       )
 ```
 
-Then, add atom-one-dark as the first dotspacemacs-themes :
+Then, add atom-one-dark as the first dotspacemacs-themes :
 
 ```
 dotspacemacs-themes '(
@@ -306,14 +301,14 @@ dotspacemacs-themes '(
                       )
 ```
 
-Ok, restart emacs ( by `SPC q r`) , we will see the installing progress ,then it's atom-one-dark time.
+Ok, restart emacs ( by `SPC q r`) , we will see the installing progress ,then it’s atom-one-dark time.
 
 ![](/media/15170501691495.jpg)
 
 
 ## tip 3 : objc-mode for xm files (iOS tweak dev)
 
-When I develop tweaks for jailbreak iOS , the source file extension is .xm , we could add lines below into `dotspacemacs/user-init` function , in order to let emacs auto set objc-mode when opening `.xm` file.
+When I develop tweaks for jailbreak iOS , the source file extension is .xm , we could add lines below into `dotspacemacs/user-init` function , in order to let emacs auto set objc-mode when opening `.xm` file.
 
 ```
 (add-to-list 'auto-mode-alist '("\\.xm$" . objc-mode))
@@ -326,24 +321,25 @@ When I develop tweaks for jailbreak iOS , the source file extension is .xm , we 
 
 spacemacs include [yasnippet](https://github.com/joaotavora/yasnippet) automaticly, we could download the snippets from <https://github.com/AndreaCrotti/yasnippet-snippets>
 
-Just copy the snippets folder to `~/.spacemacs.d` as below :
+Just copy the snippets folder to `~/.spacemacs.d` as below :
 
 ![](/media/15170502839463.jpg)
-Now that's all the installation.
+Now that’s all the installation.
 
-Let's use python source as an example :
+Let’s use python source as an example :
 
-1. Open an python source file : test.py
-2. Type SPC i s,and you could see :
+1. Open an python source file : test.py
+2. Type SPC i s,and you could see :
 
 ![](/media/15170503047729.jpg)
 
 
-3. Type `#` and then `RET` , will insert :
+3. Type `#` and then `RET` , will insert :
 
 ![](/media/15170503192739.jpg)
 
 
-That's all.
+That’s all.
 
-And useful snippets like : `ifm` `m` `cm` `cls` …
+And useful snippets like : `ifm` `m` `cm` `cls` …
+

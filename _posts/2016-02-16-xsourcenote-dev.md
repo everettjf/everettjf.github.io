@@ -1,108 +1,104 @@
 ---
 layout: post
-title: XSourceNote Xcode Source Code Notes Plugin
-tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+title: XSourceNote Xcode源码笔记插件
+categories: Skill
 comments: true
 ---
 
-PS: This idea is not very meaningful, no longer developing and maintaining.
+
+
+PS: 此想法意义不大，不再开发和维护。
 
 
 
 
-# Background
+# 背景
 
-This year planned to learn more source code, promised source code learning. In January mainly learned SDWebImage and YYCache source code, read line by line, found many good things. Initially wanted to record while learning, share it, but always felt troublesome.
+今年计划多学习一些源码，说好的源码学习呢。1月份主要学习了SDWebImage和YYCache的源码，一行一行的看的，发现不少好东西。开始想边学习边记录，分享出来，但总觉得麻烦。
 
-Last year made XBookmark, an Xcode bookmark plugin. Thought, could make a plugin for taking notes on source code. Features as follows:
+去年做了个XBookmark，Xcode的书签插件。想想，可以做个对源码做笔记的插件。功能如下：
 
-1. Take notes on projects.
-2. Take notes on files.
-3. Take notes on one or more lines of a file.
-4. Can export as markdown format.
+1. 对工程做笔记。
+2. 对文件做笔记。
+3. 对某一个文件的一行或多行做笔记。
+4. 可以导出为markdown格式。
 <!-- more -->
 
-Exporting as markdown format can directly put it in a blog as an article.
-(Brainstorming, if everyone shares to a website, can discuss a specific line of code...)
-(Step by step, too many ideas, good and bad. To learn source code, still need to make a plugin... good and bad)
+导出为markdown格式就可以直接放到博客当文章了。
+（头脑风暴下，如果每个人都分享到一个网站上，都可以对某一行代码进行讨论呢…… ）
+（先一步一步来，想法太多，也好也坏。为了学习源码，还要做出个插件来……也好也坏）
 
-Notes on learning SDWebImage and YYCache or other source code, will share together later...
+对SDWebImage和YYCache或者其他源码的学习笔记，到时候一起放出来吧……
 
 
-*---Added below on March 21, 2016--*
+*---以下2016年3月21日补充--*
 
-# Source Code
+# 源码
 
 [https://github.com/everettjf/XSourceNote](https://github.com/everettjf/XSourceNote)
 
-# Effect
+# 效果
 
-After a month of intermittent development and continuous use and modification, finally can release the first version.
+经过这1个月断断续续的开发及不断的使用修改，终于可以发布第一个版本啦。
 
 
 
-Effect as follows:
+效果如下：
 
 ![XSourceNote](https://everettjf.github.io/stuff/xsourcenote/project_whole.png)
 
 
 
 
-# Installation
+# 安装
 
-Search for "XSourceNote" in [Alcatraz](http://alcatraz.io) and install.
+在 [Alcatraz](http://alcatraz.io) 中搜索“XSourceNote”安装即可。
 
 
 
-# Usage
+# 使用
 
-## 0. Menu
+## 0. 菜单
 
 `Xcode->Edit->XSourceNote`
 
-Or press the corresponding shortcut keys. (Shortcut keys can be modified in Tools)
+或按对应的快捷键。（快捷键在Tool中可修改)
 
-## 1. Configuration
-For example:
+## 1. 配置
+例如：
 
- - Open the project file located at /Users/everettjf/GitHub/XSourceNote using Xcode.
- - Press shortcut Shift+F4 to open "Notes List Window", as shown below:
+ - 使用Xcode打开位于 /Users/everettjf/GitHub/XSourceNote 路径下的工程文件。
+ - 按快捷键 Shift+F4 打开“笔记列表窗口”，如下图：
 
  ![XSourceNote](https://everettjf.github.io/stuff/xsourcenote/project_basic.png)
 
- - Root Path (Required): Select the local folder where the project file is located. (To convert full file paths to relative paths when adding notes. This can be optimized to automatically find .git directory for configuration)
- - Project Name : Project name
- - Official Site : Official website name
- - Repo : Code repository address
- - Revision : Current revision version (This is to uniquely represent the version of source code currently being studied)
- - Description : Brief introduction.
+ - Root Path（必填）: 选择工程文件所在的本地文件夹。（为了添加笔记时把文件全路径转换为相对路径。这里可优化为查找.git目录自动配置）
+ - Project Name : 工程名字
+ - Official Site : 官方网站名字
+ - Repo : 代码仓库地址
+ - Revision : 当前修订版本 （这里是为了唯一表示当前学习的源代码的版本）
+ - Description : 简介。
 
-## 2. Project Notes
+## 2. 工程笔记
 
-Just make overall notes
+就是整体做个笔记
 
 
-## 3. Summary
+## 3. 总结
 
-Summary will be placed at the end when exporting Markdown notes.
+总结会在最后导出Markdown笔记时，放在内容最后面。
 
-## 4. Tools
+## 4. 工具
 
-Can configure the prefix for Markdown note content. Many Markdown-based blog systems (such as Jekyll, Hexo) require some metadata configuration.
+可配置Markdown笔记内容的前缀。很多基于Markdown的博客系统（例如Jekyll，Hexo）都需要一些元数据的配置。
 
-**Bottom left button** can export Markdown notes.
+**左下角按钮**可以导出Markdown笔记。
 
-## 5. Code Line Notes
+## 5. 代码行的笔记
 
-### 1) Add Notes
-Press shortcut Command+F4 in the code editor to add notes. XSourceNote will automatically record **the line where the cursor is (single line note), or the lines of the currently selected area (multi-line note)**.
-Can input notes in this window. (Auto-saves after closing). After adding, will add a green marker in the left sidebar of the corresponding line in the editor.
+### 1) 添加笔记
+在代码编辑器中按快捷键 Command+F4 可添加笔记。XSouceNote会自动记录**光标所在行（单行笔记）、或当前选中区域的行（多行笔记）**。
+这个窗口中可输入笔记。（关闭后自动保存）。添加后，会在编辑器对应行的左侧边栏中添加一个绿色的标记。
 
  ![XSourceNote](https://everettjf.github.io/stuff/xsourcenote/quick_note.png)
 
@@ -111,37 +107,37 @@ Can input notes in this window. (Auto-saves after closing). After adding, will a
 
 
 
-### 2) View Notes
+### 2）查看笔记
 
-Still the window opened with Shift+F4, notes for code lines will be appended to the list below.
+仍然是 Shift+F4打开的窗口，左侧对代码行的笔记会追加到列表下面。
 
  ![XSourceNote](https://everettjf.github.io/stuff/xsourcenote/line_note.png)
 
-Top right is the file's relative path (if cannot find RootPath, will be full path). Below that is the code where the note is located.
+右侧最上面是 文件的相对路径（如果无法找到RootPath，则会是完整路径）。之后是笔记所在行的代码。
 
-Bottom can edit notes. (Notes save every 10s, or when clicking left list, or when closing window)
-
-
-
-### 3) Export Notes
-
-Click "Tool" in the left list, buttons in the bottom row on the right. Can export to selected file.
-
-Format reference: [Format Reference](https://everettjf.github.io/2016/03/17/yycache-learn)
+最下面可以编辑笔记。（笔记会每隔10s保存，或点击左侧列表时保存，或关闭窗口时保存）
 
 
-# Summary
 
-Functionality is relatively simple, but basically meets my needs for taking notes when learning source code.
+### 3)导出笔记
 
-Some areas that can be optimized:
+点击左侧列表“Tool“，右侧下面一行按钮。可导出到选择的文件。
 
-- Note sorting.
-- Code area syntax highlighting.
-- Markdown format preview in note area.
-- Auto-find RootPath.
+格式参考：[格式参考](https://everettjf.github.io/2016/03/17/yycache-learn)
 
-Will slowly optimize during future use.
+
+# 总结
+
+功能比较简单，不过基本满足我学习源码时笔记的需求了。
+
+还有一些可优化的地方：
+
+- 笔记的排序。
+- 代码区域的着色。
+- 笔记区域的Markdown格式预览。
+- 自动查找RootPath。
+
+以后使用过程中慢慢优化。
 
 
 

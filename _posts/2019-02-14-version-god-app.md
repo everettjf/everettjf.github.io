@@ -1,50 +1,48 @@
 ---
 layout: post
-title: "App Version Comparison Tool"
+title: "谁是App版本帝"
+categories:
+  - 工具
 tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+  - 工具
+  - 娱乐
 comments: true
 ---
 
-From App's release cycle can somewhat see App's behind-the-scenes team's operational status, also somewhat reflects team's control over App quality and user experience. Then this article leads everyone to see those "excellent" Apps' release situations.
+从App的发版周期些许可以看到App背后团队的运作状态，也些许体现了团队对App质量、用户体验的把控程度。那么本文带领大家一起看看那些“优秀”的App的发版情况。
 
 
 <!-- more -->
 
-# Data
+# 数据
 
-## Version Records
+## 版本记录
 
-Apple AppStore website can get App's historical version release records. For example Douyin:
+苹果AppStore网站可以获取到App的历史版本发布记录。例如抖音：
 https://itunes.apple.com/cn/app/id1142110895
 
 ![](/media/15500700541354.jpg)
 
 ## Top App
 
-"Excellent" Apps are naturally top-ranked Apps, iResearch Index provides a ranking, but can't conveniently get corresponding AppStore links (id in link above).
-Qimai Data provides "App Rankings", then we look at "China App Store Free Rankings" Apps' version release cycles. Link:
+“优秀”的App自然是排名靠前的App，艾瑞指数提供了一个排名，但无法方便的获取到对应的AppStore的链接（上面链接中的id）。
+七麦数据提供了”App榜单“，那么我们就看下”中国 App Store 免费榜“上的App的版本发布周期。链接如下：
 
 https://www.qimai.cn/rank/index/brand/free/country/cn/genre/36/device/iphone
 
-Great thing is can directly export, and includes id. I only want to see apps, not games.
+给力的是可以直接导出，而且包含id。我只想看应用，不看游戏。
 
-# Crawler
+# 爬虫
 
-scrapy is a Python crawler framework, long history, simple and easy to use.
-Official site: https://scrapy.org
-Getting started: https://docs.scrapy.org/en/latest/intro/tutorial.html
+scrapy是一个Python的爬虫框架，历史悠久，简单易用。
+官网： https://scrapy.org
+入门： https://docs.scrapy.org/en/latest/intro/tutorial.html
 
-After reading getting started can immediately start.
+看完入门就可以立即上手了。
 
-Through id construct each App's App Store URL,
+通过id构造出每个App的App Store网址，
 https://itunes.apple.com/cn/app/id1142110895
-Crawl all version records.
+爬出所有的版本记录。
 
 https://github.com/everettjf/chatterbox/tree/master/spider/data/20190213/appinfo
 
@@ -53,13 +51,13 @@ https://github.com/everettjf/chatterbox/tree/master/spider/data/20190213/appinfo
 ![](/media/15500757964452.jpg)
 
 
-# Analysis
+# 分析
 
-With data, everything is easy. Write some scripts.
+有了数据，那一切都好说了。写点脚本。
 
 https://github.com/everettjf/chatterbox/blob/master/spider/rank.py
 
-This script provides four sorting methods:
+这个脚本提供了四种排序方法：
 
 ```
 python rank.py version-count data/20190213/appinfo
@@ -68,31 +66,31 @@ python rank.py days-per-version-last-6-month data/20190213/appinfo
 python rank.py emergency-release-count data/20190213/appinfo
 ```
 
-## Release Count
+## 发版次数
 
-From results can know, AppStore keeps at most 25 version records.
+从结果可知，AppStore上最多保留25个版本记录。
 ![](/media/15500763017603.jpg)
 
-## Average Days Per Version
+## 平均多少天发一个版本
 
-Calculate all version records, how many days per version (average interval between versions in days)
-Looks like release cycle is really short, Xiaohongshu 4 days, Pinduoduo 5 days, Kuaishou 6 days, Zhihu 7 days, etc., presumably colleagues work very hard.
-Alipay 27 days, WeChat 21 days, Taobao 20 days, Didi 11 days, Xianyu 13 days.
+把所有版本记录都计算在内，多少天发一个版本（版本间平均间隔多少天）
+看来发版本的周期还真挺短的，小红书4天、拼多多5天、快手6天、知乎7天等等，想必同胞们很辛苦。
+支付宝27天、微信21天、淘宝20天、滴滴11天、闲鱼13天。
 
 ![](/media/15500765126911.jpg)
 
-## Average Days Per Version in Past 6 Months
+## 过去6个月平均多少天发一个版本
 
-Many Apps at 7, 8 days per version.
+很多App在7、8天一个版本。
 
 ![](/media/15500767020644.jpg)
 
-## Emergency Releases
+## 紧急发版本
 
 
-If calculated as two releases interval <= 1 day, search emergency release count in all recorded version records.
+如果以两次发版本间隔<=1天来计算，在所有记录的版本记录中查找紧急发版本的次数。
 
-Kuaishou, Sogou Input, Outlook all have 3-5 emergency releases.
+快手、搜狗输入法、Outlook 都有3-5次的紧急发版本。
 
 
 ![](/media/15500769306033.jpg)
@@ -100,23 +98,23 @@ Kuaishou, Sogou Input, Outlook all have 3-5 emergency releases.
 
 
 
-# Summary
+# 总结
 
-Different Apps' rhythms really vary quite a bit～
+不同App的节奏还真是差别挺大～
 
-Then who is the version king...
+那么谁是版本帝……
 
-Crawler code see
+爬虫代码见
 https://github.com/everettjf/chatterbox
 
-Data see
+数据可见
 https://github.com/everettjf/chatterbox/tree/master/spider/result
 
 ---
 
-Hmm, interesting :)
+嗯，有趣 :)
 
-Welcome to follow subscription account "Client Technology Review":
+欢迎关注订阅号「客户端技术评论」：
 ![](/images/fun.png)
 
 

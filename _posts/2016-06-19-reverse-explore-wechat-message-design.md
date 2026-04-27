@@ -1,12 +1,7 @@
 ---
 layout: post
-title: WeChat Chat UI Logic Implementation
-tags:
-  - reverse-engineering
-  - security
-  - iOS
-  - analysis
-
+title: 探索微信聊天UI逻辑实现
+categories: Skill
 comments: true
 ---
 
@@ -14,21 +9,23 @@ comments: true
 
 
 
-# Background
 
-At work I'm responsible for IM feature development, usually do a lot of research and learning on WeChat.
-This article mainly focuses on WeChat iOS client interface implementation's "chat message interface" implementation.
 
-Purpose of writing this article:
-- Share WeChat's chat interface implementation method.
-- Show reverse engineering main process.
+# 背景
 
-PS: Initially was to solve a [small issue](https://everettjf.github.io/2016/06/18/little-chat-ui-bug-resolve) in the project that I reverse engineered WeChat.
+工作中自己负责IM功能的开发，平时对微信进行了不少研究学习。
+这篇文章主要关注微信iOS客户端界面实现中的“聊天消息界面”实现。
+
+写这篇文章的目的：
+- 分享微信的聊天界面实现方式。
+- 展示逆向主要流程。
+
+PS: 最初是为了解决项目中的[一个小问题](https://everettjf.github.io/2016/06/18/little-chat-ui-bug-resolve)才逆向的微信。
 <!-- more -->
 
-# Preparation
+# 准备
 
-Device: iPhone5 iOS 8.4 jailbroken
+设备：iPhone5 iOS 8.4 越狱
 
 usbmuxd
 
@@ -44,14 +41,14 @@ ssh
 ssh root@localhost -p 2222
 ```
 
-Find executable:
+找到可执行文件：
 
 ```
 everettjfs-iPhone:~ root# ps aux | grep /App
 mobile   38363   4.4  8.5   776400  88748   ??  Ss    8:55PM   0:52.96 /var/mobile/Containers/Bundle/Application/25FB096A-8122-49B5-9304-5FDB9080D9B0/WeChat.app/WeChat
 ```
 
-Sandbox path:
+沙盒路径：
 
 ```
 everettjfs-iPhone:~ root# cycript -p WeChat
@@ -59,7 +56,7 @@ cy# [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomai
 @[#"file:///var/mobile/Containers/Data/Application/F36BD1C1-1C39-4C83-AD4B-6D9F2B976330/Documents/"]
 ```
 
-Decrypt:
+砸壳：
 
 ```
 everettjfs-iPhone:~ root# clutch -i
@@ -67,19 +64,19 @@ everettjfs-iPhone:~ root# clutch -b com.tencent.xin
 Finished dumping com.tencent.xin to /var/tmp/clutch/5F6CA026-C176-4FB0-9569-90F2DD251385
 ```
 
-Export headers:
+导出头文件：
 
-Here don't use class-dump-z because class-dump-z can't recognize many UIKit classes.
+这里不用class-dump-z 是因为class-dump-z会无法识别UIKit的很多类。
 
 ```
 [everettjf@e w ]$ class-dump -s -S -H WeChat -o headers
 ```
 
-# Initial Exploration
+# 初步窥探
 
-## Locate Controller
+## 定位Controller
 
-Open WeChat, enter a conversation with someone (that is the "chat message interface" this article studies)
+打开微信，进入和某个人的会话（也就是这篇文章要研究的“聊天消息界面”）
 
 ```
 everettjfs-iPhone:~ root# cycript -p WeChat
@@ -96,21 +93,21 @@ cy# [[[UIWindow keyWindow] rootViewController] _printHierarchy].toString()
    |    | <MoreViewController 0x179ad400>, state: disappeared, view:  (view not loaded)
 ```
 
-WeChat main interface is an MMTabBarController, has four TabBarItems, each corresponds to an MMUINavigationController. Corresponding RootViewControllers:
+微信主界面是个MMTabBarController，有四个TabBarItem，分别对应一个MMUINavigationController。对应的RootViewController如下：
 
-- WeChat NewMainFrameViewController
-- Contacts ContactsViewController
-- Discover FindFriendEntryViewController
-- Me MoreViewController
+- 微信 NewMainFrameViewController
+- 通讯录 ContactsViewController
+- 发现 FindFriendEntryViewController
+- 我 MoreViewController
 
-The "chat message interface" we're focusing on is BaseMsgContentViewController (state: appeared).
+此次我们关注的“聊天消息界面”，就是BaseMsgContentViewController （state：appeared）。
 
-## Observe Views
+## 观察Views
 
 ### Reveal
 
-Send various types of messages in the interface, here first send: text, image, location, voice.
-Use Reveal to observe, as shown:
+界面中各种类型的消息都发送一下，这里先发送：文本、图片、位置、语音。
+使用Reveal观察，如下图：
 
 ![img](https://everettjf.github.io/stuff/eimkit/1465648981061.png)
 
@@ -118,15 +115,15 @@ Use Reveal to observe, as shown:
 
 ### MMTableView
 
-From these two images:
+从这两张图可以看到：
 
-The entire message list is essentially an MMTableView (we ourselves generally do it this way too). From class-dumped header files can know, MMTableView is a subclass of UITableView.
+整个消息列表本质上是个 MMTableView （这个我们自己实现一般也是这么做）。从class-dump出的头文件中可知道，MMTableView是UITableView的子类。
 
 ```
 @interface MMTableView : UITableView <MMDelegateCenterExt>
 ```
 
-TableView's Cell has only one type, MultiSelectTableViewCell. **When I first saw this, I was very curious. Why not use the traditional one message one Cell method?**
+TableView的Cell只有一种类型， MultiSelectTableViewCell。**这里开始看到时，很让我好奇。为什么没有采用传统的一个消息一个Cell的方式呢**
 
 ```
 @interface MultiSelectTableViewCell : UITableViewCell
@@ -134,67 +131,67 @@ TableView's Cell has only one type, MultiSelectTableViewCell. **When I first saw
 
 ### MessageNodeView
 
-Cells are all MultiSelectTableViewCell, what distinguishes different messages is the contentView's content.
+Cell都是MultiSelectTableViewCell，而区分不同消息的是contentView的内容。
 
-- Text message: TextMessageNodeView
-- Image message: ImageMessageNodeView
-- Location message: LocationMessageNodeView
-- Voice message: VocieMessageNodeView (not visible in screenshot above)
+- 文本消息 ： TextMessageNodeView
+- 图像消息： ImageMessageNodeView
+- 位置消息：LocationMessageNodeView
+- 语音消息：VocieMessageNodeView （上面的截图看不到）
 
-Additionally, time between messages is also MultiSelectTableViewCell, just contentView is a Label about time.
+此外，消息之间的时间，也是MultiSelectTableViewCell，只是contentView是关于时间的Label。
 
-### Simple Summary
+### 简单总结
 
-Understood the basic structure of message UI, next step is finding how to create these MessageNodeViews. **Here it's easy to have a question, all messages are MultiSelectTableViewCell, how is Cell reuse implemented?** Continue exploring.
+弄明白消息UI的基本结构，下一步就是找到如何创建这些MessageNodeView。**这里很容易有个疑问，所有消息都是MultiSelectTableViewCell，那如何实现的Cell重用呢？** 继续探索。
 
 
-## Observe Controller
+## 观察Controller
 
-Find BaseMsgContentViewController class in class-dumped header files. Can find BaseMsgContentViewController.h file, this header file has 614 lines, shows this class's complexity. (Guess WeChat development early didn't consider later large number of requirements being added, so became today's Massive View Controller)
+在class-dump出的头文件中找到 BaseMsgContentViewController类。可以找到 BaseMsgContentViewController.h文件，这个头文件有614行，可见这个类的复杂。（估计微信开发早期并没有考虑到后期的大量需求加入，于是成了今天的Massive View Controller）
 
-Here refine this action's purpose: want to know how each message in chat is created and displayed.
+这里细化此次行动的目的：想知道聊天中的每一条消息是如何创建、显示的。
 
-Observing class implementation, found some related variables and methods:
+观察类的实现，发现一些相关变量和方法：
 
 ```
-// Literally, should be array storing MessageNodes
+// 字面上看，应该就是存储MessageNode的数组
 NSMutableArray *m_arrMessageNodeData;
-// Should be storing all supported MessageNode Class types
+// 应该是存储所有支持的MessageNode Class类型
 struct vector<Class, std::__1::allocator<Class>> m_messageNodeClass;
-// This is mainly the TableView
+// 这就是主要是TableView
 MMTableView *m_tableView;
 
-// Pre-create messages, interesting, will study carefully later
+// 预创建消息，有意思，一会儿仔细研究研究
 - (void)preCreateMessageContentNode:(id)arg1;
 - (void)preCreateMessageSplitNode:(id)arg1;
 - (void)preCreateMessageTimeNode:(id)arg1;
 
-// Initialize Classes
+// 初始化Class
 - (void)initMessageNodeClass;
 - (id)newMessageNodeViewForMessageWrap:(id)arg1 contact:(id)arg2 chatContact:(id)arg3;
 
 
-// Get node count
+// 获取node数目
 - (unsigned int)getMsgNodeCount;
-// Get node at specified index
+// 获取指定索引的node
 - (id)getNodeDataByIndex:(unsigned int)arg1;
-// Get message node array
+// 获取消息node数组
 - (id)GetMessageNodeDataArray;
 
-// Add
+// 添加
 - (void)addMessageNode:(id)arg1 layout:(BOOL)arg2 addMoreMsg:(BOOL)arg3;
 - (void)addReceiveMessageNode:(id)arg1;
 - (id)addSplitNode:(id)arg1 addMoreMsg:(BOOL)arg2;
 - (void)addTimeNode:(id)arg1 layout:(BOOL)arg2 addMoreMsg:(BOOL)arg3;
-// Remove
+// 移除
 - (void)removeAllObjectsFromMessageNodeDatas;
 - (void)removeObjectsFromMessageNodeDatas:(id)arg1;
-// Update
+// 更新
 - (void)updateMessageNodeImageLoadingPercent:(unsigned long)arg1 percent:(unsigned long)arg2;
 - (void)updateMessageNodeStatus:(id)arg1;
 - (void)updateMessageNodeViewForOrientation:(id)arg1;
 
-// Some NodeView events
+// 一些NodeView的事件
 - (void)tagLink:(id)arg1 messageWrap:(id)arg2;
 - (void)tapAppNodeView:(id)arg1;
 - (void)tapFriendCard_NodeView:(id)arg1 WithContact:(id)arg2 WithMsg:(id)arg3;
@@ -210,7 +207,7 @@ MMTableView *m_tableView;
 
 ### NSMutableArray *m_arrMessageNodeData;
 
-Print in cycript
+cycript 打印出来
 
 ```
 cy# v = #0x15067600
@@ -221,9 +218,9 @@ cy# v->m_arrMessageNodeData.count
 19
 ```
 
-*Prerequisite, chat messages with the other party already has many* When first opening chat message interface with the other party, can see WeChat only loads 19 messages by default.
+*前提，与对方的聊天消息已经有很多条*，首次打开与对方的聊天消息界面，可以看到微信默认只加载19条消息。
 
-What is CMessageNodeData?
+CMessageNodeData是什么？
 
 ```
 @interface CMessageNodeData : NSObject
@@ -235,7 +232,7 @@ What is CMessageNodeData?
 }
 ```
 
-**Note, there's a UIView here**
+**注意，这里有个UIView**
 
 ```
 @interface CMessageWrap : MMObject <IAppMsgPathMgr, ISysNewXmlMsgExtendOperation, IMsgExtendOperation, NSCopying>
@@ -250,62 +247,62 @@ What is CMessageNodeData?
     NSString *m_nsContent;
     unsigned long m_uiStatus;
     unsigned long m_uiImgStatus;
-    //.............omitting many fields.............
+    //.............省略大量字段.............
 ```
 
-CMessageWrap is naturally the encapsulation of message data.
+CMessageWrap自然就是对消息数据的封装。
 
-CMessageNodeData has a UIView *m_view variable, see what it is:
+CMessageNodeData有个UIView *m_view的变量，看看是什么：
 
 ```
 y# d = v->m_arrMessageNodeData
 @[#"<CMessageNodeData: 0x15b95260>",#"<CMessageNodeData: 0x15adf260>",#"<CMessageNodeData: 0x15a4abb0>",#"<CMessageNodeData: 0x1580f190>",#"
-.....omitting....
+.....省略....
 cy# var x = []; for(var i = 0; i < d.count;i++) x.push([d objectAtIndex:i].m_view); x
 [#"<UIView: 0x1592f9c0; frame = (0 10; 320 28); layer = <CALayer: 0x147e6cc0>>",#"<TextMessageNodeView: 0x1582cca0; frame = (251 0; 60 59); layer = <CALayer: 0x158b1350>>",#"<TextMessageNodeView: 0x15a58d60; frame = (251 0; 60 59); layer = <CALayer: 0x15a3cdf0>>",#"<TextMessageNodeView: 0x15a3ba10; frame = (251 0; 60 59); layer = <CALayer: 0x15ab9ab0>>",#"<TextMessageNodeView: 0x15a31610; frame = (251 0; 60 59); layer = <CALayer: 0x15a31760>>",#"<TextMessageNodeView: 0x15a57dc0; frame = (251 0; 60 59); layer = <CALayer: 0x15a547b0
-.....omitting.......
+.....省略.......
 odeView: 0x159ee260; frame = (186 0; 125 59); layer = <CALayer: 0x159ee3b0>>",#"<ImageMessageNodeView: 0x15b91cd0; frame = (179.5 0; 131.5 150); layer = <CALayer: 0x15b6e8e0>>",#"<UIView: 0x15b675d0; frame = (0 10; 320 28); layer = <CALayer: 0x15be5fa0>>",#"<LocationMessageNodeView: 0x15bdaee0; frame = (50 0; 261 139); layer = <CALayer: 0x15b7d290>>",#"<TextMessageNodeView: 0x15bbf400; frame = (144 0; 167 59); layer = <CALayer: 0x15be6770>>"]
 ```
 
-Can see, m_view is the UIView under MultiSelectTableViewCell's contentView.
+可见，m_view就是MultiSelectTableViewCell的contentView下的那个UIView。
 
-**Here again a question: Cells displayed on screen are actually only 4, why do these CMessageNodeData's m_view all have values (not nil), did they not implement reuse? Yes, currently I found, they indeed didn't implement reuse.**
+**这里又有疑问：屏幕上显示的Cell其实就4个，为什么这些 CMessageNodeData中的m_view都有值（不是nil），难道没有实现重用？是的，目前我发现，确实没有实现重用。**
 
-To verify, I randomly sent hundreds of various messages, then output all m_view.
+为验证，我随便发送了几百条各种消息，再输出所有的m_view。
 
 ```
  cy# d.count
 419
 cy# var x = []; for(var i = 0; i < d.count;i++) x.push([d objectAtIndex:i].m_view); x
 [#"<UIView: 0x15c91540; frame = (0 10; 320 28); layer = <CALayer: 0x16096bb0>>",#"<AppUrlMessageNodeView: 0x160977e0; frame = (0 0; 327 149); layer = <CALayer: 0x16098f50>>",#"<UIView: 0x16098d70; frame = (0 10; 320 28); layer = <CALayer: 0x16099bd0>>",#"<ImageMessageNodeView: 0x1609b000; frame = (179.5 0; 131.5 150); layer = <CALayer: 0x1609a840>>",#"<ImageMessageNodeView: 0x160a3d80; frame = (
-// ........omitting..................
+// ........省略..................
 cy# x.length
 419
 ```
 
-Alright, indeed all 419 m_view are not nil.
+ 好吧，果然419个m_view都不是nil。
 
-**My goodness, how can this work. But observe memory usage, and think more carefully, this solution is still acceptable. Details below.**
+**我的天呐，这怎么能行。不过观察下内存占用，以及再仔细想想，这种方案还是可以接受的。详细见下文。**
 
-Reasons I thought of:
+我想到的原因如下：
 
-- Memory usage won't be too much (specific data below).
-- Chat interface appearing with too many m_view situations are not many. And when appearing, since memory usage is acceptable, it doesn't matter.
+- 内存占用并不会太多（具体数据见下文）。
+- 聊天界面出现太多m_view的情形并不多。且出现时由于内存占用可接受，就无所谓了。
 
 ### struct vector<Class, std::__1::allocator<Class>> m_messageNodeClass;
 
-Here can see BaseMsgContentViewController's implementation file is BaseMsgContentViewController.mm, that is written in Objective C++.
+这里能看出BaseMsgContentViewController的实现文件是 BaseMsgContentViewController.mm，也就是Objective C++写的。
 
-m_messageNodeClass is related to the following method:
+m_messageNodeClass与下面的方法有关：
 ```
 - (void)initMessageNodeClass;
 ```
 
-Use Hopper to disassemble WeChat's binary:
+使用Hopper反编译WeChat的二进制文件：
 
 ![img](https://everettjf.github.io/stuff/eimkit/1465664951065.png)
 
-Disassemble to C code:
+再反汇编为c代码：
 
 ```
 void -[BaseMsgContentViewController initMessageNodeClass](void * self, void * _cmd) {
@@ -343,14 +340,14 @@ void -[BaseMsgContentViewController initMessageNodeClass](void * self, void * _c
     }
     r4 = *objc_ivar_offset_BaseMsgContentViewController_m_messageNodeClass;
     r0 = [ImageTextReaderMessageNodeView class];
-	//.....omitting......
+	//.....省略......
 ```
 
-Is pushing all supported MessageNode Classes into this vector.
+就是把所有支持的MessageNode的Class都push_back到这个vector中。
 
-**Here can see all message types WeChat supports for display**
+**这里能看到微信支持的所有可显示的消息类型**
 
-Manually organize pseudo code:
+手动整理伪代码如下：
 
 ```
 std::vector<Class> m_messageNodeClass;
@@ -400,11 +397,11 @@ m_messageNodeClass.push_back([AppDefaultMessageNodeView class]);
 m_messageNodeClass.push_back([TextMessageNodeView class]);
 ```
 
-Can see, WeChat is really a huge project, supports so many message types (WeChat version I used: 6.3.19).
+可见，微信真实个巨大的工程，支持的消息类型这么多（我使用的微信版本：6.3.19）。
 
-Look at a message, for example:
+随便看个消息，例如：
 MessageSysNodeView
-Inherits from BaseMessageNodeView then MMUIView
+继承自 BaseMessageNodeView 然后 MMUIView
 
 
 ### - (void) preCreateMessageXXXXNode
@@ -416,46 +413,46 @@ Inherits from BaseMessageNodeView then MMUIView
 - (void)preCreateMessageTimeNode:(id)arg1;
 ```
 
-From these three preCreateMessage methods, can guess MultiSelectTableViewCell's contentView's first layer subviews have three types:
+由这三个preCreateMessage开头的方法，可猜测到 MultiSelectTableViewCell的contentView的第一层子View 存在三类：
 
-- Specific content ContentNode
-- Separator Node
-- Time Node
+- 具体内容ContentNode
+- 分隔符Node
+- 时间Node
 
-Hopper disassembly finds corresponding code:
+Hopper反汇编找到对应代码：
 
 ![img](https://everettjf.github.io/stuff/eimkit/1465666569528.png)
 
 #### TimeNode
 
-To go step by step, first study TimeNode's preCreate:
+为循序渐进，先研究下TimeNode的preCreate：
 
-Since internally has code getting arg2.m_view, can basically guess arg2 is CMessageNodeData type. (Can confirm with lldb later)
+由于内部有取arg2.m_view的代码，能基本猜到 arg2是 CMessageNodeData类型。（后面可以用lldb证实）
 
-Key code lines and pseudo code roughly:
+关键代码行及伪代码大概如下：
 
 ```
 void -[BaseMsgContentViewController preCreateMessageTimeNode:](void * self, void * _cmd, void * arg2) {
 messageNodeData = arg2
 if(messageNodeData.m_view == nil){
-	// Fill m_view
+	// 就是填充m_view
 
-	// Get time Node height from MMThemeManager
+	// 从MMThemeManager获取时间Node的高度
     r5 = [[MMThemeManager sharedThemeManager] retain];
     [[r5 getValueOfProperty:@"message_node_timeNode_height" inRuleSet:@"#message_node_view"] retain];
 
 	UIView *timeRoot = [][UIView alloc]initWithFrame:....];
 
     r11 = [[MMUILabel alloc] init];
-	// Various label properties
+	// 这是label各种属性
 
 	r10 = [[UIImageView alloc] init];
-	// Set ImageView various properties
+	// 设置ImageView各种属性
 }
 
 ```
 
-Finally forms this:
+最终就是构成这个：
 
 ![img](https://everettjf.github.io/stuff/eimkit/1465836652040.png)
 
@@ -463,49 +460,49 @@ Finally forms this:
 
 #### ContentNode
 
-Knowing how TimeNode preCreates, ContentNode is similar, just more code.
+知道了TimeNode如何preCreate的，那ContentNode就类似了，只是代码更多。
 
 ```
 void -[BaseMsgContentViewController preCreateMessageContentNode:](void * self, void * _cmd, void * arg2) {
 
 messageNodeData = arg2
 if(messageNodeData.m_view == nil){
-	// Still fill m_view
+	// 仍然是填充m_view
 
-	// Check if message sent by self
+	// 判断是否自己发的消息
     r5 = [[r11 m_msgWrap] retain];
     arg_14 = [CMessageWrap isSenderFromMsgWrap:r5];
 
-	If other party's message
+	如果是对方消息
 	r0 = [r8 newMessageNodeViewForMessageWrap:r4 contact:r5 chatContact:STK-1];
-	If message sent by me
+	如果是我发送的消息
 	r0 = [r8 newMessageNodeViewForMessageWrap:r6 contact:0x0 chatContact:STK-1];
 
-	Set m_view
+	设置m_view
 
-	//Calculate frame
+	//计算frame
 
-	//GameNode special handling
-	//Voice special handling	r2 = [VoiceMessageNodeView class];
+	//GameNode特殊处理
+	//语音特殊处理	r2 = [VoiceMessageNodeView class];
 
 }
 
 ```
-PS: This method was very long in previous versions, current version optimized. Added newMessageNodeViewForMessageWrap method.
+PS:这个方法之前的版本很长，现在的版本进行了优化。新增了newMessageNodeViewForMessageWrap方法。
 
 ```
 void * -[BaseMsgContentViewController newMessageNodeViewForMessageWrap:contact:chatContact:](void * self, void * _cmd, void * arg2, void * arg3, void * arg4) {
 
-	// Here loop through each class in vector, let each class check if it's its own type
+	// 这里循环判断vector中的每个类，交给每个类判断是否是自己的类型
     r0 = r5->m_messageNodeClass;
 
 	for(Class in r0){
 
-	// First check if can create
+	// 先判断能否创建
     r4 = *(r0 + r11 * 0x4);
     if (([r4 canCreateMessageNodeViewInstanceWithMessageWrap: r2] & 0xff) != 0x0) goto loc_1609718;
 
-	// Create
+	// 创建
     r0 = [r4 alloc];
     r4 = arg_8;
     r6 = arg_4;
@@ -518,16 +515,17 @@ void * -[BaseMsgContentViewController newMessageNodeViewForMessageWrap:contact:c
 
 #### canCreateMessageNodeViewInstanceWithMessageWrap
 
-Look at canCreateMessageNodeViewInstanceWithMessageWrap method,
+看下canCreateMessageNodeViewInstanceWithMessageWrap方法，
 
 ```
 char +[BaseMessageNodeView canCreateMessageNodeViewInstanceWithMessageWrap:](void * self, void * _cmd, void * arg2) {
     return 0x0;
 }
-```
-First look at all NodeViews' base class BaseMessageNodeView, default returns 0x0, that is NO. (BOOL is char in 32-bit, here returns a BOOL type)
 
-Then look at any child NodeView class, for example: MessageSysNodeView
+```
+先看所有NodeView的基类 BaseMessageNodeView，默认返回0x0，也就是NO。（32位下BOOL是char，这里也就是返回个BOOL类型）
+
+再随便找个子NodeView类，例如：MessageSysNodeView
 
 ```
 char +[MessageSysNodeView canCreateMessageNodeViewInstanceWithMessageWrap:](void * self, void * _cmd, void * arg2) {
@@ -551,9 +549,9 @@ char +[MessageSysNodeView canCreateMessageNodeViewInstanceWithMessageWrap:](void
 
 ```
 
-Can see. If m_uiMessageType (CMessageNodeData's CMessageWrap's member) is 0x2710 or 0x2712, then consider it this message type.
+可见。如果 m_uiMessageType（CMessageNodeData的CMessageWrap的成员）是 0x2710或0x2712，则认为是此消息类型。
 
-Then look at ImageMessageNodeView:
+再看ImageMessageNodeView：
 
 ```
 char +[ImageMessageNodeView canCreateMessageNodeViewInstanceWithMessageWrap:](void * self, void * _cmd, void * arg2) {
@@ -577,11 +575,11 @@ char +[ImageMessageNodeView canCreateMessageNodeViewInstanceWithMessageWrap:](vo
 
 ```
 
-Can know 0x3, 0xd, 0x27 are all images.
+可知 0x3、0xd、0x27 都是图像。
 
-Many more messages, won't list all.
+还有很多消息，不一一列出了。
 
-Finally look at TextMessageNodeView:
+最后再看下 TextMessageNodeView：
 
 ```
 char +[TextMessageNodeView canCreateMessageNodeViewInstanceWithMessageWrap:](void * self, void * _cmd, void * arg2) {
@@ -590,29 +588,29 @@ char +[TextMessageNodeView canCreateMessageNodeViewInstanceWithMessageWrap:](voi
 ```
 
 
-Directly returns YES. Can see, if all messages don't match, then handle as text message. TextMessageNodeView is also the last one pushed into m_messageNodeClass.
+直接返回的YES。可见，如果所有消息都不是的话，则按照文本消息来处理。TextMessageNodeView也正好是最后一个push_back到 m_messageNodeClass中去的。
 
 #### initWithMessageWrap
 
-First look at BaseMessageNodeView:
+先看BaseMessageNodeView：
 
 
 ```
 void * -[BaseMessageNodeView initWithMessageWrap:Contact:ChatContact:](void * self, void * _cmd, void * arg2, void * arg3, void * arg4) {
-	omitting……
+	省略……
 ```
 
-Then look at TextMessageNodeView's initWithMessageWrap:Contact:ChatContact.
-Code more or less, no key code.
+再看看TextMessageNodeView  的initWithMessageWrap:Contact:ChatContact。
+代码或多或少，没有什么关键代码。
 
-Just configure various View properties based on CMessageWrap.
+就是根据CMessageWrap配置各种View的属性。
 
 
-# Continue Research
+# 继续研究
 
-Below find way to find preCreate call source.
+下面想办法找到preCreate调用源。
 
-## Preparation
+## 准备工作
 
 usbmuxd
 
@@ -657,7 +655,7 @@ libsystem_kernel.dylib`mach_msg_overwrite_trap:
     0x31ef4480 <+4>:  push   {r4, r5, r6, r8}
 ```
 
-Find offset address
+找到偏移地址
 
 ```
 (lldb) image list -o -f
@@ -665,33 +663,33 @@ Find offset address
 [  1] 0x031c7000 /Library/MobileSubstrate/MobileSubstrate.dylib(0x00000000031c7000)
 ```
 
-See offset address after image list -o -f: 0x000e7000
+看到image list -o -f后面的偏移地址：0x000e7000
 
 
-## History Messages
+## 历史消息
 
-First look at default loaded history messages when chat message interface appears.
+先看下聊天消息界面时默认加载的历史消息。
 
-hopper finds BaseMsgContentViewController::preCreateMessageContentNode: file offset address: 0x0160a444
+hopper中找到BaseMsgContentViewController::preCreateMessageContentNode:  的文件偏移地址：0x0160a444
 ![img](https://everettjf.github.io/stuff/eimkit/1465992949249.png)
 
-Calculate real offset address (I like using ipython as calculator):
+计算出真实偏移地址（我比较喜欢拿ipython当计算器）：
 
 ```
 In [1]: hex(0x000e7000+0x0160a444)
 Out[1]: '0x16f1444'
 ```
 
-Set breakpoint:
+下断点：
 
 ```
 (lldb) br s -a 0x16f1444
 Breakpoint 1: where = WeChat`___lldb_unnamed_function80337$$WeChat, address = 0x016f1444
 ```
 
-Then click a conversation, enter message interface. Will hit breakpoint.
+然后点击一个会话，进入消息界面。此时会命中断点。
 
-Since breakpoint hit, also check preCreateMessageContentNode's parameter type:
+这里既然命中断点了，顺带看一下 preCreateMessageContentNode 的参数类型：
 
 ```
 (lldb) po $r0
@@ -704,7 +702,7 @@ Since breakpoint hit, also check preCreateMessageContentNode's parameter type:
 <CMessageNodeData: 0x1789bfb0>
 ```
 
-Back to topic, use bt command to view call stack:
+回归正题，bt命令查看调用栈：
 
 ```
 (lldb) bt
@@ -716,30 +714,30 @@ Back to topic, use bt command to view call stack:
     frame #4: 0x01708ac0 WeChat`___lldb_unnamed_function80565$$WeChat + 1416
     frame #5: 0x26c54b8e UIKit`-[UIViewController loadViewIfRequired] + 602
     frame #6: 0x26c548fc UIKit`-[UIViewController view] + 24
-    omitting
+    省略
 ```
 
-Can see these methods are all called on main thread. frame#0 is preCreateMessageContentNode method. frame #1 is the method calling preCreateMessageContentNode. Let's find frame#1's method.
-From memory address 0x016f2516 subtract offset address 0x000e7000 to get file offset address:
+可见这几个方法都是在主线程调用。frame#0就是preCreateMessageContentNode方法。frame #1就是调用preCreateMessageContentNode的方法。我们找下frame#1的方法。
+从内存地址 0x016f2516 减去 偏移地址0x000e7000 就得到文件偏移地址：
 
 ```
 In [4]: hex(0x016f2516-0x000e7000)
 Out[4]: '0x160b516'
 ```
 
-hopper finds this method:
+hopper 中找到这个方法：
 ![img](https://everettjf.github.io/stuff/eimkit/1466097350949.png)
 
-Find method:
+找到方法：
 ![img](https://everettjf.github.io/stuff/eimkit/1466097381889.png)
 
-This method:
+就是这个方法：
 
 ```
 void -[BaseMsgContentViewController addMessageNode:layout:addMoreMsg:](void * self, void * _cmd, void * arg2, char arg3, char arg4) {
 ```
 
-Set breakpoint to this method's first address 0x16f2138 = 0x000e7000 + 0x0160b138: (first clear previous breakpoint)
+下断点到这个方法的首地址 0x16f2138 = 0x000e7000 + 0x0160b138：（先清掉之前的断点）
 
 ```
 In [6]: hex(0x000e7000 + 0x0160b138)
@@ -758,7 +756,7 @@ Current breakpoints:
 Breakpoint 3: where = WeChat`___lldb_unnamed_function80343$$WeChat, address = 0x016f2138
 ```
 
-Check parameters:
+看下参数：
 
 ```
 (lldb) po $r0
@@ -775,9 +773,9 @@ CMessageWrap
 (unsigned int) $14 = 40
 ```
 
-That is BaseMsgContentViewController addMessageNode:layout:addMoreMsg method's first parameter is CMessageWrap, layout is 0, addMoreMsg is 40.
+也就是 BaseMsgContentViewController addMessageNode:layout:addMoreMsg 方法的第一个参数是 CMessageWrap，layout是0 , addMoreMsg 是40 。
 
-Same steps, look at remaining methods in call stack, summarize together:
+同样的步骤，看下调用栈中的剩余几个方法，汇总到一起就是：
 
 ```
 void -[BaseMsgContentViewController preCreateMessageContentNode:](void * self, void * _cmd, void * arg2) {
@@ -788,11 +786,11 @@ void -[BaseMsgContentViewController viewDidLoad](void * self, void * _cmd) {
 
 ```
 
-Use hopper's disassembly to look at these methods, we also found, initView and a series of init functions. For example: initTableView initializes tableView, and calls reloadData. (initData first, initView later)
+利用hopper的反汇编看下这几个方法，我们又找到了，initView等一系列init开头的函数。比如：initTableView 中初始化tableView，并调用了reloadData。（initData在先，initView在后）
 
-## History Message Source
+## 历史消息来源
 
-Look carefully
+仔细看
 
 ```
 void -[BaseMsgContentViewController initHistroyMessageNodeData](void * self, void * _cmd) {
@@ -802,45 +800,45 @@ void -[BaseMsgContentViewController initHistroyMessageNodeData](void * self, voi
             r7 = r7;
 ```
 
-Find [r5 GetMessageArray] this line's assembly code line 0x0160bb20.
+找到 [r5 GetMessageArray] 这句的汇编代码行 0x0160bb20。
 
 ![img](https://everettjf.github.io/stuff/eimkit/1466104472059.png)
 
-Set breakpoint at this line, then output $r0.
+断点到这行，然后输出$r0。
 
 ```
-(lldb) br s -a 0x163db20 (Here I changed machines, restarted Weixin, memory offset became 0x00032000, so hex(0x0160BB20 + 0x00032000)=0x163db20)
+(lldb) br s -a 0x163db20 （这里我换了机器，重新启动了Weixin，内存偏移变为0x00032000，因此hex(0x0160BB20 + 0x00032000)=0x163db20）
 (lldb) po $r0
 <WeixinContentLogicController: 0x1582ad20>
 (lldb) po (char*)$r1
 "GetMessageArray"
 (lldb) n
-omitting
+省略
 (lldb) po $r0
 <__NSArrayM 0x1584bf30>(
 {m_uiMesLocalID=382, m_ui64MesSvrID=4946812604026242266, m_nsFromUsr=wxi*h12~19, m_nsToUsr=wxi*t21~19, m_uiStatus=2, type=1, msgSource="(null)"} ,
 {m_uiMesLocalID=383, m_ui64MesSvrID=145730894416135475, m_nsFromUsr=wxi*h12~19, m_nsToUsr=wxi*t21~19, m_uiStatus=2, type=1, msgSource="(null)"} ,
-omitting
+省略
 )
 (lldb) po [[$r0 firstObject]class]
 CMessageWrap
 ```
 
-After single step execution, can also see return value $r0, that is all messages CMessageWrap.
+单步执行后，也可以看返回值$r0，也就是所有消息CMessageWrap。
 
-Can know is WeixinContentLogicController class, look at this class:
+可知是WeixinContentLogicController类， 看下这个类：
 
 ```
 @interface WeixinContentLogicController : BaseMsgContentLogicController
 ```
 
-hopper look at WeixinContentLogicController's GetMessageArray method, found it's not there. Then it's in parent class BaseMsgContentLogicController.
+hopper看下WeixinContentLogicController的GetMessageArray方法，发现找不到。那就是在父类BaseMsgContentLogicController中。
 
 ```
 - BaseMsgContentLogicController GetMessageArray
 ```
 
-Internally calls WeixinContentLogicController GetMsg:FromID:Limit:LeftCount:LeftUnreadCount:
+内部又调用了 WeixinContentLogicController GetMsg:FromID:Limit:LeftCount:LeftUnreadCount:
 
 ```
 - WeixinContentLogicController GetMsg:FromID:Limit:LeftCount:LeftUnreadCount:
@@ -861,16 +859,16 @@ Internally calls WeixinContentLogicController GetMsg:FromID:Limit:LeftCount:Left
     r0 = [arg_28 GetMsgByCreateTime:arg_20 FromID:arg_1C FromCreateTime:STK1 Limit:STK0 LeftCount:STK-1];
 ```
 
-Roughly is get CMessageMgr from MMServiceCenter, then call CMessageMgr's GetMsgByCreateTime:arg_20 FromID:arg_1C FromCreateTime:STK1 Limit:STK0 LeftCount:STK-1 method.
+大概就是 从 MMServiceCenter 获取到CMessageMgr，然后调用 CMessageMgr的GetMsgByCreateTime:arg_20 FromID:arg_1C FromCreateTime:STK1 Limit:STK0 LeftCount:STK-1 方法。
 
-There are two methods:
+有两个方法：
 
 ```
 - (id)GetMsgByCreateTime:(id)arg1 FromID:(unsigned long)arg2 FromCreateTime:(unsigned long)arg3 Limit:(unsigned long)arg4 LeftCount:(unsigned int *)arg5;
 - (id)GetMsgByCreateTime:(id)arg1 FromID:(unsigned long)arg2 FromCreateTime:(unsigned long)arg3 Limit:(unsigned long)arg4 LeftCount:(unsigned int *)arg5 FromSequence:(unsigned long)arg6;
 ```
 
-First calls second with FromSequence method, hopper look at second method:
+第一个会调用第二个带FromSequence的方法，hopper看下第二个方法：
 
 ```
   r0 = *objc_ivar_offset_CMessageMgr_m_oMsgDB;
@@ -888,21 +886,21 @@ First calls second with FromSequence method, hopper look at second method:
     [r6 HandleMsgList:r2 MsgList:STK3];
 ```
 
-objc_ivar_offset_CMessageMgr_m_oMsgDB is     CMessageDB *m_oMsgDB;
-That is calls CMessageDB's GetMsgByCreateTime:r10
+objc_ivar_offset_CMessageMgr_m_oMsgDB 就是     CMessageDB *m_oMsgDB;
+也就是调用了 CMessageDB的GetMsgByCreateTime:r10
 
 PS:
 ![img](https://everettjf.github.io/stuff/eimkit/1466141798790.png)
->   In hopper can see many log messages, and clearly states current implementation file's filename.
-Suffix is .mm, of course not just this one, WeChat has many classes implemented in Objective C++. Including message main interface's BaseMsgContentViewController.mm, and many classes in CMessageMgr below. (Guess, WeChat's early developers did a lot of Windows C++ client development. Classes starting with C...)
+>  在hopper中能看到不少日志信息，而且写明了当前实现文件的文件名。
+后缀是.mm，当然不止这一个，微信好多类都是Objective C++实现的。包括消息主界面的 BaseMsgContentViewController.mm，以及下面CMessageMgr中的很多类。（猜测，微信的初期开发人员不少做Windows下C++开发客户端的哈。C开头的类……）
 
-This CMessageMgr is also developed in Objective C++. But hopper can see GetMsgByCreateTime: internally calls
+这个CMessageMgr也是Objective C++开发 。不过hopper能看出 GetMsgByCreateTime: 内部调用了
 
 ```
 int -[CMessageDB GetMsg:Where:order:Limit:](int arg0) {
 ```
 
-Internally calls:
+内部又调用：
 
 ```
    r11 = *objc_ivar_offset_CMessageDB_m_oMMDB;
@@ -914,7 +912,7 @@ Internally calls:
     r0 = [r0 GetMessagesByChatName:r5 onProperty:r3 where:STK1 order:STK0 limit:STK-1];
 ```
 
-Calls member CMMDB's GetMessagesByChatName method.
+调用了成员CMMDB的 GetMessagesByChatName方法。
 
 ```
 @interface CMessageDB : NSObject
@@ -924,7 +922,7 @@ Calls member CMMDB's GetMessagesByChatName method.
 
 ```
 
-CMMDB's GetMessagesByChatName method internally:
+CMMDB的 GetMessagesByChatName方法内部如下：
 
 ```
     res = [arg0 GetMessageTable:r11];
@@ -932,7 +930,7 @@ CMMDB's GetMessagesByChatName method internally:
 
 ```
 
-That is calls getObjectsWhere method on CMMDB::GetMessageTable's return value.
+也就是对 CMMDB::GetMessageTable 的返回值调用了getObjectsWhere方法。
 
 ```
 void * -[CMMDB GetMessageTable:](void * self, void * _cmd, void * arg2) {
@@ -944,9 +942,9 @@ void * -[CMMDB GetMessageTable:](void * self, void * _cmd, void * arg2) {
 
 ```
 
-Calls m_db(    WCDataBase *m_db;)   's getTable:withClass method. Looking further is returns WCDataBaseTable type.
+调用了 m_db(    WCDataBase *m_db;)  的 getTable:withClass方法。再看进入 就是返回 WCDataBaseTable类型。
 
-Look at CMMDB's header file
+看看CMMDB的头文件
 
 ```
 
@@ -975,10 +973,10 @@ Look at CMMDB's header file
 }
 ```
 
-Is get corresponding WCDataBaseTable instance based on table type to get (here is DBMessage class), used to operate a table.
+就是根据要获取的表类型（这里是DBMessage class）获取到对应的WCDataBaseTable实例，用来操作某个表。
 
-PS:
-WCDataBase is encapsulation of sqlite.
+PS：
+WCDataBase 就是对sqlite的封装了。
 
 ```
 @interface WCDataBase : NSObject <WCDBCorruptReportInterface, WCDBHandlesPoolProtocol>
@@ -999,27 +997,27 @@ WCDataBase is encapsulation of sqlite.
 
 ```
 
-Further tracking calls, will reach:
+进一步跟踪调用，会到：
 
 ```
 int -[WCDataBase getObjectsOfClass:fromTable:onProperties:where:orderBy:limit:getError:](? arg0) {
 
 ```
 
-Here is local sqlite query.
+这里就是对sqlite的本地查询了。
 
-Stop here, know the general flow. But seems there's a problem, this whole chain is all done on main thread, but seems fast enough.
+就到这里吧，知道了大体流程。但貌似有个问题，这一溜下来都是在主线程干的事情，不过看来足够快了。
 
-PS: WeChat's local sqlite database design and Objective C++ encapsulation can be studied when there's time.
+PS：微信的本地sqlite数据库设计及Objective C++的封装有时间可以学习下。
 
 
-## New Messages
+## 新消息
 
-Above found call stack when loading history chat messages when first opening chat interface.
+上面找到了首次打开聊天界面时加载历史聊天消息的调用栈。
 
-I also want to know, call stack when new messages arrive in conversation interface. Then enter chat interface, set breakpoint again, then use another phone to send message to this account (can send to self too), then look at call stack.
+我还想知道，在会话界面时，新消息到来时的调用栈。那就进入聊天界面后，再下载断点，然后用另一个手机给这个账号发消息（自己发也行啊），然后看调用栈。
 
-First enter chat message page, then set breakpoint again to preCreateMessageContentNode method.
+首先进入聊天消息页面，然后再次下断点到 preCreateMessageContentNode方法。
 
 ```
 (lldb) br s -a 0x16f1444
@@ -1045,7 +1043,7 @@ WeChat`___lldb_unnamed_function80337$$WeChat:
     frame #6: 0x235c5fae CoreFoundation`__CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION__ + 14
 ```
 
-Using method above can get call stack:
+采用上面的方法可获得调用栈：
 
 ```
 void -[BaseMsgContentViewController preCreateMessageContentNode:](void * self, void * _cmd, void * arg2) {
@@ -1057,15 +1055,15 @@ __NSThreadPerformPerform
 __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION__
 ```
 
-Based on call stack, roughly know CMessageMgr MainThreadNotifyToExt dispatches messages. Back to CMessageMgr class.
+根据调用栈，大体得知 CMessageMgr MainThreadNotifyToExt 分发出消息。又到了CMessageMgr类。
 
-Previous method is __NSThreadPerformPerform, can know is from other thread using perform. (perform to main thread will be added to main thread's RunLoop)
+上一个方法是__NSThreadPerformPerform，可知是从其他线程使用perform过来的。（perform到主线程会加入到主线程的RunLoop中）
 
-Look at MainThreadNotifyToExt's parameters. Set breakpoint at first line of code:
+看看MainThreadNotifyToExt的参数。断点到第一行代码：
 
 ![img](https://everettjf.github.io/stuff/eimkit/1466238259094.png)
 
-lldb check:
+lldb查看：
 
 ```
 (lldb) po $r0
@@ -1096,20 +1094,20 @@ __NSCFString
 __NSCFString
 ```
 
-Can know parameter is an NSDictionary, keys are strings 1 2 3, respectively NSString NSString and CMessageWrap.
+可知参数是个NSDictionary，key分别为字符串1 2 3，分别是  NSString NSString 以及CMessageWrap。
 
-Can know CMessageWrap is prepared on background thread.
+可知CMessageWrap是后台线程准备好的。
 
-hopper can see general flow:
+hopper能能看到大体流程：
 
 ```
 center = [MMServiceCenter defaultCenter]
 service = getService:[MMExtensionCenter class]
 IMsgExt ext = service getExtension:[IMsgExt class]
-Then use IMsgExt to dispatch messages.
+然后使用IMsgExt分发消息。
 ```
 
-IMsgExt protocol:
+IMsgExt协议如下：
 
 ```
 @protocol IMsgExt
@@ -1144,67 +1142,67 @@ IMsgExt protocol:
 
 ```
 
-Specific details won't continue analyzing. Roughly know the flow related to UI.
+具体细节就不继续分析了。大体知道了与UI相关的流程。
 
 
-# Other
+# 其他
 
-## Memory Usage
+## 内存占用
 
-WeChat's method of pre-creating message views into entities and not destroying them. Not destroying means: won't destroy when exiting interface conversation; continuously pulling down messages will continuously create. At first glance feels unreasonable, look at WeChat memory usage.
+微信这种把消息的view 预创建到实体中，且不销毁。不销毁的意思是：退出界面会话时不会销毁；不断的下拉消息会不断的创建。一眼感觉不太考虑，看看微信内存占用情况。
 
-First, kill WeChat process, reopen.
+首先，把微信进程结束后，重新打开。
 ![img](https://everettjf.github.io/stuff/eimkit/1466242953914.png)
 
-In this state check memory:
+在这种状态下看看内存：
 
 ![img](https://everettjf.github.io/stuff/eimkit/1466240808797.png)
 
 RSIZE=52M
 
-Then, enter chat interface:
+然后，进入聊天界面：
 
 ![img](https://everettjf.github.io/stuff/eimkit/1466240901871.png)
 
 RSIZE=56M
 
-Then, send messages hard (images, text various messages), 400+ messages, pull all down.
+然后，使劲发消息（图片、文字各种消息），400多条，全部下拉下来。
 
 ![img](https://everettjf.github.io/stuff/eimkit/1466241021593.png)
 
 RSIZE=81M
 
-This way, since probability of opening many messages in one conversation is low, and memory usage is acceptable. 81M usage feels relatively low. This solution seems relatively reliable.
+这样看来，由于在一个会话中打开很多消息的概率较少，且内存占用还是可接受的。占用81M感觉还是比较少的。看来这种方案还是比较靠谱的。
 
-This solution also has performance advantages, that is don't need to repeatedly set message View's content (because preCreated), sacrifices memory, improves performance.
+这种方案也有性能上的优势，就是不需要重复设置消息View的内容（因为preCreate了嘛），牺牲了内存，提高了性能。
 
 ## ViewController
 
-WeChat will cache ViewControllers, that is opening the same user's messages twice, ViewController's address is the same.
+微信会对ViewController进行缓存，也就是对同一个用户的消息打开两次，ViewController的地址是相同的。
 
-Should have a caching strategy, will study when there's time.
+应该会有个缓存策略，有空研究研究。
 
 
-## QQ and Other Implementation Methods
+## QQ等其他实现方案
 
-To support IM interface's multiple type message display, first thought is definitely using multiple Cells. For example: TextCell, ImageCell, etc. Classic QQ, actually uses this method. Can use Reveal to see.
+要支持IM界面的多种类型消息展示，首先想到的肯定是使用多种Cell。例如：TextCell, ImageCell 等。经典的QQ，其实就是这种方式。可以用Reveal看看。
 
 ![img](https://everettjf.github.io/stuff/eimkit/1466241507427.png)
 
-## Issue with Changing frame in cellForRowAtIndexPath
+## cellForRowAtIndexPath中改变frame的问题
 
-If using QQ's Cell method, there's a UI detail issue to note. [See this article](https://everettjf.github.io/2016/06/18/little-chat-ui-bug-resolve).
+如果采用QQ这种使用Cell的方案，有个UI上的细节问题要注意。[见这篇文章](https://everettjf.github.io/2016/06/18/little-chat-ui-bug-resolve)。
 
 
 # Demo
 
-Based on WeChat's message interface implementation above, I implemented a very simple similar mechanism interface Demo [https://github.com/everettjf/Yolo/tree/master/WeChatLikeMessageDemo](https://github.com/everettjf/Yolo/tree/master/WeChatLikeMessageDemo) .
+根据微信上面的消息界面实现，我实现了一个很简单的类似机制的界面Demo [https://github.com/everettjf/Yolo/tree/master/WeChatLikeMessageDemo](https://github.com/everettjf/Yolo/tree/master/WeChatLikeMessageDemo) 。
 
-During implementation found this mechanism has a benefit, that is when preCreating messages, can know cell's height in advance (before heightForRowAtIndexPath), very conveniently solves the Cell dynamic height issue.
+实现过程中发现这种机制有个好处，就是在preCreate消息时，可以提前（在heightForRowAtIndexPath之前）知道cell的高度，也就很方便的解决了Cell动态高度这个问题。
 
 
-# Summary
+# 总结
 
-Reverse engineering lets us understand an App's implementation method (especially excellent unopen-sourced Apps), learning these excellent Apps can assist forward development.
+逆向可以让我们了解一个App的实现方法（尤其是优秀未开源的App哈），学习这些优秀的App可以辅助正向开发。
 
-Recommend "iOS Application Reverse Engineering" this book, and <http://iosre.com> forum.
+推荐《iOS应用逆向工程》这本书，以及 <http://iosre.com> 论坛。

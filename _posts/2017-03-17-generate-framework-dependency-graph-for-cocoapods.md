@@ -1,45 +1,45 @@
 ---
 layout: post
-title: "CocoaPods Dependency Graph"
+title: "生成CocoaPods的依赖图"
+categories:
+  - Skill
 tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+  - tool
+  - podspec
+  - cocoapods
+  - graphviz
 comments: true
 ---
 
 
 
-# Generate Framework Dependency Graph Based on podspec
+# 根据podspec生成framework的依赖关系graph
 
-Code:
+代码：
 
 <https://github.com/everettjf/Yolo/tree/master/PodspecDependencyGraph>
 
 <!-- more -->
 
-Steps:
+步骤：
 
-1. sh prepare.sh or brew install graphviz
+1. sh prepare.sh  或者 brew install graphviz
 
-2. Uses some es6 syntax, may need latest node version (I'm on 7.8.0).
+2. 用到一些es6的语法，可能需要node最新版本（我是7.8.0）。
 
-3. Usage
+3. 用法
 
 ```
-sh gen.sh <starting framework name> <podspec directory>
+sh gen.sh <起始framework名称> <podspec目录>
 ```
 
-4. Example
+4. 例子
 
 ```
 sh gen.sh TomatoRead /Users/everettjf/specsdev
 ```
 
-Open tred.dot.svg file in directory with chrome to see the entire tree.
+用chrome打开 目录下的tred.dot.svg文件就可以看到整棵树了。
 
 
 

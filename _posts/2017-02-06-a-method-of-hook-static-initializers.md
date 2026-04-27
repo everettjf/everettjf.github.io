@@ -1,33 +1,31 @@
 ---
 layout: post
-title: "Hook C++ Static Initializers"
+title: "一种 hook C++ static initializers 的方法"
+categories:
+  - Skill
 tags:
+  - performance
   - hook
-  - reverse-engineering
-  - iOS
-  - runtime
-  - method-swizzling
-
 comments: true
 ---
 
 
 
-First addition: static initializers in title should actually be called `C++ static initializers and C/C++ __attribute__(constructor) functions`.
+先补充：标题中 static initializers 其实应该叫做 `C++ static initializers and C/C++ __attribute__(constructor) functions`。
 
 
-Use MachOView to open a MachO file, in most cases will see this section `__mod_init_func` .
+使用 MachOView 打开一个MachO文件，多数情况下会看到这个section `__mod_init_func` 。
 
 ![](/media/15029043382372.jpg)
 
 
 <!-- more -->
 
-# What Is This Section's Purpose?
+# 这个section的用途是什么呢？
 
-From name roughly guess, module initializer functions, roughly this meaning.
+从名字大概猜测，module initializer functions，模块初始化函数，大概就是这个意思。
 
-Can find mod_init_func related text in dyld's source code:
+从dyld的源码中可以找到mod_init_func相关字样：
 
 ```
 typedef void (*Initializer)(int argc, const char* argv[], const char* envp[], const char* apple[]);
@@ -44,13 +42,13 @@ static void runDyldInitializers(const struct macho_header* mh, intptr_t slide, i
 }
 ```
 
-Note: When debugging will find, dyld doesn't execute all Initializers by calling runDyldInitializers, but through `void ImageLoaderMachO::doModInitFunctions(const LinkContext& context)` to execute. But code above when first searching, can let us have a rough impression of mod_init_func.
+注意注意：调试时会发现，dyld并没有通过调用 runDyldInitializers 来执行所有Initializer，而是通过 `void ImageLoaderMachO::doModInitFunctions(const LinkContext& context)` 来执行的。但上面的代码在首次搜索时，可以让我们对mod_init_func有个大概的印象。
 
 
-Through other materials, can know there are many ways to make code produce corresponding Initializer.
+通过其他资料，可以知道有很多途径可以让代码产生对应的一个Initializer。
 
 
-# What Methods Can Produce Initializer?
+# 有哪些方法可以产生Initializer？
 
 ## 1. __attribute((constructor))
 
@@ -60,14 +58,14 @@ __attribute__((constructor)) void myentry(){
 }
 ```
 
-## 2. Global Variable Initialization Needs to Execute Code
+## 2. 全局变量的初始化需要执行代码
 
 
-Here mainly for C++ (or Objective C++) source file extensions are .cpp .cxx or .mm . Global variables mentioned here include static modified with scope only in current file, also include not static modified.
+这里主要是对于C++来说（或者Objective C++）源文件扩展名是.cpp .cxx 或.mm 。这里说的全局变量包括static修饰的作用域仅在当前文件的，也包括不被static修饰的。
 
-Global variable initialization if involves following situations, will produce corresponding entry in mod_init_func:
+全局变量的初始化如果涉及以下情况，则会在mod_init_func中产生对应的条目：
 
-(1) Need to execute C function
+（1）需要执行C函数
 
 ```
 bool initBar(){
@@ -80,7 +78,7 @@ static bool globalBar = initBar();
 bool globalBar2 = initBar();
 ```
 
-(2) Need to execute C++ class constructor
+（2）需要执行C++类的构造函数
 
 ```
 class FooObject{
@@ -97,24 +95,24 @@ FooObject globalObj2 = FooObject();
 ```
 
 
-(3) Need to construct Objective-C class
+（3）需要构造Objective-C 类
 
 ```
 static NSDictionary * dictObject = @{@"one":@"1"};
 NSDictionary * dictObject2 = @{@"one":@"1", @"two":@"2"};
 ```
 
-(4) struct for C++ can also be considered a type of class
+（4）struct对于C++来说也可以说是一种类
 
-This code actually executes CGRect's constructor, very hidden~ hard to guard against~
+这种代码其实就执行了CGRect的构造函数，很隐蔽呀~防不胜防啊~
 
 ```
 CGRect globalRect = CGRectZero;
 ```
 
-(5) Indirectly causes function execution
+（5）间接导致运行函数
 
-Code below indirectly causes running description method when initializing globalArray.
+下面的代码间接导致了初始化globalArray时运行了description方法。
 
 ```
 NSString *description(const char *str){
@@ -136,43 +134,43 @@ NSString* globalArray[] = {
 NSString *globalString = E("world");
 ```
 
-(6) Others
+（6）其他
 
-Various other postures.
-
-
-# Why Care About These
-
-Since currently most iOS Apps only use static libraries, large amounts of third-party or internal C++ code need static linking, code above indirectly increases main program's execution time before main function.
-
-If dynamic library, and loaded at startup stage, these code still affect startup performance.
+还有各式各样其他的姿势。
 
 
-# Look at backtrace
+# 为什么要关注这些
 
-After adding breakpoint backtrace, can see dyld's call stack:
+由于目前iOS App多数都只是在使用静态库，大量第三方或内部C++写的代码需要静态链接，上面这些代码间接增加了主程序在main函数之前的执行时间。
+
+如果是动态库，且是启动阶段加载，那这些代码依然对启动性能有影响。
+
+
+# 再看backtrace
+
+加断点后backtrace，可以看到dyld的调用堆栈：
 
 ![](/media/15029043722431.jpg)
 
 
-# Compiler Merge Rules
+# 编译器合并规律
 
 
-All initializers in the same file automatically produce one Initializer, similar to handing all initialization work in a file to a newly created function.
+同一个文件中的所有initializer会自动产生一个Initializer，类似于把一个文件中的所有初始化工作交给一个新创建的函数。
 
-If initializing many global variables in one file, can find: finally only produces one entry in mod_init_func segment. And this entry's symbol is like this:
+如果在一个文件中初始化大量的全局变量，可以发现：最终在mod_init_func段中只产生了一项。而且这一项的符号是下面这样：
 
 ```
 frame #3: 0x00000001000b8854 ModFuncInitApp`_GLOBAL__sub_I_TestClass.mm + 24 at TestClass.mm:0
 ```
 
-Similar to generating a function named `_GLOBAL__sub_I_TestClass.mm`.
+类似于生成了一个 名称是 `_GLOBAL__sub_I_TestClass.mm` 的函数。
 
 
 
-# How to Hook, First Find Call Source
+# 如何 Hook，先找调用来源
 
-First look at call source,
+先看调用来源，
 
 ```
 (lldb) bt
@@ -187,14 +185,14 @@ First look at call source,
     frame #7: 0x00000001001b8f2c dyld`ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) + 368
     frame #8: 0x00000001001b7f50 dyld`ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) + 140
     frame #9: 0x00000001001b8004 dyld`ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) + 84
-    frame #10: 0x00000001001aa488 dyld`dyld::initializeMainExecutable() + 160
+    frame #10: 0x00000001001aa488 dyld`dyld::initializeMainExecutable() + 220
     frame #11: 0x00000001001ae8f4 dyld`dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) + 3892
     frame #12: 0x00000001001a9044 dyld`_dyld_start + 68
 ```
 
 
 
-Through stack, can see dyld's doModInitFunctions will call each file's Initializer. Find this function from dyld's source code:
+通过堆栈，能看到 dyld 的 doModInitFunctions 会调用每个文件中的Initializer。从dyld的源码中找到这个函数：
 
 
 ```
@@ -233,7 +231,7 @@ void ImageLoaderMachO::doModInitFunctions(const LinkContext& context)
 }
 ```
 
-Note these three lines:
+注意看这三句：
 
 ```
 Initializer* inits = (Initializer*)(sect->addr + fSlide);
@@ -242,18 +240,18 @@ func(context.argc, context.argv, context.envp, context.apple, &context.programVa
 
 ```
 
-Can see each entry in mod_init_func is called as a function address, function type is Initializer. Then find Initializer's prototype:
+可以看到mod_init_func中的每一项，都作为一个函数地址调用，函数类型是 Initializer。那我们找到 Initializer 的原型：
 
 ```
 	typedef void (*Initializer)(int argc, const char* argv[], const char* envp[], const char* apple[], const ProgramVars* vars);
 ```
 
 
-# Think How to Hook
+# 想想如何hook
 
-Since each address in mod_init_func is a function address, and prototypes are all the same. Then we find a way to replace all addresses in mod_init_func with our own function addresses.
+既然mod_init_func中的每个地址都是一个函数地址，且原型也都是一样的。那我们就想办法把mod_init_func中的所有地址都替换为我们自己的函数地址。
 
-First define our own function:
+先定义一个自己的函数：
 
 ```
 void myInitFunc_Initializer(int argc, const char* argv[], const char* envp[], const char* apple[], const struct MyProgramVars* vars){
@@ -262,14 +260,14 @@ void myInitFunc_Initializer(int argc, const char* argv[], const char* envp[], co
 }
 ```
 
-Then the question is, how to make dyld when reading mod_init_func's data, read our own myInitFunc_Initializer?
+那么问题来了，如何让dyld在读取mod_init_func中的数据时，读到的是我们自己的myInitFunc_Initializer呢？
 
-(1) First, notice `__mod_init_func section` is located in `__DATA segment`. __DATA segment is data segment, can be modified at runtime.
+（1）首先，注意到 `__mod_init_func section` 位于 `__DATA segment`。__DATA segment是数据段，是可以在运行时修改的。
 ![](/media/15029047838257.jpg)
 
-(2) Second, is find a timing, earlier than dyld reading these Initializers.
+（2）其次，就是找个时机，要早于dyld读取这些Initializer。
 
-When using Objective C's +load method, notice documentation writes:
+平时在使用Objective C的+load方法时，注意到文档这么写：
 
 ```
 The order of initialization is as follows:
@@ -280,15 +278,15 @@ The order of initialization is as follows:
 - All initializers in frameworks that link to you.
 ```
 
-`+load methods` are actually earlier. Then it's easy. In any +load method find mod_init_func segment's address in memory after process loads, change all data to myInitFunc_Initializer's address.
+`+load methods` 竟然要更早。那就好办了。在任意一个+load方法中找到进程加载后，mod_init_func段在内存中的地址，把数据都改为 myInitFunc_Initializer 的地址。
 
 
 
-# How to Modify mod_init_func Data
+# 如何修改mod_init_func数据
 
-Use getsectiondata function can get mod_init_func segment's memory address, directly modify.
+使用 getsectiondata 函数可以获取mod_init_func段的内存地址，直接修改就行了。
 
-Code:
+代码如下：
 
 ```
 #ifndef __LP64__
@@ -311,27 +309,27 @@ Code:
 #endif /* defined(__LP64__) */
     for(int idx = 0; idx < size/sizeof(void*); ++idx){
         MemoryType original_ptr = memory[idx];
-        // Can save original address here
+        // 这里可以保存原来的地址
         
-        memory[idx] = (MemoryType)myInitFunc_Initializer; // Replace with our own Initializer
+        memory[idx] = (MemoryType)myInitFunc_Initializer; // 替换为我们自己的Initializer
     }
 ```
 
 
 
-# How to Call Original Initializer?
+# 怎么调用原来的Initializer？
 
-Thought and thought, didn't think of way to add method to record corresponding original function address for myInitFunc_Initializer. Suddenly thought, don't care about call order, record all original function addresses, then each time myInitFunc_Initializer is called, call original functions one by one.
+想来想去，没想到办法给myInitFunc_Initializer增加记录对应的原函数地址的方法。突然一想，不用管调用顺序，把所有的原函数地址记录下来，然后每调用一次 myInitFunc_Initializer 就逐个调用原函数就行了。
 
-Still look at code.
+还是看代码吧。
 
 
 ```
-static std::vector<MemoryType> *g_initializer; // Record each original function address
+static std::vector<MemoryType> *g_initializer; // 记录每一个原函数地址
 static int g_cur_index;
 ```
 
-Then, in our own Initializer get each original function address one by one, call and calculate time.
+然后，在自己的Initializer中逐个获取每一个原函数地址，调用并计算耗时。
 
 ```
 
@@ -353,13 +351,13 @@ void myInitFunc_Initializer(int argc, const char* argv[], const char* envp[], co
 
 # ASLR
 
-Due to ASLR, can't only record function's address, also need to record ASLR's address. For later locating function address through symbol file.
+由于ASLR的存在，不能只记录函数的地址，还需要记录ASLR的地址。用于后续通过符号文件定位出函数地址。
 
-ASLR offset (precisely, ASLR offset base address, thanks [Joy__](http://www.jianshu.com/u/9c51a213b02e) for pointing out) is variable `mhp` in code above (that is mach_header_64's dli_fbase).
+ASLR偏移（准确的说是，ASLR偏移后的基地址，感谢 [Joy__](http://www.jianshu.com/u/9c51a213b02e)指出）就是上面代码中的变量 `mhp`（也就是 mach_header_64 的dli_fbase）。
 
-# Fluctuating Logs Appear, How to Locate to File?
+# 浮动的日志出来了，怎么再定位到文件？
 
-With symbol file, put app file and dsym in same directory, can locate to file.
+有了符号文件，把app文件和dsym放在同一个目录下，就可以定位到文件啦。
 
 ```
 atos -o Demo.app/Demo 0x100a1a47c -l 0x100018000
@@ -369,22 +367,25 @@ _GLOBAL__sub_I_XXXXX.cpp (in Demo) + 1
 ```
 
 
-Detailed reference this article 
+详细参考这篇文章 
 
 - <http://www.jamiegrove.com/software/fixing-bugs-using-os-x-crash-logs-and-atos-to-symbolicate-and-find-line-numbers>
-or
+或者
 - <https://everettjf.github.io/2015/09/09/ios-plcrashreporter#dsym>
 
-# Code
+# 代码
 
 <https://github.com/everettjf/Yolo/tree/master/HookCppInitilizers>
 
 
-# Summary
+# 总结
 
-Locating is indeed troublesome, but using this method can locate from logs those Initializers with large time fluctuations in real App usage.
+定位起来确实麻烦，但使用这个方法能从日志中定位到真实使用App的过程中那些耗时浮动较大的Initializer。
 
-Each Initializer takes very little time, but over time, various Initializers that don't need to execute at App startup stage quietly came in. The power of the masses is great.
+每个Initializer都耗时很少，但长期以来，各种不需要在App启动阶段执行的Initializer都悄无声息的进来了。群众的力量大啊。
+
+
+
 
 
 

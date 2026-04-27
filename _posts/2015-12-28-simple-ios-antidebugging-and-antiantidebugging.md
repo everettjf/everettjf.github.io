@@ -1,26 +1,22 @@
 ---
 layout: post
-title: AntiDebugging and AntiAntiDebugging
-tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+title: 简单的 AntiDebugging 和 AntiAntiDebugging
+categories: Skill
 comments: true
 ---
 
 
 
-Recently finished learning "iOS Application Reverse Engineering" 2nd edition, quickly tried a few Apps. Encountered a few Apps with anti-debugging code, summarizing two simple anti-debugging methods and how to remove them.
+
+
+最近学习完了《iOS应用逆向工程》第二版，抓紧实战几个App。结果遇到少数App有反调试的代码，总结两个简单的反调试方法及去掉方法。
 <!-- more -->
 
 # ptrace
 
-## Protection
+## 保护
 
-Can call ptrace first in the main function.
+可以在main函数中先调用ptrace。
 
 ~~~
 #import <mach-o/dyld.h>
@@ -42,41 +38,41 @@ int main(int argc, char * argv[]) {
 ~~~
 
 
-## Remove Protection
+## 去掉保护
 
-Reference article <https://everettjf.github.io/2015/12/20/amap-ios-client-kill-anti-debugging-protect/>
+参考文章 <https://everettjf.github.io/2015/12/20/amap-ios-client-kill-anti-debugging-protect/>
 
 
 # RESTRICT section
 
-After learning this book, found cycript is so useful, Objective-C is so flexible...
-But, some programs can't use it.
+学习完这本书，发现cycript太好用了，Objective-C这语言太灵活了……
+但，有些程序无法使用。
 
 
-## Protection
+## 保护
 
-Add to Project's `Other Linker Flags`
+在Project的 `Other Linker Flags` 增加
 
 ~~~
 -Wl,-sectcreate,__RESTRICT,__restrict,/dev/null
 ~~~
 
 
-## Remove Protection
+## 去掉保护
 
-Basic approach:
+基本思路就是，
 
-1. `ps -e | grep /var` find AppBinary path
-2. Copy out AppBinary
-3. Binary editor (iHex, etc.) modify __RESTRICT and __restrict to other values. (For example: __RRRRRRRR and __rrrrrrrr. Just make sure the length stays the same)
-4. `ldid -S AppBinary` re-sign.
-5. Install `AppSync` in Cydia.
-
-
-In this article <http://www.iosre.com/t/tweak-app-app-tweak/438>
+1. `ps -e | grep /var` 找到AppBinary路径
+2. 把AppBinary复制出
+3. 二进制编辑器（iHex等）修改__RESTRICT和__restrict为其他值。（比如：__RRRRRRRR和__rrrrrrrr。保证长度不变就行啦）
+4. `ldid -S AppBinary` 重签名。
+5. Cydia中安装 `AppSync`。
 
 
-References 
+在这篇文章中 <http://www.iosre.com/t/tweak-app-app-tweak/438>
+
+
+参考文章 
 
 1. <http://www.iosre.com/t/tweak-app-app-tweak/438>
 2. <http://www.samdmarshall.com/blog/blocking_code_injection_on_ios_and_os_x.html155>
@@ -84,3 +80,4 @@ References
 4. <http://www.opensource.apple.com/source/dyld/dyld-210.2.3/src/dyld.cpp42>
 5. <https://theiphonewiki.com/wiki/Launchd.conf_untether17>
 6. <http://navillezhang.me/>
+

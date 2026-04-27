@@ -1,80 +1,81 @@
 ---
 layout: post
-title: One Year iOS Development Summary
-tags:
-  - iOS
-  - development
-  - mobile
-
+title: Windows转iOS开发一年总结
+categories: Essay
 comments: true
 ---
 
 
 
-Since starting iOS development on March 15 last year (2015), removing the 3 months in between as full-time stay-at-home dad (part-time O2O photography startup) (May 10 to August 12), to today (June 26, 2016) it's been a bit over 1 year.
 
-Last November wrote an article [5 Months Summary After Switching from C++ to iOS Development](https://everettjf.github.io/2015/11/18/the-past-4-months-ios-develop-for-me) , listed knowledge learned in nearly 5 months, also made some plans.
 
-This article continues from the previous one. Summarizes learning situation in the past 6 months (last December to today).
+
+
+
+自去年（2015年）3月15日开始iOS开发以来，去掉中间3个月的全职奶爸（兼职O2O摄影创业）（5月10日至8月12日），到今天（2016年6月26日）已经1年多一点。
+
+去年11月份写过一篇 [C++转iOS开发5个月总结](https://everettjf.github.io/2015/11/18/the-past-4-months-ios-develop-for-me) ，罗列了在接近5个月的时间内学习的知识，也做了一些计划。
+
+本篇文章就接着上篇继续。总结下最近6个月（去年12月至今天）的学习情况。
 
 <!-- more -->
 
 
-# Starting
+# 起步
 
-Late November to early December last year, struggled for a long time finally implemented a previous idea (using flask+mongodb). [Snow Bookmarks](https://everettjf.github.io/2015/12/13/snows_link_tutorial) went online and ran. But unfortunately, simple yet troublesome, no UX, only implemented half a sentiment. Later website closed, evolved into [Tomato Read](https://everettjf.github.io/2016/05/13/how-to-write-a-simple-feed-reader) and [Admire Design Navigation](https://admire.so) .
+去年11月底至12月初，折腾了好久终于把之前的一个想法实现了（使用flask+mongodb）。[雪花书签](https://everettjf.github.io/2015/12/13/snows_link_tutorial) 上线运行。但可惜，简单又麻烦、无体验，只是实现了半个情怀。后来网站关闭，改版进化为 [番茄阅读](https://everettjf.github.io/2016/05/13/how-to-write-a-simple-feed-reader) 和 [钦慕设计导航](https://admire.so) 。
 
-After finishing this small sentiment, focused on iOS learning.
-
-
-# Reverse Engineering
-
-Started late November, until late December, almost a month of evening time (child usually sleeps at 11, I tinkered until 1-2am) used to learn "iOS Application Reverse Engineering" this book, finally produced an [Alipay Voice Save Tweak](https://github.com/everettjf/Yolobroccoli/AlipayWalletChatVoiceSaver) at year end, also wrote [development notes](https://everettjf.github.io/2015/12/29/tweak-for-alipay-wallet-chat-voice-save).
-
-In 2014 I was still doing security software similar to 360 Antivirus, at that time carefully read and did "Virus Analysis Practice" this book, but didn't learn further, only stayed at examples in the book and simple analysis. Since work was still mainly business, when customers reported problematic PE files, assembly was my weakness, more analyzed in Jinshan FireEye and other tools, didn't carefully analyze assembly code myself.
-
-Perhaps with this foundation, now looking at iOS application reverse engineering, and because Objective C's dynamic mechanism, basic reverse engineering is relatively easy to learn. Went through almost all examples in this book one by one.
+了结了这个小情怀，就专心投入iOS学习中。
 
 
-Later due to work developing IM client needs, reverse engineered WeChat and many other Apps' implementations. WeChat message interface reverse engineering also [briefly summarized the process](https://everettjf.github.io/2016/06/19/reverse-explore-wechat-message-design).
+# 逆向
+
+11月底开始，至12月底，几乎一个月的晚上时间（孩子一般11点才睡觉，我就折腾到一两点）用来学习《iOS应用逆向工程》这本书，最终年底产出一个 [支付宝语音保存Tweak](https://github.com/everettjf/Yolobroccoli/AlipayWalletChatVoiceSaver) ，也写了[开发笔记](https://everettjf.github.io/2015/12/29/tweak-for-alipay-wallet-chat-voice-save)。
+
+2014年我还在做类似360杀毒的安全软件，那时把《病毒分析实战》这本书仔细的边读边做了一遍，但没进一步学习，仅停留在了书中的例子和简单的分析上。由于工作仍然是以业务为主，客户上报了有问题的PE文件，汇编是我的弱势，更多是在金山火眼等其他工具中分析，自己并没有去仔细分析汇编代码。
+
+或许有这个基础，现在看iOS应用的逆向，且由于Objective C的动态机制，基础的逆向学习起来就比较容易。把这本书几乎所有例子逐个走了一遍。
 
 
-# Source Code Learning
-
-I sometimes tinker a bit, to learn source code spent a lot of precious spare time writing an Xcode plugin [XSourceNote](https://everettjf.github.io/2016/02/16/xsourcenote-dev). Idea was good, but UX when using isn't very good, only barely usable. Used this plugin to write several source code reading notes.
-
-- UITableView-FDTemplateLayoutCell learning notes
-- YYCache learning notes
-- SDWebImage learning notes
-- YYWebImage learning notes
-
-Here need to reflect, learned too little, plugin completely unnecessary.
-**Spending time on low priority things, this needs reflection**
+后来由于工作开发IM客户端的需要，逆向了微信等好多App的实现。其中微信消息界面的逆向也[简单总结了下流程](https://everettjf.github.io/2016/06/19/reverse-explore-wechat-message-design)。
 
 
-# Books
+# 源码学习
 
-- iOS Application Reverse Engineering
-- iOS Application Security Attack and Defense
+我有时有点折腾，为了学习源码还耗了大量宝贵业余时间写了个Xcode插件 [XSourceNote](https://everettjf.github.io/2016/02/16/xsourcenote-dev)。想法是好的，但使用起来体验并不是很好，仅能凑合用。用这个插件写了几篇源码阅读笔记。
+
+- UITableView-FDTemplateLayoutCell 学习笔记
+- YYCache 学习笔记
+- SDWebImage 学习笔记
+- YYWebImage学习笔记
+
+这里要反思下，学习的太少，插件完全没必要做。
+**耗费时间去做低优先级的事情，这个是需要反思的**
+
+
+# 书
+
+- iOS应用逆向工程
+- iOS应用安全攻防实战
 - Obscure Topics In Cocoa & Objective-C
 - CFHipster
 - iOS Core Animation Advanced Technique
 
-Besides iOS related books, also bought "Mathematics for Programmers" three books, first one is simpler, already finished. Second and third already added to task queue.
+除了iOS相关的书籍，还买了《程序员的数学》三本书，第一本简单点，已经看完。二三本已经加入任务队列。
 
-Learned about OpenCV. To implement AR Rubik's cube restoration. Finally at segmentfault hackathon 2016 Beijing made a simple Rubik's cube restoration assistant App. [Source code](https://github.com/xfteam/xfrubiks).
-
-
-# Launched App
-
-From Snow Bookmarks to iOS Blog Selection, to current App "Tomato Read", naive ideas wanting to implement, always go through this process.
-Implemented this small dream. Have my own launched App. ["Tomato Read" development summary here](https://everettjf.github.io/2016/05/13/how-to-write-a-simple-feed-reader).
+了解了OpenCV。为了实现AR还原魔方。最终在segmentfault hackathon 2016 Beijing上做了个简单的魔方还原辅助的App。[源码](https://github.com/xfteam/xfrubiks)。
 
 
+# 上线App
 
-# Documentation
+从雪花书签到iOS博客精选，到现在的App《番茄阅读》，天真的想法的想要实现，总要经历这个过程。
+实现了这个小梦想。有个自己上线的App。[《番茄阅读》开发总结在这里](https://everettjf.github.io/2016/05/13/how-to-write-a-simple-feed-reader)。
 
-Many blog articles don't systematically explain certain knowledge, should invest more time in reading official documentation. **Systematic, comprehensive learning is more effective learning**
+
+
+# 文档
+
+很多博客文章不会系统的讲解某一知识，还是应该更多时间投入到看官方文档中。**系统、全面的学习才是更有效的学习**
 
 - CoreData Programming Guide
 - Thread Programming Guide
@@ -84,66 +85,66 @@ Many blog articles don't systematically explain certain knowledge, should invest
 	- dispatch queue
 	- dispatch sources
 - App Programming Guide
-- Several lightweight Guides
+- 等若干轻量级Guide
 
-# Blog Articles
+# 博客文章
 
-As daily work progresses, articles that feel good are all bookmarked in "Tomato Read", also placed at this [web address](http://iosblog.cc/a/2/).
+随着日常工作，感觉不错的文章都收藏在了《番茄阅读》中，也放在了这个[web地址](http://iosblog.cc/a/2/)。
 
 
-# Work Content Summary
+# 工作内容总结
 
-Think about main work content after coming to Beijing:
+想想自己来北京后的主要工作内容：
 
-- Continuous Integration
+- 持续集成
 	- Jenkins + fastlane (gym sign and ruby script)
-- Crash Collection and Analysis
-	- Symbol download issues
+- 崩溃收集与分析
+	- 符号下载问题
 	- plcrashreporter
-	- [symboliccrash bug fix](https://everettjf.github.io/2016/05/10/symbolicatecrash-deadloop-bug)
-	- python periodic parsing, flask display
-- Chat Room
+	- [symboliccrash的bug修复](https://everettjf.github.io/2016/05/10/symbolicatecrash-deadloop-bug)
+	- python 定时解析，flask展示
+- 聊天室
 	- NSAttributedString
 - IAP
 - IM
-	- Message storage
-	- Message queue
-	- Message display
-	- Image preview
-- Live Streaming
-	- Gift animation
+	- 消息存储
+	- 消息队列
+	- 消息展示
+	- 图片预览
+- 直播
+	- 礼物动画
 
 
-# Next Steps Plan
+# 下一步计划
 
-Prioritized:
+优先级先后排列：
 
 - YYModel vs Mantle
-	- Why is efficiency difference so large
+	- 效率的区别为何这么大
 - Reactive Cocoa
-	- Usage
-	- Deep dive into source code
-- Design Patterns
+	- 使用
+	- 深入源码
+- 设计模式
 	- AOP
-- Componentization
-	- Componentization solutions
+- 组件化
+	- 组件化方案
 - AsyncDisplayKit
-	- Async UI
-- Performance
-	- Learn Instruments Guide
-	- Translation
-- Low Level
-	- class-dump source code learning, Mach-O file format learning, myclass-dump
+	- 异步UI
+- 性能
+	- 学习 Instruments Guide
+	- 翻译
+- 底层
+	- class-dump源码学习，Mach-O文件格式学习，myclass-dump
 
-Can intersperse learning WWDC. Completing above plans should be quick (of course depends on learning depth), other time learn various open source repos.
+可穿插学习WWDC。完成以上计划应该会很快（当然看学习的细致程度），其他时间多学习各种开源repo。
 
 
 
-# Summary
+# 总结
 
-- Time flies: Half a year passes quickly. Time is never enough.
-- Priorities: Priorities are important, especially when "the more you know, the more you don't know".
+- 时间匆匆而过：半年的时间过得很快。时间总是不够用。
+- 优先级：优先级很重要，尤其是“知道的越多，不知道的越多”的时候。
 
-**Can go slow, but follow priorities. Don't always learn entry materials for new knowledge, at least continue learning in one aspect.**
+**可以走的慢，但要按照优先级。不要总学新知识的入门资料，至少要在某一个方面继续学习。**
 
 

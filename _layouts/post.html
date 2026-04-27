@@ -19,8 +19,8 @@ post_class: post-template
             <h1 class="post-title">{{ page.title }}</h1>
             <section class="post-meta">
                 <time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time>
-                {% if page.tags.size > 0 %}
-                    {{ page.tags | array_to_sentence_string | prepend: 'on ' }}
+                {% if page.categories.size > 0 %}
+                    {{ page.categories | array_to_sentence_string | prepend: 'on ' }}
                 {% endif %}
             </section>
         </header>
@@ -55,12 +55,6 @@ post_class: post-template
             {% endif %}
 
         </footer>
-
-        {% if page.comments %}
-        <section class="comments">
-            {% include disqus.html %}
-        </section>
-        {% endif %}
 
     </article>
 

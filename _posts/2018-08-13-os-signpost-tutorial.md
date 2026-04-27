@@ -1,24 +1,21 @@
 ---
 layout: post
-title: "os_signpost API Introduction"
+title: "os_signpost API 尝鲜"
+categories:
+  - 性能
 tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+  - 性能优化
 comments: true
 ---
 
-os_signpost API is a lightweight code performance analysis tool newly added in iOS12, can collect data and visualize. Official words are The os_signpost APIs let clients add lightweight instrumentation to code for collection and visualization by performance analysis tooling.
+os_signpost API 是 iOS12 新增的轻量级代码性能分析工具，可以采集数据并可视化。官方原话是 The os_signpost APIs let clients add lightweight instrumentation to code for collection and visualization by performance analysis tooling.
 
 
 <!-- more -->
 
-# Background
+# 背景
 
-Code-level performance analysis, most intuitive way is to mark start and end of a code segment, then calculate time consumption. Like below:
+代码层面的性能分析，最直观的方式就是标识出一段代码的开始和结尾，然后计算下耗时。就像下面这样：
 
 ```
     CFTimeInterval begin = CACurrentMediaTime();
@@ -27,78 +24,78 @@ Code-level performance analysis, most intuitive way is to mark start and end of 
     NSLog(@"cost = %@",(end - begin));
 ```
 
-However if code logic is complex, has sequential relationships, exists multiple threads, etc., just marking a small code segment is not so intuitive.
+然而如果代码逻辑复杂、有先后关系、存在多个线程等，单靠某小段代码的标记，就不是那么直观了。
 
-Thus AppleTrace (https://github.com/everettjf/AppleTrace) was born, or catapult (https://github.com/catapult-project/catapult), or Chrome's built-in chrome://tracing functionality. Below is AppleTrace example.
+由此也就诞生了 AppleTrace （https://github.com/everettjf/AppleTrace）这个工具，或者说catapult （https://github.com/catapult-project/catapult），或者说Chrome内置的 chrome://tracing 功能。下图是AppleTrace的例子。
 
 ![](/media/15341742547529.jpg)
 
-iOS12 Apple team paying more attention to performance also discovered importance of intuitive display (better experience), developed os_signpost API. First encountered this API from WWDC: Measuring Performance Using Logging <https://developer.apple.com/videos/play/wwdc2018/405>, recommend watching. os_signpost API can work with Instruments tool, display visualization effects.
+iOS12 开始更加关注性能的苹果团队，也发现了直观展示的重要性（体验更好），开发了 os_signpost API。最早接触这个API是从 WWDC：Measuring Performance Using Logging <https://developer.apple.com/videos/play/wwdc2018/405> 中了解到的，推荐观看。os_signpost API可配合Instruments工具，显示可视化的效果。
 
-Below is simple first look, finally can see this effect:
+下面就简单尝鲜，最终可以看到这样的效果：
 
 ![](/media/15341765204665.jpg)
 
 
-# Environment
+# 环境
 
-Need Xcode10 beta version, currently when writing this article, latest version is:
+需要Xcode10 beta版本，目前写这篇文章时，最新版本是：
 ![](/media/15341739659116.jpg)
 
 
-# First Look
+# 尝鲜
 
-*This article only introduces C usage method, swift is similar and WWDC uses swift language to explain.*
+*这篇文章只介绍C的使用方法，swift类似且WWDC中是以swift语言来讲的。*
 
-First include header file
+先包含头文件
 
 ```
 #include <os/signpost.h>
 ```
 
-Code is simple, three steps, as below:
+代码很简单，三个步骤，如下：
 
 ```
-    // Step one, create a log object
+    // 第一步，创建一个log对象
     os_log_t log = os_log_create("com.everettjf.sample.signpost", "hellosignpost");
     
-    // Create os_signpost ID
+    // 创建os_signpost的ID
     os_signpost_id_t spid = os_signpost_id_generate(log);
     
-    // Mark start and end
+    // 标记开始和结束
     os_signpost_interval_begin(log, spid, "task");
     doSomethingShort();
     os_signpost_interval_end(log, spid, "task");
 ```
 
 
-Open Instruments, can choose an empty template.
+打开Instruments，可以选择一个空的模板。
 
 ![](/media/15341751377471.jpg)
 
-Then click top right add, find os_signpost.
+然后点击右上角添加，找到os_signpost。
 
 ![](/media/15341752218903.jpg)
 
-Drag to left,
+拖拽到左侧，
 
 ![](/media/15341752615381.jpg)
 
-Click top left red circle (Start) can see below.
+点击左上角红色的圆点（Start）就可以看到下图啦。
 
 ![](/media/15341750449814.jpg)
 
 
-# API Explanation
+# API解释
 
-- os_log_create first parameter is reverse DNS format ID, second parameter is category (Category below in figure above). Can create different log objects, display different Categories in figure above.
-- os_signpost_id_generate generates an ID. Similar methods are os_signpost_id_make_with_id and os_signpost_id_make_with_pointer, mainly for identifying matching relationship of a start and end.
-- os_signpost_interval_begin and os_signpost_interval_end mark start and end. Third parameter is name given to this period. Fourth parameter onwards are printf-like format parameters.
+- os_log_create 第一个参数就是个reverse DNS格式的ID，第二个参数是类别（上图中下面的Category）。可以创建不同的log对象，在上图中展示不同的Category。
+- os_signpost_id_generate 产生一个ID。类似的方法有 os_signpost_id_make_with_id 和 os_signpost_id_make_with_pointer，主要是用于标识一个开始和结束的匹配关系。
+- os_signpost_interval_begin 和 os_signpost_interval_end 标记开始和结束。第三个参数是给这段时间起的名字。第四个参数开始就是类似printf的格式化参数了。
 
 
-# More First Look
+# 再尝鲜
 
-Below more complex, use this code:
+下面再复杂一点，用这个代码：
 
 ```
     
@@ -126,14 +123,14 @@ Below more complex, use this code:
     
 ```
 
-Can see this.
+就可以看到这样了。
 
 ![](/media/15341756915127.jpg)
 
 
 # Point Of Interest
 
-Can also add some points of interest,
+还可以添加一些感兴趣的点，
 
 ```
     os_log_t loginterest = os_log_create("com.everettjf.sample.signpost", OS_LOG_CATEGORY_POINTS_OF_INTEREST);
@@ -144,24 +141,24 @@ Can also add some points of interest,
     os_signpost_event_emit(loginterest, spidinterest, "alive");
 ```
 
-As Points below.
+如下图Points。
 
 ![](/media/15341766999075.jpg)
 
 
-# Code
+# 代码
 
-Code reference: <https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/SignPostSample/SignPostSample/AppDelegate.m>
+代码参考： <https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/SignPostSample/SignPostSample/AppDelegate.m>
 
-# Summary
+# 总结
 
-First look, relax, quite fun, os_signpost API will definitely be good partner for performance analysts in future.
+尝尝鲜，放松一下，挺好玩，os_signpost API 未来一定是性能分析者的好伙伴。
 
-Future with dark theme, really cool.
+未来配上黑色主题，确实很炫。
 
 ![](/media/15341777359950.jpg)
 
-Welcome to follow subscription account "Client Technology Review":
+欢迎关注订阅号「客户端技术评论」：
 ![happyhackingstudio](https://everettjf.github.io/images/fun.png)
 
 

@@ -1,29 +1,26 @@
 ---
 layout: post
-title: "Rename Symbols Using __asm__"
+title: "使用 __asm__ 重命名符号"
+categories:
+  - 
 tags:
-  - assembly
-  - symbol
-  - obfuscation
-  - C
-  - low-level
-
+  - 
 comments: true
 ---
 
-objc source code has code below `__asm__("_objc_retain")`, what is this `__asm__`?
+objc 源码中有如下代码 `__asm__("_objc_retain")`，这个`__asm__`是啥来？
 
 <!-- more -->
 
-## Discovery
+## 发现
 
-Source code as below
+源码中如下
 
 ![](/media/15820819662136.jpg)
 
-> objc source code download https://opensource.apple.com/tarballs/objc4/
+> objc 源码下载 https://opensource.apple.com/tarballs/objc4/
 
-After searching, discovered can rename symbol, write test code:
+搜索一番，发现是可以rename symbol，写个测试代码：
 
 ```
 #include <stdio.h>
@@ -38,15 +35,15 @@ int main(int argc, const char * argv[]) {
 ```
 
 
-Debug to see
+调试看下
 
 ![](/media/15820826016870.jpg)
 
-From figure above can know, symbol in callstack is not foo, but _objc_release.
+从上图可知，callstack中的symbol不是 foo，而是 _objc_release。
 
-## Variables
+## 变量
 
-From link below also can know, can rename variable's symbol.
+从下面的链接又可知，还可以rename变量的symbol。
 
 ```
 int counter __asm__("counter_v1") = 0;
@@ -56,15 +53,15 @@ int counter __asm__("counter_v1") = 0;
 
 
 
-## Summary
+## 总结
 
-Seems can use to do simple export symbol obfuscation for dylib?
+似乎可以拿来给dylib做个简单的export symbol混淆？
 
 ![](/media/15820829854361.jpg)
 
 
 
-## References
+## 参考
 
 - http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.kui0097a/armcc_bcfggcdh.htm
 - http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0491f/Cacgegch.html
@@ -73,6 +70,6 @@ Seems can use to do simple export symbol obfuscation for dylib?
 
 ---
 
-If everyone likes, follow subscription account to encourage:
+大家喜欢的话，就关注下订阅号，以示鼓励：
 
 ![](/images/fun.png)

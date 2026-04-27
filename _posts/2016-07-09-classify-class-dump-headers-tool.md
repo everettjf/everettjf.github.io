@@ -1,26 +1,20 @@
 ---
 layout: post
-title: Header File Classification Tool
-tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+title: 头文件分类工具supotato 
+categories: Essay
 comments: true
 ---
 
 
 
-class-dump outputs so many header files, supotato can form a simple classification report based on header files' `first 2 characters`. Can also guess which third-party libraries (CocoaPods) are used.
+class-dump 出的头文件这么多，supotato 可以根据头文件的`前2个字符`形成个简单的分类报告。同时可以猜测出使用了哪些第三方库（CocoaPods）。
 
-[Source code](https://github.com/everettjf/supotato)
+[源码](https://github.com/everettjf/supotato)
 
 <!-- more -->
 
 
-## Usage
+## 使用方法
 
 ```sh
 pip install supotato
@@ -32,29 +26,29 @@ supotato
 
 
 
-## Example
+## 例子
 
-For example class-dump outputs the following header files:
+例如 class-dump 出以下的头文件：
 
 [Here](https://github.com/everettjf/supotato/tree/master/example/headers)
 
-Run supotato:
+运行supotato：
 
 ```sh
 $ supotato -i headers -o .
 ```
 
-Get this simple classification:
+得到这个简单的分类：
 
 [Here](https://github.com/everettjf/supotato/blob/master/example/result.txt)
 
 
-Below is a real example:
+下面是真实的例子：
 
 [Here](https://github.com/everettjf/supotato/blob/master/example/lots.txt).
 
 
-## Parameters
+## 参数
 
 ```
 [everettjf@e supotato (master)]$ supotato --help
@@ -80,32 +74,33 @@ optional arguments:
 
 ```
 
-1. -i specifies directory where header files are located.
-2. -o specifies directory to output result.txt file, can also be file path.
-3. -s specifies classification sort basis. prefix sorts by first N characters of filename (N can be specified, default 2), count sorts by number of files in each category.
-4. -d sort type. desc descending, asc ascending.
-5. -p classification basis first few characters. Default 2.
-6. -u update local database (used to determine which third-party library file belongs to)
+1. -i 指定头文件所在的目录。
+2. -o 指定 result.txt 文件输出的目录，也可以是文件路径。
+3. -s 指定分类的排序依据。prefix 根据文件名前N个字符（N可指定，默认为2）排序，count 根据每个分类的文件数目排序。
+4. -d 排序类型。desc 倒序，asc 顺序。
+5. -p 分类依据前几个字符。默认2 。
+6. -u 更新本地数据库（用于判断文件属于哪个第三方库）
 
 
-## Principle
+## 原理
 
 
-1. Based on <https://github.com/CocoaPods/Specs> can get all repos, after all downloaded, based on spec.json files, get header files (.h) in libraries.
-2. Record header file to Pod name relationship in local database.
-3. Compare one by one.
+1. 根据 <https://github.com/CocoaPods/Specs> 可或许所有repo，全部下载后，根据 spec.json文件，获取库中的头文件(.h)文件。
+2. 记录头文件与Pod名称的关系到本地数据库中。
+3. 逐个比较。
 
-Related code <https://github.com/everettjf/supotato/tree/master/podtool>
-
-
-## Summary
+相关代码 <https://github.com/everettjf/supotato/tree/master/podtool>
 
 
-1. Simple small tool, can speed up overall understanding of class-dump header files.
-2. Could also do:
-	- Parse .h files, construct class diagrams.
-	- Further classify .h files. (Based on parent class, or last few characters)
+## 总结
+
+
+1. 简单的小工具，可以加快对class-dump头文件的整体了解。
+2. 或许还能做：
+	- 解析.h文件，构造类图。
+	- 对.h文件进一步分类。（根据父类，或最后的几个字符）
 
 	
 	
+
 

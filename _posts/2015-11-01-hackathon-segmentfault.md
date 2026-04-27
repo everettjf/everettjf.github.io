@@ -1,124 +1,123 @@
 ---
 layout: post
-title: SegmentFault Hackathon 2015 Beijing
-tags:
-  - essay
-  - reflection
-  - experience
-  - career
-
+title: SegmentFault Hackathon 2015 北京站总结
+categories: Essay
 comments: true
 ---
 
 
 
-# Start
-On October 24, 2015, I participated in the [SegmentFault Hackathon 2015 Beijing](http://segmentfault.com/e/1160000003736572) event.
 
-First, a picture:
+
+
+# 开始
+2015年10月24日参加了 [SegmentFault Hackathon 2015 北京](http://segmentfault.com/e/1160000003736572) 活动。
+
+先上一张图片哈：
 ![hackathon](http://d.pr/i/1c2on+)
 
 <!-- more -->
 
-This was my second time participating in a hackathon event.
+这是我第二次参加黑客马拉松活动。
 
-# Recalling the Past
+# 回忆下过去
 
-The last time I participated was around 2013, when Microsoft Windows 8 had just come out. As a member of the Microsoft camp, although I was in Jinan (hadn't seen much of the world), I still traveled thousands of miles at my own expense to Beijing, just to experience Microsoft Research Asia firsthand, just to feel Beijing's development atmosphere.
+上一次参加大概是2013年，微软 Windows 8 刚刚出炉，当时作为微软阵营的一员，虽身处济南（没见过世面），但还是不远千里自费跑到北京，只为身临其境微软亚洲研究院，只为感受下北京的开发氛围。
 
-A brief summary of a few things that impressed me from this previous Windows 8 development hackathon:
+简单总结下这上一次Windows 8开发黑客马拉松让我印象深刻的几件事：
 	
-- There was a sixty-year-old programmer sitting at the same table, already retired, but also stayed up all night coding (though he went back to rest the next morning, didn't wait until the end of the competition, which was already impressive). I think my purpose of coming to Beijing was achieved, which was to feel this passion for programming.
-- I used to be a language purist, obsessed with C++, looking down on other languages. So I was particularly fond of Microsoft's C++/CX, practiced hard, but rarely saw anyone using C++/CX at the development site. (Most were C#, a few JavaScript. Met a guy doing game development using C++/CX, exchanged QQ.)
-- This Windows 8 hackathon allowed development in advance and didn't require submitting the App before the two-day event ended. The App I made didn't persist to submission (persistence issue, messing around issue). Deeply understood that App development from idea to implementation is not a simple process.
+- 有坐在同一桌有一位六旬老程序员，已经退休，但也一起通宵写了一晚上程序（不过第二天早上就回去休息了，没有等到比赛结束，已经很厉害了）。我想来北京这次的目的达到了，就是要感受这种对编程的热爱。
+- 曾经的我一直属于语言派，执迷于C++，对其他语言不屑于顾。因此对微软搞的C++/CX情有独钟，苦心练剑，却在开发现场很少见到有用C++/CX的。（多数都是C#，少数Javascript。遇到一位做游戏开发的哥们使用C++/CX，互留了下QQ。）
+- 这次 Windows 8 黑客马拉松是可以提前开发，且不需要两天的活动结束前提交App。自己做的App也没有坚持开发到提交（毅力问题，瞎折腾问题）。深刻理解了App的开发从想法到落实不是简单的过程。
 
-# This Competition
+# 这次比赛
 
-I learned about this competition a month in advance from my friend circle, and Jinan also had a venue. I thought since I came to Beijing, I'd participate in Beijing's. I mentioned it to friend M (also a colleague and former classmate), and friend M thought, if we're going to do it, let's do it for real. So, our team had 5 people.
+提前1个月从朋友圈知道这次比赛了，而且济南也有赛区，想想既然来了北京就参加北京的吧，给朋友M（也是同事兼曾经同学）一说，朋友一想，要来就来真的。于是，这次比赛我们队伍共5个人。
 
-We came to AngelCrunch on Zhongguancun Entrepreneurship Street. Several big shots explained the spirit of hackathons and the content of this event, then the competition began.
+来到中关村创业大街的天使汇。几个大牛逐个讲解黑客马拉松的精神和这次活动内容等，然后比赛就开始了。
 
-## Skills
+## 技能
 
-- M, team leader, Android
-- G, audio/video processing, NDK
-- J, Android
-- X, UI
-- Me, Windows, iOS, Flask
+- M，队长，Android
+- G，音视频处理，NDK
+- J，Android
+- X，UI
+- 我，Windows，iOS，Flask
 
-The competition required submitting the work before 12 noon the next day. After discussion, we initially determined two points:
+比赛要求第二天中午12点之前必须提交作品，大家一起讨论后初步确定两点：
 
-- Make a mobile product, only develop Android version (I could only do the server side)
-- Must decide what to do before 1 PM. (The event explanation ended around 10 AM)
+- 做一款移动产品，只开发Android版本（只能做服务端了）
+- 下午1点之前必须确定做什么。（上午10点左右活动讲解就结束了）
 
-## What to Do
-Mainly thought of the following Apps:
+## 做什么
+大概主要想到以下几个App：
 
-- Photo wall, tool, convenient for making photo walls
-- Voice tasks, team voice tasks
-- Multi-person travel AA payment, convenient for calculating who paid more, who paid less
-- Social mini-game, two virtual characters, add various animation effects
-- Children's mini-game (specific details forgotten)
+- 照片墙，工具，方便制作照片墙
+- 语音任务，团队语音任务
+- 多人旅行AA付款，方便计算出谁出钱多，谁出钱少
+- 社交小游戏，两个虚拟人物，增加各种动画效果
+- 儿童玩的小游戏（具体忘记了）
 
-After discussion, we decided on a travel App with the following features:
+经过讨论，确定一款旅行App，功能描述如下：
 
-- Create travel groups.
-- Use voice instead of typing.
-- Each person can use voice to record expenses (User A spent 100 yuan). After the trip ends, calculate who should pay whom based on average spending.
-- Create voice reminders (remind everyone to meet at 9 AM at a location)
-- Create voice diary (each person one sentence, finally export and merge into one audio file)
+- 建立旅行群组。
+- 使用语音代替打字。
+- 每个人可以使用语音记账（用户A出了100元），旅行结束后，根据平均消费计算出谁该给谁多少钱。
+- 创建语音提醒（提醒所有人9点到哪集合）
+- 创建语音日记（每人一句话，最后导出合并为一个音频文件）
 
-## Division of Labor
+## 分工
 
-- M, implement voice recording and recognition to text.
-- G, implement multiple voice merging.
-- J, implement various interfaces.
-- X, several interface effects and image cutting.
-- Me, server side (login, group management, voice message management, voice upload/download, voice merging calls, etc.)
+- M，实现语音录制及识别为文字。
+- G，实现多个语音合并。
+- J，实现各个界面。
+- X，几个见面效果及切图。
+- 我，服务端（登录、群组管理、语音消息管理、语音上传下载、语音合并的调用等）
 
-## Getting Started
+## 开工
 
-### Interface Layout Determined Together
-We simply sketched the basic layout of several interfaces on draft paper, then each started working.
+### 界面布局一起确定
+草稿纸上简单画了下几个界面的基本布局，就各自开工了。
 
-### Source Code Management
-Multi-person collaboration requires source code management. Except for UI, the four of us used a repository at [http://git.oschina.net/](http://git.oschina.net/).
+### 源代码管理
+多人合作少不了源代码管理，除UI外，我们四个使用了[http://git.oschina.net/](http://git.oschina.net/)的仓库。
 
-### Each Started Working
-- M, found iFlytek voice recognition SDK, encountered various pitfalls, finally got it working.
-- G, started with the most familiar ffmpeg development, wrote a so file, also got the Python calling example working.
-- J, whipped up interfaces so fast.
-- X, also quite skilled.
-- Me, got started with Flask and MongoDB. (Same as developing mostlike.link)
+### 各自开工
+- M，找到了讯飞语音识别SDK，中间各种坑，终于搞定。
+- G，开始了自己最熟悉的ffmpeg开发，写了个so文件，把python调用例子也搞定了。
+- J，撸起界面来那个快啊。
+- X，也是相当熟练了。
+- 我，基于Flask和MongoDB搞起来。（与开发mostlike.link一样）
 
-## Lessons
+## 教训
 
-- M and J encountered some problems setting up the environment, one Android Studio one Eclipse, compilation kept failing due to missing some submitted files.
-- M found many pitfalls in iFlytek SDK, parameters not following the pattern, easily causing crashes.
-- Server side, I had long heard of Celery but never really used it. This time I considered using it when merging voice files. But it kept showing an error message (haven't had time to research), gave up after spending a lot of time. (Worked from 3 AM to 6 AM, still didn't understand, so gave up) (For live demo, voice wasn't long, blocking merge was acceptable)
+- M和J开始搭建环境遇到些问题，一个Android Studio 一个Eclipse，由于少提交部分文件导致编译一直失败。
+- M发现讯飞SDK中好多坑，参数不按套路来，容易导致崩溃。
+- 服务端，以前一直是久仰Celery大名，没怎么用过，这次考虑在合并语音文件时使用。结果总是提示个错误信息（还没有抽出时间来研究），耗费了大量时间后放弃。（从凌晨3点搞到6点，还是没搞明白，就放弃了）（现场演示，语音不长，阻塞的合并还可忍受）
 
 
-## Demo
+## 演示
 
-The next morning around 9 AM, all features finally passed (voice reminder was abandoned due to time constraints). Slept a bit on the table.
-Demo started in the afternoon.
+第二天上午接近9点，终于所有功能通过（语音提醒由于时间原因放弃了开发）。趴桌子上睡了一小觉。
+下午开始演示。
 
-A few memorable things:
+印象深刻的几件事：
 
-- The first demo shocked the whole venue, virtual reality, real-time camera video that step-by-step teaches you how to replace a MacBook fan. The MacBook expansion effect was very cool.
-- Many demos in between, many about social products. According to the judges' summary later, the judges weren't very interested in this type of product.
-- Demo presentation also needs control. Some started by explaining a lot about their feelings, etc., nearly 2 minutes passed (principle is 3 minutes total per team), some even explained their background, their connection with programming, some had poor time control and were too verbose. Some didn't know how to engage the audience, etc. (Of course, just my feeling, I'm not very good at engaging the audience either).
-- I felt our team's presentation time control was very good, the final voice synthesis effect was good, showed the main features just right, simply inserted some jokes to engage the audience.
+- 第一个演示，就震惊了全场，虚拟现实，实时摄像头视频中可以一步一步叫你怎么给MacBook更换风扇。MacBook的展开效果图很炫。
+- 中间很多演示，关于社交产品较多，根据后来评委总结，评委们对这种产品都不太感兴趣了。
+- 演示的讲解也是需要把控的地方，有的开头讲解了很多自己的情怀啊、啥啊、啥啊，接近2分钟过去了（原则上每个队伍共3分钟讲解时间），有的甚至讲解起自己的身世、与编程的不解之缘啥的，有的则时间把控不好太过啰嗦。有的不会调动下现场气氛等（当然只是感觉，我也不怎么会调动气氛哈）。
+- 自我感觉我们队的讲解时间把控很好，最后的语音合成效果不错，把做的主要功能展示的恰好，简单插入了点笑话，调动下现场气氛。
 
-## Unexpected Award
+## 意外获奖
 
-First place went to the work that used virtual reality to repair computers (later learned it used Qualcomm's Vuforia SDK with Unity3D).
+第一名，就是通过虚拟现实维修电脑的作品（后来了解到使用的是高通的Vuforia SDK，配合Unity3D）。
 
-Second place, voice control computer, assisting disabled people to operate computers. Very caring, very practical. (Voice recognition, plus various Windows window message sending)
+第二名，语音控制电脑，辅助残障人士操作电脑。很有爱，很实用。（语音识别，加各种Windows窗口的消息发送）
 
-Several judges took turns explaining works that impressed them, none mentioned us. But when the final scores came out, third place! Everyone was very happy (Classmate X went home to sleep, didn't wait for the final awards).
+几个评委轮番讲解对自己印象深刻的作品，没有一个提到我们。但最后的评分出来，三等奖哈。大家都很高兴（X同学回家睡觉了，没有等到最后的颁奖）。
 
-# Summary
+# 总结
 
-Let me research this [http://developer.vuforia.com/](http://developer.vuforia.com/), very cool effects.
+研究下这个[http://developer.vuforia.com/](http://developer.vuforia.com/)哈，很炫的效果。
+
 

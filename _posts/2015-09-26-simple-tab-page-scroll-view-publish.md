@@ -1,48 +1,45 @@
 ---
 layout: post
-title: TabPageScrollView Notes
-tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+title: TabPageScrollView开发笔记
+categories: Skill
 comments: true
 ---
 
 
 
-# Background
-Seeing so many good things on CocoaPods, as a beginner in iOS development, I wanted to familiarize myself with this process.
-I thought about a simple Tab page I recently developed, tried to improve it, make it more general, and put it on CocoaPods.
 
-# Final Result
-Usage and code: <https://github.com/everettjf/Yolo/tree/master/EVTTabPageScrollView>
+
+
+# 背景
+看到CocoaPods上这么多好东西，初入iOS开发，也想熟悉熟悉这个流程。
+想到最近自己开发的一个简单的Tab页面，尝试完善一下，做的更通用一些，放到CocoaPods上。
+
+# 最终
+使用方法及代码见：<https://github.com/everettjf/Yolo/tree/master/EVTTabPageScrollView>
 
 ![demo](https://everettjf.github.io/images/extern/EVTTabPageScrollView.gif)
 <!-- more -->
 
 
-# Steps
+# 步骤
 
-1. Create template project
-    Reference: <https://guides.cocoapods.org/making/using-pod-lib-create.html>
+1. 创建模板工程
+    参考链接：<https://guides.cocoapods.org/making/using-pod-lib-create.html>
     ```
     pod lib create MyLibrary
     ```
-2. Modify description, write library code
-3. Test
+2. 修改描述、编写库的代码
+3. 测试
     ```
     pod lib lint
     pod spec lint
     ```
-4. Upload
+4. 上传
     ```
     $ pod trunk register orta@cocoapods.org 'Orta Therox' --description='macbook air'
     $ pod trunk push EVTTabPageScrollView.podspec
     ```
-    Reference: <https://guides.cocoapods.org/making/getting-setup-with-trunk>
+    参考链接：<https://guides.cocoapods.org/making/getting-setup-with-trunk>
 
-# Other
-This is still very simple, just as an example for me to try CocoaPods.
+# 其他
+这个还很简单，仅作为自己试用CocoaPods的例子。

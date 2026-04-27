@@ -1,89 +1,87 @@
 ---
 layout: post
-title: How to Write a RSS Reader App
-tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+title: 如何编写一款RSS阅读器App
+categories: Skill
 comments: true
 ---
 
 
 
-Finally launched the first App, brief summary. For this App, I'm considered "full-stack development". 
 
 
-[Source code first](https://github.com/everettjf/TomatoRead)
 
-This development process mainly has two outputs:
 
-1. [Tomato Read App](https://itunes.apple.com/us/app/id1111654149): Curated subscription of some iOS developer blogs. [AppStore link](https://itunes.apple.com/us/app/id1111654149).
-2. [Blog List](https://github.com/everettjf/TomatoRead): Sorted by last update time. Auto-refreshes daily.
+终于上线第一个App，简单总结。对这个App，自己也算是“全栈开发”了。 
+
+
+[先上源码](https://github.com/everettjf/TomatoRead)
+
+此次开发过程主要有两个产出：
+
+1. [番茄阅读App](https://itunes.apple.com/us/app/id1111654149)：精选了一些iOS开发者博客的订阅。[AppStore地址](https://itunes.apple.com/us/app/id1111654149)。
+2. [博客列表](https://github.com/everettjf/TomatoRead)：按最后更新时间排序。每天自动刷新。
 <!-- more -->
 
 
-Three Tab pages, first page is subscribed article list, second page is blog list, third page is various articles and tutorials URLs I usually collect.
-As shown below:
+三个Tab页，第一页为订阅的文章列表，第二页为博客列表，第三页为我平时收集的各种文章、教程等网址。
+如下图：
 
 ![](https://everettjf.github.io/stuff/tomato/1.png)
 
-# Background
+# 背景
 
-- Initially I wanted to make a comprehensive developer navigation website, where you could find the best URLs for learning anything, but didn't have that much time to collect URLs. Since work is iOS development, can only focus on iOS development URLs.
-- So wanted to make an App, display collected blogs and blog RSS subscription information through the App.
-- Goals kept narrowing, perhaps this is the process of fake needs becoming real needs.
-- For deeper background on the journey, see [this article](http://everettjf.github.io/2016/02/24/iosblog-cc-dev-memory)
+- 最初我是想做个大而全的开发者导航网站，想学什么都能找到最优质的网址，但没有那么多时间去搜集网址。由于工作是iOS开发，可以只关注iOS开发类的网址。
+- 于是想做个App，将收集的博客以及博客的RSS订阅信息通过App展示出来。
+- 目标不断的缩小，或许就是伪需求变为真实需求的过程。
+- 更深入折腾的背景，可以看看[这篇文章](http://everettjf.github.io/2016/02/24/iosblog-cc-dev-memory)
 
-# Architecture
+# 架构
 
-- Web server: For collecting URLs
-- Static content server: Provides App access interface
-- Crawler: Crawls blog article lists that don't support RSS/Atom subscription
-- App: Final display
+- Web服务器：用于收藏网址
+- 静态内容服务器：用户提供App访问接口
+- 爬虫：爬取不支持RSS/Atom订阅的博客文章列表
+- App：最终展现
 
-## Web Server
+## Web服务器
 
-Web server is mainly for URL collection and deletion.
+Web服务器主要用于网址收集和删除。
 
-To conveniently bookmark a blog after seeing it, can write a `Chrome extension`. When browsing to a blog URL, click Chrome extension, Chrome extension will automatically collect current blog's URL, title, favicon. Can also add subscription address.
+为了能看到一个博客后，方便的收藏博客，可以编写`Chrome插件`。当浏览到一个博客网址后，点击Chrome插件，Chrome插件会自动收集当前博客的网址、标题、favicon。还可以添加订阅地址。
 
-Avoids the trouble of recording blogs in text format.
+免去了使用文本方式记录博客的麻烦。
 
-Web server uses Django (familiar with Python). Currently can access at [http://iosblog.cc](http://iosblog.cc), since App doesn't depend on this domain, later may, can change anytime. This URL is only for auxiliary collection, not for public use.
+Web服务器使用Django实现（熟悉Python）。目前可以使用 [http://iosblog.cc](http://iosblog.cc)访问，由于App并不依赖这个域名，后期可能、可以随时更换。这个网址仅用于辅助收集，不用于公开使用。
 
 
-- [Chrome extension source code](https://github.com/everettjf/TomatoRead/tree/master/chrome)
-- [Web server source code](https://github.com/everettjf/TomatoRead/tree/master/web)
+- [Chrome插件源码](https://github.com/everettjf/TomatoRead/tree/master/chrome)
+- [Web服务器源码](https://github.com/everettjf/TomatoRead/tree/master/web)
 
-- [Django getting started docs](https://docs.djangoproject.com/en/1.9/intro/)
-- [Chrome Extension getting started docs](https://developer.chrome.com/extensions/getstarted)
+- [Django入门文档](https://docs.djangoproject.com/en/1.9/intro/)
+- [Chrome Extension 入门文档](https://developer.chrome.com/extensions/getstarted)
 
 ![](https://everettjf.github.io/stuff/tomato/chrome.png)
 
 
 
 
-## Static Content Server
+## 静态内容服务器
 
-Alibaba Cloud or other cloud VPS lowest configuration is generally around 600 yuan per year, and bandwidth performance is poor. But to let App get data faster, what to do. Thought of using GitHub Pages for blogs. Can export collected content periodically as json files and put them on GitHub Pages (e.g., under my blog directory).
+阿里云或其他各种云的VPS最低配置一般一年600元左右，而且带宽性能都较差。可又为了能让App较快的获取数据，怎么办。想到平时的博客使用GitHub Pages。可以把平时收藏到的内容，定时导出为json文件放到GitHub Pages下（例如我的博客目录下）。
 
-And Alibaba Cloud server doesn't need to worry about bandwidth being too small, configuration too low. Amazon EC2 recently also free for a year.
+而阿里云服务器就不用担心带宽太小、配置太低的问题了。亚马逊的EC2最近还免费一年。
 
-This layer server's existence lets us change Web server freely. App also doesn't depend on Web server.
+这一层服务器的存在，让我们可以随便更换Web服务器。App也不依赖Web服务器。
 
-[Export effect](https://github.com/everettjf/everettjf.github.com/tree/master/app/blogreader)
+[导出效果](https://github.com/everettjf/everettjf.github.com/tree/master/app/blogreader)
 
 
-## Crawler
+## 爬虫
 
-Some blogs have RSS or Atom subscription, but many blogs don't have subscription. For example, the popular `Jianshu`. Jianshu has many good iOS/OS X developer blogs.
+有的博客是有RSS或Atom订阅的，但还有很多博客没有订阅。例如现在很火的`简书`。简书上有很多不错的 iOS/OS X 开发者博客。
 
-After bookmarking some good Jianshu blogs, can write a small crawler, only crawl specified blog's article list. In App, when clicking such articles, directly open in browser.
+收藏了一些不错的简书博客后，可以写个小爬虫，只爬指定博客的文章列表。App中点击这类文章时，直接以浏览器的方式打开。
 
-scrapy is a good Python crawler framework, simple and easy to use. Code to crawl a URL's article list:
+scrapy是Python很好的爬虫框架，使用起来简单易用。爬某个网址文章列表的代码如下：
 
 ```
     def parse(self, response):
@@ -108,56 +106,55 @@ scrapy is a good Python crawler framework, simple and easy to use. Code to crawl
             items.append(item)
 ```
 
-Scrapy documentation is also comprehensive, after reading [getting started tutorial](http://doc.scrapy.org/en/master/intro/tutorial.html) can complete this Jianshu article list crawling.
+Scrapy文档也很全，看完[入门教程](http://doc.scrapy.org/en/master/intro/tutorial.html)就能完成这个简书文章列表的爬取了。
 
-- [Crawler source code](https://github.com/everettjf/TomatoRead/tree/master/jianspider)
-- [Crawled results](https://github.com/everettjf/everettjf.github.com/tree/master/app/blogreader/spider/jianshu)
+- [爬虫源码](https://github.com/everettjf/TomatoRead/tree/master/jianspider)
+- [爬到的结果](https://github.com/everettjf/everettjf.github.com/tree/master/app/blogreader/spider/jianshu)
 
-There's a small issue, can leave unsolved. Jianshu blog homepage articles default load 10 (number may not be exact), remaining articles are loaded asynchronously when scrolling down. Since it's for subscription, only crawling latest N articles is enough. (How to crawl these asynchronously loaded articles, I haven't researched. Perhaps finding the backend request address makes it easy to crawl)
+有个小问题，可以不解决。简书博客首页的文章默认是加载10条（数不一定对），剩余文章是在向下滚动浏览时异步加载。由于是做订阅，只抓取最新的N条就足够了。（如何抓取异步加载的这些文章，我还没有研究。或许找到请求后台的地址，就很容易抓取了）
 
 
 ## App
 
-### Open Source Libraries
+### 开源库
 
-To quickly assemble this App, mainly used the following two open source libraries.
+为了快速组装这个App，主要用了以下两个开源库。
 
-- [MWFeedParser](https://github.com/mwaterfall/MWFeedParser) can be used to parse RSS/Atom, but some sources' time formats aren't standard during use, can directly modify source code, add support for more time formats.
+- [MWFeedParser](https://github.com/mwaterfall/MWFeedParser) 可用于解析RSS/Atom，但使用过程中有些源的时间并不标准，可以直接修改源码，增加支持的时间。
 
-- [KINWebBrowser](https://github.com/dfmuir/KINWebBrowser) for viewing original articles, or opening blog articles that don't support subscription.
-
-
-
-
-### Loading Strategy
-
-When getting 40+ subscription addresses at once, how to load articles down without users feeling too slow.
-
-- Server puts frequently updated, high-quality blogs first (sorted first, increase zorder)
-- First load animation, after loading 5 blogs, animation shrinks to place that doesn't affect user use, continue loading remaining blogs.
-- Record blog's last article update date, when checking blog updates later, prioritize checking recently updated blogs. (Some developer blogs haven't updated articles for a long time, but previous articles were well written.) Try to display latest content as fast as possible.
-- After all blogs are loaded, can let user know. And can conveniently load latest content.
-
-Other optimization ideas:
-
-- Each blog has a weight value, allocated based on update frequency, in some cases can directly ignore blogs with too low weight.
+- [KINWebBrowser](https://github.com/dfmuir/KINWebBrowser) 用于查看原文、或者打开不支持订阅的博客文章。
 
 
 
 
-### Subscription Article Content Display
+### 加载策略
 
-RSS/Atom subscription gets article content as a piece of html code. Missing css. Program needs to have a built-in relatively universal css.
+当一下子拿到40多个订阅地址，如何能在让用户感觉不到太慢的前提下，把文章加载下来。
 
-Here currently directly copied [RSSRead App](https://github.com/ming1016/RSSRead)'s css code. But [this css](https://github.com/everettjf/TomatoRead/tree/master/iOS/iOSBlogReader/Resource) has poor compatibility for some article displays. Will optimize later.
+- 服务器把更新比较频繁的、且优质的几个博客放在前面（排序靠前，增加zorder）
+- 首次加载动画，在加载5个博客后，动画缩小到不影响用户使用的地方，继续加载剩余博客。
+- 记录博客的最后文章更新日期，以后再次检测博客更新时，优先检查最近更新过的博客。（有一些开发者博客很久不更新文章了，但之前的文章写的很好。）尽量最快的显示出最新内容。
+- 所有博客都加载完成后，可以让用户知道。并能方便的加载最新内容。
+
+其他可优化想法：
+
+- 每个博客一个权值，根据更新频率分配，在某些情况下可以直接忽略权值过低的博客。
 
 
 
-### Loading Animation
+### 订阅文章内容显示
 
-Similar to MBProgressHUD loading animations are all global blocking. Can't meet the need of loading 5 blogs first then continuing to show progress without affecting user use. So made my own.
+RSS/Atom订阅拿到的文章内容是一段html代码。缺少css。程序内部要内置一套较为通用的css。
 
-Recently watching Brain, learning Rubik's cube algorithms, thought could make a similar cube animation. For simplicity and quick usability, can use facebook's pop library, 9 colors fade in and out one by one, plus a status bar.
+这里目前直接copy了[已阅App](https://github.com/ming1016/RSSRead)的css代码。但[这个css](https://github.com/everettjf/TomatoRead/tree/master/iOS/iOSBlogReader/Resource)对有些文章展示的兼容不好。以后再优化啦。
+
+
+
+### 加载动画
+
+类似MBProgressSUD的加载动画都是全局阻塞方式。不能满足 先加载5个博客后继续显示进度且不应影响用户使用的需求。于是自己造一个。
+
+最近看最强大脑，在学习魔方算法，想来可以做个类似魔方的动画。为了简单、快速可用，可以用 facebook的 pop 库，9个颜色挨个淡入淡出，再加个状态栏。
 
 
 ![](https://everettjf.github.io/stuff/tomato/loading.png)
@@ -166,21 +163,21 @@ Recently watching Brain, learning Rubik's cube algorithms, thought could make a 
 
 
 
+### 第三方服务
 
-### Third-Party Services
-
-- Analytics: Umeng
-- Crash analysis: bugly
-- Hot fix: JSPatch
-
+- 统计：友盟
+- 崩溃分析：bugly
+- 热修复：JSPatch
 
 
 
-# Summary
 
-Been doing iOS work for almost a year (paused 3 months in between being a stay-at-home dad), this is the first App to go on the store. Although the App is relatively simple, the evolution process of this idea is worth reflecting on and summarizing.
+# 总结
 
-Another purpose of developing this App is to apply new knowledge and techniques I usually learn to this App, as my own small lab.
+自己做iOS工作接近一年（中间暂停了3个月在家做奶爸了）,这是第一个上架的App。虽然App较为简单，但这个想法的演变过程，值得我反思和总结。
+
+开发这个App还有个目的，就是可以把自己平时学到的新知识、新技巧应用到这个App中来，作为自己的小实验室。
+
 
 
 

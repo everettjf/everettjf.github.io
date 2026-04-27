@@ -1,78 +1,54 @@
 ---
 layout: post
-title: "vscode Extension for pubspec Dependencies"
+title: "vscode扩展pubspec依赖快速打开文档"
+categories:
+  - 扩展
 tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+  - vscode
 comments: true
 ---
 
 
-Recently preliminarily learned Flutter (https://flutter.dev/).
+最近初步学习了下 Flutter （https://flutter.dev/）。
 
 
-While learning some open source code discovered a small need: pubspec.yaml has many dependencies, beginners many unfamiliar, need to copy one by one to https://pub.dartlang.org/ to search and query documentation.
+在学习一些开源代码的过程中发现一个小小需求：pubspec.yaml 中有很多 dependencies ，初学者很多都不熟悉，需要逐个复制到 https://pub.dartlang.org/ 搜索查询文档。
 
 
-Thought can develop a vscode extension, add a button next to corresponding package name, I just need to click. (Ah, too lazy?)
+想来可以开发一个vscode插件，在对应的package name旁边加个按钮，我只需要 click 一下。（啊，是不是太懒了）
 
 <!-- more -->
 
 
-So today developed such a vscode extension:
+于是今天就开发了这样一个vscode extension：
 
 Pubspec Dependency Search
 
 ![](/media/15528243123320.jpg)
 
 
-After installing extension, when opening pubspec.yaml, extension will find dependencies and dev_dependencies, and add a line of text (link) above each dependency. For example: Search flutter in Dart Packages .
+安装扩展后，当打开 pubspec.yaml 时，扩展会查找 dependencies 和 dev_dependencies ，并在每个依赖上面加一行字（链接）。例如： Search flutter in Dart Packages 。
 
 ![](/media/15528243493141.jpg)
 
-After clicking can open Dart Packages to search.
+点击后就可以打开Dart Packages来查找。
 
 ![](/media/15528243710418.jpg)
 
 
-Installation address:
+安装地址：
 
 <https://marketplace.visualstudio.com/items?itemName=everettjf.pubspec-dependency-search>
 
-Source code:
+源码：
 
 <https://github.com/everettjf/vscode-pubspec-dependency-search>
 
 
-Principle:
+原理：
 
-1. Principle is simple, vscode extension parses dependencies in pubspec.yaml, then through CodeLensProvider tells vscode where to add links.
-2. Link is constructed URL: https://pub.dartlang.org/packages?q=flutter open with browser.
-
-
-
-
----
-
-
-
-
-Added some Flutter learning materials recently organized:
-
-
-
-1. Quickly familiarize Dart language https://www.dartlang.org/guides/language/language-tour 
-2. Quickly go through documentation https://flutter.dev/docs/development/ui/widgets-intro
-3. Cookbook examples go through once https://flutter.dev/docs/cookbook
-4. Flutter Practice https://book.flutterchina.club/
-
-
-
-Then start implementing your ideas～ Don't forget to install vscode extension Pubspec Dependency Search oh.
+1. 原理很简单，vscode扩展解析pubspec.yaml 中的 dependencies 后， 通过 CodeLensProvider 告诉vscode要加入链接的位置。
+2. 链接就是拼凑出 url ： https://pub.dartlang.org/packages?q=flutter 使用浏览器打开。
 
 
 
@@ -80,10 +56,27 @@ Then start implementing your ideas～ Don't forget to install vscode extension P
 
 
 
+补充几个最近整理的Flutter学习资料：
 
-Hmm, interesting :)
 
-Welcome to follow subscription account "Client Technology Review":
+
+1. 快速熟悉Dart语言 https://www.dartlang.org/guides/language/language-tour 
+2. 快速过一遍文档 https://flutter.dev/docs/development/ui/widgets-intro
+3. Cookbook例子操作一遍 https://flutter.dev/docs/cookbook
+4. Flutter实战 https://book.flutterchina.club/
+
+
+
+然后就开始上手实现你的想法吧～别忘了安装vscode扩展 Pubspec Dependency Search 哦。
+
+
+
+---
+
+
+嗯，有趣 :)
+
+欢迎关注订阅号「客户端技术评论」：
 ![](/images/fun.png)
 
 

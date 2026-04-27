@@ -1,20 +1,14 @@
 ---
 layout: post
-title: "Windows C++ Development Tools (5 Years)"
-tags:
-  - windows
-  - tools
-  - development
-  - tutorial
-  - C++
-
+title: "Windows平台C++5年来使用到的工具汇总"
+categories: Skill
 comments: true
 ---
 
 
 
-I've been doing C++ development on Windows for 5 years. As I'm about to switch to Android development, I'm organizing the tools I've used.
-Star indicates the tool is frequently used.
+Windows平台的C++开发工作已经5年时间，在即将转向Android开发之时，整理下曾经使用到的工具。
+Star表示此工具很常用。
 <!-- more -->
 
 - Tools
@@ -137,4 +131,5 @@ Star indicates the tool is frequently used.
   |      | WTL              |                       |
   |      | libtomcrypt      |                       |
   |      | mysql++          |                       |
+
 

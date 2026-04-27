@@ -1,24 +1,21 @@
 ---
 layout: post
-title: "Redis Usage"
-tags:
-  - redis
-  - database
-  - cache
-  - backend
-  - tutorial
-
+title: "redis使用方式总结"
+categories: Skill
 comments: true
 ---
 
 
 
-Notes from "Redis Getting Started Guide."
-*Note: Which type to use depends on the specific situation. The following is just one approach.*
 
-# Data Types
+
+
+《redis入门指南》笔记。
+*注意：使用何种类型取决于具体情境，以下仅是某一种方式。*
+
+# 数据类型
 1. string
-  String type (simplest key-value)
+  字符串类型（就是最简单的key-value）
 
 ~~~
   SET bar 1
@@ -27,7 +24,7 @@ Notes from "Redis Getting Started Guide."
 <!-- more -->
 
 2. hash
-  Hash type (key-field1-value1-field2-value2...)
+  散列类型(key-field1-value1-field2-value2...)
 
 ~~~
   HSET car price 500
@@ -36,11 +33,11 @@ Notes from "Redis Getting Started Guide."
 ~~~
 
 3. list
-  List type (key-value1-value2...)
+  列表类型(key-value1-value2...)
 
 ~~~
-  Linked list implementation. Fast access to data near both ends, but slower access to middle elements as the list grows.
-  More suitable for "news feed" or "logs" where middle elements are rarely accessed.
+  链表实现，靠近两端数据获取速度快，而元素增多后，访问中间数据速度较慢。
+  更适合“新鲜事”、“日志”这种访问中间元素较少的情况。
 
   LPUSH numbers 1 2 3
   RPUSH numbers 6 5 4
@@ -50,7 +47,7 @@ Notes from "Redis Getting Started Guide."
 ~~~
 
 4. set
-  Set type (key-member1-member2...)
+  集合类型(key-member1-member2...)
 
 ~~~
   SADD letters a b c
@@ -63,7 +60,7 @@ Notes from "Redis Getting Started Guide."
 ~~~
 
 5. zset
-  Sorted set type (key-score1-member1-score2-member2...)
+  有序集合类型(key-score1-member1-score2-memeber2...)
 
 ~~~
   ZADD scoreboard 89 Tom 68 Peter 100 David
@@ -72,8 +69,8 @@ Notes from "Redis Getting Started Guide."
   ZRANGE scoreboard 60 90 WITHSCORES
 ~~~
 
-# Blog System Implementation
-1. Blog name storage
+# 博客系统实现
+1. 博客名称存储
 
 ~~~
   key = blog.name
@@ -83,7 +80,7 @@ Notes from "Redis Getting Started Guide."
   GET blog.name
 ~~~
 
-2. Post auto-increment ID
+2. 文章自增ID
 
 ~~~
   key = posts:count
@@ -92,7 +89,7 @@ Notes from "Redis Getting Started Guide."
   $postID = INCR posts:count
 ~~~
 
-3. Post view count statistics
+3. 文章访问量统计
 
 ~~~
   key = post:$postID:page.view
@@ -101,7 +98,7 @@ Notes from "Redis Getting Started Guide."
   $pageViewCount = INCR post:10:page.view
 ~~~
 
-4. Post data (Method 1: Store data as JSON)
+4. 文章数据（方式一:数据存储为json）
 
 ~~~
   key = post:$postID:data
@@ -112,7 +109,7 @@ Notes from "Redis Getting Started Guide."
   GET post:10:data $jsonData
 ~~~
 
-5. Post data (Method 2: Hash)
+5. 文章数据（方式二：哈希）
 
 ~~~
   key = post:$postID
@@ -124,22 +121,22 @@ Notes from "Redis Getting Started Guide."
   HSET post:10 time Now()
 ~~~
 
-6. Post slug
+6. 文章缩略名
 
 ~~~
   key = slug.to.id
   type = hash
   e.g.
-  $isSlugAvailable = HSETNX slug.to.id $newSlug 10
+  $isSlugAvaliable = HSETNX slug.to.id $newSlug 10
 ~~~
 
-7. Store post IDs (Method 1: List)
+7. 存储文章ID（方式一：列表）
 
 ~~~
   key = posts:list
   type = list
   e.g.
-  Lists make pagination and post deletion convenient
+  列表可方便分页及删除文章
   LPUSH posts:list 10
   $postsIDs = LRANGE posts:list,$start,$end
   for each $id in $postsIDs
@@ -147,17 +144,17 @@ Notes from "Redis Getting Started Guide."
     $title = $post.title
 ~~~
 
-8. Store post IDs, sorted by time (Method 2: Sorted set)
+8. 存储文章ID，按时间排序（方式二：有序集合）
 
 ~~~
   key = posts:createtime
   type = zset
   e.g.
-  Sorted set stores post id and creation time (Unix time)
-  ZREVRANGEBYSCORE can also get posts within a time range
+  有序集合存储文章id与创建时间（unix时间）
+  ZREVRANGEBYSCORE 还可或许时间段内的文章
 ~~~
 
-9. Store comment list
+9. 存储评论列表
 
 ~~~
   key = post:$postID:comments
@@ -167,7 +164,7 @@ Notes from "Redis Getting Started Guide."
   LPUSH post:10:comments,$serializedComment
 ~~~
 
-10. Store logs
+10. 存储日志
 
 ~~~
   key = logs
@@ -176,10 +173,10 @@ Notes from "Redis Getting Started Guide."
   LPUSH logs $serializedLog
 ~~~
 
-11. Store tags
+11. 存储标签
 
 ~~~
-  All tags for a post are different, and there's no ordering requirement.
+  一个文章的所有标签都不同，且没有排列顺序要求。
   key = post:$postID:tags
   type = set
   e.g.
@@ -187,7 +184,7 @@ Notes from "Redis Getting Started Guide."
   $tags = SMEMBERS post:10:tags
 ~~~
 
-12. List all posts under one or more specified tags
+12. 列出指定一个或多个标签下所有文章
 
 ~~~
   key = tag:$tagName:posts
@@ -201,7 +198,7 @@ Notes from "Redis Getting Started Guide."
   $postsIDsBothWithTagJavaMysql = SINTER tag:java:posts tag:mysql:posts
 ~~~
 
-13. Sort by view count
+13. 按照点击量排序
 
 ~~~
   key = posts:view
@@ -213,3 +210,4 @@ Notes from "Redis Getting Started Guide."
   for each $id in $postsIDs
     $postData = HGETALL post:$id
 ~~~
+

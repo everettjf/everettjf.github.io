@@ -1,45 +1,42 @@
 ---
 layout: post
-title: iOS Debug Cheatsheet
-tags:
-  - iOS
-  - development
-  - mobile
-
+title: iOS调试速查表 (iOS Debug Cheatsheet)
+categories: Skill
 comments: true
 ---
 
 
 
-Too many commands to remember during reverse engineering, so organized this cheatsheet, sharing with everyone. I only finished reading the little yellow book "iOS Application Reverse Engineering", haven't deeply researched reverse engineering in these months. Recently wanted to reverse a few apps again to learn how they're implemented, found I forgot many commands. So organized this table. Copy and paste to happily learn other apps' implementations.
 
-Commands are all basic, simple, common, mainly because I only learned this much.
+逆向过程中命令太多记不住，就整理了这个速查表，分享给大家。我只是看完了小黄书《iOS应用逆向工程》，这几个月没有再深入研究逆向。最近又想逆向几个app学习下怎么实现，发现很多命令都忘记了。于是整理了这个表。copy and paste就可以愉快的学习其他app的实现了。
+
+命令都很基础、简单、常用，主要是我也只学了这么多哈。
 
 <!-- more -->
 
 
 ## common
 
-ssh passwordless:
+ssh免密码：
 
 ```
 ssh-copy-id -i /Users/everettjf/.ssh/id_rsa root@localhost -p 2222
 ```
 
-Find process:
+查找进程：
 
 ```
 ps aux | grep /App
 ps -e | grep /Applications
 ```
 
-Find file:
+查找文件：
 
 ```
 grep -r ToBeFind /System/Library/
 ```
 
-Split fat binary
+分离fat binary
 
 ```
 lipo -thin armv7 WeChat.decrypted -output WeChat_armv7.decrypted
@@ -57,32 +54,32 @@ class-dump -s -S -H --arch armv7 AlipayWallet.decrypted -o dumpAlipay
 
 ## lldb
 
-References
+参考
 
 - <https://github.com/iosre/iOSAppReverseEngineering>
 - <http://objccn.io/issue-19-2/>
 
-Help
+帮助
 
 ```
 help frame
 ```
 
-Print UI structure
+打印UI结构
 
 ```
 po [[[UIWindow keyWindow] rootViewController] _printHierarchy]    (iOS 8)
 po [[UIWindow keyWindow] recursiveDescription]
 ```
 
-Stack info
+栈信息
 
 ```
 bt (backtrace)
 bt all (all threads)
 ```
 
-objc_msgSend parameter printing
+objc_msgSend 参数打印
 
 ```
 po $r0
@@ -90,13 +87,13 @@ p (char*)$r1
 p (SEL)$r1
 ```
 
-Return address
+返回地址
 
 ```
 p/x $lr
 ```
 
-Breakpoint
+断点
 
 ```
 br s -a 0x0023234f
@@ -107,13 +104,13 @@ br s -a 0x02107730+0x000ab000 -c '(BOOL)[(NSString *)$r2 isEqualToString:@"snake
 b ptrace
 ```
 
-List modules
+列举模块
 
 ```
 image list -o -f
 ```
 
-lldb basic commands
+lldb基础命令
 
 ```
 c
@@ -126,20 +123,20 @@ thread return
 breakpoint command add 1
 ```
 
-Remote debugging
+远程调试
 
 ```
 debugserver *:1234 -a AlipayWallet
 debugserver -x backboard *:1234 /var/mobile/Containers/Bundle/Application/9DB7CE45-3B4C-42A3-9D4D-49A3A5122903/AlipayWallet.app/AlipayWallet
 ```
 
-lldb connect remote debugging
+lldb连接远程调试
 
 ```
 (lldb) process connect connect://192.168.199.164:1234
 ```
 
-lldb expr examples
+lldb expr例子
 
 ```
 (lldb) expr char *$str = (char *)malloc(8)
@@ -163,7 +160,7 @@ lldb expr examples
 
 ```
 
-Watchpoint
+观察点
 
 ```
 (lldb) watchpoint set expression -- (int *)$myView + 8
@@ -182,28 +179,28 @@ p (char*)$x1
 
 ## cycript
 
-Reference: <http://www.cycript.org/manual/>
+参考： <http://www.cycript.org/manual/>
 
-Start
+开始
 
 ```
 cycript -p BinaryName
 ```
 
-Print UI structure
+打印UI结构
 
 ```
 [[UIWindow keyWindow] recursiveDescription].toString()
 [[[UIWindow keyWindow] rootViewController] _printHierarchy].toString()
 ```
 
-Print sandbox Documents path
+打印沙盒Documents路径
 
 ```
 [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask]
 ```
 
-Basic usage
+基本使用
 
 ```
 cy# [#0xb226710 url]
@@ -233,7 +230,7 @@ AppSync
 
 ## Info.plist
 
-Output bundle id
+输出bundle id
 
 ```
 /var/mobile/Containers/Bundle/Application/9DB7CE45-3B4C-42A3-9D4D-49A3A5122903/AlipayWallet.app root# cat Info.plist | grep com.
@@ -245,7 +242,7 @@ Output bundle id
 
 <https://github.com/stefanesser/dumpdecrypted>
 
-Example
+例子
 
 ```
 scp -P 2222 Security/dumpdecrypted-master/dumpdecrypted.dylib root@localhost:/var/mobile/Containers/Data/Application/BA2644DB-450F-4DB0-A71F-A38F65488A48/Documents/
@@ -260,7 +257,7 @@ everettjfs-iPhone:/var/mobile/Containers/Data/Application/72AB36DD-2E9B-47C0-969
 
 <https://github.com/theos/theos>
 
-Start
+开始
 
 ```
 everettjf@e WeChatVoiceSaver (master)]$ ~/sec/theos/bin/nic.pl
@@ -268,7 +265,7 @@ everettjf@e WeChatVoiceSaver (master)]$ ~/sec/theos/bin/nic.pl
 
 ## chisel
 
-Reference: <https://github.com/facebook/chisel>
+参考：<https://github.com/facebook/chisel>
 
 
 ## usbmuxd
@@ -291,5 +288,6 @@ ssh root@localhost -p 2222
 
 ---
 
-PS: [Article first published on iosre.com](http://iosre.com/t/debug/3778)
+PS：[文章首次发布于iosre.com](http://iosre.com/t/debug/3778)
+
 

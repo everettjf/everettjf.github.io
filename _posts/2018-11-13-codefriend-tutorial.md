@@ -1,193 +1,191 @@
 ---
 layout: post
-title: "Xcode Extensions Using JavaScript"
+title: "Code Friend:使用JavaScript开发Xcode Extensions"
+categories:
+  - 工具
 tags:
-  - javascript
-  - runtime
-  - deno
-  - V8
-  - web
-
+  - XcodeExtension
+  - CodeFriend
 comments: true
 ---
 
 
-Code Friend is an Xcode Extension, provides JavaScript interface, users can based on this App simply and quickly develop Xcode plugin tools.
+Code Friend 是一款Xcode Extension，提供了JavaScript的接口，用户可基于这个App简单快捷开发出Xcode插件工具。
 
-Official address: <https://qvcodefriend.github.io/>
-Mac App Store address: <https://itunes.apple.com/cn/app/code-friend/id1441249580>
+官方地址：<https://qvcodefriend.github.io/>
+Mac App Store 地址：<https://itunes.apple.com/cn/app/code-friend/id1441249580>
 
 <!-- more -->
 
-# Background
+# 背景
 
-Starting from Xcode 8, Apple provided XcodeKit for developing Xcode Extensions. But because various bugs and interface too simple, never liked by developers. Until now Xcode 10, XcodeKit's provided functionality still limited.
+从Xcode 8开始，苹果提供了XcodeKit用于开发Xcode Extensions。但因为各种bug和接口太简单，一直不受开发者的喜爱。直到现在Xcode 10，XcodeKit提供的功能仍然有限。
 
-Even so, still many enthusiasts, developed various small features, for example: Awesome native Xcode extensions
+即便如此，仍然有很多爱好者，开发出各种各样的小功能，例如：Awesome native Xcode extensions
  <https://github.com/theswiftdev/awesome-xcode-extensions>
 
-Recently joined new company, have new requirements for code standards, so wanted to use scripts to find code that doesn't meet standards, finally thought of developing an Xcode Extension to check code standards. During development also felt if using pure Native development, each time if want to adjust or add standards, need to recompile, even resubmit for review, too troublesome.
+近期加入了新公司，对代码规范有了新的要求，于是想通过脚本来查找不符合规范的代码，最终想到了开发一个Xcode Extension来检查代码规范。开发中又觉得如果使用纯Native开发，每次如果要调整或增加规范，都要重新编译，甚至重新提交审核，太过麻烦。
 
-So had current Code Friend idea. Through JavaScriptCore encapsulate XcodeKit's provided functionality. Function logic uses JavaScript development.
+于是就有了现在Code Friend的想法。通过JavaScriptCore把XcodeKit的提供的功能封装起来。功能逻辑使用JavaScript开发。
 
-Below officially starts introducing Code Friend.
+下面就正式开始介绍Code Friend。
 
 
-# Basic Information
+# 基本信息
 
-Code Friend is a macOS App, built-in Xcode Source Editor Extension. Can search `Code Friend` in Mac App Store to install.
+Code Friend 是一个macOS App，内置了Xcode Source Editor 这个Extension。可以在 Mac App Store搜索 `Code Friend` 安装。
 
 ![](/media/15421232259243.jpg)
 
 
-# Usage
+# 使用方法
 
 
-## Enable
+## 启用
 
-Due to system's permission control for Extensions, need to enable Code Friend in `System Preferences -> Extensions -> Xcode Source Editor -> Code Friend Extension`.
+由于系统对Extensions的权限控制，需要在 `System Preferences -> Extensions -> Xcode Source Editor -> Code Friend Extension` 中启用 Code Friend。
 
 ![](/media/15421233842897.jpg)
 ![](/media/15421233931819.jpg)
 
 
-## Built-in Function Usage
+## 内置功能使用
 
-After Code Friend enabled, use Xcode to open any project, open menu Editor, bottom can see Code Friend.
+Code Friend 启用后，使用Xcode 打开任意工程，打开菜单 Editor ，最下方就可看到 Code Friend。
 
 ![](/media/15421237614957.jpg)
 
-For example select everettjf, click Convert to ASCII text (style1), can see next line of everettjf's line appears corresponding ASCII Text.
+例如选中 everettjf ，点击 Convert to ASCII text (style1)，即可看到everettjf所在行的下一行出现了对应的ASCII Text。
 
 ![](/media/15421238735777.jpg)
 
-Other menus similar. Sort lines can sort selected multiple lines. About opens official website.
+其他菜单类似啦。Sort lines 是可以对选中的多行排序。About就是打开官方网站。
 
-At this point, these are what an ordinary Xcode Extension can do.
+至此，这些都是一个普通的Xcode Extension可以做的。
 
-But, here each menu's functionality is implemented using JavaScript, interesting. Code can see <https://github.com/qvcodefriend/qvcodefriend.github.io/tree/master/packages/builtin>
+但是，这里每个菜单的功能都是使用JavaScript实现的，有意思咯。代码可以见 <https://github.com/qvcodefriend/qvcodefriend.github.io/tree/master/packages/builtin>
 
 
-## DLC Pack 1 Installation and Usage
+## DLC Pack 1 安装和使用
 
-Simply implementing a menu is simple, like providing some JSAPI to H5, but if implementing a mini-program platform, is more troublesome. In this aspect, Code Friend can say is a very simple mini platform.
+单纯实现一个菜单简单，就像给H5提供一些JSAPI一样，但如果实现一个小程序平台，就麻烦点了。这一点上，Code Friend 可以说是个很简单的小平台咯。
 
-DLC Pack 1 is a function expansion pack (I randomly named, similar to zelda's dlc ha).
+DLC Pack 1 是个功能扩展包（我随意起的名字，类似zelda的dlc哈）。
 
-Open Code Friend's macOS App.
+打开Code Friend 的macOS App。
 ![](/media/15421245151297.jpg)
 
 ![](/media/15421245028819.jpg)
 
-Click top left `AddPack`, then click top right `Try DLC Pack1`, at this time DLC Pack1's installation address (https://qvcodefriend.github.io/packages/dlc/) is filled in.
+点击左上角 `AddPack` ，再点击右上角的`Try DLC Pack1`，这时DLC Pack1的安装地址 (https://qvcodefriend.github.io/packages/dlc/) 就填入了。
 
 ![](/media/15421246133012.jpg)
 
-Click `Add`, will start downloading expansion pack, if smooth, will tell `All Succeed :)`.
+点击`Add`，则会开始下载扩展包，顺利的话，会告知`All Succeed :)`。
 
 ![](/media/15421247253435.jpg)
 
-Click `Close`.
+点击`Close`。
 
-At this time can see main interface has one more entry `Code Friend DLC Pack 1`, click, right side can display some configuration information. Currently for simplicity, directly displays this expansion pack's json configuration file. Can see which menus.
+此时可以看到主界面多出一个条目`Code Friend DLC Pack 1`，点击后，右侧可显示一些配置信息。目前为了简单，直接显示了这个扩展包的json配置文件。从中可以看到有哪几个菜单。
 
 ![](/media/15421248124141.jpg)
 
-Code Friend's desktop App can close.
+Code Friend 的桌面App可以关闭了。
 
-Xcode also needs to completely exit, reopen.
+Xcode 也需要彻底退出，重新打开。
 ![](/media/15421250191664.jpg)
 
 
-Open a project again, can see menus have new DLC Pack1 menus.
+再次打开一个工程，就能看到菜单中新增的DLC Pack1的菜单。
 
 ![](/media/15421251021711.jpg)
 
 
-At this point, usage methods are these.
+至此，使用方法就是这些啦。
 
-# Marketplace
+# 市场
 
-Similar to DLC Pack1 such expansion packs, anyone can develop (development method see below), just need to tell an installation address, can install into Code Friend.
+类似DLC Pack1这样的扩展包，任何人都可以开发（开发方法见下文），只需要告诉一个安装地址，就能安装到Code Friend中。
 
-Then need to organize an official expansion pack marketplace, website: <https://qvcodefriend.github.io/marketplace/> . Currently just a website, can install using Url in it.
+那么就有必要整理一个官方的扩展包市场，网址是：<https://qvcodefriend.github.io/marketplace/> 。目前只是个网址，使用其中的Url可以安装。
 
-Desktop App top right click can access.
+桌面App右上角点击即可访问。
 
 ![](/media/15421252843232.jpg)
 
-Currently only `Code Friend DLC Pack 1` this one expansion pack ha.
+目前只有`Code Friend DLC Pack 1`这一个扩展包哈。
 
-# Develop New Functions
+# 开发新的功能
 
-## Simple Say
+## 简单说
 
-Time to develop own expansion pack. Simple say has two steps:
+是时候开发自己的扩展包了。简单说有两个步骤：
 
-1. According to <https://qvcodefriend.github.io/develop/> format here call API to develop.
-2. Publish to a website Code Friend can access (for example GitHub Pages).
+1. 按照 <https://qvcodefriend.github.io/develop/> 这里的格式调用API开发。
+2. 发布到一个Code Friend可访问的网站（例如GitHub Pages）。
 
-Below uses GitHub Pages to quickly create an expansion pack. GitHub Pages introduction address <https://pages.github.com/>.
+下面就使用GitHub Pages快速创建一个扩展包。GitHub Pages介绍地址 <https://pages.github.com/>。
 
-## Three Steps
+## 三个步骤
 
-### 1) Step One, Create an Organization
+### 1）第一步，创建一个组织
 
-Click menu in figure below, or directly visit <https://github.com/organizations/new>
+点击下图菜单，或者直接访问 <https://github.com/organizations/new>
 
 ![](/media/15421258051352.jpg)
 
 ![](/media/15421258620115.jpg)
 
-For example I call `MyCodeFriendPackage`, if you create need use a different name.
+例如我这里叫`MyCodeFriendPackage`，你如果创建需要用个别的名字啦。
 
-### 2) Step Two, Create GitHub Pages
+### 2）第二步，创建GitHub Pages
 
-Visit <https://github.com/qvcodefriend/helloworld> click Fork, and select organization just created. As below (Emmmm... My created organizations a bit many...)
+访问 <https://github.com/qvcodefriend/helloworld> 点击Fork，并选择刚才创建的组织。如下图（Emmmm...我的创建的组织有点多...）
 
 ![](/media/15421261491607.jpg)
 
-After Fork completes, modify forked repository's name to: mycodefriendpackage.github.io . (Note here must be organization name's lowercase)
+Fork完成后，修改fork过来的仓库的名称为：mycodefriendpackage.github.io 。（注意这里必须是组织名称的小写）
 
 ![](/media/15421267537385.jpg)
 
-After renaming completes, continue in Settings page bottom, select `Choose a theme`.
+重命名完成后，继续在Settings页面下方，选择 `Choose a theme`。
 ![](/media/15421268178718.jpg)
 
 ![](/media/15421268398919.jpg)
 
-Any one is fine, click `Select theme`, at this time can see GitHub Pages section prompts <https://mycodefriendpackage.github.io/> can access.
+随便一个都可以，点击 `Select theme`，此时就可以看到GitHub Pages栏目下提示 <https://mycodefriendpackage.github.io/> 可以访问了。
 
 ![](/media/15421269121160.jpg)
 
 
 
-### Step Three, Implement Function
+### 第三步，实现功能
 
-At this time can clone repository <https://github.com/MyCodeFriendPackage/mycodefriendpackage.github.io>
+此时就可以clone下仓库 <https://github.com/MyCodeFriendPackage/mycodefriendpackage.github.io>
 
 ```
 git clone git@github.com:MyCodeFriendPackage/mycodefriendpackage.github.io.git
 ```
 
-Open folder, can see helloworld folder
+打开文件夹，可以看到helloworld文件夹
 
 ![](/media/15421276137672.jpg)
 
-Among them helloworld/manifest.json format:
+其中helloworld/manifest.json 格式如下：
 
 ![](/media/15421275002360.jpg)
 
-- name expansion pack name, displayed in Code Friend desktop client list's name
-- version version
-- author author
-- website official website
-- description function description
-- menu supported menu items
+- name 扩展包名称，显示在Code Friend桌面客户端列表中的名称
+- version 版本
+- author 作者
+- website 官方网站
+- description 功能描述
+- menu 支持的菜单项
 
-All simple, see know how to modify. Among them menu's id is folder (for example menu id in figure above is hello corresponds to a hello folder).
+都很简单，一看就知道怎么修改。其中menu的id是文件夹（例如上图的menu id是hello对应一个hello文件夹）。
 
-hello folder must have an entry.js, inside entry variable's array, defines all JavaScript files needed for current menu function implementation, Code Friend when loading will execute in order.
+hello文件夹中必须有一个 entry.js，内部entry变量的数组，定义了当前菜单功能实现所需的所有JavaScript文件，Code Friend在加载时会按顺序执行。
 
 ```
 var entry = [
@@ -195,7 +193,7 @@ var entry = [
 ];
 ```
 
-main.js must have an onMenuClicked function, return value must be a dictionary containing result.
+main.js 必须有一个onMenuClicked的function，返回值必须是一个包含result的字典。
 
 ```
 var onMenuClicked = function(identifier){
@@ -209,9 +207,9 @@ var onMenuClicked = function(identifier){
 
 ```
 
-At most important step. Call API to implement function.
+到了最重要的一步啦。调用API实现功能。
 
-API provides `invocation` and `system` two global variables, simply list below. Details see documentation <https://qvcodefriend.github.io/develop/>
+API提供了 `invocation` 和 `system` 两个全局变量，简单罗列如下。详细见文档 <https://qvcodefriend.github.io/develop/>
 
 ```
 # invocation
@@ -241,32 +239,32 @@ API provides `invocation` and `system` two global variables, simply list below. 
 2) system.openURL(String)
 ```
 
-For example helloworld above's ```invocation.appendLines(['Hello World']);``` is add new line at current document's end, content is `Hello World`.
+例如上面helloworld中的```invocation.appendLines(['Hello World']);``` 就是在当前文档的最后增加新的一行，内容是`Hello World`。
 
 
-### Step Four, Complete
+### 第四步，完成
 
-After above completes, helloworld expansion pack's address is <https://mycodefriendpackage.github.io/helloworld/>, can add in desktop client.
+上面完成后，helloworld扩展包的地址就是 <https://mycodefriendpackage.github.io/helloworld/>，在桌面客户端就可以添加啦。
 ![](/media/15421282993106.jpg)
 
-Menu name `Hello world` also appears, after clicking can append `Hello World` line.
+菜单名称`Hello world`也出现了，点击后可以追加`Hello World`行啦。
 
 ![](/media/15421283452058.jpg)
 
 
 
-# Reference Expansion Pack Source Code
+# 参考扩展包源码
 
-Code Friend built-in ASCII Text, Sort lines, and DLC Pack 1 all implemented using JavaScript.
-Code addresses:
+Code Friend 内置的 ASCII Text、Sort lines，以及 DLC Pack 1 都是使用JavaScript实现的。
+代码地址如下：
 <https://github.com/qvcodefriend/qvcodefriend.github.io/tree/master/packages>
 
 
-# Future
+# 未来
 
-Code Friend currently is just an MVP version, future will continuously improve with usage. Also, currently XcodeKit's provided functionality still limited, can only operate current file's content. Believe Apple future will open more functionality, at that time Code Friend's flexibility can be reflected.
+Code Friend 目前只是一个MVP版本，未来会随着使用不断完善。另外，目前XcodeKit提供的功能还很有限，只能操作当前文件的内容。相信苹果未来会开放更多功能，届时Code Friend的灵活性就能体现出来。
 
-# Summary
+# 总结
 
-From idea to implementation, really not an easy process.
+从想法到实现，真是一个不容易的过程。
 

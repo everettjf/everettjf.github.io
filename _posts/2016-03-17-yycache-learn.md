@@ -1,15 +1,12 @@
 ---
 layout: post
-title: YYCache Notes
-tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+title: YYCache note
+categories: Skill
 comments: true
 ---
+
+
+
 
 
 
@@ -19,15 +16,15 @@ comments: true
  - Repo : <https://github.com/ibireme/YYCache>
  - Revision : f433c3455121bd0308cd6f551613c7ec629e937a
  - Description : 
-A cache library with good performance on both memory and disk.
+在内存与磁盘上性能都不错的缓存库。
 
-This is the author's design thinking introduction: <http://blog.ibireme.com/2015/10/26/yycache/>
+这是作者的设计思路介绍：<http://blog.ibireme.com/2015/10/26/yycache/>
 
 <!-- more -->
 
 
 # Global Note
-The author's growth experience is worth learning from, improved very quickly in over a year of iOS development.
+作者的成长经历值得我们学习，在一年多的iOS开发中提高的很快。
 
 # File Notes
 
@@ -56,9 +53,9 @@ The author's growth experience is worth learning from, improved very quickly in 
 ```
 
 
-  - YYMemoryCache is memory cache. 
- - Keys are retained, not copied.
- - Uses LRU (Least Recently Used) algorithm. 
+  - YYMemoryCache 是内存缓存。 
+ - Key是retained，而不是copied。
+ - 使用了LRU（最近最少使用）算法。 
 
 
 ## 1. YYMemoryCache.m
@@ -72,7 +69,7 @@ The author's growth experience is worth learning from, improved very quickly in 
 ```
 
 
-QuartzCore framework needs research.
+QuartzCore 这个框架需要研究下。
 #TODO#
 
 
@@ -87,7 +84,7 @@ QuartzCore framework needs research.
 ```
 
 
-Can check if a header file is included this way.
+可以这么判断是否包含了某个头文件。
 
 
 ## 3. YYMemoryCache.m
@@ -114,11 +111,11 @@ Can check if a header file is included this way.
 ```
 
 
-Doubly linked list node.
-cost and time (last access time).
-_prev and _next are __unsafe_unretained, retained by outer CFMutableDictionaryRef.
+双向链表的节点。
+cost以及time（最后使用时间）。
+_prev 和 _next 是__unsafe_unretained 修饰，被外层的 CFMutableDictionaryRef retained。
 
-@package modifier, accessible within framework, not accessible outside framework.
+@package 修饰符，在framework内部可访问，framework外部不可访问。
 
 
 ## 4. YYMemoryCache.m
@@ -141,7 +138,7 @@ _prev and _next are __unsafe_unretained, retained by outer CFMutableDictionaryRe
 ```
 
 
-Doubly linked list definition. Head, tail. dic used to store elements, also retains elements.
+双向链表 定义。头、尾。dic用于存储元素，同时retain元素。
 
 
 ## 5. YYMemoryCache.m
@@ -155,7 +152,7 @@ Doubly linked list definition. Head, tail. dic used to store elements, also reta
 ```
 
 
-CFMutableDictionaryRef usage mark.
+CFMutableDictionaryRef 用法mark。
 
 
 ## 6. YYMemoryCache.m
@@ -222,7 +219,7 @@ CFMutableDictionaryRef usage mark.
 ```
 
 
-Basic operations of doubly linked list. Haven't looked at algorithms for a long time. Posting it.
+双向链表的基本操作。好久不看算法了。贴着吧。
 
 
 ## 7. YYMemoryCache.m
@@ -244,7 +241,7 @@ Basic operations of doubly linked list. Haven't looked at algorithms for a long 
 ```
 
 
-Simple timer.
+简单的定时器。
 
 
 ## 8. YYMemoryCache.m
@@ -268,7 +265,7 @@ Simple timer.
 ```
 
 
-Old version used OSSpinLock here, now changed to pthread_mutex_lock. Reason see author's article, 
+这里老版本使用了OSSpinLock，现在已经更换为pthread_mutex_lock，原因见作者的文章， 
 <http://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/>
 
 
@@ -297,7 +294,7 @@ Old version used OSSpinLock here, now changed to pthread_mutex_lock. Reason see 
 ```
 
 
-Here trylock, when cannot acquire lock, usleep.
+这里trylock，无法获得锁时，usleep。
 
 
 ## 10. YYMemoryCache.m
@@ -312,7 +309,7 @@ Here trylock, when cannot acquire lock, usleep.
 ```
 
 
-Listen for entering background or memory warning
+监听进入后台或者内存警告
 
 
 ## 11. YYMemoryCache.m
@@ -336,9 +333,9 @@ Listen for entering background or memory warning
 ```
 
 
-Note the lock. And set the latest access time for accessed element. And put this element at the head of the doubly linked list. Time complexity here is all constant.
+注意锁。并把设置访问元素的最新访问时间。并把此元素放到双向链表的头部。这里时间复杂度都是常数。
 
-Learned a function to get time CACurrentMediaTime().
+学到了获取时间的一个函数 CACurrentMediaTime()。
 
 
 ## 12. YYMemoryCache.m
@@ -352,7 +349,7 @@ Learned a function to get time CACurrentMediaTime().
 ```
 
 
-pthread_main_np checks main thread. Returns non-zero if main thread.
+pthread_main_np 判断主线程。返回非零，则为主线程。
 
 
 ## 13. YYMemoryCache.m
@@ -374,7 +371,7 @@ pthread_main_np checks main thread. Returns non-zero if main thread.
 
     pthread_mutex_init(&_lock, NULL);
     pthread_mutex_destroy(&_lock);
-pthread mutex basic usage.
+pthread mutex 基本使用方法。
 
 
 ## 14. YYMemoryCache.m
@@ -388,7 +385,7 @@ pthread mutex basic usage.
 ```
 
 
-Use trylock to avoid blocking
+使用trylock避免阻塞
 
 
 ## 15. YYMemoryCache.m
@@ -403,7 +400,7 @@ Use trylock to avoid blocking
 ```
 
 
-Listen for app entering background, and system memory shortage.
+监听程序进入后台，以及系统内存不足。
 
 
 ## 16. YYMemoryCache.m
@@ -417,7 +414,7 @@ static inline dispatch_queue_t YYMemoryCacheGetReleaseQueue() {
 ```
 
 
-static inline within file, inline
+static inline 文件内，内联
 
 
 ## 17. YYDiskCache.h
@@ -440,7 +437,7 @@ static inline within file, inline
 ```
 
 
-YYDiskCache will check this threshold, below 20k will be stored in sqlite, otherwise stored as files.
+YYDiskCache 会判断这个阈值，20k以下会存放在sqlite中，否则以文件方式存储。
 
 
 
@@ -456,7 +453,7 @@ YYDiskCache will check this threshold, below 20k will be stored in sqlite, other
 ```
 
 
-Declare unavailable methods
+声明不可用方法
 
 
 ## 19. YYDiskCache.m
@@ -471,7 +468,7 @@ Declare unavailable methods
 ```
 
 
-Semaphore
+信号量
 
 
 ## 20. YYDiskCache.m
@@ -499,7 +496,7 @@ default is **weak**
 
 The NSMapTable class is a mutable collection modeled after NSDictionary, with the following differences:
 Overview
-The major option is to have keys and/or values held "weakly" in a manner that entries are removed when one of the objects is reclaimed.
+The major option is to have keys and/or values held “weakly” in a manner that entries are removed when one of the objects is reclaimed.
 Its keys or values may be copied on input or may use pointer identity for equality and hashing.
 It can contain arbitrary pointers (its contents are not constrained to being objects).
 You can configure an NSMapTable instance to operate on arbitrary pointers and not just objects, although typically you are encouraged to use the C function API for void * pointers. (See Managing Map Tables for more information) The object-based API (such as setObject:forKey:) will not work for non-object pointers without type-casting.
@@ -524,8 +521,8 @@ You can configure an NSMapTable instance to operate on arbitrary pointers and no
 ```
 
 
-First weak then strong.
-Can directly override outer self inside, convenient to use.
+先weak 再strong。
+内部可以直接覆盖外部的self，用起来方便。
 
 
 ## 22. YYDiskCache.m
@@ -539,7 +536,7 @@ Can directly override outer self inside, convenient to use.
 ```
 
 
-Actively throw exception
+主动抛出异常
 
 
 ## 23. YYKVStorage.m
@@ -557,7 +554,7 @@ static NSString *const kTrashDirectoryName = @"trash";
 ```
 
 
-Don't know about shm and wal. (Looks like I've only used sqlite before, but haven't studied it carefully)
+不知道shm 和 wal 啊。（看来以前一直只是用sqlite，但是没有仔细研究啊）
 
 
 ## 24. YYKVStorage.m
@@ -586,9 +583,9 @@ Don't know about shm and wal. (Looks like I've only used sqlite before, but have
 
  create index if not exists last_access_time_idx on manifest(last_access_time); 
 
-Create index (did C++ for 5 years never used this)
+创建索引（做了5年C++没用过这个呀）
 
-primary key(key) can specify sqlite type this way later
+primary key(key) 可以这样后续指定sqlite类型
 
 
 ## 25. YYKVStorage.m
@@ -613,12 +610,12 @@ primary key(key) can specify sqlite type this way later
 
 ``` c
         CFDictionaryKeyCallBacks keyCallbacks = kCFCopyStringDictionaryKeyCallBacks;
-        CFDictionaryValueCallBacks valueCallBacks = {0};
-        _dbStmtCache = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &keyCallbacks, &valueCallBacks);
+        CFDictionaryValueCallBacks valueCallbacks = {0};
+        _dbStmtCache = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &keyCallbacks, &valueCallbacks);
 ```
 
 
-CFDictionaryCreateMutable usage. Core Foundation usage.
+CFDictionaryCreateMutable 的使用。Core Foundation 的使用。
 
 
 ## 27. YYKVStorage.m
@@ -640,7 +637,7 @@ CFDictionaryCreateMutable usage. Core Foundation usage.
 ```
 
 
-When busy and locked, finalize all statements
+busy 和 locked 时，结束所有的statement
 
 
 ## 28. YYKVStorage.m
@@ -686,7 +683,7 @@ wal checkpoint
 ```
 
 
-sqlite3_stmt cached by sql
+sqlite3_stmt 根据sql缓存起来
 
 
 ## 30. YYKVStorage.m
@@ -725,7 +722,7 @@ sqlite3_stmt cached by sql
 
 
 (?1, ?2, ?3, ?4, ?5, ?6, ?7) 
-Question mark can have numbers after it...
+问号后面可以有数字……
 
 
 ## 31. YYKVStorage.m
@@ -739,7 +736,7 @@ Question mark can have numbers after it...
 ```
 
 
-Update single access time
+更新单个访问时间
 
 
 ## 32. YYKVStorage.m
@@ -753,7 +750,7 @@ Update single access time
 ```
 
 
-Update multiple keys' access time
+更新多个key的访问时间
 
 
 ## 33. YYKVStorage.m
@@ -770,7 +767,7 @@ Update multiple keys' access time
 ```
 
 
-Generate uuid
+生成uuid
 
 
 ## 34. YYKVStorage.m
@@ -796,7 +793,7 @@ Generate uuid
 ```
 
 
-Here creates a new FileManager. Here doesn't set delegate or anything. ?? Why create a new FileManager?
+这里新建了FileManager。这里并没有设置代理之类的。?? 为何还要生成一个新的FileManager呢。
 
 
 ## 35. YYKVStorage.m
@@ -839,11 +836,11 @@ Here creates a new FileManager. Here doesn't set delegate or anything. ?? Why cr
 ```
 
 
- - First get total size
- - Each time get 16 least frequently accessed data
- - Delete one by one (file or database record), check if remaining size meets target size
+ - 先获取总大小
+ - 每次获取16个不经常访问的数据
+ - 逐个删除（文件或数据库记录），看剩余大小是否满足目标大小
 
-PS : Desc here is a bug. Should be Asc. See: <https://github.com/ibireme/YYCache/issues/37>
+PS : 这里 Desc 是个bug。 应该是Asc 。见：<https://github.com/ibireme/YYCache/issues/37>
 
 
 
@@ -854,4 +851,5 @@ PS : Desc here is a bug. Should be Asc. See: <https://github.com/ibireme/YYCache
 
 ---
 *Generated by [XSourceNote](https://github.com/everettjf/XSourceNote) at 2016-03-27 18:18:04 +0000*
+
 

@@ -1,39 +1,33 @@
 ---
 layout: post
-title: Apple Developer Login Error Resolution
-tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+title: Apple Developer 登录错误，400电话解决
+categories: Skill
 comments: true
 ---
 
 
 
-Recently found that my Apple Developer account couldn't log in at <https://developer.apple.com>.
+前段时间发现自己的Apple Developer账号不能在 <https://developer.apple.com> 登录了。
 
-Logging in always shows this image:
+只要登录就提示下图：
 
 ![apple1](https://everettjf.github.io/stuff/image/apple1.png)
 
 
-Later, initially thought it was a company network issue, then tried at home, on colleague's computer, Chrome, Safari, still didn't work.
+后来，开始以为公司网络问题，后来在家，在同事电脑，Chrome, Safari 都试了还不行。
 
-Found online that someone encountered a similar issue, called Apple support and resolved it.
+网上找到有人遇到类似问题，打苹果客服解决了。
 
-So found the phone number,
+于是找到电话，
 
 ![apple1](https://everettjf.github.io/stuff/image/apple2.png)
 
-Called 4006 701 855, Mandarin service, waited a few minutes, and it was resolved.
+打了 4006 701 855 ，普通话服务，等了几个两三分钟，就解决了。
 
-Finally, asked if I had any other questions, I said "Can I know the reason?", they said "Cannot tell you."
+最后，问我还有什么问题，我说“能知道原因吗？”，对面说“不能告诉您”。
 
-I asked "Will using VPN normally have any impact?", they said "No impact."
+我问“平时使用VPN会有影响吗？”，对面说“没有影响”。
 
-Alright, resolved.
+好吧，解决了。
 
 <!-- more -->

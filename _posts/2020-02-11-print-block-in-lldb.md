@@ -1,40 +1,40 @@
 ---
 layout: post
-title: "Print Block Parameter Signatures in Objective-C Methods Using lldb"
-tags:
+title: "lldb快速打印Objective-C方法中block参数的签名"
+categories:
   - lldb
-  - debugging
-  - iOS
-  - breakpoint
-
+tags:
+  - zlldb
+  - block
+  - oc
 comments: true
 ---
 
 
-iOS reverse engineering often encounters parameters of block type, this article introduces an lldb script, can quickly print block parameter types in Objective-C methods.
+iOS逆向时经常会遇到参数为block类型，本文介绍一个lldb script，可快速打印出Objective-C方法中block参数的类型。
 
 
 <!-- more -->
 
-Header files from class-dump often contain method signatures like:
+class-dump出的头文件中经常包含如下方法签名：
 
 ```
 - (void)doSomethingWithCompletionHandler:(CDUnknownBlockType)arg1;
 ```
 
-CDUnknownBlockType is block type parameter. When we want to call this method, need to know this parameter type.
+CDUnknownBlockType 就是block类型的参数。当我们要调用这个方法，就需要知道这个参数类型。
 
-Searched online, found a good article, article explains method of using lldb commands to find parameter types. Link:
+网上搜了下，发现一篇好文章，文章讲解了使用lldb命令找到参数类型的方法。连接如下：
 
 http://www.swiftyper.com/2016/12/16/debuging-objective-c-blocks-in-lldb/
 
-But each time need to type lldb commands one by one, very troublesome. So searched and found an lldb script,
+但每次都需要lldb逐个命令的敲打，很是麻烦。于是又搜到一个lldb脚本，
 
 https://github.com/ddeville/block-lldb-script
 
-However old and unmaintained, doesn't really work.
+然而年久失修，不怎么能工作。
 
-Then try to fix this script!
+那就尝试修复这个脚本吧！
 
 ```
 -> debugging .
@@ -44,16 +44,16 @@ Then try to fix this script!
 -> fixed, yeah :)
 ```
 
-## Installation
+## 安装
 
-Install lldb script
+安装lldb script
 
 ```
 cd ~
 git clone git@github.com:everettjf/zlldb.git
 ```
 
-Then in `~/.lldbinit` file add line:
+然后在 `~/.lldbinit` 文件中添加下行内容：
 
 ```
 command script import ~/zlldb/main.py
@@ -61,9 +61,9 @@ command script import ~/zlldb/main.py
 
 ![](/media/15814330985851.jpg)
 
-## Usage
+## 使用
 
-For example we have block method below
+例如我们有如下block方法
 ```
 @interface Hello : NSObject
 @end
@@ -73,43 +73,43 @@ For example we have block method below
 @end
 ```
 
-Call as below:
+调用如下：
 
 ```
 [Hello say:@"world" callback:^(NSString *text, int x, NSString *y, double z, BOOL m) {
     }];
 ```
 
-Then we breakpoint at this call line:
+那么我们断点到这个调用行：
 
 ![](/media/15814334097519.jpg)
 
-If reverse engineering work, no code, can breakpoint at `objc_msgSend` line, as below:
+如果是逆向工作的话，没有代码，那可以断点到 `objc_msgSend`这行，如下：
 
 ![](/media/15814334651010.jpg)
 
 
-block is second parameter, then print `$arg4`
+block是第二个参数，那么打印出`$arg4`
 
 ![](/media/15814335220546.jpg)
 
-Then execute command `zblock 0x100588080` (block's address passed to zblock command), then block's parameters come out.
+然后执行命令 `zblock 0x100588080` （block的地址传给 zblock命令），然后block的参数就出来啦。
 
 ![](/media/15814336103069.jpg)
 
-According to each line's `type encoding` compare with Apple's documentation can know what block's parameters are.
+根据每一行的 `type encoding` 对照苹果的文档即可知道block的参数都有什么。
 
 https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
 
 
-## Code
+## 代码
 
 https://github.com/everettjf/zlldb
 
-Since Xcode11's built-in lldb script starts defaulting to Python3 version, facebook's chisel still has some support issues (might be solved now). zlldb is putting several commands I commonly use here, supports Python3 (that is latest Xcode). Besides zblock, also has several simple commands, everyone can reference README.
+由于Xcode11内置的lldb script开始默认Python3版本，facebook的chisel还有些支持问题（可能现在解决了）。zlldb就是把我自己常用的几个命令放到了这里，支持Python3（也就是最新版Xcode）。除了zblock外，还有几个简单的命令，大家可以参考README。
 
 
-## References
+## 参考
 
 - http://www.swiftyper.com/2016/12/16/debuging-objective-c-blocks-in-lldb/
 - https://maniacdev.com/2013/11/tutorial-an-in-depth-guide-to-objective-c-block-debugging
@@ -121,7 +121,7 @@ Since Xcode11's built-in lldb script starts defaulting to Python3 version, faceb
 Enjoy :)
 
 
-If everyone likes, follow subscription account to encourage:
+大家喜欢的话，就关注下订阅号，以示鼓励：
 
 ![](/images/fun.png)
 

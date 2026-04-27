@@ -1,111 +1,108 @@
 ---
 layout: post
-title: "LRU Cache (LRUCache) in MMKV"
+title: "MMKV中的简单LRU缓存(LRUCache)"
+categories:
+  - 性能优化
 tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+  - 基础知识
 comments: true
 ---
 
-LRU (Least recently used) is a cache update strategy, that is when cache count reaches maximum capacity, or some condition, remove least recently used elements. WeChat recently open-sourced a client Key-Value storage library MMKV <https://github.com/Tencent/MMKV> , which implements such a very streamlined LRU cache (LRUCache class).
+LRU（Least recently used）是一种缓存更新策略，即当缓存数目达到最大容量、或者某个条件时，移除掉最近最少使用的元素。微信前不久开源了一个客户端Key-Value存储库MMKV <https://github.com/Tencent/MMKV> ，其中实现了这样一个十分精简的LRU缓存（LRUCache类）。
 
 <!-- more -->
 
-# LRUCache Implementation Principle Introduction
+# LRUCache实现原理介绍
 
-1. Use linked list to record all elements (key and value).
-2. Use hash table to record key and linked list position, for quickly determining if element already contains.
-3. Add new element, add at linked list head.
-4. Access an element, then move to linked list head.
-5. If count exceeds maximum capacity, then delete linked list end.
+1. 使用链表记录所有元素（key和value）。
+2. 使用哈希表记录key和链表的位置，用于快速判断元素是否已经包含。
+3. 加入新元素，在链表的头部添加。
+4. 访问一个元素，则移动到链表的头部。
+5. 若数量超过最大容量，则删除链表的结尾。
 
-Below is code and comments.
+下面是代码及注释。
 
-# MMKV's Implementation
+# MMKV的实现
 
-Code posted here, believe reading once is easy to understand
+代码就贴这里，相信看一遍就很容易明白
 
 ```
-// Linked list
+// 链表
 #import <list>
-// Unordered map
+// 无序map
 #import <unordered_map>
 
-// key and value types
+// key和value类型
 template <typename Key_t, typename Value_t>
 class LRUCache {
-    // Maximum element count
+    // 最大元素个数
     size_t m_capacity;
-    // Linked list stores pairs
+    // 链表存储pair
     std::list<std::pair<Key_t, Value_t>> m_list;
-    // Record key and iterator pointing to linked list (iterator, similar to pointer)
+    // 记录key和指向链表的iterator（迭代器，类似指针）
     std::unordered_map<Key_t, typename decltype(m_list)::iterator> m_map;
 
 public:
     LRUCache(size_t capacity) : m_capacity(capacity) {}
 
-    // Current occupied size
+    // 当前占用的大小
     size_t size() const { return m_map.size(); }
 
-    // Maximum space
+    // 空间最大
     size_t capacity() const { return m_capacity; }
 
-    // Whether contains a key
+    // 是否包含某个key
     bool contains(const Key_t &key) const { return m_map.find(key) != m_map.end(); }
 
-    // Clear
+    // 清空
     void clear() {
         m_list.clear();
         m_map.clear();
     }
 
-    // Add
+    // 添加
     void insert(const Key_t &key, const Value_t &value) {
-        // Whether key already added
+        // 是否已经添加过key
         auto itr = m_map.find(key);
         if (itr != m_map.end()) {
-            // Added
-            // Then move this element to linked list start (iter->second move to begin)
+            // 添加过
+            // 则把这个元素移动到链表的最开始(iter->second移动到begin)
             m_list.splice(m_list.begin(), m_list, itr->second);
-            // Overwrite key's new value
+            // 覆盖key的新value
             itr->second->second = value;
         } else {
-            // Whether full
+            // 是否满了
             if (m_map.size() == m_capacity) {
-                // Full (exceeded set maximum space)
-                // Remove linked list's last item
-                // Follow last key remove map's item
+                // 满了（超过了设定的最大空间）
+                // 移除掉链表的最后一项
+                // 跟进最后一个key移除掉map中的项
                 m_map.erase(m_list.back().first);
-                // Remove linked list's last item
+                // 移除掉链表的最后一项
                 m_list.pop_back();
             }
             
-            // Not full
-            // Add at linked list start
+            // 没有满
+            // 链表最开始添加
             m_list.push_front(std::make_pair(key, value));
-            // Add to map
+            // 加入map
             m_map.insert(std::make_pair(key, m_list.begin()));
         }
     }
 
-    // Get
+    // 获取
     Value_t *get(const Key_t &key) {
-        // Search
+        // 查找
         auto itr = m_map.find(key);
         if (itr != m_map.end()) {
-            // Found
-            // Move found item to linked list start (iter->second stores iterator pointing to current item in linked list)
+            // 找到了
+            // 移动找到的项目到链表最开始(iter->second存储了指向当前项目在链表中的迭代器)
             m_list.splice(m_list.begin(), m_list, itr->second);
             return &itr->second->second;
         }
         return nullptr;
     }
     
-    // Iterate each item
+    // 遍历每一项
     void forEach(std::function<void(Key_t&,Value_t&)> callback){
         for(auto & item : m_list){
             callback(item.first,item.second);
@@ -114,9 +111,9 @@ public:
 };
 ```
 
-# Add Print Method
+# 增加打印方法
 
-Above added a helper method forEach to print all elements
+上面增加了一个打印所有元素的辅助方法forEach
 
 ```
     void forEach(std::function<void(Key_t&,Value_t&)> callback){
@@ -126,10 +123,10 @@ Above added a helper method forEach to print all elements
     }
 ```
 
-Pass in a lambda expression can print.
+传入一个lambda表达式就可以打印了。
 
 
-# Test Example
+# 测试例子
 
 
 ```
@@ -161,31 +158,32 @@ Pass in a lambda expression can print.
         });
 ```
 
-Output:
+输出如下：
 
 ![](/media/15380654341081.jpg)
 
 
 
 
-# Code
+# 代码
 
-- LRUCache code with some comments <https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/LRUCacheSample/LRUCacheSample/LRUCache.hpp> 
-- MMKV's LRUCache implementation <https://github.com/Tencent/MMKV/blob/master/iOS/MMKV/MMKV/LRUCache.hpp>
-- Test code here <https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/LRUCacheSample/LRUCacheSample/main.mm>
+- 加了点注释的LRUCache代码 <https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/LRUCacheSample/LRUCacheSample/LRUCache.hpp> 
+- MMKV中LRUCache的实现 <https://github.com/Tencent/MMKV/blob/master/iOS/MMKV/MMKV/LRUCache.hpp>
+- 测试代码在这里 <https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/LRUCacheSample/LRUCacheSample/main.mm>
 
-# Other Cache Strategies
+# 其他缓存策略
 
 <https://en.wikipedia.org/wiki/Cache_replacement_policies>
 
-# References
+# 参考
 
 <https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)>
 
 # LeetCode
 
-LeetCode has a similar problem <https://leetcode.com/problems/lru-cache/description/> can practice.
+LeetCode 中就有个类似的题目 <https://leetcode.com/problems/lru-cache/description/> 可以练习一下。
 
 
-Welcome to follow subscription account "Client Technology Review":
+欢迎关注订阅号「客户端技术评论」：
 ![happyhackingstudio](/images/fun.png)
+

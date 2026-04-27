@@ -1,13 +1,7 @@
 ---
 layout: post
-title: LLVM Clang Plugin Development
-tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+title: LLVM Clang 插件开发第一步
+categories: Skill
 comments: true
 ---
 
@@ -94,10 +88,10 @@ All came from :
 - <https://clang.llvm.org/docs/index.html>
 - <http://llvm.org/docs/index.html>
 
-# Complaints
+# 吐槽
 
-Official documentation has various pitfalls...
+官方文档各种坑...
 
-Should be because I'm too inexperienced...
+应该是我太菜...的原因...
 
 

@@ -1,13 +1,7 @@
 ---
 layout: post
-title: "macOS Starter Kit for Windows Programmers"
-tags:
-  - windows
-  - tools
-  - development
-  - tutorial
-  - C++
-
+title: "Windows程序猿的OSX入门笔记"
+categories: Skill
 comments: true
 ---
 
@@ -17,35 +11,35 @@ comments: true
 
 
 ### macbook pro
-Early October 2014, bought macbook pro and "MacTalk Life Meta Programming", from then a C++ programmer who moved bricks under Windows for 5 years accidentally stepped into OSX world.
+2014年10月初，买了macbook pro和《MacTalk人生元编程》，从此一位在Windows下搬了5年砖的C++程序猿不小心跨入了OSX的世界。
 
-### A Few Small Common Knowledge
-- Power button (button at top right of keyboard)
-- Finder (corresponds to Windows' File Explorer, is File Explorer's name)
-- Command (corresponds to Windows system's Windows key)
-- Option (corresponds to Windows' Alt key)
-- Trackpad gestures (click Apple at top left, System Preferences, Trackpad, animations here)
-- img file (Mac's installer, similar to Windows' portable software, similar to Windows' iso file)
-- Full screen and maximize (no maximize, only full screen. Or full screen and maximize similar)
-- Command-Tab switch between different programs
-- Control—Tab switch within same program
+### 几个小常识
+- 开机按钮（键盘最右上角的按钮）
+- Finder（对应Windows的资源管理器，就是资源管理器的名字）
+- Command（对应Windows系统的Windows键）
+- Option（对应Windows的Alt键）
+- 触摸板手势（点击左上角的苹果，系统偏好设置，触摸板，这里有动画演示）
+- img文件（mac的安装程序，类似Windows的绿色软件，类似Windows的iso文件）
+- 全屏与最大化（没有最大化，只有全屏。或者说全屏与最大化类似）
+- Command-Tab 不同程序间切换
+- Control—Tab同程序间切换
 <!-- more -->
 
-### Starting from an Article
+### 从一篇文章开始
 
-Article address: [Mac Development Setup Guide](http://aaaaaashu.gitbooks.io/mac-dev-setup/content/)
+文章地址：[Mac开发配置手册](http://aaaaaashu.gitbooks.io/mac-dev-setup/content/)
 
-[github address](https://github.com/Aaaaaashu/Mac-dev-setup)
+[github地址](https://github.com/Aaaaaashu/Mac-dev-setup)
 
-After reading, Mac is started.
+看完后，Mac就入门啦。
 
-### iTerm2's monokai Theme
+### iTerm2的monokai主题
 
-Quite like monokai theme, can find here.
+比较喜欢monokai主题，可以在这里面找到。
 [https://github.com/mbadolato/iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
 
 ~~~
-Open link below, download Raw, can import into iTerm2's Colors.
+打开下面的链接，下载Raw，就可以导入iTerm2的Colors里了。
 <https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/schemes/Monokai%20Soda.itermcolors>
 ~~~
 
@@ -56,7 +50,7 @@ cd ~
 vim .zshrc
 ~~~
 
-For example:
+例如：
 
 ~~~
 alias e="emacs"

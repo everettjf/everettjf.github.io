@@ -1,26 +1,25 @@
 ---
 layout: post
-title: "Startup Task Classification"
+title: "最简单的启动任务分类"
+categories:
+  - 性能优化
 tags:
-  - tutorial
-  - learning
-  - guide
-  - development
-  - tools
-
+  - 简单
 comments: true
 ---
 
-An "old" App, work to do during startup continuously accumulates, code in didFinishLaunchingWithOptions gets longer and longer, AppDelegate.m file's line count also increases. Then it's time to classify and store.
+一个“有年头”的App，启动中要做的工作不断的累加，didFinishLaunchingWithOptions中的代码越来越长，AppDelegate.m文件的行数也越来越多。那么是时候分类存放了。
 
 <!-- more -->
 
-Tasks during App startup can be simply divided into following 1. Tasks that must initialize earliest on main thread
-2. Tasks that can execute on child thread
-3. Main thread tasks that can execute in parallel with tasks in 2
-4. Tasks that can execute on child thread after home page displays
+App启动中的任务可以简单分为下面几类：
 
-Then can define four types of Tasks:
+1. 必须最早在主线程初始化的任务
+2. 可以子线程执行的任务
+3. 可以与2中的任务并行执行的主线程任务
+4. 可以在首页显示后子线程执行的任务
+
+那么可以定义四类Task：
 
 ```
 @interface TKKTaskList : NSObject
@@ -33,9 +32,9 @@ Then can define four types of Tasks:
 @end
 ```
 
-Each category contains multiple Task names. Each Task corresponds to a class.
+每个类别包含多个Task名称。每个Task对应一个类。
 
-Assume each Task class has a +run method.
+假设每个Task类都有一个+run方法。
 
 ```
 @interface Task : NSObject
@@ -48,14 +47,14 @@ Assume each Task class has a +run method.
 ```
 
 
-To execute these Tasks, create two serial queues.
+为了执行这堆Task，创建两个串型queue。
 
 ```
         _async_queue = dispatch_queue_create("com.everettjf.asynctask", DISPATCH_QUEUE_SERIAL);
         _async_queue_after_launch = dispatch_queue_create("com.everettjf.asynctaskafterlaunch", DISPATCH_QUEUE_SERIAL);
 ```
 
-Then call on corresponding queue.
+然后在对应的queue调用。
 
 ```
 
@@ -99,7 +98,7 @@ Then call on corresponding queue.
 
 ```
 
-For demo, can define a bunch of Tasks:
+为了演示，可以定义一堆Task：
 
 ```
 #define TaskDeclare(TaskName) \
@@ -137,23 +136,23 @@ TaskDeclare(TTRenderTask)
 ```
 
 
-Finally, using os_signpost (os_signpost can reference article https://everettjf.github.io/2018/08/13/os-signpost-tutorial/ ) can see:
+最后，使用os_signpost （os_signpost可以参考文章 https://everettjf.github.io/2018/08/13/os-signpost-tutorial/ ）可以看到：
 
 ![](/media/15350423765697.jpg)
 
 
-Example code see:
+示例代码见：
 
 <https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/TaskSample/TaskSample/Task/TKKTaskManager.m>
 
-Summary,
+总结，
 
-Through simple classification and reflection calls, can classify and store tasks in different files, easy to maintain, also easy to adjust task execution order.
+通过简单的分类和反射调用，可以把任务分类存放在不同的文件中，便于维护，也便于调整任务的先后执行顺序。
 
-This article is indeed simple beyond simple. A bit watery. Ha.
-
-
+这篇文章确实简单的不能再简单了。有点水。哈。
 
 
-Welcome to follow subscription account "Client Technology Review":
+
+欢迎关注订阅号「客户端技术评论」：
 ![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+
