@@ -56,11 +56,11 @@ post_class: post-template
 
         </footer>
 
-        {% if page.comments %}
+        {% unless page.comments == false %}
         <section class="comments">
             {% include disqus.html %}
         </section>
-        {% endif %}
+        {% endunless %}
 
     </article>
 
