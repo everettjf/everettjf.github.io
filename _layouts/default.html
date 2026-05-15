@@ -48,7 +48,6 @@
             <a class="logo-link{% if is_home %} is-home{% endif %}" href="{{ site.baseurl }}/" aria-label="Home">
                 <span>everettjf</span><span class="cursor">_</span>
             </a>
-            <a class="about-link" href="{{ site.baseurl }}/about">about</a>
         </nav>
     </div>
 
@@ -59,7 +58,13 @@
     <div class="readable-area">
         <footer class="site-footer">
             <div>
-                <p class="copyright">© {{ "now" | date: "%Y" }} {{ site.author }}</p>
+                <p class="copyright">
+                    © {{ "now" | date: "%Y" }} {{ site.author }}
+                    <span class="copyright-sep">·</span>
+                    <a class="copyright-link" href="{{ site.baseurl }}/about">About</a>
+                    <span class="copyright-sep">·</span>
+                    <a class="copyright-link" href="{{ site.baseurl }}/archive">Archive</a>
+                </p>
                 <ul class="social-links">
                     <li>
                         <a href="https://github.com/everettjf" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">

@@ -113,14 +113,6 @@ a {
   opacity: 0;
   pointer-events: none;
 }
-.site-nav .about-link {
-  margin-left: auto;
-  color: var(--color-secondary);
-  transition: color 0.2s;
-}
-.site-nav .about-link:hover {
-  color: var(--color-primary);
-}
 
 /* blinking cursor */
 .cursor {
@@ -435,6 +427,17 @@ main { display: block; }
   margin-bottom: 0.5rem;
   color: var(--color-secondary);
   font-size: 0.875rem;
+}
+.site-footer .copyright-sep {
+  margin: 0 0.25rem;
+  color: var(--color-tertiary);
+}
+.site-footer .copyright-link {
+  color: var(--color-secondary);
+  transition: color 0.2s;
+}
+.site-footer .copyright-link:hover {
+  color: var(--color-primary);
 }
 .site-footer .social-links {
   display: flex;
