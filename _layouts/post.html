@@ -1,67 +1,43 @@
 ---
 layout: default
 archive: false
-post_class: post-template
 ---
 
-<header class="main-header post-head {% if page.cover %}" style="background-image: url({{ page.cover }}) {%else%}no-cover{% endif %}">
-    <nav class="main-nav {% if page.cover %} overlay {% endif %} clearfix">
-        <a class="back-button icon-arrow-left" href="{{ site.baseurl }}/">Home</a>
-        <a class="subscribe-button icon-feed" href="{{ site.baseurl }}/feed.xml">Subscribe</a>
-    </nav>
-</header>
-
-<main class="content" role="main">
-
-    <article class="post">
-
-        <header class="post-header">
-            <h1 class="post-title">{{ page.title }}</h1>
-            <section class="post-meta">
-                <time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time>
+<main>
+    <article>
+        <header>
+            <h1 class="page-title">{{ page.title }}</h1>
+            <p class="page-subtitle">
+                <time datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%B %-d, %Y" }}</time>
                 {% if page.categories.size > 0 %}
-                    {{ page.categories | array_to_sentence_string | prepend: 'on ' }}
+                    &middot; {{ page.categories | array_to_sentence_string }}
                 {% endif %}
-            </section>
+            </p>
         </header>
 
-        <section class="post-content">
+        <section class="md-reader" style="margin-top: 4rem;">
             {% include toc.html html=content %}
-            {{content}}
+            {{ content }}
         </section>
 
         {% if page.archive %}
-        <section class="archive">
-            <h5>Archive</h5>
+        <section class="archive-list">
+            <h2>Archive</h2>
             <ul>
                 {% for post in site.posts %}
-                    <li><span>{{ post.date | date_to_string }}</span>  <a href="{{ post.url }}">{{ post.title }}</a></li>
+                <li>
+                    <a class="archive-title" href="{{ post.url }}">{{ post.title }}</a>
+                    <span class="archive-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                </li>
                 {% endfor %}
             </ul>
         </section>
         {% endif %}
-
-        <footer class="post-footer">
-            <!-- If we want to display author's name and bio -->
-            {% if site.author %}
-                <section class="author">
-                    <!-- Author Name -->
-                    <h4> <a href="{{site.baseurl}}/about/"> {{site.author }}</a> </h4>
-                    <!-- Author Bio -->
-                    <p>
-                        https://creativecommons.org/
-                    </p>
-                </section>
-            {% endif %}
-
-        </footer>
 
         {% unless page.comments == false %}
         <section class="comments">
             {% include disqus.html %}
         </section>
         {% endunless %}
-
     </article>
-
 </main>

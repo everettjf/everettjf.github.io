@@ -1,56 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     {% if page.title == 'Home' %}
     <title>{{ site.name }} - {{ site.description }}</title>
     {% else %}
-    <title>{{ page.title }} - {{ site.name }} - {{ site.description }}</title>
+    <title>{{ page.title }} - {{ site.name }}</title>
     {% endif %}
-    <meta name="description" content="{{ site.meta_description}}" />
+    <meta name="description" content="{{ site.meta_description }}" />
 
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="MobileOptimized" content="320" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
-    <!-- Customisation  -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("app_theme");
+          if (t !== "system" && t !== "light" && t !== "dark") t = "system";
+          document.documentElement.dataset.theme = t;
+        } catch (e) {
+          document.documentElement.dataset.theme = "system";
+        }
+      })();
+    </script>
 
-    <!-- Favicon settings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/main.css" />
+
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.baseurl }}/feed.xml" />
+
     <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/images/favicon-16x16.png">
     <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/images/favicon.ico">
     <link rel="manifest" href="{{ site.baseurl }}/images/site.webmanifest">
-
 </head>
-<body class="{% if page.post_class %}{{page.post_class}}{% else %}home-template{% endif %}">
+<body>
 
-    {{ content }}
-    <footer class="site-footer clearfix">
-      <section class="copyright">
-        <a href="{{ site.baseurl }}/">{{ site.author }}</a> &copy; 
-              {{"now" | date: "%Y"}} &bull; All rights reserved.
-      </section>
-      <section class="poweredby">Made with Jekyll using 
-        <a href="https://github.com/rosario/kasper" target="_blank">Kasper theme</a>
-      </section>
-    </footer>
-    
-    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <div class="readable-area">
+        {% assign is_home = false %}
+        {% if page.url == '/' or page.title == 'Home' %}{% assign is_home = true %}{% endif %}
+        <nav class="site-nav">
+            <a class="logo-link{% if is_home %} is-home{% endif %}" href="{{ site.baseurl }}/" aria-label="Home">
+                <span>everettjf</span><span class="cursor">_</span>
+            </a>
+            <a class="about-link" href="{{ site.baseurl }}/about">about</a>
+        </nav>
+    </div>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <div class="readable-area main-content">
+        {{ content }}
+    </div>
+
+    <div class="readable-area">
+        <footer class="site-footer">
+            <div>
+                <p class="copyright">© {{ "now" | date: "%Y" }} {{ site.author }}</p>
+                <ul class="social-links">
+                    <li>
+                        <a href="https://github.com/everettjf" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1.01.07 1.54 1.06 1.54 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.72 0 0 .84-.27 2.75 1.05A9.4 9.4 0 0 1 12 6.93c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.42.2 2.46.1 2.72.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.2 10.2 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://xnu.app" target="_blank" rel="noopener" aria-label="Product" title="Product">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:everettjf@live.com" aria-label="Email" title="Email">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ site.baseurl }}/feed.xml" aria-label="RSS" title="RSS">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.5" fill="currentColor" stroke="none"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="theme-switcher" role="group" aria-label="Theme">
+                <button type="button" data-theme-value="light" aria-label="Light">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+                </button>
+                <button type="button" data-theme-value="system" aria-label="System">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 20h8M12 17v3"/></svg>
+                </button>
+                <button type="button" data-theme-value="dark" aria-label="Dark">
+                    <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var buttons = document.querySelectorAll(".theme-switcher button[data-theme-value]");
+        function sync() {
+          var current = root.dataset.theme || "system";
+          buttons.forEach(function (b) {
+            b.classList.toggle("active", b.dataset.themeValue === current);
+          });
+        }
+        buttons.forEach(function (b) {
+          b.addEventListener("click", function () {
+            var v = b.dataset.themeValue;
+            root.dataset.theme = v;
+            try { localStorage.setItem("app_theme", v); } catch (e) {}
+            sync();
+          });
+        });
+        sync();
+      })();
+    </script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139398409-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'UA-139398409-1');
     </script>
 </body>
