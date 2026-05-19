@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "远程输入法发布啦，用电脑给手机打字"
+title: "远程输入法 RemoBoard 发布：用电脑键盘给手机打字"
 categories:
   - 产品
 tags:

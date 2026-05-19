@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "NSAssert与dispatch_once"
+title: "为什么 NSAssert 抛出的异常会在 dispatch_once 处中断"
 categories:
   - tips
 tags:

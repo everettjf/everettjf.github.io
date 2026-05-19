@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS时间获取方法"
+title: "iOS 平台获取当前时间的几种方法"
 categories:
   - guide
 tags:

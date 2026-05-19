@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "lldb快速打印Objective-C方法中block参数的签名"
+title: "LLDB 快速打印 Objective-C 方法中 Block 参数的签名"
 categories:
   - lldb
 tags:

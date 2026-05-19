@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "年底了，开源3个小应用"
+title: "年底了，开源 3 个小应用"
 categories:
   - 开源
 tags:

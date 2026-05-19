@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "USB Keyboard 通过macOS给iOS打字的输入法应用"
+title: "QVKeyboard 发布：通过 macOS 用键盘给 iOS 打字的输入法"
 categories:
   - 产品
 tags:

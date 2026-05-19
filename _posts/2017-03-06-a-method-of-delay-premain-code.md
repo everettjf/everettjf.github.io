@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "一种延迟 premain code 的方法"
+title: "一种延迟 premain 阶段代码执行的方法"
 categories:
   - Skill
 tags:

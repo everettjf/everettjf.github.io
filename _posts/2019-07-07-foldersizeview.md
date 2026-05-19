@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "FolderSizeView 更好用一点的TreeMap展示文件夹内容的工具"
+title: "FolderSizeView：用 TreeMap 直观展示文件夹空间占用的工具"
 categories:
   - 工具
 tags:

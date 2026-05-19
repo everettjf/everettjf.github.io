@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "线程标识获取方法"
+title: "iOS 线程标识的四种获取方法对比"
 categories:
   - 性能优化
 tags:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  € euro sign 在编码 cp936 和 gb18030 下的坑
+title:  "欧元符号 € 在 CP936 与 GB18030 编码下的兼容性踩坑"
 categories: Skill
 comments: true
 ---

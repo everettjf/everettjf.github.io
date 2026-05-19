@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "一种 hook objective c +load 的方法"
+title: "一种 Hook Objective-C +load 方法的实现"
 categories:
   - Skill
 tags:

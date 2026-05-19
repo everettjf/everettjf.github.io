@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "emacs新手遇到的坑，以及笔记"
+title: "Emacs 新手入门笔记与踩坑记录"
 categories: Skill
 comments: true
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "生成CocoaPods的依赖图"
+title: "为 CocoaPods 工程生成 Framework 依赖关系图"
 categories:
   - Skill
 tags:

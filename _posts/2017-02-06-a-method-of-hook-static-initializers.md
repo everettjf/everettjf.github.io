@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "一种 hook C++ static initializers 的方法"
+title: "一种 Hook C++ Static Initializers 的实现"
 categories:
   - Skill
 tags:

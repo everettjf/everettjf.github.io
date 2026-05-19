@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[WIP]Practical Modern C++"
+title: "现代 C++ 实用笔记 [WIP]"
 categories:
   - Book
 tags:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "使用AppleTrace探索SpringBoard"
+title: "使用 AppleTrace 探索 SpringBoard"
 categories:
   - 工具
 tags:

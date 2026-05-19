@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "重定向标准输出"
+title: "将 iOS 标准输出重定向到 UITextView"
 categories:
   - stdout
 tags:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "谁是App版本帝"
+title: "「App 版本帝」：查询 App 历史版本的小应用"
 categories:
   - 工具
 tags:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "vim emacs 常用快捷键对比"
+title: "Vim 与 Emacs 常用快捷键对比"
 categories: Skill
 comments: true
 ---

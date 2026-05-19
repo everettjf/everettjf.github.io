@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "函数中的C++静态变量是线程安全吗？"
+title: "函数中的 C++ 静态变量初始化是线程安全的吗？"
 categories:
   - cpp
 tags:

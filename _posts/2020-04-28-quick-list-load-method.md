@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "如何快速列出App的所有+load方法"
+title: "如何快速列出 App 的所有 +load 方法"
 categories:
   - lldb
 tags:

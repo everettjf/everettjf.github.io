@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 企业证书签名的App启动慢（停在暗色图标N秒）
+title: "企业证书签名的 App 启动慢（停在暗色图标 N 秒）"
 categories: Skill
 comments: true
 ---

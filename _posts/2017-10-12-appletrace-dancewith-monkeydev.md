@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AppleTrace 搭配 MonkeyDev Trace任意App"
+title: "AppleTrace 搭配 MonkeyDev Trace 任意 App"
 categories:
   - Tool
 tags:

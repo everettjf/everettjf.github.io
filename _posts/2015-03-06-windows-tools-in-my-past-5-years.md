@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Windows平台C++5年来使用到的工具汇总"
+title: "过去 5 年我在 Windows C++ 开发中常用的工具汇总"
 categories: Skill
 comments: true
 ---

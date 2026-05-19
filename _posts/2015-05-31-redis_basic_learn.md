@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "redis使用方式总结"
+title: "Redis 基础使用方式总结"
 categories: Skill
 comments: true
 ---

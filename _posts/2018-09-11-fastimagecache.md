@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "FastImageCache 原理"
+title: "FastImageCache 实现原理解析"
 categories:
   - 性能优化
 tags:

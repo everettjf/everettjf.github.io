@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Azeria Labs Challenges Stack1-5"
+title: "Azeria Labs ARM 漏洞利用挑战 Stack1-5 解题思路"
 categories:
   - CTF
 tags:

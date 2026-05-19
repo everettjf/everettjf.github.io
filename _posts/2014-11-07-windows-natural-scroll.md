@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Windows下实现鼠标滚轮的自然滚动"
+title: "Windows 下实现鼠标滚轮的自然滚动"
 comments: true
 categories: Skill
 ---

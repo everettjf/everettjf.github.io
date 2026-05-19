@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "最简单的启动任务分类"
+title: "iOS 应用启动任务分类与调度的最简模型"
 categories:
   - 性能优化
 tags:

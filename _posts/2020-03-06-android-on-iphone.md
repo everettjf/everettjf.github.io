@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "体验了下iPhone运行Android"
+title: "在 iPhone 上运行 Android 系统的体验"
 categories:
   - 尝鲜
 tags:

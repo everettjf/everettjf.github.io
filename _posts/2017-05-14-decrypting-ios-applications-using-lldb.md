@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 使用 lldb 手动解密 iOS AppStore App
+title: "使用 LLDB 手动解密 iOS AppStore 应用"
 categories: Skill
 comments: true
 ---

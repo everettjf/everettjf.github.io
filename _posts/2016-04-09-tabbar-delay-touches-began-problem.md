@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TabBar位置的二级页面touchesBegan被延迟调用
+title: "TabBar 区域内二级页面 touchesBegan 被延迟调用问题分析"
 categories: Skill
 comments: true
 ---

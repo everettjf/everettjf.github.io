@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS应用启动性能优化(1)-premain"
+title: "iOS 应用启动性能优化（一）：premain 阶段"
 categories:
   - 性能优化
 tags:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "启动速度优化之MachO二进制文件重排"
+title: "iOS 启动速度优化：Mach-O 二进制文件重排"
 categories:
   - 优化
 tags:

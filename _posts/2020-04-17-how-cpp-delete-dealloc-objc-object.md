@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "C++类中的ObjC对象什么时候dealloc"
+title: "C++ 类中持有的 Objective-C 对象何时 dealloc"
 categories:
   - 探索
 tags:

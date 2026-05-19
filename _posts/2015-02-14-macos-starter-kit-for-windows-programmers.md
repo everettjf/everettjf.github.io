@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Windows程序猿的OSX入门笔记"
+title: "Windows 程序猿的 OSX 入门笔记"
 categories: Skill
 comments: true
 ---

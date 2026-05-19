@@ -1,6 +1,6 @@
 ---
 layout: post
-title: iOS调试速查表 (iOS Debug Cheatsheet)
+title: "iOS 调试速查表（iOS Debug Cheatsheet）"
 categories: Skill
 comments: true
 ---

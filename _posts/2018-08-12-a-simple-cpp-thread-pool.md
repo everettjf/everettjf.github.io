@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "C++实现简单的线程池"
+title: "C++ 实现一个简单的线程池"
 categories:
   - guide
 tags:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Code Friend:使用JavaScript开发Xcode Extensions"
+title: "CodeFriend：使用 JavaScript 开发 Xcode Extensions"
 categories:
   - 工具
 tags:

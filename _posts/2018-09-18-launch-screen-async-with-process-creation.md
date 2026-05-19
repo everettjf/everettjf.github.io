@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "初步探索LaunchScreen"
+title: "初步探索 iOS LaunchScreen 与进程创建的关系"
 categories:
   - 逆向工程
 tags:

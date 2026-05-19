@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 探索 facebook iOS 客户端 - section fbsessiongks
+title: "探索 Facebook iOS 客户端 - Section FBSessionGKs"
 categories: Skill
 comments: true
 ---

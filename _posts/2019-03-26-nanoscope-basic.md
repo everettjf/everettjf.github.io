@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Nanoscope 基础使用"
+title: "Android 方法跟踪工具 Nanoscope 基础使用"
 categories:
   - 性能优化
 tags:

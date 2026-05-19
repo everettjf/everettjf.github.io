@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "远程输入法新版发布，用浏览器给手机打字"
+title: "远程输入法 RemoBoard 新版发布：用浏览器给手机打字"
 categories:
   - 产品
 tags:

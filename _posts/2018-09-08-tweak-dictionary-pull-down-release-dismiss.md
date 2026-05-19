@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS中的多进程，下拉关闭系统的词典界面"
+title: "iOS 跨进程交互：用下拉手势关闭系统词典界面"
 categories:
   - 逆向工程
 tags:

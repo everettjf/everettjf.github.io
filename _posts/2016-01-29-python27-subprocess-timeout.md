@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python2.7下subprocess调用perl脚本增加timeout
+title: "Python 2.7 下用 subprocess 调用 Perl 脚本并实现超时控制"
 categories: Skill
 comments: true
 ---

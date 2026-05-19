@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 头文件分类工具supotato 
+title: "supotato：class-dump 头文件自动分类工具"
 categories: Essay
 comments: true
 ---

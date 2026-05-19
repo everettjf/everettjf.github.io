@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MachOExplorer Alpha 发布"
+title: "Mach-O 文件可视化工具 MachOExplorer Alpha 发布"
 categories:
   - Tool
 tags:

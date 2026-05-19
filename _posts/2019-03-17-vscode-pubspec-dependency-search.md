@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "vscode扩展pubspec依赖快速打开文档"
+title: "VSCode 扩展：从 pubspec 依赖快速打开 pub.dev 文档"
 categories:
   - 扩展
 tags:
