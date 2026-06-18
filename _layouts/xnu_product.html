@@ -1,0 +1,61 @@
+---
+layout: xnu_base
+---
+{% assign prod = site.data.xnu.products[page.product] %}
+<div class="mx-auto max-w-3xl px-6 py-16">
+  <a href="/projects/" class="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12">
+    <i data-lucide="arrow-left" class="h-3.5 w-3.5"></i>
+    All products
+  </a>
+
+  <div class="flex items-start gap-4 mb-6">
+    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-border bg-card">
+      <i data-lucide="{{ prod.icon }}" class="h-5 w-5"></i>
+    </div>
+    <div>
+      <h1 class="text-2xl font-semibold tracking-tight">{{ prod.name }}</h1>
+      <p class="text-sm text-muted-foreground mt-0.5">{{ prod.platform }}</p>
+    </div>
+  </div>
+
+  <p class="text-lg leading-relaxed text-foreground/80 mb-3">{{ prod.tagline }}</p>
+  <p class="text-sm leading-relaxed text-muted-foreground mb-10">{{ prod.description }}</p>
+
+  <div class="flex flex-wrap items-center gap-3 mb-16">
+    {% for link in prod.links %}
+      {% assign is_external = false %}{% if link.href contains "http" %}{% assign is_external = true %}{% endif %}
+      <a href="{{ link.href }}"{% if is_external %} target="_blank" rel="noopener noreferrer"{% endif %}
+        class="{% if link.primary %}inline-flex items-center gap-1.5 rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background hover:bg-foreground/90 transition-colors{% else %}inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors{% endif %}">
+        {{ link.label }}{% if is_external %}<i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>{% endif %}
+      </a>
+    {% endfor %}
+    <a href="{{ site.data.xnu.discord_url }}" target="_blank" rel="noopener noreferrer"
+       class="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+      <i data-lucide="message-circle" class="h-4 w-4"></i>
+      Join Discord
+    </a>
+    <a href="mailto:{{ site.data.xnu.support_email }}?subject={{ prod.name | url_encode }}%20%E2%80%94%20Feedback%20%2F%20Support"
+       class="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+      <i data-lucide="mail" class="h-4 w-4"></i>
+      Feedback
+    </a>
+  </div>
+
+  <div class="border-t border-border pt-12">
+    <h2 class="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-6">Features</h2>
+    <div class="grid gap-6 sm:grid-cols-2">
+      {% for f in prod.features %}
+      <div>
+        <h3 class="text-sm font-medium text-foreground mb-1">{{ f.title }}</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">{{ f.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if prod.privacy %}
+  <div class="mt-16 text-sm">
+    <a href="/{{ page.product }}/privacy/" class="text-muted-foreground hover:text-foreground transition-colors">Privacy policy →</a>
+  </div>
+  {% endif %}
+</div>

@@ -1,0 +1,14 @@
+{% assign is_external = false %}
+{% if include.p.href contains "http" %}{% assign is_external = true %}{% endif %}
+<a href="{{ include.p.href }}"{% if is_external %} target="_blank" rel="noopener noreferrer"{% endif %}
+   class="group flex items-start gap-3 border-b border-border py-4 transition-colors hover:bg-secondary/50 -mx-3 px-3 rounded-md">
+  <i data-lucide="{{ include.p.icon }}" class="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground group-hover:text-foreground transition-colors"></i>
+  <div class="flex-1 min-w-0">
+    <div class="flex items-baseline justify-between gap-3">
+      <h3 class="text-sm font-medium text-foreground truncate">{{ include.p.name }}</h3>
+      <span class="shrink-0 text-xs text-muted-foreground/80 tabular-nums">{{ include.p.platform }}</span>
+    </div>
+    <p class="mt-0.5 text-sm text-muted-foreground leading-snug line-clamp-2">{{ include.p.pitch }}</p>
+  </div>
+  {% if is_external %}<i data-lucide="arrow-up-right" class="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground/40 group-hover:text-foreground transition-colors"></i>{% endif %}
+</a>

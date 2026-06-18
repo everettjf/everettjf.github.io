@@ -1,0 +1,68 @@
+---
+layout: xnu_base
+permalink: /reporead/
+title: "RepoRead — Read GitHub repositories like a book"
+description: "A small native macOS app for reading code. Paste a GitHub URL, get a syntax-highlighted file tree, keep reading offline."
+---
+<div class="mx-auto max-w-3xl px-6 py-16">
+  <a href="/projects/" class="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12">
+    <i data-lucide="arrow-left" class="h-3.5 w-3.5"></i>
+    All products
+  </a>
+
+  <div class="flex items-start gap-4 mb-6">
+    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-border bg-card">
+      <i data-lucide="book-open" class="h-5 w-5"></i>
+    </div>
+    <div>
+      <h1 class="text-2xl font-semibold tracking-tight">RepoRead</h1>
+      <p class="text-sm text-muted-foreground mt-0.5">macOS</p>
+    </div>
+  </div>
+
+  <p class="text-lg leading-relaxed text-foreground/80 mb-3">Read GitHub repositories like a book — no clone, no setup.</p>
+  <p class="text-sm leading-relaxed text-muted-foreground mb-10">RepoRead is a small native macOS app for reading code. Paste a GitHub URL, get a tree of files with proper syntax highlighting, and keep reading offline afterwards. Built for the times you just want to look at a project without setting one up.</p>
+
+  <div class="flex flex-wrap items-center gap-3 mb-3">
+    <a href="https://apps.apple.com/us/app/reporead/id6758507329?mt=12" target="_blank" rel="noopener noreferrer"
+       class="inline-flex items-center gap-1.5 rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background hover:bg-foreground/90 transition-colors">
+      Download on the Mac App Store<i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+    </a>
+    <a href="https://github.com/everettjf/RepoRead/releases" target="_blank" rel="noopener noreferrer"
+       class="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+      Download DMG<i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+    </a>
+    <a href="{{ site.data.xnu.discord_url }}" target="_blank" rel="noopener noreferrer"
+       class="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+      <i data-lucide="message-circle" class="h-4 w-4"></i>Join Discord
+    </a>
+    <a href="mailto:{{ site.data.xnu.support_email }}?subject=RepoRead%20%E2%80%94%20Feedback%20%2F%20Support"
+       class="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+      <i data-lucide="mail" class="h-4 w-4"></i>Feedback
+    </a>
+  </div>
+  <div class="mb-2">
+    <button onclick="__xnuCopy(this)" data-copy="brew install --cask everettjf/tap/reporead"
+      class="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 font-mono text-xs text-foreground hover:bg-secondary transition-colors">
+      <span class="text-muted-foreground">$</span>brew install --cask everettjf/tap/reporead
+      <i data-copy-icon data-lucide="copy" class="h-3.5 w-3.5 text-muted-foreground"></i>
+    </button>
+  </div>
+  <p class="text-xs text-muted-foreground mb-16">Or install with Homebrew.</p>
+
+  <div class="border-t border-border pt-12">
+    <h2 class="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-6">Features</h2>
+    <div class="grid gap-6 sm:grid-cols-2">
+      <div><h3 class="text-sm font-medium text-foreground mb-1">Paste a URL</h3><p class="text-sm text-muted-foreground leading-relaxed">Drop in a GitHub repo URL and start reading. No clone, no fork, no checkout.</p></div>
+      <div><h3 class="text-sm font-medium text-foreground mb-1">Monaco-powered viewer</h3><p class="text-sm text-muted-foreground leading-relaxed">Real syntax highlighting for 50+ languages, the same engine VS Code uses.</p></div>
+      <div><h3 class="text-sm font-medium text-foreground mb-1">File tree + icons</h3><p class="text-sm text-muted-foreground leading-relaxed">A familiar tree on the left, type-aware icons, and quick navigation.</p></div>
+      <div><h3 class="text-sm font-medium text-foreground mb-1">Offline cache</h3><p class="text-sm text-muted-foreground leading-relaxed">Repos cache locally so you can keep reading on a plane.</p></div>
+      <div><h3 class="text-sm font-medium text-foreground mb-1">Native macOS app</h3><p class="text-sm text-muted-foreground leading-relaxed">Small, fast, opens instantly. Not an Electron wrapper.</p></div>
+      <div><h3 class="text-sm font-medium text-foreground mb-1">Homebrew install</h3><p class="text-sm text-muted-foreground leading-relaxed">One command to install and one command to update.</p></div>
+    </div>
+  </div>
+
+  <div class="mt-16 text-sm">
+    <a href="/reporead/privacy/" class="text-muted-foreground hover:text-foreground transition-colors">Privacy policy →</a>
+  </div>
+</div>

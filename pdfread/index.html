@@ -1,0 +1,54 @@
+---
+layout: xnu_base
+permalink: /pdfread/
+title: "PDFRead — Read PDFs side by side in any language"
+description: "A native macOS reader that aligns the original PDF and a translation sentence by sentence, with local caching."
+---
+<div class="mx-auto max-w-3xl px-6 py-16">
+  <a href="/projects/" class="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12">
+    <i data-lucide="arrow-left" class="h-3.5 w-3.5"></i>
+    All products
+  </a>
+
+  <div class="flex items-start gap-4 mb-6">
+    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-border bg-card">
+      <i data-lucide="file-text" class="h-5 w-5"></i>
+    </div>
+    <div>
+      <h1 class="text-2xl font-semibold tracking-tight">PDFRead</h1>
+      <p class="text-sm text-muted-foreground mt-0.5">macOS</p>
+    </div>
+  </div>
+
+  <p class="text-lg leading-relaxed text-foreground/80 mb-3">Read PDFs in any language, sentence by sentence, side by side.</p>
+  <p class="text-sm leading-relaxed text-muted-foreground mb-10">PDFRead is a native macOS reader that lays the original and a translation next to each other, aligned at the sentence level. Translations cache locally as JSON, so the next time you open the same document everything is instant and offline.</p>
+
+  <div class="flex flex-wrap items-center gap-3 mb-6">
+    <button onclick="__xnuCopy(this)" data-copy="brew install --cask everettjf/tap/pdfread"
+      class="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 font-mono text-xs text-foreground hover:bg-secondary transition-colors">
+      <span class="text-muted-foreground">$</span>brew install --cask everettjf/tap/pdfread
+      <i data-copy-icon data-lucide="copy" class="h-3.5 w-3.5 text-muted-foreground"></i>
+    </button>
+    <a href="{{ site.data.xnu.discord_url }}" target="_blank" rel="noopener noreferrer"
+       class="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+      <i data-lucide="message-circle" class="h-4 w-4"></i>Join Discord
+    </a>
+    <a href="mailto:{{ site.data.xnu.support_email }}?subject=PDFRead%20%E2%80%94%20Feedback%20%2F%20Support"
+       class="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+      <i data-lucide="mail" class="h-4 w-4"></i>Feedback
+    </a>
+  </div>
+  <p class="text-xs text-muted-foreground mb-16">Install with Homebrew.</p>
+
+  <div class="border-t border-border pt-12">
+    <h2 class="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-6">Features</h2>
+    <div class="grid gap-6 sm:grid-cols-2">
+      <div><h3 class="text-sm font-medium text-foreground mb-1">Sentence-level alignment</h3><p class="text-sm text-muted-foreground leading-relaxed">Read source and translation side by side, lined up sentence by sentence.</p></div>
+      <div><h3 class="text-sm font-medium text-foreground mb-1">Crystal-clear rendering</h3><p class="text-sm text-muted-foreground leading-relaxed">Native PDF rendering with smooth zoom and crisp text at any scale.</p></div>
+      <div><h3 class="text-sm font-medium text-foreground mb-1">Interactive highlights</h3><p class="text-sm text-muted-foreground leading-relaxed">Click a highlight in the translation pane to jump to the original sentence.</p></div>
+      <div><h3 class="text-sm font-medium text-foreground mb-1">Local caching</h3><p class="text-sm text-muted-foreground leading-relaxed">Translations cache as JSON next to your PDFs — open them offline forever.</p></div>
+      <div><h3 class="text-sm font-medium text-foreground mb-1">Bilingual layout</h3><p class="text-sm text-muted-foreground leading-relaxed">Two-column reading mode that respects margins, footnotes, and figures.</p></div>
+      <div><h3 class="text-sm font-medium text-foreground mb-1">macOS native</h3><p class="text-sm text-muted-foreground leading-relaxed">A small Swift app. Opens instantly, idles at near-zero memory.</p></div>
+    </div>
+  </div>
+</div>

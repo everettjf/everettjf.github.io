@@ -1,0 +1,70 @@
+---
+layout: xnu_base
+---
+{% assign prod = site.data.xnu.products[page.product] %}
+{% assign pname = page.product_name | default: prod.name %}
+<div class="mx-auto max-w-2xl px-6 py-16">
+  <a href="/{{ page.product }}/" class="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12">
+    <i data-lucide="arrow-left" class="h-3.5 w-3.5"></i>
+    Back to {{ pname }}
+  </a>
+
+  <h1 class="text-2xl font-semibold tracking-tight mb-2">Privacy policy</h1>
+  <p class="text-sm text-muted-foreground mb-12">{{ pname }}</p>
+
+  <div class="space-y-8 text-sm leading-relaxed">
+    {% if prod.privacy_sections %}
+      {% assign sections = prod.privacy_sections %}
+    {% else %}
+      {% capture intro %}{{ pname }} respects your privacy. This document describes what data, if any, the app collects and how it is used.{% endcapture %}
+      {% capture contact %}Questions? Email {{ site.data.xnu.support_email }}.{% endcapture %}
+      {% assign sections = "" | split: "" %}
+    {% endif %}
+
+    {% if prod.privacy_sections %}
+      {% for s in sections %}
+      <section>
+        <h2 class="text-sm font-semibold text-foreground mb-2">{{ s.heading }}</h2>
+        {% if s.body %}<p class="text-muted-foreground">{{ s.body }}</p>{% endif %}
+        {% if s.list %}
+        <ul class="mt-2 space-y-1.5 text-muted-foreground">
+          {% for item in s.list %}
+          <li class="pl-4 relative"><span class="absolute left-0 top-2 h-1 w-1 rounded-full bg-muted-foreground/50"></span>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </section>
+      {% endfor %}
+    {% else %}
+      <section>
+        <h2 class="text-sm font-semibold text-foreground mb-2">Introduction</h2>
+        <p class="text-muted-foreground">{{ intro }}</p>
+      </section>
+      <section>
+        <h2 class="text-sm font-semibold text-foreground mb-2">Information we collect</h2>
+        <ul class="mt-2 space-y-1.5 text-muted-foreground">
+          <li class="pl-4 relative"><span class="absolute left-0 top-2 h-1 w-1 rounded-full bg-muted-foreground/50"></span>Anonymous usage data and crash reports.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="text-sm font-semibold text-foreground mb-2">How we use information</h2>
+        <ul class="mt-2 space-y-1.5 text-muted-foreground">
+          <li class="pl-4 relative"><span class="absolute left-0 top-2 h-1 w-1 rounded-full bg-muted-foreground/50"></span>To keep the app working and fix bugs.</li>
+          <li class="pl-4 relative"><span class="absolute left-0 top-2 h-1 w-1 rounded-full bg-muted-foreground/50"></span>To respond to questions you send to us directly.</li>
+        </ul>
+      </section>
+      <section>
+        <h2 class="text-sm font-semibold text-foreground mb-2">Data security</h2>
+        <p class="text-muted-foreground">Where data is transmitted off-device, it is sent over TLS and not shared with third parties for marketing.</p>
+      </section>
+      <section>
+        <h2 class="text-sm font-semibold text-foreground mb-2">Data retention</h2>
+        <p class="text-muted-foreground">We keep only what is needed to provide the service. You can request deletion at any time.</p>
+      </section>
+      <section>
+        <h2 class="text-sm font-semibold text-foreground mb-2">Contact</h2>
+        <p class="text-muted-foreground">{{ contact }}</p>
+      </section>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,89 @@
+---
+layout: xnu_base
+bare: true
+---
+{% assign items = site.data.scriptwidget[page.kind] %}
+<div class="hidden {{ page.active_classes | join: ' ' }}" aria-hidden="true"></div>
+<div class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50">
+  {% include xnu/sw_docs_header.html %}
+
+  <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8">
+      <aside class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 h-fit lg:sticky lg:top-6">
+        <div class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-3">{{ page.sidebar_title }}</div>
+        <nav class="flex flex-col gap-2 max-h-[70vh] overflow-y-auto" data-sw-nav>
+          {% for item in items %}
+          <a href="#{{ item.slug | slugify }}" data-sw-link="{{ item.slug | slugify }}"
+             class="text-sm rounded-lg px-3 py-2 transition-colors text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+            {{ item.title }}
+          </a>
+          {% endfor %}
+        </nav>
+      </aside>
+
+      <section>
+        <div class="max-w-3xl mb-10">
+          <h1 class="text-4xl font-bold">{{ page.heading }}</h1>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">{{ page.intro }}</p>
+        </div>
+
+        <div class="space-y-16">
+          {% for item in items %}
+          <article id="{{ item.slug | slugify }}" data-sw-section class="scroll-mt-24">
+            <h2 class="text-2xl font-semibold">{{ item.title }}</h2>
+            <p class="mt-3 text-slate-600 dark:text-slate-300">{{ item.description }}</p>
+
+            {% if page.kind == 'api' and item.methods and item.methods.size > 0 %}
+            <div class="mt-5 flex flex-wrap gap-2">
+              {% for m in item.methods %}
+              <span class="text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">{{ m }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if page.kind == 'templates' and item.tags and item.tags.size > 0 %}
+            <div class="mt-5 flex flex-wrap gap-2">
+              {% for t in item.tags %}
+              <span class="text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">{{ t }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="mt-6">
+              <pre class="bg-slate-900 text-slate-100 rounded-lg p-5 text-sm overflow-x-auto"><code>{{ item.example | strip | escape }}</code></pre>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+
+        {% if page.footer_note %}
+        <div class="mt-12 text-sm text-slate-500 dark:text-slate-400">{{ page.footer_note }}</div>
+        {% endif %}
+      </section>
+    </div>
+  </main>
+</div>
+
+<script>
+  (function () {
+    var links = {};
+    document.querySelectorAll('[data-sw-link]').forEach(function (a) { links[a.getAttribute('data-sw-link')] = a; });
+    var activeCls = {{ page.active_classes | jsonify }};
+    var current = null;
+    function setActive(id) {
+      if (current === id) return;
+      if (current && links[current]) activeCls.forEach(function (c) { links[current].classList.remove(c); });
+      current = id;
+      if (current && links[current]) {
+        activeCls.forEach(function (c) { links[current].classList.add(c); });
+        links[current].scrollIntoView({ block: 'nearest' });
+      }
+    }
+    var sections = Array.prototype.slice.call(document.querySelectorAll('[data-sw-section]'));
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    sections.forEach(function (s) { obs.observe(s); });
+    if (sections.length) setActive(sections[0].id);
+  })();
+</script>

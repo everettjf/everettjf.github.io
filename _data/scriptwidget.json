@@ -1,0 +1,772 @@
+{
+  "api": [
+    {
+      "slug": "console",
+      "title": "console",
+      "description": "Logging helpers for scripts.",
+      "methods": [
+        "log(...args)"
+      ],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for api console\n// \n\nconsole.log(\"Hello ScriptWidget\");\n\nconsole.log(\n  \"1. A grammatical unit that is syntactically independent and has a subject that is expressed or, as in imperative sentences, understood and a predicate that contains at least one finite verb. 2. The penalty imposed by a law court or other authority upon someone found guilty of a crime or other offense.\"\n);\n"
+    },
+    {
+      "slug": "scheme",
+      "title": "$scheme",
+      "description": "Scheme helpers for deep links and widget navigation.",
+      "methods": [
+        "$scheme.open(url)"
+      ],
+      "example": "// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// app schemes\n//\n\n/*\n\n# open ScriptWidget app\nscriptwidget://\n\n# open ScriptWidget app and refresh all widgets\nscriptwidget://reload-all\n\n*/\n"
+    },
+    {
+      "slug": "file",
+      "title": "$file",
+      "description": "Read packaged files and JSON from the script bundle.",
+      "methods": [
+        "read(path)",
+        "readJSON(path)"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Usage for api file\n//\n\n// read as string\nconsole.log($file.read(\"data.json\"));\n\n// read as json\nlet json = $file.readJSON(\"data.json\");\nconsole.log(json);\nconsole.log(json.name);\n"
+    },
+    {
+      "slug": "import",
+      "title": "$import",
+      "description": "Import additional JS/JSX files inside a script package.",
+      "methods": [
+        "$import(path)"
+      ],
+      "example": "// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// import other js/jsx files\n//\n\n$import(\"util.jsx\");\n$import(\"define.js\");\n\n$render(\n  <vstack>\n    <text font=\"title\">test</text>\n    {textItems}\n    <text font=\"title\">{sum(1, 2)}</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "usage-map",
+      "title": "Usage Map",
+      "description": "Example of advanced ES2020 map usage in ScriptWidget.",
+      "methods": [],
+      "example": "// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Mapping over an array\n// Thanks for Reina for telling me this good idea\n// \n\nconst values = [\"one\", \"two\", \"three\", \"four\"];\n\nconst test = values.map((value) => { \n  return(<text>{value}</text>)\n})\n\n$render(\n  <vstack>\n    <text font=\"title\">test</text>\n    {test}\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "gradient",
+      "title": "$gradient",
+      "description": "Build gradient string values for color/background props.",
+      "methods": [
+        "$gradient(obj)"
+      ],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for api $gradient\n// \n\nlet angularGradient = {\n  type: \"angular\",\n  colors: [\"green\", \"blue\", \"black\", \"green\", \"blue\", \"black\", \"green\"],\n  center: \"center\",\n};\n\n$render(\n  <vstack background={$gradient(angularGradient)} frame=\"max\">\n    <text font=\"title\">AngularGradient</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "fetch",
+      "title": "fetch",
+      "description": "Convenience HTTP fetch returning response text.",
+      "methods": [
+        "fetch(url)",
+        "fetch(url, params)"
+      ],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for api $fetch\n// \n\n// query json example\n// https://jsonplaceholder.typicode.com/\n\nconst url = \"https://jsonplaceholder.typicode.com/todos/1\";\nconst result = await fetch(url);\nconsole.log(result);\n\nconst model = JSON.parse(result);\n\n$render(\n  <vstack>\n    <text font=\"title\">receive title: {model.title}</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "usage-es2020",
+      "title": "Usage ES2020",
+      "description": "ES2020 syntax showcase for ScriptWidget scripts.",
+      "methods": [],
+      "example": "\n//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n//\n\n\n\nconst foo = null ?? 'default string';\nconsole.log(foo);\n// expected output: \"default string\"\n\nconst baz = 0 ?? 42;\nconsole.log(baz);\n// expected output: 0\n\nconst someArray = [0, 1, 2, 3];\nconsole.log(someArray);\n\nconst thisWillError = someArray[5];\nconsole.log(thisWillError);\n\nconst thisWillBeUndefined = someArray?.[5];\nconsole.log(thisWillBeUndefined);\n\n$render(\n  <vstack frame=\"max\">\n    <text font=\"title\">Hello ES2020</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "getenv",
+      "title": "$getenv",
+      "description": "Read environment values such as widget size and parameters.",
+      "methods": [
+        "$getenv(key)"
+      ],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component $getenv\n// \n\n/*\n widget-size\n - large\n - medium\n - small\n*/\nconst widget_size = $getenv(\"widget-size\");\n\n/*\n parameter config in system widget config panel\n*/\nconst widget_param = $getenv(\"widget-param\");\n\n$render(\n  <vstack frame=\"max\">\n    <text font=\"title\">Widget Size : {widget_size}</text>\n    <text font=\"caption\">Widget Parameter : {widget_param}</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "device",
+      "title": "$device",
+      "description": "Device hardware, screen, battery, disk space, and appearance helpers.",
+      "methods": [
+        "screen()",
+        "battery()",
+        "model()",
+        "name()",
+        "totalDiskSpace()",
+        "freeDiskSpace()"
+      ],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for api $device\n// \n\nconsole.log($device.name());\nconsole.log($device.model());\nconsole.log($device.language());\nconsole.log($device.systemVersion());\nconsole.log(JSON.stringify($device.screen(), null, 2));\nconsole.log(JSON.stringify($device.battery(), null, 2));\nconsole.log($device.isdarkmode());\nconsole.log($device.totalDiskSpace());\nconsole.log($device.freeDiskSpace());\n"
+    },
+    {
+      "slug": "storage",
+      "title": "$storage",
+      "description": "Key-value storage backed by app group UserDefaults.",
+      "methods": [
+        "getString(key)",
+        "setString(key, value)",
+        "getJSON(key)",
+        "setJSON(key, obj)",
+        "keys()",
+        "clear()"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Usage for api storage\n//\n\n$storage.setString(\"greeting\", \"Hello ScriptWidget\");\nconst greeting = $storage.getString(\"greeting\");\n\n$storage.setJSON(\"profile\", {\n  name: \"Alex\",\n  city: \"Shanghai\",\n  updatedAt: new Date().toISOString()\n});\nconst profile = $storage.getJSON(\"profile\");\n\nconst allKeys = $storage.keys();\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n    <text font=\"caption\" color=\"#94a3b8\">Storage</text>\n    <text font=\"title3\" color=\"#e2e8f0\">{greeting}</text>\n    <text font=\"caption\" color=\"#94a3b8\">Name: {profile.name}</text>\n    <text font=\"caption\" color=\"#94a3b8\">Keys: {allKeys.join(\", \")}</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "health",
+      "title": "$health",
+      "description": "Read-only HealthKit access for steps, active energy, and heart rate.",
+      "methods": [
+        "isAvailable()",
+        "requestAuthorization()",
+        "stepCountToday()",
+        "activeEnergyToday()",
+        "heartRateLatest()"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Usage for api health\n// Note: HealthKit requires main app permission and capability.\n// This API reads health data only (no write).\n//\n\nif (!$health.isAvailable()) {\n  $render(\n    <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n      <text font=\"title3\" color=\"#f87171\">HealthKit Unavailable</text>\n      <text font=\"caption\" color=\"#94a3b8\">This platform does not support HealthKit.</text>\n    </vstack>\n  );\n} else {\n  const granted = await $health.requestAuthorization();\n\n  if (!granted) {\n    $render(\n      <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n        <text font=\"title3\" color=\"#fbbf24\">Permission Needed</text>\n        <text font=\"caption\" color=\"#94a3b8\">Enable Health access in the main app.</text>\n      </vstack>\n    );\n  } else {\n    const steps = await $health.stepCountToday();\n    const energy = await $health.activeEnergyToday();\n    const heart = await $health.heartRateLatest();\n\n    $render(\n      <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n        <text font=\"caption\" color=\"#94a3b8\">Health Today</text>\n        <text font=\"title3\" color=\"#e2e8f0\">Steps: {steps.value.toFixed(0)}</text>\n        <text font=\"caption\" color=\"#94a3b8\">Active Energy: {energy.value.toFixed(0)} kcal</text>\n        <text font=\"caption\" color=\"#94a3b8\">Latest HR: {heart.value.toFixed(0)} bpm</text>\n      </vstack>\n    );\n  }\n}\n"
+    },
+    {
+      "slug": "system",
+      "title": "$system",
+      "description": "System and app metadata, locale, calendar, memory, uptime, power, and CPU info.",
+      "methods": [
+        "appInfo()",
+        "locale()",
+        "timeZone()",
+        "calendarInfo()",
+        "systemUptime()",
+        "memory()",
+        "osVersionString()",
+        "processorCount()"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Usage for api system\n//\n\nconst app = $system.appInfo();\nconst tz = $system.timeZone();\nconst calendar = $system.calendarInfo();\nconst memory = $system.memory();\nconst uptimeHours = ($system.systemUptime() / 3600).toFixed(1);\nconst cpuCount = $system.processorCount();\nconst activeCpuCount = $system.activeProcessorCount();\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n    <text font=\"caption\" color=\"#94a3b8\">System</text>\n    <text font=\"title3\" color=\"#e2e8f0\">{app.name}</text>\n    <text font=\"caption\" color=\"#94a3b8\">Bundle: {app.bundleId}</text>\n    <text font=\"caption\" color=\"#94a3b8\">Version: {app.version} ({app.build})</text>\n\n    <spacer />\n\n    <text font=\"caption\" color=\"#94a3b8\">Platform: {$system.platform()}</text>\n    <text font=\"caption\" color=\"#94a3b8\">Locale: {$system.locale()}</text>\n    <text font=\"caption\" color=\"#94a3b8\">Timezone: {tz.identifier} ({tz.abbreviation})</text>\n    <text font=\"caption\" color=\"#94a3b8\">Calendar: {calendar.identifier}</text>\n    <text font=\"caption\" color=\"#94a3b8\">Uptime: {uptimeHours}h</text>\n    <text font=\"caption\" color=\"#94a3b8\">OS: {$system.osVersionString()}</text>\n    <text font=\"caption\" color=\"#94a3b8\">Host: {$system.hostName()}</text>\n    <text font=\"caption\" color=\"#94a3b8\">CPU: {cpuCount} ({activeCpuCount} active)</text>\n    <text font=\"caption\" color=\"#94a3b8\">Memory: {(memory.physical / 1024 / 1024 / 1024).toFixed(1)} GB</text>\n    <text font=\"caption\" color=\"#94a3b8\">Low Power: {$system.lowPowerMode() ? \"On\" : \"Off\"}</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "location",
+      "title": "$location",
+      "description": "Core Location access for current coordinates and authorization status. Options are optional; accuracy defaults to reduced.",
+      "methods": [
+        "isAvailable()",
+        "authorizationStatus()",
+        "requestAuthorization(options?)",
+        "current({ timeout?, timeoutMs?, accuracy?, purposeKey?, maxAge?, maxAgeMs? }?)"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Usage for api location\n// Note: Location requires main app permission.\n// This API reads current location only.\n// Options are optional; default accuracy is reduced.\n// Use maxAge/maxAgeMs for cached location to return faster.\n//\n\nif (!$location.isAvailable()) {\n  $render(\n    <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n      <text font=\"title3\" color=\"#f87171\">Location Unavailable</text>\n      <text font=\"caption\" color=\"#94a3b8\">This device does not support location services.</text>\n    </vstack>\n  );\n} else {\n  const status = $location.authorizationStatus();\n  let granted = status === \"authorizedWhenInUse\" || status === \"authorizedAlways\";\n\n  if (!granted) {\n    granted = await $location.requestAuthorization({ timeout: 10 });\n  }\n\n  if (!granted) {\n    $render(\n      <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n        <text font=\"title3\" color=\"#fbbf24\">Permission Needed</text>\n        <text font=\"caption\" color=\"#94a3b8\">Enable Location access in the main app.</text>\n      </vstack>\n    );\n  } else {\n    const location = await $location.current({\n      timeout: 10,\n      maxAge: 30,\n      accuracy: \"full\",\n      purposeKey: \"ScriptWidgetLocation\"\n    });\n\n    $render(\n      <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n        <text font=\"caption\" color=\"#94a3b8\">Current Location</text>\n        <text font=\"title3\" color=\"#e2e8f0\">\n          {location.latitude.toFixed(5)}, {location.longitude.toFixed(5)}\n        </text>\n        <text font=\"caption\" color=\"#94a3b8\">\n          Accuracy: {Math.round(location.accuracy)}m ({location.accuracyAuthorization})\n        </text>\n        <text font=\"caption2\" color=\"#64748b\">\n          Age: {location.age.toFixed(1)}s {location.isStale ? \"(stale)\" : \"\"}\n        </text>\n        <text font=\"caption2\" color=\"#64748b\">Updated: {location.timestamp}</text>\n      </vstack>\n    );\n  }\n}\n"
+    },
+    {
+      "slug": "http",
+      "title": "$http",
+      "description": "HTTP helpers for GET/POST/PUT/PATCH/DELETE.",
+      "methods": [
+        "get(url)",
+        "post(url, params)",
+        "put(url, params)",
+        "patch(url, params)",
+        "delete(url, params)"
+      ],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for api $http\n// \n\n// $http.get\n// $http.get is identity to $fetch or fetch api\nconst get_result = await $http.get(\"https://jsonplaceholder.typicode.com/todos/1\");\nconsole.log(get_result);\n\n// query json example with header\n// https://docs.github.com/en/rest/reference/projects\nconst get_with_header_result = await $http.get(\"https://api.github.com/users/everettjf/orgs\", {\n  headers: {\n    Accept: \"application/vnd.github.inertia-preview+json\",\n  },\n});\nconsole.log(get_with_header_result);\n\n\n// $http.post\nconst post_result = await $http.post(\"https://jsonplaceholder.typicode.com/posts\", {\n  body: {\n    userId: 1,\n    id: 1,\n    title: \"Hello ScriptWidget\",\n  }\n});\nconsole.log(post_result);\n\nconst post_with_header_result = await $http.post(\"https://jsonplaceholder.typicode.com/posts\", {  \n  headers: {\n    Accept: \"application/vnd.github.inertia-preview+json\",\n  },\n  body: {\n    userId: 1,\n    id: 1,\n    title: \"Hello ScriptWidget\",\n  }\n});\nconsole.log(post_with_header_result);\n\nconst post_string_with_header_result = await $http.post(\"https://jsonplaceholder.typicode.com/posts\", {  \n  headers: {\n    Accept: \"application/vnd.github.inertia-preview+json\",\n  },\n  body: \"password=123&name=321\"\n});\nconsole.log(post_string_with_header_result);\n\n// $http.put (same to post)\n// $http.patch (same to post)\n// $http.delete (same to post)\n\n$render(\n  <vstack>\n    <text>$http example</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "animation",
+      "title": "$animation",
+      "description": "Build animation configuration strings.",
+      "methods": [
+        "$animation(obj)"
+      ],
+      "example": "\n//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// basic clock animation\n//\n\n\n$render(\n  <vstack frame=\"max,center\">\n      <zstack>\n          <vstack animation=\"clockSecond\">\n              <rect frame=\"5,50\" color=\"yellow\"></rect>\n              <rect frame=\"5,50\" color=\"clear\"></rect>\n          </vstack>\n          <vstack animation=\"clockMinute\">\n              <rect frame=\"5,40\" color=\"blue\"></rect>\n              <rect frame=\"5,40\" color=\"clear\"></rect>\n          </vstack>\n          <vstack animation=\"clockHour\">\n              <rect frame=\"5,30\" color=\"red\"></rect>\n              <rect frame=\"5,30\" color=\"clear\"></rect>\n          </vstack>\n      </zstack>\n  </vstack>\n);\n\n"
+    }
+  ],
+  "components": [
+    {
+      "slug": "capsule",
+      "title": "Capsule",
+      "description": "Capsule shape.",
+      "methods": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component capsule\n// \n\n$render(\n  <vstack frame=\"max\">\n    <capsule frame=\"50,30\" color=\"blue\"></capsule>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "ellipse",
+      "title": "Ellipse",
+      "description": "Ellipse shape.",
+      "methods": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component ellipse\n// \n\n$render(\n  <vstack frame=\"max\">\n    <ellipse frame=\"50,30\" color=\"blue\"></ellipse>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "ring",
+      "title": "Ring",
+      "description": "Circular progress ring.",
+      "methods": [],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// component: ring\n//\n\n$render(\n  <vstack frame=\"max\" padding=\"12\">\n    <ring value=\"0.68\" thickness=\"10\" color=\"#22c55e\" trackColor=\"#e2e8f0\" frame=\"72\" />\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "roundedrect",
+      "title": "RoundedRect",
+      "description": "Rounded rectangle block shape.",
+      "methods": [],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// component: roundedrect\n//\n\n$render(\n  <vstack frame=\"max\" padding=\"12\">\n    <roundedrect radius=\"12\" color=\"#38bdf8\" frame=\"140,60\" />\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "badge",
+      "title": "Badge",
+      "description": "Compact pill for status tags.",
+      "methods": [],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// component: badge\n//\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" spacing=\"8\">\n    <badge text=\"PRO\" background=\"#22c55e\" color=\"#ffffff\" />\n    <badge text=\"BETA\" background=\"#0f172a\" color=\"#e2e8f0\" />\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "chip",
+      "title": "Chip",
+      "description": "Outlined tag with optional border color.",
+      "methods": [],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// component: chip\n//\n\n$render(\n  <hstack frame=\"max\" padding=\"12\" spacing=\"8\">\n    <chip text=\"Today\" />\n    <chip text=\"Focus\" borderColor=\"#38bdf8\" color=\"#0f172a\" />\n  </hstack>\n);\n"
+    },
+    {
+      "slug": "hstack",
+      "title": "HStack",
+      "description": "Horizontal stack layout.",
+      "methods": [],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Usage for component hstack\n//\n\n$render(\n  <hstack>\n    <text>First</text>\n    <text>Second</text>\n  </hstack>\n);\n"
+    },
+    {
+      "slug": "icon",
+      "title": "Icon",
+      "description": "SF Symbol icon with size and color.",
+      "methods": [],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// component: icon\n//\n\n$render(\n  <hstack frame=\"max\" padding=\"12\" spacing=\"12\">\n    <icon systemName=\"bolt.fill\" size=\"24\" color=\"#fbbf24\" />\n    <icon systemName=\"moon.stars.fill\" size=\"24\" color=\"#6366f1\" />\n  </hstack>\n);\n"
+    },
+    {
+      "slug": "label",
+      "title": "Label",
+      "description": "Text with SF Symbol icon.",
+      "methods": [],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// component: label\n//\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" spacing=\"8\">\n    <label title=\"Sunrise\" systemName=\"sunrise.fill\" color=\"#f59e0b\" />\n    <label title=\"Battery\" systemName=\"battery.100\" color=\"#22c55e\" />\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "rect",
+      "title": "Rect",
+      "description": "Rectangle shape.",
+      "methods": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component rect\n// \n\n$render(\n  <vstack frame=\"max\">\n    <rect frame=\"50,30\" color=\"blue\"></rect>\n    <rect frame=\"50,30\" color=\"blue\" corner=\"5\"></rect>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "stat",
+      "title": "Stat",
+      "description": "Metric display with title/value/subtitle.",
+      "methods": [],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// component: stat\n//\n\n$render(\n  <hstack frame=\"max\" padding=\"12\" spacing=\"16\">\n    <stat title=\"Downloads\" value=\"12.4k\" subtitle=\"Today\" color=\"#0f172a\" />\n    <stat title=\"Streak\" value=\"18\" subtitle=\"Days\" color=\"#22c55e\" />\n  </hstack>\n);\n"
+    },
+    {
+      "slug": "vstack",
+      "title": "VStack",
+      "description": "Vertical stack layout.",
+      "methods": [],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Usage for component vstack\n//\n\n$render(\n  <vstack>\n    <text>First</text>\n    <text>Second</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "zstack",
+      "title": "ZStack",
+      "description": "Overlay layout.",
+      "methods": [],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Usage for component vstack\n//\n\n$render(\n  <zstack>\n    <text>First</text>\n    <text>Second</text>\n  </zstack>\n);\n"
+    },
+    {
+      "slug": "divider",
+      "title": "Divider",
+      "description": "Horizontal or vertical separator line.",
+      "methods": [],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// component: divider\n//\n\n$render(\n  <vstack frame=\"max\" padding=\"12\">\n    <text font=\"caption\">Section A</text>\n    <divider thickness=\"1\" color=\"#94a3b8\" />\n    <text font=\"caption\">Section B</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "gif",
+      "title": "GIF",
+      "description": "Animated GIF (iOS only).",
+      "methods": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Shape Template\n// \n// Description: Shape Example\n// \n\n\n\n$render(\n  <vstack>\n    <gif file=\"test\" />\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "progress",
+      "title": "Progress",
+      "description": "Linear or circular progress indicator.",
+      "methods": [],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// component: progress\n//\n\n$render(\n  <vstack frame=\"max\" padding=\"12\">\n    <text font=\"caption\">Loading</text>\n    <progress value=\"0.72\" total=\"1\" color=\"#3b82f6\" />\n    <progress value=\"0.45\" total=\"1\" style=\"circular\" color=\"#10b981\" frame=\"32\" />\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "circle",
+      "title": "Circle",
+      "description": "Circle shape.",
+      "methods": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component circle\n// \n\n$render(\n  <hstack frame=\"max\">\n    <circle frame=\"40,40\" color=\"blue\"></circle>\n    <circle frame=\"40,40\" color=\"blue\" stroke=\"10\"></circle>\n    <circle frame=\"40,40\" color=\"blue\" stroke=\"10\" trim=\"0.2\"></circle>\n    <circle frame=\"40,40\" color=\"blue\" stroke=\"10\" trim=\"0.2\" rotation=\"90\"></circle>\n  </hstack>\n);\n"
+    },
+    {
+      "slug": "date",
+      "title": "Date",
+      "description": "Date rendering with formatting options.",
+      "methods": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component date\n// \n\n$render(\n  <vstack>\n    <date font=\"caption\" date=\"now\" style=\"time\" />\n    <date font=\"caption\" date=\"now\" style=\"date\" />\n    <date font=\"caption\" date=\"start of today\" style=\"timer\" />\n    <date font=\"title\" date={Date.now()} style=\"timer\" />\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "line",
+      "title": "Line",
+      "description": "Fixed-length line segment.",
+      "methods": [],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// component: line\n//\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" spacing=\"8\">\n    <line length=\"120\" thickness=\"2\" color=\"#94a3b8\" />\n    <hstack spacing=\"8\">\n      <line axis=\"vertical\" length=\"24\" thickness=\"2\" color=\"#f59e0b\" />\n      <text font=\"caption\">Vertical line</text>\n    </hstack>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "fragment",
+      "title": "Fragment",
+      "description": "Group multiple children without wrapper.",
+      "methods": [],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n//\n\nvar aaa = (\n    <>\n        <text>a text</text>\n        <text>a text</text>\n    </>\n)\n\n$render(\n    <vstack frame=\"max\">\n        {aaa}\n        <text>a text</text>\n    </vstack>\n);\n"
+    },
+    {
+      "slug": "gauge",
+      "title": "Gauge",
+      "description": "Gauge visualization for numeric values.",
+      "methods": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component guage\n// \n\n$render(\n  <vstack frame=\"max\">\n    <gauge \n      type=\"system\"\n      value=\"0.6\"\n      text=\"hello\"\n      style=\"circular\" // default\n      >\n    </gauge>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "text",
+      "title": "Text",
+      "description": "Text rendering with font/color modifiers.",
+      "methods": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component text\n// \n\n$render(\n  <vstack frame=\"max\">\n    <text font=\"title\">Hello ScriptWidget</text>\n    <text font=\"caption\" color=\"red\">\n      Hello ScriptWidget\n    </text>\n    <text font=\"caption\" background=\"blue\" color=\"white\">\n      Hello ScriptWidget\n    </text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "toggle",
+      "title": "Toggle",
+      "description": "Toggle control for boolean state.",
+      "methods": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component capsule\n// \n\n\nconst onToggleClick = () => {\n  console.log(\"toggle tapped\");\n}\nconst widget_size = $getenv(\"widget-size\");\n\nconst value = Math.random() >= 0.5;\n\n$render(\n  <vstack frame=\"max\">\n    <toggle on={value} onClick=\"onToggleClick\">\n      <image systemName=\"mosaic.fill\" />\n      <text>{widget_size}</text>\n    </toggle>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "button",
+      "title": "Button",
+      "description": "Tap action via AppIntent. Use action=\"reload\" to refresh the widget.",
+      "methods": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component button\n// \n\n\nconst onButtonClick = () => {\n  console.log(\"button tapped\");\n};\nconst widget_size = $getenv(\"widget-size\");\n\n$render(\n  <vstack frame=\"max\">\n    <button onClick=\"onButtonClick\">\n      <image systemName=\"mosaic.fill\" />\n      <text>{widget_size}</text>\n    </button>\n    <button action=\"reload\">\n      <text>Refresh Widget</text>\n    </button>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "image",
+      "title": "Image",
+      "description": "Image from asset, URL, or base64 data.",
+      "methods": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component image\n// \n\n/*\n\n    <image />\n    <image systemName=\"mosaic.fill\" />\n    <image id=\"image0\" />\n    \n    <image id=\"image\" mode=\"fit\" ratio=\"0.6\" />\n    <image id=\"image\" mode=\"fill\" frame=\"260,60\" />\n\n    <image id=\"image\" mode=\"fill\" clip frame=\"200,100\"/>\n    \n    <image id=\"image\" mode=\"fill\" clip=\"rect\" frame=\"200,100\"/>\n    <image id=\"image\" mode=\"fill\" clip=\"ellipse\" frame=\"200,100\"/>\n    <image id=\"image\" mode=\"fill\" clip=\"circle\" frame=\"200,100\"/>\n    <image id=\"image\" mode=\"fill\" clip=\"capsule\" frame=\"200,100\"/>\n\n    <image id=\"image\" mode=\"fill\" corner=\"30\" frame=\"200,100\"/>\n*/\n\n$render(\n  <vstack>\n    <image url=\"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png\" frame=\"20,20\"/>\n    <image id=\"image\" frame=\"260,60\"/>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "link",
+      "title": "Link",
+      "description": "Open URLs or app scheme links.",
+      "methods": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component link\n// \n\n$render(\n  <vstack frame=\"max\" linkurl=\"https://xnu.app/scriptwidget\">\n    <link url=\"https://www.baidu.com\" background=\"blue\">\n      <text font=\"title\">Hello Baidu</text>\n    </link>\n    <link url=\"https://www.google.com\" background=\"green\">\n      <hstack>\n        <text>Hello</text>\n        <text>Google</text>\n      </hstack>\n    </link>\n    <link url=\"https://www.bing.com\" background=\"yellow\">\n      <vstack>\n        <text>Hello</text>\n        <text>Bing</text>\n      </vstack>\n    </link>\n  </vstack>\n);\n\n"
+    },
+    {
+      "slug": "live-activity",
+      "title": "Live Activity",
+      "description": "Dynamic Island / Live Activity layouts.",
+      "methods": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component Live Activity and Dynamic Island\n// \n\n\n// $render is also for lock screen live activity\n$render(\n    <vstack frame=\"max\">\n        <text>hello live activity</text>\n    </vstack>\n);\n\n\n// $dynamic_island is for dynamic island\n// on iPhone 14 Pro/ProMax and iOS16.1+\n$dynamic_island({\n    expanded: { // expanded is required , at least one of the four child below is required\n        leading: <text>leading</text>,\n        trailing: <text>trailing</text>,\n        center: <text>center</text>,\n        bottom: <text>bottom</text>,\n    },\n    compactLeading: <text>compactLeading</text>, // required\n    compactTrailing: <text>compactTrailing</text>, // required\n    minimal: <text>minimal</text>, // required\n});\n"
+    },
+    {
+      "slug": "chart",
+      "title": "Chart",
+      "description": "Chart visualization with sections.",
+      "methods": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component chart\n// \n\nlet data = [\n    { label: \"jan/22\", value: 5 },\n    { label: \"feb/22\", value: 4 },\n    { label: \"mar/22\", value: 7 },\n    { label: \"apr/22\", value: 15 },\n    { label: \"may/22\", value: 14 },\n    { label: \"jun/22\", value: 27 },\n    { label: \"jul/22\", value: 27 },\n]\n\n$render(\n    <vstack frame=\"max\">\n      <chart \n        type=\"bar\" // required\n        data={$json(data)} // required\n        color=\"red\" // optional , default black\n        padding=\"20\" // optional , general\n        // hideLegend=\"true\"\n        // hideXAxis=\"true\"\n        // hideYAxis=\"true\"\n        >\n      </chart>\n    </vstack>\n  );\n  \n"
+    },
+    {
+      "slug": "attribute-frame",
+      "title": "Frame Attributes",
+      "description": "Frame and sizing attributes.",
+      "methods": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component attribute frame\n// \n\n/*\n\n frame=\"max\"\n frame=\"max,topLeading\"\n frame=\"10,20\"\n frame=\"10,20,topLeading\"\n \n frame=\"max,20\"\n frame=\"10,max\"\n frame=\"max,20,topLeading\"\n frame=\"10,max,topLeading\"\n\n\n the \"topLeading\" represent alignment, could be one of the values below:\n    \"center\"\n    \"leading\"\n    \"trailing\"\n    \"top\"\n    \"bottom\"\n    \"topLeading\"\n    \"topTrailing\"\n    \"bottomLeading\"\n    \"bottomTrailing\"\n*/\n$render(\n  <vstack frame=\"max\">\n    <rect frame=\"50,30\" color=\"green\"></rect>\n    <rect frame=\"50,30\" color=\"blue\" corner=\"5\"></rect>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "hgrid",
+      "title": "HGrid",
+      "description": "Horizontal grid layout.",
+      "methods": [],
+      "example": "\n//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// grid component\n// \n\n/*\niOS\n{ type: \"adaptive\", min: \"30\"},\n{ type: \"fixed\", value: \"30\"},\n{ type: \"flexible\"},\n\nmacOS\n{ type: \"adaptive\", min: \"30\", max: \"100\"},\n{ type: \"fixed\", value: \"30\"},\n{ type: \"flexible\"},\n\n*/\n\n// {} will default to { type: \"flexible\"},\n// let columns = [\n//     {},\n//     {},\n//     {},\n//     {},\n// ]\n\n// let columns = [\n//     { type: \"fixed\", value: \"30\"},\n//     { type: \"fixed\", value: \"30\"},\n//     { type: \"fixed\", value: \"30\"},\n// ]\n\nlet columns = [\n    { type: \"adaptive\", min: \"70\", max: \"100\"},\n]\n\n$render(\n  <vstack frame=\"max\">\n    <hgrid columns={$json(columns)}>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n    </hgrid>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "vgrid",
+      "title": "VGrid",
+      "description": "Vertical grid layout.",
+      "methods": [],
+      "example": "\n//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// grid component\n// \n\n/*\niOS\n{ type: \"adaptive\", min: \"30\"},\n{ type: \"fixed\", value: \"30\"},\n{ type: \"flexible\"},\n\nmacOS\n{ type: \"adaptive\", min: \"30\", max: \"100\"},\n{ type: \"fixed\", value: \"30\"},\n{ type: \"flexible\"},\n\n*/\n\n// {} will default to { type: \"flexible\"},\n// let columns = [\n//     {},\n//     {},\n//     {},\n//     {},\n// ]\n\n// let columns = [\n//     { type: \"fixed\", value: \"30\"},\n//     { type: \"fixed\", value: \"30\"},\n//     { type: \"fixed\", value: \"30\"},\n// ]\n\nlet columns = [\n    { type: \"adaptive\", min: \"70\", max: \"100\"},\n]\n\n$render(\n  <vstack frame=\"max\">\n    <vgrid columns={$json(columns)}>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n        <circle color=\"red\"/>\n    </vgrid>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "custom-component",
+      "title": "Custom Component",
+      "description": "Define reusable JSX components with $component.",
+      "methods": [],
+      "example": "\n//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Custom Component\n// Thanks for Reina for telling me this good idea\n// \n\n\n// Custom component is a JavaScript function\n// with one parameter composed with : prop1,prop2... and children\n// As a convention, \n// the first letter of custom component's name must be uppercase.\n// For example : LeftAlign , MyCustomComponent ... etc...\n\n\n// prototype:\n// 1. new style\n// const MyComponent = ({prop1, prop2, children}) => { /* ... */ }\n// \n// 2. old style\n// const MyComponent = (props) => { \n//   let prop1 = props.prop1;\n//   let prop2 = props.prop2;\n//   let children = props.children;\n// }\n\nconst LeftAlign = ({ message, children }) => {\n    return (\n        <hstack>\n            {children}\n            <text> ({message}) </text>\n            <spacer />\n        </hstack>\n    )\n}\nconst RightAlign = ({ message, children }) => {\n    return (\n        <hstack>\n            <spacer />\n            <text> ({message}) </text>\n            {children}\n        </hstack>\n    )\n}\n$render(\n    <vstack\n        background=\"blue\"\n        frame=\"max,center\"\n    >\n        <LeftAlign message=\"L\">\n            <text> this text left aligned</text>\n        </LeftAlign>\n        <RightAlign message=\"R\">\n            <text> text right aligned</text>\n        </RightAlign>\n    </vstack>\n);\n\n"
+    }
+  ],
+  "templates": [
+    {
+      "slug": "Image",
+      "title": "Image",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n\n$render(\n  <vstack>\n    <image id=\"image\" />\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Datetime Current",
+      "title": "Datetime Current",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Clock Template\n// \n// Description: Display Clock Time\n// \n\n$render(\n  <vstack background=\"yellow\" frame=\"max,center\">\n    <date font=\"title\" date=\"start of today\" style=\"timer\" alignment=\"center\" />\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Nyan Cat",
+      "title": "Nyan Cat",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Shape Template\n// \n// Description: Shape Example\n// \n\n\n\n$render(\n  <vstack>\n    <gif file=\"cat\" />\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "An Empty Widget",
+      "title": "An Empty Widget",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Empty Template\n// \n// Description: Empty script for starter\n// \n\nvar text = \"Hello ScriptWidget :)\";\n\n$render(\n  <vstack>\n    <text font=\"caption\">{text}</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Shape",
+      "title": "Shape",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Shape Template\n// \n// Description: Shape Example\n// \n\n\n$render(\n  <vstack frame=\"max\" animation=\"clockCustom,20\">\n    <rect frame=\"20,60\" color=\"blue\" corner=\"5\"></rect>\n    <rect frame=\"20,60\" color=\"red\" corner=\"5\"></rect>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Text Today Week",
+      "title": "Text Today Week",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// \n\nvar d = new Date();\n\nconst weekday = [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"];\nlet day = weekday[d.getDay()];\n\n\n$render(\n    <vstack\n        background=\"red\"\n        frame=\"max,center\"\n    >\n        <text font=\"largeTitle\" color=\"black\" padding=\"10\">\n            {day}\n        </text>\n    </vstack>\n);\n"
+    },
+    {
+      "slug": "Battery & Brightness",
+      "title": "Battery & Brightness",
+      "description": "Battery state plus brightness (iOS only).",
+      "tags": [
+        "device",
+        "system"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Battery & Brightness\n//\n\nconst battery = $device.battery();\nconst brightness = $system.brightness();\nconst percent = (battery.level * 100).toFixed(0);\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#1e293b\">\n    <text font=\"caption\" color=\"#94a3b8\">Battery & Brightness</text>\n    <text font=\"title2\" color=\"#e2e8f0\">{percent}%</text>\n    <text font=\"caption\" color=\"#94a3b8\">State: {battery.state}</text>\n    <text font=\"caption2\" color=\"#64748b\">Brightness: {brightness >= 0 ? Math.round(brightness * 100) + \"%\" : \"n/a\"}</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Daily Quote",
+      "title": "Daily Quote",
+      "description": "Quote of the day from zenquotes.io.",
+      "tags": [
+        "content",
+        "fetch"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Daily Quote (zenquotes.io)\n//\n\nconst url = \"https://zenquotes.io/api/today\";\nconst result = await fetch(url);\nconst data = JSON.parse(result);\nconst quote = data && data.length ? data[0] : { q: \"Stay inspired\", a: \"ScriptWidget\" };\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n    <text font=\"caption\" color=\"#94a3b8\">Daily Quote</text>\n    <text font=\"caption\" color=\"#e2e8f0\">\"{quote.q}\"</text>\n    <text font=\"caption2\" color=\"#64748b\">- {quote.a}</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Open Link",
+      "title": "Open Link",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Template for component link\n// \n\n$render(\n  <vstack frame=\"max\">\n    <link url=\"https://www.baidu.com\" background=\"blue\">\n      <text>Baidu</text>\n    </link>\n    <link url=\"https://www.qq.com\" background=\"green\">\n      <text>QQ</text>\n    </link>\n    <link url=\"https://www.163.com\" background=\"yellow\">\n      <text>163</text>\n    </link>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Storage Ring",
+      "title": "Storage Ring",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Battery Percent Template\n// \n// Description: Display system battery percentage\n// \n\nlet total = $device.totalDiskSpace();\nlet free = $device.freeDiskSpace();\nlet used = total - free;\nlet percent = used/total;\n\nconsole.log(`total = ${total}, used = ${used}, percent = ${percent}`);\n\n$render(\n  <zstack frame=\"max\" padding=\"12\">\n    <circle color=\"yellow\" stroke=\"20\"></circle>\n    <circle color=\"green\" stroke=\"20\" trim={1-percent} rotation={90 * 3}></circle>\n    <text>{ `${Math.round(percent * 100)}%`} </text>\n  </zstack>\n);\n"
+    },
+    {
+      "slug": "Image No Margin",
+      "title": "Image No Margin",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "\n//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n//\n\n\n$render(\n  <vstack spacing=\"0\">\n    <zstack>\n        <image id=\"image0\" padding=\"0\" />\n        <text> Hello </text>\n    </zstack>\n    <zstack>\n        <image id=\"image1\" padding=\"0\" />\n        <text> World </text>\n    </zstack>\n    <zstack>\n        <image id=\"image2\" padding=\"0\" />\n        <text> :) </text>\n    </zstack>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "System Insights",
+      "title": "System Insights",
+      "description": "CPU count, uptime, and memory from $system.",
+      "tags": [
+        "system",
+        "device"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// System Insights\n//\n\nconst memory = $system.memory();\nconst uptimeHours = ($system.systemUptime() / 3600).toFixed(1);\nconst cpuCount = $system.processorCount();\nconst activeCpu = $system.activeProcessorCount();\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n    <text font=\"caption\" color=\"#94a3b8\">System Insights</text>\n    <text font=\"title3\" color=\"#e2e8f0\">{$system.platform().toUpperCase()}</text>\n    <text font=\"caption\" color=\"#94a3b8\">OS: {$system.osVersionString()}</text>\n    <text font=\"caption\" color=\"#94a3b8\">CPU: {cpuCount} ({activeCpu} active)</text>\n    <text font=\"caption\" color=\"#94a3b8\">Memory: {(memory.physical / 1024 / 1024 / 1024).toFixed(1)} GB</text>\n    <text font=\"caption\" color=\"#94a3b8\">Uptime: {uptimeHours}h</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Text Year Days Left",
+      "title": "Text Year Days Left",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Year Days Left Template\n// \n// Description: Show you how many days left this year\n// \n\nvar today = new Date();\nvar lastDay = new Date(today.getFullYear(), 12, 31);\nvar perDay = 1000 * 60 * 60 * 24;\nvar leftDays = Math.ceil((lastDay.getTime() - today.getTime()) / perDay);\n\n$render(\n  <vstack background=\"red\" frame=\"max\">\n    <text font=\"title3\" color=\"white\">\n      今年还剩\n    </text>\n    <text font=\"title\" color=\"white\">\n      {leftDays} 天\n    </text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Animation Clock",
+      "title": "Animation Clock",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "\n//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n//\n\n\n$render(\n    <vstack frame=\"max,center\">\n        <zstack>\n            <vstack animation=\"clockSecond\">\n                <rect frame=\"5,50\" color=\"yellow\"></rect>\n                <rect frame=\"5,50\" color=\"clear\"></rect>\n            </vstack>\n            <vstack animation=\"clockMinute\">\n                <rect frame=\"5,40\" color=\"blue\"></rect>\n                <rect frame=\"5,40\" color=\"clear\"></rect>\n            </vstack>\n            <vstack animation=\"clockHour\">\n                <rect frame=\"5,30\" color=\"red\"></rect>\n                <rect frame=\"5,30\" color=\"clear\"></rect>\n            </vstack>\n        </zstack>\n    </vstack>\n);\n\n"
+    },
+    {
+      "slug": "Condition Content",
+      "title": "Condition Content",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Content Select Template\n// \n// Description: Choose content at runtime\n// \n\nvar text = \"Hello ScriptWidget :)\";\n\nvar a = (\n    <text>a text</text>\n)\n\nvar b = (\n    <text>b text</text>\n)\n\nvar c = Math.random() * 10 % 10 > 5 ? a : b;\n\n\nconst widget_size = $getenv(\"widget-size\");\n\n$render(\n  <vstack>\n    <text font=\"title\">{text}</text>\n    {c}\n    <text font=\"caption\">Widget Size : {widget_size}</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "GitHub Repo Stats",
+      "title": "GitHub Repo Stats",
+      "description": "Stars, forks, and issues for any repo.",
+      "tags": [
+        "developer",
+        "fetch"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// GitHub Repo Stats\n// widget-param: \"owner/repo\"\n//\n\nconst repo = ($getenv(\"widget-param\") || \"everettjf/ScriptWidget\").trim();\nconst url = `https://api.github.com/repos/${repo}`;\nconst result = await fetch(url);\nconst data = JSON.parse(result);\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n    <text font=\"caption\" color=\"#94a3b8\">GitHub</text>\n    <text font=\"title3\" color=\"#e2e8f0\">{repo}</text>\n    <hstack spacing=\"12\">\n      <stat title=\"Stars\" value={(data.stargazers_count || 0).toString()} subtitle=\"\" color=\"#f59e0b\" />\n      <stat title=\"Forks\" value={(data.forks_count || 0).toString()} subtitle=\"\" color=\"#38bdf8\" />\n      <stat title=\"Issues\" value={(data.open_issues_count || 0).toString()} subtitle=\"\" color=\"#ef4444\" />\n    </hstack>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Currency Pulse",
+      "title": "Currency Pulse",
+      "description": "Exchange rates from open.er-api.com with a configurable base currency.",
+      "tags": [
+        "finance",
+        "fetch"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Currency Pulse (open.er-api.com)\n// widget-param: base currency (optional)\n//\n\nconst base = ($getenv(\"widget-param\") || \"USD\").trim().toUpperCase();\nconst url = `https://open.er-api.com/v6/latest/${base}`;\nconst result = await fetch(url);\nconst data = JSON.parse(result);\nconst rates = data.rates || {};\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n    <text font=\"caption\" color=\"#94a3b8\">Currency Pulse</text>\n    <text font=\"title3\" color=\"#e2e8f0\">Base: {base}</text>\n    <hstack spacing=\"12\">\n      <stat title=\"CNY\" value={rates.CNY ? rates.CNY.toFixed(2) : \"-\"} subtitle=\"\" color=\"#38bdf8\" />\n      <stat title=\"EUR\" value={rates.EUR ? rates.EUR.toFixed(2) : \"-\"} subtitle=\"\" color=\"#22c55e\" />\n      <stat title=\"JPY\" value={rates.JPY ? rates.JPY.toFixed(2) : \"-\"} subtitle=\"\" color=\"#f59e0b\" />\n    </hstack>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Image Basic Usage",
+      "title": "Image Basic Usage",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component image\n// \n\n/*\n\n    <image />\n    <image systemName=\"mosaic.fill\" />\n    <image id=\"image0\" />\n    \n    <image id=\"image\" mode=\"fit\" ratio=\"0.6\" />\n    <image id=\"image\" mode=\"fill\" frame=\"260,60\" />\n\n    <image id=\"image\" mode=\"fill\" clip frame=\"200,100\"/>\n    \n    <image id=\"image\" mode=\"fill\" clip=\"rect\" frame=\"200,100\"/>\n    <image id=\"image\" mode=\"fill\" clip=\"ellipse\" frame=\"200,100\"/>\n    <image id=\"image\" mode=\"fill\" clip=\"circle\" frame=\"200,100\"/>\n    <image id=\"image\" mode=\"fill\" clip=\"capsule\" frame=\"200,100\"/>\n\n    <image id=\"image\" mode=\"fill\" corner=\"30\" frame=\"200,100\"/>\n*/\n\n$render(\n  <vstack>\n    <image url=\"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png\" frame=\"20,20\"/>\n    <image id=\"image\" frame=\"260,60\"/>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Live Activity Demo",
+      "title": "Live Activity Demo",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Usage for component Live Activity and Dynamic Island\n// \n\n\n// $render is also for lock screen live activity\n$render(\n    <vstack frame=\"max\">\n        <text>hello live activity</text>\n    </vstack>\n);\n\n\n// $dynamic_island is for dynamic island\n// on iPhone 14 Pro/ProMax and iOS16.1+\n$dynamic_island({\n    expanded: { // expanded is required , at least one of the four child below is required\n        leading: <text>leading</text>,\n        trailing: <text>trailing</text>,\n        center: <text>center</text>,\n        bottom: <text>bottom</text>,\n    },\n    compactLeading: <text>compactLeading</text>, // required\n    compactTrailing: <text>compactTrailing</text>, // required\n    minimal: <text>minimal</text>, // required\n});\n"
+    },
+    {
+      "slug": "Crypto Price Ticker",
+      "title": "Crypto Price Ticker",
+      "description": "Track real-time crypto prices and 24h change using CoinGecko.",
+      "tags": [
+        "fetch",
+        "finance"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Crypto Price Ticker (CoinGecko)\n// widget-param: coin id, e.g. \"bitcoin\", \"ethereum\"\n//\n\nconst coin = ($getenv(\"widget-param\") || \"bitcoin\").trim().toLowerCase();\nconst url = `https://api.coingecko.com/api/v3/simple/price?ids=${coin}&vs_currencies=usd&include_24hr_change=true`;\nconst result = await fetch(url);\nconst data = JSON.parse(result);\nconst info = data[coin] || { usd: 0, usd_24h_change: 0 };\n\nconst price = info.usd || 0;\nconst change = info.usd_24h_change || 0;\nconst changeColor = change >= 0 ? \"#22c55e\" : \"#ef4444\";\nconst changeLabel = change >= 0 ? \"+\" + change.toFixed(2) : change.toFixed(2);\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n    <text font=\"caption\" color=\"#94a3b8\">Crypto Ticker</text>\n    <text font=\"title2\" color=\"#e2e8f0\">{coin.toUpperCase()}</text>\n    <text font=\"title3\" color=\"#38bdf8\">${price.toFixed(2)}</text>\n    <text font=\"caption\" color={changeColor}>{changeLabel}% 24h</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Datetime Timezone",
+      "title": "Datetime Timezone",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "\n//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n//\n\nconst widget_size = $getenv(\"widget-size\");\nconst widget_param = $getenv(\"widget-param\");\n\nconst beijingDate = new Date().toLocaleString(\"zh-CN\", { timeZone: \"Asia/Shanghai\" }).toLocaleString();\nconst sanJoseDate = new Date().toLocaleString(\"zh-CN\", { timeZone: \"America/Los_Angeles\" }).toLocaleString();\nconst newYorkDate = new Date().toLocaleString(\"zh-CN\", { timeZone: \"America/New_York\" }).toLocaleString();\nconst sydneyDate = new Date().toLocaleString(\"zh-CN\", { timeZone: \"Australia/Sydney\" }).toLocaleString();\n\n$render(\n    <hstack frame=\"max\">\n        <vstack alignment=\"leading\">\n            <text font=\"title3\" color=\"blue\" font=\"custom,Unispace,14\">Beijing:</text>\n            <text font=\"title3\" color=\"green\" font=\"custom,Unispace,14\">San Jose:</text>\n            <text font=\"title3\" color=\"orange\" font=\"custom,Unispace,14\">New York:</text>\n            <text font=\"title3\" color=\"secondary\" font=\"custom,Unispace,14\">Sydney:</text>\n        </vstack>\n        <vstack alignment=\"leading\">\n            <text font=\"title3\" color=\"red\" font=\"custom,Unispace,14\">{beijingDate}</text>\n            <text font=\"title3\" color=\"yellow\" font=\"custom,Unispace,14\">{sanJoseDate}</text>\n            <text font=\"title3\" color=\"purple\" font=\"custom,Unispace,14\">{newYorkDate}</text>\n            <text font=\"title3\" color=\"gray\" font=\"custom,Unispace,14\">{sydneyDate}</text>\n        </vstack>\n    </hstack>\n);\n"
+    },
+    {
+      "slug": "Gauge Battery",
+      "title": "Gauge Battery",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Battery Gauge\n// \n\nvar percent = $device.battery().level * 100;\npercent = percent.toFixed(0);\n\nlet gaugeSections = [\n  {color: \"yellow\", value: 0.1},\n  {color: \"blue\", value: 0.2},\n  {color: \"orange\", value: 0.3},\n  {color: \"green\", value: 0.4},\n];\n\n\n$render(\n  <vstack frame=\"max\">\n    <gauge \n      angle=\"260\" \n      value={percent/100}\n      thickness=\"10\" \n      label={percent + \"%\"} labelFont=\"caption\"\n      title=\"BATTERY\" titleFont=\"caption\"\n      sections={$json(gaugeSections)}\n      >\n    </gauge>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Text Days To End Of Month",
+      "title": "Text Days To End Of Month",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n\nvar d = new Date();\nvar n = d.getDay();\nconsole.log(n);\n\nlet linearGradient = {\n  type: \"linear\",\n  colors: [\"purple\", \"white\"],\n  startPoint: \"leading\",\n  endPoint: \"trailing\",\n};\n\nvar a = moment().endOf('month');\nvar b = moment();\nvar days = a.diff(b, 'days');\n\n$render(\n  <vstack\n    background={$gradient(linearGradient)}\n    frame=\"max,center\"\n  >\n    <text font=\"largeTitle\" color=\"black\" padding=\"10\">\n        { days + \" Days\"}\n    </text>\n\n    <text font=\"caption\" color=\"black\" padding=\"0\">\n        Until end of month\n    </text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Text Days to End Of Year",
+      "title": "Text Days to End Of Year",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n\nvar d = new Date();\nvar n = d.getDay();\nconsole.log(n);\n\nlet linearGradient = {\n  type: \"linear\",\n  colors: [\"blue\", \"white\"],\n  startPoint: \"leading\",\n  endPoint: \"trailing\",\n};\n\nvar a = moment().endOf('year');\nvar b = moment();\nvar days = a.diff(b, 'days');\n\n$render(\n  <vstack\n    background={$gradient(linearGradient)}\n    frame=\"max,center\"\n  >\n    <text font=\"largeTitle\" color=\"black\" padding=\"10\">\n        { days + \" Days\"}\n    </text>\n\n    <text font=\"caption\" color=\"black\" padding=\"0\">\n        Until end of year\n    </text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Weather",
+      "title": "Weather",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// \n\n// https://www.weatherapi.com/\n// please register account for your api key\nconst apikey = \"8883e2c78d854356bc813207212502\";\nconst city = \"Beijing\";\nconst url = `https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${city}&aqi=no`;\n\nconst result = await fetch(url);\nconsole.log(result);\nconst data = JSON.parse(result);\n\n$render(\n  <vstack frame=\"max\" background=\"#3a86ff\">\n    <text font=\"title3\" color=\"white\">\n      City: {data.location.name}\n    </text>\n    <text font=\"title3\" color=\"white\">\n      Temp: {data.current.temp_c} - {data.current.temp_f}\n    </text>\n    <text font=\"title3\" color=\"white\">\n      Condition: {data.current.condition.text}\n    </text>\n    <text font=\"caption2\" color=\"white\">\n      Updated At: {data.current.last_updated}\n    </text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Device Battery Percent",
+      "title": "Device Battery Percent",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "//\n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Battery Percent Template\n// \n\n\nvar percent = $device.battery().level * 100;\npercent = percent.toFixed(0);\n\nlet linearGradient = {\n  type: \"linear\",\n  colors: [\"blue\", \"red\", \"green\"],\n  startPoint: \"topLeading\",\n  endPoint: \"bottomTrailing\",\n};\n\n\nlet radialGradient = {\n  type: \"radial\",\n  colors: [\"orange\", \"red\", \"white\"],\n  center: \"center\",\n  startRadius: 100,\n  endRadius: 470,\n};\n\nlet angularGradient = {\n  type: \"angular\",\n  colors: [\"green\", \"blue\", \"black\", \"green\", \"blue\", \"black\", \"green\"],\n  center: \"center\",\n};\n\n$render(\n  <vstack background={$gradient(linearGradient)} frame=\"max\">\n    <text font=\"50\">🔋{percent} % </text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Habit Streak Tracker",
+      "title": "Habit Streak Tracker",
+      "description": "Simple streak counter backed by $storage.",
+      "tags": [
+        "storage",
+        "productivity"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Habit Streak Tracker (uses $storage)\n//\n\nconst today = new Date();\nconst todayKey = today.toISOString().slice(0, 10);\nconst lastDate = $storage.getString(\"habit.lastDate\");\nlet streakValue = parseInt($storage.getString(\"habit.streak\") || \"0\", 10);\n\nif (lastDate !== todayKey) {\n  if (lastDate) {\n    const lastTime = new Date(lastDate + \"T00:00:00Z\").getTime();\n    const diffDays = Math.floor((today.getTime() - lastTime) / (24 * 60 * 60 * 1000));\n    if (diffDays === 1) {\n      streakValue += 1;\n    } else {\n      streakValue = 1;\n    }\n  } else {\n    streakValue = 1;\n  }\n  $storage.setString(\"habit.lastDate\", todayKey);\n  $storage.setString(\"habit.streak\", String(streakValue));\n}\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n    <text font=\"caption\" color=\"#94a3b8\">Habit Streak</text>\n    <text font=\"title2\" color=\"#e2e8f0\">{streakValue} days</text>\n    <text font=\"caption2\" color=\"#64748b\">Last update: {todayKey}</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Focus Countdown",
+      "title": "Focus Countdown",
+      "description": "A focus cycle timer with progress gauge.",
+      "tags": [
+        "productivity",
+        "gauge"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Focus Countdown (25-minute cycle)\n//\n\nconst cycleMinutes = 25;\nconst now = new Date();\nconst minutesInto = now.getMinutes() % cycleMinutes;\nconst secondsInto = now.getSeconds();\nconst elapsed = minutesInto * 60 + secondsInto;\nconst total = cycleMinutes * 60;\nconst remaining = total - elapsed;\nconst progress = elapsed / total;\n\nconst mm = Math.floor(remaining / 60);\nconst ss = Math.floor(remaining % 60);\nconst timeText = `${mm.toString().padStart(2, \"0\")}:${ss.toString().padStart(2, \"0\")}`;\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#1e293b\">\n    <text font=\"caption\" color=\"#94a3b8\">Focus Timer</text>\n    <text font=\"title2\" color=\"#e2e8f0\">{timeText}</text>\n    <gauge\n      angle=\"260\"\n      value={progress}\n      thickness=\"8\"\n      label={`${Math.round(progress * 100)}%`}\n      labelFont=\"caption\"\n      title=\"Session\"\n      titleFont=\"caption\"\n    />\n    <text font=\"caption2\" color=\"#94a3b8\">Cycle: {cycleMinutes} min</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Weather Display",
+      "title": "Weather Display",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// Weather Template\n// \n// Description: Display weather today\n// \n\n// https://www.weatherapi.com/\n// please register account for your api key\nconst apikey = \"8883e2c78d854356bc813207212502\";\nconst city = \"Beijing\";\nconst url = `https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${city}&aqi=no`;\n\nconst result = await fetch(url);\nconsole.log(result);\nconst data = JSON.parse(result);\n\n$render(\n  <vstack frame=\"max\" background=\"#3a86ff\">\n    <text font=\"title3\" color=\"white\">\n      Weather\n    </text>\n    <text font=\"caption\" color=\"white\">\n      City: {data.location.name}\n    </text>\n    <text font=\"caption\" color=\"white\">\n      Temp: {data.current.temp_c} - {data.current.temp_f}\n    </text>\n    <text font=\"caption\" color=\"white\">\n      Condition: {data.current.condition.text}\n    </text>\n    <text font=\"caption2\" color=\"white\">\n      Updated At: {data.current.last_updated}\n    </text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Check Is Friday Today",
+      "title": "Check Is Friday Today",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n// \n\nvar d = new Date();\nvar n = d.getDay();\nconsole.log(n);\n\nlet linearGradient = {\n  type: \"linear\",\n  colors: [\"yellow\", \"white\"],\n  startPoint: \"top\",\n  endPoint: \"bottom\",\n};\n\n$render(\n  <vstack\n    background={$gradient(linearGradient)}\n    frame=\"max,leading\"\n    alignment=\"leading\"\n  >\n    <hstack padding=\"10\">\n      <vstack alignment=\"leading\">\n        <text font=\"body\" color=\"black\">\n          {d.getFullYear()}-{d.getMonth() + 1}-{d.getDate()}\n        </text>\n        <text font=\"body\" color=\"black\">\n          Is Friday today ?\n        </text>\n      </vstack>\n      <spacer />\n    </hstack>\n    <spacer />\n    <text font=\"largeTitle\" color=\"black\" padding=\"10\">\n      {n == 5 ? \"Yes😊\" : \"No🤔\"}\n    </text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Check Is Working Day Today",
+      "title": "Check Is Working Day Today",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "// \n// ScriptWidget \n// https://xnu.app/scriptwidget\n// \n\nvar d = new Date();\nvar n = d.getDay();\nconsole.log(n);\n\nlet linearGradient = {\n  type: \"linear\",\n  colors: [\"yellow\", \"red\"],\n  startPoint: \"top\",\n  endPoint: \"bottom\",\n};\n\n$render(\n  <vstack\n    background={$gradient(linearGradient)}\n    frame=\"max,leading\"\n    alignment=\"leading\"\n  >\n    <hstack padding=\"10\">\n      <vstack alignment=\"leading\">\n        <text font=\"body\" color=\"black\">\n          {d.getFullYear()}-{d.getMonth() + 1}-{d.getDate()}\n        </text>\n        <text font=\"body\" color=\"black\">\n          Is Working Day Today ?\n        </text>\n      </vstack>\n      <spacer />\n    </hstack>\n    <spacer />\n    <hstack alignment=\"center\">\n        <text font=\"largeTitle\" color=\"black\" padding=\"10\">\n        {(n >= 1 && n <= 5) ? \"Yes⛽️⛽️⛽️\" : \"No😄\"}\n        </text>\n    </hstack>    \n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Location Snapshot",
+      "title": "Location Snapshot",
+      "description": "Current coordinates, accuracy, and timestamp from Core Location.",
+      "tags": [
+        "location",
+        "device"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Location Snapshot\n// Requires Location permission in the main app.\n//\n\nif (!$location.isAvailable()) {\n  $render(\n    <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n      <text font=\"title3\" color=\"#f87171\">Location Unavailable</text>\n      <text font=\"caption\" color=\"#94a3b8\">Location services are disabled.</text>\n    </vstack>\n  );\n} else {\n  const status = $location.authorizationStatus();\n  const authorized = status === \"authorizedWhenInUse\" || status === \"authorizedAlways\";\n\n  if (!authorized) {\n    $render(\n      <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n        <text font=\"title3\" color=\"#fbbf24\">Permission Needed</text>\n        <text font=\"caption\" color=\"#94a3b8\">Enable Location access in the app.</text>\n      </vstack>\n    );\n  } else {\n    const location = await $location.current();\n    const lat = location.latitude.toFixed(4);\n    const lon = location.longitude.toFixed(4);\n    const accuracy = Math.max(0, Math.round(location.accuracy));\n\n    $render(\n      <vstack frame=\"max\" padding=\"12\" background=\"#111827\" spacing=\"6\">\n        <text font=\"caption\" color=\"#94a3b8\">Location Snapshot</text>\n        <text font=\"title3\" color=\"#e2e8f0\">{lat}, {lon}</text>\n        <text font=\"caption\" color=\"#94a3b8\">Accuracy: {accuracy}m</text>\n        <text font=\"caption2\" color=\"#64748b\">{location.timestamp}</text>\n      </vstack>\n    );\n  }\n}\n"
+    },
+    {
+      "slug": "Stock Snapshot",
+      "title": "Stock Snapshot",
+      "description": "Daily close and change for a stock symbol via stooq.com.",
+      "tags": [
+        "stocks",
+        "fetch"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Stock Snapshot (stooq.com)\n// widget-param: symbol, e.g. \"aapl.us\"\n//\n\nconst symbol = ($getenv(\"widget-param\") || \"aapl.us\").trim().toLowerCase();\nconst url = `https://stooq.com/q/l/?s=${symbol}&i=d`;\nconst result = await fetch(url);\nconst lines = result.trim().split(\"\\n\");\nlet closeValue = \"-\";\nlet openValue = \"-\";\nlet dateValue = \"-\";\n\nif (lines.length > 1) {\n  const cols = lines[1].split(\",\");\n  dateValue = cols[1] || \"-\";\n  openValue = cols[2] || \"-\";\n  closeValue = cols[5] || \"-\";\n}\n\nlet change = \"-\";\nif (openValue !== \"-\" && closeValue !== \"-\") {\n  const openNum = parseFloat(openValue);\n  const closeNum = parseFloat(closeValue);\n  if (!Number.isNaN(openNum) && !Number.isNaN(closeNum)) {\n    const diff = closeNum - openNum;\n    const pct = (diff / openNum) * 100;\n    change = `${diff.toFixed(2)} (${pct.toFixed(2)}%)`;\n  }\n}\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n    <text font=\"caption\" color=\"#94a3b8\">Stock Snapshot</text>\n    <text font=\"title3\" color=\"#e2e8f0\">{symbol.toUpperCase()}</text>\n    <text font=\"caption\" color=\"#94a3b8\">Close: {closeValue}</text>\n    <text font=\"caption\" color=\"#94a3b8\">Change: {change}</text>\n    <text font=\"caption2\" color=\"#64748b\">Date: {dateValue}</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Sunrise & Sunset",
+      "title": "Sunrise & Sunset",
+      "description": "Daily sunrise and sunset for a location.",
+      "tags": [
+        "time",
+        "location"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Sunrise & Sunset\n// widget-param: \"lat,lon\" (optional)\n//\n\nlet lat = 37.7749;\nlet lon = -122.4194;\nconst param = $getenv(\"widget-param\");\nif (param) {\n  const parts = param.split(\",\").map((p) => p.trim());\n  if (parts.length >= 2) {\n    const latValue = parseFloat(parts[0]);\n    const lonValue = parseFloat(parts[1]);\n    if (!Number.isNaN(latValue) && !Number.isNaN(lonValue)) {\n      lat = latValue;\n      lon = lonValue;\n    }\n  }\n}\n\nconst url = `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lon}&formatted=0`;\nconst result = await fetch(url);\nconst data = JSON.parse(result);\nconst sunrise = data.results?.sunrise ? new Date(data.results.sunrise) : null;\nconst sunset = data.results?.sunset ? new Date(data.results.sunset) : null;\n\nconst formatTime = (date) => {\n  if (!date) return \"-\";\n  return date.toLocaleTimeString([], { hour: \"2-digit\", minute: \"2-digit\" });\n};\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#1e293b\">\n    <text font=\"caption\" color=\"#94a3b8\">Sunrise & Sunset</text>\n    <hstack spacing=\"12\">\n      <label title={formatTime(sunrise)} systemName=\"sunrise.fill\" color=\"#f59e0b\" />\n      <label title={formatTime(sunset)} systemName=\"sunset.fill\" color=\"#f97316\" />\n    </hstack>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Meeting Countdown",
+      "title": "Meeting Countdown",
+      "description": "Countdown to a scheduled time via widget-param.",
+      "tags": [
+        "time",
+        "schedule"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Meeting Countdown\n// widget-param: \"2026-02-01 09:30\" or ISO string\n//\n\nconst param = ($getenv(\"widget-param\") || \"\").trim();\nlet target = null;\n\nif (param) {\n  const normalized = param.includes(\"T\") ? param : param.replace(\" \", \"T\");\n  const parsed = new Date(normalized);\n  if (!Number.isNaN(parsed.getTime())) {\n    target = parsed;\n  }\n}\n\nif (!target) {\n  $render(\n    <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n      <text font=\"caption\" color=\"#94a3b8\">Meeting Countdown</text>\n      <text font=\"title3\" color=\"#e2e8f0\">Set widget-param</text>\n      <text font=\"caption2\" color=\"#64748b\">Example: 2026-02-01 09:30</text>\n    </vstack>\n  );\n} else {\n  const now = new Date();\n  const diffMs = target.getTime() - now.getTime();\n  const diffMin = Math.max(0, Math.floor(diffMs / 60000));\n  const diffHour = Math.floor(diffMin / 60);\n  const diffDay = Math.floor(diffHour / 24);\n  const hours = diffHour % 24;\n  const minutes = diffMin % 60;\n\n  $render(\n    <vstack frame=\"max\" padding=\"12\" background=\"#1e293b\">\n      <text font=\"caption\" color=\"#94a3b8\">Next Meeting</text>\n      <text font=\"title2\" color=\"#e2e8f0\">{diffDay}d {hours}h {minutes}m</text>\n      <text font=\"caption2\" color=\"#64748b\">Target: {target.toLocaleString()}</text>\n    </vstack>\n  );\n}\n"
+    },
+    {
+      "slug": "Air Quality Now",
+      "title": "Air Quality Now",
+      "description": "AQI, PM2.5, and PM10 from Open-Meteo. Optional lat/lon widget param.",
+      "tags": [
+        "fetch",
+        "air-quality"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Air Quality Now - Open-Meteo (no API key)\n// widget-param: \"lat,lon\" (optional)\n//\n\nlet lat = 37.7749;\nlet lon = -122.4194;\nconst param = $getenv(\"widget-param\");\nif (param) {\n  const parts = param.split(\",\").map((p) => p.trim());\n  if (parts.length >= 2) {\n    const latValue = parseFloat(parts[0]);\n    const lonValue = parseFloat(parts[1]);\n    if (!Number.isNaN(latValue) && !Number.isNaN(lonValue)) {\n      lat = latValue;\n      lon = lonValue;\n    }\n  }\n}\n\nconst url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=pm2_5,pm10,us_aqi&timezone=auto`;\nconst result = await fetch(url);\nconst data = JSON.parse(result);\nconst current = data.current || {};\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n    <text font=\"caption\" color=\"#94a3b8\">Air Quality</text>\n    <text font=\"title2\" color=\"#e2e8f0\">AQI {current.us_aqi ?? \"-\"}</text>\n    <hstack spacing=\"12\">\n      <vstack alignment=\"leading\">\n        <text font=\"caption2\" color=\"#94a3b8\">PM2.5</text>\n        <text font=\"caption\" color=\"#e2e8f0\">{current.pm2_5 ?? \"-\"}</text>\n      </vstack>\n      <vstack alignment=\"leading\">\n        <text font=\"caption2\" color=\"#94a3b8\">PM10</text>\n        <text font=\"caption\" color=\"#e2e8f0\">{current.pm10 ?? \"-\"}</text>\n      </vstack>\n    </hstack>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Local Weather (Location)",
+      "title": "Local Weather (Location)",
+      "description": "Open-Meteo weather using the current device location.",
+      "tags": [
+        "location",
+        "fetch",
+        "weather"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Local Weather (Location)\n// Requires Location permission in the main app.\n//\n\nif (!$location.isAvailable()) {\n  $render(\n    <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n      <text font=\"title3\" color=\"#f87171\">Location Unavailable</text>\n      <text font=\"caption\" color=\"#94a3b8\">Location services are disabled.</text>\n    </vstack>\n  );\n  return;\n}\n\nconst status = $location.authorizationStatus();\nconst authorized = status === \"authorizedWhenInUse\" || status === \"authorizedAlways\";\n\nif (!authorized) {\n  $render(\n    <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n      <text font=\"title3\" color=\"#fbbf24\">Permission Needed</text>\n      <text font=\"caption\" color=\"#94a3b8\">Enable Location access in the app.</text>\n    </vstack>\n  );\n  return;\n}\n\nconst location = await $location.current();\nconst lat = location.latitude.toFixed(4);\nconst lon = location.longitude.toFixed(4);\n\nconst url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,weather_code&timezone=auto`;\nconst result = await fetch(url);\nconst data = JSON.parse(result);\nconst current = data.current || {};\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\" spacing=\"6\">\n    <text font=\"caption\" color=\"#94a3b8\">Local Weather</text>\n    <text font=\"title2\" color=\"#e2e8f0\">{current.temperature_2m ?? \"-\"} deg C</text>\n    <text font=\"caption\" color=\"#94a3b8\">Feels like {current.apparent_temperature ?? \"-\"} deg C</text>\n    <text font=\"caption2\" color=\"#64748b\">Weather code: {current.weather_code ?? \"-\"}</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Location Compass",
+      "title": "Location Compass",
+      "description": "Compass direction and speed from Core Location.",
+      "tags": [
+        "location",
+        "device"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Location Compass\n// Requires Location permission in the main app.\n//\n\nconst directionFromCourse = (course) => {\n  if (course < 0 || Number.isNaN(course)) return \"-\";\n  const dirs = [\"N\", \"NE\", \"E\", \"SE\", \"S\", \"SW\", \"W\", \"NW\", \"N\"];\n  const index = Math.round(course / 45);\n  return dirs[index];\n};\n\nif (!$location.isAvailable()) {\n  $render(\n    <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n      <text font=\"title3\" color=\"#f87171\">Location Unavailable</text>\n      <text font=\"caption\" color=\"#94a3b8\">Location services are disabled.</text>\n    </vstack>\n  );\n  return;\n}\n\nconst status = $location.authorizationStatus();\nconst authorized = status === \"authorizedWhenInUse\" || status === \"authorizedAlways\";\n\nif (!authorized) {\n  $render(\n    <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n      <text font=\"title3\" color=\"#fbbf24\">Permission Needed</text>\n      <text font=\"caption\" color=\"#94a3b8\">Enable Location access in the app.</text>\n    </vstack>\n  );\n  return;\n}\n\nconst location = await $location.current();\nconst course = location.course;\nconst speed = location.speed;\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#111827\" spacing=\"6\">\n    <text font=\"caption\" color=\"#94a3b8\">Compass</text>\n    <text font=\"title2\" color=\"#e2e8f0\">{directionFromCourse(course)}</text>\n    <text font=\"caption\" color=\"#94a3b8\">Course: {course >= 0 ? Math.round(course) + \" deg\" : \"-\"}</text>\n    <text font=\"caption\" color=\"#94a3b8\">Speed: {speed >= 0 ? speed.toFixed(1) + \" m/s\" : \"-\"}</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Health Steps Ring",
+      "title": "Health Steps Ring",
+      "description": "Shows today's steps with a configurable goal (requires read-only HealthKit authorization).",
+      "tags": [
+        "health",
+        "gauge"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Health Steps Ring\n// Requires read-only HealthKit permission in the main app.\n//\n\nconst goal = 8000;\n\nif (!$health.isAvailable()) {\n  $render(\n    <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n      <text font=\"title3\" color=\"#f87171\">HealthKit Unavailable</text>\n      <text font=\"caption\" color=\"#94a3b8\">Check platform support.</text>\n    </vstack>\n  );\n} else {\n  const granted = await $health.requestAuthorization();\n  if (!granted) {\n    $render(\n      <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n        <text font=\"title3\" color=\"#fbbf24\">Permission Needed</text>\n        <text font=\"caption\" color=\"#94a3b8\">Enable Health access in the app.</text>\n      </vstack>\n    );\n  } else {\n    const steps = await $health.stepCountToday();\n    const value = steps.value || 0;\n    const progress = Math.min(1, value / goal);\n\n    $render(\n      <vstack frame=\"max\" padding=\"12\" background=\"#0f172a\">\n        <text font=\"caption\" color=\"#94a3b8\">Steps Today</text>\n        <gauge\n          angle=\"260\"\n          value={progress}\n          thickness=\"10\"\n          label={value.toFixed(0)}\n          labelFont=\"title3\"\n          title={`Goal ${goal}`}\n          titleFont=\"caption\"\n        />\n        <text font=\"caption2\" color=\"#94a3b8\">{(progress * 100).toFixed(0)}% of goal</text>\n      </vstack>\n    );\n  }\n}\n"
+    },
+    {
+      "slug": "System Status Panel",
+      "title": "System Status Panel",
+      "description": "Battery, storage, thermal state, and low-power mode in a compact layout.",
+      "tags": [
+        "system",
+        "device"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// System Status Panel\n//\n\nconst battery = $device.battery();\nconst totalDisk = $device.totalDiskSpace();\nconst freeDisk = $device.freeDiskSpace();\nconst usedDisk = Math.max(0, totalDisk - freeDisk);\nconst diskRatio = totalDisk > 0 ? usedDisk / totalDisk : 0;\nconst batteryRatio = battery.level || 0;\n\nconst gaugeSections = [\n  { color: \"#22c55e\", value: 0.4 },\n  { color: \"#fbbf24\", value: 0.3 },\n  { color: \"#ef4444\", value: 0.3 }\n];\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#111827\">\n    <text font=\"caption\" color=\"#9ca3af\">System Status</text>\n    <hstack spacing=\"12\">\n      <vstack>\n        <gauge\n          angle=\"220\"\n          value={batteryRatio}\n          thickness=\"8\"\n          label={(batteryRatio * 100).toFixed(0) + \"%\"}\n          labelFont=\"caption2\"\n          title=\"BATTERY\"\n          titleFont=\"caption2\"\n          sections={$json(gaugeSections)}\n        />\n      </vstack>\n      <vstack>\n        <gauge\n          angle=\"220\"\n          value={diskRatio}\n          thickness=\"8\"\n          label={(diskRatio * 100).toFixed(0) + \"%\"}\n          labelFont=\"caption2\"\n          title=\"STORAGE\"\n          titleFont=\"caption2\"\n          sections={$json(gaugeSections)}\n        />\n      </vstack>\n    </hstack>\n    <text font=\"caption2\" color=\"#9ca3af\">Low Power: {$system.lowPowerMode() ? \"On\" : \"Off\"}</text>\n    <text font=\"caption2\" color=\"#9ca3af\">Thermal: {$system.thermalState()}</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Weather Now (Open-Meteo)",
+      "title": "Weather Now (Open-Meteo)",
+      "description": "Fetch live weather without an API key. Supports lat/lon via widget parameters.",
+      "tags": [
+        "fetch",
+        "weather"
+      ],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Weather Now - Open-Meteo (no API key required)\n// widget-param: \"lat,lon\" (optional)\n//\n\nlet lat = 37.7749;\nlet lon = -122.4194;\nconst param = $getenv(\"widget-param\");\nif (param) {\n  const parts = param.split(\",\").map((p) => p.trim());\n  if (parts.length >= 2) {\n    const latValue = parseFloat(parts[0]);\n    const lonValue = parseFloat(parts[1]);\n    if (!Number.isNaN(latValue) && !Number.isNaN(lonValue)) {\n      lat = latValue;\n      lon = lonValue;\n    }\n  }\n}\n\nconst url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code,wind_speed_10m&timezone=auto`;\nconst result = await fetch(url);\nconst data = JSON.parse(result);\n\nconst current = data.current || {};\nconst units = data.current_units || {};\n\nconst weatherMap = {\n  0: \"Clear\",\n  1: \"Mainly clear\",\n  2: \"Partly cloudy\",\n  3: \"Overcast\",\n  45: \"Fog\",\n  48: \"Fog\",\n  51: \"Drizzle\",\n  61: \"Rain\",\n  71: \"Snow\",\n  80: \"Showers\",\n  95: \"Thunder\"\n};\n\nconst weatherText = weatherMap[current.weather_code] || \"Unknown\";\nconst temperature = current.temperature_2m ?? \"-\";\nconst wind = current.wind_speed_10m ?? \"-\";\nconst time = current.time ?? \"\";\n\n$render(\n  <vstack frame=\"max\" padding=\"12\" background=\"#0ea5e9\">\n    <text font=\"caption\" color=\"#e0f2fe\">Weather Now</text>\n    <text font=\"title2\" color=\"white\">{temperature}{units.temperature_2m || \"\"}</text>\n    <text font=\"caption\" color=\"#e0f2fe\">{weatherText}</text>\n    <text font=\"caption2\" color=\"#bae6fd\">Wind: {wind}{units.wind_speed_10m || \"\"}</text>\n    <text font=\"caption2\" color=\"#bae6fd\">Updated: {time}</text>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "Animation Aquarium",
+      "title": "Animation Aquarium",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n// Animation Aquarium\n//\n// Description: Animation Aquarium\n//\n\n/*\n🛟\n🪼                   🐟🐠             🫧\n           🫧                          🫧   🐡\n🪼                 🐬       \n     🪼                        🦐     🫧\n🍀🪸🌿🪸⚓️🗿🐙🐙🌿🪸\n*/\n\nlet fishHorizontal = {\n  type: \"swing\",\n  duration: 20,\n  direction: \"horizontal\", // \"horizontal\", \"vertical\"\n  distance: 100,\n};\n\nlet fishVertical = {\n  type: \"swing\",\n  duration: 30,\n  direction: \"vertical\", // \"horizontal\", \"vertical\"\n  distance: 70,\n};\n\nlet bubbleVertical = {\n  type: \"swing\",\n  duration: 15,\n  direction: \"vertical\", // \"horizontal\", \"vertical\"\n  distance: 50,\n};\n\nlet linearGradient = {\n  type: \"linear\",\n  colors: [\"#013A63\", \"#1E81B0\", \"#E0FBFC\"],\n  startPoint: \"top\",\n  endPoint: \"bottom\",\n};\n$render(\n  <vstack background={$gradient(linearGradient)} frame=\"max\" alignment=\"top\">\n    <hstack alignment=\"leading\">\n      <text font=\"body\">  🛟</text>\n      <spacer />\n    </hstack>\n    <hstack alignment=\"leading\">\n      <text font=\"body\">  🪼        🐟    🐠         🫧</text>\n      <text font=\"body\" animation={$animation(fishVertical)}>🐠</text>\n      <text font=\"body\">         🫧</text>\n      <spacer />\n    </hstack>\n    <hstack alignment=\"leading\">\n      <text font=\"body\">  🫧</text>\n      <text font=\"body\">       </text>\n      <text font=\"body\" animation={$animation(bubbleVertical)}>🫧</text>\n      <text font=\"body\" animation={$animation(fishHorizontal)}>🐡🐡</text>\n      <spacer />\n    </hstack>\n    <hstack alignment=\"leading\">\n      <text font=\"body\">  🪼    🫧    🐬       🐬</text>\n    </hstack>\n    <hstack alignment=\"leading\">\n      <text font=\"body\">  🪼   🫧    🦐          🫧🫧</text>\n      <spacer />\n    </hstack>\n    <hstack alignment=\"leading\">\n      <text font=\"body\">  🍀 🪸🌿🪸⚓️🗿🐙🐙  🌿🌿 🌿🪸🪸</text>\n      <spacer />\n    </hstack>\n  </vstack>\n);\n"
+    },
+    {
+      "slug": "New Episode Tracker",
+      "title": "New Episode Tracker",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "const API_URL = \"https://episodate.com/api/show-details?q=\"\n\nconst colors = {\n  primary: \"#080808\",\n  secondary: \"green\",\n  text: {\n    primary: \"white\",\n    secondary: \"green\"\n  }\n}\n\nconst series = [\n  \"the-lord-of-the-rings\",\n  \"house-of-the-dragon\"\n]\n\nconst fetchSeries = async seriesList => {\n  let response = []\n\n  for (let series of seriesList) {\n    response.push(\n      JSON.parse(\n        await fetch(API_URL + series)\n      )\n    )\n  }\n  return response\n}\n\nconst getTimeLeft = airDate => {\n\n  let res\n  const millis = airDate - Date.now()\n  const secondsLeft = millis / 1000\n\n  const getDays = seconds => {\n    return Math.round(seconds / (3600 * 24))\n  }\n\n  const getHours = seconds => {\n    return Math.round(seconds % (3600 * 24) / 3600)\n  }\n\n  const getMinutes = seconds => {\n    return Math.round(seconds % 3600 / 60)\n  }\n  \n  if (getDays(secondsLeft) > 0) {\n    res = getDays(secondsLeft) + \"d \"\n    res += getHours(secondsLeft) + \"h \"\n    \n  } else if (getHours(secondsLeft) > 0) {\n    res = getHours(secondsLeft) + \" h \"\n    \n  } else {\n    res = getMinutes(secondsLeft) + \" m \"\n  }\n    \n  return res + \"left\"\n}\n\nconst Logo = ({logoPath}) => {\n   return (\n    <zstack>\n       <image\n         url={logoPath}\n         frame=\"40,40,trailing\"\n       />\n       <rect\n         color={colors.secondary}\n         stroke=\"1\"\n         frame=\"40,40\"\n       />\n    </zstack>\n  )\n}\n\nconst Entry = ({info}) => {\n\n  const getNextEpisode = countdown => \n    `s${countdown.season}e${countdown.episode}`\n\n  const nextEpisodeRemaining = countdown => {\n    const airDate = countdown.air_date\n      .replace(\" \", \"T\") + \"Z\"\n    \n    return getTimeLeft(new Date(airDate))\n  }\n  \n  return (\n    <vstack\n      alignment=\"top\" \n    >\n      <hstack\n        alignment=\"top\" \n      >\n        <Logo \n          logoPath={info.image_path}\n        />\n        <vstack\n          alignment=\"top\"\n        >\n          <text \n            font=\"14\"\n            frame=\"200,15,leading\"\n            color={colors.text.primary}\n          >\n            {info.name}\n          </text>\n          <hstack>\n            <text\n              font=\"caption2\"\n              frame=\"50,15,leading\"\n              color={colors.text.secondary}\n            >\n              {\n                info.countdown === null ? \"ended\"\n                : getNextEpisode(info.countdown)\n              }\n            </text>\n            <text\n              frame=\"120,15,trailing\"\n              font=\"caption2\"\n              color={colors.text.secondary}\n            >\n              {\n                info.countdown === null ? \"\"\n                : nextEpisodeRemaining(info.countdown)\n              }\n            </text>\n          </hstack>\n        </vstack>\n        <spacer/>\n      </hstack>\n    </vstack>\n  )\n}\n\nconst seriesJson = await fetchSeries(series)\n\n$render(\n  <zstack\n    background={colors.primary} \n  > \n    <vstack \n      padding=\"10,10,10,20\" \n      frame=\"max,top\"\n    >\n      {\n        seriesJson?.map(series =>\n          <Entry\n            info={series.tvShow}\n          />\n        )\n      }\n    </vstack>\n  </zstack>\n);\n"
+    },
+    {
+      "slug": "Countdown",
+      "title": "Countdown",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "//\n// When setting up the widget provide a parameter\n// in the setup dialog like Please provide a parameter like\n// '2022-11-26 Vacation' if you want to count down\n// or up to a date or '2022-11-26T12:35:00 Flight'\n// if you want to count up or down to a specific time\n// on a date.\n//\n\nconst SECONDS_PER_MINUTE = 60;\nconst SECONDS_PER_HOUR = SECONDS_PER_MINUTE * 60;\nconst SECONDS_PER_DAY = SECONDS_PER_HOUR * 24;\n\nfunction is_leap(yr) {\n  return yr % 400 === 0 || (yr % 4 === 0 && yr % 100 !== 0);\n}\n\nfunction days_per_month(month, year) {\n  if (month === 1) {\n    if (is_leap(year)) {\n      return 29;\n    } else {\n      return 28;\n    }\n  } else {\n    months = [31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];\n    return months[month];\n  }\n}\n\nfunction months_to_days(month) {\n  return Math.floor((month * 3057 - 3007) / 100);\n}\n\nfunction years_to_days(yr) {\n  return (\n    yr * 365 + Math.floor(yr / 4) - Math.floor(yr / 100) + Math.floor(yr / 400)\n  );\n}\n\nfunction ymd_to_days(yr, mo, day) {\n  scalar = day + months_to_days(mo);\n  if (mo > 2)\n    // adjust if past February\n    scalar -= is_leap(yr) ? 1 : 2;\n  yr--;\n  scalar += years_to_days(yr);\n  return scalar;\n}\n\nfunction determine_sign(remainder, large_unit, small_unit) {\n  if (remainder > large_unit - Math.floor(small_unit / 2)) {\n    return { text: \"≈\", count: 1 };\n  } else if (remainder > Math.floor(large_unit / 2)) {\n    return { text: \"<\", count: 1 };\n  } else if (remainder > Math.floor(small_unit / 2)) {\n    return { text: \">\", count: 0 };\n  } else if (remainder > 0) {\n    return { text: \"≈\", count: 0 };\n  } else {\n    return { text: \"\", count: 0 };\n  }\n}\n\nfunction Countdown(target, countdown_to) {\n  // Convert target and now to tm formats\n  const now_date = new Date();\n  now_tm = {\n    tm_min: countdown_to === \"T\" ? now_date.getMinutes() : 0,\n    tm_hour: countdown_to === \"T\" ? now_date.getHours() : 0,\n    tm_mday: now_date.getDate(),\n    tm_mon: now_date.getMonth(),\n    tm_year: now_date.getFullYear(),\n  };\n  const target_date = target;\n  target_tm = {\n    tm_min: countdown_to === \"T\" ? target_date.getMinutes() : 0,\n    tm_hour: countdown_to === \"T\" ? target_date.getHours() : 0,\n    tm_mday: target_date.getDate(),\n    tm_mon: target_date.getMonth(),\n    tm_year: target_date.getFullYear(),\n  };\n\n  // Choose post-text, max_tm and min_tm\n  if (target_date.getTime() > now_date.getTime()) {\n    // Count down to\n    post_text = \"\";\n    max_tm = target_tm;\n    min_tm = now_tm;\n  } else {\n    // Count down to\n    post_text = \"ago\";\n    max_tm = now_tm;\n    min_tm = target_tm;\n  }\n\n  // Calculate differences in years, months, days, hours and minutes\n  received = min_tm.tm_min > max_tm.tm_min ? 60 : 0;\n  min_diff = max_tm.tm_min + received - min_tm.tm_min;\n  borrow = received > 0 ? 1 : 0;\n  received = min_tm.tm_hour + borrow > max_tm.tm_hour ? 24 : 0;\n  hour_diff = max_tm.tm_hour + received - min_tm.tm_hour - borrow;\n  borrow = received > 0 ? 1 : 0;\n  received =\n    min_tm.tm_mday + borrow > max_tm.tm_mday\n      ? days_per_month(max_tm.tm_mon, max_tm.tm_year)\n      : 0;\n  day_diff = max_tm.tm_mday + received - min_tm.tm_mday - borrow;\n  borrow = received > 0 ? 1 : 0;\n  received = min_tm.tm_mon + borrow > max_tm.tm_mon ? 12 : 0;\n  month_diff = max_tm.tm_mon + received - min_tm.tm_mon - borrow;\n  borrow = received > 0 ? 1 : 0;\n  year_diff = max_tm.tm_year - min_tm.tm_year - borrow;\n\n  // Calculate total difference in seconds\n  diff =\n    ymd_to_days(max_tm.tm_year + 1900, max_tm.tm_mon + 1, max_tm.tm_mday) -\n    ymd_to_days(min_tm.tm_year + 1900, min_tm.tm_mon + 1, min_tm.tm_mday);\n  if (\n    min_tm.tm_hour * 100 + min_tm.tm_min >\n    max_tm.tm_hour * 100 + max_tm.tm_min\n  )\n    diff -= 1;\n  diff = diff * 24 + hour_diff;\n  diff = diff * 60 + min_diff;\n  diff = diff * 60;\n\n  if (diff == 0 || (countdown_to == 'D' && diff == SECONDS_PER_DAY)) {\n    // Display one word\n    if (diff == 0) {\n      if (countdown_to == 'D') {\n        return \"Today\";\n      } else {\n        return \"Now\";\n      }\n    } else {\n      if (target_date.getTime() > now_date.getTime()) {\n        return \"Tomorrow\";\n      } else {\n        return \"Yesterday\";\n      }\n    }\n  }\n\n  // Display incremental detail\n  count = 0;\n  remainder = 0;\n  if (\n    year_diff > 3 ||\n    (year_diff == 3 &&\n      (month_diff > 0 || day_diff > 0 || hour_diff > 0 || min_diff > 0))\n  ) {\n    count = year_diff;\n    remainder =\n      ymd_to_days(\n        max_tm.tm_year - year_diff + 1900,\n        max_tm.tm_mon + 1,\n        max_tm.tm_mday\n      ) - ymd_to_days(min_tm.tm_year + 1900, min_tm.tm_mon + 1, min_tm.tm_mday);\n    remainder *= SECONDS_PER_DAY;\n    remainder += hour_diff * SECONDS_PER_HOUR + min_diff * SECONDS_PER_MINUTE;\n    sign = determine_sign(\n      remainder,\n      (is_leap(max_tm.tm_year + 1900) ? 366 : 365) * SECONDS_PER_DAY,\n      SECONDS_PER_DAY\n    );\n    pre_text = sign.text;\n    count += sign.count;\n    unit = \" years \";\n  } else if (\n    year_diff * 12 + month_diff > 3 ||\n    (month_diff == 3 && (day_diff > 0 || hour_diff > 0 || min_diff > 0))\n  ) {\n    count = year_diff * 12 + month_diff;\n    remainder =\n      day_diff * SECONDS_PER_DAY +\n      hour_diff * SECONDS_PER_HOUR +\n      min_diff * SECONDS_PER_MINUTE;\n    sign = determine_sign(\n      remainder,\n      days_per_month(max_tm.tm_mon, max_tm.tm_year) * SECONDS_PER_DAY,\n      SECONDS_PER_DAY\n    );\n    pre_text = sign.text;\n    count += sign.count;\n    unit = \" months \";\n  } else if (diff > 3 * 7 * SECONDS_PER_DAY) {\n    count = Math.floor(diff / (7 * SECONDS_PER_DAY));\n    remainder = diff % (7 * SECONDS_PER_DAY);\n    sign = determine_sign(remainder, 7 * SECONDS_PER_DAY, SECONDS_PER_DAY);\n    pre_text = sign.text;\n    count += sign.count;\n    unit = \" weeks \";\n  } else if (diff > 3 * SECONDS_PER_DAY || countdown_to === \"D\") {\n    count = Math.floor(diff / SECONDS_PER_DAY);\n    remainder = diff % SECONDS_PER_DAY;\n    sign = determine_sign(remainder, SECONDS_PER_DAY, SECONDS_PER_HOUR);\n    pre_text = sign.text;\n    count += sign.count;\n    unit = \" days \";\n  } else if (diff > 3 * SECONDS_PER_HOUR) {\n    count = Math.floor(diff / SECONDS_PER_HOUR);\n    remainder = diff % SECONDS_PER_HOUR;\n    sign = determine_sign(remainder, SECONDS_PER_HOUR, SECONDS_PER_MINUTE);\n    pre_text = sign.text;\n    count += sign.count;\n    unit = \" hours \";\n  } else if (diff > SECONDS_PER_MINUTE) {\n    count = Math.floor(diff / SECONDS_PER_MINUTE);\n    pre_text = \"\";\n    unit = \" minutes \";\n  } else {\n    count = 1;\n    pre_text = \"\";\n    unit = \" minute \";\n  }\n\n  return pre_text + count + unit + post_text;\n}\n\n// Retrieve target from widget parameter\nconst param = $getenv(\"widget-param\");\nconst dtre = /\\d\\d\\d\\d\\-\\d\\d\\-\\d\\d(T\\d\\d\\:\\d\\d\\:\\d\\d)?/;\ndt_param = param.match(dtre);\nif (!dt_param) {\n  $render(\n    <vstack frame=\"max\">\n      <text>No valid widget parameter specified!</text>\n\n      <text></text>\n      <text font=\"caption\">\n        Please provide a parameter like '2022-11-26 Vacation' or\n        '2022-11-26T12:35:00 Flight'\n      </text>\n    </vstack>\n  );\n  return;\n} else {\n  target = new Date(dt_param[0]);\n  event = param.replace(dtre, \"\").trim();\n  countdown_to = dt_param[1] ? \"T\" : \"D\";\n}\n\n// Update widget\ntext = Countdown(target, countdown_to);\n\nlet linearGradient = {\n  type: \"linear\",\n  colors: [\"#fb5a72\", \"#f5243b\"],\n  startPoint: \"top\",\n  endPoint: \"bottom\",\n};\n\n// Date formatting\nif (countdown_to === \"T\") {\n  var dateFormat = {\n    year: \"numeric\",\n    month: \"short\",\n    day: \"numeric\",\n    hour: \"numeric\",\n    minute: \"numeric\",\n  };\n} else {\n  var dateFormat = {\n    year: \"numeric\",\n    month: \"short\",\n    day: \"numeric\",\n  };\n}\n\n$render(\n  <vstack\n    background={$gradient(linearGradient)}\n    frame=\"max,leading\"\n    alignment=\"leading\"\n  >\n    <hstack padding=\"10\">\n      <vstack alignment=\"leading\">\n        <text font=\"body\" color=\"white\">\n          {event}\n        </text>\n        <text font=\"caption\" color=\"white\">\n          {target.toLocaleDateString(undefined, dateFormat)}\n        </text>\n      </vstack>\n      <spacer />\n    </hstack>\n    <spacer />\n    <text font=\"title\" color=\"white\" padding=\"10\">\n      {text}\n    </text>\n  </vstack>\n);"
+    },
+    {
+      "slug": "Lunar Date",
+      "title": "Lunar Date",
+      "description": "ScriptWidget template.",
+      "tags": [],
+      "example": "\n//\n// ScriptWidget\n// https://xnu.app/scriptwidget\n//\n//\n\nvar getLunarData = (function () {\n    //公历农历转换\n    var calendar = {\n        lunarInfo: [0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2,\n            0x04ae0, 0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540, 0x0d6a0, 0x0ada2, 0x095b0, 0x14977,\n            0x04970, 0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54, 0x02b60, 0x09570, 0x052f2, 0x04970,\n            0x06566, 0x0d4a0, 0x0ea50, 0x06e95, 0x05ad0, 0x02b60, 0x186e3, 0x092e0, 0x1c8d7, 0x0c950,\n            0x0d4a0, 0x1d8a6, 0x0b550, 0x056a0, 0x1a5b4, 0x025d0, 0x092d0, 0x0d2b2, 0x0a950, 0x0b557,\n            0x06ca0, 0x0b550, 0x15355, 0x04da0, 0x0a5b0, 0x14573, 0x052b0, 0x0a9a8, 0x0e950, 0x06aa0,\n            0x0aea6, 0x0ab50, 0x04b60, 0x0aae4, 0x0a570, 0x05260, 0x0f263, 0x0d950, 0x05b57, 0x056a0,\n            0x096d0, 0x04dd5, 0x04ad0, 0x0a4d0, 0x0d4d4, 0x0d250, 0x0d558, 0x0b540, 0x0b6a0, 0x195a6,\n            0x095b0, 0x049b0, 0x0a974, 0x0a4b0, 0x0b27a, 0x06a50, 0x06d40, 0x0af46, 0x0ab60, 0x09570,\n            0x04af5, 0x04970, 0x064b0, 0x074a3, 0x0ea50, 0x06b58, 0x055c0, 0x0ab60, 0x096d5, 0x092e0,\n            0x0c960, 0x0d954, 0x0d4a0, 0x0da50, 0x07552, 0x056a0, 0x0abb7, 0x025d0, 0x092d0, 0x0cab5,\n            0x0a950, 0x0b4a0, 0x0baa4, 0x0ad50, 0x055d9, 0x04ba0, 0x0a5b0, 0x15176, 0x052b0, 0x0a930,\n            0x07954, 0x06aa0, 0x0ad50, 0x05b52, 0x04b60, 0x0a6e6, 0x0a4e0, 0x0d260, 0x0ea65, 0x0d530,\n            0x05aa0, 0x076a3, 0x096d0, 0x04bd7, 0x04ad0, 0x0a4d0, 0x1d0b6, 0x0d250, 0x0d520, 0x0dd45,\n            0x0b5a0, 0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0, 0x0aa50, 0x1b255, 0x06d20, 0x0ada0,\n            0x14b63, 0x09370, 0x049f8, 0x04970, 0x064b0, 0x168a6, 0x0ea50, 0x06b20, 0x1a6c4, 0x0aae0,\n            0x0a2e0, 0x0d2e3, 0x0c960, 0x0d557, 0x0d4a0, 0x0da50, 0x05d55, 0x056a0, 0x0a6d0, 0x055d4,\n            0x052d0, 0x0a9b8, 0x0a950, 0x0b4a0, 0x0b6a6, 0x0ad50, 0x055a0, 0x0aba4, 0x0a5b0, 0x052b0,\n            0x0b273, 0x06930, 0x07337, 0x06aa0, 0x0ad50, 0x14b55, 0x04b60, 0x0a570, 0x054e4, 0x0d160,\n            0x0e968, 0x0d520, 0x0daa0, 0x16aa6, 0x056d0, 0x04ae0, 0x0a9d4, 0x0a2d0, 0x0d150, 0x0f252,\n            0x0d520],\n        solarMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],\n        Gan: [\"\\u7532\", \"\\u4e59\", \"\\u4e19\", \"\\u4e01\", \"\\u620a\", \"\\u5df1\", \"\\u5e9a\", \"\\u8f9b\", \"\\u58ec\", \"\\u7678\"],\n        Zhi: [\"\\u5b50\", \"\\u4e11\", \"\\u5bc5\", \"\\u536f\", \"\\u8fb0\", \"\\u5df3\", \"\\u5348\", \"\\u672a\", \"\\u7533\", \"\\u9149\", \"\\u620c\", \"\\u4ea5\"],\n        Animals: [\"\\u9f20\", \"\\u725b\", \"\\u864e\", \"\\u5154\", \"\\u9f99\", \"\\u86c7\", \"\\u9a6c\", \"\\u7f8a\", \"\\u7334\", \"\\u9e21\", \"\\u72d7\", \"\\u732a\"],\n        solarTerm: [\"\\u5c0f\\u5bd2\", \"\\u5927\\u5bd2\", \"\\u7acb\\u6625\", \"\\u96e8\\u6c34\", \"\\u60ca\\u86f0\", \"\\u6625\\u5206\", \"\\u6e05\\u660e\", \"\\u8c37\\u96e8\", \"\\u7acb\\u590f\", \"\\u5c0f\\u6ee1\", \"\\u8292\\u79cd\", \"\\u590f\\u81f3\", \"\\u5c0f\\u6691\", \"\\u5927\\u6691\", \"\\u7acb\\u79cb\", \"\\u5904\\u6691\", \"\\u767d\\u9732\", \"\\u79cb\\u5206\", \"\\u5bd2\\u9732\", \"\\u971c\\u964d\", \"\\u7acb\\u51ac\", \"\\u5c0f\\u96ea\", \"\\u5927\\u96ea\", \"\\u51ac\\u81f3\"],\n        sTermInfo: ['9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c3598082c95f8c965cc920f',\n            '97bd0b06bdb0722c965ce1cfcc920f', 'b027097bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',\n            '97bcf97c359801ec95f8c965cc920f', '97bd0b06bdb0722c965ce1cfcc920f', 'b027097bd097c36b0b6fc9274c91aa',\n            '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f', '97bd0b06bdb0722c965ce1cfcc920f',\n            'b027097bd097c36b0b6fc9274c91aa', '9778397bd19801ec9210c965cc920e', '97b6b97bd19801ec95f8c965cc920f',\n            '97bd09801d98082c95f8e1cfcc920f', '97bd097bd097c36b0b6fc9210c8dc2', '9778397bd197c36c9210c9274c91aa',\n            '97b6b97bd19801ec95f8c965cc920e', '97bd09801d98082c95f8e1cfcc920f', '97bd097bd097c36b0b6fc9210c8dc2',\n            '9778397bd097c36c9210c9274c91aa', '97b6b97bd19801ec95f8c965cc920e', '97bcf97c3598082c95f8e1cfcc920f',\n            '97bd097bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c91aa', '97b6b97bd19801ec9210c965cc920e',\n            '97bcf97c3598082c95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',\n            '97b6b97bd19801ec9210c965cc920e', '97bcf97c3598082c95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722',\n            '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f',\n            '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',\n            '97bcf97c359801ec95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',\n            '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f', '97bd097bd07f595b0b6fc920fb0722',\n            '9778397bd097c36b0b6fc9210c8dc2', '9778397bd19801ec9210c9274c920e', '97b6b97bd19801ec95f8c965cc920f',\n            '97bd07f5307f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c920e',\n            '97b6b97bd19801ec95f8c965cc920f', '97bd07f5307f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2',\n            '9778397bd097c36c9210c9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bd07f1487f595b0b0bc920fb0722',\n            '7f0e397bd097c36b0b6fc9210c8dc2', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',\n            '97bcf7f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',\n            '97b6b97bd19801ec9210c965cc920e', '97bcf7f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722',\n            '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf7f1487f531b0b0bb0b6fb0722',\n            '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',\n            '97bcf7f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',\n            '97b6b97bd19801ec9210c9274c920e', '97bcf7f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722',\n            '9778397bd097c36b0b6fc9210c91aa', '97b6b97bd197c36c9210c9274c920e', '97bcf7f0e47f531b0b0bb0b6fb0722',\n            '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c920e',\n            '97b6b7f0e47f531b0723b0b6fb0722', '7f0e37f5307f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2',\n            '9778397bd097c36b0b70c9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721', '7f0e37f1487f595b0b0bb0b6fb0722',\n            '7f0e397bd097c35b0b6fc9210c8dc2', '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721',\n            '7f0e27f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',\n            '97b6b7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722',\n            '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722',\n            '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721',\n            '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9274c91aa',\n            '97b6b7f0e47f531b0723b0787b0721', '7f0e27f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722',\n            '9778397bd097c36b0b6fc9210c91aa', '97b6b7f0e47f149b0723b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722',\n            '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9210c8dc2', '977837f0e37f149b0723b0787b0721',\n            '7f07e7f0e47f531b0723b0b6fb0722', '7f0e37f5307f595b0b0bc920fb0722', '7f0e397bd097c35b0b6fc9210c8dc2',\n            '977837f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e37f1487f595b0b0bb0b6fb0722',\n            '7f0e397bd097c35b0b6fc9210c8dc2', '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',\n            '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '977837f0e37f14998082b0787b06bd',\n            '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722',\n            '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722',\n            '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',\n            '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14998082b0787b06bd',\n            '7f07e7f0e47f149b0723b0787b0721', '7f0e27f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722',\n            '977837f0e37f14998082b0723b06bd', '7f07e7f0e37f149b0723b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722',\n            '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b0721',\n            '7f07e7f0e47f531b0723b0b6fb0722', '7f0e37f1487f595b0b0bb0b6fb0722', '7f0e37f0e37f14898082b0723b02d5',\n            '7ec967f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0722', '7f0e37f1487f531b0b0bb0b6fb0722',\n            '7f0e37f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',\n            '7f0e37f1487f531b0b0bb0b6fb0722', '7f0e37f0e37f14898082b072297c35', '7ec967f0e37f14998082b0787b06bd',\n            '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e37f0e37f14898082b072297c35',\n            '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722',\n            '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f149b0723b0787b0721',\n            '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14998082b0723b06bd',\n            '7f07e7f0e47f149b0723b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722', '7f0e37f0e366aa89801eb072297c35',\n            '7ec967f0e37f14998082b0723b06bd', '7f07e7f0e37f14998083b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722',\n            '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14898082b0723b02d5', '7f07e7f0e37f14998082b0787b0721',\n            '7f07e7f0e47f531b0723b0b6fb0722', '7f0e36665b66aa89801e9808297c35', '665f67f0e37f14898082b0723b02d5',\n            '7ec967f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0722', '7f0e36665b66a449801e9808297c35',\n            '665f67f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',\n            '7f0e36665b66a449801e9808297c35', '665f67f0e37f14898082b072297c35', '7ec967f0e37f14998082b0787b06bd',\n            '7f07e7f0e47f531b0723b0b6fb0721', '7f0e26665b66a449801e9808297c35', '665f67f0e37f1489801eb072297c35',\n            '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722'],\n        nStr1: [\"\\u65e5\", \"\\u4e00\", \"\\u4e8c\", \"\\u4e09\", \"\\u56db\", \"\\u4e94\", \"\\u516d\", \"\\u4e03\", \"\\u516b\", \"\\u4e5d\", \"\\u5341\"],\n        nStr2: [\"\\u521d\", \"\\u5341\", \"\\u5eff\", \"\\u5345\"],\n        nStr3: [\"\\u6b63\", \"\\u4e8c\", \"\\u4e09\", \"\\u56db\", \"\\u4e94\", \"\\u516d\", \"\\u4e03\", \"\\u516b\", \"\\u4e5d\", \"\\u5341\", \"\\u51ac\", \"\\u814a\"],\n        lYearDays: function (y) {\n            var i, sum = 348;\n            for (i = 0x8000; i > 0x8; i >>= 1) { sum += (calendar.lunarInfo[y - 1900] & i) ? 1 : 0; }\n            return (sum + calendar.leapDays(y));\n        },\n        leapMonth: function (y) {\n            return (calendar.lunarInfo[y - 1900] & 0xf);\n        },\n        leapDays: function (y) {\n            if (calendar.leapMonth(y)) {\n                return ((calendar.lunarInfo[y - 1900] & 0x10000) ? 30 : 29);\n            }\n            return (0);\n        },\n        monthDays: function (y, m) {\n            if (m > 12 || m < 1) { return -1 }\n            return ((calendar.lunarInfo[y - 1900] & (0x10000 >> m)) ? 30 : 29);\n        },\n        solarDays: function (y, m) {\n            if (m > 12 || m < 1) { return -1 }\n            var ms = m - 1;\n            if (ms == 1) {\n                return (((y % 4 == 0) && (y % 100 != 0) || (y % 400 == 0)) ? 29 : 28);\n            } else {\n                return (calendar.solarMonth[ms]);\n            }\n        },\n        toGanZhi: function (offset) {\n            return (calendar.Gan[offset % 10] + calendar.Zhi[offset % 12]);\n        },\n        getTerm: function (y, n) {\n            if (y < 1900 || y > 2100) { return -1; }\n            if (n < 1 || n > 24) { return -1; }\n            var _table = calendar.sTermInfo[y - 1900];\n            var _info = [\n                parseInt('0x' + _table.substr(0, 5)).toString(),\n                parseInt('0x' + _table.substr(5, 5)).toString(),\n                parseInt('0x' + _table.substr(10, 5)).toString(),\n                parseInt('0x' + _table.substr(15, 5)).toString(),\n                parseInt('0x' + _table.substr(20, 5)).toString(),\n                parseInt('0x' + _table.substr(25, 5)).toString()\n            ];\n            var _calday = [\n                _info[0].substr(0, 1),\n                _info[0].substr(1, 2),\n                _info[0].substr(3, 1),\n                _info[0].substr(4, 2),\n                _info[1].substr(0, 1),\n                _info[1].substr(1, 2),\n                _info[1].substr(3, 1),\n                _info[1].substr(4, 2),\n                _info[2].substr(0, 1),\n                _info[2].substr(1, 2),\n                _info[2].substr(3, 1),\n                _info[2].substr(4, 2),\n                _info[3].substr(0, 1),\n                _info[3].substr(1, 2),\n                _info[3].substr(3, 1),\n                _info[3].substr(4, 2),\n                _info[4].substr(0, 1),\n                _info[4].substr(1, 2),\n                _info[4].substr(3, 1),\n                _info[4].substr(4, 2),\n                _info[5].substr(0, 1),\n                _info[5].substr(1, 2),\n                _info[5].substr(3, 1),\n                _info[5].substr(4, 2),\n            ];\n            return parseInt(_calday[n - 1]);\n        },\n        toChinaMonth: function (m) {\n            if (m > 12 || m < 1) { return -1 }\n            var s = calendar.nStr3[m - 1];\n            s += \"\\u6708\";\n            return s;\n        },\n        toChinaDay: function (d) {\n            var s;\n            switch (d) {\n                case 10:\n                    s = '\\u521d\\u5341';\n                    break;\n                case 20:\n                    s = '\\u4e8c\\u5341';\n                    break;\n                case 30:\n                    s = '\\u4e09\\u5341';\n                    break;\n                default:\n                    s = calendar.nStr2[Math.floor(d / 10)];\n                    s += calendar.nStr1[d % 10];\n            }\n            return (s);\n        },\n        getAnimal: function (y) {\n            return calendar.Animals[(y - 4) % 12]\n        },\n        solar2lunar: function (y, m, d) {\n            if (y < 1900 || y > 2100) { return -1; }\n            if (y == 1900 && m == 1 && d < 31) { return -1; }\n            if (!y) {\n                var objDate = new Date();\n            } else {\n                var objDate = new Date(y, parseInt(m) - 1, d)\n            }\n            var i, leap = 0, temp = 0;\n            var y = objDate.getFullYear(), m = objDate.getMonth() + 1, d = objDate.getDate();\n            var offset = (Date.UTC(objDate.getFullYear(), objDate.getMonth(), objDate.getDate()) - Date.UTC(1900, 0, 31)) / 86400000;\n            for (i = 1900; i < 2101 && offset > 0; i++) { temp = calendar.lYearDays(i); offset -= temp; }\n            if (offset < 0) { offset += temp; i--; }\n            var isTodayObj = new Date(), isToday = false;\n            if (isTodayObj.getFullYear() == y && isTodayObj.getMonth() + 1 == m && isTodayObj.getDate() == d) {\n                isToday = true;\n            }\n            var nWeek = objDate.getDay(), cWeek = calendar.nStr1[nWeek];\n            if (nWeek == 0) { nWeek = 7; }\n            var year = i;\n            var leap = calendar.leapMonth(i);\n            var isLeap = false;\n            for (i = 1; i < 13 && offset > 0; i++) {\n                if (leap > 0 && i == (leap + 1) && isLeap == false) {\n                    --i;\n                    isLeap = true; temp = calendar.leapDays(year);\n                } else {\n                    temp = calendar.monthDays(year, i);\n                }\n                if (isLeap == true && i == (leap + 1)) { isLeap = false; }\n                offset -= temp;\n            }\n            if (offset == 0 && leap > 0 && i == leap + 1) {\n                if (isLeap) {\n                    isLeap = false;\n                } else {\n                    isLeap = true; --i;\n                }\n            }\n            if (offset < 0) { offset += temp; --i; }\n            var month = i;\n            var day = offset + 1;\n            var sm = m - 1;\n            var term3 = calendar.getTerm(year, 3);\n            var gzY = calendar.toGanZhi(year - 4);\n            gzY = calendar.toGanZhi(year - 4); //modify\n            var firstNode = calendar.getTerm(y, (m * 2 - 1));\n            var secondNode = calendar.getTerm(y, (m * 2));\n            var gzM = calendar.toGanZhi((y - 1900) * 12 + m + 11);\n            if (d >= firstNode) {\n                gzM = calendar.toGanZhi((y - 1900) * 12 + m + 12);\n            }\n            var isTerm = false;\n            var Term = null;\n            if (firstNode == d) {\n                isTerm = true;\n                Term = calendar.solarTerm[m * 2 - 2];\n            }\n            if (secondNode == d) {\n                isTerm = true;\n                Term = calendar.solarTerm[m * 2 - 1];\n            }\n            var dayCyclical = Date.UTC(y, sm, 1, 0, 0, 0, 0) / 86400000 + 25567 + 10;\n            var gzD = calendar.toGanZhi(dayCyclical + d - 1);\n            return { 'lYear': year, 'lMonth': month, 'lDay': day, 'Animal': calendar.getAnimal(year), 'IMonthCn': (isLeap ? \"\\u95f0\" : '') + calendar.toChinaMonth(month), 'IDayCn': calendar.toChinaDay(day), 'cYear': y, 'cMonth': m, 'cDay': d, 'gzYear': gzY, 'gzMonth': gzM, 'gzDay': gzD, 'isToday': isToday, 'isLeap': isLeap, 'nWeek': nWeek, 'ncWeek': \"\\u661f\\u671f\" + cWeek, 'isTerm': isTerm, 'Term': Term };\n        }\n    };\n    //公历节日\n    var _festival1 = {\n        '0101': '元旦节',\n        '0202': '世界湿地日',\n        '0210': '国际气象节',\n        '0214': '情人节',\n        '0301': '国际海豹日',\n        '0303': '全国爱耳日',\n        '0305': '学雷锋纪念日',\n        '0308': '妇女节',\n        '0312': '植树节',\n        '0314': '国际警察日',\n        '0315': '消费者权益日',\n        '0317': '中国国医节 国际航海日',\n        '0321': '世界森林日 消除种族歧视国际日 世界儿歌日',\n        '0322': '世界水日',\n        '0323': '世界气象日',\n        '0324': '世界防治结核病日',\n        '0325': '全国中小学生安全教育日',\n        '0401': '愚人节',\n        '0407': '世界卫生日',\n        '0422': '世界地球日',\n        '0423': '世界图书和版权日',\n        '0424': '亚非新闻工作者日',\n        '0501': '劳动节',\n        '0504': '青年节',\n        '0515': '防治碘缺乏病日',\n        '0508': '世界红十字日',\n        '0512': '国际护士节',\n        '0515': '国际家庭日',\n        '0517': '世界电信日',\n        '0518': '国际博物馆日',\n        '0520': '全国学生营养日',\n        '0522': '国际生物多样性日',\n        '0531': '世界无烟日',\n        '0601': '国际儿童节 世界牛奶日',\n        '0605': '世界环境日',\n        '0606': '全国爱眼日',\n        '0617': '防治荒漠化和干旱日',\n        '0623': '国际奥林匹克日',\n        '0625': '全国土地日',\n        '0626': '国际禁毒日',\n        '0701': '建党节 香港回归纪念日',\n        '0702': '国际体育记者日',\n        '0711': '世界人口日 航海日',\n        '0801': '建军节',\n        '0808': '中国男子节(爸爸节)',\n        '0903': '抗日战争胜利纪念日',\n        '0908': '国际扫盲日 国际新闻工作者日',\n        '0910': '教师节',\n        '0916': '国际臭氧层保护日',\n        '0918': '九·一八事变纪念日',\n        '0920': '国际爱牙日',\n        '0927': '世界旅游日',\n        '1001': '国庆节 国际音乐日 国际老人节',\n        '1002': '国际非暴力日 国际和平与民主自由斗争日',\n        '1004': '世界动物日',\n        '1006': '老人节',\n        '1008': '全国高血压日',\n        '1005': '国际教师节',\n        '1009': '世界邮政日',\n        '1010': '辛亥革命纪念日 世界精神卫生日',\n        '1013': '世界保健日 国际减灾日',\n        '1014': '世界标准日',\n        '1015': '国际盲人节(白手杖节)',\n        '1016': '世界粮食日',\n        '1017': '世界消除贫困日',\n        '1022': '世界传统医药日',\n        '1024': '联合国日 世界发展信息日',\n        '1031': '世界勤俭日',\n        '1107': '十月社会主义革命纪念日',\n        '1108': '中国记者日',\n        '1109': '全国消防安全宣传教育日',\n        '1110': '世界青年节',\n        '1111': '国际科学与和平周(本日所属的一周)',\n        '1112': '孙中山诞辰纪念日',\n        '1114': '联合国糖尿病日',\n        '1117': '国际大学生节',\n        '1121': '世界问候日 世界电视日',\n        '1129': '国际声援巴勒斯坦人民国际日',\n        '1201': '世界艾滋病日',\n        '1203': '世界残疾人日',\n        '1204': '宪法日',\n        '1205': '国际志愿人员日',\n        '1209': '世界足球日',\n        '1210': '世界人权日',\n        '1212': '西安事变纪念日',\n        '1213': '南京大屠杀纪念日',\n        '1220': '澳门回归纪念',\n        '1221': '国际篮球日',\n        '1224': '平安夜',\n        '1225': '圣诞节',\n        '1226': '毛泽东诞辰纪念日'\n    };\n    //某月的第几个星期几,第3位为5表示最后一星期\n    var _festival2 = {\n        '0110': '黑人日',\n        '0150': '世界麻风日',\n        '0440': '世界儿童日',\n        '0520': '国际母亲节',\n        '0532': '国际牛奶日',\n        '0530': '全国助残日',\n        '0630': '父亲节',\n        '0711': '世界建筑日',\n        '0730': '被奴役国家周',\n        '0936': '世界清洁地球日',\n        '0932': '国际和平日',\n        '0940': '国际聋人节',\n        '1011': '国际住房日',\n        '1024': '世界视觉日',\n        '1144': '感恩节',\n        '1220': '国际儿童电视广播日'\n    };\n    //农历节日\n    var _festival3 = {\n        '0101': '春节',\n        '0102': '初二',\n        '0103': '初三',\n        '0115': '元宵节',\n        '0202': '龙抬头节',\n        '0323': '妈祖生辰',\n        '0505': '端午节',\n        '0707': '七夕节',\n        '0715': '中元节',\n        '0815': '中秋节',\n        '0909': '重阳节',\n        '1208': '腊八节',\n        '1223': '小年',\n        '0100': '除夕'\n    };\n    //假日安排数据\n    var _holiday = {\n        '2011': { '0402': 0, '0403': 1, '0404': 1, '0405': 1, '0430': 1, '0501': 1, '0502': 1, '0604': 1, '0605': 1, '0606': 1, '0910': 1, '0911': 1, '0912': 1, '1001': 1, '1002': 1, '1003': 1, '1004': 1, '1005': 1, '1006': 1, '1007': 1, '1008': 0, '1009': 0, '1231': 0 },\n        '2012': {\n            '0101': 1, '0102': 1, '0103': 1, '0121': 0, '0122': 1, '0123': 1, '0124': 1, '0125': 1, '0126': 1, '0127': 1, '0128': 1, '0129': 0, '0331': 0, '0401'\n                : 0, '0402': 1, '0403': 1, '0404': 1, '0428': 0, '0429': 1, '0430': 1, '0501': 1, '0622': 1, '0623': 1, '0624': 1, '0929': 0, '0930': 1, '1001': 1, '1002': 1, '1003': 1, '1004': 1, '1005': 1, '1006': 1, '1007': 1\n        },\n        '2013': { '0101': 1, '0102': 1, '0103': 1, '0105': 0, '0106': 0, '0209': 1, '0210': 1, '0211': 1, '0212': 1, '0213': 1, '0214': 1, '0215': 1, '0216': 0, '0217': 0, '0404': 1, '0405': 1, '0406': 1, '0407': 0, '0427': 0, '0428': 0, '0429': 1, '0430': 1, '0501': 1, '0608': 0, '0609': 0, '0610': 1, '0611': 1, '0612': 1, '0919': 1, '0920': 1, '0921': 1, '0922': 0, '0929': 0, '1001': 1, '1002': 1, '1003': 1, '1004': 1, '1005': 1, '1006': 1, '1007': 1, '1012': 0 },\n        '2014': { '0101': 1, '0126': 0, '0131': 1, '0201': 1, '0202': 1, '0203': 1, '0203': 1, '0204': 1, '0205': 1, '0206': 1, '0208': 0, '0405': 1, '0406': 1, '0407': 1, '0501': 1, '0502': 1, '0503': 1, '0504': 0, '0531': 1, '0601': 1, '0602': 1, '0908': 1, '0928': 0, '1001': 1, '1002': 1, '1003': 1, '1004': 1, '1005': 1, '1006': 1, '1007': 1, '1011': 0 },\n        '2015': { '0101': 1, '0102': 1, '0103': 1, '0104': 0, '0215': 0, '0218': 1, '0219': 1, '0220': 1, '0221': 1, '0222': 1, '0223': 1, '0224': 1, '0228': 0, '0404': 1, '0405': 1, '0406': 1, '0501': 1, '0502': 1, '0503': 1, '0620': 1, '0621': 1, '0622': 1, '0903': 1, '0904': 1, '0905': 1, '0906': 0, '0927': 1, '1001': 1, '1002': 1, '1003': 1, '1004': 1, '1005': 1, '1006': 1, '1007': 1, '1010': 0 },\n        '2016': { '0101': 1, '0102': 1, '0103': 1, '0206': 0, '0207': 1, '0208': 1, '0209': 1, '0210': 1, '0211': 1, '0212': 1, '0213': 1, '0214': 0, '0402': 1, '0403': 1, '0404': 1, '0430': 1, '0501': 1, '0502': 1, '0609': 1, '0610': 1, '0611': 1, '0612': 0, '0915': 1, '0916': 1, '0917': 1, '0918': 0, '1001': 1, '1002': 1, '1003': 1, '1004': 1, '1005': 1, '1006': 1, '1007': 1, '1008': 0, '1009': 0 },\n        '2017': { '0101': 1, '0102': 1, '0122': 0, '0127': 1, '0128': 1, '0129': 1, '0130': 1, '0131': 1, '0201': 1, '0202': 1, '0204': 0, '0401': 0, '0402': 1, '0403': 1, '0404': 1, '0429': 1, '0430': 1, '0501': 1, '0527': 0, '0528': 1, '0529': 1, '0530': 1, '0930': 0, '1001': 1, '1002': 1, '1003': 1, '1004': 1, '1005': 1, '1006': 1, '1007': 1, '1008': 1, '1230': 1, '1231': 1 },\n        '2018': { '0101': 1, '0211': 0, '0215': 1, '0216': 1, '0217': 1, '0218': 1, '0219': 1, '0220': 1, '0221': 1, '0224': 0, '0405': 1, '0406': 1, '0407': 1, '0408': 0, '0428': 0, '0429': 1, '0430': 1, '0501': 1, '0616': 1, '0617': 1, '0618': 1, '0922': 1, '0923': 1, '0924': 1, '0929': 0, '0930': 0, '1001': 1, '1002': 1, '1003': 1, '1004': 1, '1005': 1, '1006': 1, '1007': 1, '1229': 0, '1230': 1, '1231': 1 },\n        '2019': { '0101': 1, '0202': 0, '0203': 0, '0204': 1, '0205': 1, '0206': 1, '0207': 1, '0208': 1, '0209': 1, '0210': 1, '0405': 1, '0406': 1, '0407': 1, '0428': 0, '0501': 1, '0502': 1, '0503': 1, '0504': 1, '0505': 0, '0607': 1, '0608': 1, '0609': 1, '0913': 1, '0914': 1, '0915': 1, '0929': 0, '1001': 1, '1002': 1, '1003': 1, '1004': 1, '1005': 1, '1006': 1, '1007': 1, '1012': 0 }\n    };\n    //获取日期数据\n    var getDateObj = function (year, month, day) {\n        var date = arguments.length && year ? new Date(year, month - 1, day) : new Date();\n        return {\n            'year': date.getFullYear(),\n            'month': date.getMonth() + 1,\n            'day': date.getDate(),\n            'week': date.getDay()\n        };\n    };\n    //当天\n    var _today = getDateObj();\n    //获取当月天数\n    var getMonthDays = function (obj) {\n        var day = new Date(obj.year, obj.month, 0);\n        return day.getDate();\n    };\n    if (!String.prototype.trim) {\n        String.prototype.trim = function () {\n            return this.replace(/^\\s+|\\s+$/g, '');\n        };\n    }\n    //获取某天日期信息\n    var getDateInfo = function (obj) {\n        var info = calendar.solar2lunar(obj.year, obj.month, obj.day);\n        var cMonth = info.cMonth > 9 ? '' + info.cMonth : '0' + info.cMonth;\n        var cDay = info.cDay > 9 ? '' + info.cDay : '0' + info.cDay;\n        var lMonth = info.lMonth > 9 ? '' + info.lMonth : '0' + info.lMonth;\n        var lDay = info.lDay > 9 ? '' + info.lDay : '0' + info.lDay;\n        var code1 = cMonth + cDay;\n        var code2 = cMonth + Math.ceil(info.cDay / 7) + info.nWeek % 7;\n        var code3 = lMonth + lDay;\n        var days = getMonthDays(obj);\n        //节日信息\n        info['festival'] = '';\n        if (_festival3[code3]) {\n            info['festival'] += _festival3[code3];\n        }\n        if (_festival1[code1]) {\n            info['festival'] += ' ' + _festival1[code1];\n        }\n        if (_festival2[code2]) {\n            info['festival'] += ' ' + _festival2[code2];\n        }\n        if (obj['day'] + 7 > days) {\n            var code4 = cMonth + 5 + info.nWeek % 7;\n            if (code4 != code2 && _festival2[code4]) {\n                info['festival'] += ' ' + _festival2[code4];\n            }\n        }\n        info['festival'] = info['festival'].trim();\n        //放假、调休等标记\n        info['sign'] = '';\n        if (_holiday[info.cYear]) {\n            var holiday = _holiday[info.cYear];\n            if (typeof holiday[code1] != 'undefined') {\n                info['sign'] = holiday[code1] ? 'holiday' : 'work';\n            }\n        }\n        if (info.cYear == _today.year && info.cMonth == _today.month && info.cDay == _today.day) {\n            info['sign'] = 'today';\n        }\n        return info;\n    };\n    //获取日历信息\n    return (function (date) {\n        var date = date || _today;\n        var first = getDateObj(date['year'], date['month'], 1);\t\t//当月第一天\n        var days = getMonthDays(date);\t\t\t\t\t\t\t//当月天数\n        var data = [];\t\t\t\t\t\t\t\t\t\t//日历信息\n        var obj = {};\n        //上月日期\n        for (var i = first['week']; i > 0; i--) {\n            obj = getDateObj(first['year'], first['month'], first['day'] - i);\n            var info = getDateInfo(obj);\n            info['disabled'] = 1;\n            data.push(info);\n        }\n        //当月日期\n        for (var i = 0; i < days; i++) {\n            obj = {\n                'year': first['year'],\n                'month': first['month'],\n                'day': first['day'] + i,\n                'week': (first['week'] + i) % 7\n            };\n            var info = getDateInfo(obj);\n            info['disabled'] = 0;\n            data.push(info);\n        }\n        //下月日期\n        var last = obj;\n        for (var i = 1; last['week'] + i < 7; i++) {\n            obj = getDateObj(last['year'], last['month'], last['day'] + i);\n            var info = getDateInfo(obj);\n            info['disabled'] = 1;\n            data.push(info);\n        }\n        return {\n            'date': getDateInfo(date),\t\t\t\t//当前日历选中日期\n            'data': data\n        };\n    });\n})();\n\n\n\nvar d = new Date();\n\nvar lunarInfo = getLunarData({\n    'year': d.getFullYear(),\n    'month': d.getMonth() + 1,\n    'day': d.getDate()\n});\n\n// console.log(JSON.stringify(lunarInfo, 2));\n\n/*\n\"date\": {\n    \"lYear\": 2022,\n    \"lMonth\": 1,\n    \"lDay\": 14,\n    \"Animal\": \"虎\",\n    \"IMonthCn\": \"正月\",\n    \"IDayCn\": \"十四\",\n    \"cYear\": 2022,\n    \"cMonth\": 2,\n    \"cDay\": 14,\n    \"gzYear\": \"壬寅\",\n    \"gzMonth\": \"壬寅\",\n    \"gzDay\": \"戊戌\",\n    \"isToday\": true,\n    \"isLeap\": false,\n    \"nWeek\": 1,\n    \"ncWeek\": \"星期一\",\n    \"isTerm\": false,\n    \"Term\": null,\n    \"festival\": \"情人节\",\n    \"sign\": \"today\"\n  },\n\n*/\n\nlet today = lunarInfo.date;\n\nlet linearGradient = {\n    type: \"linear\",\n    colors: [\"red\", \"yellow\"],\n    startPoint: \"top\",\n    endPoint: \"bottom\",\n};\n\n$render(\n    <vstack\n        background={$gradient(linearGradient)}\n        frame=\"max,center\"\n    >\n        <hstack>\n            <text font=\"title2\">{today.Animal} 年</text>\n\n            <vstack>\n                <text font=\"title\">{today.IMonthCn}</text>\n                <text font=\"title\">{today.IDayCn}</text>\n            </vstack>\n        </hstack>\n\n        <text font=\"caption\">{today.festival}</text>\n\n    </vstack>\n);\n\n"
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en" class="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ page.title | default: "XNU — Apps, CLIs and open-source by everettjf" }}</title>
+  <meta name="description" content="{{ page.description | default: 'A small collection of apps, command-line tools, and open-source projects by everettjf.' | strip_newlines }}" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+
+  <!-- Theme: applied before paint to avoid a flash -->
+  <script>
+  (function () {
+    try {
+      var t = localStorage.getItem('xnu-theme') || 'system';
+      var d = t === 'dark' || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if (d) document.documentElement.classList.add('dark');
+      document.documentElement.style.colorScheme = d ? 'dark' : 'light';
+    } catch (e) {}
+  })();
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Geist', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+            mono: ['Geist Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+          },
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' },
+            popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+            primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+            secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+            muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+            accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+            destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+            border: 'hsl(var(--border))',
+            input: 'hsl(var(--input))',
+            ring: 'hsl(var(--ring))',
+          },
+          borderRadius: {
+            lg: 'var(--radius)',
+            md: 'calc(var(--radius) - 2px)',
+            sm: 'calc(var(--radius) - 4px)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    @font-face {
+      font-family: 'Geist';
+      src: url('/assets/xnu/fonts/GeistVF.woff') format('woff');
+      font-weight: 100 900;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Geist Mono';
+      src: url('/assets/xnu/fonts/GeistMonoVF.woff') format('woff');
+      font-weight: 100 900;
+      font-display: swap;
+    }
+    :root {
+      --background: 0 0% 99%;
+      --foreground: 240 10% 4%;
+      --card: 0 0% 100%;
+      --card-foreground: 240 10% 4%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 240 10% 4%;
+      --primary: 240 10% 4%;
+      --primary-foreground: 0 0% 99%;
+      --secondary: 240 5% 96%;
+      --secondary-foreground: 240 10% 4%;
+      --muted: 240 5% 96%;
+      --muted-foreground: 240 4% 46%;
+      --accent: 240 5% 96%;
+      --accent-foreground: 240 10% 4%;
+      --destructive: 0 84% 60%;
+      --destructive-foreground: 0 0% 99%;
+      --border: 240 6% 90%;
+      --input: 240 6% 90%;
+      --ring: 240 10% 4%;
+      --radius: 0.5rem;
+    }
+    .dark {
+      --background: 240 10% 4%;
+      --foreground: 0 0% 98%;
+      --card: 240 8% 7%;
+      --card-foreground: 0 0% 98%;
+      --popover: 240 8% 7%;
+      --popover-foreground: 0 0% 98%;
+      --primary: 0 0% 98%;
+      --primary-foreground: 240 10% 4%;
+      --secondary: 240 6% 12%;
+      --secondary-foreground: 0 0% 98%;
+      --muted: 240 6% 12%;
+      --muted-foreground: 240 5% 65%;
+      --accent: 240 6% 12%;
+      --accent-foreground: 0 0% 98%;
+      --destructive: 0 62% 50%;
+      --destructive-foreground: 0 0% 98%;
+      --border: 240 6% 16%;
+      --input: 240 6% 16%;
+      --ring: 0 0% 83%;
+    }
+    html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    body { font-feature-settings: "rlig" 1, "calt" 1; }
+    .line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+    .line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+  </style>
+</head>
+<body class="bg-background text-foreground font-sans antialiased">
+{% unless page.bare %}
+  <div class="flex min-h-screen flex-col">
+    {% include xnu/header.html %}
+    <main class="flex-1">
+      {{ content }}
+    </main>
+    {% include xnu/footer.html %}
+  </div>
+{% else %}
+  {{ content }}
+{% endunless %}
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    (function () {
+      function icons() { if (window.lucide) window.lucide.createIcons(); }
+      icons();
+      document.addEventListener('DOMContentLoaded', icons);
+
+      // Copy-to-clipboard for install commands (mirrors the original brew buttons).
+      window.__xnuCopy = function (btn) {
+        var text = btn.getAttribute('data-copy') || '';
+        var done = function () {
+          var i = btn.querySelector('[data-copy-icon]');
+          if (i) { i.setAttribute('data-lucide', 'check'); icons(); setTimeout(function () { i.setAttribute('data-lucide', 'copy'); icons(); }, 1500); }
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done).catch(function () {});
+        } else {
+          var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(ta); done();
+        }
+      };
+
+      // Theme toggle (system / light / dark), mirrors the original app.
+      var KEY = 'xnu-theme';
+      function apply(theme) {
+        var resolved = theme === 'system'
+          ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+          : theme;
+        document.documentElement.classList.toggle('dark', resolved === 'dark');
+        document.documentElement.style.colorScheme = resolved;
+      }
+      function current() { try { return localStorage.getItem(KEY) || 'system'; } catch (e) { return 'system'; } }
+      window.__xnuSetTheme = function (t) {
+        try { localStorage.setItem(KEY, t); } catch (e) {}
+        apply(t);
+        document.querySelectorAll('[data-theme-opt]').forEach(function (el) {
+          el.querySelector('[data-check]').style.visibility = el.getAttribute('data-theme-opt') === t ? 'visible' : 'hidden';
+        });
+        icons();
+      };
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+        if (current() === 'system') apply('system');
+      });
+      document.addEventListener('DOMContentLoaded', function () {
+        var t = current();
+        document.querySelectorAll('[data-theme-opt]').forEach(function (el) {
+          var chk = el.querySelector('[data-check]');
+          if (chk) chk.style.visibility = el.getAttribute('data-theme-opt') === t ? 'visible' : 'hidden';
+        });
+        var btn = document.querySelector('[data-theme-trigger]');
+        var menu = document.querySelector('[data-theme-menu]');
+        if (btn && menu) {
+          btn.addEventListener('click', function (e) { e.stopPropagation(); menu.classList.toggle('hidden'); });
+          document.addEventListener('click', function () { menu.classList.add('hidden'); });
+          menu.addEventListener('click', function (e) { e.stopPropagation(); });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

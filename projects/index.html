@@ -1,0 +1,46 @@
+---
+layout: xnu_base
+permalink: /projects/
+title: "XNU — Apps, CLIs and open-source by everettjf"
+description: "A small collection of apps, command-line tools, and open-source projects by everettjf."
+---
+<div class="mx-auto max-w-5xl px-5 pt-16 pb-16 sm:px-6 sm:pt-24">
+  <div class="mb-16 sm:mb-24">
+    <h1 class="text-5xl font-bold tracking-tighter sm:text-7xl">XNU</h1>
+    <p class="mt-5 max-w-xl text-base leading-relaxed text-foreground/80 sm:text-lg">
+      Native apps and developer tools for the way you work.
+    </p>
+    <p class="mt-2 text-sm text-muted-foreground">
+      By
+      <a href="https://github.com/everettjf" target="_blank" rel="noopener noreferrer"
+         class="underline underline-offset-4 decoration-muted-foreground/40 hover:text-foreground hover:decoration-foreground">everettjf</a>.
+      Most ship on the App Store or as free downloads.
+    </p>
+  </div>
+
+  <section id="open-source" class="mb-16 scroll-mt-20 sm:mb-20">
+    <div class="mb-4 flex items-baseline justify-between border-b border-border pb-3">
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">Open source projects</h2>
+        <p class="mt-1 text-xs text-muted-foreground">Libraries and command-line tools on GitHub.</p>
+      </div>
+      <span class="text-xs text-muted-foreground tabular-nums">{{ site.data.xnu.open_source | size }}</span>
+    </div>
+    <div class="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+      {% for p in site.data.xnu.open_source %}{% include xnu/product_row.html p=p %}{% endfor %}
+    </div>
+  </section>
+
+  <section id="apps" class="mb-16 scroll-mt-20 sm:mb-20">
+    <div class="mb-4 flex items-baseline justify-between border-b border-border pb-3">
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">App projects</h2>
+        <p class="mt-1 text-xs text-muted-foreground">Consumer apps for macOS, iOS, and the browser.</p>
+      </div>
+      <span class="text-xs text-muted-foreground tabular-nums">{{ site.data.xnu.apps | size }}</span>
+    </div>
+    <div class="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+      {% for p in site.data.xnu.apps %}{% include xnu/product_row.html p=p %}{% endfor %}
+    </div>
+  </section>
+</div>

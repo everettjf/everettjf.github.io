@@ -1,0 +1,85 @@
+---
+layout: xnu_base
+permalink: /scriptwidget/
+title: "ScriptWidget — Build widgets with JavaScript + JSX"
+description: "Build iOS, iPadOS, and macOS widgets with JavaScript + JSX, powered by a native SwiftUI runtime."
+---
+<div class="mx-auto max-w-3xl px-6 py-16">
+  <a href="/projects/" class="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12">
+    <i data-lucide="arrow-left" class="h-3.5 w-3.5"></i>
+    All products
+  </a>
+
+  <div class="flex items-start gap-4 mb-6">
+    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-border bg-card">
+      <i data-lucide="code" class="h-5 w-5"></i>
+    </div>
+    <div>
+      <h1 class="text-2xl font-semibold tracking-tight">ScriptWidget</h1>
+      <p class="text-sm text-muted-foreground mt-0.5">iOS · iPadOS · macOS</p>
+    </div>
+  </div>
+
+  <p class="text-lg leading-relaxed text-foreground/80 mb-3">Build widgets with JavaScript and JSX.</p>
+  <p class="text-sm leading-relaxed text-muted-foreground mb-8">ScriptWidget gives you a SwiftUI runtime that runs JavaScript and renders JSX as native widgets. Write a script, preview it instantly, and ship it to home screen widgets, Live Activities, and Dynamic Island — all from the same code.</p>
+
+  <div class="rounded-lg border border-border bg-card p-4 mb-10 overflow-x-auto">
+    <pre class="text-xs leading-relaxed font-mono text-foreground/90"><code>// ScriptWidget
+$render(
+  &lt;vstack frame="max" padding="12" background="#0f172a"&gt;
+    &lt;text font="caption" color="#94a3b8"&gt;Hello ScriptWidget&lt;/text&gt;
+    &lt;text font="title3" color="#e2e8f0"&gt;Widgets with JavaScript + JSX&lt;/text&gt;
+  &lt;/vstack&gt;
+);</code></pre>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-3 mb-16">
+    <a href="https://apps.apple.com/app/scriptwidget/id1555600758" target="_blank" rel="noopener noreferrer"
+       class="inline-flex items-center gap-1.5 rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background hover:bg-foreground/90 transition-colors">
+      Get the app<i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+    </a>
+    <a href="/scriptwidget/api/" class="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors">Read the docs</a>
+    <a href="{{ site.data.xnu.discord_url }}" target="_blank" rel="noopener noreferrer"
+       class="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+      <i data-lucide="message-circle" class="h-4 w-4"></i>Join Discord
+    </a>
+    <a href="mailto:{{ site.data.xnu.support_email }}?subject=ScriptWidget%20%E2%80%94%20Feedback%20%2F%20Support"
+       class="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+      <i data-lucide="mail" class="h-4 w-4"></i>Feedback
+    </a>
+  </div>
+
+  <div class="border-t border-border pt-12 mb-16">
+    <h2 class="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-6">Features</h2>
+    <div class="grid gap-6 sm:grid-cols-2">
+      <div><h3 class="text-sm font-medium text-foreground mb-1">JSX to SwiftUI</h3><p class="text-sm text-muted-foreground leading-relaxed">Compose layouts with familiar JSX. They render as native SwiftUI views on device.</p></div>
+      <div><h3 class="text-sm font-medium text-foreground mb-1">Runtime APIs</h3><p class="text-sm text-muted-foreground leading-relaxed">System info, device state, networking, storage, read-only HealthKit and Location — all from JavaScript.</p></div>
+      <div><h3 class="text-sm font-medium text-foreground mb-1">Live Activities + Dynamic Island</h3><p class="text-sm text-muted-foreground leading-relaxed">The same script powers home screen widgets, Live Activities and Dynamic Island layouts.</p></div>
+      <div><h3 class="text-sm font-medium text-foreground mb-1">In-app editor</h3><p class="text-sm text-muted-foreground leading-relaxed">Write, preview, refresh — without leaving the app or rebuilding anything.</p></div>
+      <div><h3 class="text-sm font-medium text-foreground mb-1">iCloud sync</h3><p class="text-sm text-muted-foreground leading-relaxed">Scripts sync across your devices via iCloud / app group, automatically.</p></div>
+      <div><h3 class="text-sm font-medium text-foreground mb-1">Native performance</h3><p class="text-sm text-muted-foreground leading-relaxed">Built on SwiftUI. No Electron, no WebViews driving the UI.</p></div>
+    </div>
+  </div>
+
+  <div class="border-t border-border pt-12">
+    <h2 class="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-6">Documentation</h2>
+    <div class="space-y-1">
+      <a href="/scriptwidget/api/" class="group flex items-start justify-between gap-4 rounded-md border border-transparent p-3 -mx-3 hover:border-border hover:bg-secondary transition-colors">
+        <div><h3 class="text-sm font-medium text-foreground">Runtime APIs</h3><p class="text-sm text-muted-foreground mt-0.5">$render, $system, $device, $storage and more.</p></div>
+        <i data-lucide="arrow-up-right" class="h-4 w-4 text-muted-foreground/50 mt-1 group-hover:text-foreground transition-colors"></i>
+      </a>
+      <a href="/scriptwidget/components/" class="group flex items-start justify-between gap-4 rounded-md border border-transparent p-3 -mx-3 hover:border-border hover:bg-secondary transition-colors">
+        <div><h3 class="text-sm font-medium text-foreground">JSX components</h3><p class="text-sm text-muted-foreground mt-0.5">Every view and modifier supported by the runtime.</p></div>
+        <i data-lucide="arrow-up-right" class="h-4 w-4 text-muted-foreground/50 mt-1 group-hover:text-foreground transition-colors"></i>
+      </a>
+      <a href="/scriptwidget/templates/" class="group flex items-start justify-between gap-4 rounded-md border border-transparent p-3 -mx-3 hover:border-border hover:bg-secondary transition-colors">
+        <div><h3 class="text-sm font-medium text-foreground">Templates</h3><p class="text-sm text-muted-foreground mt-0.5">Ready-made scripts you can copy and tweak.</p></div>
+        <i data-lucide="arrow-up-right" class="h-4 w-4 text-muted-foreground/50 mt-1 group-hover:text-foreground transition-colors"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="mt-16 text-sm">
+    <a href="/scriptwidget/privacy/" class="text-muted-foreground hover:text-foreground transition-colors">Privacy policy →</a>
+  </div>
+</div>

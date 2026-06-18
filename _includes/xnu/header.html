@@ -1,0 +1,33 @@
+<header class="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur">
+  <div class="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
+    <a href="/projects/" class="flex items-center gap-2 text-base font-bold tracking-tight">
+      <span class="inline-flex h-6 w-6 items-center justify-center rounded-md bg-foreground text-[11px] font-bold text-background">X</span>
+      XNU
+    </a>
+    <nav class="flex items-center gap-3 text-sm text-muted-foreground sm:gap-5">
+      <a href="/projects/#open-source" class="hover:text-foreground transition-colors">Open source</a>
+      <a href="/projects/#apps" class="hover:text-foreground transition-colors">Apps</a>
+      <a href="https://github.com/everettjf" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+         class="inline-flex h-7 w-7 items-center justify-center rounded-md hover:bg-secondary hover:text-foreground transition-colors">
+        <i data-lucide="github" class="h-4 w-4"></i>
+      </a>
+      <div class="relative">
+        <button data-theme-trigger aria-label="Toggle theme"
+          class="inline-flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors focus:outline-none focus:ring-1 focus:ring-ring">
+          <i data-lucide="monitor" class="h-4 w-4"></i>
+        </button>
+        <div data-theme-menu class="hidden absolute right-0 mt-1 w-32 rounded-md border border-border bg-popover text-popover-foreground shadow-md p-1 z-50">
+          <button data-theme-opt="system" onclick="__xnuSetTheme('system')" class="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-sm hover:bg-secondary">
+            <i data-lucide="monitor" class="h-3.5 w-3.5"></i><span class="flex-1 text-left">System</span><i data-check data-lucide="check" class="h-3.5 w-3.5"></i>
+          </button>
+          <button data-theme-opt="light" onclick="__xnuSetTheme('light')" class="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-sm hover:bg-secondary">
+            <i data-lucide="sun" class="h-3.5 w-3.5"></i><span class="flex-1 text-left">Light</span><i data-check data-lucide="check" class="h-3.5 w-3.5"></i>
+          </button>
+          <button data-theme-opt="dark" onclick="__xnuSetTheme('dark')" class="flex w-full items-center gap-2 rounded-sm px-2 py-1.5 text-sm hover:bg-secondary">
+            <i data-lucide="moon" class="h-3.5 w-3.5"></i><span class="flex-1 text-left">Dark</span><i data-check data-lucide="check" class="h-3.5 w-3.5"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
