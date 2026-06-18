@@ -14,7 +14,7 @@
     { "name": "RepoRead", "pitch": "Read GitHub repositories as a book — no clone, no setup.", "href": "/reporead/", "icon": "book-open", "platform": "macOS" },
     { "name": "ScriptWidget", "pitch": "Build iOS, iPadOS and macOS widgets with JavaScript and JSX.", "href": "/scriptwidget/", "icon": "code", "platform": "iOS · macOS" },
     { "name": "StartMyApp", "pitch": "A keyboard-first app launcher for macOS with Apple Intelligence.", "href": "/startmyapp/", "icon": "zap", "platform": "macOS" },
-    { "name": "Translayr", "pitch": "System-wide translation across every macOS app, powered by local AI.", "href": "/translayr/", "icon": "languages", "platform": "macOS" },
+    { "name": "Saypick", "pitch": "System-wide translation across every macOS app, powered by local AI.", "href": "https://everettjf.github.io/Saypick/", "icon": "languages", "platform": "macOS" },
     { "name": "PDFRead", "pitch": "Read PDFs in any language, sentence by sentence, side by side.", "href": "/pdfread/", "icon": "file-text", "platform": "macOS" },
     { "name": "Wizvoid", "pitch": "Run large language models entirely offline on your iPhone.", "href": "/wizvoid/", "icon": "wand-2", "platform": "iOS" },
     { "name": "CountMyDays", "pitch": "Countdowns and day-counters in beautiful, offline-first cards.", "href": "/countmydays/", "icon": "clock", "platform": "iOS" },
@@ -211,25 +211,6 @@
         { "title": "Native and lightweight", "body": "A small Swift app. No Electron, no background bloat." }
       ],
       "privacy": true
-    },
-    "translayr": {
-      "name": "Translayr",
-      "platform": "macOS",
-      "icon": "languages",
-      "tagline": "System-wide translation across every macOS app, powered by local AI.",
-      "description": "Select any text in any app, press a shortcut, get a clean translation overlay. Translayr runs on top of local Ollama models, so nothing leaves your machine — no API keys, no usage caps, no leaks of work-in-progress prose.",
-      "links": [
-        { "label": "View on GitHub", "href": "https://github.com/everettjf/Translayr", "primary": true }
-      ],
-      "features": [
-        { "title": "Works everywhere", "body": "Translates from any app — browser, IDE, Slack, PDFs, anywhere you can select text." },
-        { "title": "Local models", "body": "Plugs into Ollama. Your text never leaves the device." },
-        { "title": "10 major languages", "body": "Bidirectional translation across English, Chinese, Japanese, and more." },
-        { "title": "Context-aware", "body": "The model sees enough surrounding text to keep tone and terminology consistent." },
-        { "title": "Fast overlay", "body": "A focused popover, no app switching, no clipboard juggling." },
-        { "title": "Customizable shortcut", "body": "Bind it to whatever key you already think of as 'translate'." }
-      ],
-      "privacy": false
     },
     "wiresnap": {
       "name": "WireSnap",

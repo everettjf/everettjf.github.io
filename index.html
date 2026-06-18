@@ -25,7 +25,7 @@ title: Home
             <ul class="project-list">
                 {% for p in site.data.xnu.apps %}
                 <li>
-                    <a class="project-item" href="{{ p.href }}">
+                    <a class="project-item" href="{{ p.href }}"{% if p.href contains "http" %} target="_blank" rel="noopener"{% endif %}>
                         <span class="project-name">{{ p.name }}</span>
                         <span class="project-platform">{{ p.platform }}</span>
                     </a>

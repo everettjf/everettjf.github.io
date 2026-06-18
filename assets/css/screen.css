@@ -113,6 +113,16 @@ a {
   opacity: 0;
   pointer-events: none;
 }
+.site-nav .site-nav-link {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--color-secondary);
+  transition: color 0.2s;
+}
+.site-nav .site-nav-link:hover {
+  color: var(--color-primary);
+}
 
 /* blinking cursor */
 .cursor {
