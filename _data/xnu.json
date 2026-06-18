@@ -11,11 +11,9 @@
   "apps": [
     { "name": "SpeakTwo", "pitch": "Real-time speech translation between two people, on one iPhone.", "href": "/speaktwo/", "icon": "messages-square", "platform": "iOS" },
     { "name": "Lectern", "pitch": "Search, watch, and learn from WWDC sessions with synced transcripts.", "href": "/lectern/", "icon": "video", "platform": "macOS" },
-    { "name": "RepoRead", "pitch": "Read GitHub repositories as a book — no clone, no setup.", "href": "/reporead/", "icon": "book-open", "platform": "macOS" },
     { "name": "ScriptWidget", "pitch": "Build iOS, iPadOS and macOS widgets with JavaScript and JSX.", "href": "/scriptwidget/", "icon": "code", "platform": "iOS · macOS" },
     { "name": "StartMyApp", "pitch": "A keyboard-first app launcher for macOS with Apple Intelligence.", "href": "/startmyapp/", "icon": "zap", "platform": "macOS" },
     { "name": "Saypick", "pitch": "System-wide translation across every macOS app, powered by local AI.", "href": "https://everettjf.github.io/Saypick/", "icon": "languages", "platform": "macOS" },
-    { "name": "PDFRead", "pitch": "Read PDFs in any language, sentence by sentence, side by side.", "href": "/pdfread/", "icon": "file-text", "platform": "macOS" },
     { "name": "Wizvoid", "pitch": "Run large language models entirely offline on your iPhone.", "href": "/wizvoid/", "icon": "wand-2", "platform": "iOS" },
     { "name": "CountMyDays", "pitch": "Countdowns and day-counters in beautiful, offline-first cards.", "href": "/countmydays/", "icon": "clock", "platform": "iOS" },
     { "name": "MyJSONDiff", "pitch": "A simple, native JSON diff tool for macOS.", "href": "/jsondiff/", "icon": "diff", "platform": "macOS" },
