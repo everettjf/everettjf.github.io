@@ -520,7 +520,73 @@ main { display: block; }
   border-top: 1px solid var(--color-separator);
 }
 
+/* ----- home: blogs + projects two-column ----- */
+body.home .readable-area { max-width: 60rem; }
+
+.home-grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 4rem;
+}
+.home-grid .post-list { margin-top: 0; }
+
+.home-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-secondary);
+  margin-bottom: 1.75rem;
+}
+
+.home-projects {
+  position: sticky;
+  top: 2rem;
+  align-self: start;
+}
+
+.project-list li { margin-bottom: 1.1rem; }
+.project-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.project-name {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+.project-item:hover .project-name { text-decoration-color: var(--color-primary); }
+.project-platform {
+  font-size: 0.75rem;
+  color: var(--color-secondary);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+.project-all {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--color-secondary);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+.project-all:hover { color: var(--color-primary); text-decoration-color: var(--color-primary); }
+
 /* ----- responsive ----- */
+@media (max-width: 768px) {
+  body.home .readable-area { max-width: 48rem; }
+  .home-grid { grid-template-columns: 1fr; gap: 3rem; margin-top: 3rem; }
+  .home-projects { position: static; }
+}
 @media (max-width: 640px) {
   .page-title { font-size: 2.25rem; }
   .site-nav { height: 5rem; }

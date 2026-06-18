@@ -39,11 +39,11 @@
     <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/images/favicon.ico">
     <link rel="manifest" href="{{ site.baseurl }}/images/site.webmanifest">
 </head>
-<body>
+{% assign is_home = false %}
+{% if page.url == '/' or page.title == 'Home' %}{% assign is_home = true %}{% endif %}
+<body{% if is_home %} class="home"{% endif %}>
 
     <div class="readable-area">
-        {% assign is_home = false %}
-        {% if page.url == '/' or page.title == 'Home' %}{% assign is_home = true %}{% endif %}
         <nav class="site-nav">
             <a class="logo-link{% if is_home %} is-home{% endif %}" href="{{ site.baseurl }}/" aria-label="Home">
                 <span>everettjf</span><span class="cursor">_</span>
