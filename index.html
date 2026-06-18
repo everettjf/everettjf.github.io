@@ -22,17 +22,8 @@ title: Home
 
         <aside class="home-col home-projects">
             <h2 class="home-label">Projects</h2>
-            <ul class="project-list">
-                {% for p in site.data.xnu.apps %}
-                <li>
-                    <a class="project-item" href="{{ p.href }}"{% if p.href contains "http" %} target="_blank" rel="noopener"{% endif %}>
-                        <span class="project-name">{{ p.name }}</span>
-                        <span class="project-platform">{{ p.platform }}</span>
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
-            <a class="project-all" href="/projects/">All projects &rarr;</a>
+            <p class="project-intro">Apps, command-line tools, and open-source by everettjf.</p>
+            <a class="project-all" href="/projects/">Browse all projects &rarr;</a>
         </aside>
     </div>
 </main>
