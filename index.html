@@ -6,24 +6,22 @@ title: Home
 <main>
     <h1 class="page-title mono"><span>everettjf</span><span class="cursor">_</span></h1>
 
-    <div class="home-grid">
-        <section class="home-col">
-            <h2 class="home-label">Blogs</h2>
-            <ul class="post-list">
-                {% for post in paginator.posts %}
-                <li>
-                    <a class="post-list-title" href="{{ post.url }}">{{ post.title }}</a>
-                    <time class="post-list-date" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%B %-d, %Y" }}</time>
-                </li>
-                {% endfor %}
-            </ul>
-            {% include pagination.html %}
-        </section>
+    <section class="home-lead">
+        <h2 class="home-label">Projects</h2>
+        <p class="lead-intro">Apps, command-line tools, and open-source by everettjf.</p>
+        <a class="project-all" href="/projects/">Browse all projects &rarr;</a>
+    </section>
 
-        <aside class="home-col home-projects">
-            <h2 class="home-label">Projects</h2>
-            <p class="project-intro">Apps, command-line tools, and open-source by everettjf.</p>
-            <a class="project-all" href="/projects/">Browse all projects &rarr;</a>
-        </aside>
-    </div>
+    <section class="home-writing">
+        <h2 class="home-label">Blog</h2>
+        <ul class="post-list">
+            {% for post in site.posts limit: 5 %}
+            <li>
+                <a class="post-list-title" href="{{ post.url }}">{{ post.title }}</a>
+                <time class="post-list-date" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+            </li>
+            {% endfor %}
+        </ul>
+        <a class="project-all" href="/archive">All posts &rarr;</a>
+    </section>
 </main>

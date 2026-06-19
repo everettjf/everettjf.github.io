@@ -521,15 +521,7 @@ main { display: block; }
 }
 
 /* ----- home: blogs + projects two-column ----- */
-body.home .readable-area { max-width: 60rem; }
-
-.home-grid {
-  margin-top: 4rem;
-  display: grid;
-  grid-template-columns: 1.7fr 1fr;
-  gap: 4rem;
-}
-.home-grid .post-list { margin-top: 0; }
+body.home .readable-area { max-width: 46rem; }
 
 .home-label {
   font-family: var(--font-mono);
@@ -541,17 +533,25 @@ body.home .readable-area { max-width: 60rem; }
   margin-bottom: 1.75rem;
 }
 
-.home-projects {
-  position: sticky;
-  top: 2rem;
-  align-self: start;
+.home-lead {
+  margin-top: 4rem;
 }
+.lead-intro {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--color-primary);
+  max-width: 34rem;
+}
+.home-lead .project-all { margin-top: 1.25rem; }
 
-.project-intro {
-  font-size: 0.9375rem;
-  color: var(--color-secondary);
-  line-height: 1.6;
+.home-writing {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--color-separator);
 }
+.home-writing .post-list { margin-top: 0; }
+.home-writing .project-all { margin-top: 1.5rem; }
+
 .project-all {
   display: inline-block;
   margin-top: 1.5rem;
@@ -567,9 +567,10 @@ body.home .readable-area { max-width: 60rem; }
 
 /* ----- responsive ----- */
 @media (max-width: 768px) {
-  body.home .readable-area { max-width: 48rem; }
-  .home-grid { grid-template-columns: 1fr; gap: 3rem; margin-top: 3rem; }
-  .home-projects { position: static; }
+  body.home .readable-area { max-width: 40rem; }
+  .home-lead { margin-top: 3rem; }
+  .home-writing { margin-top: 3rem; padding-top: 2.5rem; }
+  .lead-intro { font-size: 1.125rem; }
 }
 @media (max-width: 640px) {
   .page-title { font-size: 2.25rem; }
