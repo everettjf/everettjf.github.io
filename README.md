@@ -3,6 +3,17 @@
 Personal site & blog of everettjf, built with Jekyll and served at https://xnu.app
 (GitHub Pages, built from the `master` branch).
 
+## 最常用流程 (TL;DR)
+
+```sh
+make new title="My Post"     # 新建英文博客 (双语用 make new-bi)
+make serve                   # 本地预览 http://localhost:4000
+git add -A && git commit -m "New post" && git push   # 发布
+make deploy-status           # 需要时确认部署 (漏触发用 make redeploy)
+```
+
+首次在新机器上：`make init` 装环境，`make health` 自检。
+
 ## Quick start
 
 ```sh
