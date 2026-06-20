@@ -73,8 +73,6 @@ Open a folder, e.g. the ~/log2eoml folder, and put the log file log.txt into thi
 
 1. Open the log2eoml folder, and open foo.log
 ![](/media/15307125928088.jpg){:width="875" height="342"}
-![](/media/15306872946057.jpg)
-
 
 2. Run command+shift+p, type filter line by config file (or filter config), and select `Filter Line By Config File`, as shown below.
 ![](/media/15307126136726.jpg){:width="1060" height="320"}
@@ -185,8 +183,6 @@ For English article , please visit [here](https://medium.com/@everettjf/vscode-e
 
 1、打开log2eoml文件夹，并打开foo.log
 ![](/media/15307125928088.jpg){:width="875" height="342"}
-![](/media/15306872946057.jpg)
-
 
 2、运行 command+shift+p ，输入 filter line by config file （或者filter config），选择 `Filter Line By Config File` ，如下图。
 ![](/media/15307126136726.jpg){:width="1060" height="320"}
