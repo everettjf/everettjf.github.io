@@ -14,8 +14,8 @@ archive: false
         <header>
             <h1 class="page-title">
                 {% if has_zh %}
-                <span class="lang-en">{{ page.title }}</span>
-                <span class="lang-zh">{{ page.title_zh | default: page.title }}</span>
+                <span class="lang-en" lang="en">{{ page.title }}</span>
+                <span class="lang-zh" lang="zh">{{ page.title_zh | default: page.title }}</span>
                 {% else %}
                 {{ page.title }}
                 {% endif %}
@@ -35,7 +35,7 @@ archive: false
         </header>
 
         {% if has_zh %}
-        <div class="lang-en">
+        <div class="lang-en" lang="en">
             {% if page.lang_original == 'zh' %}
             <p class="translation-note">Translated from Chinese — <button type="button" class="translation-note-link" data-lang-value="zh">view original</button>.</p>
             {% endif %}
@@ -44,7 +44,7 @@ archive: false
                 {{ en_html }}
             </section>
         </div>
-        <div class="lang-zh">
+        <div class="lang-zh" lang="zh">
             <section class="md-reader" style="margin-top: 2rem;">
                 {% include toc.html html=zh_html %}
                 {{ zh_html }}
