@@ -87,9 +87,56 @@ task :draft do
     post.puts ""
     post.puts "<!-- more -->"
     post.puts ""
-    post.puts ""    
+    post.puts ""
     post.puts ""
 
   end
-end # task :post
+end # task :draft
+
+
+# Usage: rake bipost title="A Title" [date="2012-02-09"]
+# Scaffolds a bilingual post: English (default) + Chinese behind the EN/中 toggle.
+desc "Begin a new bilingual (EN + 中) post in #{CONFIG['posts']}"
+task :bipost do
+  abort("rake aborted: '#{CONFIG['posts']}' directory not found.") unless FileTest.directory?(CONFIG['posts'])
+  abort("no title") if !ENV["title"]
+
+  title = ENV["title"]
+  slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+  begin
+    date = (ENV['date'] ? Time.parse(ENV['date']) : Time.now).strftime('%Y-%m-%d')
+  rescue => e
+    puts "Error - date format must be YYYY-MM-DD, please check you typed it correctly!"
+    exit -1
+  end
+  filename = File.join(CONFIG['posts'], "#{date}-#{slug}.#{CONFIG['post_ext']}")
+  if File.exist?(filename)
+    abort("file existed : #{filename}")
+  end
+
+  puts "Creating new bilingual post: #{filename}"
+  open(filename, 'w') do |post|
+    post.puts "---"
+    post.puts "layout: post"
+    post.puts "title: \"#{title.gsub(/-/,' ')}\""
+    post.puts "title_zh: \"中文标题\""
+    post.puts "lang_original: zh"
+    post.puts "categories:"
+    post.puts "  - "
+    post.puts "tags:"
+    post.puts "  - "
+    post.puts "comments: true"
+    post.puts "---"
+    post.puts ""
+    post.puts "English content here."
+    post.puts ""
+    post.puts "<!-- more -->"
+    post.puts ""
+    post.puts ""
+    post.puts "<!--ZH-->"
+    post.puts ""
+    post.puts "中文正文。"
+    post.puts ""
+  end
+end # task :bipost
 
