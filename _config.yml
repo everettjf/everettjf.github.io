@@ -36,6 +36,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - Rakefile
+  - Makefile
   - README.md
   - LICENSE.txt
   - new.sh
