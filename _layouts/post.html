@@ -3,22 +3,59 @@ layout: default
 archive: false
 ---
 
+{% assign has_zh = false %}
+{% if content contains '<!--ZH-->' %}{% assign has_zh = true %}{% endif %}
+{% assign parts = content | split: '<!--ZH-->' %}
+{% assign en_html = parts[0] %}
+{% assign zh_html = parts[1] %}
+
 <main>
     <article>
         <header>
-            <h1 class="page-title">{{ page.title }}</h1>
+            <h1 class="page-title">
+                {% if has_zh %}
+                <span class="lang-en">{{ page.title }}</span>
+                <span class="lang-zh">{{ page.title_zh | default: page.title }}</span>
+                {% else %}
+                {{ page.title }}
+                {% endif %}
+            </h1>
             <p class="page-subtitle">
                 <time datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%B %-d, %Y" }}</time>
                 {% if page.categories.size > 0 %}
                     &middot; {{ page.categories | array_to_sentence_string }}
                 {% endif %}
             </p>
+            {% if has_zh %}
+            <div class="lang-switch" role="group" aria-label="Language">
+                <button type="button" data-lang-value="en">EN</button>
+                <button type="button" data-lang-value="zh">中</button>
+            </div>
+            {% endif %}
         </header>
 
+        {% if has_zh %}
+        <div class="lang-en">
+            {% if page.lang_original == 'zh' %}
+            <p class="translation-note">Translated from Chinese — <button type="button" class="translation-note-link" data-lang-value="zh">view original</button>.</p>
+            {% endif %}
+            <section class="md-reader" style="margin-top: 2rem;">
+                {% include toc.html html=en_html %}
+                {{ en_html }}
+            </section>
+        </div>
+        <div class="lang-zh">
+            <section class="md-reader" style="margin-top: 2rem;">
+                {% include toc.html html=zh_html %}
+                {{ zh_html }}
+            </section>
+        </div>
+        {% else %}
         <section class="md-reader" style="margin-top: 4rem;">
             {% include toc.html html=content %}
             {{ content }}
         </section>
+        {% endif %}
 
         {% if page.archive %}
         <section class="archive-list">

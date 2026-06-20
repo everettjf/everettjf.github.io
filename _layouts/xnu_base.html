@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ page.title | default: "XNU — Apps, CLIs and open-source by everettjf" }}</title>
-  <meta name="description" content="{{ page.description | default: 'A small collection of apps, command-line tools, and open-source projects by everettjf.' | strip_newlines }}" />
+  {% seo %}
   <link rel="icon" href="/favicon.ico" />
   <link rel="shortcut icon" href="/favicon.ico" />
 
@@ -12,7 +11,7 @@
   <script>
   (function () {
     try {
-      var t = localStorage.getItem('xnu-theme') || 'system';
+      var t = localStorage.getItem('app_theme') || 'system';
       var d = t === 'dark' || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
       if (d) document.documentElement.classList.add('dark');
       document.documentElement.style.colorScheme = d ? 'dark' : 'light';
@@ -129,7 +128,7 @@
   {{ content }}
 {% endunless %}
 
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@0.474.0/dist/umd/lucide.min.js"></script>
   <script>
     (function () {
       function icons() { if (window.lucide) window.lucide.createIcons(); }
@@ -152,7 +151,7 @@
       };
 
       // Theme toggle (system / light / dark), mirrors the original app.
-      var KEY = 'xnu-theme';
+      var KEY = 'app_theme';
       function apply(theme) {
         var resolved = theme === 'system'
           ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')

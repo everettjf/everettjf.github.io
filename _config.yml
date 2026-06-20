@@ -1,21 +1,43 @@
 name: Everett
+title: Everett
 description: Full Stack Developer
 meta_description: "Full Stack Developer Everett"
 
 markdown: kramdown
 highlighter: rouge
-logo: false
 paginate: 10
 baseurl: ''
-domain_name: 'https://everettjf.github.io'
+domain_name: 'https://xnu.app'
+
 plugins:
   - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
-# Details for the RSS feed generator
-url:            'https://everettjf.github.io'
+# Details for the RSS feed generator and SEO tags
+url:            'https://xnu.app'
 author:         'Everett'
 authorimage: /images/everettjf.png
+logo:           /images/everettjf.png
 
 permalink: /:year/:month/:day/:title/
 location: 'Cupertino, CA'
 excerpt_separator:  '<!-- more -->'
+
+# Default Open Graph image for pages without their own
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /images/everettjf.png
+
+# Keep sitemap from indexing build/repo noise
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - Rakefile
+  - README.md
+  - LICENSE.txt
+  - new.sh
+  - push.sh
+  - serve.sh

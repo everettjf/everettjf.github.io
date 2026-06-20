@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "使用 deno_core 开发一个 JavaScript 运行时"
+title: "Roll Your Own JavaScript Runtime with deno_core"
+title_zh: "使用 deno_core 开发一个 JavaScript 运行时"
+lang_original: zh
 categories:
   - deno
 tags:
@@ -11,13 +13,367 @@ comments: true
 
 
 
+> If you're not familiar with Deno, take a look at the official site first: https://deno.land/ . In short, Deno is a more secure Node (even the name is Node reversed: no_de -> de_no), created by the same founder as Node.
+
+A couple of days ago, the Deno blog published an article titled "Roll your own JavaScript runtime".
+
+> https://deno.com/blog/roll-your-own-javascript-runtime
+
+<!-- more -->
+
+![](/media/16592798557784.jpg)
+
+
+> Seeing it gave me a bit of an "itch", so today I'll walk through it.
+> Note: this is not a word-for-word translation — I make small edits while keeping the original meaning.
+> The "itch" comes from the fact that half a year ago I also glanced at the Embedding Deno docs https://deno.land/manual/embedding_deno — but there was basically nothing there, it just pointed me to the deno_core docs https://crates.io/crates/deno_core , which had no getting-started tutorial either. Back then my Rust skills were too weak, so I didn't keep going.
+
+Alright, enough chit-chat — let's begin.
+
+# Introduction
+
+This article shows how to create a custom JavaScript runtime called runjs. Think of it as a very simple Deno. One goal of the article is to build a command-line program that can execute local JavaScript files — reading files, writing files, deleting files — plus a console API.
+
+Let's get started.
+
+# Prerequisites
+
+This tutorial assumes the reader knows the following:
+
+- The basics of Rust
+- The basics of the JavaScript event loop
+
+Make sure Rust is installed on your machine (along with cargo, which is installed automatically), at least version 1.62.0. You can install it at https://www.rust-lang.org/learn/get-started .
+
+```
+$ cargo --version
+cargo 1.62.0 (a748cf5a3 2022-06-08)
+```
+
+# Creating the project
+
+First, let's create a new Rust project named runjs:
+
+```
+$ cargo new runjs
+     Created binary (application) package
+```
+
+Enter the runjs folder and open it in your editor. Make sure everything works.
+
+```
+$ cd runjs
+$ cargo run
+   Compiling runjs v0.1.0 (/Users/ib/dev/runjs)
+    Finished dev [unoptimized + debuginfo] target(s) in 1.76s
+     Running `target/debug/runjs`
+Hello, world!
+```
+
+Great! Now let's start building our own JavaScript runtime.
+
+
+# Dependencies
+
+Next, add the dependencies deno_core and tokio.
+
+```
+$ cargo add deno_core
+    Updating crates.io index
+      Adding deno_core v0.142.0 to dependencies.
+$ cargo add tokio --features=full
+    Updating crates.io index
+      Adding tokio v1.19.2 to dependencies.
+```
+
+Your `Cargo.toml` should now look like this:
+
+```
+[package]
+name = "runjs"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+deno_core = "0.142.0"
+tokio = { version = "1.19.2", features = ["full"] }
+```
+
+`deno_core` is a Rust library (crate) developed by the Deno team that abstracts the interface to the V8 JavaScript engine. V8 is a complex project with many APIs; to make V8 easier to use, deno_core provides the JsRuntime struct, which wraps an instance of the V8 engine (also called an Isolate) and supports an event loop.
+
+`tokio` is an asynchronous Rust runtime that we use to implement the event loop. Tokio is used to interact with the system's sockets and file system. Together, deno_core and tokio let us map JavaScript Promises to Rust Futures (that is, JS async/await maps to Rust async/await).
+
+With a JavaScript engine and an event loop, we can create a JavaScript runtime.
+
+# Hello, runjs!
+
+Now let's write an async Rust function that creates a JsRuntime instance to execute JavaScript.
+
+```
+// main.rs
+use std::rc::Rc;
+use deno_core::error::AnyError;
+
+async fn run_js(file_path: &str) -> Result<(), AnyError> {
+  let main_module = deno_core::resolve_path(file_path)?;
+  let mut js_runtime = deno_core::JsRuntime::new(deno_core::RuntimeOptions {
+      module_loader: Some(Rc::new(deno_core::FsModuleLoader)),
+      ..Default::default()
+  });
+
+  let mod_id = js_runtime.load_main_module(&main_module, None).await?;
+  let result = js_runtime.mod_evaluate(mod_id);
+  js_runtime.run_event_loop(false).await?;
+  result.await?
+}
+
+fn main() {
+  println!("Hello, world!");
+}
+```
+
+There's a lot to unpack here. The async run_js function creates a JsRuntime instance that uses a file-system-based module loader (deno_core::FsModuleLoader). Then we use js_runtime to load a module (main_module), evaluate it (mod_evaluate), and run an event loop (run_event_loop).
+
+This run_js function contains the entire lifecycle of executing JavaScript code. But first, we need to create a single-threaded tokio runtime to run the run_js function:
+
+```
+// main.rs
+fn main() {
+  let runtime = tokio::runtime::Builder::new_current_thread()
+    .enable_all()
+    .build()
+    .unwrap();
+  if let Err(error) = runtime.block_on(run_js("./example.js")) {
+    eprintln!("error: {}", error);
+  }
+}
+```
+
+Let's run some JavaScript code. Create an example.js that prints Hello runjs!:
+
+```
+// example.js
+Deno.core.print("Hello runjs!");
+```
+
+> Note: example.js is in the project's root folder. `cargo run` uses the root folder as the working directory.
+
+![](/media/16592798777424.jpg)
+
+
+
+Note that here we used the `print` function from `Deno.core`. `Deno.core` is a globally available built-in object provided by `deno_core`.
+
+Now run it.
+
+```
+$ cargo run
+    Finished dev [unoptimized + debuginfo] target(s) in 0.05s
+     Running `target/debug/runjs`
+Hello runjs!⏎
+```
+
+Success! In just 25 lines of code we created a simple JavaScript runtime that can execute a local file. Of course this runtime can't do much yet (for example, it doesn't support console.log). But we've now integrated the V8 JavaScript engine and tokio into our project.
+
+# Adding a console API
+
+Let's start implementing the console API. First create the file `src/runtime.js`, which will implement the global console object.
+
+```
+// src/runtime.js
+((globalThis) => {
+  const core = Deno.core;
+
+  function argsToMessage(...args) {
+    return args.map((arg) => JSON.stringify(arg)).join(" ");
+  }
+
+  globalThis.console = {
+    log: (...args) => {
+      core.print(`[out]: ${argsToMessage(...args)}\n`, false);
+    },
+    error: (...args) => {
+      core.print(`[err]: ${argsToMessage(...args)}\n`, true);
+    },
+  };
+})(globalThis);
+```
+
+> Note that this runtime.js is in the src folder.
+
+![](/media/16592798868051.jpg)
+
+
+The console.log and console.error functions accept multiple arguments, serialize them to JSON (so we can view non-primitive JS objects), and prefix each message with log or error. This is a "somewhat old-school" JavaScript file, like writing browser JavaScript before ES modules existed.
+
+We use an [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) to run the code so we don't pollute the global scope. Otherwise, the argsToMessage helper would become globally available in our runtime.
+
+Now let's run this code on every startup:
+
+```
+let mut js_runtime = deno_core::JsRuntime::new(deno_core::RuntimeOptions {
+  module_loader: Some(Rc::new(deno_core::FsModuleLoader)),
+  ..Default::default()
+});
++ js_runtime.execute_script("[runjs:runtime.js]",  include_str!("./runtime.js")).unwrap();
+```
+
+> Note that include_str! here reads the contents of runtime.js located in the same directory as main.rs (i.e. the src directory).
+
+Finally, we can call the new console API in example.js.
+
+```
+- Deno.core.print("Hello runjs!");
++ console.log("Hello", "runjs!");
++ console.error("Boom!");
+```
+
+Run it:
+
+```
+$ cargo run
+    Finished dev [unoptimized + debuginfo] target(s) in 0.05s
+     Running `target/debug/runjs`
+[out]: "Hello" "runjs!"
+[err]: "Boom!"
+```
+
+
+# Adding a file system API
+
+First update the runtime.js file:
+
+```
+};
+
++ globalThis.runjs = {
++   readFile: (path) => {
++     return core.opAsync("op_read_file", path);
++   },
++   writeFile: (path, contents) => {
++     return core.opAsync("op_write_file", path, contents);
++   },
++   removeFile: (path) => {
++     return core.opSync("op_remove_file", path);
++   },
++ };
+
+})(globalThis);
+```
+
+
+We added a new global object runjs with three methods: readFile, writeFile, and removeFile. The first two are async, and the last one is sync.
+
+You might be wondering what `core.opAsync` and `core.opSync` are — they're the mechanism deno_core provides for binding JavaScript and Rust functions. When they're called from JavaScript, deno_core looks up a Rust function of the same name annotated with the `#[op]` attribute.
+
+Let's update main.rs to see it in action:
+
+```
++ use deno_core::op;
++ use deno_core::Extension;
+use deno_core::error::AnyError;
+use std::rc::Rc;
+
++ #[op]
++ async fn op_read_file(path: String) -> Result<String, AnyError> {
++     let contents = tokio::fs::read_to_string(path).await?;
++     Ok(contents)
++ }
++
++ #[op]
++ async fn op_write_file(path: String, contents: String) -> Result<(), AnyError> {
++     tokio::fs::write(path, contents).await?;
++     Ok(())
++ }
++
++ #[op]
++ fn op_remove_file(path: String) -> Result<(), AnyError> {
++     std::fs::remove_file(path)?;
++     Ok(())
++ }
+```
+
+We defined three `ops` that JavaScript can call, but for the JavaScript code to actually call them, we still need to register an extension with JsRuntime.
+
+```
+async fn run_js(file_path: &str) -> Result<(), AnyError> {
+    let main_module = deno_core::resolve_path(file_path)?;
++    let runjs_extension = Extension::builder()
++        .ops(vec![
++            op_read_file::decl(),
++            op_write_file::decl(),
++            op_remove_file::decl(),
++        ])
++        .build();
+    let mut js_runtime = deno_core::JsRuntime::new(deno_core::RuntimeOptions {
+        module_loader: Some(Rc::new(deno_core::FsModuleLoader)),
++        extensions: vec![runjs_extension],
+        ..Default::default()
+    });
+```
+
+We can configure JsRuntime through `Extensions` to expose Rust functions to JavaScript, and to do more advanced things (loading additional JavaScript code, etc.).
+
+Update example.js again:
+
+```
+console.log("Hello", "runjs!");
+console.error("Boom!");
++
++ const path = "./log.txt";
++ try {
++   const contents = await runjs.readFile(path);
++   console.log("Read from a file", contents);
++ } catch (err) {
++   console.error("Unable to read file", path, err);
++ }
++
++ await runjs.writeFile(path, "I can write to a file.");
++ const contents = await runjs.readFile(path);
++ console.log("Read from a file", path, "contents:", contents);
++ console.log("Removing file", path);
++ runjs.removeFile(path);
++ console.log("File removed");
++
+```
+
+Run it:
+
+```
+$ cargo run
+   Compiling runjs v0.1.0 (/Users/ib/dev/runjs)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.97s
+     Running `target/debug/runjs`
+[out]: "Hello" "runjs!"
+[err]: "Boom!"
+[err]: "Unable to read file" "./log.txt" {"code":"ENOENT"}
+[out]: "Read from a file" "./log.txt" "contents:" "I can write to a file."
+[out]: "Removing file" "./log.txt"
+[out]: "File removed"
+```
+
+
+🎉 Congratulations — our runjs runtime now supports the file system. Notice how little code it took to call Rust from JavaScript: deno_core handles all the communication between JavaScript and Rust.
+
+# Summary
+
+In this short example, we built a Rust project that integrates a powerful JavaScript engine (V8) and an efficient event loop (tokio).
+
+For the complete example code, see denoland's GitHub:
+
+> https://github.com/denoland/roll-your-own-javascript-runtime
+
+<!--ZH-->
+
+
+
 > 如果不了解Deno，可以先看看官网 https://deno.land/ 。简单来说，Deno是一个更安全的Node （名字都是反过来的,no_de -> de_no），和Node是一个创始人。
 
 前两天，Deno博客发布了一篇文章《Roll your own JavaScript runtime》 
 
 > https://deno.com/blog/roll-your-own-javascript-runtime
-
-<!-- more -->
 
 ![](/media/16592798557784.jpg)
 
@@ -362,7 +718,3 @@ $ cargo run
 完整的例子代码，可以参考：denoland's GitHub 
 
 > https://github.com/denoland/roll-your-own-javascript-runtime
-
-
-
-
