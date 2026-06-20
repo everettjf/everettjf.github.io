@@ -44,10 +44,10 @@ The steps use the following basics, which you can refer to when you run into pro
 
 Open the phone to the home screen, connect it to the computer, open an empty project, attach Xcode to SpringBoard, and print the ViewControllers and Views (chisel's pvc and pviews commands).
 
-![](/media/15368514201663.jpg)
+![](/media/15368514201663.jpg){:width="930" height="126"}
 
 
-![](/media/15368514662364.jpg)
+![](/media/15368514662364.jpg){:width="1250" height="184"}
 
 You can see just a few key pieces of information:
 SBIconController
@@ -59,40 +59,40 @@ class-dump SpringBoard and dig around.
 
 Through SBIconView you can see this Delegate's `- (void)iconTapped:(SBIconView *)arg1;`
 
-![](/media/15372804209839.jpg)
+![](/media/15372804209839.jpg){:width="614" height="450"}
 
 Print out the delegate
 
-![](/media/15368521079726.jpg)
+![](/media/15368521079726.jpg){:width="524" height="233"}
 
 We learn that SBIconController is the delegate, and indeed, the implementation can be seen in the header file.
 
-![](/media/15372805530299.jpg)
+![](/media/15372805530299.jpg){:width="642" height="207"}
 
 
 Open SpringBoard in IDA and look at the implementation of iconTapped:
 
-![](/media/15372805997145.jpg)
+![](/media/15372805997145.jpg){:width="1340" height="380"}
 
 Search the header file for prepareToLaunchTappedIcon:completionHandler:
 
-![](/media/15372806353243.jpg)
+![](/media/15372806353243.jpg){:width="1600" height="827"}
 
 
 Back to IDA
 
-![](/media/15372806969756.jpg)
+![](/media/15372806969756.jpg){:width="1222" height="452"}
 
 
 From sub_10017A874 above,
 
-![](/media/15372807139428.jpg)
+![](/media/15372807139428.jpg){:width="1510" height="244"}
 
 
 Then look at _launchFromIconView
 
 
-![](/media/15372807382658.jpg)
+![](/media/15372807382658.jpg){:width="1600" height="1025"}
 
 
 -[[FBWorkspaceEventQueue sharedInstance] executeOrAppendEvent:]
@@ -104,11 +104,11 @@ A web search for FBWorkspaceEventQueue immediately tells us that we've now reach
 
 Find it in this directory: /Users/everettjf/Library/Developer/Xcode/iOS DeviceSupport/11.3.1 (15E302)/Symbols/System/Library/PrivateFrameworks
 
-![](/media/15370071911618.jpg)
+![](/media/15370071911618.jpg){:width="500" height="128"}
 
 
 Analyze FrontBoard separately in IDA,
-![](/media/15372808864772.jpg)
+![](/media/15372808864772.jpg){:width="763" height="251"}
 
 Lots of code that can't be analyzed. So let's debug with lldb.
 
@@ -117,22 +117,22 @@ Lots of code that can't be analyzed. So let's debug with lldb.
 
 First a symbolic breakpoint
 
-![](/media/15372809320131.jpg)
+![](/media/15372809320131.jpg){:width="766" height="196"}
 
 Find those unidentifiable BL instructions, and set address breakpoints:
 
-![](/media/15372810094474.jpg)
-![](/media/15372810160502.jpg)
+![](/media/15372810094474.jpg){:width="796" height="225"}
+![](/media/15372810160502.jpg){:width="423" height="260"}
 
 Looks like it's arrayWithObjects, then passed to executeOrInsertEvents:atPosition:
 
 Keep going
 
-![](/media/15372810336405.jpg)
+![](/media/15372810336405.jpg){:width="837" height="406"}
 
 Still lots of unidentifiable stuff. Set an address breakpoint on each one and repeat `po $x0 , p (char*)$x1 , po $x2`
 
-![](/media/15372810418000.jpg)
+![](/media/15372810418000.jpg){:width="520" height="502"}
 
 
 
@@ -201,13 +201,13 @@ graph-base64-encoded:
 ```
 
 
-![](/media/15371092275313.jpg)
+![](/media/15371092275313.jpg){:width="878" height="84"}
 
 
-![](/media/15371100390744.jpg)
+![](/media/15371100390744.jpg){:width="920" height="254"}
 
-![](/media/15371100883844.jpg)
-![](/media/15371102270464.jpg)
+![](/media/15371100883844.jpg){:width="840" height="88"}
+![](/media/15371102270464.jpg){:width="1014" height="72"}
 
 
 .... omitted here ....
@@ -218,8 +218,8 @@ graph-base64-encoded:
 In the end I found `-[FBSynchronizedTransactionGroup _performSynchronizedCommit:]` and `-[FBApplicationUpdateScenesTransaction _performSynchronizedCommit:]`
 and `+[FBSceneManager synchronizeChanges:]`
 
-![](/media/15371976746085.jpg)
-![](/media/15371981536631.jpg)
+![](/media/15371976746085.jpg){:width="1600" height="370"}
+![](/media/15371981536631.jpg){:width="1454" height="444"}
 
 
 # Pausing for Now
@@ -250,7 +250,7 @@ So we can conclude:
 
 # dyld_shared_cache
 
- ![](/media/15372810336405.jpg)
+ ![](/media/15372810336405.jpg){:width="837" height="406"}
 
 Actually IDA can recognize these BLs just fine; it's only because I only analyzed the single dynamic library FrontBoard. In fact you can directly analyze `/System/Library/Caches/com.apple.dyld/dyld_shared_cache_arm64`, but I hear analyzing this requires over 30GB of space. I also tried analyzing it with IDA and Hopper, but because it's too large, every approach failed to finish — either it errored out, or it got stuck forever.
 
@@ -261,16 +261,16 @@ But it's okay for now, I got this one conclusion. I'll continue exploring when I
 
 Still these unidentifiable BLs
 
-![](/media/15372823772453.jpg)
+![](/media/15372823772453.jpg){:width="868" height="400"}
 
 
 After step-in, it's like this
 
-![](/media/15372824009233.jpg)
+![](/media/15372824009233.jpg){:width="748" height="340"}
 
 Another step-in and it's like this
 
-![](/media/15372824261308.jpg)
+![](/media/15372824261308.jpg){:width="1236" height="342"}
 
 
 After two jumps, this seems to be a feature of dyld_shared_cache; I haven't dug into the references yet. It looks like this can save the dynamic binding process.
@@ -326,10 +326,10 @@ iOS 11.3.1 越狱
 
 手机打开到桌面，连接到电脑，打开一个空工程，Xcode attach 到 SpringBoard，打印ViewControllers和Views（chisel 的 pvc 和 pviews 命令）。
 
-![](/media/15368514201663.jpg)
+![](/media/15368514201663.jpg){:width="930" height="126"}
 
 
-![](/media/15368514662364.jpg)
+![](/media/15368514662364.jpg){:width="1250" height="184"}
 
 可以看到就几个关键信息：
 SBIconController
@@ -341,40 +341,40 @@ class-dump出SpringBoard 翻一翻。
 
 通过 SBIconView 可以看到这个Delegate的 `- (void)iconTapped:(SBIconView *)arg1;`
 
-![](/media/15372804209839.jpg)
+![](/media/15372804209839.jpg){:width="614" height="450"}
 
 打印出delegate
 
-![](/media/15368521079726.jpg)
+![](/media/15368521079726.jpg){:width="524" height="233"}
 
 得知 SBIconController 就是delegate，果然头文件中看到了实现。
 
-![](/media/15372805530299.jpg)
+![](/media/15372805530299.jpg){:width="642" height="207"}
 
 
 IDA打开SpringBoard，看iconTapped的实现：
 
-![](/media/15372805997145.jpg)
+![](/media/15372805997145.jpg){:width="1340" height="380"}
 
 头文件搜索下prepareToLaunchTappedIcon:completionHandler:
 
-![](/media/15372806353243.jpg)
+![](/media/15372806353243.jpg){:width="1600" height="827"}
 
 
 再IDA
 
-![](/media/15372806969756.jpg)
+![](/media/15372806969756.jpg){:width="1222" height="452"}
 
 
 从上面的sub_10017A874中，
 
-![](/media/15372807139428.jpg)
+![](/media/15372807139428.jpg){:width="1510" height="244"}
 
 
 再看_launchFromIconView
 
 
-![](/media/15372807382658.jpg)
+![](/media/15372807382658.jpg){:width="1600" height="1025"}
 
 
 -[[FBWorkspaceEventQueue sharedInstance] executeOrAppendEvent:]
@@ -386,11 +386,11 @@ IDA打开SpringBoard，看iconTapped的实现：
 
 在这个目录找到 /Users/everettjf/Library/Developer/Xcode/iOS DeviceSupport/11.3.1 (15E302)/Symbols/System/Library/PrivateFrameworks
 
-![](/media/15370071911618.jpg)
+![](/media/15370071911618.jpg){:width="500" height="128"}
 
 
 IDA单独分析FrontBoard，
-![](/media/15372808864772.jpg)
+![](/media/15372808864772.jpg){:width="763" height="251"}
 
 很多分析不出的代码。那么就lldb调试。
 
@@ -399,22 +399,22 @@ IDA单独分析FrontBoard，
 
 先符号断点
 
-![](/media/15372809320131.jpg)
+![](/media/15372809320131.jpg){:width="766" height="196"}
 
 找到那几个不能识别的BL的指令，地址断点：
 
-![](/media/15372810094474.jpg)
-![](/media/15372810160502.jpg)
+![](/media/15372810094474.jpg){:width="796" height="225"}
+![](/media/15372810160502.jpg){:width="423" height="260"}
 
 看来就是arrayWithObjects，然后传给executeOrInsertEvents:atPosition:
 
 再继续
 
-![](/media/15372810336405.jpg)
+![](/media/15372810336405.jpg){:width="837" height="406"}
 
 还是好多不识别的，挨个地址断点，重复 `po $x0 , p (char*)$x1 , po $x2`
 
-![](/media/15372810418000.jpg)
+![](/media/15372810418000.jpg){:width="520" height="502"}
 
 
 
@@ -483,13 +483,13 @@ graph-base64-encoded:
 ```
 
 
-![](/media/15371092275313.jpg)
+![](/media/15371092275313.jpg){:width="878" height="84"}
 
 
-![](/media/15371100390744.jpg)
+![](/media/15371100390744.jpg){:width="920" height="254"}
 
-![](/media/15371100883844.jpg)
-![](/media/15371102270464.jpg)
+![](/media/15371100883844.jpg){:width="840" height="88"}
+![](/media/15371102270464.jpg){:width="1014" height="72"}
 
 
 .... 此处省略 ....
@@ -500,8 +500,8 @@ graph-base64-encoded:
 最后找到了 `-[FBSynchronizedTransactionGroup _performSynchronizedCommit:]` 和 `-[FBApplicationUpdateScenesTransaction _performSynchronizedCommit:]`
 和 `+[FBSceneManager synchronizeChanges:]`
 
-![](/media/15371976746085.jpg)
-![](/media/15371981536631.jpg)
+![](/media/15371976746085.jpg){:width="1600" height="370"}
+![](/media/15371981536631.jpg){:width="1454" height="444"}
 
 
 # 暂时停止一下
@@ -532,7 +532,7 @@ graph-base64-encoded:
 
 # dyld_shared_cache
 
- ![](/media/15372810336405.jpg)
+ ![](/media/15372810336405.jpg){:width="837" height="406"}
 
 其实这些BL IDA是可以正常识别的，只是因为我只分析了FrontBoard一个动态库。其实可以直接分析 `/System/Library/Caches/com.apple.dyld/dyld_shared_cache_arm64` ，但据说分析这个要30多GB的控件。我也试着用IDA和Hopper来分析，但由于太大，各种姿势都是分析不完，要么出错，要么一直卡住了。
 
@@ -543,16 +543,16 @@ graph-base64-encoded:
 
 还是这些不识别的BL
 
-![](/media/15372823772453.jpg)
+![](/media/15372823772453.jpg){:width="868" height="400"}
 
 
 step-in 之后是这样
 
-![](/media/15372824009233.jpg)
+![](/media/15372824009233.jpg){:width="748" height="340"}
 
 再step-in 是这样
 
-![](/media/15372824261308.jpg)
+![](/media/15372824261308.jpg){:width="1236" height="342"}
 
 
 通过两个跳转，貌似这是dyld_shared_cache的特性，还没深入查找资料。看起来这样是可以省去动态绑定的过程了。

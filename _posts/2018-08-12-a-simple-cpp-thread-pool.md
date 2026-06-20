@@ -31,7 +31,7 @@ Here's the definition from Wikipedia:
 
 As shown in the diagram:
 
-![](/media/15340064020238.jpg)
+![](/media/15340064020238.jpg){:width="400" height="207"}
 
 
 
@@ -218,7 +218,7 @@ Welcome to follow the WeChat official account "客户端技术评论":
 
 如图：
 
-![](/media/15340064020238.jpg)
+![](/media/15340064020238.jpg){:width="400" height="207"}
 
 
 

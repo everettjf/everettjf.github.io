@@ -18,7 +18,7 @@ First, a clarification: the "static initializers" in the title should actually b
 
 When you open a Mach-O file with MachOView, in most cases you'll see this section `__mod_init_func`.
 
-![](/media/15029043382372.jpg)
+![](/media/15029043382372.jpg){:width="1011" height="393"}
 
 
 <!-- more -->
@@ -152,7 +152,7 @@ If it's a dynamic library loaded during the startup stage, this code still affec
 
 Add a breakpoint and backtrace, and you can see dyld's call stack:
 
-![](/media/15029043722431.jpg)
+![](/media/15029043722431.jpg){:width="1529" height="244"}
 
 
 # Compiler Merging Pattern
@@ -265,7 +265,7 @@ void myInitFunc_Initializer(int argc, const char* argv[], const char* envp[], co
 So the question is: how do we make dyld read our own myInitFunc_Initializer when it reads the data in mod_init_func?
 
 (1) First, note that the `__mod_init_func section` is located in the `__DATA segment`. The __DATA segment is a data segment that can be modified at runtime.
-![](/media/15029047838257.jpg)
+![](/media/15029047838257.jpg){:width="296" height="73"}
 
 (2) Second, we need to find a timing that is earlier than when dyld reads these Initializers.
 
@@ -395,7 +395,7 @@ Each Initializer takes very little time, but over the long term, all kinds of In
 
 使用 MachOView 打开一个MachO文件，多数情况下会看到这个section `__mod_init_func` 。
 
-![](/media/15029043382372.jpg)
+![](/media/15029043382372.jpg){:width="1011" height="393"}
 
 
 <!-- more -->
@@ -529,7 +529,7 @@ NSString *globalString = E("world");
 
 加断点后backtrace，可以看到dyld的调用堆栈：
 
-![](/media/15029043722431.jpg)
+![](/media/15029043722431.jpg){:width="1529" height="244"}
 
 
 # 编译器合并规律
@@ -642,7 +642,7 @@ void myInitFunc_Initializer(int argc, const char* argv[], const char* envp[], co
 那么问题来了，如何让dyld在读取mod_init_func中的数据时，读到的是我们自己的myInitFunc_Initializer呢？
 
 （1）首先，注意到 `__mod_init_func section` 位于 `__DATA segment`。__DATA segment是数据段，是可以在运行时修改的。
-![](/media/15029047838257.jpg)
+![](/media/15029047838257.jpg){:width="296" height="73"}
 
 （2）其次，就是找个时机，要早于dyld读取这些Initializer。
 

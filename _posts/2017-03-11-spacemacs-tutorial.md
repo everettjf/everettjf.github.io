@@ -269,18 +269,18 @@ Today I finally complete it. This is the phases below :
 
 `SPC g s` to see the status of current project
 
-![](/media/15170499785370.jpg)
+![](/media/15170499785370.jpg){:width="1100" height="706"}
 `S` to stage all files.
-![](/media/15170499901101.jpg)
+![](/media/15170499901101.jpg){:width="832" height="304"}
 `c c` to commit, and edit the commit message ( must add some words)
-![](/media/15170500042869.jpg)
+![](/media/15170500042869.jpg){:width="816" height="394"}
 `, ,` to really commit
-![](/media/15170500180458.jpg)
+![](/media/15170500180458.jpg){:width="814" height="306"}
 Yes , I can.
 
 
 And I also can push origin master by `P p`
-![](/media/15170500391991.jpg)
+![](/media/15170500391991.jpg){:width="856" height="640"}
 
 
 ## tip 2 : use atom-one-dark-theme for spacemacs
@@ -305,7 +305,7 @@ dotspacemacs-themes '(
 
 Ok, restart emacs ( by `SPC q r`) , we will see the installing progress ,then it’s atom-one-dark time.
 
-![](/media/15170501691495.jpg)
+![](/media/15170501691495.jpg){:width="1244" height="822"}
 
 
 ## tip 3 : objc-mode for xm files (iOS tweak dev)
@@ -316,7 +316,7 @@ When I develop tweaks for jailbreak iOS , the source file extension is .xm , we 
 (add-to-list 'auto-mode-alist '("\\.xm$" . objc-mode))
 ```
 
-![](/media/15170502445179.jpg)
+![](/media/15170502445179.jpg){:width="1356" height="524"}
 
 
 ## tip 4 : insert code snippet
@@ -325,7 +325,7 @@ spacemacs include [yasnippet](https://github.com/joaotavora/yasnippet) automatic
 
 Just copy the snippets folder to `~/.spacemacs.d` as below :
 
-![](/media/15170502839463.jpg)
+![](/media/15170502839463.jpg){:width="916" height="248"}
 Now that’s all the installation.
 
 Let’s use python source as an example :
@@ -333,12 +333,12 @@ Let’s use python source as an example :
 1. Open an python source file : test.py
 2. Type SPC i s,and you could see :
 
-![](/media/15170503047729.jpg)
+![](/media/15170503047729.jpg){:width="914" height="818"}
 
 
 3. Type `#` and then `RET` , will insert :
 
-![](/media/15170503192739.jpg)
+![](/media/15170503192739.jpg){:width="518" height="128"}
 
 
 That’s all.
@@ -609,18 +609,18 @@ Today I finally complete it. This is the phases below :
 
 `SPC g s` to see the status of current project
 
-![](/media/15170499785370.jpg)
+![](/media/15170499785370.jpg){:width="1100" height="706"}
 `S` to stage all files.
-![](/media/15170499901101.jpg)
+![](/media/15170499901101.jpg){:width="832" height="304"}
 `c c` to commit, and edit the commit message ( must add some words)
-![](/media/15170500042869.jpg)
+![](/media/15170500042869.jpg){:width="816" height="394"}
 `, ,` to really commit
-![](/media/15170500180458.jpg)
+![](/media/15170500180458.jpg){:width="814" height="306"}
 Yes , I can.
 
 
 And I also can push origin master by `P p`
-![](/media/15170500391991.jpg)
+![](/media/15170500391991.jpg){:width="856" height="640"}
 
 
 ## tip 2 : use atom-one-dark-theme for spacemacs
@@ -645,7 +645,7 @@ dotspacemacs-themes '(
 
 Ok, restart emacs ( by `SPC q r`) , we will see the installing progress ,then it’s atom-one-dark time.
 
-![](/media/15170501691495.jpg)
+![](/media/15170501691495.jpg){:width="1244" height="822"}
 
 
 ## tip 3 : objc-mode for xm files (iOS tweak dev)
@@ -656,7 +656,7 @@ When I develop tweaks for jailbreak iOS , the source file extension is .xm , we 
 (add-to-list 'auto-mode-alist '("\\.xm$" . objc-mode))
 ```
 
-![](/media/15170502445179.jpg)
+![](/media/15170502445179.jpg){:width="1356" height="524"}
 
 
 ## tip 4 : insert code snippet
@@ -665,7 +665,7 @@ spacemacs include [yasnippet](https://github.com/joaotavora/yasnippet) automatic
 
 Just copy the snippets folder to `~/.spacemacs.d` as below :
 
-![](/media/15170502839463.jpg)
+![](/media/15170502839463.jpg){:width="916" height="248"}
 Now that’s all the installation.
 
 Let’s use python source as an example :
@@ -673,12 +673,12 @@ Let’s use python source as an example :
 1. Open an python source file : test.py
 2. Type SPC i s,and you could see :
 
-![](/media/15170503047729.jpg)
+![](/media/15170503047729.jpg){:width="914" height="818"}
 
 
 3. Type `#` and then `RET` , will insert :
 
-![](/media/15170503192739.jpg)
+![](/media/15170503192739.jpg){:width="518" height="128"}
 
 
 That’s all.

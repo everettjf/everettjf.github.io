@@ -12,7 +12,7 @@ comments: true
 
 FolderSizeView can use a TreeMap to display the proportion of file sizes within a folder.
 
-![](/media/15624354225784.jpg)
+![](/media/15624354225784.jpg){:width="318" height="260"}
 
 
 ## Background
@@ -35,24 +35,24 @@ macOS and Windows
 
 Step one, open the software
 
-![](/media/15624354676264.jpg)
+![](/media/15624354676264.jpg){:width="453" height="289"}
 
 
 Step two, drop the folder you want to analyze in
 
 For example, if I drop Wechat.app in, it displays as shown below.
 
-![](/media/15624355630220.jpg)
+![](/media/15624355630220.jpg){:width="1057" height="736"}
 
 ## Options
 
 Via the menu `Action->Group by file extension` you can enable grouping by file type. As shown below:
 
-![](/media/15626040281694.jpg)
+![](/media/15626040281694.jpg){:width="1600" height="1208"}
 
 Via the menu `Action->Sunburst Mode` you can display it with a sunburst chart (in most cases the TreeMap chart is good enough; the sunburst chart doesn't display well when there are a lot of files). As shown below:
 
-![](/media/15626040706222.jpg)
+![](/media/15626040706222.jpg){:width="1600" height="1309"}
 
 
 
@@ -86,7 +86,7 @@ Welcome to subscribe :)
 
 FolderSizeView可以使用TreeMap方式展示一个文件夹内文件大小的占比情况。
 
-![](/media/15624354225784.jpg)
+![](/media/15624354225784.jpg){:width="318" height="260"}
 
 
 ## 背景
@@ -110,24 +110,24 @@ macOS和Windows
 
 第一步打开软件
 
-![](/media/15624354676264.jpg)
+![](/media/15624354676264.jpg){:width="453" height="289"}
 
 
 第二步把要分析的文件夹扔进去
 
 例如我把Wechat.app扔进去，则展示如下图了。
 
-![](/media/15624355630220.jpg)
+![](/media/15624355630220.jpg){:width="1057" height="736"}
 
 ## 选项
 
 通过菜单`Action->Group by file extension`可开启通过文件类型分组。如下图：
 
-![](/media/15626040281694.jpg)
+![](/media/15626040281694.jpg){:width="1600" height="1208"}
 
 通过菜单`Action->Sunburst Mode`，可使用旭日图展示（一般情况下TreeMap图就足够了，旭日图在文件很多的情况下显示效果不好）。如下图：
 
-![](/media/15626040706222.jpg)
+![](/media/15626040706222.jpg){:width="1600" height="1309"}
 
 
 

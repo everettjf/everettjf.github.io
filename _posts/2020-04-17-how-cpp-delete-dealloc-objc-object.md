@@ -77,24 +77,24 @@ int main(int argc, const char * argv[]) {
 
 It produces the following output:
 
-![](/media/15871350384682.jpg)
+![](/media/15871350384682.jpg){:width="292" height="87"}
 
 As you can see, MyObject indeed got dealloc'd.
 
 So, let's set a breakpoint on dealloc and see how it gets called.
 
-![](/media/15871351008102.jpg)
+![](/media/15871351008102.jpg){:width="331" height="289"}
 
 In the image above there are two `~CppStruct()`, one of which calls `objc_storeStrong`, and objc_storeStrong in turn triggers MyObject's dealloc.
 
-![](/media/15871352168452.jpg)
+![](/media/15871352168452.jpg){:width="721" height="266"}
 
 From the image above, it must be the compiler that generated the code calling objc_storeStrong.
 
-![](/media/15871352826095.jpg)
+![](/media/15871352826095.jpg){:width="753" height="310"}
 
 Looking at the Disassembly, it indeed generated the objc_storeStrong call code.
-![](/media/15871353987126.jpg)
+![](/media/15871353987126.jpg){:width="289" height="103"}
 
 Solid confirmation.
 
@@ -193,24 +193,24 @@ int main(int argc, const char * argv[]) {
 
 如下输出
 
-![](/media/15871350384682.jpg)
+![](/media/15871350384682.jpg){:width="292" height="87"}
 
 可知，MyObject确实dealloc了。
 
 那么，断点到dealloc，看看怎么调用到的。
 
-![](/media/15871351008102.jpg)
+![](/media/15871351008102.jpg){:width="331" height="289"}
 
 看到上图有两个 `~CppStruct()`，其中一个调用了 `objc_storeStrong`，objc_storeStrong 进一步触发了MyObject的dealloc。
 
-![](/media/15871352168452.jpg)
+![](/media/15871352168452.jpg){:width="721" height="266"}
 
 从上图可知，一定是编译器生成了objc_storeStrong调用的代码。
 
-![](/media/15871352826095.jpg)
+![](/media/15871352826095.jpg){:width="753" height="310"}
 
 看下Disassembly，确实生成了objc_storeStrong调用代码。
-![](/media/15871353987126.jpg)
+![](/media/15871353987126.jpg){:width="289" height="103"}
 
 进一步实锤。
 

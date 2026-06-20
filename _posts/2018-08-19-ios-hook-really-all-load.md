@@ -32,9 +32,9 @@ Two years later, I want to fulfill this wish. This article will address these tw
 
 Suppose the app contains two auto-linked dynamic libraries, with files as follows:
 
-![](/media/15346134342627.jpg)
+![](/media/15346134342627.jpg){:width="222" height="71"}
 
-![](/media/15346134592061.jpg)
+![](/media/15346134592061.jpg){:width="402" height="224"}
 
 Our goal is to hook all Objective-C +load methods in these three Mach-O files, measure the elapsed time, and print it out.
 
@@ -42,8 +42,8 @@ Our goal is to hook all Objective-C +load methods in these three Mach-O files, m
 
 In order to make our hook code load earlier than these two dynamic libraries, we need to add a new dynamic library LoadRuler.dylib. The link order is very important — LoadRuler must be linked first (so when the app launches, it's also loaded first, and its Mach-O's +load methods execute first).
 
-![](/media/15346136993280.jpg)
-![](/media/15346137538461.jpg)
+![](/media/15346136993280.jpg){:width="224" height="170"}
+![](/media/15346137538461.jpg){:width="917" height="283"}
 
 # Getting All Mach-O Files of Our Own App
 
@@ -221,7 +221,7 @@ The FirstLoader class and several of its Categories in the project look like thi
 
 When looking at the +load in Categories in Hopper, the final symbols don't reflect them.
 
-![](/media/15346144105739.jpg)
+![](/media/15346144105739.jpg){:width="303" height="190"}
 
 
 In order to hook all the load methods of a class and its corresponding Categories, the code above uses `class_copyMethodList` to enumerate all class methods, then replaces them one by one.
@@ -270,9 +270,9 @@ Welcome to follow the WeChat official account "客户端技术评论":
 
 假设App包含两个自动链接的动态库，文件如下：
 
-![](/media/15346134342627.jpg)
+![](/media/15346134342627.jpg){:width="222" height="71"}
 
-![](/media/15346134592061.jpg)
+![](/media/15346134592061.jpg){:width="402" height="224"}
 
 我们的目的是hook这三个MachO文件中的所有Objective C +load方法，并统计出耗时，打印出来。
 
@@ -280,8 +280,8 @@ Welcome to follow the WeChat official account "客户端技术评论":
 
 为了让我们的Hook代码加载的比这两个动态库早，我们需要新增一个动态库LoadRuler.dylib，链接的顺序很重要，要把LoadRuler第一个链接（App启动时也就会第一个加载，以及第一个执行macho中的+load方法）。
 
-![](/media/15346136993280.jpg)
-![](/media/15346137538461.jpg)
+![](/media/15346136993280.jpg){:width="224" height="170"}
+![](/media/15346137538461.jpg){:width="917" height="283"}
 
 # 获取我们自己App的所有macho
 
@@ -459,7 +459,7 @@ static void AppendProductImagePaths(std::vector<std::string> & product_image_pat
 
 Hopper中看到Category中的+load，最终的符号没有体现出来。
 
-![](/media/15346144105739.jpg)
+![](/media/15346144105739.jpg){:width="303" height="190"}
 
 
 为了把一个类及对应Category中的所有load都hook，上面的代码使用了`class_copyMethodList` 或许所有类方法，然后逐个替换。

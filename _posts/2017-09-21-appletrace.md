@@ -29,7 +29,7 @@ No sooner said than done—I paused development of [MachOExplorer](https://githu
 
 Hook all objc_msgSend, i.e., calculate the time cost of each Objective-C method, and generate a `performance analysis chart` in chronological order.
 
-![sample](/media/sample.png)
+![sample](/media/sample.png){:width="1394" height="328"}
 
 
 # Problems to Solve
@@ -154,7 +154,7 @@ This scenario is: I don't want to hook all Objective-C methods; I just want to m
 
 See the example `sample/ManualSectionDemo`.
 
-![](/media/15060097326051.jpg)
+![](/media/15060097326051.jpg){:width="688" height="476"}
 
 
 ### Hook objc_msgSend
@@ -166,9 +166,9 @@ This scenario is: I want to get an initial sense of where the time-consuming ope
 
 See `sample/TraceAllMsgDemo`.
 
-![](/media/15060102746986.jpg)
+![](/media/15060102746986.jpg){:width="744" height="369"}
 
-![](/media/15060104195090.jpg)
+![](/media/15060104195090.jpg){:width="1600" height="1065"}
 
 
 Note:
@@ -180,7 +180,7 @@ Note:
 
 Copy the `Library/appletracedata` directory out of the App's sandbox. (For example: Xcode can directly dump the entire sandbox.)
 
-![appletracedata](/media/appletracedata.png)
+![appletracedata](/media/appletracedata.png){:width="1234" height="236"}
 
 Then,
 ```
@@ -195,7 +195,7 @@ open trace.html
 ```
 
 And you'll see 
-![sample](/media/sample.png)
+![sample](/media/sample.png){:width="1394" height="328"}
 
 
 
@@ -258,7 +258,7 @@ If you have any questions, feel free to open an [issue](https://github.com/evere
 
 hook 所有的objc_msgSend，也就是把每个Objective C方法的耗时计算出来，并按照先后顺序生成`性能分析图`。
 
-![sample](/media/sample.png)
+![sample](/media/sample.png){:width="1394" height="328"}
 
 
 # 要解决的问题
@@ -383,7 +383,7 @@ python catapult/tracing/bin/trace2html appletracedata/trace.json --output=applet
 
 参考例子 `sample/ManualSectionDemo`。
 
-![](/media/15060097326051.jpg)
+![](/media/15060097326051.jpg){:width="688" height="476"}
 
 
 ### Hook objc_msgSend
@@ -395,9 +395,9 @@ python catapult/tracing/bin/trace2html appletracedata/trace.json --output=applet
 
 参考 `sample/TraceAllMsgDemo`。
 
-![](/media/15060102746986.jpg)
+![](/media/15060102746986.jpg){:width="744" height="369"}
 
-![](/media/15060104195090.jpg)
+![](/media/15060104195090.jpg){:width="1600" height="1065"}
 
 
 注意：
@@ -409,7 +409,7 @@ python catapult/tracing/bin/trace2html appletracedata/trace.json --output=applet
 
 从App的沙盒中复制出 `Library/appletracedata` 目录。（例如：Xcode可以直接Dump出整个沙盒）
 
-![appletracedata](/media/appletracedata.png)
+![appletracedata](/media/appletracedata.png){:width="1234" height="236"}
 
 然后，
 ```
@@ -424,7 +424,7 @@ open trace.html
 ```
 
 就可以看到 
-![sample](/media/sample.png)
+![sample](/media/sample.png){:width="1394" height="328"}
 
 
 

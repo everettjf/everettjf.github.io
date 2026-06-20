@@ -162,7 +162,7 @@ Just pass in a lambda expression and you can print.
 
 The output is as follows:
 
-![](/media/15380654341081.jpg)
+![](/media/15380654341081.jpg){:width="347" height="266"}
 
 
 
@@ -343,7 +343,7 @@ public:
 
 输出如下：
 
-![](/media/15380654341081.jpg)
+![](/media/15380654341081.jpg){:width="347" height="266"}
 
 
 

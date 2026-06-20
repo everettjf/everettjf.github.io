@@ -20,14 +20,14 @@ Add the Cydia repo `http://7we.win/cydia/` in Cydia, and you can install AppleTr
 
 On a jailbroken phone, open `http://7we.win/cydia/`, click `Add to Cydia`, refresh, then search for `AppleTraceLoader` and install it.
 
-![](/media/15316426709626.jpg)
+![](/media/15316426709626.jpg){:width="351" height="379"}
 
 # Configuration
 
 Open Settings -> AppleTrace, where you can choose which app to trace.
-![](/media/15316427520641.jpg)
+![](/media/15316427520641.jpg){:width="440" height="781"}
 
-![](/media/15316427818554.jpg)
+![](/media/15316427818554.jpg){:width="440" height="781"}
 
 
 After selecting, restart the chosen App, and an `appletracedata` directory will be generated under that App's directory.
@@ -58,14 +58,14 @@ Using frida's js interface together with Electron, you could develop a UI that m
 
 越狱手机打开 `http://7we.win/cydia/` ， 点击 `Add to Cydia`，刷新后搜索 `AppleTraceLoader` 安装即可。
 
-![](/media/15316426709626.jpg)
+![](/media/15316426709626.jpg){:width="351" height="379"}
 
 # 配置
 
 打开 设置->AppleTrace，可以选择trace哪个app。
-![](/media/15316427520641.jpg)
+![](/media/15316427520641.jpg){:width="440" height="781"}
 
-![](/media/15316427818554.jpg)
+![](/media/15316427818554.jpg){:width="440" height="781"}
 
 
 选择后，重新启动选择的App，就会在对应App的目录下生成`appletracedata`目录了。

@@ -13,7 +13,7 @@ comments: true
 
 During my subway commute I always read e-books with iBooks. There are too many words I don't know, so I really like using iBooks's built-in feature of long-pressing a word and tapping the Look Up button to look up words. And since I'm used to holding my phone with my left hand and gripping the subway handrail with my right hand... after looking up a word, the close button is in the top right corner. This article briefly explains how to add a "Done" button in the bottom left corner. As shown below:
 
-![screen](/media/screen.jpg)
+![screen](/media/screen.jpg){:width="300" height="534"}
 
 So now I look up words even more diligently.
 
@@ -29,15 +29,15 @@ So now I look up words even more diligently.
 
 With passionfruit, it's easy to see. The iBooks executable path and name.
 
-![](/media/15358613467616.jpg)
+![](/media/15358613467616.jpg){:width="799" height="287"}
 
 ## Finding the Word Lookup ViewController
 
 Use cycript to find BKLookupViewController.
 
-![](/media/15359889155719.jpg)
+![](/media/15359889155719.jpg){:width="1135" height="55"}
 
-![](/media/15358615263059.jpg)
+![](/media/15358615263059.jpg){:width="1600" height="387"}
 
 ```
    + <BKLookupViewController 0x102a05800>, state: appeared, view: <UILayoutContainerView 0x11827eec0>, presented with: <_UIOverFullscreenPresentationController 0x11827ce60>
@@ -70,14 +70,14 @@ The header file is already available ready-made.
 
 Take a quick glance — we can hook this viewWillAppear.
 
-![](/media/15359892415400.jpg)
+![](/media/15359892415400.jpg){:width="723" height="268"}
 
 
 
 ## MonkeyDev
 
 MonkeyDev greatly facilitates jailbreak development. Create a CaptainHook Tweak project.
-![](/media/15359891883821.jpg)
+![](/media/15359891883821.jpg){:width="677" height="194"}
 
 On viewWillAppear, just add a UIButton in the bottom left corner. Its event can call DDParsecCollectionViewController's method doneButtonPressed.
 
@@ -97,7 +97,7 @@ This is the description page:
 
 This is the download count:
 <http://apt.thebigboss.org/stats.php?dev=everettjf>
-![](/media/15359897424719.jpg)
+![](/media/15359897424719.jpg){:width="376" height="155"}
 
 # Source Code
 
@@ -121,7 +121,7 @@ Welcome to follow the WeChat official account "客户端技术评论":
 
 地铁时间一直使用iBooks看电子书，不认识的单词太多，也就很喜欢使用iBooks自带的长按单词点击Look Up（查询）按钮来查单词。又由于习惯了左手拿手机，右手扶地铁把手……查完单词后，关闭按钮在右上角。这篇文章就简单讲下怎么在左下角加上个“Done”按钮。如下图：
 
-![screen](/media/screen.jpg)
+![screen](/media/screen.jpg){:width="300" height="534"}
 
 于是我查单词更勤快了。
 
@@ -137,15 +137,15 @@ Welcome to follow the WeChat official account "客户端技术评论":
 
 用passionfruit，很容易看到。iBooks可执行文件路径和名称。
 
-![](/media/15358613467616.jpg)
+![](/media/15358613467616.jpg){:width="799" height="287"}
 
 ## 找到查单词的ViewController
 
 使用cycript 找到 BKLookupViewController。
 
-![](/media/15359889155719.jpg)
+![](/media/15359889155719.jpg){:width="1135" height="55"}
 
-![](/media/15358615263059.jpg)
+![](/media/15358615263059.jpg){:width="1600" height="387"}
 
 ```
    + <BKLookupViewController 0x102a05800>, state: appeared, view: <UILayoutContainerView 0x11827eec0>, presented with: <_UIOverFullscreenPresentationController 0x11827ce60>
@@ -178,14 +178,14 @@ scp复制出可执行文件iBooks和Frameworks文件夹下的动态库，`class-
 
 扫一眼，可以hook这个viewWillAppear。
 
-![](/media/15359892415400.jpg)
+![](/media/15359892415400.jpg){:width="723" height="268"}
 
 
 
 ## MonkeyDev
 
 MonkeyDev大大方便了越狱开发，创建一个CaptainHook Tweak工程。
-![](/media/15359891883821.jpg)
+![](/media/15359891883821.jpg){:width="677" height="194"}
 
 viewWillAppear时，左下角加一个UIButton就行了，事件可以调用 DDParsecCollectionViewController的方法doneButtonPressed。
 
@@ -205,7 +205,7 @@ viewWillAppear时，左下角加一个UIButton就行了，事件可以调用 DDP
 
 这是下载次数：
 <http://apt.thebigboss.org/stats.php?dev=everettjf>
-![](/media/15359897424719.jpg)
+![](/media/15359897424719.jpg){:width="376" height="155"}
 
 # 源码
 

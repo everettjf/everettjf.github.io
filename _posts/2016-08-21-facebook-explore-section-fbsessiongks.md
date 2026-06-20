@@ -16,7 +16,7 @@ comments: true
  
  Viewing Facebook's executable with MachOView, I found the FBInjectable and fbsessiongks data sections. This article explores the creation and purpose of the fbsessiongks data section.
  
-![](/media/14717181531082.jpg)
+![](/media/14717181531082.jpg){:width="528" height="204"}
 <!-- more -->
 
 
@@ -74,7 +74,7 @@ void * +[FBFeatureGatingConfigFactory applicationSpecificFeatureGatingConfig](vo
  
  MachOView查看Facebook的可执行文件，发现 FBInjectable 和 fbsessiongks 的数据段，这篇文章就探索下 fbsessiongks 数据段的产生与用途。
  
-![](/media/14717181531082.jpg)
+![](/media/14717181531082.jpg){:width="528" height="204"}
 <!-- more -->
 
 

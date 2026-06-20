@@ -76,11 +76,11 @@ nanoscope start --package=com.everettjf.hellonanoscope
 Then open this demo app on the phone, and after the app finishes launching, press Enter, and it's all done — too simple.
 
 
-![](/media/15536133178358.jpg)
+![](/media/15536133178358.jpg){:width="762" height="111"}
 
 At this point an html will open automatically, containing all kinds of trace information.
 
-![](/media/15536134370424.jpg)
+![](/media/15536134370424.jpg){:width="1600" height="935"}
 
 
 This way you can study an Android app's launch process — it even includes calls at the system Framework Java level.
@@ -170,11 +170,11 @@ nanoscope start --package=com.everettjf.hellonanoscope
 然后手机上打开这个demo app，app启动完成后，回车，一切就完成了，太简单了。
 
 
-![](/media/15536133178358.jpg)
+![](/media/15536133178358.jpg){:width="762" height="111"}
 
 此时会自动打开一个html，包含了各种trace信息。
 
-![](/media/15536134370424.jpg)
+![](/media/15536134370424.jpg){:width="1600" height="935"}
 
 
 这样就可以学习Android App的启动过程了，这里甚至包含系统Framework Java层面的调用内容。

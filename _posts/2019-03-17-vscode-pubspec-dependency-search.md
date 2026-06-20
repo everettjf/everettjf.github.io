@@ -26,16 +26,16 @@ So today I developed such a vscode extension:
 
 Pubspec Dependency Search
 
-![](/media/15528243123320.jpg)
+![](/media/15528243123320.jpg){:width="751" height="213"}
 
 
 After installing the extension, when you open pubspec.yaml, the extension finds the dependencies and dev_dependencies and adds a line of text (a link) above each dependency. For example: Search flutter in Dart Packages.
 
-![](/media/15528243493141.jpg)
+![](/media/15528243493141.jpg){:width="548" height="320"}
 
 After clicking it, you can open Dart Packages to search.
 
-![](/media/15528243710418.jpg)
+![](/media/15528243710418.jpg){:width="1036" height="504"}
 
 
 Installation:
@@ -102,16 +102,16 @@ Welcome to follow the official account "Client Tech Review":
 
 Pubspec Dependency Search
 
-![](/media/15528243123320.jpg)
+![](/media/15528243123320.jpg){:width="751" height="213"}
 
 
 安装扩展后，当打开 pubspec.yaml 时，扩展会查找 dependencies 和 dev_dependencies ，并在每个依赖上面加一行字（链接）。例如： Search flutter in Dart Packages 。
 
-![](/media/15528243493141.jpg)
+![](/media/15528243493141.jpg){:width="548" height="320"}
 
 点击后就可以打开Dart Packages来查找。
 
-![](/media/15528243710418.jpg)
+![](/media/15528243710418.jpg){:width="1036" height="504"}
 
 
 安装地址：

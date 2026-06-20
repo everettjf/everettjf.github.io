@@ -26,7 +26,7 @@ comments: true
 
 Whether a phone can be jailbroken can be determined via this website: <https://canijailbreak.com/> The jailbreak software also has download links.
 
-![](/media/15238902335157.jpg)
+![](/media/15238902335157.jpg){:width="1130" height="438"}
 
 ## Tools
 
@@ -79,7 +79,7 @@ Built on frida, essential for reversing — you can easily see all kinds of info
 * App sandbox file browser. Directly preview images, SQLite databases and plist files on device. You can always download the file for further investigation.
 * and more
 
-![](/media/15238939581774.png)
+![](/media/15238939581774.png){:width="1600" height="1199"}
 
 ### objection
 
@@ -187,29 +187,29 @@ strings, nm, weak_classdump
 Chinese: <http://item.jd.com/11670145.html>
 English: <https://github.com/iosre/iOSAppReverseEngineering>
 
-![](/media/15238973309470.jpg)
+![](/media/15238973309470.jpg){:width="145" height="170"}
 
 ## Hacking iOS Applications
 <http://iosre.com/t/hacking-ios-applications/8014>
-![](/media/15238972865910.jpg)
+![](/media/15238972865910.jpg){:width="487" height="247"}
 
 ## security.ios-wiki.com
 <https://wizardforcel.gitbooks.io/ios-sec-wiki/>
 
 ## Advanced Apple Debugging & Reverse Engineering
 <https://store.raywenderlich.com/products/advanced-apple-debugging-and-reverse-engineering>
-![](/media/15238973574830.jpg)
+![](/media/15238973574830.jpg){:width="392" height="504"}
 
 ## Reverse Engineering for Beginners
 
 <https://beginners.re/>
 Chinese <https://item.jd.com/12166962.html>
-![](/media/15238974244634.jpg)
+![](/media/15238974244634.jpg){:width="131" height="172"}
 
 ## Beginner's Guide to Exploitation on ARM 
 
 <http://zygosec.com/Products/>
-![](/media/15238974543754.jpg)
+![](/media/15238974543754.jpg){:width="379" height="441"}
 
 ## *OSInternals
 
@@ -220,7 +220,7 @@ Supposedly Volume II comes out this fall (2018).
 
 <http://newosxbook.com/>
 
-![](/media/15241510739720.jpg)
+![](/media/15241510739720.jpg){:width="1600" height="1060"}
 
 
 
@@ -296,7 +296,7 @@ AttackingBYODEnterpriseMobileSecuritySolutions
 
 手机是否可以越狱可通过这个网站来确定： <https://canijailbreak.com/> 越狱用的软件也有链接可下载。
 
-![](/media/15238902335157.jpg)
+![](/media/15238902335157.jpg){:width="1130" height="438"}
 
 ## 工具
 
@@ -349,7 +349,7 @@ AttackingBYODEnterpriseMobileSecuritySolutions
 * App sandbox file browser. Directly preview images, SQLite databases and plist files on device. You can always download the file for further investigation.
 * 等等
 
-![](/media/15238939581774.png)
+![](/media/15238939581774.png){:width="1600" height="1199"}
 
 ### objection
 
@@ -457,29 +457,29 @@ strings、nm、weak_classdump
 中文：<http://item.jd.com/11670145.html>
 英文：<https://github.com/iosre/iOSAppReverseEngineering>
 
-![](/media/15238973309470.jpg)
+![](/media/15238973309470.jpg){:width="145" height="170"}
 
 ## Hacking iOS Applications
 <http://iosre.com/t/hacking-ios-applications/8014>
-![](/media/15238972865910.jpg)
+![](/media/15238972865910.jpg){:width="487" height="247"}
 
 ## security.ios-wiki.com
 <https://wizardforcel.gitbooks.io/ios-sec-wiki/>
 
 ## Advanced Apple Debugging & Reverse Engineering
 <https://store.raywenderlich.com/products/advanced-apple-debugging-and-reverse-engineering>
-![](/media/15238973574830.jpg)
+![](/media/15238973574830.jpg){:width="392" height="504"}
 
 ## Reverse Engineering for Beginners
 
 <https://beginners.re/>
 中文 <https://item.jd.com/12166962.html>
-![](/media/15238974244634.jpg)
+![](/media/15238974244634.jpg){:width="131" height="172"}
 
 ## Beginner's Guide to Exploitation on ARM 
 
 <http://zygosec.com/Products/>
-![](/media/15238974543754.jpg)
+![](/media/15238974543754.jpg){:width="379" height="441"}
 
 ## *OSInternals
 
@@ -490,7 +490,7 @@ strings、nm、weak_classdump
 
 <http://newosxbook.com/>
 
-![](/media/15241510739720.jpg)
+![](/media/15241510739720.jpg){:width="1600" height="1060"}
 
 
 

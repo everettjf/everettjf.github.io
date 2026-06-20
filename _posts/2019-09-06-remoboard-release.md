@@ -21,7 +21,7 @@ In short, this makes "typing faster". The phone side supports iOS and Android, a
 
 <!-- more -->
 
-![](/media/15682174633090.jpg)
+![](/media/15682174633090.jpg){:width="539" height="252"}
 
 
 Usually we don't need remote input, but in the following scenarios Remote Keyboard might help:
@@ -68,15 +68,15 @@ Since the phone side has iOS and Android, and the computer side has macOS and Wi
 iOS platform:
 
 Open `Settings > General > Keyboard > Keyboards > Add New Keyboard` and select `Remote Keyboard`.
-![](/media/15677896500296.jpg)
+![](/media/15677896500296.jpg){:width="750" height="220"}
 After adding it, tap Remote Keyboard again and enable `Allow Full Access`.
-![](/media/15677897187196.jpg)
+![](/media/15677897187196.jpg){:width="766" height="396"}
 
 Android platform:
 
 After opening the app, tap `Enable Keyboard`, then enable it on the next screen.
-![](/media/15677897747263.jpg)
-![](/media/15677897792986.jpg)
+![](/media/15677897747263.jpg){:width="672" height="268"}
+![](/media/15677897792986.jpg){:width="660" height="116"}
 
 
 ### Computer Side Installation
@@ -85,11 +85,11 @@ macOS side:
 
 Download `RemoboardMac.zip` from [here](https://github.com/remoboard/remoboard.github.io/releases).
 
-![](/media/15677898790466.jpg)
+![](/media/15677898790466.jpg){:width="338" height="98"}
 
 Unzip RemoboardMac.zip, double-click Remoboard.dmg, and drag Remoboard.app into Applications.
 
-![](/media/15682472458141.jpg)
+![](/media/15682472458141.jpg){:width="480" height="332"}
 
 Windows side:
 
@@ -104,40 +104,40 @@ Note in advance: `to simplify the setup steps, first make sure both the phone an
 
 (1) On the phone, open any app where you can enter text, and long-press the bottom-left corner to switch to Remote Keyboard.
 
-![](/media/15677900349799.jpg)
+![](/media/15677900349799.jpg){:width="738" height="482"}
 
 Now, Remote Keyboard will display a `connection code, as well as an IP address`.
 
-![](/media/15677901020861.jpg)
+![](/media/15677901020861.jpg){:width="734" height="432"}
 
 (2) Open Remote Keyboard on macOS.
 
-![](/media/15677901643408.jpg)
+![](/media/15677901643408.jpg){:width="1182" height="210"}
 
 
 Enter the connection code shown on the phone, then click "Connect". If everything is normal, the connection succeeds. If the connection fails, please check whether the phone and computer are connected to the same local network (the computer can ping the phone's IP address).
 
-![](/media/15677902102892.jpg)
+![](/media/15677902102892.jpg){:width="1182" height="210"}
 
 The phone will correspondingly show as Connected — start typing :)
 
 ### Android Usage
 
 (1) On Android, when entering text, switch to Remote Keyboard.
-![](/media/15677903289940.jpg)
+![](/media/15677903289940.jpg){:width="670" height="600"}
 
 It also shows a connection code; enter it on the computer side to connect.
 
-![](/media/15677903674581.jpg)
+![](/media/15677903674581.jpg){:width="664" height="228"}
 
 (2) Open Remote Keyboard on macOS.
 
-![](/media/15677901643408.jpg)
+![](/media/15677901643408.jpg){:width="1182" height="210"}
 
 
 Enter the connection code shown on the phone, then click "Connect". If everything is normal, the connection succeeds. If the connection fails, please check whether the phone and computer are connected to the same local network (the computer can ping the phone's IP address).
 
-![](/media/15677902102892.jpg)
+![](/media/15677902102892.jpg){:width="1182" height="210"}
 
 
 ## Official Website
@@ -149,29 +149,29 @@ Here's the official website tutorial: [https://remoboard.app/zhcn/](https://remo
 
 ## Input Modes
 
-![](/media/15677904928723.jpg)
+![](/media/15677904928723.jpg){:width="1178" height="354"}
 
 (1) Standard input mode
 
 In this mode you can type "one line of text", then "press Enter to send".
-![](/media/15677905088388.jpg)
+![](/media/15677905088388.jpg){:width="1182" height="210"}
 
 (2) Multi-line input mode
 
 In this mode, you can "type or paste multiple lines of text" and "click a button" to send.
-![](/media/15677905197719.jpg)
+![](/media/15677905197719.jpg){:width="1182" height="340"}
 
 
 (3) Instant input mode (programming mode)
 
 In this mode, text is sent as you type, which is great for some phone-side programming apps. Personally I think this mode is quite interesting and might suit apps like `JSBox` or `纯纯写作` (Pure Writer).
 
-![](/media/15677905271431.jpg)
+![](/media/15677905271431.jpg){:width="1182" height="210"}
 
 
 ## Connection Modes
 
-![](/media/15677905465471.jpg)
+![](/media/15677905465471.jpg){:width="692" height="244"}
 
 There are two connection modes:
 
@@ -219,7 +219,7 @@ Recently I also happened to be learning Android development, so all four platfor
 
 <!-- more -->
 
-![](/media/15682174633090.jpg)
+![](/media/15682174633090.jpg){:width="539" height="252"}
 
 
 通常情况下我们并不需要远程输入，但可能在以下场景中，远程输入法可以帮上忙：
@@ -266,15 +266,15 @@ Recently I also happened to be learning Android development, so all four platfor
 iOS平台：
 
 打开 `设置>通用>键盘>键盘>添加新键盘`，选择`远程输入法`。
-![](/media/15677896500296.jpg)
+![](/media/15677896500296.jpg){:width="750" height="220"}
 添加后，再次点击远程输入法，启用`允许完全访问`
-![](/media/15677897187196.jpg)
+![](/media/15677897187196.jpg){:width="766" height="396"}
 
 Android平台：
 
 打开应用后，点击`启用输入法`，然后在下一界面启用。
-![](/media/15677897747263.jpg)
-![](/media/15677897792986.jpg)
+![](/media/15677897747263.jpg){:width="672" height="268"}
+![](/media/15677897792986.jpg){:width="660" height="116"}
 
 
 ### 电脑端安装
@@ -283,11 +283,11 @@ macOS端：
 
 在 [这里](https://github.com/remoboard/remoboard.github.io/releases) 下载 `RemoboardMac.zip`
 
-![](/media/15677898790466.jpg)
+![](/media/15677898790466.jpg){:width="338" height="98"}
 
 解压 RemoboardMac.zip，双击 Remoboard.dmg ，把Remoboard.app拖入Applications。
 
-![](/media/15682472458141.jpg)
+![](/media/15682472458141.jpg){:width="480" height="332"}
 
 Windows端：
 
@@ -302,40 +302,40 @@ Windows端：
 
 (1) 在手机上，打开任意可以输入文字的应用，长按左下角切换到远程输入法
 
-![](/media/15677900349799.jpg)
+![](/media/15677900349799.jpg){:width="738" height="482"}
 
 现在，远程输入法会显示一个`连接码，以及IP地址`。
 
-![](/media/15677901020861.jpg)
+![](/media/15677901020861.jpg){:width="734" height="432"}
 
 (2) 打开macOS上的远程输入法
 
-![](/media/15677901643408.jpg)
+![](/media/15677901643408.jpg){:width="1182" height="210"}
 
 
 输入法手机上显示的连接码, 然后点击「连接」. 如果一切正常，则连接成功。如果连接失败，请检查手机和电脑是否连接在同一个内网中（电脑可以ping通手机的IP地址）。
 
-![](/media/15677902102892.jpg)
+![](/media/15677902102892.jpg){:width="1182" height="210"}
 
 对应的手机上会显示 已连接，打字啦 :)
 
 ### Android使用
 
 (1) Android在输入时，切换到远程输入法。
-![](/media/15677903289940.jpg)
+![](/media/15677903289940.jpg){:width="670" height="600"}
 
 同样显示连接码，在电脑端输入连接即可。
 
-![](/media/15677903674581.jpg)
+![](/media/15677903674581.jpg){:width="664" height="228"}
 
 (2) 打开macOS上的远程输入法
 
-![](/media/15677901643408.jpg)
+![](/media/15677901643408.jpg){:width="1182" height="210"}
 
 
 输入法手机上显示的连接码, 然后点击「连接」. 如果一切正常，则连接成功。如果连接失败，请检查手机和电脑是否连接在同一个内网中（电脑可以ping通手机的IP地址）。
 
-![](/media/15677902102892.jpg)
+![](/media/15677902102892.jpg){:width="1182" height="210"}
 
 
 ## 官网
@@ -347,29 +347,29 @@ Windows端：
 
 ## 输入模式
 
-![](/media/15677904928723.jpg)
+![](/media/15677904928723.jpg){:width="1178" height="354"}
 
 (1) 标准输入模式
 
 这种模式下可以输入「一行文字」，然后「按回车发送」。
-![](/media/15677905088388.jpg)
+![](/media/15677905088388.jpg){:width="1182" height="210"}
 
 (2) 多行输入模式
 
 这种模式下，可以「输入或粘贴多行文字」，「点击按钮」发送。
-![](/media/15677905197719.jpg)
+![](/media/15677905197719.jpg){:width="1182" height="340"}
 
 
 (3) 即时输入模式（编程模式）
 
 这种模式下，文字会边打边发送，很适合一些手机端的编程应用。个人认为这个模式还是比较有意思的，可能会适合`JSBox`或`纯纯写作`这样的应用。
 
-![](/media/15677905271431.jpg)
+![](/media/15677905271431.jpg){:width="1182" height="210"}
 
 
 ## 连接模式
 
-![](/media/15677905465471.jpg)
+![](/media/15677905465471.jpg){:width="692" height="244"}
 
 有两种连接模式：
 

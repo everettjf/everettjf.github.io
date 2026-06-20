@@ -28,13 +28,13 @@ $ strings WeChat > strings_wechat.txt
 
 As shown in the figure:
 
-![](/media/14798364851450.jpg)
+![](/media/14798364851450.jpg){:width="1016" height="302"}
 
 Write a little script to extract all strings starting with `/Users/`, then split them and assemble them into a tree.
 
 Then you can see part of WeChat's file structure.
 
-![](/media/14798366527896.jpg)
+![](/media/14798366527896.jpg){:width="1500" height="826"}
 
 
 [Script address](https://github.com/everettjf/Yolo/tree/master/ListWeChatDirTree)
@@ -63,13 +63,13 @@ $ strings WeChat > strings_wechat.txt
 
 也如图：
 
-![](/media/14798364851450.jpg)
+![](/media/14798364851450.jpg){:width="1016" height="302"}
 
 写个小脚本把所有`/Users/`开头的字符串提出来，然后分隔，组装成一棵树。
 
 就可以看到微信的一部分文件结构啦。
 
-![](/media/14798366527896.jpg)
+![](/media/14798366527896.jpg){:width="1500" height="826"}
 
 
 [脚本地址](https://github.com/everettjf/Yolo/tree/master/ListWeChatDirTree)

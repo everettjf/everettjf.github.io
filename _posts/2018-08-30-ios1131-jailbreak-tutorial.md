@@ -25,12 +25,12 @@ I just got an iPhone 6S running iOS 11.3.1 today. In theory, this article applie
 ## Tool 1: Jailbreak IPA
 
 First, find the tool for the corresponding system on <https://canijailbreak.com/>, click Electra, and open the official website of the jailbreak tool Electra.
-![](/media/15355597001462.jpg)
+![](/media/15355597001462.jpg){:width="1245" height="666"}
 
 <https://coolstar.org/electra/>
 
 
-![](/media/15355599519362.jpg)
+![](/media/15355599519362.jpg){:width="400" height="504"}
 
 There are two versions of the tool here that can both complete the jailbreak. It looks like they exploit different system vulnerabilities, but the end result should be the same (as for the specific differences, I haven't dug into them). Click Download (Dev Account), and it will download Electra1131-1.0.3-mptcp.ipa.
 
@@ -39,13 +39,13 @@ There are two versions of the tool here that can both complete the jailbreak. It
 
 There are many resigning tools; here I use <https://dantheman827.github.io/ios-app-signer/>
 
-![](/media/15355603167027.jpg)
+![](/media/15355603167027.jpg){:width="610" height="264"}
 
 ## Tool 3: Installing the IPA
 
 There are also many ways to install an IPA onto an iPhone; here I use Apple's official Apple Configurator 2 <https://itunes.apple.com/us/app/apple-configurator-2/id1037126344?mt=12>
 
-![8207AF94-1095-4428-9DF6-AD65C214D07B](/media/8207AF94-1095-4428-9DF6-AD65C214D07B.png)
+![8207AF94-1095-4428-9DF6-AD65C214D07B](/media/8207AF94-1095-4428-9DF6-AD65C214D07B.png){:width="500" height="347"}
 
 # Starting the Jailbreak
 
@@ -53,38 +53,38 @@ Since the Electra we chose requires the com.apple.developer.networking.multipath
 
 ## Creating a Certificate
 Open the developer website, https://developer.apple.com/, and create a Distribution certificate. I won't go into detail about the creation process.
-![](/media/15355608373060.jpg)
+![](/media/15355608373060.jpg){:width="1516" height="370"}
 
 ## Creating App IDs
-![](/media/15355609710371.jpg)
+![](/media/15355609710371.jpg){:width="295" height="88"}
 Suppose the App ID uses com.everettjf.myios11iphone6s.
 
 Make sure to select Multipath
-![](/media/15355609398145.jpg)
+![](/media/15355609398145.jpg){:width="1168" height="343"}
 
 
 ## Adding the Device UDID
 
 The device UDID can be obtained through iTunes.
 
-![](/media/15355609992836.jpg)
+![](/media/15355609992836.jpg){:width="1010" height="650"}
 
 ## Generating a ProvisioningProfile
 
 You can create an AdHoc type.
 
-![](/media/15355610949442.jpg)
+![](/media/15355610949442.jpg){:width="674" height="251"}
 
 This gives you myios11iphone6s.mobileprovision.
 
 ## Resigning
 
-![](/media/15355612353562.jpg)
+![](/media/15355612353562.jpg){:width="1600" height="581"}
 
 ## Installing the IPA
 
 Open Apple Configurator, connect the phone, and drag the IPA in.
-![8207AF94-1095-4428-9DF6-AD65C214D07B](/media/8207AF94-1095-4428-9DF6-AD65C214D07B-1.png)
+![8207AF94-1095-4428-9DF6-AD65C214D07B](/media/8207AF94-1095-4428-9DF6-AD65C214D07B-1.png){:width="1600" height="1109"}
 
 
 ## Performing the Jailbreak
@@ -92,13 +92,13 @@ Open Apple Configurator, connect the phone, and drag the IPA in.
 Click Enable Jailbreak, wait for the device to reboot, then click it again. After the device reboots, click it once more.
 You need to reboot twice.
 
-![](/media/15355613983264.jpg)
+![](/media/15355613983264.jpg){:width="400" height="711"}
 
 
 Finally, Cydia will appear on the home screen, and you can open it.
 
 
-![](/media/15355616161428.jpg)
+![](/media/15355616161428.jpg){:width="400" height="711"}
 
 # A Bit of Fun
 
@@ -107,11 +107,11 @@ Finally, Cydia will appear on the home screen, and you can open it.
 
 Connect the phone, run passionfruit, and you'll see the image below.
 
-![](/media/15355618057348.jpg)
+![](/media/15355618057348.jpg){:width="1600" height="613"}
 
 Open WeChat and take a look — passionfruit is really Niubility.
 
-![](/media/15355619106082.jpg)
+![](/media/15355619106082.jpg){:width="1600" height="835"}
 
 
 
@@ -147,12 +147,12 @@ Welcome to follow the WeChat official account "客户端技术评论":
 ## 工具1:越狱IPA
 
 首先在 <https://canijailbreak.com/> 找到对应系统的工具，点击 Electra，打开越狱工具 Electra 的官方网站。
-![](/media/15355597001462.jpg)
+![](/media/15355597001462.jpg){:width="1245" height="666"}
 
 <https://coolstar.org/electra/>
 
 
-![](/media/15355599519362.jpg)
+![](/media/15355599519362.jpg){:width="400" height="504"}
 
 这里有两个版本的工具都可以完成越狱，看起来是利用的系统漏洞不同，但最终效果应该是一样的（具体有什么区别，我还没深究）。点击 Download（Dev Account），会下载下来 Electra1131-1.0.3-mptcp.ipa 。
 
@@ -161,13 +161,13 @@ Welcome to follow the WeChat official account "客户端技术评论":
 
 重签名工具很多种，这里使用<https://dantheman827.github.io/ios-app-signer/>
 
-![](/media/15355603167027.jpg)
+![](/media/15355603167027.jpg){:width="610" height="264"}
 
 ## 工具3:安装IPA
 
 将IPA安装到iPhone的方法也多种多样，这里使用苹果官方的 Apple Configurator 2 <https://itunes.apple.com/us/app/apple-configurator-2/id1037126344?mt=12>
 
-![8207AF94-1095-4428-9DF6-AD65C214D07B](/media/8207AF94-1095-4428-9DF6-AD65C214D07B.png)
+![8207AF94-1095-4428-9DF6-AD65C214D07B](/media/8207AF94-1095-4428-9DF6-AD65C214D07B.png){:width="500" height="347"}
 
 # 开始越狱
 
@@ -175,38 +175,38 @@ Welcome to follow the WeChat official account "客户端技术评论":
 
 ## 证书创建
 打开开发者网站，https://developer.apple.com/，创建一个Distribution证书。创建过程就不多说了。
-![](/media/15355608373060.jpg)
+![](/media/15355608373060.jpg){:width="1516" height="370"}
 
 ## 创建App IDs
-![](/media/15355609710371.jpg)
+![](/media/15355609710371.jpg){:width="295" height="88"}
 假设App ID 使用 com.everettjf.myios11iphone6s。
 
 注意选择Multipath
-![](/media/15355609398145.jpg)
+![](/media/15355609398145.jpg){:width="1168" height="343"}
 
 
 ## 设备UDID加入
 
 设备UDID可通过iTunes获取。
 
-![](/media/15355609992836.jpg)
+![](/media/15355609992836.jpg){:width="1010" height="650"}
 
 ## 生产ProvisioningProfile
 
 可以创建AdHoc类型。
 
-![](/media/15355610949442.jpg)
+![](/media/15355610949442.jpg){:width="674" height="251"}
 
 得到 myios11iphone6s.mobileprovision。
 
 ## 重签名
 
-![](/media/15355612353562.jpg)
+![](/media/15355612353562.jpg){:width="1600" height="581"}
 
 ## 安装IPA
 
 打开Apple Configurator，连接手机，把IPA拖入即可。
-![8207AF94-1095-4428-9DF6-AD65C214D07B](/media/8207AF94-1095-4428-9DF6-AD65C214D07B-1.png)
+![8207AF94-1095-4428-9DF6-AD65C214D07B](/media/8207AF94-1095-4428-9DF6-AD65C214D07B-1.png){:width="1600" height="1109"}
 
 
 ## 执行越狱
@@ -214,13 +214,13 @@ Welcome to follow the WeChat official account "客户端技术评论":
 点击Enable Jailbreak，等设备重启后，再点击一次。等设备重启后，再点击一次。
 需要重启两次。
 
-![](/media/15355613983264.jpg)
+![](/media/15355613983264.jpg){:width="400" height="711"}
 
 
 最后桌面上就有Cydia，可以打开了。
 
 
-![](/media/15355616161428.jpg)
+![](/media/15355616161428.jpg){:width="400" height="711"}
 
 # 简单玩耍
 
@@ -230,11 +230,11 @@ Welcome to follow the WeChat official account "客户端技术评论":
 
 连接手机，运行passionfruit就可以看到下图了。
 
-![](/media/15355618057348.jpg)
+![](/media/15355618057348.jpg){:width="1600" height="613"}
 
 点开微信看看，passionfruit真 Niubility。
 
-![](/media/15355619106082.jpg)
+![](/media/15355619106082.jpg){:width="1600" height="835"}
 
 
 

@@ -46,7 +46,7 @@ So when you call `Hello::instance()`, is it thread-safe? Can the constructor of 
 
 Let's throw the code into Hopper and take a look.
 
-![-w1201](/media/15819530050437.jpg)
+![-w1201](/media/15819530050437.jpg){:width="1600" height="237"}
 
 
 Looks like there's a lock. So it's thread-safe :)
@@ -68,21 +68,21 @@ After some searching, you can find this source file `cxa_guard.cxx`:
 
 https://opensource.apple.com/source/libcppabi/libcppabi-14/src/cxa_guard.cxx
 
-![-w609](/media/15819532682759.jpg)
+![-w609](/media/15819532682759.jpg){:width="1218" height="740"}
 
 
 It implements a double-checked locking via obj_guard.
 
-![-w647](/media/15819533607278.jpg)
+![-w647](/media/15819533607278.jpg){:width="1294" height="956"}
 
 inUse stores 0 and 1 in the first address pointed to by obj_guard, implementing the first check.
 
 Found this obj_guard in Hopper:
 
-![](/media/15819535672052.jpg)
+![](/media/15819535672052.jpg){:width="1600" height="786"}
 
 
-![-w705](/media/15819535936394.jpg)
+![-w705](/media/15819535936394.jpg){:width="1410" height="462"}
 
 This guard variable is a global variable.
 
@@ -143,7 +143,7 @@ public:
 
 把代码扔到 Hopper 看一下
 
-![-w1201](/media/15819530050437.jpg)
+![-w1201](/media/15819530050437.jpg){:width="1600" height="237"}
 
 
 看来是有锁。那就是线程安全咯 :)
@@ -165,21 +165,21 @@ __cxa_guard_release
 
 https://opensource.apple.com/source/libcppabi/libcppabi-14/src/cxa_guard.cxx
 
-![-w609](/media/15819532682759.jpg)
+![-w609](/media/15819532682759.jpg){:width="1218" height="740"}
 
 
 通过obj_guard 实现了一个double-checked locking
 
-![-w647](/media/15819533607278.jpg)
+![-w647](/media/15819533607278.jpg){:width="1294" height="956"}
 
 inUse会通过obj_guard指向内存的第一个地址存取0和1，实现第一次check。
 
 Hopper中找到这个obj_guard
 
-![](/media/15819535672052.jpg)
+![](/media/15819535672052.jpg){:width="1600" height="786"}
 
 
-![-w705](/media/15819535936394.jpg)
+![-w705](/media/15819535936394.jpg){:width="1410" height="462"}
 
 这个guard variable 是个全局变量。
 

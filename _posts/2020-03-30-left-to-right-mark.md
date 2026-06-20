@@ -23,7 +23,7 @@ About half a year ago, maybe even longer, while using frida-ios-dump, I accident
 > Link: https://github.com/AloneMonkey/frida-ios-dump
 
 Take a close look at WhatsApp in the image below:
-![](/media/15855012198617.jpg)
+![](/media/15855012198617.jpg){:width="371" height="121"}
 
 WhatsApp's name is aligned on the left differently from the other apps.
 
@@ -42,11 +42,11 @@ python dump.py net.whatsapp.WhatsApp
 
 After de-shelling, it looks like the image below. There's a question mark. `?WhatsApp.ipa` — what is that question mark?
 
-![](/media/15855017374127.jpg)
+![](/media/15855017374127.jpg){:width="237" height="86"}
 
 I was about to `mv` it to another folder to study it, and at that very moment...
 
-![](/media/15855018704881.jpg)
+![](/media/15855018704881.jpg){:width="456" height="81"}
 
 The mysterious character `\342\200\216` appeared. Just as I was getting curious...
 
@@ -54,13 +54,13 @@ The mysterious character `\342\200\216` appeared. Just as I was getting curious.
 
 Did a casual search ... and actually found it :)
 
-![](/media/15855020124999.jpg)
+![](/media/15855020124999.jpg){:width="725" height="183"}
 
 > https://graphemica.com/200E
 
 Opening it up, it actually has a meaning~ `left-to-right mark` 
 
-![](/media/15855021218820.jpg)
+![](/media/15855021218820.jpg){:width="920" height="376"}
 
 ## The Truth Revealed
 
@@ -78,7 +78,7 @@ Let me put it even more plainly. The left-to-right mark is an invisible characte
 
 The example in the image below makes it clearer: after using the LRM, the displayed `C++` (left-to-right) is included within Arabic (right-to-left).
 
-![](/media/15855024011241.jpg)
+![](/media/15855024011241.jpg){:width="792" height="236"}
 
 
 ## Further Reading
@@ -92,15 +92,15 @@ There's a `Left-to-right mark`, and there's also a `Right-to-left mark`.
 
 Pulling out WhatsApp's `Info.plist` file and taking a look, there doesn't seem to be anything special.
 
-![](/media/15855026225466.jpg)
+![](/media/15855026225466.jpg){:width="487" height="115"}
 
 Let's look at it with a binary editor.
 
-![](/media/15855027112567.jpg)
+![](/media/15855027112567.jpg){:width="617" height="134"}
 
 `\342\200\216` is `0xE2 0x80 0x8E (e2808e)`
 
-![](/media/15855027969727.jpg)
+![](/media/15855027969727.jpg){:width="880" height="444"}
 
 
 This way, when the code fetches `CFBundleDisplayName` and concatenates it with other localized languages, it can ensure WhatsApp's order is left-to-right.
@@ -129,7 +129,7 @@ If you like it, follow the official account to show your support:
 > 地址：https://github.com/AloneMonkey/frida-ios-dump
 
 仔细看下图的WhatsApp：
-![](/media/15855012198617.jpg)
+![](/media/15855012198617.jpg){:width="371" height="121"}
 
 WhatsApp的名称左侧对齐与其他App不同。
 
@@ -148,11 +148,11 @@ python dump.py net.whatsapp.WhatsApp
 
 砸完，如下图。出现个问号。`?WhatsApp.ipa`，问号是什么。
 
-![](/media/15855017374127.jpg)
+![](/media/15855017374127.jpg){:width="237" height="86"}
 
 准备`mv`到其他文件夹研究下，就在此刻...
 
-![](/media/15855018704881.jpg)
+![](/media/15855018704881.jpg){:width="456" height="81"}
 
 神秘字符`\342\200\216`出现了，正好奇着...
 
@@ -160,13 +160,13 @@ python dump.py net.whatsapp.WhatsApp
 
 随手一搜 ... 还真搜到了 :)
 
-![](/media/15855020124999.jpg)
+![](/media/15855020124999.jpg){:width="725" height="183"}
 
 > https://graphemica.com/200E
 
 打开一看，还真有含义咧～ `left-to-right mark` 
 
-![](/media/15855021218820.jpg)
+![](/media/15855021218820.jpg){:width="920" height="376"}
 
 ## 真相大白
 
@@ -184,7 +184,7 @@ Wikipedia也有解释
 
 下图的例子就比较清晰了：在使用了LRM符号后，阿拉伯语（从右向左）中包含了显示的`C++`（从左向右）。
 
-![](/media/15855024011241.jpg)
+![](/media/15855024011241.jpg){:width="792" height="236"}
 
 
 ## 扩展阅读
@@ -198,15 +198,15 @@ Wikipedia也有解释
 
 把WhatsApp的`Info.plist`文件拿出来看一眼，似乎没什么特别。
 
-![](/media/15855026225466.jpg)
+![](/media/15855026225466.jpg){:width="487" height="115"}
 
 用二进制编辑器看一下。
 
-![](/media/15855027112567.jpg)
+![](/media/15855027112567.jpg){:width="617" height="134"}
 
 `\342\200\216` 就是 `0xE2 0x80 0x8E (e2808e)`
 
-![](/media/15855027969727.jpg)
+![](/media/15855027969727.jpg){:width="880" height="444"}
 
 
 这样在代码中获取 `CFBundleDisplayName` 并与其他本地化的语言拼接后，就能保证WhatsApp的顺序从左至右了。

@@ -36,9 +36,9 @@ iOS App :
 1. <https://itunes.apple.com/cn/app/qvkeyboard/id1439106456>
 2. Search for `qvkb`, `usbkeyboard`, or `qvkeyboard` — any of them will find it.
 
-![](/media/15402514895616.jpg)
-![](/media/15402515094809.jpg)
-![](/media/15402515243124.jpg)
+![](/media/15402514895616.jpg){:width="300" height="165"}
+![](/media/15402515094809.jpg){:width="300" height="127"}
+![](/media/15402515243124.jpg){:width="300" height="155"}
 
 
 macOS Client : 
@@ -46,7 +46,7 @@ macOS Client :
 1. GitHub <https://github.com/qvkeyboard/qvkeyboard/releases>
 2. Baidu Cloud <https://pan.baidu.com/s/1lRPMJcy22oSSiUDhM5yyAw>
 
-![](/media/15402511097109.jpg)
+![](/media/15402511097109.jpg){:width="500" height="320"}
 
 
 # How to Use
@@ -55,16 +55,16 @@ macOS Client :
 2. Tap USB Keyboard again, tap "Allow Full Access", then "Allow".
 3. Open any app screen where you can enter text, and switch the input method to USB Keyboard.
 4. Now the keyboard will display as follows:
-![](/media/15402274921197.jpg)
+![](/media/15402274921197.jpg){:width="487" height="220"}
 5. Open the macOS side.
 The icon looks like this:
-![](/media/15402510498645.jpg)
+![](/media/15402510498645.jpg){:width="265" height="234"}
 
 After opening, the interface looks like this:
-![](/media/15402275665008.jpg)
+![](/media/15402275665008.jpg){:width="1390" height="390"}
 6. At this point, if iOS and macOS connect successfully, both will display 🌈Ready for type:)
 
-![](/media/15402289330298.jpg)
+![](/media/15402289330298.jpg){:width="479" height="230"}
 
 7. You can now type in the input box. Pressing Enter will send. Enjoy it :)
 
@@ -137,9 +137,9 @@ iOS App :
 1. <https://itunes.apple.com/cn/app/qvkeyboard/id1439106456>
 2. 搜索 `qvkb` 或 `usbkeyboard` 或 `qvkeyboard` 都可以到。
 
-![](/media/15402514895616.jpg)
-![](/media/15402515094809.jpg)
-![](/media/15402515243124.jpg)
+![](/media/15402514895616.jpg){:width="300" height="165"}
+![](/media/15402515094809.jpg){:width="300" height="127"}
+![](/media/15402515243124.jpg){:width="300" height="155"}
 
 
 macOS Client : 
@@ -147,7 +147,7 @@ macOS Client :
 1. GitHub <https://github.com/qvkeyboard/qvkeyboard/releases>
 2. 百度云 <https://pan.baidu.com/s/1lRPMJcy22oSSiUDhM5yyAw>
 
-![](/media/15402511097109.jpg)
+![](/media/15402511097109.jpg){:width="500" height="320"}
 
 
 # 使用方法
@@ -156,16 +156,16 @@ macOS Client :
 2. 再次点击USB Keyboard，点击”允许完全访问“，然后”允许“。
 3. 打开任意一个app可输入文字的界面，切换输入法到USB Keyboard。
 4. 现在键盘会如下显示：
-![](/media/15402274921197.jpg)
+![](/media/15402274921197.jpg){:width="487" height="220"}
 5. 打开macOS端
 图标如下：
-![](/media/15402510498645.jpg)
+![](/media/15402510498645.jpg){:width="265" height="234"}
 
 打开后界面如下：
-![](/media/15402275665008.jpg)
+![](/media/15402275665008.jpg){:width="1390" height="390"}
 6. 此时iOS和macOS如果连接成功，会都显示 🌈Ready for type:)
 
-![](/media/15402289330298.jpg)
+![](/media/15402289330298.jpg){:width="479" height="230"}
 
 7. 可以在输入框打字啦。回车就会发送。Enjoy it :)
 

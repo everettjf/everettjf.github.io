@@ -29,11 +29,11 @@ NSAssert(NO, @"should not call this");
 
 When the assertion code has source available, it looks like this when triggered:
 
-![](/media/15817696181069.jpg)
+![](/media/15817696181069.jpg){:width="875" height="193"}
 
 The full call stack is as follows:
 
-![](/media/15817696740923.jpg)
+![](/media/15817696740923.jpg){:width="1137" height="266"}
 
 Since the source is available, Xcode intelligently positions the editor at the NSAssert line. At the same time we also learn another piece of information: NSAssert actually produces an Exception, and the Exception triggers the C function `objc_exception_throw`.
 
@@ -41,40 +41,40 @@ Since the source is available, Xcode intelligently positions the editor at the N
 ## Interaction with GCD
 
 But if your company has promoted converting Pods into static libraries (to speed up compilation; teams with a lot of people on a product usually do this), then the NSAssert line has no source, and the call stack will very likely look like the image below:
-![](/media/15817699224837.jpg)
+![](/media/15817699224837.jpg){:width="314" height="127"}
 
 
 Of course, this doesn't only happen when there's no source. If the assertion is inside some GCD block and the context also has no source, it will look like the image above too. For example, the following code will cause Xcode to be unable to break at the code line.
 
-![](/media/15817701224885.jpg)
+![](/media/15817701224885.jpg){:width="853" height="113"}
 
 
 Why does this happen? Let's look at the detailed call stack:
 
-![](/media/15817701588263.jpg)
+![](/media/15817701588263.jpg){:width="843" height="325"}
 
 Looking carefully, there's no `objc_exception_throw` here. So let's add a symbolic breakpoint and check.
 
-![](/media/15817706969228.jpg)
+![](/media/15817706969228.jpg){:width="444" height="103"}
 
 
 No problem — this method was indeed called. Let's look at the implementation of `objc_exception_throw`.
 https://opensource.apple.com/tarballs/objc4/ 
 Download the latest code. Find this method, as follows.
 
-![](/media/15817716916654.jpg)
+![](/media/15817716916654.jpg){:width="897" height="676"}
 
 After reading it, I don't really have any ideas.
 
 Let's also look at these two GCD methods,
 
-![](/media/15817718460206.jpg)
+![](/media/15817718460206.jpg){:width="868" height="195"}
 
 
 Then find the libdispatch code from here:
 https://opensource.apple.com/tarballs/libdispatch/
 
-![](/media/15817719822396.jpg)
+![](/media/15817719822396.jpg){:width="591" height="307"}
 
 
 Now it's clear: _dispatch_client_callout catches the OC Exception in the GCD block, then directly calls objc_terminate. That is, this is the point that causes the call stack to break.
@@ -87,29 +87,29 @@ For launch optimization, I wrote some launcher code. To avoid the internal code 
 
 The general situation was as follows:
 
-![](/media/15817723562511.jpg)
+![](/media/15817723562511.jpg){:width="914" height="237"}
 
 myRunner on the left side refers to the launcher. From the image above, it indeed crashed in my code.
 
 But what was the actual situation?
 
-![](/media/15817724251639.jpg)
+![](/media/15817724251639.jpg){:width="883" height="263"}
 
 Because the code inside dispatch_once threw an OC exception. Big companies often run into this situation early on, and later they usually develop code specifically for assertions to locate the Owner — and as a result, because of dispatch_once, everyone ended up tracking it back to me.
 
 The simplest solution is to add an exception breakpoint. (That is, the symbolic breakpoint objc_exception_throw.)
 
-![](/media/15817726052193.jpg)
+![](/media/15817726052193.jpg){:width="264" height="202"}
 
 Don't underestimate this operation, ha. I've seen many developers who don't know about it (this might be the first must-have skill for an iOS engineer moving from a small company to a big one).
 
 Thinking about the cause again, let's look at the call stack
 
-![](/media/15817728005548.jpg)
+![](/media/15817728005548.jpg){:width="724" height="237"}
 
 _dispatch_client_callout is still present. But the slight difference is that dispatch_once's method is inline, written into the header file
 
-![](/media/15817728648084.jpg)
+![](/media/15817728648084.jpg){:width="708" height="402"}
 
 Xcode will try to find the last line in the call stack that has matching code, locate it there, and show it to the developer.
 
@@ -119,11 +119,11 @@ The cause is figured out. So how do we work around this problem? For now it seem
 
 For example: C++'s std::call_once.
 
-![](/media/15817731685041.jpg)
+![](/media/15817731685041.jpg){:width="626" height="208"}
 
 Another example is using the built-in lock of a static variable (this could be worth writing an article to explore).
 
-![](/media/15817731588446.jpg)
+![](/media/15817731588446.jpg){:width="398" height="198"}
 
 For more methods, refer to:
 https://stackoverflow.com/questions/8412630/how-to-execute-a-piece-of-code-only-once
@@ -153,11 +153,11 @@ NSAssert(NO, @"should not call this");
 
 当断言代码有源码时，触发时如下图：
 
-![](/media/15817696181069.jpg)
+![](/media/15817696181069.jpg){:width="875" height="193"}
 
 完整的callstack如下：
 
-![](/media/15817696740923.jpg)
+![](/media/15817696740923.jpg){:width="1137" height="266"}
 
 由于有源码，Xcode很智能的把编辑器定位到了NSAssert的那一行。同时我们也知道了另一个信息，NSAssert其实就是产生了一个Exception，Exception会触发 `objc_exception_throw` 这个c函数。
 
@@ -165,40 +165,40 @@ NSAssert(NO, @"should not call this");
 ## 与GCD作用
 
 但如果公司内推行过把Pod转为静态库（为了加快编译速度，一般团队人数多的产品都会这么做），NSAssert那一行没有源码，那很可能Callstack会如下图：
-![](/media/15817699224837.jpg)
+![](/media/15817699224837.jpg){:width="314" height="127"}
 
 
 当然并不是只有没源码时会像上图这样。如果断言在GCD的一些block中，而且上下文也没有源码，也会像上图这样。例如下面的代码，就会导致Xcode不能断点到代码行。
 
-![](/media/15817701224885.jpg)
+![](/media/15817701224885.jpg){:width="853" height="113"}
 
 
 为什么会这样呢？看下详细的Callstack：
 
-![](/media/15817701588263.jpg)
+![](/media/15817701588263.jpg){:width="843" height="325"}
 
 仔细看了看，这里并没有 `objc_exception_throw`。那我们加上符号断点看下。
 
-![](/media/15817706969228.jpg)
+![](/media/15817706969228.jpg){:width="444" height="103"}
 
 
 没问题，这个方法是调用了的。我们看下`objc_exception_throw`的实现。
 https://opensource.apple.com/tarballs/objc4/ 
 下载最新的代码。找到这个方法，如下。
 
-![](/media/15817716916654.jpg)
+![](/media/15817716916654.jpg){:width="897" height="676"}
 
 看完似乎没啥想法。
 
 我们再看看GCD的这两个方法，
 
-![](/media/15817718460206.jpg)
+![](/media/15817718460206.jpg){:width="868" height="195"}
 
 
 再从这里找到 libdispatch 的代码：
 https://opensource.apple.com/tarballs/libdispatch/
 
-![](/media/15817719822396.jpg)
+![](/media/15817719822396.jpg){:width="591" height="307"}
 
 
 这下就明白了，_dispatch_client_callout 把GCD block中的OC Exception捕获了，然后直接 objc_terminate。也就是这里，导致Callstack断开了。
@@ -211,29 +211,29 @@ https://opensource.apple.com/tarballs/libdispatch/
 
 大概情况如下：
 
-![](/media/15817723562511.jpg)
+![](/media/15817723562511.jpg){:width="914" height="237"}
 
 左侧myRunner表示启动器。从上图看，确实Crash到了我的代码中。
 
 然而实际情况呢？
 
-![](/media/15817724251639.jpg)
+![](/media/15817724251639.jpg){:width="883" height="263"}
 
 因为dispatch_once中的代码throw了OC异常。一般大公司初期这种情况经常遇到，后期一般都会针对断言专门开发一些代码用来定位Owner，结果由于 dispatch_once 导致都找到了我。
 
 最简单的解决方法是，加个异常断点。（也就是符号断点 objc_exception_throw）
 
-![](/media/15817726052193.jpg)
+![](/media/15817726052193.jpg){:width="264" height="202"}
 
 别小看这个操作哈，我见过很多开发同学不知道这个操作（这可能是小公司iOS同学进入大公司的第一个必备技能）。
 
 再想下原因，看下Callstack
 
-![](/media/15817728005548.jpg)
+![](/media/15817728005548.jpg){:width="724" height="237"}
 
 还是存在 _dispatch_client_callout 。但稍微不同之处是，dispatch_once的这个方法是inline的，写到了头文件里
 
-![](/media/15817728648084.jpg)
+![](/media/15817728648084.jpg){:width="708" height="402"}
 
 Xcode会尝试在Callstack中找到最后一个有匹配代码的行，并定位到这行，显示给开发者。
 
@@ -243,11 +243,11 @@ Xcode会尝试在Callstack中找到最后一个有匹配代码的行，并定位
 
 例如：C++的std::call_once。
 
-![](/media/15817731685041.jpg)
+![](/media/15817731685041.jpg){:width="626" height="208"}
 
 再例如利用static变量的自带锁（这个可以写篇文章探索一下）
 
-![](/media/15817731588446.jpg)
+![](/media/15817731588446.jpg){:width="398" height="198"}
 
 更多方法参考：
 https://stackoverflow.com/questions/8412630/how-to-execute-a-piece-of-code-only-once

@@ -10,7 +10,7 @@ tags:
 comments: true
 ---
 
-![](/media/15459608773004.jpg)
+![](/media/15459608773004.jpg){:width="1190" height="768"}
 
 During this period (the second half of 2018), in my scattered bits of spare time, I implemented some "out-of-the-blue" "pseudo-needs" ideas. Since they're "pseudo-needs", I might as well open-source them — maybe they'll turn out to be useful to someone.
 
@@ -74,7 +74,7 @@ Welcome to follow the official account "Client Tech Review":
 
 <!--ZH-->
 
-![](/media/15459608773004.jpg)
+![](/media/15459608773004.jpg){:width="1190" height="768"}
 
 在这段时间（2018年下半年）断断续续的空闲时间里，实现了一些“突如其来”的“伪需求”想法。既然是“伪需求”，那就开源了吧，万一是有益于大家的呢。
 

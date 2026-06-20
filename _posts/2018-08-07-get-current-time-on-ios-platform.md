@@ -173,7 +173,7 @@ To measure time cost, you can generally use `CACurrentMediaTime()`, which avoids
 
 Finally, to use CACurrentMediaTime in a dynamic library, you need to link QuartzCore.framework.
 
-![](/media/15346417934621.jpg)
+![](/media/15346417934621.jpg){:width="344" height="110"}
 
 That's it — simple and easy to use.
 
@@ -346,7 +346,7 @@ NSLog(@"timeresult (s)= %ju", timeresult);
 
 最后，动态库中使用CACurrentMediaTime，需要链接QuartzCore.framework。
 
-![](/media/15346417934621.jpg)
+![](/media/15346417934621.jpg){:width="344" height="110"}
 
 就这样，简单易用。
 

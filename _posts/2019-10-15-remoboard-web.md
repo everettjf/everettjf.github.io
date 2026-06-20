@@ -30,7 +30,7 @@ The phone side supports iOS and Android, and on the computer you just need a bro
 
 In English systems, Remote Keyboard is displayed as `Remoboard`, meaning Remote Keyboard.
 
-![](/media/15711544847169.jpg)
+![](/media/15711544847169.jpg){:width="952" height="532"}
 
 
 
@@ -72,15 +72,15 @@ You can even install the keyboard on an Android smart TV, then visit the input U
 
 (3) Tap `Remote Keyboard`
 
-![](/media/15711565435200.jpg)
+![](/media/15711565435200.jpg){:width="400" height="117"}
 
 (4) Keyboard installation complete
 
-![](/media/15711565507727.jpg)
+![](/media/15711565507727.jpg){:width="400" height="320"}
 
 (5) On the screen you just finished, tap `Remote Keyboard` again and `enable Allow Full Access` as shown below
 
-![](/media/15711565163725.jpg)
+![](/media/15711565163725.jpg){:width="400" height="207"}
 
 (6) Now installation is complete. In a place where you can enter text, switch to "Remote Keyboard" and you'll see a URL (first make sure Wi-Fi is connected). Open this URL in your computer browser to start typing.
 
@@ -88,7 +88,7 @@ Note:
 1. You need to make sure the phone and computer are connected to the same network, and the computer can ping the phone's IP address.
 2. Enter the full URL shown in the image below in the browser, for example: http://192.168.31.11:7777
 
-![](/media/15711566433576.jpg)
+![](/media/15711566433576.jpg){:width="390" height="239"}
 
 Additional note: if macOS and iOS are logged into the same AppleId, you can use "Copy" and "Handoff" to open the URL on the computer more quickly. See the end of the article.
 
@@ -96,17 +96,17 @@ Additional note: if macOS and iOS are logged into the same AppleId, you can use 
 
 (1) Install from [Coolapk](https://www.coolapk.com/apk/241412) or [Google Play Store](https://play.google.com/store/apps/details?id=com.everettjf.remoboard), then open the app and tap Enable Keyboard
 
-![](/media/15711572903292.jpg)
+![](/media/15711572903292.jpg){:width="400" height="339"}
 
-![](/media/15711572968980.jpg)
+![](/media/15711572968980.jpg){:width="400" height="70"}
 
 Here it might "prompt to restart" — in most cases just tap "OK" and ignore it.
 
-![](/media/15711573164862.jpg)
+![](/media/15711573164862.jpg){:width="519" height="243"}
 
 (2) Switch the keyboard
 
-![](/media/15711573239250.jpg)
+![](/media/15711573239250.jpg){:width="522" height="324"}
 
 (3) Now installation is complete. In a place where you can enter text, switch to "Remote Keyboard" and you'll see a URL (first make sure Wi-Fi is connected). Open this URL in your computer browser to start typing.
 
@@ -114,7 +114,7 @@ Note:
 1. You need to make sure the phone and computer are connected to the same network, and the computer can ping the phone's IP address.
 2. Enter the full URL shown in the image below in the browser, for example: http://192.168.31.11:7777
 
-![](/media/15711573337744.jpg)
+![](/media/15711573337744.jpg){:width="528" height="164"}
 
 
 ## Input Modes
@@ -124,23 +124,23 @@ Note:
 
 There are three input modes:
 
-![](/media/15711573669509.jpg)
+![](/media/15711573669509.jpg){:width="400" height="60"}
 
 (1) Standard input mode
 
 In this mode you can type "one line of text", then "press Enter to send".
 
-![](/media/15711573759717.jpg)
+![](/media/15711573759717.jpg){:width="500" height="214"}
 
 (2) Multi-line input mode
 
 In this mode, you can "type or paste multiple lines of text" and "click a button" to send.
 
-![](/media/15711573838602.jpg)
+![](/media/15711573838602.jpg){:width="500" height="312"}
 
 (3) Programming input mode
 
-![](/media/15711573928921.jpg)
+![](/media/15711573928921.jpg){:width="500" height="210"}
 
 In this mode, text is sent as you type, which is great for some phone-side programming apps.
 
@@ -152,7 +152,7 @@ In all three input modes, when the input text box content is empty, the followin
 2. Left and Right arrows: move the cursor left and right
 3. Up and Down arrows: move left and right by 20 characters. If there aren't 20 characters to the left or right on the phone, it won't move.
 4. 
-![](/media/15711582888909.jpg)
+![](/media/15711582888909.jpg){:width="180" height="128"}
 
 
 
@@ -160,13 +160,13 @@ In all three input modes, when the input text box content is empty, the followin
 
 The iOS keyboard has "Copy" and "Handoff" buttons. The main use case currently is: iOS paired with macOS, both logged into the "same AppleID".
 
-![](/media/15711562848185.jpg)
+![](/media/15711562848185.jpg){:width="393" height="141"}
 
 When you tap "Copy", the iOS clipboard content syncs to macOS. On macOS, open a browser, paste it into the address bar, and you can start typing.
 
 When you tap "Handoff", due to system limitations, it first jumps to "the main screen of Remote Keyboard". At this point a "browser icon" appears in the macOS Dock; click it to open the corresponding URL.
 
-![-w190](/media/15711562470401.jpg)
+![-w190](/media/15711562470401.jpg){:width="380" height="142"}
 
 
 ## Lab
@@ -210,7 +210,7 @@ I hope everyone has fun. If possible, please help recommend it to more friends :
 
 远程输入法在英文系统显示为 `Remoboard`，即含义为 Remote Keyboard。
 
-![](/media/15711544847169.jpg)
+![](/media/15711544847169.jpg){:width="952" height="532"}
 
 
 
@@ -252,15 +252,15 @@ I hope everyone has fun. If possible, please help recommend it to more friends :
 
 (3) 点`远程输入法`
 
-![](/media/15711565435200.jpg)
+![](/media/15711565435200.jpg){:width="400" height="117"}
 
 (4) 键盘安装完毕
 
-![](/media/15711565507727.jpg)
+![](/media/15711565507727.jpg){:width="400" height="320"}
 
 (5) 再次在刚才完成的界面点击`远程输入法`，如下图所示`启用 允许完全访问`
 
-![](/media/15711565163725.jpg)
+![](/media/15711565163725.jpg){:width="400" height="207"}
 
 (6) 现在安装已经完成，在可输入文字的地方，切换到「远程输入法」，即可看到一个网址（首先确保Wi-Fi已经连接），在电脑浏览器中打开这个地址，即可开始输入啦。
 
@@ -268,7 +268,7 @@ I hope everyone has fun. If possible, please help recommend it to more friends :
 1. 需要确保手机和电脑连接入一个网络中，电脑上ping通手机的IP地址。
 2. 浏览器中输入下图完整的网址，例如：http://192.168.31.11:7777
 
-![](/media/15711566433576.jpg)
+![](/media/15711566433576.jpg){:width="390" height="239"}
 
 补充：如果macOS和iOS登录了相同的AppleId，则可以使用「复制」和「接力」更快捷的在电脑上打开网址。见文章最后。
 
@@ -276,17 +276,17 @@ I hope everyone has fun. If possible, please help recommend it to more friends :
 
 （1）从 [酷安](https://www.coolapk.com/apk/241412) 或 [Google PlayStore](https://play.google.com/store/apps/details?id=com.everettjf.remoboard) 安装，然后打开应用，点击启用输入法
 
-![](/media/15711572903292.jpg)
+![](/media/15711572903292.jpg){:width="400" height="339"}
 
-![](/media/15711572968980.jpg)
+![](/media/15711572968980.jpg){:width="400" height="70"}
 
 这里可能会「提示重启」，一般情况下点击「确定」无视即可。
 
-![](/media/15711573164862.jpg)
+![](/media/15711573164862.jpg){:width="519" height="243"}
 
 （2）切换输入法
 
-![](/media/15711573239250.jpg)
+![](/media/15711573239250.jpg){:width="522" height="324"}
 
 （3）现在安装已经完成，在可输入文字的地方，切换到「远程输入法」，即可看到一个网址（首先确保Wi-Fi已经连接），在电脑浏览器中打开这个地址，即可开始输入啦。
 
@@ -294,7 +294,7 @@ I hope everyone has fun. If possible, please help recommend it to more friends :
 1. 需要确保手机和电脑连接入一个网络中，电脑上ping通手机的IP地址。
 2. 浏览器中输入下图完整的网址，例如：http://192.168.31.11:7777
 
-![](/media/15711573337744.jpg)
+![](/media/15711573337744.jpg){:width="528" height="164"}
 
 
 ## 输入模式
@@ -304,23 +304,23 @@ I hope everyone has fun. If possible, please help recommend it to more friends :
 
 有三种输入模式：
 
-![](/media/15711573669509.jpg)
+![](/media/15711573669509.jpg){:width="400" height="60"}
 
 (1) 标准输入模式
 
 这种模式下可以输入「一行文字」，然后「按回车发送」。
 
-![](/media/15711573759717.jpg)
+![](/media/15711573759717.jpg){:width="500" height="214"}
 
 (2) 多行输入模式
 
 这种模式下，可以「输入或粘贴多行文字」，「点击按钮」发送。
 
-![](/media/15711573838602.jpg)
+![](/media/15711573838602.jpg){:width="500" height="312"}
 
 (3) 编程输入模式
 
-![](/media/15711573928921.jpg)
+![](/media/15711573928921.jpg){:width="500" height="210"}
 
 这种模式下，文字会边打边发送，很适合一些手机端的编程应用。
 
@@ -332,7 +332,7 @@ I hope everyone has fun. If possible, please help recommend it to more friends :
 2. 按键左和右：向左 和 向右 移动光标
 3. 按键上和下：向左 和 向右 移动 20 个字符。如果手机上的左或右不够20个字符，不会移动。
 4. 
-![](/media/15711582888909.jpg)
+![](/media/15711582888909.jpg){:width="180" height="128"}
 
 
 
@@ -340,13 +340,13 @@ I hope everyone has fun. If possible, please help recommend it to more friends :
 
 iOS 输入法上会有个「复制」和「接力」按钮，目前的使用场景主要是：iOS配合macOS，且登录了「相同AppleID」。
 
-![](/media/15711562848185.jpg)
+![](/media/15711562848185.jpg){:width="393" height="141"}
 
 当点击「复制」时，iOS的剪贴板内容会同步到macOS，在macOS上打开浏览器，粘贴到地址栏打开即可开始输入。
 
 但点击「接力」时，由于系统限制，会先跳转到「远程输入法的主界面」，此时macOS上的Dock上会出现一个「浏览器的图标」，点击即可打开对应的网址。
 
-![-w190](/media/15711562470401.jpg)
+![-w190](/media/15711562470401.jpg){:width="380" height="142"}
 
 
 ## 实验室

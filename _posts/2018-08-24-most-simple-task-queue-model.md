@@ -140,7 +140,7 @@ TaskDeclare(TTRenderTask)
 
 Finally, using os_signpost (for os_signpost see the article https://everettjf.github.io/2018/08/13/os-signpost-tutorial/ ), you can see:
 
-![](/media/15350423765697.jpg)
+![](/media/15350423765697.jpg){:width="1153" height="191"}
 
 
 Sample code:
@@ -290,7 +290,7 @@ TaskDeclare(TTRenderTask)
 
 最后，使用os_signpost （os_signpost可以参考文章 https://everettjf.github.io/2018/08/13/os-signpost-tutorial/ ）可以看到：
 
-![](/media/15350423765697.jpg)
+![](/media/15350423765697.jpg){:width="1153" height="191"}
 
 
 示例代码见：

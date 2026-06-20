@@ -69,14 +69,14 @@ br set -p return
 
 First add a breakpoint on the first line of foo.
 
-![](/media/15875739886610.jpg)
+![](/media/15875739886610.jpg){:width="520" height="162"}
 
 Once the breakpoint triggers, type `br set -p return` in the console.
-![](/media/15875740456070.jpg)
+![](/media/15875740456070.jpg){:width="395" height="190"}
 
 Then continue, and it will break at the line where the function returns.
 
-![](/media/15875741244090.jpg)
+![](/media/15875741244090.jpg){:width="479" height="346"}
 
 
 Pretty interesting~
@@ -147,14 +147,14 @@ br set -p return
 
 首先在foo第一行加断点
 
-![](/media/15875739886610.jpg)
+![](/media/15875739886610.jpg){:width="520" height="162"}
 
 断点触发后，控制台输入 `br set -p return`
-![](/media/15875740456070.jpg)
+![](/media/15875740456070.jpg){:width="395" height="190"}
 
 然后continue，就会断点到函数return的那一行了。
 
-![](/media/15875741244090.jpg)
+![](/media/15875741244090.jpg){:width="479" height="346"}
 
 
 很有趣~

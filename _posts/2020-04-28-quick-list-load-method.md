@@ -37,7 +37,7 @@ Hit Pause, then enter:
 br s -r "\+\[.+ load\]$"
 ```
 
-![-w352](/media/15880051383019.jpg)
+![-w352](/media/15880051383019.jpg){:width="704" height="220"}
 
 Then enter:
 
@@ -45,7 +45,7 @@ Then enter:
 br list
 ```
 
-![-w930](/media/15880052076002.jpg)
+![-w930](/media/15880052076002.jpg){:width="1600" height="808"}
 
 
 You might be surprised to find just how many (or how few) `+load` methods your app actually has.
@@ -55,7 +55,7 @@ You might be surprised to find just how many (or how few) `+load` methods your a
 
 It uses LLDB's `breakpoint` command.
 
-![-w576](/media/15880053337758.jpg)
+![-w576](/media/15880053337758.jpg){:width="1152" height="136"}
 
 ```
 br s -r "regex"
@@ -114,7 +114,7 @@ If you enjoyed this, follow my WeChat official account to show some encouragemen
 br s -r "\+\[.+ load\]$"
 ```
 
-![-w352](/media/15880051383019.jpg)
+![-w352](/media/15880051383019.jpg){:width="704" height="220"}
 
 然后输入
 
@@ -122,7 +122,7 @@ br s -r "\+\[.+ load\]$"
 br list
 ```
 
-![-w930](/media/15880052076002.jpg)
+![-w930](/media/15880052076002.jpg){:width="1600" height="808"}
 
 
 或许你会惊讶，原来我的App中+load这么多（或者少）
@@ -132,7 +132,7 @@ br list
 
 使用了lldb的breakpoint命令。
 
-![-w576](/media/15880053337758.jpg)
+![-w576](/media/15880053337758.jpg){:width="1152" height="136"}
 
 ```
 br s -r "正则"

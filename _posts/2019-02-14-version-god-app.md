@@ -23,7 +23,7 @@ From an app's release cadence you can get a glimpse of the operational state of 
 Apple's App Store website lets you get an app's historical version release records. For example, Douyin:
 https://itunes.apple.com/cn/app/id1142110895
 
-![](/media/15500700541354.jpg)
+![](/media/15500700541354.jpg){:width="842" height="462"}
 
 ## Top Apps
 
@@ -48,9 +48,9 @@ and scrape out all the version records.
 
 https://github.com/everettjf/chatterbox/tree/master/spider/data/20190213/appinfo
 
-![](/media/15500757845904.jpg)
+![](/media/15500757845904.jpg){:width="193" height="249"}
 
-![](/media/15500757964452.jpg)
+![](/media/15500757964452.jpg){:width="414" height="474"}
 
 
 # Analysis
@@ -71,7 +71,7 @@ python rank.py emergency-release-count data/20190213/appinfo
 ## Number of Releases
 
 From the results we learn that the App Store keeps at most 25 version records.
-![](/media/15500763017603.jpg)
+![](/media/15500763017603.jpg){:width="495" height="696"}
 
 ## Average Days per Version
 
@@ -79,13 +79,13 @@ Counting all version records, how many days per version (the average interval be
 It seems the release cycles really are quite short — Xiaohongshu 4 days, Pinduoduo 5 days, Kuaishou 6 days, Zhihu 7 days, etc. My compatriots must be working hard.
 Alipay 27 days, WeChat 21 days, Taobao 20 days, Didi 11 days, Xianyu 13 days.
 
-![](/media/15500765126911.jpg)
+![](/media/15500765126911.jpg){:width="659" height="682"}
 
 ## Average Days per Version Over the Past 6 Months
 
 Many apps are at 7-8 days per version.
 
-![](/media/15500767020644.jpg)
+![](/media/15500767020644.jpg){:width="1600" height="1456"}
 
 ## Emergency Releases
 
@@ -94,7 +94,7 @@ If we count an interval of <=1 day between two releases, we can find the number 
 Kuaishou, Sogou Input Method, and Outlook all had 3-5 emergency releases.
 
 
-![](/media/15500769306033.jpg)
+![](/media/15500769306033.jpg){:width="1600" height="1141"}
 
 
 
@@ -133,7 +133,7 @@ Welcome to follow the official account "Client Tech Review":
 苹果AppStore网站可以获取到App的历史版本发布记录。例如抖音：
 https://itunes.apple.com/cn/app/id1142110895
 
-![](/media/15500700541354.jpg)
+![](/media/15500700541354.jpg){:width="842" height="462"}
 
 ## Top App
 
@@ -158,9 +158,9 @@ https://itunes.apple.com/cn/app/id1142110895
 
 https://github.com/everettjf/chatterbox/tree/master/spider/data/20190213/appinfo
 
-![](/media/15500757845904.jpg)
+![](/media/15500757845904.jpg){:width="193" height="249"}
 
-![](/media/15500757964452.jpg)
+![](/media/15500757964452.jpg){:width="414" height="474"}
 
 
 # 分析
@@ -181,7 +181,7 @@ python rank.py emergency-release-count data/20190213/appinfo
 ## 发版次数
 
 从结果可知，AppStore上最多保留25个版本记录。
-![](/media/15500763017603.jpg)
+![](/media/15500763017603.jpg){:width="495" height="696"}
 
 ## 平均多少天发一个版本
 
@@ -189,13 +189,13 @@ python rank.py emergency-release-count data/20190213/appinfo
 看来发版本的周期还真挺短的，小红书4天、拼多多5天、快手6天、知乎7天等等，想必同胞们很辛苦。
 支付宝27天、微信21天、淘宝20天、滴滴11天、闲鱼13天。
 
-![](/media/15500765126911.jpg)
+![](/media/15500765126911.jpg){:width="659" height="682"}
 
 ## 过去6个月平均多少天发一个版本
 
 很多App在7、8天一个版本。
 
-![](/media/15500767020644.jpg)
+![](/media/15500767020644.jpg){:width="1600" height="1456"}
 
 ## 紧急发版本
 
@@ -205,7 +205,7 @@ python rank.py emergency-release-count data/20190213/appinfo
 快手、搜狗输入法、Outlook 都有3-5次的紧急发版本。
 
 
-![](/media/15500769306033.jpg)
+![](/media/15500769306033.jpg){:width="1600" height="1141"}
 
 
 

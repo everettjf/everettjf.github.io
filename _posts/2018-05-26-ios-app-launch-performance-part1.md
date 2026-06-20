@@ -52,7 +52,7 @@ Objective C's +load method: during the pre-main stage, dyld calls the +load meth
 For +load methods, you can "delete" them or move them into the +initialize method. For NSNotificationCenter, you need the framework to provide a unified mechanism for other code to plug into, avoiding everyone listening separately.
 
 To see all +load methods, the manual approach is to filter Labels in hopper. As shown below:
-![](/media/15270382965409.jpg)
+![](/media/15270382965409.jpg){:width="830" height="440"}
 
 
 For how to measure the time cost of +load methods, refer to the article <https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/>
@@ -77,7 +77,7 @@ Refer to <https://stackoverflow.com/questions/2053029/how-exactly-does-attribute
 
 To see all initializers, in hopper you can:
 
-![](/media/15273514962124.jpg)
+![](/media/15273514962124.jpg){:width="964" height="806"}
 
 
 For how to measure the time cost of this kind of initializer, refer to the article <https://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/>
@@ -137,7 +137,7 @@ Objective C 的+load方法：dyld会在pre-main阶段，逐个调用当前image�
 对于+load方法，可以通过“删除” 或者移动到+initialize方法中。对于 NSNotificationCenter 则需要框架提供一个统一的机制让其他代码接入，避免大家各自监听。
 
 如何看到所有+load方法，手动的方法可以通过hopper过滤Labels。如下图：
-![](/media/15270382965409.jpg)
+![](/media/15270382965409.jpg){:width="830" height="440"}
 
 
 如何统计+load方法的耗时，可以参考文章<https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/>
@@ -162,7 +162,7 @@ __attribute__((constructor)) void calledFirst(){
 
 如何看到所有initializers，hopper中可以：
 
-![](/media/15273514962124.jpg)
+![](/media/15273514962124.jpg){:width="964" height="806"}
 
 
 如何统计这类initializers的耗时，可以参考文章<https://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/>

@@ -21,7 +21,7 @@ A couple of days ago, the Deno blog published an article titled "Roll your own J
 
 <!-- more -->
 
-![](/media/16592798557784.jpg)
+![](/media/16592798557784.jpg){:width="1592" height="228"}
 
 
 > Seeing it gave me a bit of an "itch", so today I'll walk through it.
@@ -160,7 +160,7 @@ Deno.core.print("Hello runjs!");
 
 > Note: example.js is in the project's root folder. `cargo run` uses the root folder as the working directory.
 
-![](/media/16592798777424.jpg)
+![](/media/16592798777424.jpg){:width="414" height="388"}
 
 
 
@@ -203,7 +203,7 @@ Let's start implementing the console API. First create the file `src/runtime.js`
 
 > Note that this runtime.js is in the src folder.
 
-![](/media/16592798868051.jpg)
+![](/media/16592798868051.jpg){:width="410" height="456"}
 
 
 The console.log and console.error functions accept multiple arguments, serialize them to JSON (so we can view non-primitive JS objects), and prefix each message with log or error. This is a "somewhat old-school" JavaScript file, like writing browser JavaScript before ES modules existed.
@@ -375,7 +375,7 @@ For the complete example code, see denoland's GitHub:
 
 > https://deno.com/blog/roll-your-own-javascript-runtime
 
-![](/media/16592798557784.jpg)
+![](/media/16592798557784.jpg){:width="1592" height="228"}
 
 
 > 看到略有“冲动”，今天就给大家翻译一波。
@@ -514,7 +514,7 @@ Deno.core.print("Hello runjs!");
 
 > 注意：example.js在工程的根文件夹，cargo run 会让根文件夹作为工作目录(working directory)。
 
-![](/media/16592798777424.jpg)
+![](/media/16592798777424.jpg){:width="414" height="388"}
 
 
 
@@ -557,7 +557,7 @@ Hello runjs!⏎
 
 > 注意，这个runtime.js在src文件夹中。
 
-![](/media/16592798868051.jpg)
+![](/media/16592798868051.jpg){:width="410" height="456"}
 
 
 console.log和console.error函数可以接受多个参数，序列化为JSON（我们可以这样查看非原生的JS对象），并给每条消息加上前缀log或error。这是个“有点古老”的JavaScript文件了，就像在ES modules诞生之前在写浏览器里的JavaScript代码。

@@ -18,7 +18,7 @@ The objc source code contains code like `__asm__("_objc_retain")`. What is this 
 
 Here it is in the source:
 
-![](/media/15820819662136.jpg)
+![](/media/15820819662136.jpg){:width="486" height="337"}
 
 > objc source download https://opensource.apple.com/tarballs/objc4/
 
@@ -39,7 +39,7 @@ int main(int argc, const char * argv[]) {
 
 Let's debug it:
 
-![](/media/15820826016870.jpg)
+![](/media/15820826016870.jpg){:width="659" height="250"}
 
 As you can see from the image above, the symbol in the callstack is not foo, but _objc_release.
 
@@ -59,7 +59,7 @@ int counter __asm__("counter_v1") = 0;
 
 Seems like you could use this to do a simple export symbol obfuscation for a dylib?
 
-![](/media/15820829854361.jpg)
+![](/media/15820829854361.jpg){:width="787" height="200"}
 
 
 
@@ -87,7 +87,7 @@ objc 源码中有如下代码 `__asm__("_objc_retain")`，这个`__asm__`是啥�
 
 源码中如下
 
-![](/media/15820819662136.jpg)
+![](/media/15820819662136.jpg){:width="486" height="337"}
 
 > objc 源码下载 https://opensource.apple.com/tarballs/objc4/
 
@@ -108,7 +108,7 @@ int main(int argc, const char * argv[]) {
 
 调试看下
 
-![](/media/15820826016870.jpg)
+![](/media/15820826016870.jpg){:width="659" height="250"}
 
 从上图可知，callstack中的symbol不是 foo，而是 _objc_release。
 
@@ -128,7 +128,7 @@ int counter __asm__("counter_v1") = 0;
 
 似乎可以拿来给dylib做个简单的export symbol混淆？
 
-![](/media/15820829854361.jpg)
+![](/media/15820829854361.jpg){:width="787" height="200"}
 
 
 

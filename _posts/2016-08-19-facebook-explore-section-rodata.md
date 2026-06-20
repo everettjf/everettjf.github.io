@@ -17,11 +17,11 @@ When viewing Facebook's iOS binary with MachOView, I noticed several Sections th
 
 The image below is Facebook:
 
-![Facebook](/media/14712760652964.jpg)
+![Facebook](/media/14712760652964.jpg){:width="331" height="832"}
 
 The image below is WeChat:
 
-![](/media/14712762093391.jpg)
+![](/media/14712762093391.jpg){:width="297" height="811"}
 
 <!-- more -->
 
@@ -37,14 +37,14 @@ The image below is WeChat:
 
 TEXT is the code section, DATA is the data section, and RODATA is the read-only data section. Facebook moved part of the content from the code section to the read-only section, which tells us this content doesn't need to be executed; from the image below we can also see it's all constants.
 
-![](/media/14712778296998.jpg)
+![](/media/14712778296998.jpg){:width="282" height="198"}
 
 
 
 # Why
 
 Look at the sizes of Facebook's various segments, as shown below:
-![](/media/14712790779062.jpg)
+![](/media/14712790779062.jpg){:width="576" height="56"}
 
 Moving content from the TEXT segment to the RODATA segment reduces the size of the TEXT segment.
 
@@ -52,7 +52,7 @@ Check Apple's review requirements:
 
 <https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/SubmittingTheApp.html>
 
-![](/media/14712795366819.jpg)
+![](/media/14712795366819.jpg){:width="1144" height="417"}
 
 We can see that to support iOS 7.x or 8.x, the maximum size of the TEXT segment is 60MB (per architecture's TEXT segment). Facebook's TEXT segment is about to hit 60MB.
 
@@ -61,7 +61,7 @@ We can see that to support iOS 7.x or 8.x, the maximum size of the TEXT segment 
 If our App's TEXT size is about to hit 60MB, how do we handle it like Facebook?
 
 man ld:
-![](/media/14712799872260.jpg)
+![](/media/14712799872260.jpg){:width="1194" height="114"}
 
 Add the link options:
 
@@ -75,9 +75,9 @@ Add the link options:
 ```
 
 As shown:
-![](/media/14712804570512.jpg)
+![](/media/14712804570512.jpg){:width="208" height="29"}
 
-![](/media/14712804466103.jpg)
+![](/media/14712804466103.jpg){:width="474" height="107"}
 
 # Does It Affect App Execution?
 
@@ -95,12 +95,12 @@ Searching <https://github.com/llvm-mirror/llvm> for objc_methname or objc_methty
 
 Would modifying the segment affect this optimizer?
 
-![](/media/14712826297536.jpg)
+![](/media/14712826297536.jpg){:width="615" height="556"}
 
 Further looking for the source of GlobalVariable::getSection().
 getSection comes from GlobalVariable's parent class GlobalObject.
 
-![](/media/14712828749695.jpg)
+![](/media/14712828749695.jpg){:width="490" height="179"}
 
 From the current info, the possible content of section is `__TEXT,__objc_methname` or `__RODATA,__objc_methname`, and the code above is Section.find, which searches within a string, so it can automatically adapt to segment modifications.
 
@@ -110,7 +110,7 @@ Other segments probably use a similar approach, so we can be sure there's no eff
 
 Taking Facebook armv7 as an example, the RODATA segment is about 14MB.
 
-![](/media/14713639408868.jpg)
+![](/media/14713639408868.jpg){:width="880" height="261"}
 
 
 
@@ -122,7 +122,7 @@ At first I thought moving data that doesn't need to be loaded immediately from t
 
 Code: <https://github.com/everettjf/Yolo/tree/master/FBInjectableTest>
 
-![](/media/14717179771404.jpg)
+![](/media/14717179771404.jpg){:width="951" height="646"}
 
 
 # Additional Notes
@@ -166,11 +166,11 @@ A segment's permissions can be changed to VM_PROT_READ via the following link pa
 
 下图是 Facebook ：
 
-![Facebook](/media/14712760652964.jpg)
+![Facebook](/media/14712760652964.jpg){:width="331" height="832"}
 
 下图是微信：
 
-![](/media/14712762093391.jpg)
+![](/media/14712762093391.jpg){:width="297" height="811"}
 
 <!-- more -->
 
@@ -186,14 +186,14 @@ A segment's permissions can be changed to VM_PROT_READ via the following link pa
 
 TEXT 是代码段，DATA是数据段，RODATA是只读数据段。Facebook把代码段中的部分内容移动到只读段，可知这些内容是不需要执行的，从下图也可看出都是常量。
 
-![](/media/14712778296998.jpg)
+![](/media/14712778296998.jpg){:width="282" height="198"}
 
 
 
 # 为什么
 
 看 Facebook 的各个段大小，如下图：
-![](/media/14712790779062.jpg)
+![](/media/14712790779062.jpg){:width="576" height="56"}
 
 把 TEXT 段的内容移到 RODATA 段，也就是减少了 TEXT 段的大小。
 
@@ -201,7 +201,7 @@ TEXT 是代码段，DATA是数据段，RODATA是只读数据段。Facebook把代
 
 <https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/SubmittingTheApp.html>
 
-![](/media/14712795366819.jpg)
+![](/media/14712795366819.jpg){:width="1144" height="417"}
 
 可知，如果要支持 iOS7.x或8.x，TEXT段的大小最大为 60MB（每个架构的TEXT段）。 Facebook 的 TEXT段马上就到 60MB。
 
@@ -210,7 +210,7 @@ TEXT 是代码段，DATA是数据段，RODATA是只读数据段。Facebook把代
 如果我们的App的TEXT大小马上到60MB，如何处理成Facebook这样呢？
 
 man ld：
-![](/media/14712799872260.jpg)
+![](/media/14712799872260.jpg){:width="1194" height="114"}
 
 加入链接选项：
 
@@ -224,9 +224,9 @@ man ld：
 ```
 
 如图：
-![](/media/14712804570512.jpg)
+![](/media/14712804570512.jpg){:width="208" height="29"}
 
-![](/media/14712804466103.jpg)
+![](/media/14712804466103.jpg){:width="474" height="107"}
 
 # 影响App运行吗？
 
@@ -244,12 +244,12 @@ man ld：
 
 修改segment会影响这个优化器吗？
 
-![](/media/14712826297536.jpg)
+![](/media/14712826297536.jpg){:width="615" height="556"}
 
 进一步查找 GlobalVariable::getSection() 的来源。
 getSection 来自 GlobalVariable的父类 GlobalObject。
 
-![](/media/14712828749695.jpg)
+![](/media/14712828749695.jpg){:width="490" height="179"}
 
 从目前信息看来，section可能的内容是 `__TEXT,__objc_methname` 或  `__RODATA,__objc_methname` ，而上面的代码是 Section.find，是在字符串中查找，也就能自动适配segment的修改。
 
@@ -259,7 +259,7 @@ getSection 来自 GlobalVariable的父类 GlobalObject。
 
 以 Facebook armv7 为例，RODATA segment大小约14MB。
 
-![](/media/14713639408868.jpg)
+![](/media/14713639408868.jpg){:width="880" height="261"}
 
 
 
@@ -271,7 +271,7 @@ getSection 来自 GlobalVariable的父类 GlobalObject。
 
 代码： <https://github.com/everettjf/Yolo/tree/master/FBInjectableTest>
 
-![](/media/14717179771404.jpg)
+![](/media/14717179771404.jpg){:width="951" height="646"}
 
 
 # 补充补充

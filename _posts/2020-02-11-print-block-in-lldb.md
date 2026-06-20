@@ -61,7 +61,7 @@ Then add the following line to the `~/.lldbinit` file:
 command script import ~/zlldb/main.py
 ```
 
-![](/media/15814330985851.jpg)
+![](/media/15814330985851.jpg){:width="329" height="41"}
 
 ## Usage
 
@@ -84,20 +84,20 @@ It's called like this:
 
 So we set a breakpoint on this call line:
 
-![](/media/15814334097519.jpg)
+![](/media/15814334097519.jpg){:width="1004" height="139"}
 
 If you're doing reverse engineering work without the source code, you can set a breakpoint on the `objc_msgSend` line, like this:
 
-![](/media/15814334651010.jpg)
+![](/media/15814334651010.jpg){:width="741" height="253"}
 
 
 The block is the second parameter, so print out `$arg4`
 
-![](/media/15814335220546.jpg)
+![](/media/15814335220546.jpg){:width="271" height="57"}
 
 Then run the command `zblock 0x100588080` (pass the block's address to the zblock command), and the block's parameters come out.
 
-![](/media/15814336103069.jpg)
+![](/media/15814336103069.jpg){:width="583" height="486"}
 
 Based on the `type encoding` of each line, refer to Apple's documentation to know what the block's parameters are.
 
@@ -179,7 +179,7 @@ git clone git@github.com:everettjf/zlldb.git
 command script import ~/zlldb/main.py
 ```
 
-![](/media/15814330985851.jpg)
+![](/media/15814330985851.jpg){:width="329" height="41"}
 
 ## 使用
 
@@ -202,20 +202,20 @@ command script import ~/zlldb/main.py
 
 那么我们断点到这个调用行：
 
-![](/media/15814334097519.jpg)
+![](/media/15814334097519.jpg){:width="1004" height="139"}
 
 如果是逆向工作的话，没有代码，那可以断点到 `objc_msgSend`这行，如下：
 
-![](/media/15814334651010.jpg)
+![](/media/15814334651010.jpg){:width="741" height="253"}
 
 
 block是第二个参数，那么打印出`$arg4`
 
-![](/media/15814335220546.jpg)
+![](/media/15814335220546.jpg){:width="271" height="57"}
 
 然后执行命令 `zblock 0x100588080` （block的地址传给 zblock命令），然后block的参数就出来啦。
 
-![](/media/15814336103069.jpg)
+![](/media/15814336103069.jpg){:width="583" height="486"}
 
 根据每一行的 `type encoding` 对照苹果的文档即可知道block的参数都有什么。
 

@@ -4,6 +4,25 @@
 
 @use "syntax";
 
+/* ----- self-hosted fonts (replaces Google Fonts) ----- */
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/inter-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/xnu/fonts/GeistMonoVF.woff") format("woff");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Keep intrinsic aspect ratio when width/height attrs are set (prevents CLS). */
+img { height: auto; }
+
 /* ----- bilingual (EN default, 中 optional) ----- */
 .lang-zh { display: none; }
 :root[data-lang="zh"] .lang-en { display: none; }

@@ -27,13 +27,13 @@ I happened to have an iPhone 7 on hand, so I gave it a try. Let me briefly summa
 
 Download https://checkra.in/ and jailbreak by following the steps. (Connect the iPhone to the Mac via USB.)
 
-![-w480](/media/15834927122755.jpg)
+![-w480](/media/15834927122755.jpg){:width="960" height="684"}
 
 
-![-w480](/media/15834927589010.jpg)
-![-w246](/media/15834927957183.jpg)
+![-w480](/media/15834927589010.jpg){:width="960" height="684"}
+![-w246](/media/15834927957183.jpg){:width="492" height="168"}
 
-![-w480](/media/15834928119092.jpg)
+![-w480](/media/15834928119092.jpg){:width="960" height="684"}
 
 After jailbreaking, boot into iOS.
 
@@ -41,10 +41,10 @@ After jailbreaking, boot into iOS.
 
 Download the Android Build at https://projectsandcastle.org/status.
 
-![](/media/15835109011989.jpg)
+![](/media/15835109011989.jpg){:width="890" height="375"}
 
 Unzip the downloaded file.
-![-w234](/media/15835110829022.jpg)
+![-w234](/media/15835110829022.jpg){:width="468" height="404"}
 
 ## setup_mac.sh
 
@@ -72,18 +72,18 @@ One, use a VPN.
 Or, modify the network connectivity test address in setup.sh — for example, test against baidu, which is specifically for checking whether the network works (looks like foreigners use google for the equivalent test).
 
 
-![-w627](/media/15835114471189.jpg)
+![-w627](/media/15835114471189.jpg){:width="1254" height="450"}
 
 
 I recommend the VPN approach, because this script downloads a 470MB file. Without a VPN, downloading this file on my home Wi-Fi is very slow; with a VPN it seemed to finish in a few minutes.
 
-![](/media/15835117141314.jpg)
+![](/media/15835117141314.jpg){:width="215" height="37"}
 
 
 
 (4) Run /tmp/setup.sh
 
-![-w462](/media/15835063026640.jpg)
+![-w462](/media/15835063026640.jpg){:width="924" height="212"}
 
 
 
@@ -98,12 +98,12 @@ Then in DFU mode, run `./start_mac.sh`.
 
 Ideally, you're done once it finishes running. But reality is harsh — I ran into the dialog below (inwardly, ten thousand alpacas galloped past, terrified I'd brick the phone...). Of course, you click Cancel.
 
-![-w420](/media/15835119951796.jpg)
+![-w420](/media/15835119951796.jpg){:width="840" height="394"}
 
 
 Go to System Preferences -> Security & Privacy -> General, and click Allow Anyway.
 
-![-w608](/media/15835120714520.jpg)
+![-w608](/media/15835120714520.jpg){:width="1216" height="306"}
 
 This still doesn't work yet. Just in case, run this once first:
 
@@ -113,7 +113,7 @@ This still doesn't work yet. Just in case, run this once first:
 
 Then you can click Open.
 
-![-w469](/media/15835077352704.jpg)
+![-w469](/media/15835077352704.jpg){:width="938" height="422"}
 
 But at this point, re-running `start_mac.sh` doesn't seem to "resume" anymore. Inwardly, X#@%$$. The "clever" me took a look at the start_mac.sh code, and it looks like you can run this step.
 
@@ -125,9 +125,9 @@ Finally success — Android booted up on the iPhone.
 
 ## Screenshots
 
-![](/media/15835124510615.jpg)
+![](/media/15835124510615.jpg){:width="375" height="594"}
 
-![](/media/15835124757092.jpg)
+![](/media/15835124757092.jpg){:width="387" height="631"}
 
 
 
@@ -166,13 +166,13 @@ Project Sandcastle: Android for the iPhone
 
 下载 https://checkra.in/ 按照步骤越狱。（iPhone使用USB连接Mac。）
 
-![-w480](/media/15834927122755.jpg)
+![-w480](/media/15834927122755.jpg){:width="960" height="684"}
 
 
-![-w480](/media/15834927589010.jpg)
-![-w246](/media/15834927957183.jpg)
+![-w480](/media/15834927589010.jpg){:width="960" height="684"}
+![-w246](/media/15834927957183.jpg){:width="492" height="168"}
 
-![-w480](/media/15834928119092.jpg)
+![-w480](/media/15834928119092.jpg){:width="960" height="684"}
 
 越狱后，进入iOS。
 
@@ -180,10 +180,10 @@ Project Sandcastle: Android for the iPhone
 
 在 https://projectsandcastle.org/status 下载 Android Build。
 
-![](/media/15835109011989.jpg)
+![](/media/15835109011989.jpg){:width="890" height="375"}
 
 解压下载的文件。
-![-w234](/media/15835110829022.jpg)
+![-w234](/media/15835110829022.jpg){:width="468" height="404"}
 
 ## setup_mac.sh
 
@@ -211,18 +211,18 @@ scp -P2222 -o StrictHostKeyChecking=no isetup root@localhost:/tmp/setup.sh
 或者，修改setup.sh中的网络连接测试的地址，比如专门测试网能不能上的baidu（看来老外也是对应的用google测试啊）
 
 
-![-w627](/media/15835114471189.jpg)
+![-w627](/media/15835114471189.jpg){:width="1254" height="450"}
 
 
 建议使用FQ的方法，因为这个脚本会下载470MB的文件，我家的Wi-Fi不FQ的话，下载这个文件很慢，FQ后貌似几分钟就好了。
 
-![](/media/15835117141314.jpg)
+![](/media/15835117141314.jpg){:width="215" height="37"}
 
 
 
 (4) 执行 /tmp/setup.sh
 
-![-w462](/media/15835063026640.jpg)
+![-w462](/media/15835063026640.jpg){:width="924" height="212"}
 
 
 
@@ -237,12 +237,12 @@ scp -P2222 -o StrictHostKeyChecking=no isetup root@localhost:/tmp/setup.sh
 
 理想情况下，执行完成就可以了。但现实很残酷，我见到了下面这个弹窗（内心一万匹羊驼飞奔而过，生怕把手机搞坏了……），当然要点Cancel。
 
-![-w420](/media/15835119951796.jpg)
+![-w420](/media/15835119951796.jpg){:width="840" height="394"}
 
 
 进入 System Preferences -> Security & Privacy -> General， 点 Allow Anyway。
 
-![-w608](/media/15835120714520.jpg)
+![-w608](/media/15835120714520.jpg){:width="1216" height="306"}
 
 此时还不行，为了预防万一，先命令后执行一次
 
@@ -252,7 +252,7 @@ scp -P2222 -o StrictHostKeyChecking=no isetup root@localhost:/tmp/setup.sh
 
 然后就可以点Open了。
 
-![-w469](/media/15835077352704.jpg)
+![-w469](/media/15835077352704.jpg){:width="938" height="422"}
 
 但此时重新执行`start_mac.sh`似乎不能”恢复继续”了，内心X#@%$$。“聪明”的我看了下start_mac.sh的代码，看来可以执行执行这一步。
 
@@ -264,9 +264,9 @@ scp -P2222 -o StrictHostKeyChecking=no isetup root@localhost:/tmp/setup.sh
 
 ## 截图
 
-![](/media/15835124510615.jpg)
+![](/media/15835124510615.jpg){:width="375" height="594"}
 
-![](/media/15835124757092.jpg)
+![](/media/15835124757092.jpg){:width="387" height="631"}
 
 
 

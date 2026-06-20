@@ -87,7 +87,7 @@ static void current_output(const char* buff, int len) {
 After running it, printf output goes into the UITextView.
 
 
-![](/media/15832504339122.jpg)
+![](/media/15832504339122.jpg){:width="329" height="144"}
 
 
 
@@ -191,7 +191,7 @@ static void current_output(const char* buff, int len) {
 运行后，printf就到了UITextView中。
 
 
-![](/media/15832504339122.jpg)
+![](/media/15832504339122.jpg){:width="329" height="144"}
 
 
 
