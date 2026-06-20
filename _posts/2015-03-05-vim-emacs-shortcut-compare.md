@@ -1,9 +1,112 @@
 ---
 layout: post
-title: "Vim 与 Emacs 常用快捷键对比"
+title: "A Comparison of Common Vim and Emacs Shortcuts"
+title_zh: "Vim 与 Emacs 常用快捷键对比"
+lang_original: zh
 categories: Skill
 comments: true
 ---
+
+
+
+Having gotten used to vim shortcuts, I also took a look at emacs.
+I use spf for vim and prelude for emacs — experienced both "masters". (After writing a lot, this article doesn't have a direct relationship with those two; it was written as notes.)
+
+I personally often use vim's dd or yy and then p, and emacs's feels more troublesome (C-a C-k C-y).
+Mainly I use emacs very little.
+
+Having gotten used to vim, you can enable evil-mode in emacs.
+emacs's M-x is very powerful.
+<!-- more -->
+
+Here's a simple summary comparing common shortcuts, as notes.
+
+|------+----------------+------------------+-----------------------------------------------------------|
+| star | vim            | emacs            | comment                                                   |
+|------+----------------+------------------+-----------------------------------------------------------|
+| *    | i              | ---              | Insert mode                                               |
+| *    | :              | ---              | Command mode                                              |
+| *    | ESC            | ---              | Normal mode                                               |
+|      | h              | C-b              | Left                                                      |
+|      | l              | C-f              | Right                                                     |
+|      | j              | C-n              | Down                                                      |
+|      | k              | C-p              | Up                                                        |
+|      | :q             | C-x C-c          | Quit                                                      |
+|      | :q!            | C-x c-c n        | Force quit                                                |
+|      | x              | C-d              | Delete current character                                  |
+|      | w              | M-f              | Next word                                                 |
+|      | b              | M-b              | Previous word                                             |
+|      | o              |                  | Add a line below the cursor and start editing             |
+|      | O              |                  | Add a line above the cursor and start editing            |
+|      | ^              | C-a              | Move cursor to the first character of the current line    |
+|      | $              | C-e              | End of line                                               |
+|      | 0              |                  | Beginning of line                                         |
+|      | :o             | C-x C-f          | Open file                                                 |
+|      | :w             | C-x C-s          | Save file                                                 |
+|      | :wq            |                  | Save and quit                                             |
+|      | a              | ---              | Start editing after the cursor                            |
+|      | A              |                  | Start editing at the end of the line                      |
+|      | I              |                  | Start editing at the beginning of the line               |
+|      | C-v            |                  | Vertical visual selection                                 |
+|      | C-V            |                  | Vertical line visual selection                            |
+|      | p              |                  | Paste                                                     |
+|      | y              |                  | Copy                                                      |
+|      | dd             |                  | Delete current line                                       |
+|      | dw             |                  | Delete current word                                       |
+|      | 2dd            |                  | Delete two lines                                          |
+|      | u              |                  | Undo                                                      |
+|      | C-r            |                  | Redo                                                      |
+|      | d$             |                  | Delete from cursor to end of file                         |
+|      | r              |                  | Replace current character                                 |
+|      | cw             |                  | Delete the word starting at cursor, and start editing     |
+|      | c$             |                  | Delete to end of file, and start editing                  |
+|      | G              | M->              | Last line                                                 |
+|      | gg             | M-<              | First line                                                |
+| *    | ''             |                  | Go back to the line you were just on                      |
+|      | :400           |                  | Go to line 400                                            |
+|      | 400G           |                  | Go to line 400                                            |
+|      | %              |                  | Jump to the matching bracket                              |
+|      | :s/old/new/g   | M-x repl s ...   | Text replacement                                          |
+|      | :%s/old/new/g  | M-x repl s ...   | Text replacement                                          |
+|      | :%s/old/new/gc | M-x repl s ...   | Text replacement                                          |
+| *    |                | C-v              | Next screen                                               |
+| *    |                | M-v              | Previous screen                                           |
+| *    |                | C-l              | Center the cursor line on the screen                      |
+| *    |                | M-a              | Beginning of sentence                                     |
+| *    |                | M-e              | End of sentence                                           |
+|      |                | C-u num command  | Repeat the command (or input) N times                    |
+|      |                | C-g              | Abort the current command input                           |
+| *    |                | Esc              | Assist in pressing the M key                              |
+|      |                | C-d              | Delete the character after the cursor                     |
+|      | db             | M-<DEL>          | Remove the word before the cursor                         |
+|      | dw             | M-d              | Remove the word after the cursor                          |
+|      | d$             | C-k              | Remove from cursor to end of line                         |
+|      | dG             | M-k              | Remove from cursor to end of sentence                     |
+|      |                | C-@ then C-w     | Remove selected text (C-<SPACE>)                          |
+|      |                | C-y              | Recall the most recent "removed" content (e.g. C-k C-k C-y)|
+|      |                | M-y              | Continuously recall the previous "removed" content        |
+|      |                | C-/              | Undo the effect of the last command (same as C-x u or C-_)|
+|      |                | C-x s            | Save multiple buffers                                     |
+|      |                | C-x C-b          | Buffer list                                               |
+|      |                | C-x b bufferName | Switch to a buffer                                        |
+|      |                | C-z              | Temporarily leave emacs (type fg or %emacs in the shell to come back)|
+|      |                | C-x C-c          | Quit directly                                             |
+|      |                | C-s              | Search forward (C-g returns cursor to start position, <Return> places cursor on the result)|
+|      |                | C-r              | Search backward                                           |
+|      |                | C-x 1            | Keep only the current window                              |
+|      |                | C-x 2            | Split window vertically                                   |
+|      |                | C-x 3            | Split window horizontally                                 |
+|      |                | C-x o            | Move cursor to another window (other)                     |
+|      |                | C-M-v            | Scroll the other window down                              |
+|      |                | C-M-<Shift>-v    | Scroll the other window up                                |
+|      |                | C-h c command    | Show brief help for a command                             |
+|      |                | C-h k command    | Show detailed help for a command                          |
+|      |                | C-h i            | Manual                                                    |
+| *    |                | C-h b            | Show all key bindings (describe bindings)                 |
+|      |                |                  |                                                           |
+
+
+<!--ZH-->
 
 
 
@@ -102,5 +205,3 @@ emacs的M-x很强大。
 |      |                | C-h i            | 手册                                                      |
 | *    |                | C-h b            | 显示所有函数绑定(describe bindings)                       |
 |      |                |                  |                                                           |
-
-

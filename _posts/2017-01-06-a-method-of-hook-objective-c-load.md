@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "一种 Hook Objective-C +load 方法的实现"
+title: "A Method of Hooking the Objective-C +load Method"
+title_zh: "一种 Hook Objective-C +load 方法的实现"
+lang_original: zh
 categories:
   - Skill
 tags:
@@ -8,6 +10,189 @@ tags:
   - performance
 comments: true
 ---
+
+
+
+iOS has the following four ways to conveniently execute code during the premain stage:
+
+```
+1. Objective C类的+load方法
+2. C++ static initializer
+3. C/C++ __attribute__(constructor) functions 
+4. 动态库中的上面三种方法
+```
+<!-- more -->
+
+
+All classes' +load methods are called before the main function, on the main thread, in a serial manner.
+Therefore, the time cost of any one +load method directly affects the App's startup time.
+
+# First, Look at the Objective-C Runtime
+
+```
+/***********************************************************************
+* call_class_loads
+* Call all pending class +load methods.
+* If new classes become loadable, +load is NOT called for them.
+*
+* Called only by call_load_methods().
+**********************************************************************/
+static void call_class_loads(void)
+{
+    int i;
+    
+    // Detach current loadable list.
+    struct loadable_class *classes = loadable_classes;
+    int used = loadable_classes_used;
+    loadable_classes = nil;
+    loadable_classes_allocated = 0;
+    loadable_classes_used = 0;
+    
+    // Call all +loads for the detached list.
+    for (i = 0; i < used; i++) {
+        Class cls = classes[i].cls;
+        load_method_t load_method = (load_method_t)classes[i].method;
+        if (!cls) continue; 
+
+        if (PrintLoading) {
+            _objc_inform("LOAD: +[%s load]\n", cls->nameForLogging());
+        }
+        (*load_method)(cls, SEL_load);
+    }
+    
+    // Destroy the detached list.
+    if (classes) free(classes);
+}
+
+
+```
+
+It directly iterates over the loadable_classes global variable and calls them one by one.
+
+The global variable is defined as follows:
+
+```
+
+// List of classes that need +load called (pending superclass +load)
+// This list always has superclasses first because of the way it is constructed
+static struct loadable_class *loadable_classes = nil;
+static int loadable_classes_used = 0;
+static int loadable_classes_allocated = 0;
+
+```
+
+
+# Now Let's Look at the Documentation
+
+```
+The order of initialization is as follows:
+- All initializers in any framework you link to.
+- All +load methods in your image.
+- All C++ static initializers and C/C++ __attribute__(constructor) functions in your image.
+- All initializers in frameworks that link to you.
+```
+
+# How to Hook
+
+Since +load methods are called very early—earlier than C++ static initializers and so on, but later than frameworks (dynamic libraries)—we can write the hooking code into a dynamic library, which lets us hook +load before the main program's loadable_classes global variable is initialized.
+
+
+# Code
+
+Create a dynamic library and use CaptainHook (<https://github.com/rpetrich/CaptainHook>, which is just one header file and is very simple to use).
+
+
+```
+#import "CaptainHook.h"
+
+
+CHDeclareClass(MyClass);
+CHClassMethod0(void, MyClass, load){
+    CFTimeInterval start = CFAbsoluteTimeGetCurrent();
+    
+    CHSuper0(MyClass,load);
+    
+    CFTimeInterval end = CFAbsoluteTimeGetCurrent();
+    // output: end - start
+}
+
+__attribute__((constructor)) static void entry(){
+    NSLog(@"dylib loaded");
+    
+    CHLoadLateClass(MyClass);
+    CHHook0(MyClass, load);
+}
+```
+
+This way, by linking this dynamic library to the App's main program, you can hook the +load method of the MyClass class in the main program.
+
+# How to List All +load Methods in the Program
+
+Now that we know how to hook, but how do we list all the +load methods? Searching in code is too cumbersome, so let's get them via the Runtime:
+
+
+```
+
+int numClasses;
+Class * classes = NULL;
+    
+classes = NULL;
+numClasses = objc_getClassList(NULL, 0);
+    
+if (numClasses > 0 )
+{
+   classes = (Class*)malloc(sizeof(Class) * numClasses);
+   numClasses = objc_getClassList(classes, numClasses);
+   
+   for(int idx = 0; idx < numClasses; ++idx){
+       Class cls = *(classes + idx);
+       
+       const char *className = object_getClassName(cls);
+       Class metaCls = objc_getMetaClass(className);
+       
+       BOOL hasLoad = NO;
+       unsigned int methodCount = 0;
+       Method *methods = class_copyMethodList(metaCls, & methodCount);
+       if(methods){
+           for(int j = 0; j < methodCount; ++j){
+               Method method = *(methods + j);
+               SEL name = method_getName(method);
+               NSString *methodName = NSStringFromSelector(name);
+               if([methodName isEqualToString:@"load"]){
+                   hasLoad = YES;
+                   break;
+               }
+           }
+       }
+       
+       if(hasLoad){
+           NSLog(@"has load : %@", NSStringFromClass(cls));
+       }else{
+//                NSLog(@"not has load : %@", NSStringFromClass(cls));
+       }
+   }
+   
+   free(classes);
+}
+
+```
+
+
+# Omission
+
+After testing, I found that if a class has a Category, the method above can only hook the +load in the Category, and with multiple Categories it can only hook one of them. I still need to research how to hook all of them.
+
+
+# TimeProfiler
+
+We can also analyze with TimeProfiler, but experience tells us that in daily use, when users launch the App, the time cost often "fluctuates." This method can be used to find those "fluctuating" pieces of code. (Of course, this kind of hook itself also affects performance, so it's definitely for personal or small-scale use only—don't ship it.)
+
+
+# Summary
+
+This is a rather cumbersome way of hooking one by one; there must be a simpler way—I'll research it when I find time.
+
+<!--ZH-->
 
 
 
@@ -189,16 +374,3 @@ if (numClasses > 0 )
 # 总结
 
 这是一种逐个hook较麻烦的方法，一定有更简单的方法，抽时间研究。
-
-
-
-
-
-
-
-
-
-
-
-
-

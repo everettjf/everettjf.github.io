@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "企业证书签名的 App 启动慢（停在暗色图标 N 秒）"
+title: "Enterprise-Signed App Launches Slowly (Stuck on a Dark Icon for N Seconds)"
+title_zh: "企业证书签名的 App 启动慢（停在暗色图标 N 秒）"
+lang_original: zh
 categories: Skill
 comments: true
 ---
@@ -9,6 +11,70 @@ comments: true
 
 
 
+
+# Problem
+
+Over roughly the past month, QA noticed that the app frequently launched slowly, and it was fairly easy to reproduce.
+
+Reproduction OS version: iOS 9.3, with an enterprise-certificate-signed app installed.
+
+The app launch process usually goes like this: the app icon's color first dims, and after dimming, the icon then zooms in and transitions into the LaunchScreen.
+
+The problem was this: the first launch of the app had no stutter, but after switching to another app for a while and then tapping the app icon again, it would get stuck on the dark icon for 3 to 10 seconds—the duration varied each time.
+
+See the `51VV` icon in the top-right corner; the image below is the `dark` icon (i.e., it gets stuck on this screen for 3 to 10 seconds):
+<!-- more -->
+
+
+![](https://everettjf.github.io/stuff/image/darkicon.PNG)
+
+The image below is the `normal` icon:
+
+![](https://everettjf.github.io/stuff/image/darkicon0.PNG)
+
+
+
+# Attempts
+
+This problem was mainly investigated by a coworker; I tracked the whole process and provided some signing support.
+
+- At first we thought too much code was running at startup in AppDelegate, so we did a lot of optimization.
+- Later we found the code there wasn't even being reached.
+- Then we thought it was a project configuration issue, so we created a new project, enterprise-signed it, and the problem didn't appear.
+- After that, we did the enterprise signing directly on a development machine, and the problem didn't appear either. (At this point we basically suspected the build machine.)
+- (The build machine is the configured Jenkins for continuous integration—auto-build, auto enterprise-sign, auto-upload to fir. I've written similar articles on my blog before.) Because of being busy (lazy) at work, I had never upgraded the build machine.
+- Finally, we upgraded the build machine to the latest OS X system (OS X 10.10), upgraded Xcode to the latest (7.3), then built and enterprise-signed again.
+- The problem no longer appeared.
+
+# Reproduction Environment
+
+- Build machine: Xcode 7.1 + OS X 10.10
+- Development machine: Xcode 7.3 + OS X 10.11
+
+# Scope of Impact
+
+- Only enterprise-certificate-signed apps. (Apps signed with an App Store certificate don't have this problem.)
+
+# Cause of the Problem
+
+- Possible cause 1: An old version of Xcode performing enterprise-certificate signing on an old system isn't perfectly compatible with iOS 9.3's code that verifies the app's signing certificate at launch. In other words, this should be Apple's bug.
+- Possible cause 2: Caused by an old version of Xcode compiling a project from a newer version of Xcode.
+
+Personally, I think cause 1 is more likely.
+
+
+# Solution
+
+- Keep the build machine and development machine environments consistent.
+- Try to keep the system and development environment at the latest versions.
+
+# Related Material
+
+There's a similar question on Stack Overflow, but the cause is different.
+
+<http://stackoverflow.com/questions/29589285/why-ios-apps-signed-with-development-or-enterprise-certificates-launch-slower>
+
+<!--ZH-->
 
 # 问题
 
@@ -71,4 +137,3 @@ App启动过程一般是这样的：App图标颜色会首先变暗，变暗后�
 stackoverflow 有问类似问题的，但问题原因不一样。
 
 <http://stackoverflow.com/questions/29589285/why-ios-apps-signed-with-development-or-enterprise-certificates-launch-slower>
-

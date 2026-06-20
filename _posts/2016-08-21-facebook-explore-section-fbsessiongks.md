@@ -1,9 +1,69 @@
 ---
 layout: post
-title: "探索 Facebook iOS 客户端 - Section FBSessionGKs"
+title: "Exploring Facebook's iOS Client - The FBSessionGKs Section"
+title_zh: "探索 Facebook iOS 客户端 - Section FBSessionGKs"
+lang_original: zh
 categories: Skill
 comments: true
 ---
+ 
+
+
+
+---
+ 
+# Observation
+ 
+ Viewing Facebook's executable with MachOView, I found the FBInjectable and fbsessiongks data sections. This article explores the creation and purpose of the fbsessiongks data section.
+ 
+![](/media/14717181531082.jpg)
+<!-- more -->
+
+
+# Creation
+
+Refer to the previous article about FBInjectable.
+
+
+# Initial Exploration
+
+Part of fbsessiongks's content is as follows:
+
+```
+@["ios_share_extension_hashtags_enabled","ios_share_extension_mentions_disabled","ios_share_extension_360_upload_enabled","ios_share_extension_delegate_cleanup","ios_hemingway_limit_sections","aldrin_qr_code_experiment","ios_set_badge_count_on_init","ios_side_feed_show_newsfeed_units_gk","fb_app_zero_rating","fb_app_zero_rating_bad_url_errors","ios_zero_rating_header_request","ios_checkpoints_logged_in_blocking","uber_app_integration","nearby_friends_self_view","ios_nearby_friends_dashboard_invite","ios_nf_replace_pls_with_message","ios_nearby_friends_profile_style","nearby_friends_dashboard_checkins_hometown","nearby_friends_self_view","ios_nearby_friends_dashboard_reaction","ios_friends_nearby_bookmark_alert","ios_friends_nearby_bookmark_upsell","ios_nearby_friends_inv
+....省略...
+
+```
+
+
+# Simple Conclusion
+
+Experimental feature switches. gks is short for Gate Keepers. Used to assist testing.
+
+A Facebook engineer mentioned Gate Keepers: (search the article for gate keeper)
+<https://www.facebook.com/notes/facebook-engineering/building-and-testing-at-facebook/10151004157328920/>
+
+Unlike FBInjectable, the features here are all experimental and are all just BOOL types (FBInjectable has concrete configuration features and can provide detailed parameter values). There's a dedicated FBExperimentManager class to manage, collect statistics, and report various logs.
+
+
+# Related Methods
+
+```
+void * +[FBFeatureGatingConfigFactory applicationSpecificFeatureGatingConfig](void * self, void * _cmd) {
+
++[FBExperimentGatekeepers allSessionGatekeeperKeys]
++[FBExperimentManager _getSupportedConfigurationsFromPolicy:]:
+-[FBExperimentManager initWithPolicy:experimentDiskFetcher:jsonOverrides:mobileConfigContextManager:]:
+```
+
+# Summary
+
+**The specific exploration process is similar to the previous article [Exploring Facebook's iOS Client - The FBInjectable Section](https://everettjf.github.io/2016/08/15/facebook-explore-section-fbinjectable)**
+
+**I'll add a Demo when I have time.**
+
+
+<!--ZH-->
  
 
 

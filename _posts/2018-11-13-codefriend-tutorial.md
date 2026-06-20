@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "CodeFriend：使用 JavaScript 开发 Xcode Extensions"
+title: "CodeFriend: Developing Xcode Extensions with JavaScript"
+title_zh: "CodeFriend：使用 JavaScript 开发 Xcode Extensions"
+lang_original: zh
 categories:
   - 工具
 tags:
@@ -8,6 +10,267 @@ tags:
   - CodeFriend
 comments: true
 ---
+
+
+Code Friend is an Xcode Extension that provides a JavaScript interface, so users can quickly and easily develop Xcode plugin tools based on this app.
+
+Official site: <https://qvcodefriend.github.io/>
+Mac App Store: <https://itunes.apple.com/cn/app/code-friend/id1441249580>
+
+<!-- more -->
+
+# Background
+
+Starting with Xcode 8, Apple provided XcodeKit for developing Xcode Extensions. But because of various bugs and an overly simplistic interface, it has never been popular with developers. Even now in Xcode 10, the functionality XcodeKit provides is still limited.
+
+Even so, there are still many enthusiasts who have developed all sorts of small features, for example: Awesome native Xcode extensions
+ <https://github.com/theswiftdev/awesome-xcode-extensions>
+
+Recently I joined a new company that has new requirements for code style, so I wanted to use scripts to find code that doesn't conform to the standards, and eventually thought of developing an Xcode Extension to check code style. During development, I felt that if I used pure native development, every time I wanted to adjust or add a rule I'd have to recompile, and even resubmit for review — too much of a hassle.
+
+And so the idea for Code Friend was born. It wraps the functionality provided by XcodeKit through JavaScriptCore. The feature logic is developed in JavaScript.
+
+Now let's formally introduce Code Friend.
+
+
+# Basic Information
+
+Code Friend is a macOS app with a built-in Xcode Source Editor Extension. You can search for `Code Friend` in the Mac App Store to install it.
+
+![](/media/15421232259243.jpg)
+
+
+# How to Use
+
+
+## Enabling
+
+Because of the system's permission controls on Extensions, you need to enable Code Friend in `System Preferences -> Extensions -> Xcode Source Editor -> Code Friend Extension`.
+
+![](/media/15421233842897.jpg)
+![](/media/15421233931819.jpg)
+
+
+## Using the Built-in Features
+
+After Code Friend is enabled, open any project with Xcode, open the Editor menu, and at the very bottom you'll see Code Friend.
+
+![](/media/15421237614957.jpg)
+
+For example, select everettjf, click Convert to ASCII text (style1), and you'll see the corresponding ASCII Text appear on the line below the line containing everettjf.
+
+![](/media/15421238735777.jpg)
+
+The other menu items are similar. Sort lines can sort multiple selected lines. About just opens the official website.
+
+So far, all of this is what an ordinary Xcode Extension can do.
+
+But here, every menu item's functionality is implemented in JavaScript — now that's interesting. The code can be found at <https://github.com/qvcodefriend/qvcodefriend.github.io/tree/master/packages/builtin>
+
+
+## Installing and Using DLC Pack 1
+
+Implementing a single menu item is simple, much like providing some JSAPI to an H5 page; but implementing a "mini-program platform" is a bit more involved. On this point, Code Friend can be considered a very simple little platform.
+
+DLC Pack 1 is a feature extension pack (I named it casually, similar to Zelda's DLC).
+
+Open the Code Friend macOS app.
+![](/media/15421245151297.jpg)
+
+![](/media/15421245028819.jpg)
+
+Click `AddPack` in the top-left, then click `Try DLC Pack1` in the top-right, and at this point DLC Pack1's installation address (https://qvcodefriend.github.io/packages/dlc/) is filled in.
+
+![](/media/15421246133012.jpg)
+
+Click `Add`, and it will start downloading the extension pack. If all goes well, it will report `All Succeed :)`.
+
+![](/media/15421247253435.jpg)
+
+Click `Close`.
+
+Now you can see an extra entry `Code Friend DLC Pack 1` in the main interface. After clicking it, some configuration info is shown on the right. For simplicity, it currently just displays this extension pack's json config file directly. From it you can see which menu items there are.
+
+![](/media/15421248124141.jpg)
+
+The Code Friend desktop app can now be closed.
+
+Xcode also needs to be quit completely and reopened.
+![](/media/15421250191664.jpg)
+
+
+Open a project again, and you'll see the DLC Pack1 menu items newly added to the menu.
+
+![](/media/15421251021711.jpg)
+
+
+That's all there is to using it.
+
+# Marketplace
+
+Extension packs like DLC Pack1 can be developed by anyone (see below for how). You just need to give an installation address, and it can be installed into Code Friend.
+
+So it makes sense to put together an official extension-pack marketplace, at: <https://qvcodefriend.github.io/marketplace/>. Right now it's just a webpage; you can use the URLs on it to install.
+
+You can access it by clicking the top-right of the desktop app.
+
+![](/media/15421252843232.jpg)
+
+Currently there's only this one extension pack, `Code Friend DLC Pack 1`.
+
+# Developing New Features
+
+## In Short
+
+It's time to develop your own extension pack. In short, there are two steps:
+
+1. Develop by calling the API in the format described at <https://qvcodefriend.github.io/develop/>.
+2. Publish to a website that Code Friend can access (e.g. GitHub Pages).
+
+Below I'll quickly create an extension pack using GitHub Pages. The GitHub Pages introduction is at <https://pages.github.com/>.
+
+## Three Steps
+
+### 1) Step One: Create an Organization
+
+Click the menu in the figure below, or visit <https://github.com/organizations/new> directly.
+
+![](/media/15421258051352.jpg)
+
+![](/media/15421258620115.jpg)
+
+For example, I called mine `MyCodeFriendPackage`; if you create one you'll need a different name.
+
+### 2) Step Two: Create GitHub Pages
+
+Visit <https://github.com/qvcodefriend/helloworld>, click Fork, and select the organization you just created. As shown below (Emmmm... I've created a few too many organizations...).
+
+![](/media/15421261491607.jpg)
+
+After forking, rename the forked repo to: mycodefriendpackage.github.io. (Note this must be the lowercase of the organization name.)
+
+![](/media/15421267537385.jpg)
+
+After renaming, continue on the lower part of the Settings page and select `Choose a theme`.
+![](/media/15421268178718.jpg)
+
+![](/media/15421268398919.jpg)
+
+Any one will do. Click `Select theme`, and now you'll see a notice under the GitHub Pages section that <https://mycodefriendpackage.github.io/> is accessible.
+
+![](/media/15421269121160.jpg)
+
+
+
+### Step Three: Implement the Feature
+
+At this point you can clone the repo <https://github.com/MyCodeFriendPackage/mycodefriendpackage.github.io>
+
+```
+git clone git@github.com:MyCodeFriendPackage/mycodefriendpackage.github.io.git
+```
+
+Open the folder, and you'll see the helloworld folder.
+
+![](/media/15421276137672.jpg)
+
+The format of helloworld/manifest.json is as follows:
+
+![](/media/15421275002360.jpg)
+
+- name: extension pack name, displayed in the Code Friend desktop client list
+- version: version
+- author: author
+- website: official website
+- description: feature description
+- menu: supported menu items
+
+These are all simple; one look and you'll know how to modify them. Here, a menu's id is a folder (e.g. in the figure above the menu id is hello, corresponding to a hello folder).
+
+The hello folder must contain an entry.js. Its internal `entry` variable is an array that defines all the JavaScript files needed to implement the current menu feature; Code Friend will execute them in order when loading.
+
+```
+var entry = [
+    'main.js'
+];
+```
+
+main.js must have an `onMenuClicked` function, whose return value must be a dictionary containing `result`.
+
+```
+var onMenuClicked = function(identifier){
+
+    invocation.appendLines(['Hello World']);
+
+    return {
+        'result':true
+    };
+};
+
+```
+
+Now for the most important step: calling the API to implement the feature.
+
+The API provides two global variables, `invocation` and `system`, briefly listed below. For details see the docs <https://qvcodefriend.github.io/develop/>
+
+```
+# invocation
+## getter,setter
+1) [getter] invocation.contentUTI
+2) [getter] invocation.tabWidth
+3) [getter] invocation.indentationWidth
+4) [getter] invocation.usesTabsForIndentation
+5) [getter] invocation.selectionExist
+6) [getter,setter] invocation.selections
+7) [getter] invocation.firstSelection
+8) [getter] invocation.selectionStrings
+9) [getter] invocation.selectionLines
+10) [getter,setter] invocation.completeBuffer
+11) [getter,setter] invocation.lines
+12) [getter] invocation.lineCount
+
+## method
+1) invocation.insertLinesAtIndex(ArrayOfString,Integer)
+2) invocation.appendLines(ArrayOfString)
+3) invocation.removeLinesFromTo(Integer,Integer)
+4) invocation.assignLineAtIndex(String,Integer)
+
+# system
+## method
+1) system.log(String)
+2) system.openURL(String)
+```
+
+For example, the ```invocation.appendLines(['Hello World']);``` in helloworld above adds a new line at the end of the current document, with the content `Hello World`.
+
+
+### Step Four: Done
+
+After completing the above, the helloworld extension pack's address is <https://mycodefriendpackage.github.io/helloworld/>, and you can add it in the desktop client.
+![](/media/15421282993106.jpg)
+
+The menu name `Hello world` has also appeared; after clicking it you can append a `Hello World` line.
+
+![](/media/15421283452058.jpg)
+
+
+
+# Reference Extension Pack Source Code
+
+Code Friend's built-in ASCII Text, Sort lines, as well as DLC Pack 1, are all implemented in JavaScript.
+The code addresses are as follows:
+<https://github.com/qvcodefriend/qvcodefriend.github.io/tree/master/packages>
+
+
+# The Future
+
+Code Friend is currently just an MVP version, and will be continuously improved with use in the future. Also, the functionality XcodeKit currently provides is still very limited — it can only operate on the content of the current file. I believe Apple will open up more functionality in the future, at which point Code Friend's flexibility will really show.
+
+# Summary
+
+From idea to implementation, it really was a not-easy process.
+
+<!--ZH-->
 
 
 Code Friend 是一款Xcode Extension，提供了JavaScript的接口，用户可基于这个App简单快捷开发出Xcode插件工具。
@@ -267,4 +530,3 @@ Code Friend 目前只是一个MVP版本，未来会随着使用不断完善。�
 # 总结
 
 从想法到实现，真是一个不容易的过程。
-

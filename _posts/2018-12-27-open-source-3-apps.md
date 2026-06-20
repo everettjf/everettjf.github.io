@@ -1,12 +1,78 @@
 ---
 layout: post
-title: "年底了，开源 3 个小应用"
+title: "Year-End: Open-Sourcing 3 Little Apps"
+title_zh: "年底了，开源 3 个小应用"
+lang_original: zh
 categories:
   - 开源
 tags:
   - 开源
 comments: true
 ---
+
+![](/media/15459608773004.jpg)
+
+During this period (the second half of 2018), in my scattered bits of spare time, I implemented some "out-of-the-blue" "pseudo-needs" ideas. Since they're "pseudo-needs", I might as well open-source them — maybe they'll turn out to be useful to someone.
+
+<!-- more -->
+
+# Code Friend
+
+Code Friend is an Xcode Extension that provides a JavaScript interface, so users can quickly and easily develop Xcode plugin tools based on this app.
+
+Why did I develop this tool? To practice with JavaScriptCore.
+
+- Detailed introduction: <https://everettjf.github.io/2018/11/13/codefriend-tutorial/>
+- Official site: <https://qvcodefriend.github.io/>
+- Mac App Store: <https://itunes.apple.com/cn/app/code-friend/id1441249580>
+- Code: <https://github.com/qvcodefriend/CodeFriend>
+
+
+# USB Keyboard
+
+USB Keyboard is an input method app. After connecting your iPhone to a Mac via USB, you can type on the Mac and have it appear on the iPhone.
+
+Why did I develop this tool? I saw the peertalk library, and at the same time I wanted to type faster in WeChat without using the macOS client.
+
+- Detailed introduction: <https://everettjf.github.io/2018/10/22/qvkeyboard-release/>
+- App Store: <https://itunes.apple.com/cn/app/qvkeyboard/id1439106456>
+- Code: <https://github.com/everettjf/USBKeyboard>
+
+# woza
+
+woza ("Wo Za", meaning "I crack") is an iOS jailbreak decryption tool, similar to clutch and dump-decrypted. It's a node version of AloneMonkey's frida-ios-dump, developed in TypeScript.
+
+In addition, woza-desktop is the desktop version of woza, which achieves the goal of "decrypting with just a few mouse clicks", developed with Electron and React.
+
+The purpose of developing this tool was to practice front-end knowledge.
+
+Code:
+
+- <https://github.com/woza-lab/woza>
+- <https://github.com/woza-lab/woza-desktop>
+
+Of course, these two tools currently still depend on the iproxy and scp commands. Future versions will remove these two dependencies, requiring only frida to perform decryption.
+
+
+# Summary
+
+Each tool went through a complete cycle — from idea, to design, to development, to publishing, to promotion, to open-sourcing. I put some effort into each, and gained a lot too.
+
+This year, the way I spend my spare time has gradually shifted from "research-driven" to "need-driven". In the past I was always chasing all kinds of deep principles, but the results rarely translated into any concrete output. Now I start from an idea, and in order to realize that idea I then explore various principles, and the results of that exploration can immediately push the idea toward realization.
+
+
+Keep it up ⛽️ :)
+
+
+---
+
+Emmmmm... ad time...
+
+
+Welcome to follow the official account "Client Tech Review":
+![](/images/fun.png)
+
+<!--ZH-->
 
 ![](/media/15459608773004.jpg)
 
@@ -69,4 +135,3 @@ Emmmmm...广告时间到...
 
 欢迎关注订阅号「客户端技术评论」：
 ![](/images/fun.png)
-

@@ -1,12 +1,185 @@
 ---
 layout: post
-title: "如何编写一款 RSS 阅读器 App"
+title: "How to Build an RSS Reader App"
+title_zh: "如何编写一款 RSS 阅读器 App"
+lang_original: zh
 categories: Skill
 comments: true
 ---
 
 
 
+
+I finally shipped my first App, so here's a quick summary. For this App, I count as a bit of a "full-stack developer" too.
+
+
+[Source code first](https://github.com/everettjf/TomatoRead)
+
+This development effort mainly produced two things:
+
+1. [TomatoRead App](https://itunes.apple.com/us/app/id1111654149): a curated selection of iOS developer blog subscriptions. [AppStore link](https://itunes.apple.com/us/app/id1111654149).
+2. [Blog list](https://github.com/everettjf/TomatoRead): sorted by last update time. Auto-refreshed every day.
+<!-- more -->
+
+
+Three tabs: the first is the list of subscribed articles, the second is the blog list, and the third is various article/tutorial URLs I usually collect.
+As shown below:
+
+![](https://everettjf.github.io/stuff/tomato/1.png)
+
+# Background
+
+- Originally I wanted to build a big, all-encompassing developer navigation site where you could find the best URLs for whatever you want to learn, but I didn't have that much time to collect URLs. Since my job is iOS development, I could focus only on iOS development URLs.
+- So I wanted to build an App that displays the blogs I collected and their RSS subscription info through the App.
+- The goal kept shrinking — maybe that's the process of a fake need turning into a real need.
+- For more background on this deeper tinkering, you can read [this article](http://everettjf.github.io/2016/02/24/iosblog-cc-dev-memory).
+
+# Architecture
+
+- Web server: for bookmarking URLs
+- Static content server: provides the access interface for the App
+- Crawler: crawls the article lists of blogs that don't support RSS/Atom subscriptions
+- App: the final presentation
+
+## Web server
+
+The web server is mainly for collecting and deleting URLs.
+
+To make it convenient to bookmark a blog once you've seen it, you can write a `Chrome extension`. When you browse to a blog URL and click the Chrome extension, it automatically collects the current blog's URL, title, and favicon. You can also add the subscription address.
+
+This saves the hassle of recording blogs as plain text.
+
+The web server is implemented with Django (I'm familiar with Python). Currently it's accessible at [http://iosblog.cc](http://iosblog.cc). Since the App doesn't depend on this domain, it can be swapped out anytime later. This URL is only used to assist collection, not for public use.
+
+
+- [Chrome extension source](https://github.com/everettjf/TomatoRead/tree/master/chrome)
+- [Web server source](https://github.com/everettjf/TomatoRead/tree/master/web)
+
+- [Django getting-started docs](https://docs.djangoproject.com/en/1.9/intro/)
+- [Chrome Extension getting-started docs](https://developer.chrome.com/extensions/getstarted)
+
+![](https://everettjf.github.io/stuff/tomato/chrome.png)
+
+
+
+
+## Static content server
+
+A VPS on Aliyun or other clouds, at the lowest spec, generally costs around 600 RMB a year, and the bandwidth and performance are both poor. But to let the App fetch data quickly, what do we do? I thought of how my blog uses GitHub Pages. We can periodically export the content I've collected to a json file and place it under GitHub Pages (for example, under my blog directory).
+
+That way the Aliyun server doesn't have to worry about small bandwidth or low specs. Amazon's EC2 is even free for a year recently.
+
+The existence of this layer of server lets us swap out the web server freely. The App doesn't depend on the web server either.
+
+[Export result](https://github.com/everettjf/everettjf.github.com/tree/master/app/blogreader)
+
+
+## Crawler
+
+Some blogs have RSS or Atom subscriptions, but many blogs don't. For example, the currently very popular `Jianshu`. There are many great iOS/OS X developer blogs on Jianshu.
+
+After bookmarking some good Jianshu blogs, you can write a little crawler that only crawls the article lists of the specified blogs. When you tap such an article in the App, it opens directly in the browser.
+
+scrapy is a great Python crawler framework, simple and easy to use. The code to crawl a URL's article list is as follows:
+
+```
+    def parse(self, response):
+        print response.url
+        oid = self.url_to_oid[response.url]
+        filepath = os.path.join(target_json_dir,'spider', 'jianshu', '%d.json'%oid)
+        print filepath
+
+        items = []
+        for post in response.xpath('//div[@id="list-container"]/ul/li'):
+            url = post.xpath('div/h4[@class="title"]/a/@href').extract_first()
+            url = response.urljoin(url)
+
+            title = post.xpath('div/h4[@class="title"]/a/text()').extract_first()
+            title = title.strip()
+
+            item = {}
+            item['title'] = title
+            item['link'] = url
+            item['createtime'] = post.xpath('div/p[@class="list-top"]/span[@class="time"]/@data-shared-at').extract_first()
+            item['image'] = post.xpath('a[@class="wrap-img"]/img/@src').extract_first()
+            items.append(item)
+```
+
+Scrapy's docs are very complete too; after reading the [getting-started tutorial](http://doc.scrapy.org/en/master/intro/tutorial.html) you can finish crawling this Jianshu article list.
+
+- [Crawler source](https://github.com/everettjf/TomatoRead/tree/master/jianspider)
+- [Crawled results](https://github.com/everettjf/everettjf.github.com/tree/master/app/blogreader/spider/jianshu)
+
+There's a small issue you can leave unsolved. A Jianshu blog's homepage loads 10 articles by default (the count may not be exact), and the rest are loaded asynchronously as you scroll down. Since this is for subscriptions, fetching just the latest N is enough. (I haven't researched how to fetch these asynchronously loaded articles. Maybe finding the backend request URL would make it easy to fetch.)
+
+
+## App
+
+### Open-source libraries
+
+To quickly assemble this App, I mainly used the following two open-source libraries.
+
+- [MWFeedParser](https://github.com/mwaterfall/MWFeedParser): can be used to parse RSS/Atom, but during use some feeds have non-standard times, so you can modify the source directly to support more time formats.
+
+- [KINWebBrowser](https://github.com/dfmuir/KINWebBrowser): used to view the original text, or open articles from blogs that don't support subscriptions.
+
+
+
+
+### Loading strategy
+
+When you suddenly have 40+ subscription URLs, how do you load articles in a way that doesn't feel too slow to the user?
+
+- The server puts the more frequently updated and higher-quality blogs first (ranked first, increasing zorder).
+- On first load, an animation plays; after loading 5 blogs, the animation shrinks to a spot that doesn't interfere with the user, and the remaining blogs continue loading.
+- Record each blog's last article update date; the next time it checks for blog updates, it prioritizes recently updated blogs. (Some developer blogs haven't updated in a long time, but their earlier articles are very good.) Display the latest content as fast as possible.
+- After all blogs finish loading, let the user know. And make it easy to load the latest content.
+
+Other optimization ideas:
+
+- Give each blog a weight assigned by update frequency; in some cases you can directly ignore blogs whose weight is too low.
+
+
+
+### Displaying subscribed article content
+
+The article content fetched from RSS/Atom subscriptions is a chunk of HTML code. It lacks CSS. The program needs to bundle a fairly general set of CSS internally.
+
+Here I directly copied the CSS code from the [Yiyue App](https://github.com/ming1016/RSSRead). But [this CSS](https://github.com/everettjf/TomatoRead/tree/master/iOS/iOSBlogReader/Resource) renders some articles poorly. I'll optimize it later.
+
+
+
+### Loading animation
+
+Loading animations like MBProgressHUD are all globally blocking. They can't meet the need of "load 5 blogs first, then keep showing progress without interfering with the user." So I built my own.
+
+I've been watching "The Brain" lately and learning Rubik's cube algorithms, and thought I could make a Rubik's-cube-like animation. To keep it simple and quick to use, I used Facebook's pop library — 9 colors fading in and out one by one, plus a status bar.
+
+
+![](https://everettjf.github.io/stuff/tomato/loading.png)
+
+
+
+
+
+### Third-party services
+
+- Analytics: Umeng
+- Crash analysis: Bugly
+- Hotfix: JSPatch
+
+
+
+
+# Summary
+
+I've been doing iOS work for nearly a year (with a 3-month pause in the middle being a stay-at-home dad). This is the first App I've shipped. Although the App is fairly simple, the evolution of this idea is worth reflecting on and summarizing.
+
+Another purpose of building this App is to apply the new knowledge and new techniques I learn day to day to this App, treating it as my own little laboratory.
+
+
+
+<!--ZH-->
 
 
 
@@ -177,7 +350,6 @@ RSS/Atom订阅拿到的文章内容是一段html代码。缺少css。程序内�
 自己做iOS工作接近一年（中间暂停了3个月在家做奶爸了）,这是第一个上架的App。虽然App较为简单，但这个想法的演变过程，值得我反思和总结。
 
 开发这个App还有个目的，就是可以把自己平时学到的新知识、新技巧应用到这个App中来，作为自己的小实验室。
-
 
 
 

@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "Android 方法跟踪工具 Nanoscope 基础使用"
+title: "Basic Usage of Nanoscope, an Android Method Tracing Tool"
+title_zh: "Android 方法跟踪工具 Nanoscope 基础使用"
+lang_original: zh
 categories:
   - 性能优化
 tags:
@@ -8,6 +10,100 @@ tags:
   - Android
 comments: true
 ---
+
+When optimizing app performance, I've always wished for a tool that could accurately record the time spent in the various methods an app executes within a given time window.
+
+For the iOS platform, you can use [AppleTrace](https://github.com/everettjf/AppleTrace), developed by [everettjf](https://everettjf.github.io) based on [HookZz](https://github.com/jmpews/HookZz); or, if you work at Meituan, you can use the internal Trace tool Caesium (searchable externally as "Caesium iOS launch time monitoring").
+
+For the Android platform, it seems there are quite a lot of Trace tools: CPU Profiler, traceview, systrace, nanoscope, and so on.
+
+
+<!-- more -->
+
+This article briefly covers the basic usage of Uber's open-source nanoscope.
+
+# Official Introduction
+
+- [Introducing Nanoscope: An Extremely Accurate Method Tracing Tool for Android](https://eng.uber.com/nanoscope/)
+- [GitHub Nanoscope](https://github.com/uber/nanoscope)
+
+# Pros and Cons
+
+Compared with other trace tools, nanoscope is more accurate and has very little impact on app performance. But it requires flashing the device, and currently only supports the single model Nexus 6P.
+
+
+# How to Use
+
+## Step One: Install nanoscope
+
+```
+brew tap uber/nanoscope
+brew install nanoscope
+```
+
+## Step Two: Flash the Device
+
+1. Prepare a Nexus 6P phone (about 400 RMB on Taobao)
+2. Open "Developer Options"
+3. Allow "USB Debugging",
+4. Connect it to the computer.
+5. Get the command line (or router) onto a scientific (VPN) internet connection.
+5. Then run the following command.
+
+```
+nanoscope flash
+```
+
+If you're lucky, it'll report success directly.
+
+If you're unlucky like me, then Google based on the error message. Maybe [Reference 1](https://android.stackexchange.com/questions/203173/flashing-nexus-5-factory-image-fails-on-writing-userdata) helps here.
+
+## Step Three: Use It
+
+After the phone boots up, the usage is very simple — two usages:
+
+```
+nanoscope start
+nanoscope start --package=com.example.app
+```
+
+For example, if I want to trace the launch process of my demoapp, whose package id is `com.everettjf.hellonanoscope`, then I run directly in the macOS command line:
+
+```
+nanoscope start --package=com.everettjf.hellonanoscope
+```
+
+Then open this demo app on the phone, and after the app finishes launching, press Enter, and it's all done — too simple.
+
+
+![](/media/15536133178358.jpg)
+
+At this point an html will open automatically, containing all kinds of trace information.
+
+![](/media/15536134370424.jpg)
+
+
+This way you can study an Android app's launch process — it even includes calls at the system Framework Java level.
+
+
+# Example
+
+Download [this file](https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/android/nanoscope_sample_html.zip); decompressing it gives you the html above.
+You can press the letters `w a s d` to zoom in/out and view timings.
+
+
+# Summary
+
+Android's openness has brought a large number of handy "homegrown" tools. Compared with iOS's hard-to-use Time Profiler, the various R&D auxiliary tools available during Android development are far, far friendlier.
+
+---
+
+Interesting :)
+
+Welcome to follow the official account "Client Tech Review":
+![](/images/fun.png)
+
+<!--ZH-->
 
 对App进行性能优化，一直奢望有一个工具，能对指定时间内App执行的各类方法的耗时准确记录下来。
 
@@ -100,4 +196,3 @@ Android的开源，带来了大量“民间”的好用工具。相比iOS那难�
 
 欢迎关注订阅号「客户端技术评论」：
 ![](/images/fun.png)
-

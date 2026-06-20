@@ -1,10 +1,88 @@
 ---
 layout: post
-title: "iOS 简单反调试与反反调试实践"
+title: "Simple iOS Anti-Debugging and Anti-Anti-Debugging in Practice"
+title_zh: "iOS 简单反调试与反反调试实践"
+lang_original: zh
 categories: Skill
 comments: true
 ---
 
+
+
+
+I recently finished studying the second edition of "iOS App Reverse Engineering" and got busy practicing on a few apps. As a result, I ran into a few apps with anti-debugging code. Let me summarize two simple anti-debugging methods and how to remove them.
+<!-- more -->
+
+# ptrace
+
+## Protection
+
+You can call ptrace first in the main function.
+
+~~~
+#import <mach-o/dyld.h>
+#import <dlfcn.h>
+
+int main(int argc, char * argv[]) {
+
+#ifndef DEBUG
+    typedef int (*ptrace_type)(int request, pid_t pid,caddr_t addr,int data);
+    void *handle = dlopen(0, 0xA);
+    ptrace_type pt = (ptrace_type)dlsym(handle, "ptrace");
+    pt(31,0,0,0);
+    dlclose(handle);
+#endif
+
+	//...
+}	
+
+~~~
+
+
+## Removing the Protection
+
+Reference article: <https://everettjf.github.io/2015/12/20/amap-ios-client-kill-anti-debugging-protect/>
+
+
+# RESTRICT section
+
+After finishing this book, I found cycript is super handy — Objective-C is such a flexible language...
+But some programs can't use it.
+
+
+## Protection
+
+Add the following to the project's `Other Linker Flags`:
+
+~~~
+-Wl,-sectcreate,__RESTRICT,__restrict,/dev/null
+~~~
+
+
+## Removing the Protection
+
+The basic idea is:
+
+1. `ps -e | grep /var` to find the AppBinary path
+2. Copy the AppBinary out
+3. Use a binary editor (iHex, etc.) to modify __RESTRICT and __restrict to other values. (For example: __RRRRRRRR and __rrrrrrrr. Just keep the length unchanged.)
+4. `ldid -S AppBinary` to re-sign.
+5. Install `AppSync` in Cydia.
+
+
+This is covered in this article: <http://www.iosre.com/t/tweak-app-app-tweak/438>
+
+
+Reference articles:
+
+1. <http://www.iosre.com/t/tweak-app-app-tweak/438>
+2. <http://www.samdmarshall.com/blog/blocking_code_injection_on_ios_and_os_x.html155>
+3. <http://geohot.com/e7writeup.html50>
+4. <http://www.opensource.apple.com/source/dyld/dyld-210.2.3/src/dyld.cpp42>
+5. <https://theiphonewiki.com/wiki/Launchd.conf_untether17>
+6. <http://navillezhang.me/>
+
+<!--ZH-->
 
 
 
@@ -80,4 +158,3 @@ int main(int argc, char * argv[]) {
 4. <http://www.opensource.apple.com/source/dyld/dyld-210.2.3/src/dyld.cpp42>
 5. <https://theiphonewiki.com/wiki/Launchd.conf_untether17>
 6. <http://navillezhang.me/>
-

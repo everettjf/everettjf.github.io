@@ -1,10 +1,47 @@
 ---
 layout: post
-title: "从 __FILE__ 日志推测微信 iOS 客户端的源码目录组织"
+title: "Inferring the Source Directory Layout of WeChat iOS from __FILE__ Logs"
+title_zh: "从 __FILE__ 日志推测微信 iOS 客户端的源码目录组织"
+lang_original: zh
 categories: Skill
 comments: true
 ---
 
+
+The bigger a project gets, the more it needs a sensible organization of its file directory hierarchy.
+
+While reverse engineering WeChat, I often saw calls to some "logging" methods, and they carried complete paths. For example:
+
+<!-- more -->
+
+```
+/Users/ioscmechine/Desktop/hudson/workspace/release_appstore_6.3.29/WeApp/Core/LocalCache/WAPackageSweeperLogic.mm
+```
+
+Looks like this was caused by using the __FILE__ macro.
+
+Use strings to dump all the strings of WeChat (after decryption) into a file:
+
+```
+$ strings WeChat > strings_wechat.txt
+```
+
+As shown in the figure:
+
+![](/media/14798364851450.jpg)
+
+Write a little script to extract all strings starting with `/Users/`, then split them and assemble them into a tree.
+
+Then you can see part of WeChat's file structure.
+
+![](/media/14798366527896.jpg)
+
+
+[Script address](https://github.com/everettjf/Yolo/tree/master/ListWeChatDirTree)
+
+[The generated WeChat file hierarchy](https://github.com/everettjf/Yolo/tree/master/ListWeChatDirTree/wechat_tree.txt)
+
+<!--ZH-->
 
 项目越大，就越需要合理的组织文件目录层次。
 

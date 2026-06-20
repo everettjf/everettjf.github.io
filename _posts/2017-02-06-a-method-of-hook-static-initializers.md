@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "一种 Hook C++ Static Initializers 的实现"
+title: "A Method of Hooking C++ Static Initializers"
+title_zh: "一种 Hook C++ Static Initializers 的实现"
+lang_original: zh
 categories:
   - Skill
 tags:
@@ -8,6 +10,383 @@ tags:
   - hook
 comments: true
 ---
+
+
+
+First, a clarification: the "static initializers" in the title should actually be called `C++ static initializers and C/C++ __attribute__(constructor) functions`.
+
+
+When you open a Mach-O file with MachOView, in most cases you'll see this section `__mod_init_func`.
+
+![](/media/15029043382372.jpg)
+
+
+<!-- more -->
+
+# What Is This Section For?
+
+From the name, we can roughly guess: module initializer functions—that's about what it means.
+
+In the dyld source code, you can find references to mod_init_func:
+
+```
+typedef void (*Initializer)(int argc, const char* argv[], const char* envp[], const char* apple[]);
+
+extern const Initializer  inits_start  __asm("section$start$__DATA$__mod_init_func");
+extern const Initializer  inits_end    __asm("section$end$__DATA$__mod_init_func");
+
+
+static void runDyldInitializers(const struct macho_header* mh, intptr_t slide, int argc, const char* argv[], const char* envp[], const char* apple[])
+{
+	for (const Initializer* p = &inits_start; p < &inits_end; ++p) {
+		(*p)(argc, argv, envp, apple);
+	}
+}
+```
+
+Note carefully: when debugging, you'll find that dyld does NOT execute all Initializers by calling runDyldInitializers; instead, it executes them via `void ImageLoaderMachO::doModInitFunctions(const LinkContext& context)`. But the code above, found on a first search, gives us a rough impression of mod_init_func.
+
+
+From other materials, we can learn that there are many ways for code to produce a corresponding Initializer.
+
+
+# What Are the Ways to Produce an Initializer?
+
+## 1. __attribute((constructor))
+
+```
+__attribute__((constructor)) void myentry(){
+    NSLog(@"constructor");
+}
+```
+
+## 2. Global Variable Initialization That Needs to Execute Code
+
+
+This is mainly for C++ (or Objective-C++): source file extensions are .cpp, .cxx, or .mm. The global variables mentioned here include both those modified by static (scope limited to the current file) and those not modified by static.
+
+If global variable initialization involves the following cases, a corresponding entry will be produced in mod_init_func:
+
+(1) Need to execute a C function
+
+```
+bool initBar(){
+    int i = 0;
+    ++i;
+    return i == 1;
+}
+
+static bool globalBar = initBar();
+bool globalBar2 = initBar();
+```
+
+(2) Need to execute a C++ class constructor
+
+```
+class FooObject{
+public:
+    FooObject(){
+        // do somthing
+        NSLog(@"in fooobject");
+    }
+    
+};
+
+static FooObject globalObj = FooObject();
+FooObject globalObj2 = FooObject();
+```
+
+
+(3) Need to construct an Objective-C object
+
+```
+static NSDictionary * dictObject = @{@"one":@"1"};
+NSDictionary * dictObject2 = @{@"one":@"1", @"two":@"2"};
+```
+
+(4) A struct, for C++, can also be considered a kind of class
+
+This code actually executes CGRect's constructor—very sneaky~ hard to guard against~
+
+```
+CGRect globalRect = CGRectZero;
+```
+
+(5) Indirectly causing a function to run
+
+The code below indirectly causes the description method to run when initializing globalArray.
+
+```
+NSString *description(const char *str){
+    return [NSString stringWithFormat:@"hello %s",str];
+}
+
+#define E(str) description(str)
+
+
+NSString* globalArray[] = {
+    E("hello"),
+    E("hello"),
+    E("hello"),
+    E("hello"),
+    E("hello"),
+    E("hello"),
+};
+
+NSString *globalString = E("world");
+```
+
+(6) Others
+
+There are all kinds of other postures too.
+
+
+# Why Care About These
+
+Since most iOS Apps today just use static libraries, large amounts of third-party or internal C++ code need to be statically linked. The code above indirectly increases the main program's execution time before the main function.
+
+If it's a dynamic library loaded during the startup stage, this code still affects startup performance.
+
+
+# Look at the backtrace Again
+
+Add a breakpoint and backtrace, and you can see dyld's call stack:
+
+![](/media/15029043722431.jpg)
+
+
+# Compiler Merging Pattern
+
+
+All initializers in the same file automatically produce one Initializer, similar to handing all the initialization work in a file to a newly created function.
+
+If you initialize a large number of global variables in one file, you'll find that only one entry is ultimately produced in the mod_init_func section. And the symbol for this entry looks like this:
+
+```
+frame #3: 0x00000001000b8854 ModFuncInitApp`_GLOBAL__sub_I_TestClass.mm + 24 at TestClass.mm:0
+```
+
+It's like a function named `_GLOBAL__sub_I_TestClass.mm` was generated.
+
+
+
+# How to Hook—First Find the Call Source
+
+First, look at the call source:
+
+```
+(lldb) bt
+* thread #1: tid = 0x47250, 0x00000001000b87c8 ModFuncInitApp`FooObject::FooObject(this=0x00000001000bd2d8) + 20 at TestClass.mm:15, queue = 'com.apple.main-thread', stop reason = breakpoint 1.1
+  * frame #0: 0x00000001000b87c8 ModFuncInitApp`FooObject::FooObject(this=0x00000001000bd2d8) + 20 at TestClass.mm:15
+    frame #1: 0x00000001000b879c ModFuncInitApp`FooObject::FooObject(this=0x00000001000bd2d8) + 28 at TestClass.mm:13
+    frame #2: 0x00000001000b8804 ModFuncInitApp`::__cxx_global_var_init() + 24 at TestClass.mm:20
+    frame #3: 0x00000001000b8854 ModFuncInitApp`_GLOBAL__sub_I_TestClass.mm + 24 at TestClass.mm:0
+    frame #4: 0x00000001000b93e8 ModFuncInitApp`myInitFunc_Initializer(argc=1, argv=0x000000016fd4bab8, envp=0x000000016fd4bac8, apple=0x000000016fd4bb48, vars=0x00000001001d9918) + 140 at hook_cpp_init.mm:64
+    frame #5: 0x00000001001bd95c dyld`ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) + 372
+    frame #6: 0x00000001001bdb84 dyld`ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) + 36
+    frame #7: 0x00000001001b8f2c dyld`ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) + 368
+    frame #8: 0x00000001001b7f50 dyld`ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) + 140
+    frame #9: 0x00000001001b8004 dyld`ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) + 84
+    frame #10: 0x00000001001aa488 dyld`dyld::initializeMainExecutable() + 220
+    frame #11: 0x00000001001ae8f4 dyld`dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) + 3892
+    frame #12: 0x00000001001a9044 dyld`_dyld_start + 68
+```
+
+
+
+From the stack, you can see that dyld's doModInitFunctions calls the Initializer in each file. Find this function in the dyld source code:
+
+
+```
+void ImageLoaderMachO::doModInitFunctions(const LinkContext& context)
+{
+	if ( fHasInitializers ) {
+		const uint32_t cmd_count = ((macho_header*)fMachOData)->ncmds;
+		const struct load_command* const cmds = (struct load_command*)&fMachOData[sizeof(macho_header)];
+		const struct load_command* cmd = cmds;
+		for (uint32_t i = 0; i < cmd_count; ++i) {
+			if ( cmd->cmd == LC_SEGMENT_COMMAND ) {
+				const struct macho_segment_command* seg = (struct macho_segment_command*)cmd;
+				const struct macho_section* const sectionsStart = (struct macho_section*)((char*)seg + sizeof(struct macho_segment_command));
+				const struct macho_section* const sectionsEnd = &sectionsStart[seg->nsects];
+				for (const struct macho_section* sect=sectionsStart; sect < sectionsEnd; ++sect) {
+					const uint8_t type = sect->flags & SECTION_TYPE;
+					if ( type == S_MOD_INIT_FUNC_POINTERS ) {
+						Initializer* inits = (Initializer*)(sect->addr + fSlide);
+						const size_t count = sect->size / sizeof(uintptr_t);
+						for (size_t i=0; i < count; ++i) {
+							Initializer func = inits[i];
+							// <rdar://problem/8543820&9228031> verify initializers are in image
+							if ( ! this->containsAddress((void*)func) ) {
+								dyld::throwf("initializer function %p not in mapped image for %s\n", func, this->getPath());
+							}
+							if ( context.verboseInit )
+								dyld::log("dyld: calling initializer function %p in %s\n", func, this->getPath());
+							func(context.argc, context.argv, context.envp, context.apple, &context.programVars);
+						}
+					}
+				}
+			}
+			cmd = (const struct load_command*)(((char*)cmd)+cmd->cmdsize);
+		}
+	}
+}
+```
+
+Note these three lines:
+
+```
+Initializer* inits = (Initializer*)(sect->addr + fSlide);
+Initializer func = inits[i];
+func(context.argc, context.argv, context.envp, context.apple, &context.programVars);
+
+```
+
+You can see that each entry in mod_init_func is called as a function address, and the function type is Initializer. So let's find the prototype of Initializer:
+
+```
+	typedef void (*Initializer)(int argc, const char* argv[], const char* envp[], const char* apple[], const ProgramVars* vars);
+```
+
+
+# Think About How to Hook
+
+Since each address in mod_init_func is a function address, and they all have the same prototype, let's find a way to replace all the addresses in mod_init_func with our own function address.
+
+First, define our own function:
+
+```
+void myInitFunc_Initializer(int argc, const char* argv[], const char* envp[], const char* apple[], const struct MyProgramVars* vars){
+    printf("my init func\n");
+
+}
+```
+
+So the question is: how do we make dyld read our own myInitFunc_Initializer when it reads the data in mod_init_func?
+
+(1) First, note that the `__mod_init_func section` is located in the `__DATA segment`. The __DATA segment is a data segment that can be modified at runtime.
+![](/media/15029047838257.jpg)
+
+(2) Second, we need to find a timing that is earlier than when dyld reads these Initializers.
+
+When using Objective-C's +load method, note that the documentation says this:
+
+```
+The order of initialization is as follows:
+
+- All initializers in any framework you link to.
+- All +load methods in your image.
+- All C++ static initializers and C/C++ __attribute__(constructor) functions in your image.
+- All initializers in frameworks that link to you.
+```
+
+`+load methods` actually run earlier. That makes it easy. In any +load method, find the in-memory address of the mod_init_func section after the process loads, and change all the data to the address of myInitFunc_Initializer.
+
+
+
+# How to Modify mod_init_func Data
+
+Use the getsectiondata function to get the memory address of the mod_init_func section, then just modify it directly.
+
+The code is as follows:
+
+```
+#ifndef __LP64__
+    typedef uint32_t MemoryType;
+#else /* defined(__LP64__) */
+    typedef uint64_t MemoryType;
+#endif /* defined(__LP64__) */
+
+    Dl_info info;
+    dladdr((const void *)hookModInitFunc, &info);
+    
+#ifndef __LP64__
+    const struct mach_header *mhp = (struct mach_header*)info.dli_fbase;
+    unsigned long size = 0;
+    MemoryType *memory = (uint32_t*)getsectiondata(mhp, "__DATA", "__mod_init_func", & size);
+#else /* defined(__LP64__) */
+    const struct mach_header_64 *mhp = (struct mach_header_64*)info.dli_fbase;
+    unsigned long size = 0;
+    MemoryType *memory = (uint64_t*)getsectiondata(mhp, "__DATA", "__mod_init_func", & size);
+#endif /* defined(__LP64__) */
+    for(int idx = 0; idx < size/sizeof(void*); ++idx){
+        MemoryType original_ptr = memory[idx];
+        // 这里可以保存原来的地址
+        
+        memory[idx] = (MemoryType)myInitFunc_Initializer; // 替换为我们自己的Initializer
+    }
+```
+
+
+
+# How to Call the Original Initializer?
+
+I thought about it over and over, but couldn't come up with a way to add a method that records the corresponding original function address to myInitFunc_Initializer. Suddenly it occurred to me: don't worry about the call order—just record all the original function addresses, and each time myInitFunc_Initializer is called, call the original functions one by one.
+
+Let's just look at the code.
+
+
+```
+static std::vector<MemoryType> *g_initializer; // 记录每一个原函数地址
+static int g_cur_index;
+```
+
+Then, in our own Initializer, get each original function address one by one, call it and measure the time cost.
+
+```
+
+typedef void (*OriginalInitializer)(int argc, const char* argv[], const char* envp[], const char* apple[], const MyProgramVars* vars);
+
+void myInitFunc_Initializer(int argc, const char* argv[], const char* envp[], const char* apple[], const struct MyProgramVars* vars){
+    printf("my init func\n");
+    
+    ++g_cur_index;
+    OriginalInitializer func = (OriginalInitializer)g_initializer->at(g_cur_index);
+    
+    CFTimeInterval start = CFAbsoluteTimeGetCurrent();
+    
+    func(argc,argv,envp,apple,vars);
+    
+    CFTimeInterval end = CFAbsoluteTimeGetCurrent();
+}
+```
+
+# ASLR
+
+Because of ASLR, we can't just record the function address—we also need to record the ASLR address. This is used later to locate the function address via the symbol file.
+
+The ASLR offset (more precisely, the base address after the ASLR offset—thanks to [Joy__](http://www.jianshu.com/u/9c51a213b02e) for pointing this out) is the variable `mhp` in the code above (i.e., the dli_fbase of mach_header_64).
+
+# The Fluctuating Log Is Out—Now How to Locate the File?
+
+With the symbol file, put the app file and the dsym in the same directory, and you can locate the file.
+
+```
+atos -o Demo.app/Demo 0x100a1a47c -l 0x100018000
+
+_GLOBAL__sub_I_XXXXX.cpp (in Demo) + 1
+
+```
+
+
+For details, refer to this article:
+
+- <http://www.jamiegrove.com/software/fixing-bugs-using-os-x-crash-logs-and-atos-to-symbolicate-and-find-line-numbers>
+or
+- <https://everettjf.github.io/2015/09/09/ios-plcrashreporter#dsym>
+
+# Code
+
+<https://github.com/everettjf/Yolo/tree/master/HookCppInitilizers>
+
+
+# Summary
+
+Locating it is indeed cumbersome, but using this method you can locate, from the logs, those Initializers that fluctuate significantly in time cost during real App usage.
+
+Each Initializer takes very little time, but over the long term, all kinds of Initializers that don't need to run during the App's startup stage have crept in silently. The power of the masses is great.
+
+<!--ZH-->
 
 
 
@@ -383,10 +762,3 @@ _GLOBAL__sub_I_XXXXX.cpp (in Demo) + 1
 定位起来确实麻烦，但使用这个方法能从日志中定位到真实使用App的过程中那些耗时浮动较大的Initializer。
 
 每个Initializer都耗时很少，但长期以来，各种不需要在App启动阶段执行的Initializer都悄无声息的进来了。群众的力量大啊。
-
-
-
-
-
-
-

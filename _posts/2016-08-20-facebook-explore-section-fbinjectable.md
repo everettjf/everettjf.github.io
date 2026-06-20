@@ -1,9 +1,369 @@
 ---
 layout: post
-title: "探索 Facebook iOS 客户端 - Section FBInjectable"
+title: "Exploring Facebook's iOS Client - The FBInjectable Section"
+title_zh: "探索 Facebook iOS 客户端 - Section FBInjectable"
+lang_original: zh
 categories: Skill
 comments: true
 ---
+ 
+
+
+
+---
+ 
+# Observation
+ 
+ Viewing Facebook's executable with MachOView, I found the FBInjectable and fbsessiongks data sections. This article explores the creation and purpose of the FBInjectable data section.
+ 
+![](/media/14713701978671.jpg)
+
+<!-- more -->
+
+# How to Locate It
+
+Device: iPhone5, jailbroken, iOS 8.4, armv7
+
+## Decrypt (crack the shell)
+
+Use Clutch or dumpdecrypted to get the unencrypted Facebook armv7 executable.
+
+## Initial Search with strings
+
+Use strings to search for the keyword FBInjectable; we can use the string as an entry point.
+
+![](/media/14713711043679.jpg)
+
+
+## Analyze with Hopper and IDA
+
+It's best to analyze with both Hopper and IDA. Each App has its own pros and cons; use them together.
+
+Analysis is slow; on my MBP CPU 2.2 i7 it took over an hour.
+
+After analysis is done, you can freely roam through arm.
+
+## Initial Location in Hopper
+
+Search for the string FBInjectable
+
+![](/media/14713715442206.jpg)
+
+Look at one that has cross-references
+
+![](/media/14713716052181.jpg)
+
+![](/media/14713716295066.jpg)
+
+Jump over to view it; we can see the address is at 0x0334cc1c, and FBInjectable is the third argument to getsectiondata.
+
+![](/media/14713716878000.jpg)
+
+The call address of getsectiondata is 0x0334cc20.
+
+getsectiondata's definition is as follows:
+
+![](/media/14713897883425.jpg)
+
+Disassembly:
+
+![](/media/14713901424795.jpg)
+
+
+We need to pay special attention to the r11 variable. Hopper's disassembled code seems to drop some very key r2 info. But after reading it through, we can roughly tell it's iterating over getsectiondata's return value, doing some processing every 4 bytes.
+
+If IDA has the F5 decompile feature, we can see the image below. It doesn't drop the key info here. v19 is the return value, cast to a DWORD pointer (I'm familiar with this from Windows development — double word, word is two bytes, DWORD is four bytes), and then this pointer is dereferenced.
+
+That is, it treats the first four bytes in getsectiondata's return buffer as the memory address of a string.
+
+![](/media/14713904842654.jpg)
+
+## Confirm the Meaning of FBInjectable with MachOView
+
+Look again at the first four bytes of the FBInjectable section, B8DB8404; because of little-endian, the memory address is 0x0484DBB8.
+
+![](/media/14715339253688.jpg)
+
+Jump to this address in Hopper:
+![](/media/14715347620860.jpg)
+
+The other four-byte groups are all like this.
+
+
+
+
+## Confirm the Meaning of getsectiondata's Return Value with lldb
+
+To confirm whether Facebook calls getsectiondata after launch and passes in FBInjectable, we can first set a conditional breakpoint.
+
+Launch the App with debugserver:
+
+```
+everettjfs-iPhone:~ root# debugserver -x backboard *:1234 /var/mobile/Containers/Bundle/Application/A7811200-13B6-4053-BAED-8D3E8DE7C929/Facebook.app/Facebook
+```
+
+Add a conditional breakpoint:
+
+```
+70 = F
+95 = _
+
+(lldb) br set -n getsectiondata -c '(int)*(char*)$r2 == 70'
+```
+
+Continue running, and we find it can break here.
+
+Single-step, and print the return value, the data in r0.
+![](/media/14713916594647.jpg)
+
+![](/media/14713916821535.jpg)
+
+ Here we find a problem: it's different from the FBInjectable section's data.
+ 
+ ![](/media/14713917406057.jpg)
+
+But we find a pattern: subtracting each 4-byte value gives exactly the ASLR offset address. (For example: 0x0488bbb8 - 0x0484dbb8 = 0x3e000)
+
+That is, the FBInjectable data section's data was modified before getsectiondata was called. Let's ignore the modification method for now (a modification method will be introduced below) and keep exploring.
+
+Print the current method's return value.
+![](/media/14713924113293.jpg)
+
+We can see this is very similar to the result of the initial strings search for FBInjectable.
+![](/media/14713711043679.jpg)
+
+PS: Using a conditional breakpoint this step makes launch especially slow. But the purpose of the conditional breakpoint is only to confirm whether this call exists. Since debugging requires launching the App many times, you can also break directly at the target address. (On launch, first break at start, then use image list to view the ASLR offset, then compute getsectiondata's address, then br s -a ADDRESS.)
+
+## Initial Conclusion
+
+From this we can tell that what's stored in FBInjectable is
+![](/media/14713945376097.jpg)
+
+the addresses of these kinds of strings; on armv7 (32-bit) each address takes 4 bytes, and the 18 addresses above take a total of 72 bytes. Through FBInjectable's data we can get these 18 strings.
+
+
+## View with class-dump
+
+Search for fb_injectable in the headers,
+
+![](/media/14713926308331.jpg)
+
+
+## Look at the lldb Call Stack Again
+
+
+![](/media/14713930823544.jpg)
+
+In the image we see lots of folly symbols. folly is Facebook's open-source C++ Library focused on performance, but I don't know why it has such a big impact on lldb's symbols. (When I have time I need to learn more about how lldb's symbols are looked up.) Anyway, the addresses are correct. We can subtract the ASLR offset from the addresses in the frames to get the addresses in the file.
+
+Based on the call stack, we can trace to the following location:
+
+The jump here may be a bit big, but based on the addresses of those frames in the call stack, it's easy to see the image below (this is just one of the 18 configurations).
+
+![](/media/14713937815940.jpg)
+![](/media/14713938170666.jpg)
+
+The general flow is as follows:
+
+FBNavigationBarSearchFieldLayout class's
+
+```
++ (float)_calculateLeftOffsetForController:(id)arg1 isRoot:(BOOL)arg2 hasLeftMessengerButton:(BOOL)arg3;
+```
+
+calls FBIntegrationManager class's
+
+```
++ (Class)classForProtocol:(id)arg1;
+```
+
+which further calls
+
+```
++ (id)classesForProtocol_internal:(id)arg1;
+```
+
+classesForProtocol_internal, on the first call (dispatch_once), loads FBInjectable's content and gets these 18 strings, then converts them into the corresponding classes.
+
+classForProtocol's argument is the protocol FBNavigationBarConfiguration, and through this protocol it gets the class FBNavigationBarDefaultConfiguration.
+
+Finally it calls a static method,
+![](/media/14715360284429.jpg)
+
+
+## Look at the Headers Again
+
+These 18 classes have several things in common
+
+1. They all contain the fb_injectable method.
+2. They all contain the integrationPriority method.
+3. They're all static methods.
+4. They each implement a similarly-named protocol. For example: FBNavigationBarDefaultConfiguration implements the protocol FBNavigationBarConfiguration.
+    ![](/media/14715363734149.jpg)
+
+5. The protocol mentioned in item 4 inherits another protocol FBIntegrationToOne.
+    ![](/media/14715363409527.jpg)
+
+
+
+# Conclusion
+
+At this point, we basically know FBInjectable's purpose, and can draw the following conclusion.
+
+The FBInjectable section is used to change some configurations during the packaging stage. This configuration may affect the UI, functionality (Policy), and various other aspects.
+
+```
+FBNewAccountNUXPYMKVCFactory,
+FBPersonContextualTimelineHeaderDataSourceDefaultConfiguration,
+FBTimelineActionBarDefaultConfiguration,
+FBTimelineActionBarNuxPresentersDefaultConfiguration,
+FBTimelineNavTilesFriendsFollowersDefaultConfiguration,
+FBGroupsModuleDefaultConfiguration,
+FBGroupsLandingWildeCoordinator,
+FBEventsModuleDefaultConfiguration,
+FBEventMessageGuestsDefaultCapability,
+FBPhotoModuleDefaultConfiguration,
+FBGrowthModuleDefaultConfiguration,
+FBEventComposerKitDefaultConfiguration,
+FBComposerDestinationOptionsDefaultPolicy,
+FBBookmarksDownloaderConfiguration,
+FBGroupCreationViewControllerDefaultStepsFactory,
+FBNavigationBarDefaultConfiguration,
+FBPersonalAppSuiteDefinitionProvider,
+WildeKeys
+```
+
+These classes share the following info:
+
+1. The +(void)fb_injectable method.
+	- This method is just a marker.
+	- Used to conveniently locate this class.
+2. They each implement a protocol corresponding to the current class.
+	- For example: the FBNewAccountNUXPYMKVCFactory class corresponds to the FBNewAccountNUXPYMKVCFactory protocol.
+	- Another example: the FBNavigationBarDefaultConfiguration class corresponds to the FBNavigationBarConfiguration protocol.
+	- Another example: the FBEventsModuleDefaultConfiguration class corresponds to the FBEventsModuleConfiguration protocol.
+3. This corresponding protocol must implement FBIntegrationToOne. That is, the current class also includes the + (unsigned int)integrationPriority; method.
+	- For example: FBNewAccountNUXPYMKVCFactory, FBNavigationBarConfiguration, FBEventsModuleConfiguration all inherit the FBIntegrationToOne protocol. This causes classes like FBNewAccountNUXPYMKVCFactory to also include the + (unsigned int)integrationPriority; method.
+	- This method is used to specify the lookup priority.
+	- FBIntegrationToOne, by its name, can only integrate 1. It means choosing 1 based on priority.
+
+For example:
+
+```
+float __cdecl +[FBNavigationBarSearchFieldLayout _calculateLeftOffsetForController:isRoot:hasLeftMessengerButton:]
+
+FBNavigationBarConfiguration
+
+循环判断哪个类实现了这个协议，最后找到FBNavigationBarDefaultConfiguration，然后获取shouldShowBackButton。
+```
+
+# Creating FBInjectable
+
+You can use the `__attribute((used,section("segmentname,sectionname")))` keyword to place a variable into a special section.
+
+attribute reference <http://gcc.gnu.org/onlinedocs/gcc-3.2/gcc/Variable-Attributes.html>
+
+For example:
+
+```
+char * kString1 __attribute((used,section("__DATA,FBInjectable"))) = "string 1";
+char * kString2 __attribute((used,section("__DATA,FBInjectable"))) = "string 2";
+char * kString3 __attribute((used,section("__DATA,FBInjectable"))) = "string 3";
+```
+
+PS: Article correction: the code above changed unused to used. No reference is needed, which avoids being optimized away in release.
+
+
+# Recap
+
+A compile-time configuration selection mechanism.
+
+At compile time, certain configuration classes are selected to be included in compilation (more precisely, at link time, certain configuration classes' object files are selected to be included in linking) or assigned a configuration priority. At runtime, the App gets all configuration classes through FBInjectable, and uses each configuration class's corresponding protocol to get the specific configuration currently in use.
+
+
+# Example and Further Explanation
+
+The Demo imitates this mechanism.
+
+Code: <https://github.com/everettjf/Yolo/tree/master/FBInjectableTest>
+
+![](/media/14717165824862.jpg)
+
+
+The Demo implements three configuration classes; each configuration class uses code like the following to automatically create the FBInjectable section. (~~printf is just to prevent it from being optimized away by the compiler; there should be other ways to prevent it from being optimized away, but I haven't found one yet — if you know, please tell me~~. Thanks to classmate vr2d in the iOS reverse-engineering group: changing the first argument of attribute to used avoids being optimized away in release. I still need to be careful — at the time I felt a bit weird seeing unused, but didn't carefully look up its meaning.)
+
+```
+#define FBInjectableDATA __attribute((used, section("__DATA,FBInjectable")))
+```
+
+```
+char * kNoteDisplayDefaultConfiguration FBInjectableDATA = "+[NoteDisplayDefaultConfiguration(FBInjectable) fb_injectable]";
+
+@implementation NoteDisplayDefaultConfiguration
+
++ (void)fb_injectable{
+}
++ (NSUInteger)integrationPriority{
+    return 0;
+}
+
++ (BOOL)showDeleteButton{
+    return YES;
+}
++ (UIColor *)noteBackgroundColor{
+    return [UIColor blackColor];
+}
+
+@end
+```
+
+Reading the FBInjectable section:
+
+```
+        Dl_info info;
+        dladdr(readConfigurationClasses, &info);
+        
+#ifndef __LP64__
+//        const struct mach_header *mhp = _dyld_get_image_header(0); // both works as below line
+        const struct mach_header *mhp = (struct mach_header*)info.dli_fbase;
+        unsigned long size = 0;
+        uint32_t *memory = (uint32_t*)getsectiondata(mhp, "__DATA", InjectableSectionName, & size);
+#else /* defined(__LP64__) */
+        const struct mach_header_64 *mhp = (struct mach_header_64*)info.dli_fbase;
+        unsigned long size = 0;
+        uint64_t *memory = (uint64_t*)getsectiondata(mhp, "__DATA", InjectableSectionName, & size);
+#endif /* defined(__LP64__) */
+```
+
+
+The final usage is as follows:
+
+```
+    Class config = [FBIntegrationManager classForProtocol:@protocol(NoteDisplayConfiguration)];
+    NSLog(@"cls = %@",config);
+    NSLog(@"color = %@",[config noteBackgroundColor]);
+```
+
+# What's the Benefit
+
+Configuration files can be scattered across their own files, saving the code to register configuration files uniformly. This way configuration files are easier to add and remove.
+
+# Difficulties Encountered During Exploration
+
+<http://iosre.com/t/facebook-app-fbinjectable-section/4685>
+
+At the time I hadn't written the Demo yet, and thought it needed manual modification, but it suddenly dawned on me while writing the Demo.
+
+# Summary
+
+The steps above are only the steps I re-organized after exploration; in the actual exploration the steps may interleave with each other.
+
+What's strange is that Facebook doesn't seem to have mentioned this "configuration selection" little trick in any article. Neither Twitter nor Google turned up any info about FBInjectable. Fortunately we can explore it through reverse engineering.
+
+
+
+
+<!--ZH-->
  
 
 

@@ -1,11 +1,127 @@
 ---
 layout: post
-title: SegmentFault Hackathon 2015 北京站总结
+title: "Summary of the SegmentFault Hackathon 2015 Beijing Stop"
+title_zh: "SegmentFault Hackathon 2015 北京站总结"
+lang_original: zh
 categories: Essay
 comments: true
 ---
 
 
+
+
+# Beginning
+On October 24, 2015, I took part in the [SegmentFault Hackathon 2015 Beijing](http://segmentfault.com/e/1160000003736572) event.
+
+Let me start with a picture:
+![hackathon](http://d.pr/i/1c2on+)
+
+<!-- more -->
+
+This was the second time I participated in a hackathon.
+
+# Looking Back at the Past
+
+The previous time was probably around 2013, when Microsoft's Windows 8 had just come out. As a member of the Microsoft camp at the time, even though I was in Jinan (and hadn't seen much of the world), I still traveled a thousand miles to Beijing at my own expense, just to experience Microsoft Research Asia in person, just to feel Beijing's development atmosphere.
+
+Let me briefly summarize a few things from that previous Windows 8 development hackathon that left a deep impression on me:
+	
+- Sitting at the same table was a programmer in his sixties, already retired, who nevertheless coded all through the night with us (though he went back to rest the next morning and didn't stay until the end of the competition — that's already very impressive). I think my purpose in coming to Beijing was fulfilled: to feel this kind of love for programming.
+- The me of the past had always been a "language purist," obsessed with C++ and disdainful of other languages. Because of that, I had a soft spot for Microsoft's C++/CX and worked hard to master it, yet at the event I rarely saw anyone using C++/CX. (Most used C#, a few used Javascript. I met a fellow doing game development who used C++/CX, and we exchanged QQ contacts.)
+- This Windows 8 hackathon allowed you to develop in advance, and it wasn't required to submit the app before the two-day event ended. The app I was making, I didn't keep developing all the way to submission either (a matter of perseverance, and of fooling around too much). I came to deeply understand that taking an app from idea to reality is not a simple process.
+
+# This Competition
+
+I learned about this competition from my friend circle a month in advance, and there was even a Jinan division. I figured, since I was already in Beijing, I'd join the Beijing one. I mentioned it to my friend M (also a colleague and former classmate), and after thinking it over, my friend said if we're going to do it, let's do it for real. So this time our team had 5 people in total.
+
+We arrived at AngelCrunch on Zhongguancun Innovation Street. A few experts explained the spirit of the hackathon and the content of the event one by one, and then the competition began.
+
+## Skills
+
+- M, team leader, Android
+- G, audio/video processing, NDK
+- J, Android
+- X, UI
+- Me, Windows, iOS, Flask
+
+The competition required the work to be submitted before 12:00 noon the next day. After discussing together, we initially settled on two points:
+
+- Make a mobile product, only developing the Android version (which means I could only do the server side)
+- We must decide what to make before 1 PM. (The event explanation finished around 10 AM)
+
+## What to Make
+We mainly came up with the following apps:
+
+- Photo wall, a tool to conveniently make photo walls
+- Voice tasks, team voice tasks
+- Multi-person travel AA split payment, to conveniently calculate who paid more and who paid less
+- A social mini-game, two virtual characters, adding all kinds of animation effects
+- A mini-game for kids to play (I forget the specifics)
+
+After discussion, we settled on a travel app, with the following features:
+
+- Create travel groups.
+- Use voice instead of typing.
+- Each person can record expenses by voice (User A spent 100 yuan), and at the end of the trip, calculate who owes whom how much based on average spending.
+- Create voice reminders (remind everyone to gather somewhere at 9 o'clock)
+- Create voice diaries (one sentence per person, finally exported and merged into a single audio file)
+
+## Division of Labor
+
+- M, implement voice recording and recognition into text.
+- G, implement merging multiple voice files.
+- J, implement all the screens.
+- X, several screen effects and image slicing.
+- Me, server side (login, group management, voice message management, voice upload/download, calling the voice merge, etc.)
+
+## Getting to Work
+
+### Settle the Layout Together
+We quickly sketched the basic layout of a few screens on scratch paper, and then everyone started working separately.
+
+### Source Code Management
+Collaborating among multiple people requires source code management. Except for UI, the four of us used a repository on [http://git.oschina.net/](http://git.oschina.net/).
+
+### Everyone Working
+- M found the iFlytek voice recognition SDK, hit all kinds of pitfalls in the middle, and finally got it done.
+- G started with his most familiar ffmpeg development, wrote an so file, and also got the python calling example working.
+- J cranked out the screens — that fast.
+- X was quite skilled too.
+- Me, getting things going with Flask and MongoDB. (Same as developing mostlike.link)
+
+## Lessons Learned
+
+- M and J ran into some problems setting up their environments, one using Android Studio and one using Eclipse. The build kept failing because some files weren't committed.
+- M found lots of pitfalls in the iFlytek SDK — the parameters don't follow the usual conventions and crash easily.
+- On the server side, I had long admired the name Celery but had never really used it. This time I considered using it when merging voice files. As a result, it kept showing an error message (I haven't yet found the time to study it), and after burning a huge amount of time I gave up. (Worked on it from 3 AM to 6 AM and still couldn't figure it out, so I just gave up. For the live demo, the voice clips weren't long, so the blocking merge was still tolerable.)
+
+
+## The Demo
+
+Near 9 AM the next morning, all the features finally passed (the voice reminder was abandoned due to time constraints). I lay on the table and took a short nap.
+The demos started in the afternoon.
+
+A few things that left a deep impression:
+
+- The very first demo shocked the whole room: augmented reality, where the real-time camera video could walk you step by step through replacing the fan in a MacBook. The exploded view of the MacBook was very cool.
+- Many demos in the middle were about social products. According to the judges' later summary, the judges were no longer very interested in those kinds of products.
+- The demo presentation itself is also an area to control well. Some spent a lot of time at the beginning talking about their own feelings and so on and so forth, with nearly 2 minutes gone by (in principle each team had a total of 3 minutes to present). Some even talked about their life story, their indissoluble bond with programming, and the like. Others didn't control their time well and rambled too much. Some didn't know how to liven up the room (of course this is just my impression — I'm not great at livening things up either).
+- I personally felt our team controlled the presentation time very well. The voice synthesis effect at the end was nice, the main features we made were shown off just right, and we inserted a little joke to liven up the room.
+
+## An Unexpected Award
+
+First place was the augmented-reality computer-repair work (I later learned they used Qualcomm's Vuforia SDK together with Unity3D).
+
+Second place was voice-controlled computer use, helping disabled people operate computers. Very heartwarming, very practical. (Voice recognition, plus sending various Windows window messages.)
+
+Several judges took turns explaining the works that left a deep impression on them, and not one mentioned us. But when the final scores came out, third prize! Everyone was very happy (classmate X went home to sleep and didn't stay until the final awards).
+
+# Summary
+
+I should study this [http://developer.vuforia.com/](http://developer.vuforia.com/) — very cool effects.
+
+
+<!--ZH-->
 
 
 
@@ -119,5 +235,4 @@ comments: true
 # 总结
 
 研究下这个[http://developer.vuforia.com/](http://developer.vuforia.com/)哈，很炫的效果。
-
 

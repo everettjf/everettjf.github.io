@@ -1,11 +1,140 @@
 ---
 layout: post
-title: "Xcode 书签插件 XBookmark 开发笔记"
+title: "Development Notes for XBookmark, an Xcode Bookmark Plugin"
+title_zh: "Xcode 书签插件 XBookmark 开发笔记"
+lang_original: zh
 categories: Skill
 comments: true
 ---
 
 
+
+
+Code: [https://github.com/everettjf/XBookmark](https://github.com/everettjf/XBookmark)
+
+# Result
+
+![menu](https://everettjf.github.io/images/extern/xbookmark0.3.0.png)
+<!-- more -->
+
+# How to Use
+First install the plugin manager `Alcatraz`, search for `XBookmark` and install it. After restarting Xcode you'll find the following features in the `Edit` menu.
+
+    - For the current line of code, press F3 to add or remove a bookmark
+    - Shift+F3 shows the bookmark list
+    - Command+F3 jumps to the next bookmark
+    - Shift+Ctrl+F3 jumps to the previous bookmark
+
+# Background
+When I first got into iOS development, I found that Xcode surprisingly lacks the bookmark feature I had often used in Visual Studio. After searching around for a while, I found roughly the following alternatives:
+
+    - Use breakpoints (Disabled Breakpoint)
+    - Use the XToDo plugin, add a BOOKMARK tag, and add a BOOKMARK comment on the line of code where you want a bookmark
+    - Use the XcodeBookmark plugin (not the XBookmark discussed in this article), but this plugin doesn't seem to support Xcode 7, and its underlying principle is still about adding auxiliary breakpoints.
+
+So far I found these 3 methods, but none of them felt ideal. There was no way to quickly switch between the previous and next bookmark, and no way to add a bookmark comment.
+So I decided to develop one myself, and call it `XBookmark`.
+
+
+# Pre-reading Articles
+During development I read roughly the following articles.
+
+Articles about Xcode plugins:
+
+<http://studentdeng.github.io/blog/2014/02/21/xcode-plugin-fun/>
+<http://www.poboke.com/study/write-a-xcode-plugin-to-auto-select-all-targets.html>
+<http://www.onevcat.com/2013/02/xcode-plugin/>
+
+Articles about Mac development:
+
+<http://www.raywenderlich.com/17811/how-to-make-a-simple-mac-app-on-os-x-10-7-tutorial-part-13>
+
+I also read the source code of a few plugins.
+
+# A Brief Summary of the Development Steps
+
+## Install the Template, Create the Project
+    Search for Xcode Plugin in the Templates section of Alcatraz. After installing, create the project from this template.
+
+![XcodePluginTemplate](https://everettjf.github.io/images/extern/xbookmarkdev1.png)
+![XcodePluginCreate](https://everettjf.github.io/images/extern/xbookmarkdev2.png)
+
+## Add the Menu
+
+~~~
+NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
+if (menuItem) {
+    [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
+    
+    {
+        NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Toggle Bookmark" action:@selector(toggleBookmark) keyEquivalent:f3];
+        [actionMenuItem setKeyEquivalentModifierMask:0];
+        [actionMenuItem setTarget:self];
+        [[menuItem submenu] addItem:actionMenuItem];
+    }
+    //...
+~~~
+
+## Get the Bookmark Position
+
+~~~
+IDESourceCodeEditor* editor = [XcodeUtil currentEditor];
+NSTextView* textView = editor.textView;
+if (nil == textView)
+    return;
+
+NSRange range = [textView.selectedRanges[0] rangeValue];
+NSUInteger lineNumber = [[[textView string]substringToIndex:range.location]componentsSeparatedByString:@"\n"].count;
+
+// length of "file://" is 7
+NSString *sourcePath = [[editor.sourceCodeDocument.fileURL absoluteString] substringFromIndex:7];
+
+XBookmarkEntity *bookmark = [[XBookmarkEntity alloc]initWithSourcePath:sourcePath withLineNumber:lineNumber];
+[[XBookmarkModel sharedModel]toggleBookmark:bookmark];
+
+//...
+~~~
+
+## Add the Bookmark List
+
+![XBookmarkList](https://everettjf.github.io/images/extern/xbookmarkdev3.png)
+
+## Publish to Alcatraz
+Pretty simple — modify the config file and create a Pull Request.
+See the README at <https://github.com/supermarin/alcatraz-packages>.
+
+# Conclusion
+For now I've only finished the basic features, and there are still a few things that need optimizing and improving.
+
+- Locating the line of code. (The code comes from XToDo's code, but in some cases the locating is slow. I need to find the cause and fix it.)
+- Bookmark indicators. Show a bookmark symbol, a checkmark or the like, in front of the code line.
+- Comment feature. (Add the ability to add bookmark comments.)
+- Mnemonic bookmarks. (Imitating the IntelliJ family.)
+
+---
+
+# Update on October 31, 2015
+Thanks to a fellow netizen who told me about the JumpMarks plugin (if I had known about this plugin back then, I might not have developed XBookmark at all). This plugin implements quickly locating a code line, as well as adding markers next to the code lines. But it doesn't provide a tag list (luckily XBookmark is a little different).
+
+After studying JumpMarks' code, XBookmark recently released two versions (0.2 and 0.3). Thanks to the author of JumpMarks.
+- Version 0.2 implemented quickly locating code lines.
+- Version 0.3 added customizable shortcuts, as well as the indicator in front of the code line.
+
+Developing XBookmark was a very happy process — it was my first time merging a Pull Request (thanks to <https://github.com/langyapojun> for solving the Xcode 7 support issue). I had never developed a public tool before (5 years flew by with my head down coding away). This year I'm trying to change and contribute some code to open source.
+
+About the Xcode 7 support issue, I'm still quite puzzled. I've always developed with Xcode 7 myself (upgraded from Xcode 6 to Xcode 7), so why does it work fine even without that id? I'll have to look into it...
+
+
+---
+
+# Update on January 24, 2017
+
+Now it supports Xcode 8. I imitated XVim's installation method (re-sign Xcode, then make).
+
+
+
+
+<!--ZH-->
 
 
 
@@ -130,7 +259,6 @@ XBookmarkEntity *bookmark = [[XBookmarkEntity alloc]initWithSourcePath:sourcePat
 # 2017年1月24日更新
 
 现在已经支持Xcode8了。模仿的XVim的安装方式（重签名Xcode后，make）。
-
 
 
 

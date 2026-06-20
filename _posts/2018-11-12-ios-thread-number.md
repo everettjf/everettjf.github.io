@@ -1,12 +1,88 @@
 ---
 layout: post
-title: "iOS 线程标识的四种获取方法对比"
+title: "Comparing Four Ways to Get the Thread Identifier on iOS"
+title_zh: "iOS 线程标识的四种获取方法对比"
+lang_original: zh
 categories:
   - 性能优化
 tags:
   - 线程
 comments: true
 ---
+
+In performance-optimization work you often need to obtain the thread identifier. This article briefly lists and compares four ways to get the thread identifier.
+
+<!-- more -->
+
+# The Four Methods
+
+The four methods are as follows:
+
+```
+// <NSThread: 0x283903000>{number = 1, name = main}
+[[NSThread currentThread] description]
+
+// 0x283903000
+[NSThread currentThread]
+
+// 0x10268ab80
+pthread_t tid = pthread_self()
+
+// 687599 （这与NSLog中的线程ID相同）
+uint64_t tid;
+pthread_threadid_np(NULL, &tid);
+```
+
+The code for formatted output is as follows:
+
+```
+NSLog(@"[[NSThread currentThread] description] = %@", [[NSThread currentThread] description]);
+NSLog(@"[NSThread currentThread] = %p",[NSThread currentThread]);
+NSLog(@"pthread_self = %p",pthread_self());
+uint64_t tid;
+pthread_threadid_np(NULL, &tid);
+NSLog(@"pthread_threadid_np = %llu",tid);
+```
+
+# Timing Comparison
+
+Here is the time it took on iPhone7 with iOS12, for 10000 iterations each on the main thread and a child thread:
+
+```
+-----main thread-----
+45.33674998674542ms - NSThread description
+0.2739583433140069ms - NSThread
+0.04708333290182054ms - pthread_self
+0.05629166844300926ms - pthread_threadid_np
+-----child thread-----
+46.34449999139179ms - NSThread description
+0.1779583399184048ms - NSThread
+0.04004167567472905ms - pthread_self
+0.04883333167526871ms - pthread_threadid_np
+```
+
+As you can see, `[[NSThread currentThread] description]` probably does a lot of internal string operations and is relatively slow. The other three methods take very little time.
+
+# Reference Code
+
+<https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/ThreadNumberDemo/ThreadNumberDemo/AppDelegate.m>
+
+# Summary
+
+So from now on you can happily and boldly use these two methods, of which pthread_threadid_np matches the thread ID in NSLog — it seems to work even better.
+
+```
+pthread_t tid = pthread_self()
+
+uint64_t tid;
+pthread_threadid_np(NULL, &tid);
+```
+
+
+Welcome to follow the official account "Client Tech Review":
+![](/images/fun.png)
+
+<!--ZH-->
 
 性能优化的开发中经常需要获取线程标识，这篇文章简单罗列和对比了四种获取线程标识的方法。
 
@@ -79,4 +155,3 @@ pthread_threadid_np(NULL, &tid);
 
 欢迎关注订阅号「客户端技术评论」：
 ![](/images/fun.png)
-

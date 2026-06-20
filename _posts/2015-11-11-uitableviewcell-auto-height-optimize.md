@@ -1,11 +1,96 @@
 ---
 layout: post
-title: "UITableViewCell 自动高度计算性能优化总结"
+title: "Summary of Performance Optimization for UITableViewCell Automatic Height Calculation"
+title_zh: "UITableViewCell 自动高度计算性能优化总结"
+lang_original: zh
 categories: Skill
 comments: true
 ---
 
 
+
+
+# Background
+
+- A streamer chat room where a large number of viewers can send a large number of messages, and gifting some items also produces a large number of item messages. Here let's assume the case of many messages: `5 messages arriving per second`.
+- Messages are implemented with NSAttributedString, where `the message contains images and text of different sizes`.
+- After a message arrives, `automatically scroll to the last message`.
+- A global message list (storing the most recent 500 messages; once it reaches 500, the earliest 300 are deleted directly).
+
+<!-- more -->
+
+# Requirements
+- Must not consume large amounts of CPU.
+- The UI must not stutter when a large number of messages arrive.
+
+# Implementation
+
+
+## Automatic Height Calculation
+Use a nice open source library
+[UITableView-FDTemplateLayoutCell](https://github.com/forkingdog/UITableView-FDTemplateLayoutCell)
+
+This open source library has no problem when there's little data, but when the data (messages) keeps increasing, it causes the height calculation workload to surge.
+
+## Why Height Calculation Consumes CPU
+Auto Layout's height calculation is slow. This function, `systemLayoutSizeFittingSize`, is slow to compute.
+
+
+# Using estimated Doesn't Work Well
+
+~~~
+- (CGFloat)tableView:(UITableView * _Nonnull)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath
+
+~~~
+Estimating the height reduces a lot of height calculation; the height is only calculated when the cell needs to be displayed. But a large number of arriving messages causes the cells to jitter, which looks very uncomfortable.
+
+Because a newly added cell is first shown using the estimated height, if the actual required height differs from the estimated height, there will be a height-adjustment process after the cell is shown (with a simple animation effect. This effect isn't a big deal when adding one message, but if a large number of messages arrive at very short intervals, it causes the cells to jump around).
+
+# Using a Cache
+
+You can't use IndexPath caching: if you use IndexPath caching, then when messages reach 500 and the earliest 300 are deleted, it causes all cells to need their heights recalculated. However, the remaining 200 messages have already been calculated.
+
+Since a message never changes once produced, you can cache the calculated cell height into the message itself again.
+
+~~~c
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSInteger row = [indexPath row];
+    MessageEntity *msg = self.data[row];
+    if(msg.heightCache > 0){
+   		//when there is a cached height, return the corresponding height directly
+        return msg.heightCache;
+    }
+
+    CGFloat height = [tableView fd_heightForCellWithIdentifier:@"Cell" cacheByIndexPath:indexPath configuration:^(id obj) {
+        MessageTableViewCell *cell = obj;
+		 // Fill Cell
+    }];
+
+    msg.heightCache = height;
+    return height;
+}
+~~~
+
+Alternatively, if the message has a unique id, you can cache by id.
+
+~~~c
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    Entity *entity = self.entities[indexPath.row];
+    return [tableView fd_heightForCellWithIdentifier:@"identifer" cacheByKey:entity.uid configuration:^(id cell) {
+        // configurations
+    }];
+}
+~~~
+
+# Auto Scroll
+Since messages are produced too fast — faster than the speed of scrolling to the last row — add a delay. And filter out the scroll requests that arrived before the delay fires.
+
+
+# Reference Article
+<http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/>
+
+
+<!--ZH-->
 
 
 
@@ -88,7 +173,5 @@ comments: true
 
 # 参考文章
 <http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/>
-
-
 
 

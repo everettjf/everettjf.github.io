@@ -1,10 +1,360 @@
 ---
 layout: post
-title: "如何编写简易病毒扫描程序"
+title: "How To Write A Simple Virus Scanner"
+title_zh: "如何编写简易病毒扫描程序"
+lang_original: zh
 tags: Security
 categories: Skill
 comments: true
 ---
+
+
+- December 7, 2014, [tech talk](http://city.oschina.net/jinan/event/194933) at the OSChina Jinan City Circle event
+- My first public-venue tech talk
+- I've organized the content of this talk into a simple tutorial
+
+# Intended Audience
+- Beginners interested in virus analysis
+
+# Main Content
+- What is a computer virus
+- The development of anti-virus technology
+- Analyzing computer viruses
+- Writing a simple virus scanner
+<!-- more -->
+
+# What Is a Computer Virus
+
+### Definition of a Computer Virus
+1. In 1949, von Neumann gave the first definition of a virus in his paper "Theory of self-reproducing automata":
+`"an automaton that can actually reproduce itself".`
+1. Wikipedia: A computer virus is a computer program that, produced under *human or non-human* circumstances and *without the user's knowledge or approval*, can *replicate or run itself*.
+[Reference](https://en.wikipedia.org/wiki/Computer_virus)
+
+### The First Computer Virus
+1. In the 1960s, three people at Bell Labs implemented two programs on core memory; these two programs tried to copy themselves and kill the other program — a game called "Core War".
+
+1. The recognized first virus was born in 1971, a program called Creeper.
+[Reference](https://en.wikipedia.org/wiki/Creeper_(program)).
+
+1. Reaper was a virus-like program created to remove Creeper.
+
+### Main Characteristics of Viruses
+1. Contagiousness
+1. Stealth
+1. Infectiousness
+1. Dormancy
+1. Triggerability
+1. Manifestation
+1. Destructiveness
+1. Mutability
+
+### Classification of Viruses
+
+1. Trojans, botnets (bots, a.k.a. "zombies/broilers", DDOS)
+1. Harmful software (worms, spyware, rogue software, prank software)
+1. Script viruses (macro viruses)
+1. File-type viruses (infect files, reside in executables, etc.)
+
+In addition, you can also refer to the virus signature classification of the open-source anti-virus software [ClamAntiVirus](http://www.clamav.net/), as shown:
+
+![alt text](/stuff/2014/clamav_signature.png)
+
+Of course, the above classification isn't strict, and there's no single classification standard. In my view, they can all be collectively called *"malicious programs"*.
+
+### The Harm of Viruses
+1. Blaster worm
+  * August 2003
+  * DDOS attack on windowsupdate.com
+  * Exploited the system's RPC vulnerability to spread automatically
+  * Caused systems to reboot and crash
+  * Many variants appeared later
+
+`The virus author was quite something — he even wrote his own name, Parson, into the virus, and that's how he got caught.`
+
+1. Prank virus
+  * Female ghost virus
+  * Year 2000
+  * When it broke out in the Taiwan region, it once caused someone to die after being sent to the hospital from being too badly scared
+
+1. Flame, Stuxnet, Duqu
+  * National-security level
+  * Flame targeted business intelligence of Iran's oil sector, traceable back to 2007, but only discovered by Kaspersky in 2012. The program was very large.
+  * Stuxnet targeted Iran's nuclear facilities
+  * Duqu targeted Iran's industrial control data
+  * It's said that an explosion at a certain Iranian rocket launch base was caused by a virus, though officials don't acknowledge it.
+  * [Reference](http://bbs.pcbeta.com/forum.php?mod=viewthread&tid=1052240)
+
+# The Development of Anti-Virus Technology
+
+### Components of Anti-Virus Software
+
+- Scanner
+- Virus database
+- Virtual machine (mainly for unpacking)
+
+### First-Generation File-Based Scanning Techniques
+
+- String scanning technique
+- Wildcard scanning technique
+
+### Second-Generation File-Based Scanning Techniques
+
+1. Smart scanning
+1. Near-exact matching
+  * Multiple signature sets
+  * Checksums, block checksums, cryptographic checksums, etc.
+1. Skeleton scanning
+1. Exact identification
+
+> ClamAV Hash-based & Body-based
+
+### Memory-Based
+
+1. Memory signatures
+  * To deal with packed programs
+
+### Behavior-Based
+
+1. Behavioral signatures
+  * For example: "a program copies itself to the system32 directory, then sets itself to auto-start, and finally deletes itself" — this behavior is suspicious.
+2. Active defense
+  * Micropoint
+  * 360 Security Guard
+
+### Cloud Scanning
+
+1. Leverages server capabilities
+2. A large number of clients report suspicious files
+
+### Multi-Engine
+
+* 360's QVM, cloud engine, Avira, BitDefender
+
+> This is just a business combination, with no substantive change.
+
+### Artificial Intelligence
+- Machine learning, neural networks, etc.
+- 360 QVM (Qihoo Support Vector Machine)
+- A massive set of whitelist and virus samples
+- [Patent link](http://www.sumobrain.com/patents/wipo/Method-system-program-identification-based/WO2012071989.html)
+
+# Analyzing Computer Viruses
+
+### PE Files
+- Portable Executable
+- Portable Executable
+- PE was adapted from the Common Object File Format (COFF) used in Unix
+
+![alt text](/stuff/2014/pe.png)
+
+> * Windows  PE
+> * Linux  ELF
+> * MacOS  Mach-O
+
+
+### Basic Concepts
+1. IMAGE_DOS_HEADER
+  * MZ
+  * Mark Zbikowski, the original architect of MS-DOS
+1. Import Address Table
+1. Export table
+1. Program entry point
+  * IMAGE_NT_HEADERS
+1. Sections
+  * IMAGE_SECTION_HEADERS
+1. ...
+
+> See winnt.h
+
+### Packing
+- Compression of executable program resources
+- Originally intended to protect the file
+- Special algorithms
+- Decompressed in memory
+- For example: the UPX packer
+
+### Online Automated Analysis Tools
+
+- [Kingsoft Fireeye](https://fireeye.ijinshan.com/)
+- [VirusScan](http://www.virscan.org/)
+
+### Static Analysis
+
+IDA Pro
+PEView
+PEiD
+Sysinternals - string, autorun …
+Dependency Walker
+…
+
+### Dynamic Analysis
+
+OllyDbg
+Windbg
+WireShark
+…
+
+### Other
+- [Pediy / Kanxue Academy](http://www.pediy.com/)
+- [Tools sharing](http://pan.baidu.com/s/1mgEduGC)
+
+# Writing a Simple Virus Scanner
+
+### Goals
+- Simple
+- Scanning
+- File-based
+
+### Feature-Based
+1. File Size
+1. Import Address Table (IAT)
+1. Section
+1. Resource (Version, Company)
+1. Packer
+
+### The Idea
+
+If we compare the relationship of "a PE file to the operating system" to the relationship of "a person to the world":
+
+1. Analogy for imported functions
+  * An import table containing CreateFile can be seen as a person holding a pen — the person poses no harm to the world.
+  * An imported function CreateService is like a person holding a small knife — slightly harmful to the world, but not that much.
+  * Imported functions SetWindowsHook or CreateRemoteThread are like a person holding a gun — now quite harmful to the world.
+2. Analogy for sections
+  * .text .rdata .data .rsrc .reloc are like a properly dressed good person.
+  
+  ![alt text](/stuff/2014/goodman.png)
+  * .upx .upx1 are like a bad person.
+
+  ![alt text](/stuff/2014/badman.png)
+
+### Machine Learning
+- SVM - Support Vector Machine
+- Supervised learning algorithm
+- libsvm
+- svm-toy.exe is simple and practical
+
+### Obtaining Virus Samples
+
+[virussign](http://www.virussign.com/)
+
+Sites like Kafan or 52pojie also provide many samples.
+
+### Getting Started with Development
+
+1. Development language: Ruby
+1. Based on three libraries: rb-libsvm, pedump, sqlite3
+  You can install them like this
+
+~~~
+  > gem install rb-libsvm
+  > gem intall pedump
+  > gem install sqlite3
+~~~
+
+### Using pedump to Get File Attributes
+1. imports : string list
+1. sections : string list
+1. packer : string
+1. version : string
+1. company : string
+
+### Converting File Attributes into Vectors
+
+1. Convert packer into a vector
+1 if there's a packer, otherwise 0
+
+1. version and company same as above.
+
+1. Convert imported functions (imports) and sections into vectors
+
+~~~
+> You can do it like this:
+> First get set(A), the set of all imported functions of all files under system32 of a clean, virus-free system
+> Then get set(B), the set of all imported functions of a bunch of viruses (e.g. viruses obtained from virussign)
+> set(C) = set(A) & set(B)
+> set(D) = set(A) - set(B)
+> set(E) = set(B) - set(A)
+> This way, set(C), set(D), set(E) are given different weights.
+~~~
+
+1. Finally, combine all attributes in order into a vector for the PE file
+
+- You can obtain the database storing imports and sections via the following commands.
+
+~~~
+ruby rvsfetchiat.rb --health C:/Windows/System32
+ruby rvsfetchiat.rb --virus E:/train_virus/files
+ruby rvsfetchiat.rb --merge
+~~~
+
+- Get the attributes of a file via the following command
+
+~~~
+ruby rvsfetchiat.rb --file C:/Windows/System32/notepad.exe
+~~~
+
+### Training the Model
+Specify the folder storing the normal files to be trained and the folder of virus files.
+
+~~~
+ruby rvsscan.rb --train /Users/everettjf/Virus/train/train_health /Users/everettjf/Virus/train/train_virus
+~~~
+
+### Testing the Model
+
+~~~
+ruby rvsscan.rb --scan /Users/everettjf/Virus/train/train_virus
+ruby rvsscan.rb --scan /Users/everettjf/Virus/train/train_health
+ruby rvsscan.rb --scan /Users/everettjf/Virus/train/test_virus
+ruby rvsscan.rb --scan /Users/everettjf/Virus/train/test_health
+~~~
+
+### Remaining Issues
+- Training a large number of samples
+- Tuning parameters to lower the false-positive rate
+- Adding more key features, e.g. whether the OEP has been modified.
+- Self-learning
+
+### Source Code
+[source in github](https://github.com/everettjf/RubySVMVirusScanner)
+
+### Source of the Ideas Above
+QVM -> xiao70 -> me(everettjf)
+
+### Related Books
+- "Encryption and Decryption"
+- "The Art of Computer Virus Research and Defense"
+- "Practical Malware Analysis"
+- "Hacker Anti-Detection Attack and Defense"
+
+- "Programming Collective Intelligence"
+- "Pattern Classification"
+
+---
+
+### Material Downloads
+
+[Download the slides](/stuff/2014/HowToWriteASimpleVirusScanner.key)
+
+---
+
+### Personal Summary
+
+This talk had the following problems:
+
+- Insufficient time estimation.
+Because I didn't have a good grasp of how much content there was, and had no experience timing the presentation, I estimated 30 minutes, but it ended up running over an hour.
+- Insufficient interaction.
+There was almost no interactive segment, no interaction with the audience.
+- Insufficient focus on the content.
+Too much groundwork knowledge up front took up a lot of the early time. The final "machine learning implementation" part didn't get enough explanation time.
+
+Overall, I believe this talk deepened everyone's understanding of viruses. I believe given another chance I'll give more talks, working to foster a good programmer atmosphere in Jinan.
+
+
+<!--ZH-->
 
 
 - 2014年12月7日，开源中国济南城市圈活动[技术分享](http://city.oschina.net/jinan/event/194933)

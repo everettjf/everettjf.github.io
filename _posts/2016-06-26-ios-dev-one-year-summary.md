@@ -1,9 +1,156 @@
 ---
 layout: post
-title: "Windows 转 iOS 开发一年总结"
+title: "One-Year Summary of Switching from Windows to iOS Development"
+title_zh: "Windows 转 iOS 开发一年总结"
+lang_original: zh
 categories: Essay
 comments: true
 ---
+
+
+
+
+
+
+
+
+Since I started iOS development on March 15 last year (2015), minus the 3 months in the middle as a full-time stay-at-home dad (and part-time O2O photography startup) (from May 10 to August 12), today (June 26, 2016) it has been a little over a year.
+
+Last November I wrote a [5-month summary of switching from C++ to iOS development](https://everettjf.github.io/2015/11/18/the-past-4-months-ios-develop-for-me), listing the knowledge I learned over nearly 5 months, and also making some plans.
+
+This article continues from that one. Let me summarize what I learned over the last 6 months (from last December to today).
+
+<!-- more -->
+
+
+# Getting Started
+
+From late November to early December last year, I tinkered for a long time and finally implemented an old idea (using flask+mongodb). [Snowflake Bookmark](https://everettjf.github.io/2015/12/13/snows_link_tutorial) went live. But unfortunately, it was both simple and cumbersome, with no good experience — it only fulfilled half of a sentiment. Later the site was shut down and evolved into [TomatoRead](https://everettjf.github.io/2016/05/13/how-to-write-a-simple-feed-reader) and [Admire design navigation](https://admire.so).
+
+Having settled this little sentiment, I focused fully on learning iOS.
+
+
+# Reverse Engineering
+
+From late November to late December, I spent nearly a month of evenings (the kid usually doesn't sleep until 11pm, so I tinkered until one or two am) studying the book *iOS App Reverse Engineering*, and at the end of the year produced an [Alipay voice-saving Tweak](https://github.com/everettjf/Yolobroccoli/AlipayWalletChatVoiceSaver), and also wrote [development notes](https://everettjf.github.io/2015/12/29/tweak-for-alipay-wallet-chat-voice-save).
+
+In 2014 I was still working on security software similar to 360 Antivirus. At that time I carefully read and worked through the book *Practical Malware Analysis*, but didn't study further — I only stayed at the book's examples and simple analysis. Since my job was still business-focused, when customers reported problematic PE files, assembly was my weak point, so I mostly analyzed in Kingsoft FireEye and other tools, and didn't carefully analyze the assembly code myself.
+
+Maybe with this foundation, now looking at iOS app reverse engineering, and because of Objective-C's dynamic mechanism, basic reverse engineering is relatively easy to learn. I went through almost all the examples in the book one by one.
+
+
+Later, due to the need to develop an IM client at work, I reverse-engineered the implementations of WeChat and many other apps. Among them I also [summarized the workflow for reverse-engineering WeChat's message screen](https://everettjf.github.io/2016/06/19/reverse-explore-wechat-message-design).
+
+
+# Studying Source Code
+
+I sometimes overdo the tinkering. To study source code I even spent a lot of precious spare time writing an Xcode plugin, [XSourceNote](https://everettjf.github.io/2016/02/16/xsourcenote-dev). The idea was good, but the experience wasn't great — it was just barely usable. Using this plugin I wrote a few source-reading notes.
+
+- UITableView-FDTemplateLayoutCell study notes
+- YYCache study notes
+- SDWebImage study notes
+- YYWebImage study notes
+
+I should reflect here: I learned too little, and the plugin was completely unnecessary to make.
+**Spending time on low-priority things is something to reflect on.**
+
+
+# Books
+
+- iOS App Reverse Engineering
+- iOS Application Security Attack and Defense
+- Obscure Topics In Cocoa & Objective-C
+- CFHipster
+- iOS Core Animation Advanced Technique
+
+Besides iOS-related books, I also bought the three-volume *Math for Programmers*; the first one was simpler and I've finished it. The second and third are already in my task queue.
+
+I learned about OpenCV. To implement AR Rubik's cube solving. In the end at the segmentfault hackathon 2016 Beijing I made a simple Rubik's cube solving assistant App. [Source](https://github.com/xfteam/xfrubiks).
+
+
+# Shipped App
+
+From Snowflake Bookmark to iOS Blog Picks, to the current App *TomatoRead* — a naive idea wanting to be realized always has to go through this process.
+I realized this little dream. I have an App I shipped myself. [The *TomatoRead* development summary is here](https://everettjf.github.io/2016/05/13/how-to-write-a-simple-feed-reader).
+
+
+
+# Documentation
+
+Many blog articles don't systematically explain a piece of knowledge; I should still spend more time reading the official docs. **Systematic, comprehensive learning is more effective learning.**
+
+- CoreData Programming Guide
+- Thread Programming Guide
+	- RunLoop detail
+- Concurrency Programming Guide
+	- nsoperation
+	- dispatch queue
+	- dispatch sources
+- App Programming Guide
+- and several lightweight Guides
+
+# Blog Articles
+
+Along with my daily work, articles I felt were good were all bookmarked in *TomatoRead*, and also placed at this [web address](http://iosblog.cc/a/2/).
+
+
+# Work Content Summary
+
+Thinking about my main work content since coming to Beijing:
+
+- Continuous integration
+	- Jenkins + fastlane (gym sign and ruby script)
+- Crash collection and analysis
+	- symbol download issues
+	- plcrashreporter
+	- [symbolicatecrash bug fix](https://everettjf.github.io/2016/05/10/symbolicatecrash-deadloop-bug)
+	- python scheduled parsing, flask display
+- Chat room
+	- NSAttributedString
+- IAP
+- IM
+	- message storage
+	- message queue
+	- message display
+	- image preview
+- Live streaming
+	- gift animations
+
+
+# Next-Step Plans
+
+In priority order:
+
+- YYModel vs Mantle
+	- why is the efficiency difference so large
+- Reactive Cocoa
+	- usage
+	- dig into the source
+- Design patterns
+	- AOP
+- Componentization
+	- componentization solutions
+- AsyncDisplayKit
+	- async UI
+- Performance
+	- learn the Instruments Guide
+	- translate
+- Low-level
+	- study class-dump source, learn the Mach-O file format, myclass-dump
+
+I can interleave WWDC study. Finishing the above plan should be fast (depending on how thoroughly I study, of course); the rest of the time I'll study various open-source repos.
+
+
+
+# Summary
+
+- Time flies: half a year passed quickly. There's never enough time.
+- Priority: priority is very important, especially when "the more you know, the more you don't know."
+
+**You can go slow, but follow priorities. Don't always study introductory material for new knowledge; at least keep going deeper in one area.**
+
+
+<!--ZH-->
 
 
 

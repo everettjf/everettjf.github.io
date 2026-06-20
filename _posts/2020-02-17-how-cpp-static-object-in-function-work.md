@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "函数中的 C++ 静态变量初始化是线程安全的吗？"
+title: "Is C++ Static Variable Initialization Inside a Function Thread-Safe?"
+title_zh: "函数中的 C++ 静态变量初始化是线程安全的吗？"
+lang_original: zh
 categories:
   - cpp
 tags:
@@ -9,6 +11,103 @@ tags:
   - local-object
 comments: true
 ---
+
+
+Conclusion first: yes, it's thread-safe, and it even uses double-checked locking, so performance is pretty good.
+
+
+<!-- more -->
+
+## Exploration
+
+When writing the C++ Singleton pattern, you'll usually just smoothly write code like this:
+
+```
+class Hello {
+public:
+    static Hello & instance() {
+        static Hello obj;
+        return obj;
+    }
+    
+    Hello() {
+        printf("constructor");
+    }
+    ~Hello() {
+        printf("destructor");
+    }
+    
+public:
+    int x = 0;
+};
+```
+
+So when you call `Hello::instance()`, is it thread-safe? Can the constructor of Hello be guaranteed to run exactly once?
+
+Let's throw the code into Hopper and take a look.
+
+![-w1201](/media/15819530050437.jpg)
+
+
+Looks like there's a lock. So it's thread-safe :)
+
+## Going Further
+
+Notice these few methods:
+
+```
+__cxa_guard_acquire
+__cxa_atexit
+__cxa_guard_release
+```
+
+
+`__cxa_atexit` is likely there to call the destructor when the process exits.
+
+After some searching, you can find this source file `cxa_guard.cxx`:
+
+https://opensource.apple.com/source/libcppabi/libcppabi-14/src/cxa_guard.cxx
+
+![-w609](/media/15819532682759.jpg)
+
+
+It implements a double-checked locking via obj_guard.
+
+![-w647](/media/15819533607278.jpg)
+
+inUse stores 0 and 1 in the first address pointed to by obj_guard, implementing the first check.
+
+Found this obj_guard in Hopper:
+
+![](/media/15819535672052.jpg)
+
+
+![-w705](/media/15819535936394.jpg)
+
+This guard variable is a global variable.
+
+
+---
+
+## Summary
+
+From now on you can happily use this pattern:
+
+```
+    static Hello & instance() {
+        static Hello obj;
+        return obj;
+    }
+```
+
+---
+
+If you like it, follow the official account to show your support:
+
+![](/images/fun.png)
+
+<!--ZH-->
+
 
 
 先说结论，是线程安全，而且有double-checked locking，性能还不错。

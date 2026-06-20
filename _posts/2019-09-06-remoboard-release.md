@@ -1,12 +1,212 @@
 ---
 layout: post
-title: "远程输入法 RemoBoard 发布：用电脑键盘给手机打字"
+title: "RemoBoard Remote Keyboard Released: Type on Your Phone Using Your Computer Keyboard"
+title_zh: "远程输入法 RemoBoard 发布：用电脑键盘给手机打字"
+lang_original: zh
 categories:
   - 产品
 tags:
   - 工具
 comments: true
 ---
+
+
+**This article is a bit outdated. You can read the new article** [Remote Keyboard New Version Released: Type on Your Phone Using a Browser](https://everettjf.github.io/2019/10/15/remoboard-web/)
+
+---
+
+`Remote Keyboard` (Remote Keyboard, or Remoboard) is a keyboard app that lets you `type on your phone using your computer`. It consists of a `computer side` and a `phone side`. When typing, the computer side first connects to the phone side via IP address or Bluetooth, then you type in the app on the computer side, the text is sent to the phone side, and the keyboard on the phone side performs the simulated input.
+
+In short, this makes "typing faster". The phone side supports iOS and Android, and the computer side supports macOS and Windows.
+
+<!-- more -->
+
+![](/media/15682174633090.jpg)
+
+
+Usually we don't need remote input, but in the following scenarios Remote Keyboard might help:
+
+## Scenarios
+
+Scenario 1:
+
+An app only has a phone version, no computer version (or you don't want to buy the computer version, ha), and using this app requires "a lot of text input work".
+
+1. For example, the DayOne journaling app on iOS. I bought the iOS version but don't want to buy the macOS version, so I can use Remote Keyboard to write journal entries day to day.
+2. Another example is WeChat chatting. Many companies don't allow installing the WeChat desktop client on work computers, so Remote Keyboard can speed up chatting. (Finish chatting faster, get back to work faster.) (For me, occasionally an online friend privately asks a question, and short text can't explain it clearly — I want to answer but don't want to type it all. With Remote Keyboard, I can type quickly.)
+3. Paired with the excellent Android text-writing app "纯纯写作" (Pure Writer), it can also speed up writing.
+
+Scenario 2:
+
+The phone side has quite a few excellent `programming environments`, such as JSBox, Pythonista, and the recently released Robomaster (controlling RoboMaster S1 with Python). Using Remote Keyboard, you can do phone-side programming more conveniently.
+
+
+## Download
+
+Phone side
+
+- iOS [App Store](https://apps.apple.com/cn/app/id1474458879)
+- Android [Coolapk](https://www.coolapk.com/apk/241412) or [Google Play Store](https://play.google.com/store/apps/details?id=com.everettjf.remoboard)
+
+Computer side
+
+- macOS [GitHub Release](https://github.com/remoboard/remoboard.github.io/releases) or [Baidu Cloud](https://pan.baidu.com/s/1F0LpkM4FJeYssJXmRGb6kA)
+- Windows [GitHub Release](https://github.com/remoboard/remoboard.github.io/releases) or [Baidu Cloud](https://pan.baidu.com/s/1F0LpkM4FJeYssJXmRGb6kA)
+
+
+## How to Use
+
+Since the phone side has iOS and Android, and the computer side has macOS and Windows, there are four combinations: `iOS+macOS` / `iOS+Windows` / `Android+macOS` / `Android+Windows`. Since the usage is basically the same, here I'll mainly explain using `iOS/Android+macOS` as the example, and the usage of the other combinations can be inferred by analogy.
+
+
+### Phone Side Installation
+
+(1) Download the app from the phone-side download link above.
+
+(2) Configure the keyboard.
+
+iOS platform:
+
+Open `Settings > General > Keyboard > Keyboards > Add New Keyboard` and select `Remote Keyboard`.
+![](/media/15677896500296.jpg)
+After adding it, tap Remote Keyboard again and enable `Allow Full Access`.
+![](/media/15677897187196.jpg)
+
+Android platform:
+
+After opening the app, tap `Enable Keyboard`, then enable it on the next screen.
+![](/media/15677897747263.jpg)
+![](/media/15677897792986.jpg)
+
+
+### Computer Side Installation
+
+macOS side:
+
+Download `RemoboardMac.zip` from [here](https://github.com/remoboard/remoboard.github.io/releases).
+
+![](/media/15677898790466.jpg)
+
+Unzip RemoboardMac.zip, double-click Remoboard.dmg, and drag Remoboard.app into Applications.
+
+![](/media/15682472458141.jpg)
+
+Windows side:
+
+Download `RemoboardWindows.zip` from [here](https://github.com/remoboard/remoboard.github.io/releases).
+
+After unzipping, double-click to install. After installation completes, there will be a shortcut on the desktop.
+
+### iOS Usage
+
+Note in advance: `to simplify the setup steps, first make sure both the phone and the computer are connected to Wi-Fi`.
+
+
+(1) On the phone, open any app where you can enter text, and long-press the bottom-left corner to switch to Remote Keyboard.
+
+![](/media/15677900349799.jpg)
+
+Now, Remote Keyboard will display a `connection code, as well as an IP address`.
+
+![](/media/15677901020861.jpg)
+
+(2) Open Remote Keyboard on macOS.
+
+![](/media/15677901643408.jpg)
+
+
+Enter the connection code shown on the phone, then click "Connect". If everything is normal, the connection succeeds. If the connection fails, please check whether the phone and computer are connected to the same local network (the computer can ping the phone's IP address).
+
+![](/media/15677902102892.jpg)
+
+The phone will correspondingly show as Connected — start typing :)
+
+### Android Usage
+
+(1) On Android, when entering text, switch to Remote Keyboard.
+![](/media/15677903289940.jpg)
+
+It also shows a connection code; enter it on the computer side to connect.
+
+![](/media/15677903674581.jpg)
+
+(2) Open Remote Keyboard on macOS.
+
+![](/media/15677901643408.jpg)
+
+
+Enter the connection code shown on the phone, then click "Connect". If everything is normal, the connection succeeds. If the connection fails, please check whether the phone and computer are connected to the same local network (the computer can ping the phone's IP address).
+
+![](/media/15677902102892.jpg)
+
+
+## Official Website
+
+OK, those are the basic features. There are also some `tricks` and `configurations`, which you can find below.
+
+Here's the official website tutorial: [https://remoboard.app/zhcn/](https://remoboard.app/zhcn/)
+
+
+## Input Modes
+
+![](/media/15677904928723.jpg)
+
+(1) Standard input mode
+
+In this mode you can type "one line of text", then "press Enter to send".
+![](/media/15677905088388.jpg)
+
+(2) Multi-line input mode
+
+In this mode, you can "type or paste multiple lines of text" and "click a button" to send.
+![](/media/15677905197719.jpg)
+
+
+(3) Instant input mode (programming mode)
+
+In this mode, text is sent as you type, which is great for some phone-side programming apps. Personally I think this mode is quite interesting and might suit apps like `JSBox` or `纯纯写作` (Pure Writer).
+
+![](/media/15677905271431.jpg)
+
+
+## Connection Modes
+
+![](/media/15677905465471.jpg)
+
+There are two connection modes:
+
+(1) Connection code or IP address mode. (The connection code is essentially another representation of the IP address.)
+
+(2) Bluetooth mode. (It may not be stable enough right now; if there are problems, restart the computer side — it's basically usable, ha.)
+
+In most cases, the connection code is good enough, but on some company intranets, due to security policy configuration, the phone and computer can't connect to each other (can't ping). In that case you can use Bluetooth mode.
+
+
+## Free
+
+Yes, all features are currently free.
+
+Although development took me quite a lot of time, I personally still feel it's a niche need. I can't estimate exactly how many people need this app, so I've decided to make all features free for now. If there are special new features in the future, I might consider an in-app purchase model.
+
+
+
+## Development Plan
+
+(1) Usability: crashes still occasionally appear, especially on the Android and Windows sides. In the future I'll gradually refine and optimize as I use it myself.
+
+(2) WEB connection mode: in some situations it's inconvenient to download the computer client, so we could consider making the phone act as a small WEB server. When remote input is needed, you'd access the phone's WEB server to send text. This is also an interesting way to implement remote input.
+
+(3) Two-way message transmission: currently only "the computer sends text to the phone". In the future I might consider doing it "the other way around" to implement some interesting features.
+
+
+## History
+
+Last year I developed a [USBKeyboard](https://everettjf.github.io/2018/10/22/qvkeyboard-release/). This keyboard required the phone and computer to be connected via "USB" in order to type. At the time, some online friends asked whether it could support "wireless input", so on and off this year I developed this "Remote Keyboard".
+
+Recently I also happened to be learning Android development, so all four platforms — iOS/Android/macOS/Windows — ended up being supported.
+
+
+<!--ZH-->
 
 
 **当前文章有点儿过时，可以看新文章** [远程输入法新版发布，用浏览器给手机打字](https://everettjf.github.io/2019/10/15/remoboard-web/)
@@ -202,5 +402,4 @@ Windows端：
 去年我开发了一个[USBKeyboard](https://everettjf.github.io/2018/10/22/qvkeyboard-release/)，这个输入法需要手机和电脑通过「USB」连接才可以输入，当时就有网友说能否支持「无线输入」，于是断断续续今年就开发了这个「远程输入法」。
 
 最近又恰逢我学习Android开发，因此iOS/Android/macOS/Windows四个平台就都支持了。
-
 

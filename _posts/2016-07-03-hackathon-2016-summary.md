@@ -1,9 +1,104 @@
 ---
 layout: post
-title: "SegmentFault Hackathon 2016 总结"
+title: "SegmentFault Hackathon 2016 Summary"
+title_zh: "SegmentFault Hackathon 2016 总结"
+lang_original: zh
 categories: Essay
 comments: true
 ---
+
+
+
+
+# Background
+
+Last weekend I spent two days with a friend (a two-person team) participating in the hackathon hosted by segmentfault and angelhack, the Beijing stop. The theme was "Renaissance."
+
+After a simple opening on Saturday and a quick API briefing (too quick), the brainstorming officially started at 2pm in the afternoon. The provided SDKs were: agora's video calling SDK and wacom's WILL SDK.
+
+On this basis we had a few ideas:
+
+- Video drawing teaching. agora provides the video feature, wacom provides the drawing tablet feature. Since both SDKs have demos, we should be able to assemble it quickly.
+- Anonymous video. Randomly connect with another person who has the App open.
+- Anonymous interest video. Choose an interest built into the App, and you can video chat with all users who enter that interest.
+
+However, we always felt these ideas were "uncreative." The video SDK claims 30-minute integration, and the WILL SDK should be easy to use too. Wouldn't everyone be doing this video feature? Would a simple video call be uncreative?
+
+<!-- more -->
+
+# An Old Idea
+
+Then, at this point, an "old idea" came back. A while ago, after watching "The Brain", I started learning the Rubik's cube myself. I thought making an App to assist solving the Rubik's cube would be more creative.
+
+The idea of making this App existed before this hackathon, and I'd done some research too, with the focus of course on using AR to assist solving the cube. For AR I naturally thought of Vuforia, but Vuforia can only recognize markers; for something like a Rubik's cube where each face's color composition changes and you need to recognize the colors, Vuforia can't do it (or I couldn't find a way). So OpenCV entered the scene. I found this <https://github.com/AndroidSteve/Rubik-Cube-Wizard>; this App is mainly used on Google Glass, and the author has no plans to port it to phones <https://github.com/AndroidSteve/Rubik-Cube-Wizard/tree/master/Rubik%20Solver/docs>
+
+I thought I could do it. But I found a lot of OpenCV usage. Later I spent quite a bit of time learning OpenCV. Translating from Rubik-Cube-Wizard's Java code...
+
+Of course it wasn't finished yet, and the hackathon arrived.
+
+# It Started
+
+I thought this would be more unique, almost no one would do it. (At the time I felt this was more distinctive, but later I realized I was wrong.)
+
+Using OpenCV to recognize the cube seemed hard to achieve in these two days. So I gave up on that.
+
+So I used UIView combined with transform to simulate a 3D Rubik's cube. (That day I also looked into openGL and metal; I'm not familiar with either, so I combined UIViews.)
+
+The most important thing is the input of each face's info; I thought of three quick input methods:
+
+- Buttons
+- Voice
+- Photo
+- Video
+- AR
+
+---
+
+- Buttons, as shown below:
+![](https://everettjf.github.io/stuff/rubiks/app.jpg)
+
+- Voice, can use iFlytek recognition.
+- Photo, i.e. photograph each face. Recognize the colors at fixed positions.
+- Video, similar to this <https://github.com/bluquar/cubr>
+- AR, that's the Rubik-Cube-Wizard one.
+
+
+# Solving Algorithm
+
+<https://github.com/muodov/kociemba>
+
+In the end, I made it work using buttons and voice. The code is here. <https://github.com/xfteam/xfrubiks>
+
+
+
+---
+
+# Summary
+
+- In the end I stayed up all night to make this App, but only used buttons and voice, and the demo coordination wasn't good, leading to a poor result.
+- The event sponsors provided SDKs, and of course it's best to use them. Using them naturally earns extra points. (Of course the purpose of this event can't be purely for winning; doing what you want to do is the most important.)
+- During the demo, I still need to practice. I found that although I'm almost 30, I still get nervous in some small settings. My expression wasn't natural enough. And during the demo phase, you should still rehearse simply as much as possible. The coordination with my friend wasn't smooth enough. A little joke we'd designed turned into a flop due to expression and coordination problems.
+- This year's venue was at an incubator office near the Bird's Nest; the environment was nice, with lots of sofas.
+- The ideas we didn't pursue, like video drawing teaching, would actually be quite nice if made. We gave up too hastily.
+- Thinking about it, we have the technical skills, but there are many other factors. The approach to solving problems, the commercial value of the idea. A pure toy doesn't mean much. And so on.
+- Although the competition was tiring, I still enjoyed the process. (Especially making this Rubik's cube solving assistant App. Although there are some details to watch out for when using it. Ha.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--ZH-->
 
 
 
@@ -80,6 +175,8 @@ comments: true
 - 没落实的这几个想法，视频绘画教学等，如果做出来其实还是很不错的。放弃的太过草率。
 - 想想我们技术是有的，但还有更多其他因素。解决问题的思路，想法的商业价值。单纯的玩具意义并不大。等等。
 - 比赛虽然很累，但还是很享受这个过程。（尤其是做出了这个辅助还原魔方的App。虽然使用时有些细节需要注意。哈）
+
+
 
 
 

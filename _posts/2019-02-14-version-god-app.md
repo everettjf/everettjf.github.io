@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "「App 版本帝」：查询 App 历史版本的小应用"
+title: "\"App Version God\": A Little App for Querying an App's Historical Versions"
+title_zh: "「App 版本帝」：查询 App 历史版本的小应用"
+lang_original: zh
 categories:
   - 工具
 tags:
@@ -8,6 +10,116 @@ tags:
   - 娱乐
 comments: true
 ---
+
+From an app's release cadence you can get a glimpse of the operational state of the team behind it, and to some extent how much that team cares about app quality and user experience. So this article takes everyone on a look at the release situation of those "excellent" apps.
+
+
+<!-- more -->
+
+# Data
+
+## Version Records
+
+Apple's App Store website lets you get an app's historical version release records. For example, Douyin:
+https://itunes.apple.com/cn/app/id1142110895
+
+![](/media/15500700541354.jpg)
+
+## Top Apps
+
+"Excellent" apps are naturally the top-ranked ones. iResearch's index provides a ranking, but you can't conveniently get the corresponding App Store link (the id in the link above).
+Qimai Data provides an "App Leaderboard", so let's look at the release cadence of the apps on the "China App Store Free Chart". The link is as follows:
+
+https://www.qimai.cn/rank/index/brand/free/country/cn/genre/36/device/iphone
+
+The great thing is you can export directly, and it includes the id. I only want to look at apps, not games.
+
+# Scraping
+
+scrapy is a Python scraping framework with a long history, simple and easy to use.
+Official site: https://scrapy.org
+Getting started: https://docs.scrapy.org/en/latest/intro/tutorial.html
+
+After finishing the getting-started guide you can get going right away.
+
+Using the id, construct each app's App Store URL,
+https://itunes.apple.com/cn/app/id1142110895
+and scrape out all the version records.
+
+https://github.com/everettjf/chatterbox/tree/master/spider/data/20190213/appinfo
+
+![](/media/15500757845904.jpg)
+
+![](/media/15500757964452.jpg)
+
+
+# Analysis
+
+Once you have the data, everything is easy. Write a few scripts.
+
+https://github.com/everettjf/chatterbox/blob/master/spider/rank.py
+
+This script provides four sorting methods:
+
+```
+python rank.py version-count data/20190213/appinfo
+python rank.py days-per-version data/20190213/appinfo
+python rank.py days-per-version-last-6-month data/20190213/appinfo
+python rank.py emergency-release-count data/20190213/appinfo
+```
+
+## Number of Releases
+
+From the results we learn that the App Store keeps at most 25 version records.
+![](/media/15500763017603.jpg)
+
+## Average Days per Version
+
+Counting all version records, how many days per version (the average interval between versions in days).
+It seems the release cycles really are quite short — Xiaohongshu 4 days, Pinduoduo 5 days, Kuaishou 6 days, Zhihu 7 days, etc. My compatriots must be working hard.
+Alipay 27 days, WeChat 21 days, Taobao 20 days, Didi 11 days, Xianyu 13 days.
+
+![](/media/15500765126911.jpg)
+
+## Average Days per Version Over the Past 6 Months
+
+Many apps are at 7-8 days per version.
+
+![](/media/15500767020644.jpg)
+
+## Emergency Releases
+
+If we count an interval of <=1 day between two releases, we can find the number of emergency releases across all recorded version records.
+
+Kuaishou, Sogou Input Method, and Outlook all had 3-5 emergency releases.
+
+
+![](/media/15500769306033.jpg)
+
+
+
+
+# Summary
+
+The rhythms of different apps really do vary quite a lot~
+
+So who is the Version God...
+
+The scraping code is at
+https://github.com/everettjf/chatterbox
+
+The data can be found at
+https://github.com/everettjf/chatterbox/tree/master/spider/result
+
+---
+
+Yeah, interesting :)
+
+Welcome to follow the official account "Client Tech Review":
+![](/images/fun.png)
+
+
+<!--ZH-->
 
 从App的发版周期些许可以看到App背后团队的运作状态，也些许体现了团队对App质量、用户体验的把控程度。那么本文带领大家一起看看那些“优秀”的App的发版情况。
 
@@ -116,5 +228,4 @@ https://github.com/everettjf/chatterbox/tree/master/spider/result
 
 欢迎关注订阅号「客户端技术评论」：
 ![](/images/fun.png)
-
 

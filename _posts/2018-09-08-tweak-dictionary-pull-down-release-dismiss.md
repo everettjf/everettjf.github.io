@@ -1,12 +1,178 @@
 ---
 layout: post
-title: "iOS 跨进程交互：用下拉手势关闭系统词典界面"
+title: "iOS Cross-Process Interaction: Dismissing the System Dictionary UI with a Pull-Down Gesture"
+title_zh: "iOS 跨进程交互：用下拉手势关闭系统词典界面"
+lang_original: zh
 categories:
   - 逆向工程
 tags:
   - 逆向工程
 comments: true
 ---
+
+
+Apps on iOS also have a multi-process architecture, and it has been around since iOS 6 — it's just that Apple has been using it only internally.
+
+# Source of the Need
+
+The day after iBooksLookUpCloser was published to bigboss, a foreign friend emailed me, asking me to look at a Reddit question from a month earlier <https://www.reddit.com/r/jailbreak/comments/95vjgd/request_please_some_one_fulfill_this_request_pull/?st=JLMLKHHM&sh=093359ff>.
+
+For more on iBooksLookUpCloser, refer to the previous article <https://everettjf.github.io/2018/09/03/ibooks-dictionary-close-tweak/>.
+
+<!-- more -->
+
+It's very clear — they want to implement pull-down-to-close. I instantly felt "this is a great idea, much better experience than adding a Done button in the bottom left." As shown below.
+
+![](/media/15364165356473.jpg)
+
+
+At the time I replied without thinking:
+
+![](/media/15364173953971.jpg)
+
+
+
+# Remote View Controller
+
+iBooks opens the word lookup UI; use cycript to view the VC, as follows:
+
+![6F59426B-EFD3-42E7-A5E4-8FE94C702](/media/6F59426B-EFD3-42E7-A5E4-8FE94C702C71.png)
+
+Again I saw the class DDParsecRemoteCollectionViewController. This class is a private class.
+
+<https://github.com/nst/iOS-Runtime-Headers/blob/master/PrivateFrameworks/DataDetectorsUI.framework/DDParsecRemoteCollectionViewController.h>
+
+You can see the definition is as follows:
+
+```
+@interface DDParsecRemoteCollectionViewController : _UIRemoteViewController <DDParsecHostVCInterface> {
+
+```
+
+What the heck is _UIRemoteViewController? Searching seems to turn up only these three articles from 2012:
+
+<https://oleb.net/blog/2012/10/remote-view-controllers-in-ios-6/>
+
+![](/media/15364176746020.jpg)
+
+
+It turns out Apple already implemented this remote-process ViewController mechanism back in iOS 6. It's quite similar to Android's multi-process mechanism, such as the multi-process architecture on the Android side of WeChat Mini Programs. Presumably today's WKWebView uses a similar mechanism too.
+
+And so I realized I had replied too soon (showed off too early).
+
+![](/media/15364178167505.jpg)
+
+# Finding the Target Process
+
+A guru from "iOS Application Reverse Engineering" gave me a tip, saying "remember, this class contains the ID of the remote process." Suddenly it all made sense — since it's a multi-process architecture, such a natural conclusion, how did I not think of it at the time?
+
+In _UIRemoteViewController I found these two properties.
+
+<https://github.com/nst/iOS-Runtime-Headers/blob/master/Frameworks/UIKit.framework/_UIRemoteViewController.h>
+
+```
+@property (nonatomic, readonly) NSString *serviceBundleIdentifier;
+@property (nonatomic, readonly) int serviceProcessIdentifier;
+```
+
+Print them out, aha.
+
+![F8740182-41AA-44EA-828C-92C3ADD3BAD1](/media/F8740182-41AA-44EA-828C-92C3ADD3BAD1.png)
+
+Aha, the bundle id `com.apple.datadetectors.DDActionsService`
+
+Open another shell, run `ps aux`, and sure enough I found this process.
+
+![A2E75283-F257-4C05-8E8A-73E1AD3D70A9](/media/A2E75283-F257-4C05-8E8A-73E1AD3D70A9.png)
+
+# The Target Shifts to the New Process
+
+At this point, our dynamic library needs to be injected into the new process DDActionsService. Change the tweak's injection bundle id to `com.apple.datadetectors.DDActionsService`.
+
+Since it's another process, that brings a new benefit. Hooking this one process means that iBooks, Safari, and any other apps using this process's service all indirectly get this "pull-down-to-close" feature.
+
+Nice, interesting, let's continue.
+
+# Finding the Dictionary's Home Page
+
+Since this process has no keyWindow, the approach of printing the VC tree above no longer works. But there's always a way.
+
+First, quickly scp it out and take a look — class-dump.
+
+![](/media/15364185280989.jpg)
+
+Lots of Protocols, but not many truly useful classes. So just hook a few at random to see which class is the dictionary's home page. Using MonkeyDev's Logos Tweak (or CaptainHook Tweak), I eventually found that `DDParsecTableViewController` is the home page.
+
+```
+#import <UIKit/UITableViewController.h>
+
+@interface DDParsecTableViewController : UITableViewController
+{
+}
+
+- (void)loadView;
+
+@end
+```
+
+Looking at the header file, I confirmed it's a subclass of UITableViewController.
+
+
+# Finding the Delegate
+
+So to implement pull-down-to-close, I roughly need to know the three moments "touch down, move, release." UITableViewDelegate implements UIScrollViewDelegate, and UIScrollViewDelegate has the three events we need.
+
+So I need to find out who the tableView's delegate is in this UITableViewController. Since it's not convenient to quickly get the VC stack via keyWindow in cycript, I first hooked DDParsecTableViewController's viewWillAppear event (or viewDidAppear, or any other event) to print out the self address of DDParsecTableViewController.
+
+```
+NSLog(@"%p",self);
+```
+
+Knowing the address, I then used cycript to quickly find the delegate.
+
+![E4EE9916-9961-46D8-99C7-C1F0668C7EDF](/media/E4EE9916-9961-46D8-99C7-C1F0668C7EDF.png)
+
+Found DDParsecServiceCollectionViewController — this class — and we're almost done.
+
+```
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
+```
+
+Through hooking or category, add the pull-down-to-close logic code respectively. Finally implemented it.
+
+# Done
+
+For the specific code, refer to:
+
+<https://github.com/everettjf/DictionaryPullDownToClose/blob/master/DictionaryPullDownToClose/DictionaryPullDownToClose.mm>
+
+# Demo Video of the Result
+
+I couldn't figure out how to share a video on Weibo, so I'll post the Twitter one too <https://twitter.com/everettjf/status/1038359512384585729>
+
+# Uploading to bigboss
+
+I estimate that by September 10, 2018 you'll be able to search for DictionaryPullDownToClose in Cydia's bigboss source.
+
+# Summary
+
+1. There's always someone in the world with the same need as you.
+2. Maybe they have a better implementation.
+3. Search diligently.
+4. If you can't find it, either the need has no value, or it's priceless.
+
+The four points above are pure nonsense.
+
+Having implemented this feature, reading English with iBooks or Safari is more enjoyable. Happy.
+
+
+Welcome to follow the WeChat official account "客户端技术评论":
+![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+
+<!--ZH-->
 
 
 iOS中的App也存在多进程架构，而且是从iOS6就开始了，只是苹果一直自己在用。
@@ -169,4 +335,3 @@ NSLog(@"%p",self);
 
 欢迎关注订阅号「客户端技术评论」：
 ![happyhackingstudio](https://everettjf.github.io/images/fun.png)
-

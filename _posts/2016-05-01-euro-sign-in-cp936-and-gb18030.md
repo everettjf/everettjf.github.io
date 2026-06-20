@@ -1,6 +1,8 @@
 ---
 layout: post
-title:  "欧元符号 € 在 CP936 与 GB18030 编码下的兼容性踩坑"
+title: "Pitfalls of the Euro Sign € Compatibility Between CP936 and GB18030 Encodings"
+title_zh: "欧元符号 € 在 CP936 与 GB18030 编码下的兼容性踩坑"
+lang_original: zh
 categories: Skill
 comments: true
 ---
@@ -9,6 +11,173 @@ comments: true
 
 
 
+
+The product passed App Store review for the first time, and over the Chinese New Year I ran into a "magical" bug: the app would crash when displaying certain special characters. After lots of trial and error, I found the cause.
+
+
+## First Layer of the Cause
+
+A function returned an NSString that was nil, and the caller didn't check for nil, leading to a crash.
+
+## Second Layer of the Cause
+
+- Some business data in the database isn't utf-8; it was stored as cp936 by the PC client (the database is SQL Server).
+- For some of this data, what iOS receives is text encoded in cp936.
+- The text contains the euro sign € . (<https://en.wikipedia.org/wiki/Euro）>
+- iOS decodes cp936 as if it were gb18030 (mostly influenced by gbk-to-utf-8 conversion; there's a pile of articles like that online).
+- If there's a euro sign in cp936, it returns nil.
+<!-- more -->
+
+## Third Layer of the Cause
+
+Windows' CP936 doesn't conform to the standard GBK definition.
+
+> In Windows, the CP936 code page uses 0x80 to represent the euro sign, while the GB18030 encoding doesn't use the 0x80 code position.
+
+
+> Code page 936 is not identical to GBK because a code page encodes characters while the GBK only defines code points. In addition, the Euro sign (€), encoded as 0x80 in CP936, is not defined in GBK.
+
+
+> Windows CP936 code page 0x80 to represent the euro symbol in the GB18030 encoding 0x80 encoding, with other locations to represent the euro symbol. This can be understood to be a little problem on the GB18030 backward compatibility; also be understood as 0x80 CP936 expansion of GBK, GB18030 is only compatible and GBK.
+
+
+search 0x80 in <https://en.wikipedia.org/wiki/Code_page_936>
+
+<http://www.databasesql.info/article/8106207727/>
+
+
+> Microsoft later added the euro sign to Codepage 936 and assigned the code 0x80 to it. This is not a valid code point in GBK 1.0.
+
+<https://en.wikipedia.org/wiki/GBK>
+
+<https://msdn.microsoft.com/zh-cn/goglobal/cc305153>
+
+<https://msdn.microsoft.com/zh-cn/goglobal/bb688113.aspx>
+
+## Solution
+
+I couldn't find a reliable encoding-conversion tool (iconv seems like it could work, but a coworker said it's pretty cumbersome and full of pitfalls, with too many unknown risks to use).
+
+Manually replace 0x80.
+
+The key code is:
+
+``` c
+@implementation NSString(EncodingUtil)
+
++(NSString *)stringFromGBK:(const char *)srcString{
+    // fix Windows CP936 0x80 extension for standard GBK
+    
+    const int x80 = 0x80;
+    const char * toBeConvert = srcString;
+    
+    size_t x80count = 0;
+    const size_t length = strlen(srcString);
+    for(size_t idx = 0; idx < length; ++idx){
+        int code = (int)(unsigned char)srcString[idx];
+        if(code == x80){
+            ++x80count;
+        }
+    }
+    
+    char *newString = NULL;
+    if(x80count > 0){
+        size_t newLength = length + x80count * sizeof(char);
+        newString = (char*)malloc(newLength + 1);
+        memset(newString,0,newLength + 1);
+        
+        BOOL ignoreNext = NO;
+        size_t newPos = 0;
+        for(size_t idx = 0; idx < length; ++idx){
+            int code = (int)(unsigned char)srcString[idx];
+            if(ignoreNext){
+                ignoreNext = NO;
+                newString[newPos++] = srcString[idx];
+                continue;
+            }
+            
+            if(code > x80)
+                ignoreNext = YES;
+            
+            if(code == x80){
+                newString[newPos++] = 0xa2;
+                newString[newPos++] = 0xe3;
+            }else{
+                newString[newPos++] = srcString[idx];
+            }
+        }
+        toBeConvert = newString;
+    }
+    
+    NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    NSString *retString = [[NSString alloc]initWithCString:toBeConvert encoding:enc];
+    
+    if(newString){
+        free(newString);
+    }
+    
+    return retString;
+}
+@end
+
+```
+
+
+Test code:
+
+
+``` c
+char szBadName[101];
+        memset(szBadName, 0, sizeof(szBadName));
+        int pos = 0;
+        szBadName[pos++] = '\xa8';
+        szBadName[pos++] = 't';
+        szBadName[pos++] = '\xa1';
+        szBadName[pos++] = '\xfa';
+        szBadName[pos++] = '\x8c';
+        szBadName[pos++] = '\xa9';
+        szBadName[pos++] = '\x92';
+        szBadName[pos++] = '\xf6';
+        szBadName[pos++] = '\xa2';
+        szBadName[pos++] = '\xd9';
+        szBadName[pos++] = '\x8b';
+        szBadName[pos++] = '^';
+        szBadName[pos++] = '\xc6';
+        szBadName[pos++] = 'S';
+        szBadName[pos++] = '\xbe';
+        szBadName[pos++] = '\x80';
+        szBadName[pos++] = '\xa8';
+        szBadName[pos++] = '\xcb';
+        
+        szBadName[pos++] = '\x80';
+        szBadName[pos++] = '\x80';
+        szBadName[pos++] = '\xbe';
+        szBadName[pos++] = '\x80';
+        
+        
+        szBadName[pos++] = '7';
+        szBadName[pos++] = '\xa8';
+        szBadName[pos++] = '\x80';
+        szBadName[pos++] = '\xa8';
+        szBadName[pos++] = '\x80';
+        szBadName[pos++] = '\xa8';
+        szBadName[pos++] = '\x80';
+        szBadName[pos++] = '6';
+        szBadName[pos++] = '1';
+        
+        NSLog(@"bad = %@",[NSString stringFromGBK:szBadName]);
+
+```
+
+
+
+# Summary
+
+This isn't a common problem—probably 99.99% of apps won't hit it. But I did...
+
+That's all.
+
+<!--ZH-->
 
 产品第一次AppStore审核通过，过年时遇到一个“神奇”的bug，在显示某些特殊字符时App会崩溃。后来经过各种尝试找到原因。
 
@@ -174,6 +343,3 @@ char szBadName[101];
 这个问题不是普遍问题，应该99.99%的App不会遇到。可是我遇到了……
 
 That's all.
-
-
-

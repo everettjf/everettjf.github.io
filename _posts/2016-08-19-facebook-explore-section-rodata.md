@@ -1,9 +1,160 @@
 ---
 layout: post
-title: 探索 Facebook iOS 客户端 - Section RODATA
+title: "Exploring Facebook's iOS Client - The RODATA Section"
+title_zh: "探索 Facebook iOS 客户端 - Section RODATA"
+lang_original: zh
 categories: Skill
 comments: true
 ---
+ 
+
+
+
+
+# Observation
+
+When viewing Facebook's iOS binary with MachOView, I noticed several Sections that differ from most other Apps.
+
+The image below is Facebook:
+
+![Facebook](/media/14712760652964.jpg)
+
+The image below is WeChat:
+
+![](/media/14712762093391.jpg)
+
+<!-- more -->
+
+# Initial Analysis
+
+```
+    __TEXT
+    The __TEXT segment contains our code to be run. It’s mapped as read-only and executable. The process is allowed to execute the code, but not to modify it. The code can not alter itself, and these mapped pages can therefore never become dirty.
+    __DATA
+    The __DATA segment is mapped read/write but non-executable. It contains values that need to be updated.
+    __RODATA   :  read only data ， still non-executable.
+```
+
+TEXT is the code section, DATA is the data section, and RODATA is the read-only data section. Facebook moved part of the content from the code section to the read-only section, which tells us this content doesn't need to be executed; from the image below we can also see it's all constants.
+
+![](/media/14712778296998.jpg)
+
+
+
+# Why
+
+Look at the sizes of Facebook's various segments, as shown below:
+![](/media/14712790779062.jpg)
+
+Moving content from the TEXT segment to the RODATA segment reduces the size of the TEXT segment.
+
+Check Apple's review requirements:
+
+<https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/SubmittingTheApp.html>
+
+![](/media/14712795366819.jpg)
+
+We can see that to support iOS 7.x or 8.x, the maximum size of the TEXT segment is 60MB (per architecture's TEXT segment). Facebook's TEXT segment is about to hit 60MB.
+
+# How To Do It
+
+If our App's TEXT size is about to hit 60MB, how do we handle it like Facebook?
+
+man ld:
+![](/media/14712799872260.jpg)
+
+Add the link options:
+
+```
+-Wl,-rename_section,__TEXT,__cstring,__RODATA,__cstring
+-Wl,-rename_section,__TEXT,__gcc_except_tab,__RODATA,__gcc_except_tab
+-Wl,-rename_section,__TEXT,__const,__RODATA,__const
+-Wl,-rename_section,__TEXT,__objc_methname,__RODATA,__objc_methname
+-Wl,-rename_section,__TEXT,__objc_classname,__RODATA,__objc_classname
+-Wl,-rename_section,__TEXT,__objc_methtype,__RODATA,__objc_methtype
+```
+
+As shown:
+![](/media/14712804570512.jpg)
+
+![](/media/14712804466103.jpg)
+
+# Does It Affect App Execution?
+
+After testing in my own App, there's no effect at all.
+
+# Is It Really OK?
+
+There's a tiny worry: does the Objective-C Runtime have any relationship with these constants? Why does modifying the segment name of the constants have no effect on the program's execution?
+
+Code: <https://opensource.apple.com/tarballs/objc4/objc4-680.tar.gz>
+
+Searching the code for methname and methtype turns up no related info, so I roughly guess the runtime doesn't do special processing to fetch these constants.
+
+Searching <https://github.com/llvm-mirror/llvm> for objc_methname or objc_methtype, objc_methtype is only found in some tests. And objc_methname, besides being used in tests, is also used in the ARC optimizer.
+
+Would modifying the segment affect this optimizer?
+
+![](/media/14712826297536.jpg)
+
+Further looking for the source of GlobalVariable::getSection().
+getSection comes from GlobalVariable's parent class GlobalObject.
+
+![](/media/14712828749695.jpg)
+
+From the current info, the possible content of section is `__TEXT,__objc_methname` or `__RODATA,__objc_methname`, and the code above is Section.find, which searches within a string, so it can automatically adapt to segment modifications.
+
+Other segments probably use a similar approach, so we can be sure there's no effect.
+
+# How Much Can the TEXT Segment Be Slimmed Down
+
+Taking Facebook armv7 as an example, the RODATA segment is about 14MB.
+
+![](/media/14713639408868.jpg)
+
+
+
+# Earlier Thoughts
+
+At first I thought moving data that doesn't need to be loaded immediately from the TEXT segment to RODATA was to speed up App launch, but thinking about the advantage of memory-mapped mmap — being able to quickly handle large files — loading it all together wouldn't have any performance impact.
+
+# Reference Project
+
+Code: <https://github.com/everettjf/Yolo/tree/master/FBInjectableTest>
+
+![](/media/14717179771404.jpg)
+
+
+# Additional Notes
+
+A segment's permissions can be changed to VM_PROT_READ via the following link parameter.
+
+```
+-Wl,-segprot,__RODATA,r,r
+```
+
+
+# Other Resources
+
+- <http://stackoverflow.com/questions/4753100/max-size-of-an-ios-application>
+- WWDC App Thinning: <https://developer.apple.com/videos/play/wwdc2015/404/>
+- *Self-cultivation of a Programmer - Linking, Loading, and Libraries*
+- *Linkers and Loaders*
+- <https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/MachOTopics/0-Introduction/introduction.html>
+- OS X ABI Mach-O File Format Reference <https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/MachORuntime/index.html>
+
+
+
+
+
+
+
+
+
+
+ 
+
+<!--ZH-->
  
 
 
@@ -150,7 +301,5 @@ segment的权限，可以通过下面的链接参数改为VM_PROT_READ.
 
 
 
-
  
-
 

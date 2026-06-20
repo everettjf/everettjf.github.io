@@ -1,10 +1,1214 @@
 ---
 layout: post
-title: "逆向探索微信聊天界面的 UI 实现逻辑"
+title: "Reverse Engineering the UI Implementation of WeChat's Chat Screen"
+title_zh: "逆向探索微信聊天界面的 UI 实现逻辑"
+lang_original: zh
 categories: Skill
 comments: true
 ---
 
+
+
+
+
+
+# Background
+
+At work I'm responsible for developing the IM feature, and I've done quite a bit of studying WeChat in my spare time.
+This article mainly focuses on the "chat message screen" implementation in WeChat's iOS client UI.
+
+The purpose of writing this article:
+- Share how WeChat implements its chat screen.
+- Demonstrate the main reverse-engineering workflow.
+
+PS: Originally I reverse-engineered WeChat in order to solve [a small problem](https://everettjf.github.io/2016/06/18/little-chat-ui-bug-resolve) in a project.
+<!-- more -->
+
+# Preparation
+
+Device: iPhone5, iOS 8.4, jailbroken
+
+usbmuxd
+
+```
+➜  python-client python tcprelay.py -t 22:2222
+Forwarding local port 2222 to remote port 22
+......
+```
+
+ssh
+
+```
+ssh root@localhost -p 2222
+```
+
+Find the executable:
+
+```
+everettjfs-iPhone:~ root# ps aux | grep /App
+mobile   38363   4.4  8.5   776400  88748   ??  Ss    8:55PM   0:52.96 /var/mobile/Containers/Bundle/Application/25FB096A-8122-49B5-9304-5FDB9080D9B0/WeChat.app/WeChat
+```
+
+Sandbox path:
+
+```
+everettjfs-iPhone:~ root# cycript -p WeChat
+cy# [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask]
+@[#"file:///var/mobile/Containers/Data/Application/F36BD1C1-1C39-4C83-AD4B-6D9F2B976330/Documents/"]
+```
+
+Decrypt (crack the shell):
+
+```
+everettjfs-iPhone:~ root# clutch -i
+everettjfs-iPhone:~ root# clutch -b com.tencent.xin
+Finished dumping com.tencent.xin to /var/tmp/clutch/5F6CA026-C176-4FB0-9569-90F2DD251385
+```
+
+Export the headers:
+
+I don't use class-dump-z here because class-dump-z fails to recognize many UIKit classes.
+
+```
+[everettjf@e w ]$ class-dump -s -S -H WeChat -o headers
+```
+
+# First Peek
+
+## Locating the Controller
+
+Open WeChat and enter a conversation with someone (this is the "chat message screen" we want to study).
+
+```
+everettjfs-iPhone:~ root# cycript -p WeChat
+cy# [[[UIWindow keyWindow] rootViewController] _printHierarchy].toString()
+<MMTabBarController 0x18265240>, state: appeared, view: <UILayoutContainerView 0x18265ac0>
+   | <MMUINavigationController 0x1800f230>, state: appeared, view: <UILayoutContainerView 0x180cd0e0>
+   |    | <NewMainFrameViewController 0x179a2400>, state: disappeared, view: <MMUIHookView 0x1827f980> not in the window
+   |    | <BaseMsgContentViewController 0x179b3800>, state: appeared, view: <UIView 0x16e36c30>
+   | <MMUINavigationController 0x181a40a0>, state: disappeared, view: <UILayoutContainerView 0x181a4400> not in the window
+   |    | <ContactsViewController 0x17162800>, state: disappeared, view:  (view not loaded)
+   | <MMUINavigationController 0x181adb10>, state: disappeared, view: <UILayoutContainerView 0x181ade00> not in the window
+   |    | <FindFriendEntryViewController 0x179aec00>, state: disappeared, view:  (view not loaded)
+   | <MMUINavigationController 0x18003e00>, state: disappeared, view: <UILayoutContainerView 0x18008cc0> not in the window
+   |    | <MoreViewController 0x179ad400>, state: disappeared, view:  (view not loaded)
+```
+
+WeChat's main screen is an MMTabBarController, with four TabBarItems, each corresponding to an MMUINavigationController. The corresponding RootViewControllers are:
+
+- Chats (微信): NewMainFrameViewController
+- Contacts (通讯录): ContactsViewController
+- Discover (发现): FindFriendEntryViewController
+- Me (我): MoreViewController
+
+The "chat message screen" we focus on this time is BaseMsgContentViewController (state: appeared).
+
+## Observing the Views
+
+### Reveal
+
+Send all kinds of messages in the screen; here let's first send: text, image, location, voice.
+Observe with Reveal, as shown below:
+
+![img](https://everettjf.github.io/stuff/eimkit/1465648981061.png)
+
+![img](https://everettjf.github.io/stuff/eimkit/1465649157982.png)
+
+### MMTableView
+
+From these two images we can see:
+
+The entire message list is essentially an MMTableView (we'd generally do this ourselves too). From the class-dumped headers, we know MMTableView is a subclass of UITableView.
+
+```
+@interface MMTableView : UITableView <MMDelegateCenterExt>
+```
+
+The TableView's Cell has only one type, MultiSelectTableViewCell. **When I first saw this, it made me very curious. Why didn't they use the traditional approach of one Cell per message?**
+
+```
+@interface MultiSelectTableViewCell : UITableViewCell
+```
+
+### MessageNodeView
+
+The Cells are all MultiSelectTableViewCell, and what distinguishes the different messages is the content of contentView.
+
+- Text message: TextMessageNodeView
+- Image message: ImageMessageNodeView
+- Location message: LocationMessageNodeView
+- Voice message: VocieMessageNodeView (not visible in the screenshot above)
+
+In addition, the timestamps between messages are also MultiSelectTableViewCell, just with a Label about the time as contentView.
+
+### Quick summary
+
+Having figured out the basic structure of the message UI, the next step is to find out how these MessageNodeViews are created. **Here a question naturally arises: all messages are MultiSelectTableViewCell, so how is Cell reuse implemented?** Let's keep exploring.
+
+
+## Observing the Controller
+
+In the class-dumped headers, find the BaseMsgContentViewController class. You can find the BaseMsgContentViewController.h file; this header has 614 lines, which shows how complex this class is. (I'd guess WeChat's early development didn't anticipate the large number of requirements added later, so it became today's Massive View Controller.)
+
+Let me refine the goal of this operation: I want to know how each message in the chat is created and displayed.
+
+Observing the class's implementation, I found some related variables and methods:
+
+```
+// 字面上看，应该就是存储MessageNode的数组
+NSMutableArray *m_arrMessageNodeData;
+// 应该是存储所有支持的MessageNode Class类型
+struct vector<Class, std::__1::allocator<Class>> m_messageNodeClass;
+// 这就是主要是TableView
+MMTableView *m_tableView;
+
+// 预创建消息，有意思，一会儿仔细研究研究
+- (void)preCreateMessageContentNode:(id)arg1;
+- (void)preCreateMessageSplitNode:(id)arg1;
+- (void)preCreateMessageTimeNode:(id)arg1;
+
+// 初始化Class
+- (void)initMessageNodeClass;
+- (id)newMessageNodeViewForMessageWrap:(id)arg1 contact:(id)arg2 chatContact:(id)arg3;
+
+
+// 获取node数目
+- (unsigned int)getMsgNodeCount;
+// 获取指定索引的node
+- (id)getNodeDataByIndex:(unsigned int)arg1;
+// 获取消息node数组
+- (id)GetMessageNodeDataArray;
+
+// 添加
+- (void)addMessageNode:(id)arg1 layout:(BOOL)arg2 addMoreMsg:(BOOL)arg3;
+- (void)addReceiveMessageNode:(id)arg1;
+- (id)addSplitNode:(id)arg1 addMoreMsg:(BOOL)arg2;
+- (void)addTimeNode:(id)arg1 layout:(BOOL)arg2 addMoreMsg:(BOOL)arg3;
+// 移除
+- (void)removeAllObjectsFromMessageNodeDatas;
+- (void)removeObjectsFromMessageNodeDatas:(id)arg1;
+// 更新
+- (void)updateMessageNodeImageLoadingPercent:(unsigned long)arg1 percent:(unsigned long)arg2;
+- (void)updateMessageNodeStatus:(id)arg1;
+- (void)updateMessageNodeViewForOrientation:(id)arg1;
+
+// 一些NodeView的事件
+- (void)tagLink:(id)arg1 messageWrap:(id)arg2;
+- (void)tapAppNodeView:(id)arg1;
+- (void)tapFriendCard_NodeView:(id)arg1 WithContact:(id)arg2 WithMsg:(id)arg3;
+- (void)tapImage_NodeView:(id)arg1;
+- (void)tapLocation_NodeView:(id)arg1;
+- (void)tapPushContact_NodeView:(id)arg1;
+- (void)tapPushMail_NodeView:(id)arg1 withPushMailWrap:(id)arg2;
+- (void)tapReader_NodeView:(id)arg1;
+- (void)tapStatus_NodeView:(id)arg1;
+- (void)tapText_NodeView:(id)arg1;
+- (void)tapVideoStatus_NodeView:(id)arg1;
+```
+
+### NSMutableArray *m_arrMessageNodeData;
+
+Print it with cycript
+
+```
+cy# v = #0x15067600
+#"<BaseMsgContentViewController: 0x15067600>"
+cy# v->m_arrMessageNodeData
+@[#"<CMessageNodeData: 0x15b95260>",#"<CMessageNodeData: 0x15adf260>",#"<CMessageNodeData: 0x15a4abb0>",#"<CMessageNodeData: 0x1580f190>",#"<CMessageNodeData: 0x15a49930>",#"<CMessageNodeData: 0x1589b8a0>",#"<CMessageNodeData: 0x15a41410>",#"<CMessageNodeData: 0x158783e0>",#"<CMessageNodeData: 0x15a4a3b0>",#"<CMessageNodeData: 0x15aa14f0>",#"<CMessageNodeData: 0x1475ce50>",#"<CMessageNodeData: 0x15bf9960>",#"<CMessageNodeData: 0x15b53f40>",#"<CMessageNodeData: 0x147ad9f0>",#"<CMessageNodeData: 0x15b6d240>",#"<CMessageNodeData: 0x15ba04b0>",#"<CMessageNodeData: 0x15b90050>",#"<CMessageNodeData: 0x15be7ba0>",#"<CMessageNodeData: 0x15b84eb0>"]
+cy# v->m_arrMessageNodeData.count
+19
+```
+
+*Precondition: the chat with the other party already has many messages.* When opening the chat message screen with the other party for the first time, you can see that WeChat loads only 19 messages by default.
+
+What is CMessageNodeData?
+
+```
+@interface CMessageNodeData : NSObject
+{
+    int m_eMsgNodeType;
+    CMessageWrap *m_msgWrap;
+    UIView *m_view;
+    unsigned long m_uCreateTime;
+}
+```
+
+**Note, there's a UIView here.**
+
+```
+@interface CMessageWrap : MMObject <IAppMsgPathMgr, ISysNewXmlMsgExtendOperation, IMsgExtendOperation, NSCopying>
+{
+    BOOL m_bIsSplit;
+    BOOL m_bNew;
+    unsigned long m_uiMesLocalID;
+    long long m_n64MesSvrID;
+    NSString *m_nsFromUsr;
+    NSString *m_nsToUsr;
+    unsigned long m_uiMessageType;
+    NSString *m_nsContent;
+    unsigned long m_uiStatus;
+    unsigned long m_uiImgStatus;
+    //.............省略大量字段.............
+```
+
+CMessageWrap is naturally the wrapper for the message data.
+
+CMessageNodeData has a UIView *m_view variable; let's see what it is:
+
+```
+y# d = v->m_arrMessageNodeData
+@[#"<CMessageNodeData: 0x15b95260>",#"<CMessageNodeData: 0x15adf260>",#"<CMessageNodeData: 0x15a4abb0>",#"<CMessageNodeData: 0x1580f190>",#"
+.....省略....
+cy# var x = []; for(var i = 0; i < d.count;i++) x.push([d objectAtIndex:i].m_view); x
+[#"<UIView: 0x1592f9c0; frame = (0 10; 320 28); layer = <CALayer: 0x147e6cc0>>",#"<TextMessageNodeView: 0x1582cca0; frame = (251 0; 60 59); layer = <CALayer: 0x158b1350>>",#"<TextMessageNodeView: 0x15a58d60; frame = (251 0; 60 59); layer = <CALayer: 0x15a3cdf0>>",#"<TextMessageNodeView: 0x15a3ba10; frame = (251 0; 60 59); layer = <CALayer: 0x15ab9ab0>>",#"<TextMessageNodeView: 0x15a31610; frame = (251 0; 60 59); layer = <CALayer: 0x15a31760>>",#"<TextMessageNodeView: 0x15a57dc0; frame = (251 0; 60 59); layer = <CALayer: 0x15a547b0
+.....省略.......
+odeView: 0x159ee260; frame = (186 0; 125 59); layer = <CALayer: 0x159ee3b0>>",#"<ImageMessageNodeView: 0x15b91cd0; frame = (179.5 0; 131.5 150); layer = <CALayer: 0x15b6e8e0>>",#"<UIView: 0x15b675d0; frame = (0 10; 320 28); layer = <CALayer: 0x15be5fa0>>",#"<LocationMessageNodeView: 0x15bdaee0; frame = (50 0; 261 139); layer = <CALayer: 0x15b7d290>>",#"<TextMessageNodeView: 0x15bbf400; frame = (144 0; 167 59); layer = <CALayer: 0x15be6770>>"]
+```
+
+So m_view is the UIView under the contentView of MultiSelectTableViewCell.
+
+**Here another question arises: there are only 4 Cells actually shown on screen, so why do all these CMessageNodeData's m_view have values (not nil)? Could it be that reuse isn't implemented? Yes — so far what I've found is that reuse really isn't implemented.**
+
+To verify, I randomly sent a few hundred messages of various kinds, then printed all the m_view again.
+
+```
+ cy# d.count
+419
+cy# var x = []; for(var i = 0; i < d.count;i++) x.push([d objectAtIndex:i].m_view); x
+[#"<UIView: 0x15c91540; frame = (0 10; 320 28); layer = <CALayer: 0x16096bb0>>",#"<AppUrlMessageNodeView: 0x160977e0; frame = (0 0; 327 149); layer = <CALayer: 0x16098f50>>",#"<UIView: 0x16098d70; frame = (0 10; 320 28); layer = <CALayer: 0x16099bd0>>",#"<ImageMessageNodeView: 0x1609b000; frame = (179.5 0; 131.5 150); layer = <CALayer: 0x1609a840>>",#"<ImageMessageNodeView: 0x160a3d80; frame = (
+// ........省略..................
+cy# x.length
+419
+```
+
+ Well, sure enough, none of the 419 m_view are nil.
+
+**My goodness, how can this work? But after observing the memory usage and thinking it over more carefully, this approach is actually acceptable. See below for details.**
+
+The reasons I came up with are:
+
+- Memory usage isn't too high (see below for specific data).
+- It's rare for a chat screen to have so many m_view. And when it does happen, since memory usage is acceptable, it doesn't matter.
+
+### struct vector<Class, std::__1::allocator<Class>> m_messageNodeClass;
+
+Here we can tell that BaseMsgContentViewController's implementation file is BaseMsgContentViewController.mm, i.e. written in Objective-C++.
+
+m_messageNodeClass is related to the following method:
+```
+- (void)initMessageNodeClass;
+```
+
+Decompile WeChat's binary with Hopper:
+
+![img](https://everettjf.github.io/stuff/eimkit/1465664951065.png)
+
+Then disassemble into C-like code:
+
+```
+void -[BaseMsgContentViewController initMessageNodeClass](void * self, void * _cmd) {
+    r7 = &arg_C;
+    sp = sp - 0xb4;
+    r11 = self;
+    r6 = *objc_ivar_offset_BaseMsgContentViewController_m_messageNodeClass;
+    r5 = *(r11 + r6);
+    r0 = *(r11 + 0xa4);
+    if (r0 != r5) {
+            do {
+                    *(r11 + 0xa4) = r0 - 0x4;
+                    r0 = *(r0 + 0xfffffffffffffffc);
+                    [r0 release];
+                    r0 = *(r11 + 0xa4);
+            } while (r0 != r5);
+            r6 = *objc_ivar_offset_BaseMsgContentViewController_m_messageNodeClass;
+    }
+    r8 = @selector(class);
+    r0 = [MultiColumnReaderMessageNodeView class];
+    r7 = r7;
+    r0 = [r0 retain];
+    r1 = r6 + 0x4;
+    arg_B0 = r0;
+    r2 = r6 + r11;
+    r3 = *(r11 + r1);
+    if (r3 < *(r2 + 0x8)) {
+            arg_B0 = 0x0;
+            *r3 = r0;
+            *(r11 + r1) = *(r11 + r1) + 0x4;
+    }
+    else {
+            void std::__1::vector<objc_class* __strong, std::__1::allocator<objc_class* __strong> >::__push_back_slow_path<objc_class* __strong>();
+            [arg_B0 release];
+    }
+    r4 = *objc_ivar_offset_BaseMsgContentViewController_m_messageNodeClass;
+    r0 = [ImageTextReaderMessageNodeView class];
+	//.....省略......
+```
+
+It just push_backs all the supported MessageNode Classes into this vector.
+
+**Here we can see all the message types WeChat supports.**
+
+Manually organized into pseudocode:
+
+```
+std::vector<Class> m_messageNodeClass;
+m_messageNodeClass.push_back([MultiColumnReaderMessageNodeView class]);
+m_messageNodeClass.push_back([ImageTextReaderMessageNodeView class]);
+m_messageNodeClass.push_back([HeadImgReaderMessageNodeaView class]);
+m_messageNodeClass.push_back([MessageSysNodeView class]);
+m_messageNodeClass.push_back([AttributedReaderMessageNodeaView class]);
+m_messageNodeClass.push_back([ReaderNewMessageNodeView class]);
+m_messageNodeClass.push_back([MultiReaderMessageNodeView class]);
+m_messageNodeClass.push_back([MailMessageNodeView class]);
+m_messageNodeClass.push_back([MassSendMessageNodeView class]);
+m_messageNodeClass.push_back([ImageMessageNodeView class]);
+m_messageNodeClass.push_back([VoiceMessageNodeView class]);
+m_messageNodeClass.push_back([ShortVideoMessageNodeView class]);
+m_messageNodeClass.push_back([VideoMessageNodeView class]);
+m_messageNodeClass.push_back([ShareCardMessageNodeView class]);
+m_messageNodeClass.push_back([EmoticonMessageNodeView class]);
+m_messageNodeClass.push_back([GameMessageNodeView class]);
+m_messageNodeClass.push_back([VoipContentNodeView class]);
+m_messageNodeClass.push_back([AppTextMessageNodeView class]);
+m_messageNodeClass.push_back([AppImageMessageNodeView class]);
+m_messageNodeClass.push_back([AppEmoticonMessageNodeView class]);
+m_messageNodeClass.push_back([AppFileMessageNodeView class]);
+m_messageNodeClass.push_back([AppUrlMessageNodeView class]);
+m_messageNodeClass.push_back([AppShakeMessageNodeView class]);
+m_messageNodeClass.push_back([VoiceReminderConfirmNodeView class]);
+m_messageNodeClass.push_back([VoiceReminderRemindNodeView class]);
+m_messageNodeClass.push_back([AppProductMessageNodeView class]);
+m_messageNodeClass.push_back([AppEmoticonSharedMessageNodeView class]);
+m_messageNodeClass.push_back([AppWCProductMessageNodeView class]);
+m_messageNodeClass.push_back([AppWCCardMessageNodeView class]);
+m_messageNodeClass.push_back([AppTVMessageNodeView class]);
+m_messageNodeClass.push_back([AppTrackRoomMessageNodeView class]);
+m_messageNodeClass.push_back([AppRecordMessageNodeView class]);
+m_messageNodeClass.push_back([AppNoteMessageNodeView class]);
+m_messageNodeClass.push_back([AppHardWareRankMessageNode class]);
+m_messageNodeClass.push_back([AppHardWareLikeNotifyMessageNode class]);
+m_messageNodeClass.push_back([MultiTalkMessageNodeView class]);
+m_messageNodeClass.push_back([WCPayTransferMessageNodeView class]);
+m_messageNodeClass.push_back([WCPayTransferAcceptedMessageNodeView class]);
+m_messageNodeClass.push_back([WCPayTransferRejectedMessageNodeView class]);
+m_messageNodeClass.push_back([WCPayMessageBaseNodeView class]);
+m_messageNodeClass.push_back([WCPayC2CMessageNodeView class]);
+m_messageNodeClass.push_back([WCPayC2CFestivalMsgNodeView class]);
+m_messageNodeClass.push_back([AppDefaultMessageNodeView class]);
+m_messageNodeClass.push_back([TextMessageNodeView class]);
+```
+
+As you can see, WeChat is truly a huge project, supporting this many message types (the WeChat version I used: 6.3.19).
+
+Take a random message, for example:
+MessageSysNodeView
+inherits from BaseMessageNodeView and then MMUIView
+
+
+### - (void) preCreateMessageXXXXNode
+
+
+```
+- (void)preCreateMessageContentNode:(id)arg1;
+- (void)preCreateMessageSplitNode:(id)arg1;
+- (void)preCreateMessageTimeNode:(id)arg1;
+```
+
+From these three methods starting with preCreateMessage, we can guess that the first-level subviews of MultiSelectTableViewCell's contentView fall into three categories:
+
+- The actual content ContentNode
+- The separator Node
+- The time Node
+
+Find the corresponding code by disassembling in Hopper:
+
+![img](https://everettjf.github.io/stuff/eimkit/1465666569528.png)
+
+#### TimeNode
+
+To go step by step, let's first study TimeNode's preCreate:
+
+Since there's code internally that gets arg2.m_view, we can basically guess that arg2 is of type CMessageNodeData. (We can confirm this later with lldb.)
+
+The key code lines and pseudocode are roughly as follows:
+
+```
+void -[BaseMsgContentViewController preCreateMessageTimeNode:](void * self, void * _cmd, void * arg2) {
+messageNodeData = arg2
+if(messageNodeData.m_view == nil){
+	// 就是填充m_view
+
+	// 从MMThemeManager获取时间Node的高度
+    r5 = [[MMThemeManager sharedThemeManager] retain];
+    [[r5 getValueOfProperty:@"message_node_timeNode_height" inRuleSet:@"#message_node_view"] retain];
+
+	UIView *timeRoot = [][UIView alloc]initWithFrame:....];
+
+    r11 = [[MMUILabel alloc] init];
+	// 这是label各种属性
+
+	r10 = [[UIImageView alloc] init];
+	// 设置ImageView各种属性
+}
+
+```
+
+In the end it just builds this:
+
+![img](https://everettjf.github.io/stuff/eimkit/1465836652040.png)
+
+
+
+#### ContentNode
+
+Knowing how TimeNode is preCreated, ContentNode is similar, just with more code.
+
+```
+void -[BaseMsgContentViewController preCreateMessageContentNode:](void * self, void * _cmd, void * arg2) {
+
+messageNodeData = arg2
+if(messageNodeData.m_view == nil){
+	// 仍然是填充m_view
+
+	// 判断是否自己发的消息
+    r5 = [[r11 m_msgWrap] retain];
+    arg_14 = [CMessageWrap isSenderFromMsgWrap:r5];
+
+	如果是对方消息
+	r0 = [r8 newMessageNodeViewForMessageWrap:r4 contact:r5 chatContact:STK-1];
+	如果是我发送的消息
+	r0 = [r8 newMessageNodeViewForMessageWrap:r6 contact:0x0 chatContact:STK-1];
+
+	设置m_view
+
+	//计算frame
+
+	//GameNode特殊处理
+	//语音特殊处理	r2 = [VoiceMessageNodeView class];
+
+}
+
+```
+PS: An earlier version of this method was very long; the current version has been optimized. The newMessageNodeViewForMessageWrap method was added.
+
+```
+void * -[BaseMsgContentViewController newMessageNodeViewForMessageWrap:contact:chatContact:](void * self, void * _cmd, void * arg2, void * arg3, void * arg4) {
+
+	// 这里循环判断vector中的每个类，交给每个类判断是否是自己的类型
+    r0 = r5->m_messageNodeClass;
+
+	for(Class in r0){
+
+	// 先判断能否创建
+    r4 = *(r0 + r11 * 0x4);
+    if (([r4 canCreateMessageNodeViewInstanceWithMessageWrap: r2] & 0xff) != 0x0) goto loc_1609718;
+
+	// 创建
+    r0 = [r4 alloc];
+    r4 = arg_8;
+    r6 = arg_4;
+    var_0 = r6;
+    r5 = [r0 initWithMessageWrap:arg_C Contact:r4 ChatContact:STK-1];
+
+	}
+}
+```
+
+#### canCreateMessageNodeViewInstanceWithMessageWrap
+
+Let's look at the canCreateMessageNodeViewInstanceWithMessageWrap method.
+
+```
+char +[BaseMessageNodeView canCreateMessageNodeViewInstanceWithMessageWrap:](void * self, void * _cmd, void * arg2) {
+    return 0x0;
+}
+
+```
+First look at the base class of all NodeViews, BaseMessageNodeView, which returns 0x0 by default, i.e. NO. (On 32-bit, BOOL is char, so this returns a BOOL.)
+
+Then pick a random subclass NodeView, for example: MessageSysNodeView
+
+```
+char +[MessageSysNodeView canCreateMessageNodeViewInstanceWithMessageWrap:](void * self, void * _cmd, void * arg2) {
+    r4 = [arg2 retain];
+    r5 = @selector(m_uiMessageType);
+    if ([r4 m_uiMessageType] == 0x2710) {
+            r5 = 0x1;
+    }
+    else {
+            r0 = [r4 m_uiMessageType];
+            r5 = 0x0;
+            asm{ it         eq };
+            if (r0 == 0x2712) {
+                    r5 = 0x1;
+            }
+    }
+    [r4 release];
+    r0 = r5;
+    return r0;
+}
+
+```
+
+As you can see, if m_uiMessageType (a member of CMessageNodeData's CMessageWrap) is 0x2710 or 0x2712, it's considered this message type.
+
+Now look at ImageMessageNodeView:
+
+```
+char +[ImageMessageNodeView canCreateMessageNodeViewInstanceWithMessageWrap:](void * self, void * _cmd, void * arg2) {
+    r4 = [arg2 retain];
+    r5 = @selector(m_uiMessageType);
+    if (([r4 m_uiMessageType] == 0x3) || ([r4 m_uiMessageType] == 0xd)) {
+            r5 = 0x1;
+    }
+    else {
+            r0 = [r4 m_uiMessageType];
+            r5 = 0x0;
+            asm{ it         eq };
+            if (r0 == 0x27) {
+                    r5 = 0x1;
+            }
+    }
+    [r4 release];
+    r0 = r5;
+    return r0;
+}
+
+```
+
+So 0x3, 0xd, and 0x27 are all images.
+
+There are many more messages; I won't list them all.
+
+Finally let's look at TextMessageNodeView:
+
+```
+char +[TextMessageNodeView canCreateMessageNodeViewInstanceWithMessageWrap:](void * self, void * _cmd, void * arg2) {
+    return 0x1;
+}
+```
+
+
+It directly returns YES. So if a message isn't any of the others, it's handled as a text message. TextMessageNodeView is also exactly the last one push_back'd into m_messageNodeClass.
+
+#### initWithMessageWrap
+
+First look at BaseMessageNodeView:
+
+
+```
+void * -[BaseMessageNodeView initWithMessageWrap:Contact:ChatContact:](void * self, void * _cmd, void * arg2, void * arg3, void * arg4) {
+	省略……
+```
+
+Then look at TextMessageNodeView's initWithMessageWrap:Contact:ChatContact.
+The amount of code varies, but there's no key code.
+
+It just configures the properties of the various Views based on CMessageWrap.
+
+
+# Continue Researching
+
+Next let's try to find the source of the preCreate call.
+
+## Preparation
+
+usbmuxd
+
+```
+➜  python-client python tcprelay.py -t 22:2222 1234:1234
+Forwarding local port 2222 to remote port 22
+Forwarding local port 1234 to remote port 1234
+......
+```
+
+ssh
+
+```
+ssh root@localhost -p 2222
+```
+
+debugserver
+
+```
+everettjfs-iPhone:~ root# debugserver *:1234 -a WeChat
+debugserver-@(#)PROGRAM:debugserver  PROJECT:debugserver-320.2.89
+ for armv7.
+Attaching to process WeChat...
+Listening to port 1234 for a connection from *...
+Waiting for debugger instructions for process 0.
+```
+
+lldb
+
+```
+[everettjf@e ~ ]$ lldb
+(lldb) process connect connect://localhost:1234
+Process 67776 stopped
+* thread #1: tid = 0x214590, 0x31ef4474 libsystem_kernel.dylib`mach_msg_trap + 20, queue = 'com.apple.main-thread', stop reason = signal SIGSTOP
+    frame #0: 0x31ef4474 libsystem_kernel.dylib`mach_msg_trap + 20
+libsystem_kernel.dylib`mach_msg_trap:
+->  0x31ef4474 <+20>: pop    {r4, r5, r6, r8}
+    0x31ef4478 <+24>: bx     lr
+
+libsystem_kernel.dylib`mach_msg_overwrite_trap:
+    0x31ef447c <+0>:  mov    r12, sp
+    0x31ef4480 <+4>:  push   {r4, r5, r6, r8}
+```
+
+Find the offset address
+
+```
+(lldb) image list -o -f
+[  0] 0x000e7000 /private/var/mobile/Containers/Bundle/Application/25FB096A-8122-49B5-9304-5FDB9080D9B0/WeChat.app/WeChat(0x00000000000eb000)
+[  1] 0x031c7000 /Library/MobileSubstrate/MobileSubstrate.dylib(0x00000000031c7000)
+```
+
+See the offset address after image list -o -f: 0x000e7000
+
+
+## Historical Messages
+
+First look at the historical messages loaded by default when entering the chat message screen.
+
+In Hopper, find the file offset address of BaseMsgContentViewController::preCreateMessageContentNode: : 0x0160a444
+![img](https://everettjf.github.io/stuff/eimkit/1465992949249.png)
+
+Compute the real offset address (I like using ipython as a calculator):
+
+```
+In [1]: hex(0x000e7000+0x0160a444)
+Out[1]: '0x16f1444'
+```
+
+Set the breakpoint:
+
+```
+(lldb) br s -a 0x16f1444
+Breakpoint 1: where = WeChat`___lldb_unnamed_function80337$$WeChat, address = 0x016f1444
+```
+
+Then tap a conversation to enter the message screen. The breakpoint will be hit.
+
+Since the breakpoint is hit, let's also check the parameter types of preCreateMessageContentNode:
+
+```
+(lldb) po $r0
+<BaseMsgContentViewController: 0x17127c00>
+
+(lldb) po (char*)$r1
+"preCreateMessageContentNode:"
+
+(lldb) po $r2
+<CMessageNodeData: 0x1789bfb0>
+```
+
+Back to the topic, use the bt command to view the call stack:
+
+```
+(lldb) bt
+* thread #1: tid = 0x214590, 0x016f1444 WeChat`___lldb_unnamed_function80337$$WeChat, queue = 'com.apple.main-thread', stop reason = breakpoint 1.1
+  * frame #0: 0x016f1444 WeChat`___lldb_unnamed_function80337$$WeChat
+    frame #1: 0x016f2516 WeChat`___lldb_unnamed_function80343$$WeChat + 990
+    frame #2: 0x016f2bfe WeChat`___lldb_unnamed_function80345$$WeChat + 590
+    frame #3: 0x016f397e WeChat`___lldb_unnamed_function80355$$WeChat + 690
+    frame #4: 0x01708ac0 WeChat`___lldb_unnamed_function80565$$WeChat + 1416
+    frame #5: 0x26c54b8e UIKit`-[UIViewController loadViewIfRequired] + 602
+    frame #6: 0x26c548fc UIKit`-[UIViewController view] + 24
+    省略
+```
+
+We can see these methods are all called on the main thread. frame#0 is the preCreateMessageContentNode method. frame #1 is the method that calls preCreateMessageContentNode. Let's find frame#1's method.
+Subtracting the offset address 0x000e7000 from the memory address 0x016f2516 gives the file offset address:
+
+```
+In [4]: hex(0x016f2516-0x000e7000)
+Out[4]: '0x160b516'
+```
+
+Find this method in Hopper:
+![img](https://everettjf.github.io/stuff/eimkit/1466097350949.png)
+
+Found the method:
+![img](https://everettjf.github.io/stuff/eimkit/1466097381889.png)
+
+It's this method:
+
+```
+void -[BaseMsgContentViewController addMessageNode:layout:addMoreMsg:](void * self, void * _cmd, void * arg2, char arg3, char arg4) {
+```
+
+Set a breakpoint at this method's start address 0x16f2138 = 0x000e7000 + 0x0160b138: (first clear the previous breakpoint)
+
+```
+In [6]: hex(0x000e7000 + 0x0160b138)
+Out[6]: '0x16f2138'
+```
+
+```
+(lldb) br l
+Current breakpoints:
+1: address = WeChat[0x0160a444], locations = 1, resolved = 1, hit count = 1
+  1.1: where = WeChat`___lldb_unnamed_function80337$$WeChat, address = 0x016f1444, resolved, hit count = 1
+(lldb) br delete 1
+1 breakpoints deleted; 0 breakpoint locations disabled.
+
+(lldb) br s -a 0x16f2138
+Breakpoint 3: where = WeChat`___lldb_unnamed_function80343$$WeChat, address = 0x016f2138
+```
+
+Look at the parameters:
+
+```
+(lldb) po $r0
+<BaseMsgContentViewController: 0x17127c00>
+(lldb) po (char*)$r1
+"addMessageNode:layout:addMoreMsg:"
+(lldb) po $r2
+{m_uiMesLocalID=384, m_ui64MesSvrID=7606243121581773106, m_nsFromUsr=wxi*h12~19, m_nsToUsr=wxi*t21~19, m_uiStatus=2, type=1, msgSource="(null)"}
+(lldb) po [$r2 class]
+CMessageWrap
+(lldb) p $r3
+(unsigned int) $13 = 0
+(lldb) p $r4
+(unsigned int) $14 = 40
+```
+
+So the first parameter of BaseMsgContentViewController addMessageNode:layout:addMoreMsg is CMessageWrap, layout is 0, and addMoreMsg is 40.
+
+With the same steps, look at the remaining methods in the call stack, all gathered together:
+
+```
+void -[BaseMsgContentViewController preCreateMessageContentNode:](void * self, void * _cmd, void * arg2) {
+void -[BaseMsgContentViewController addMessageNode:layout:addMoreMsg:](void * self, void * _cmd, void * arg2, char arg3, char arg4) {
+void -[BaseMsgContentViewController initHistroyMessageNodeData](void * self, void * _cmd) {
+void -[BaseMsgContentViewController initData](void * self, void * _cmd) {
+void -[BaseMsgContentViewController viewDidLoad](void * self, void * _cmd) {
+
+```
+
+Using Hopper's disassembly to look at these methods, we again found initView and a series of init-prefixed functions. For example: initTableView initializes the tableView and calls reloadData. (initData comes first, initView later.)
+
+## The Source of Historical Messages
+
+Look closely
+
+```
+void -[BaseMsgContentViewController initHistroyMessageNodeData](void * self, void * _cmd) {
+...
+            arg_1C = r8;
+            r0 = [r5 GetMessageArray];
+            r7 = r7;
+```
+
+Find the assembly code line for [r5 GetMessageArray]: 0x0160bb20.
+
+![img](https://everettjf.github.io/stuff/eimkit/1466104472059.png)
+
+Set a breakpoint at this line, then output $r0.
+
+```
+(lldb) br s -a 0x163db20 （这里我换了机器，重新启动了Weixin，内存偏移变为0x00032000，因此hex(0x0160BB20 + 0x00032000)=0x163db20）
+(lldb) po $r0
+<WeixinContentLogicController: 0x1582ad20>
+(lldb) po (char*)$r1
+"GetMessageArray"
+(lldb) n
+省略
+(lldb) po $r0
+<__NSArrayM 0x1584bf30>(
+{m_uiMesLocalID=382, m_ui64MesSvrID=4946812604026242266, m_nsFromUsr=wxi*h12~19, m_nsToUsr=wxi*t21~19, m_uiStatus=2, type=1, msgSource="(null)"} ,
+{m_uiMesLocalID=383, m_ui64MesSvrID=145730894416135475, m_nsFromUsr=wxi*h12~19, m_nsToUsr=wxi*t21~19, m_uiStatus=2, type=1, msgSource="(null)"} ,
+省略
+)
+(lldb) po [[$r0 firstObject]class]
+CMessageWrap
+```
+
+After single-stepping, you can also look at the return value $r0, i.e. all the messages CMessageWrap.
+
+We can tell it's the WeixinContentLogicController class; let's look at this class:
+
+```
+@interface WeixinContentLogicController : BaseMsgContentLogicController
+```
+
+Looking for WeixinContentLogicController's GetMessageArray method in Hopper, I couldn't find it. So it's in the parent class BaseMsgContentLogicController.
+
+```
+- BaseMsgContentLogicController GetMessageArray
+```
+
+Internally it calls WeixinContentLogicController GetMsg:FromID:Limit:LeftCount:LeftUnreadCount:
+
+```
+- WeixinContentLogicController GetMsg:FromID:Limit:LeftCount:LeftUnreadCount:
+
+    r0 = [MMServiceCenter defaultCenter];
+    arg_30 = 0xffffffff;
+    r0 = [r0 retain];
+    arg_24 = r0;
+    arg_30 = 0x2;
+    r2 = [CMessageMgr class];
+    arg_30 = 0x3;
+    r0 = [arg_24 getService:r2];
+    arg_30 = 0xffffffff;
+    arg_28 = [r0 retain];
+    [arg_24 release];
+    arg_30 = 0x4;
+    asm{ stm.w      sp, {r3, r5, r6} };
+    r0 = [arg_28 GetMsgByCreateTime:arg_20 FromID:arg_1C FromCreateTime:STK1 Limit:STK0 LeftCount:STK-1];
+```
+
+Roughly, it gets CMessageMgr from MMServiceCenter, then calls CMessageMgr's GetMsgByCreateTime:arg_20 FromID:arg_1C FromCreateTime:STK1 Limit:STK0 LeftCount:STK-1 method.
+
+There are two methods:
+
+```
+- (id)GetMsgByCreateTime:(id)arg1 FromID:(unsigned long)arg2 FromCreateTime:(unsigned long)arg3 Limit:(unsigned long)arg4 LeftCount:(unsigned int *)arg5;
+- (id)GetMsgByCreateTime:(id)arg1 FromID:(unsigned long)arg2 FromCreateTime:(unsigned long)arg3 Limit:(unsigned long)arg4 LeftCount:(unsigned int *)arg5 FromSequence:(unsigned long)arg6;
+```
+
+The first calls the second method with FromSequence; let's look at the second method in Hopper:
+
+```
+  r0 = *objc_ivar_offset_CMessageMgr_m_oMsgDB;
+    r2 = *(r7 + 0x14);
+    r0 = *(r6 + r0);
+    arg_C = r2;
+    arg_4 = r5 + 0x5;
+    r5 = *(r7 + 0x10);
+    arg_8 = r5;
+    var_0 = r8;
+    r0 = [r0 GetMsgByCreateTime:r10 FromID:arg_24 FromCreateTime:STK2 Limit:STK1 LeftCount:STK0 FromSequence:STK-1];
+    r7 = r7;
+    r4 = [r0 retain];
+    r1 = @selector(HandleMsgList:MsgList:);
+    [r6 HandleMsgList:r2 MsgList:STK3];
+```
+
+objc_ivar_offset_CMessageMgr_m_oMsgDB is CMessageDB *m_oMsgDB;
+That is, it calls CMessageDB's GetMsgByCreateTime:r10
+
+PS:
+![img](https://everettjf.github.io/stuff/eimkit/1466141798790.png)
+>  In Hopper you can see quite a bit of log info, and it even writes out the file name of the current implementation file.
+The suffix is .mm; of course it's not just this one — many WeChat classes are implemented in Objective-C++. Including the message main screen's BaseMsgContentViewController.mm, as well as many classes in CMessageMgr below. (Guessing, WeChat's early developers were probably people who did C++ Windows client development. The C-prefixed classes...)
+
+This CMessageMgr is also developed in Objective-C++. But Hopper can show that GetMsgByCreateTime: internally calls
+
+```
+int -[CMessageDB GetMsg:Where:order:Limit:](int arg0) {
+```
+
+which internally calls:
+
+```
+   r11 = *objc_ivar_offset_CMessageDB_m_oMMDB;
+    r0 = *(r6 + r11);
+    r3 = *0x26b20d8;
+    asm{ stmeq.w    sp, {r4, r10} };
+    arg_8 = r5;
+    r5 = r8;
+    r0 = [r0 GetMessagesByChatName:r5 onProperty:r3 where:STK1 order:STK0 limit:STK-1];
+```
+
+It calls the member CMMDB's GetMessagesByChatName method.
+
+```
+@interface CMessageDB : NSObject
+{
+    CMMDB *m_oMMDB;
+}
+
+```
+
+CMMDB's GetMessagesByChatName method internally is as follows:
+
+```
+    res = [arg0 GetMessageTable:r11];
+    r0 = [res getObjectsWhere:r10 onProperties:r4 orderBy:STK0 limit:STK-1];
+
+```
+
+That is, it calls getObjectsWhere on the return value of CMMDB::GetMessageTable.
+
+```
+void * -[CMMDB GetMessageTable:](void * self, void * _cmd, void * arg2) {
+    r4 = [[CMMDB messageTableName:arg2] retain];
+    r5 = [[self m_db] retain];
+    r3 = [DBMessage class];
+    r6 = [[r5 getTable:r4 withClass:r3] retain];
+    r0 = loc_215a20c(r6, @selector(getTable:withClass:));
+
+```
+
+It calls m_db's (WCDataBase *m_db;) getTable:withClass method. Stepping into it further, it just returns a WCDataBaseTable type.
+
+Look at CMMDB's header
+
+```
+
+@interface CMMDB : NSObject <WCDataBaseEventDelegate>
+{
+    NSRecursiveLock *m_lockMMDB;
+    NSMutableSet *m_setMessageCreatedTable;
+    NSMutableSet *m_setMessageExtCreatedTable;
+    OpLogDB *m_oplogWcdb;
+    WCDataBase *m_db;
+    WCDataBaseTable *m_tableContact;
+    WCDataBaseTable *m_tableContactExt;
+    WCDataBaseTable *m_tableContactMeta;
+    WCDataBaseTable *m_tableQQContact;
+    WCDataBaseTable *m_tableSendMsg;
+    WCDataBaseTable *m_tableUploadVoice;
+    WCDataBaseTable *m_tableDownloadVoice;
+    WCDataBaseTable *m_tableRevokeMsg;
+    WCDataBaseTable *m_tableEmoticon;
+    WCDataBaseTable *m_tableEmoticonUpload;
+    WCDataBaseTable *m_tableEmoticonDownload;
+    WCDataBaseTable *m_tableEmoticonPackage;
+    WCDataBaseTable *m_tableBottle;
+    WCDataBaseTable *m_tableBottleContact;
+    WCDataBaseTable *m_tableMassSendContact;
+}
+```
+
+It just gets the corresponding WCDataBaseTable instance based on the table type to fetch (here DBMessage class), used to operate on a certain table.
+
+PS:
+WCDataBase is the wrapper for sqlite.
+
+```
+@interface WCDataBase : NSObject <WCDBCorruptReportInterface, WCDBHandlesPoolProtocol>
+{
+    WCDBHandlesPool *m_handlesPool;
+    struct sqlite3 *m_dbHandle;
+    NSData *m_dbEncryptKey;
+    BOOL m_isMemoryOnly;
+    NSString *m_nsDBPath;
+    NSString *m_nsDBFilePath;
+    NSString *m_nsDBName;
+    NSRecursiveLock *m_oLock;
+    unsigned int m_databaseID;
+    unsigned int m_initTime;
+    id <WCDataBaseEventDelegate> m_eventDelegate;
+    WCDBCorruptReport *m_corruptReport;
+}
+
+```
+
+Tracing the calls further, you get to:
+
+```
+int -[WCDataBase getObjectsOfClass:fromTable:onProperties:where:orderBy:limit:getError:](? arg0) {
+
+```
+
+This is the local query against sqlite.
+
+Let's stop here; we know the general flow. But it seems there's an issue: this whole chain is done on the main thread — though it seems fast enough.
+
+PS: WeChat's local sqlite database design and the Objective-C++ wrapper are worth studying when there's time.
+
+
+## New Messages
+
+Above we found the call stack for loading historical chat messages when first opening the chat screen.
+
+I also want to know the call stack when a new message arrives while in the conversation screen. So enter the chat screen, then set a breakpoint again, then send a message to this account from another phone (or yourself), and look at the call stack.
+
+First enter the chat message page, then set a breakpoint at the preCreateMessageContentNode method again.
+
+```
+(lldb) br s -a 0x16f1444
+Breakpoint 4: where = WeChat`___lldb_unnamed_function80337$$WeChat, address = 0x016f1444
+(lldb) c
+error: Process is running.  Use 'process interrupt' to pause execution.
+Process 67776 stopped
+* thread #1: tid = 0x214590, 0x016f1444 WeChat`___lldb_unnamed_function80337$$WeChat, queue = 'com.apple.main-thread', stop reason = breakpoint 4.1
+    frame #0: 0x016f1444 WeChat`___lldb_unnamed_function80337$$WeChat
+WeChat`___lldb_unnamed_function80337$$WeChat:
+->  0x16f1444 <+0>: push   {r4, r5, r6, r7, lr}
+    0x16f1446 <+2>: add    r7, sp, #0xc
+    0x16f1448 <+4>: push.w {r8, r10, r11}
+    0x16f144c <+8>: sub.w  r4, sp, #0x20
+(lldb) bt
+* thread #1: tid = 0x214590, 0x016f1444 WeChat`___lldb_unnamed_function80337$$WeChat, queue = 'com.apple.main-thread', stop reason = breakpoint 4.1
+  * frame #0: 0x016f1444 WeChat`___lldb_unnamed_function80337$$WeChat
+    frame #1: 0x016f2516 WeChat`___lldb_unnamed_function80343$$WeChat + 990
+    frame #2: 0x018df210 WeChat`___lldb_unnamed_function87462$$WeChat + 472
+    frame #3: 0x018df44e WeChat`___lldb_unnamed_function87463$$WeChat + 398
+    frame #4: 0x01f6e3a2 WeChat`___lldb_unnamed_function115325$$WeChat + 1242
+    frame #5: 0x2433e5ce Foundation`__NSThreadPerformPerform + 386
+    frame #6: 0x235c5fae CoreFoundation`__CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION__ + 14
+```
+
+Using the method above, you can get the call stack:
+
+```
+void -[BaseMsgContentViewController preCreateMessageContentNode:](void * self, void * _cmd, void * arg2) {
+void -[BaseMsgContentViewController addMessageNode:layout:addMoreMsg:](void * self, void * _cmd, void * arg2, char arg3, char arg4) {
+void -[BaseMsgContentLogicController DidAddMsg:](void * self, void * _cmd, void * arg2) {
+void -[BaseMsgContentLogicController OnAddMsg:MsgWrap:](void * self, void * _cmd, void * arg2, void * arg3) {
+void -[CMessageMgr MainThreadNotifyToExt:](void * self, void * _cmd, void * arg2) {
+__NSThreadPerformPerform
+__CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION__
+```
+
+From the call stack, we roughly know CMessageMgr MainThreadNotifyToExt dispatches the message. We're at the CMessageMgr class again.
+
+The previous method is __NSThreadPerformPerform, so we know it was perform'd over from another thread. (Performing to the main thread adds it to the main thread's RunLoop.)
+
+Let's look at MainThreadNotifyToExt's parameters. Set a breakpoint at the first line of code:
+
+![img](https://everettjf.github.io/stuff/eimkit/1466238259094.png)
+
+Inspect with lldb:
+
+```
+(lldb) po $r0
+po<CMessageMgr: 0x147afbe0>
+
+(lldb) po $r0
+<CMessageMgr: 0x147afbe0>
+
+(lldb) po (char*)$r1
+"MainThreadNotifyToExt:"
+
+(lldb) po $r2
+{
+    1 = 1;
+    2 = "wxid_pamzqdzakikt21";
+    3 = "{m_uiMesLocalID=394, m_ui64MesSvrID=8508546064571928607, m_nsFromUsr=wxi*t21~19, m_nsToUsr=wxi*h12~19, m_uiStatus=3, type=1, msgSource=\"\"} ";
+}
+
+(lldb) po [$r2 class]
+__NSDictionaryM
+(lldb) po [[$r2 objectForKey:@"3"] class]
+CMessageWrap
+
+(lldb) po [[$r2 objectForKey:@"2"] class]
+__NSCFString
+
+(lldb) po [[$r2 objectForKey:@"1"] class]
+__NSCFString
+```
+
+So the parameter is an NSDictionary, with keys being the strings 1, 2, 3, which are NSString, NSString, and CMessageWrap respectively.
+
+So CMessageWrap is prepared by the background thread.
+
+Hopper can show the general flow:
+
+```
+center = [MMServiceCenter defaultCenter]
+service = getService:[MMExtensionCenter class]
+IMsgExt ext = service getExtension:[IMsgExt class]
+然后使用IMsgExt分发消息。
+```
+
+The IMsgExt protocol is as follows:
+
+```
+@protocol IMsgExt
+
+@optional
+- (void)OnAddMsg:(NSString *)arg1 MsgWrap:(CMessageWrap *)arg2;
+- (void)OnAddMsgForSpecialSession:(NSString *)arg1 MsgList:(NSArray *)arg2;
+- (void)OnAddMsgListForSession:(NSDictionary *)arg1 NotifyUsrName:(NSSet *)arg2;
+- (void)OnBeginDownloadAppData:(CMessageWrap *)arg1;
+- (void)OnBeginDownloadImage:(CMessageWrap *)arg1;
+- (void)OnBeginDownloadVideo:(CMessageWrap *)arg1;
+- (void)OnChangeMsg:(NSString *)arg1 OpCode:(unsigned long)arg2;
+- (void)OnDelMsg:(NSString *)arg1;
+- (void)OnDelMsg:(NSString *)arg1 DelAll:(BOOL)arg2;
+- (void)OnDelMsg:(NSString *)arg1 MsgWrap:(CMessageWrap *)arg2;
+- (void)OnGetNewXmlMsg:(NSString *)arg1 Type:(NSString *)arg2 MsgWrap:(CMessageWrap *)arg3;
+- (void)OnModMsg:(NSString *)arg1 MsgWrap:(CMessageWrap *)arg2;
+- (void)OnMsgDownloadAppAttachExpiredFail:(NSString *)arg1 MsgWrap:(CMessageWrap *)arg2;
+- (void)OnMsgDownloadThumbFail:(NSString *)arg1 MsgWrap:(CMessageWrap *)arg2;
+- (void)OnMsgDownloadThumbOK:(NSString *)arg1 MsgWrap:(CMessageWrap *)arg2;
+- (void)OnMsgDownloadVideoExpiredFail:(NSString *)arg1 MsgWrap:(CMessageWrap *)arg2;
+- (void)OnMsgNotAddDBNotify:(NSString *)arg1 MsgWrap:(CMessageWrap *)arg2;
+- (void)OnMsgNotAddDBSession:(NSString *)arg1 MsgList:(NSArray *)arg2;
+- (void)OnPreAddMsg:(NSString *)arg1 MsgWrap:(CMessageWrap *)arg2;
+- (void)OnReceiveSight:(CMessageWrap *)arg1;
+- (void)OnRevokeMsg:(NSString *)arg1 MsgWrap:(CMessageWrap *)arg2 ResultCode:(unsigned long)arg3 ResultMsg:(NSString *)arg4 EducationMsg:(NSString *)arg5;
+- (void)OnSendSight:(NSString *)arg1;
+- (void)OnShowPush:(CMessageWrap *)arg1;
+- (void)OnUnReadCountChange:(NSString *)arg1;
+- (void)OnUpdateVideoStatus:(NSString *)arg1 MsgWrap:(CMessageWrap *)arg2;
+@end
+
+```
+
+I won't keep analyzing the specifics. We roughly understand the UI-related flow.
+
+
+# Misc
+
+## Memory Usage
+
+WeChat pre-creates the message view into the data object and doesn't destroy it. "Doesn't destroy" means: exiting the conversation screen won't destroy it; continuously pulling down messages keeps creating more. At first glance this seems inconsiderate; let's look at WeChat's memory usage.
+
+First, kill the WeChat process and reopen it.
+![img](https://everettjf.github.io/stuff/eimkit/1466242953914.png)
+
+Look at memory in this state:
+
+![img](https://everettjf.github.io/stuff/eimkit/1466240808797.png)
+
+RSIZE=52M
+
+Then, enter the chat screen:
+
+![img](https://everettjf.github.io/stuff/eimkit/1466240901871.png)
+
+RSIZE=56M
+
+Then, send a ton of messages (images, text, all kinds), 400+ of them, and pull them all down.
+
+![img](https://everettjf.github.io/stuff/eimkit/1466241021593.png)
+
+RSIZE=81M
+
+This way, since the probability of opening that many messages in one conversation is low, and the memory usage is still acceptable. 81M feels relatively low. It seems this approach is fairly reliable.
+
+This approach also has a performance advantage: there's no need to repeatedly set the message View's content (because it was preCreated), trading memory for performance.
+
+## ViewController
+
+WeChat caches ViewControllers, i.e. opening the messages of the same user twice gives the same ViewController address.
+
+There should be a caching strategy; I'll research it when I have time.
+
+
+## QQ and Other Implementation Approaches
+
+To support displaying many message types in an IM screen, the first thing you think of is definitely using multiple Cells. For example: TextCell, ImageCell, etc. The classic QQ actually uses this approach. You can check with Reveal.
+
+![img](https://everettjf.github.io/stuff/eimkit/1466241507427.png)
+
+## The Problem of Changing the frame in cellForRowAtIndexPath
+
+If you adopt QQ's Cell-based approach, there's a UI detail to watch out for. [See this article](https://everettjf.github.io/2016/06/18/little-chat-ui-bug-resolve).
+
+
+# Demo
+
+Based on WeChat's message screen implementation above, I implemented a very simple screen Demo with a similar mechanism [https://github.com/everettjf/Yolo/tree/master/WeChatLikeMessageDemo](https://github.com/everettjf/Yolo/tree/master/WeChatLikeMessageDemo).
+
+During implementation I found this mechanism has a benefit: when preCreating a message, you can know the cell's height ahead of time (before heightForRowAtIndexPath), which conveniently solves the dynamic Cell height problem.
+
+
+# Summary
+
+Reverse engineering lets us understand how an App is implemented (especially excellent, unopened-source Apps). Studying these excellent Apps can assist forward development.
+
+I recommend the book *iOS App Reverse Engineering*, as well as the <http://iosre.com> forum.
+
+<!--ZH-->
 
 
 

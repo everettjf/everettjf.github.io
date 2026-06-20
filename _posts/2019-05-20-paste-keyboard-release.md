@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "剪贴板输入法，让朋友圈文字不再被折叠"
+title: "Paste Keyboard: Stop WeChat Moments Text from Being Collapsed"
+title_zh: "剪贴板输入法，让朋友圈文字不再被折叠"
+lang_original: zh
 categories:
   - 工具
 tags:
@@ -9,6 +11,93 @@ tags:
   - 剪贴板
 comments: true
 ---
+
+**Paste Keyboard has now been transferred**. See: <https://mp.weixin.qq.com/s/0dqe4Rj_pUGXwzRUKsj7iQ>
+
+Paste Keyboard solves the problem where WeChat Moments automatically collapses a large pasted block of text into a single line. With Paste Keyboard, your Moments text won't get collapsed anymore.
+
+<!-- more -->
+
+## Background
+
+When you see a great passage of text online and want to copy-paste it directly to share on WeChat Moments, you'll find that the published post gets collapsed into one line. Like this:
+
+![](/media/15583135121912.jpg)
+
+WeChat's intention is good — it's meant to encourage everyone to share original and genuine content.
+
+WeChat has a simple algorithm to decide "when to collapse" — probably something like: judging whether there was an actual text input process.
+
+
+## Avoiding It with Paste Keyboard
+
+After entering text with Paste Keyboard, you can see it no longer gets collapsed. Like this:
+
+![](/media/15583137647734.jpg)
+
+
+
+## Installation
+
+Paste Keyboard is now on the App Store. Click [here to download and install](https://itunes.apple.com/cn/app/id1463618135).
+
+
+## Configuration
+
+(1) First, open `Settings - General - Keyboard - Keyboards`, tap Add New Keyboard, and select Paste Keyboard.
+
+![](/media/15583141966690.jpg)
+
+
+(2) Then, open `Settings - General - Keyboard - Keyboards - Paste Keyboard` and enable `Allow Full Access`.
+![](/media/15583142336541.jpg)
+
+
+## Usage
+
+(1) First `copy a passage of text` from anywhere.
+
+(2) Then go to a place where you can enter text, such as WeChat Moments.
+
+(3) Switch the keyboard to `Paste Keyboard`.
+![](/media/15583147714698.jpg)
+
+(4) Paste Keyboard will automatically grab the `text in the system clipboard` and show a brief preview. Now tap `Input` to start typing it in.
+![](/media/15583149056002.jpg)
+
+(5) Once input is finished, publish. The text won't be collapsed. :)
+
+
+## Input Progress and Speed
+
+![](/media/15583150167015.jpg)
+
+
+## Full Screenshot
+
+![](/media/15583149389435.jpg)
+
+## Summary
+
+When browsing Moments I often see text getting collapsed, which always felt just a tiny bit awkward. Then one day I saw someone on Weibo share the idea of simulating input (it was a while ago on Weibo and I couldn't find it again...), so I jotted down a TODO. With the base code from previously developing `USB Keyboard`, this development was pretty fast — I started on Friday night and it passed review by Monday morning. Apple was also great and approved it on the first review.
+
+~~Originally 6 RMB, now free~~ 6 bucks is too expensive, so let's just make it free :)
+
+If you find it useful, please share it around~
+
+
+---
+
+
+Be sure to follow my WeChat official account too :)
+
+![wechatgroup](/images/fun.png)
+
+
+
+
+
+<!--ZH-->
 
 **剪贴板输入法现已转让**，详见：<https://mp.weixin.qq.com/s/0dqe4Rj_pUGXwzRUKsj7iQ>
 
@@ -89,7 +178,6 @@ comments: true
 也要关注我的微信订阅号哈 :)
 
 ![wechatgroup](/images/fun.png)
-
 
 
 

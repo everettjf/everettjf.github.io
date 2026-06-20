@@ -1,10 +1,120 @@
 ---
 layout: post
-title: "Emacs 新手入门笔记与踩坑记录"
+title: "Emacs Beginner Notes and Pitfall Records"
+title_zh: "Emacs 新手入门笔记与踩坑记录"
+lang_original: zh
 categories: Skill
 comments: true
 ---
 
+
+
+
+
+As a Windows programmer and a newbie to vim and markdown, I suddenly entered another "world", encountering osx, emacs, and org, and ran into some pitfalls. Recording them here.
+
+## Installation
+- MacOS
+
+~~~
+    brew install emacs --with-cocoa
+    brew linkapps emacs
+
+    然后重新打开iTerm2，输入emacs就可以在终端运行emacs了。
+    也在Applications里有了emacs项。
+~~~
+<!-- more -->
+
+## Pitfalls
+
+- Under Windows 8.1, some Chinese characters in emacs 24.4 display as "blocks".
+    Add the following line in the .emacs file (or in prelude's init.el file):
+
+~~~
+(set-fontset-font "fontset-default" 'gb18030 '("Microsoft YaHei" . "unicode-bmp"))
+~~~
+
+- When both the .emacs file and init.el in the .emacs.d folder exist, only the .emacs file takes effect.
+~~~
+当使用prelude时，需要删除.emacs文件(如何使两者都有效？)
+~~~
+
+- On osx 10.10.1 (English interface), installing emacs via brew in the terminal causes Chinese to display as question marks.
+
+~~~
+系统切换为中文，解决。（不切换如何解决，暂不想研究了）
+~~~
+
+- Under osx, the meta key issue in terminal or iterm
+
+  - In terminal
+
+~~~
+终端->偏好设置->描述文件->键盘
+最下方选择“使用Option键作为Meta键”
+~~~
+
+  - iterm
+
+~~~
+Preferences -> Profiles 然后选择当前的profile -> Keys
+最下面都选择+Esc
+Left option key acts as : +Esc
+Rigth option key acts as : +Esc
+~~~
+
+- How to find where the .emacs file is stored (especially under Windows)
+
+~~~
+    C-X C-F ~/
+~~~
+
+## Notes
+
+- prelude recommended
+
+  - GitHub URL: [https://github.com/bbatsov/prelude](https://github.com/bbatsov/prelude)
+  - I haven't tried others; as a beginner, prelude gave me energy.
+  - Install prelude
+
+~~~
+git clone git://github.com/bbatsov/prelude.git path/to/local/repo
+ln -s path/to/local/repo ~/.emacs.d
+cd ~/.emacs.d
+~~~
+
+Copy prelude_modules.el out of samples, and start emacs.
+
+- About evil and Chinese input methods
+
+  - Switching between the Chinese input method and vim's own various mode switches is too awkward (this is also one of the reasons I wanted to try emacs)
+  - If you're writing programs, you can still enable evil
+
+~~~
+启用或关闭evil-mode
+M-x evil-mode
+~~~
+
+- Swapping capslock and ctrl under osx
+
+  - System Preferences -> Keyboard -> Keyboard -> Modifier Keys (bottom-right corner)
+
+- Key repeat speed
+
+  - System Preferences -> Keyboard -> Keyboard -> Adjust key repeat (to the fastest)
+
+- Install the monokai theme
+I really like the monokai theme
+
+~~~
+M-x package-install
+monokai-theme
+
+M-x customize-theme
+选择monokai后，save settings，就ok啦。
+~~~
+
+<!--ZH-->
 
 
 
@@ -112,4 +222,3 @@ monokai-theme
 M-x customize-theme
 选择monokai后，save settings，就ok啦。
 ~~~
-

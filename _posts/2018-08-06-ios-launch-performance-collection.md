@@ -1,12 +1,174 @@
 ---
 layout: post
-title: "iOS 应用启动性能优化资料汇总"
+title: "A Collection of iOS App Launch Performance Optimization Resources"
+title_zh: "iOS 应用启动性能优化资料汇总"
+lang_original: zh
 categories:
   - doc
 tags:
   - doc
 comments: true
 ---
+
+I collect good resources here whenever I find them. *Updated continuously, last updated August 19, 2018*
+
+<!-- more -->
+
+
+# WWDC
+
+1. Optimizing App Startup Time
+    
+    Must-watch official material, from the low level to the high level <https://developer.apple.com/videos/play/wwdc2016/406/>
+    
+2. App Startup Time: Past, Present, and Future
+    
+    Optimization at the dyld level <https://developer.apple.com/videos/play/wwdc2017/413/>
+    
+3. Optimizing I/O for Performance and Battery Life
+    
+    IO is an important factor affecting launch performance <https://developer.apple.com/videos/play/wwdc2016/719/>
+    
+4. Practical Approaches to Great App Performance
+    
+    Solving performance problems step by step live on stage <https://developer.apple.com/videos/play/wwdc2018/407/>
+    
+5. Using Time Profiler in Instruments
+    
+    Time Profiler is an essential helper <https://developer.apple.com/videos/play/wwdc2016/418/>
+    
+6. High Performance Auto Layout
+    
+    If your app's home page uses AutoLayout, it seems it won't be a problem from now on <https://developer.apple.com/videos/play/wwdc2018/220/>
+    
+7. Core Image: Performance, Prototyping, and Python
+    
+    The home page of course also has lots of images, so learn about Core Image <https://developer.apple.com/videos/play/wwdc2018/719/>
+
+# Articles
+
+**The following articles are merely a collection; they are each one person's opinion. Don't believe them all, and don't oppose them all — each has its reasoning. Just learn the line of thinking.**
+
+1. Jike Tech Team: iOS app launch speed research and practice
+    
+    Link <https://zhuanlan.zhihu.com/p/38183046?from=1086193010&wm=3333_2001&weiboauthoruid=1690182120>
+    Learn the line of thinking.
+
+2. Measuring the impact of iOS Dynamic Frameworks on app launch time
+    
+    <https://www.jianshu.com/p/3263009e9228>
+    Tests on dynamic libraries. The takeaway: try not to load dynamic libraries during the launch process.
+
+3. Optimizing Facebook for iOS start time
+    
+    <https://code.fb.com/ios/optimizing-facebook-for-ios-start-time/>
+    Facebook's approach. Even though Facebook's launch is very slow.
+    
+4. Bugly: iOS App Launch Performance Optimization
+    
+    <https://mp.weixin.qq.com/s/Kf3EbDIUuf0aWVT-UCEmbA>
+    This article reveals a very powerful idea at the end. Strongly recommend reading the end of the article carefully.
+    
+5. Toutiao iOS Client Launch Speed Optimization
+    
+    <https://techblog.toutiao.com/2017/01/17/iosspeed/>
+    There's a lot of info at the start of the article, but reducing the amount of code seems hard to actually pull off.
+    
+6. How to precisely measure the launch time of an iOS App
+    
+    <https://www.jianshu.com/p/c14987eee107>
+    The article's line of thinking is worth referencing.
+
+7. Optimizing App Startup Time
+    
+    <http://yulingtianxia.com/blog/2016/10/30/Optimizing-App-Startup-Time/>
+    Mainly notes on WWDC, but still very powerful. "Nan Xiaoyu in the south, Bei Ziqi in the north." This article was written by Nan Xiaoyu.
+    
+8. Taobao iOS Performance Optimization Exploration
+    
+    <https://github.com/izhangxb/GMTC/blob/master/%E5%85%A8%E7%90%83%E7%A7%BB%E5%8A%A8%E6%8A%80%E6%9C%AF%E5%A4%A7%E4%BC%9AGMTC%202017%20PPT/%E6%89%8B%E6%B7%98iOS%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2%20.pdf>
+    This is a tech talk by a Taobao expert at GMTC 2017, worth referencing.
+
+9. iOS App Launch Performance Optimization (1) - premain
+    
+    <https://everettjf.github.io/2018/05/26/ios-app-launch-performance-part1/>
+    Just the line of thinking for the pre-main stage. The author said there would be follow-up articles, but it's been quiet for a long time — who knows what he's up to.
+
+10. Hook all +load methods
+    
+    A method to hook objective c +load <https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/>
+    
+    Hook all +load methods (including Categories)
+ <https://everettjf.github.io/2018/08/19/ios-hook-really-all-load/>
+    
+11. A method to hook C++ static initializers
+    
+    <https://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/>
+    The hook method in this article is quite possibly my own original creation. Strongly recommended. The Taobao talk also mentioned this method.
+
+12. A method to delay premain code
+    
+    <https://everettjf.github.io/2017/03/06/a-method-of-delay-premain-code/>
+    A line of thinking discovered by studying a special section unique to Facebook's App (refer to the article <https://everettjf.github.io/2016/08/20/facebook-explore-section-fbinjectable/> ).
+
+    
+# Tools
+
+1. TimeProfiler
+    
+    Everyone knows what this is.
+    
+2. AppleTrace
+    
+    <https://github.com/everettjf/AppleTrace>
+    Uses HookZz to hook objc_msgSend; there's significant performance overhead, but you can know the approximate proportion of time cost based on relative ratios. It also manually defines start and end points to generate chrome tracing.
+    
+3. DTrace
+    
+    Can only be used on the simulator. For usage, refer to this book: Advanced Apple Debugging & Reverse Engineering <https://store.raywenderlich.com/products/advanced-apple-debugging-and-reverse-engineering>
+    
+4. Xcode Environment Variables
+    
+    DYLD_PRINT_STATISTIC and other similar environment variables <https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/LoggingDynamicLoaderEvents.html>
+
+# Code
+
+1. FastImageCache
+    
+    <https://github.com/path/FastImageCache>
+    Optimizes image loading speed. Trading space for time.
+
+
+# Niche Antiques
+
+1. Code Size Performance Guidelines
+    
+    <https://developer.apple.com/library/archive/documentation/Performance/Conceptual/CodeFootprint/Articles/MachOOverview.html>
+    The idea at the very bottom of the page is good, but the article is from the gcc era. Is there a clang-era counterpart?
+    Improving Locality of Reference <https://developer.apple.com/library/archive/documentation/Performance/Conceptual/CodeFootprint/Articles/ImprovingLocality.html#//apple_ref/doc/uid/20001862-CJBJFIDD>
+
+# Books
+
+1. Pro iOS Apps Performance Optimization
+    
+    Seems rather old, for reference only.
+    
+2. iOS and macOS Performance Tuning
+    
+    Very detailed, I'm reading it now. There's a Chinese translation.
+    
+3. High Performance iOS Apps
+    
+    There's a Chinese translation.
+
+
+
+
+# Summary
+
+I've read all the articles above, or am at least reading them. Summarized here to help everyone optimize launch performance.
+
+<!--ZH-->
 
 发现好资料就整理到这里，*随时更新，最后一次更新2018年8月19日*
 

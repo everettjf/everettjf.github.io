@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "LLDB：如何在函数 return 处下断点"
+title: "LLDB: How to Set a Breakpoint at a Function's return"
+title_zh: "LLDB：如何在函数 return 处下断点"
+lang_original: zh
 categories:
   - lldb
 tags:
@@ -9,6 +11,84 @@ tags:
   - breakpoint
 comments: true
 ---
+
+You have a complex function with lots of lines and many returns inside. Single-stepping through it is slow — how can you quickly find which line it returns from?
+
+<!-- more -->
+
+For example, this code:
+
+```
+void foo() {
+    int i = arc4random() %100;
+    
+    if (i > 30) {
+        if (i < 40) {
+            return;
+        }
+        if (i > 77) {
+            return;
+        }
+        if (i < 66) {
+            return;
+        }
+    }
+    
+    switch (i) {
+        case 0:
+            return;
+        case 1:
+            return;
+        case 2:
+            return;
+        case 3:
+            return;
+        case 4:
+            return;
+        default:
+            return;
+    }
+}
+
+int main(int argc, const char * argv[]) {
+    foo();
+    return 0;
+}
+
+```
+
+Suppose foo is a very long, very complex function with many returns. How do you know which line it returned from?
+
+You can use an lldb breakpoint:
+
+```
+breakpoint set -p return
+或者
+br set -p return
+```
+
+First add a breakpoint on the first line of foo.
+
+![](/media/15875739886610.jpg)
+
+Once the breakpoint triggers, type `br set -p return` in the console.
+![](/media/15875740456070.jpg)
+
+Then continue, and it will break at the line where the function returns.
+
+![](/media/15875741244090.jpg)
+
+
+Pretty interesting~
+
+---
+
+If you like it, follow the official account to show your support:
+
+![](/images/fun.png)
+
+<!--ZH-->
+
 
 有一个代码行很多的复杂函数，内部有很多return，单步调试很慢，如何快速找到哪一行return了？
 

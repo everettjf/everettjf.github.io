@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "Mach-O 文件可视化工具 MachOExplorer Alpha 发布"
+title: "MachOExplorer, a Mach-O File Visualization Tool, Alpha Release"
+title_zh: "Mach-O 文件可视化工具 MachOExplorer Alpha 发布"
+lang_original: zh
 categories:
   - Tool
 tags:
@@ -9,6 +11,46 @@ tags:
 comments: true
 ---
 
+
+
+
+After more than half a year of on-and-off development, I finally released a beta version recently.
+
+<!-- more -->
+
+# Background
+
+<http://iosre.com/t/machoview/7627>
+<http://iosre.com/t/machoview/5456>
+
+# Features
+
+## Currently supported:
+
+1. Basic parsing of Mach-O files. All the elements you can view in MachOView.
+
+## Coming soon
+
+1. Parsing of symbols corresponding to addresses.
+2. Windows version
+
+## Will be supported in the future
+
+1. Editing
+
+
+# Download
+
+[https://github.com/everettjf/MachOExplorer/releases](https://github.com/everettjf/MachOExplorer/releases)
+
+# Code
+
+[https://github.com/everettjf/MachOExplorer](https://github.com/everettjf/MachOExplorer
+)
+
+
+
+<!--ZH-->
 
 
 
@@ -46,6 +88,5 @@ comments: true
 
 [https://github.com/everettjf/MachOExplorer](https://github.com/everettjf/MachOExplorer
 )
-
 
 

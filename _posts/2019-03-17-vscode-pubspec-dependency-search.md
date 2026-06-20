@@ -1,12 +1,90 @@
 ---
 layout: post
-title: "VSCode 扩展：从 pubspec 依赖快速打开 pub.dev 文档"
+title: "VSCode Extension: Quickly Open pub.dev Docs from pubspec Dependencies"
+title_zh: "VSCode 扩展：从 pubspec 依赖快速打开 pub.dev 文档"
+lang_original: zh
 categories:
   - 扩展
 tags:
   - vscode
 comments: true
 ---
+
+
+Recently I started taking a preliminary look at Flutter (https://flutter.dev/).
+
+
+While studying some open-source code, I noticed a tiny need: pubspec.yaml has many dependencies, and as a beginner I'm unfamiliar with many of them, so I have to copy each one to https://pub.dartlang.org/ to search and look up the docs.
+
+
+I figured I could develop a vscode plugin that adds a button next to each package name, so I'd only need to click it. (Ah, am I being too lazy?)
+
+<!-- more -->
+
+
+So today I developed such a vscode extension:
+
+Pubspec Dependency Search
+
+![](/media/15528243123320.jpg)
+
+
+After installing the extension, when you open pubspec.yaml, the extension finds the dependencies and dev_dependencies and adds a line of text (a link) above each dependency. For example: Search flutter in Dart Packages.
+
+![](/media/15528243493141.jpg)
+
+After clicking it, you can open Dart Packages to search.
+
+![](/media/15528243710418.jpg)
+
+
+Installation:
+
+<https://marketplace.visualstudio.com/items?itemName=everettjf.pubspec-dependency-search>
+
+Source code:
+
+<https://github.com/everettjf/vscode-pubspec-dependency-search>
+
+
+How it works:
+
+1. The principle is simple: after the vscode extension parses the dependencies in pubspec.yaml, it uses CodeLensProvider to tell vscode where to add the links.
+2. The link is just an assembled url: https://pub.dartlang.org/packages?q=flutter opened in the browser.
+
+
+
+---
+
+
+
+A few Flutter learning resources I've recently compiled:
+
+
+
+1. Quickly get familiar with the Dart language https://www.dartlang.org/guides/language/language-tour 
+2. Quickly skim the docs https://flutter.dev/docs/development/ui/widgets-intro
+3. Go through the Cookbook examples once https://flutter.dev/docs/cookbook
+4. Flutter in Action https://book.flutterchina.club/
+
+
+
+Then go ahead and start implementing your ideas~ Don't forget to install the vscode extension Pubspec Dependency Search.
+
+
+
+---
+
+
+Yeah, interesting :)
+
+Welcome to follow the official account "Client Tech Review":
+![](/images/fun.png)
+
+
+
+
+<!--ZH-->
 
 
 最近初步学习了下 Flutter （https://flutter.dev/）。

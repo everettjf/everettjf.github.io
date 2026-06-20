@@ -1,9 +1,111 @@
 ---
 layout: post
-title: "supotato：class-dump 头文件自动分类工具"
+title: "supotato: A Tool to Auto-Classify class-dump Header Files"
+title_zh: "supotato：class-dump 头文件自动分类工具"
+lang_original: zh
 categories: Essay
 comments: true
 ---
+
+
+
+class-dump produces so many header files. supotato can generate a simple classification report based on the `first 2 characters` of the header file names. It can also guess which third-party libraries (CocoaPods) were used.
+
+[Source code](https://github.com/everettjf/supotato)
+
+<!-- more -->
+
+
+## How to Use
+
+```sh
+pip install supotato
+
+cd <header files directory>
+
+supotato
+```
+
+
+
+## Example
+
+For example, given the following header files dumped by class-dump:
+
+[Here](https://github.com/everettjf/supotato/tree/master/example/headers)
+
+Run supotato:
+
+```sh
+$ supotato -i headers -o .
+```
+
+You get this simple classification:
+
+[Here](https://github.com/everettjf/supotato/blob/master/example/result.txt)
+
+
+Here's a real example:
+
+[Here](https://github.com/everettjf/supotato/blob/master/example/lots.txt).
+
+
+## Arguments
+
+```
+[everettjf@e supotato (master)]$ supotato --help
+usage: supotato [-h] [-i INPUT] [-o OUTPUT] [-s SORTBY] [-d ORDER]
+                [-p PREFIXLENGTH] [-u UPDATEDB]
+
+Generate a simple report for header files in your directory
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        directory that header(.h) files in.
+  -o OUTPUT, --output OUTPUT
+                        file (or directory) path to put txt report in.
+  -s SORTBY, --sortby SORTBY
+                        prefix or count . Means sort by prefix or count.
+  -d ORDER, --order ORDER
+                        desc or asc.
+  -p PREFIXLENGTH, --prefixlength PREFIXLENGTH
+                        prefix length for classify , default to 2.
+  -u UPDATEDB, --updatedb UPDATEDB
+                        force update cocoapods database.
+
+```
+
+1. -i specifies the directory the header files are in.
+2. -o specifies the directory to output the result.txt file, can also be a file path.
+3. -s specifies the basis for sorting the classification. prefix sorts by the first N characters of the file name (N can be specified, default 2), count sorts by the number of files in each category.
+4. -d sort type. desc for descending, asc for ascending.
+5. -p the number of leading characters to classify by. Default 2.
+6. -u update the local database (used to determine which third-party library a file belongs to).
+
+
+## How It Works
+
+
+1. From <https://github.com/CocoaPods/Specs> we can get all repos; after downloading them all, based on the spec.json file, get the header (.h) files in each library.
+2. Record the relationship between header files and Pod names in a local database.
+3. Compare one by one.
+
+Related code <https://github.com/everettjf/supotato/tree/master/podtool>
+
+
+## Summary
+
+
+1. A simple little tool that can speed up getting an overall understanding of class-dump header files.
+2. Maybe it could also:
+	- Parse .h files to build a class diagram.
+	- Further classify .h files. (Based on the parent class, or the last few characters.)
+
+	
+	
+
+<!--ZH-->
 
 
 
@@ -102,5 +204,4 @@ optional arguments:
 
 	
 	
-
 

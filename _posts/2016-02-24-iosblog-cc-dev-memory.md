@@ -1,9 +1,81 @@
 ---
 layout: post
-title: "iOSBlog.cc 网站：iOS 博客精选的由来、目标与反思"
+title: "The iOSBlog.cc Website: Origins, Goals, and Reflections on an iOS Blog Curation"
+title_zh: "iOSBlog.cc 网站：iOS 博客精选的由来、目标与反思"
+lang_original: zh
 categories: Essay
 comments: true
 ---
+
+
+
+Update on May 19, 2016: The "iOS Blog Picks" app is done, and has been renamed [Tomato Read](https://everettjf.github.io/2016/05/13/how-to-write-a-simple-feed-reader). (App names on the App Store can't contain Apple's product trademarks, so it can't contain "iOS".)
+
+
+# Current Status
+
+Warning: This post is fairly long-winded, but maybe it can offer something.
+
+Not long ago, I once again narrowed the scope of an idea I'd had for a long time, and finally produced the website [http://iosblog.cc](http://iosblog.cc).
+
+**iOS Blog Picks**'s goal is to collect the blogs of various iOS developers, big and small, along with a small selection of classic articles and tutorial series.
+
+The website uses Python's Django framework, with MySQL as the database. Source code at [https://github.com/everettjf/TomatoRead/](https://github.com/everettjf/TomatoRead/)
+<!-- more -->
+
+Components:
+
+1. Web: that is, what you see at <http://iosblog.cc>
+2. Chrome extension: a Chrome extension plugin that helps maintainers add websites.
+3. iOS client (to be developed): provides blog subscriptions and viewing of websites on mobile.
+
+As an iOS programmer, this counts as **full-stack**. Relying on my foundation building websites with ASP back in college, learning Django was relatively easy. Of these three components, the first two that are done are not my strong suit; the third, undeveloped one is what I'm good at at work.
+
+I'm about to start developing the third part. The goal is to make it the first work I publish to the App Store since I started learning iOS development.
+
+
+# History
+
+The seemingly simple <http://iosblog.cc> has a very long history. This history fully reflects my lack of experience developing personal projects, or rather, fully reflects how hard it is to turn a seemingly simple idea into reality (here the difficulty is perhaps mainly because realizing my idea was outside my familiar skill set).
+
+See here: <https://github.com/everettjf/TomatoRead/releases>
+
+- June 2015: I developed the first version using Golang's Beego. The database used ssdb. A new-to-me language, a new-to-me database. The idea at the time was: build a multi-user website/blog system. Additionally, the frontend used AngularJS, also new to me.
+- August 2015: Before coming to Beijing, I rewrote a version using PHP's Laravel framework. (During those three months—May, June, July—I'd quit my job and was at home practicing freelancing, but happened not to take on any gigs; instead I "collaborated" with someone who wanted to start a company, building a photography O2O platform. At the time, to make it easy for others to join later, I chose PHP for development. This choice later proved correct: when I came to Beijing for work and handed it off to someone else, PHP probably made it easy to find someone to take it over.) (My brief stint of freelancing didn't really let me experience true freelancing; I just experienced the first step of starting a company.)
+- November 2015: Although I'd come to Beijing to do iOS development, I "foolishly" still wanted to realize this idea, and rewrote it again using Flask, with MongoDB as the database (thinking back now, was I possessed back then, was my brain water-logged, playing around experiencing all sorts of tech, wasting heaps of my youth). I also made a little record: [here](https://everettjf.github.io/2015/11/05/mostlikelink-beta-publish). At this point I named it: <http://mostlike.link>, the most-liked link.
+- Still November, end of the month: I renamed it again to **Snowflake Link** <http://snows.link>, (a little lesson: you'll always think of a better domain name—until you've finally settled on it, better not buy a domain). This time it supported multi-user registration (sign up with a GitHub account), and everyone could use the Chrome plugin (also uploaded to the Chrome store) to add links. This version counts as a fairly full-featured version, basically with no problems for general use. And it was published on V2EX, where everyone still gave a lot of encouragement. [See here](http://www.v2ex.com/t/240956). This time on V2EX I met [wantline](http://www.v2ex.com/member/wantline); our ideas were very similar, so we collaborated.
+- December: I discussed the idea with wantline and the team.
+- January 2016: redeveloped it. This time, learning from past lessons, I decided to use Python, a language I was more familiar with, plus the more mature framework Django, plus MySQL.
+- Mid-March 2016: After on-and-off development and discussion, [https://admire.so](https://admire.so) went live. In February, I felt that if Admire included both design and iOS, it would be neither fish nor fowl—not focused enough. Also, the new design required remaking the websites' large icons, which meant I didn't have enough time to maintain each site's icon. So I decided that Admire would focus on design. Meanwhile, I took a very early version of the code (roughly late January), and after some simple modifications it became iOS Blog Picks [http://iosblog.cc](http://iosblog.cc). Because this version is older and quite simple—Admire had since made a large number of changes and added new features—and to give this "ancient" repo of mine a home at <https://github.com/everettjf/TomatoRead>, I decided to open-source this code. (The code quality isn't good; it's only for beginners to get a rough idea of the approach.)
+
+
+# Reflections
+
+A seemingly simple idea, yet developed over so long, and in the end still not realized—just seemingly walking on the right path.
+
+- Do you want to quickly realize the idea, or try out new tech?
+- To quickly realize the idea, choose mature tech and frameworks.
+- Want to try new stuff? Then go ahead and tinker.
+- Think more, design more—don't start writing code right away.
+- Keep the idea simple; think about how to realize the idea's core functionality in the simplest way.
+- Trim the idea; cut out the things that aren't key or core.
+- The tech to realize the idea is best one you're good at.
+- Are you sure you want to invest a lot of spare time? Are you sure?
+
+
+# The Future
+
+## Admire
+
+A lot of time in the future will go into developing Admire, gradually folding the original idea in in a more appropriate way. (Don't forget the original intention.)
+
+
+## iOS Blog Picks
+
+Focus on iOS blogs, with ongoing day-to-day maintenance.
+The iOS client will be tried first, to experiment. I'll strive to ship the first version as soon as possible.
+
+<!--ZH-->
 
 
 
@@ -72,5 +144,3 @@ Warning:本篇博客较为啰嗦，但或许能提供些什么。
 
 专注于iOS博客，日常不断维护。
 iOS客户端会首先尝试开发，试错。力争尽快上线第一个版本。
-
-

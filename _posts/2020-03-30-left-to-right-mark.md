@@ -1,12 +1,120 @@
 ---
 layout: post
-title: "探索 WhatsApp 应用名称中的隐藏字符（LRM）"
+title: "Exploring the Hidden Character (LRM) in WhatsApp's App Name"
+title_zh: "探索 WhatsApp 应用名称中的隐藏字符（LRM）"
+lang_original: zh
 categories:
   - 探索
 tags:
   - unicode
 comments: true
 ---
+
+Welcome to this episode of "Approaching Science: The Mysterious Symbol of WhatsApp"~
+
+<!-- more -->
+
+
+## The Crime Scene
+
+About half a year ago, maybe even longer, while using frida-ios-dump, I accidentally noticed that the WhatsApp app's name looked a bit odd.
+
+> frida-ios-dump is a tool for decrypting (de-shelling) apps on jailbroken iOS (it can also list iOS apps).
+> Link: https://github.com/AloneMonkey/frida-ios-dump
+
+Take a close look at WhatsApp in the image below:
+![](/media/15855012198617.jpg)
+
+WhatsApp's name is aligned on the left differently from the other apps.
+
+... how many times have I hurried past it ... how many times have I treated it as if it didn't exist ...
+
+Until today, I finally got curious for once and wanted to see why it wasn't aligned here.
+
+
+## Getting Started
+
+De-shell it, let's de-shell it and try.
+
+```
+python dump.py net.whatsapp.WhatsApp
+```
+
+After de-shelling, it looks like the image below. There's a question mark. `?WhatsApp.ipa` — what is that question mark?
+
+![](/media/15855017374127.jpg)
+
+I was about to `mv` it to another folder to study it, and at that very moment...
+
+![](/media/15855018704881.jpg)
+
+The mysterious character `\342\200\216` appeared. Just as I was getting curious...
+
+## A Quick Search
+
+Did a casual search ... and actually found it :)
+
+![](/media/15855020124999.jpg)
+
+> https://graphemica.com/200E
+
+Opening it up, it actually has a meaning~ `left-to-right mark` 
+
+![](/media/15855021218820.jpg)
+
+## The Truth Revealed
+
+Wikipedia also explains it:
+
+> The left-to-right mark (LRM) is a control character (an invisible formatting character) used in computerized typesetting (including word processing in a program like Microsoft Word) of text that contains a mixture of left-to-right text (such as English or Russian) and right-to-left text (such as Arabic, Persian or Hebrew). It is used to set the way adjacent characters are grouped with respect to text direction.
+
+> https://en.wikipedia.org/wiki/Left-to-right_mark
+
+Here's a translation:
+
+> The left-to-right mark (LRM) is a control character, or an invisible typesetting character. It is used in computerized bidirectional document typesetting.
+
+Let me put it even more plainly. The left-to-right mark is an invisible character used to include `left-to-right` text within a `right-to-left` typesetting language (such as Arabic).
+
+The example in the image below makes it clearer: after using the LRM, the displayed `C++` (left-to-right) is included within Arabic (right-to-left).
+
+![](/media/15855024011241.jpg)
+
+
+## Further Reading
+
+There's a `Left-to-right mark`, and there's also a `Right-to-left mark`.
+
+> https://en.wikipedia.org/wiki/Right-to-left_mark
+
+
+## Going Further
+
+Pulling out WhatsApp's `Info.plist` file and taking a look, there doesn't seem to be anything special.
+
+![](/media/15855026225466.jpg)
+
+Let's look at it with a binary editor.
+
+![](/media/15855027112567.jpg)
+
+`\342\200\216` is `0xE2 0x80 0x8E (e2808e)`
+
+![](/media/15855027969727.jpg)
+
+
+This way, when the code fetches `CFBundleDisplayName` and concatenates it with other localized languages, it can ensure WhatsApp's order is left-to-right.
+
+---
+
+Pretty interesting :)
+
+If you like it, follow the official account to show your support:
+
+![](/images/fun.png)
+
+<!--ZH-->
+
 
 欢迎大家观看这期的“走近科学之WhatsApp神秘符号”～
 

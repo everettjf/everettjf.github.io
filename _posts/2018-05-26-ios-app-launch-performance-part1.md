@@ -1,12 +1,99 @@
 ---
 layout: post
-title: "iOS 应用启动性能优化（一）：premain 阶段"
+title: "iOS App Launch Performance Optimization (Part 1): The premain Stage"
+title_zh: "iOS 应用启动性能优化（一）：premain 阶段"
+lang_original: zh
 categories:
   - 性能优化
 tags:
   - 性能优化
 comments: true
 ---
+
+> At work I've been continuously working on app launch performance, and I've also read many articles about "optimizing app launch performance." This article summarizes the articles I've read, plus some of my own understanding — there's nothing really new here. I've recently run into some difficulties and bottlenecks at work too, so I'm summarizing here while also organizing my thoughts.
+
+The plan is to have five short articles:
+
+1. iOS App Launch Performance Optimization (1) - premain
+2. iOS App Launch Performance Optimization (2) - main
+3. iOS App Launch Performance Optimization (3) - tools
+4. iOS App Launch Performance Optimization (4) - principles
+5. iOS App Launch Performance Optimization (5) - summary
+
+**The articles are all very short. This is the first one, so don't have any high expectations :)**
+
+<!-- more -->
+
+
+# Introduction
+
+The app launch process can be simply divided into 2 major stages:
+
+1. The premain stage: code executed before the main function.
+2. From main to the viewDidAppear of the home page UIViewController.
+
+Among these, the premain stage is divided into three parts:
+
+1. Loading the auto-linked dynamic libraries, and executing items 2 and 3 within the dynamic libraries first.
+2. Executing `+load` methods
+3. Executing `C++ static initializers` and `C/C++ __attribute__(constructor) functions`.
+
+Since this code runs entirely on the `main thread`, it must be written carefully.
+
+# +load
+
+Objective C's +load method: during the pre-main stage, dyld calls the +load methods of all Objective C classes in the current image one by one (the call order is related to the link order).
+
++load code generally falls into a few categories:
+1. Various Hook code (or Swizzle Method).
+2. NSNotificationCenter, commonly seen in code developed collaboratively by multiple people.
+3. Various singleton initialization code.
+
+For +load methods, you can "delete" them or move them into the +initialize method. For NSNotificationCenter, you need the framework to provide a unified mechanism for other code to plug into, avoiding everyone listening separately.
+
+To see all +load methods, the manual approach is to filter Labels in hopper. As shown below:
+![](/media/15270382965409.jpg)
+
+
+For how to measure the time cost of +load methods, refer to the article <https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/>
+
+
+# static initializers
+
+To be precise: `C++ static initializers` and `C/C++ __attribute__(constructor) functions`
+
+This kind of code runs after +load methods and before the main method.
+
+`C++ static initializers`: these are easily produced in code written in C++ (or Objective C++). Refer to the section "What methods can produce an initializer?" in [this article](http://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/).
+
+`C/C++ __attribute__(constructor) functions`: see the reference code below,
+
+```
+__attribute__((constructor)) void calledFirst(){
+    // todo
+}
+```
+Refer to <https://stackoverflow.com/questions/2053029/how-exactly-does-attribute-constructor-work>
+
+To see all initializers, in hopper you can:
+
+![](/media/15273514962124.jpg)
+
+
+For how to measure the time cost of this kind of initializer, refer to the article <https://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/>
+
+
+# An alternative to pre-main
+
+To make this kind of code's time cost "auditable," there's a possibly-viable alternative. Refer to the article <https://everettjf.github.io/2017/03/06/a-method-of-delay-premain-code/>
+
+
+# References
+
+- [Taobao iOS Performance Optimization Exploration](https://github.com/izhangxb/GMTC/blob/master/%E5%85%A8%E7%90%83%E7%A7%BB%E5%8A%A8%E6%8A%80%E6%9C%AF%E5%A4%A7%E4%BC%9AGMTC%202017%20PPT/%E6%89%8B%E6%B7%98iOS%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2%20.pdf)
+- [Toutiao iOS Client Launch Speed Optimization](https://techblog.toutiao.com/2017/01/17/iosspeed/)
+
+<!--ZH-->
 
 > 工作中一直在做App的启动性能，也看了很多关于“优化App启动性能”的文章。这篇文章对看过的文章做个汇总，加上一些自己的理解，没有什么新的内容。工作中近期也是遇上一些困难和瓶颈，在此总结下同时梳理下思路。
 
@@ -90,4 +177,3 @@ __attribute__((constructor)) void calledFirst(){
 
 - [手淘iOS性能优化探索](https://github.com/izhangxb/GMTC/blob/master/%E5%85%A8%E7%90%83%E7%A7%BB%E5%8A%A8%E6%8A%80%E6%9C%AF%E5%A4%A7%E4%BC%9AGMTC%202017%20PPT/%E6%89%8B%E6%B7%98iOS%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2%20.pdf)
 - [今日头条iOS客户端启动速度优化](https://techblog.toutiao.com/2017/01/17/iosspeed/)
-

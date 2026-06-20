@@ -1,11 +1,90 @@
 ---
 layout: post
-title: "Python 2.7 下用 subprocess 调用 Perl 脚本并实现超时控制"
+title: "Calling a Perl Script via subprocess with Timeout Control under Python 2.7"
+title_zh: "Python 2.7 下用 subprocess 调用 Perl 脚本并实现超时控制"
+lang_original: zh
 categories: Skill
 comments: true
 ---
 
 
+
+
+# Background
+At the end of last year (2015), I developed a tool for automatically analyzing crashes, divided into two functional modules.
+
+1. Parsing module: a python script that gets the crash logs uploaded by clients, finds the corresponding version on Jenkins, downloads the corresponding app file and dSYM file, calls Apple's symbolicatecrash to symbolicate the stack addresses in the crash log, and stores the crash symbols found into a local database.
+2. Display module: a web application developed with flask, which categorizes and displays all crashes by crash address symbol.
+
+In actual operation I found a problem that "I couldn't solve no matter how much material I looked up": symbolicatecrash (this is a perl script) would "block" when symbolicating certain logs (the perl process CPU usage hit 99%).
+
+For a while I couldn't find a direct solution, so I could only adopt an "avoidance" plan.
+<!-- more -->
+
+# The Problem
+
+Previously when running the symbolicatecrash command, I used the `os.system(cmdline)` approach, where this command blocks indefinitely waiting for the `cmdline` command to finish.
+
+So I went looking for a `timeout` method (I used to do Windows development, where a single WaitForSingleObject could wait on a process handle), and found the subprocess module, but discovered that subprocess's Popen method doesn't have a timeout parameter under Python 2.7. (Python 3.x has a timeout parameter.)
+
+I found an alternative solution, combining it with threading,
+
+``` python
+
+import subprocess, threading
+
+class Command(object):
+    def __init__(self, cmd):
+        self.cmd = cmd
+        self.process = None
+
+    def run(self, timeout):
+        def target():
+            print 'Thread started'
+            self.process = subprocess.Popen(self.cmd, shell=True)
+            self.process.communicate()
+            print 'Thread finished'
+
+        thread = threading.Thread(target=target)
+        thread.start()
+
+        thread.join(timeout)
+        if thread.is_alive():
+            print 'Terminating process'
+            self.process.terminate()
+            thread.join()
+        print self.process.returncode
+
+command = Command("echo 'Process started'; sleep 2; echo 'Process finished'")
+command.run(timeout=3)
+command.run(timeout=1)
+
+```
+
+The process timeout is solved, but symbolicatecrash is a perl script. After running it, what popen returns is the handle of the shell executor `sh`, not the handle of the `perl` process, so I still couldn't forcibly terminate the `perl` process.
+
+At this point, I found `exec`.
+
+Through `exec`, you can replace the handle returned by popen with the handle of the actual perl process being executed.
+
+> The exec system call replaces the original process with a new process, but the process's PID stays the same. Therefore, you can think of it this way: the exec system call doesn't create a new process; it just replaces the contents of the original process's context. The original process's code segment, data segment, and stack segment are replaced by the new process.
+Here, after using subprocess to launch the perl script, if you don't use exec to indirectly invoke it, then the handle that subprocess holds will be the handle of the shell script's executor sh, not the handle of perl.
+
+Therefore you can,
+
+``` python
+command = Command("exec symbolicatecrash ...")
+command.run(timeout=15)
+```
+
+# References:
+
+- <http://stackoverflow.com/questions/1191374/using-module-subprocess-with-timeout>
+- <http://stackoverflow.com/questions/4789837/how-to-terminate-a-python-subprocess-launched-with-shell-true>
+- <http://www.cnblogs.com/zhaoyl/archive/2012/07/07/2580749.html>
+
+
+<!--ZH-->
 
 
 
@@ -82,6 +161,4 @@ command.run(timeout=15)
 - <http://stackoverflow.com/questions/1191374/using-module-subprocess-with-timeout>
 - <http://stackoverflow.com/questions/4789837/how-to-terminate-a-python-subprocess-launched-with-shell-true>
 - <http://www.cnblogs.com/zhaoyl/archive/2012/07/07/2580749.html>
-
-
 

@@ -1,9 +1,27 @@
 ---
 layout: post
-title: "Windows 下实现鼠标滚轮的自然滚动"
+title: "Natural Mouse Wheel Scrolling on Windows"
+title_zh: "Windows 下实现鼠标滚轮的自然滚动"
+lang_original: zh
 comments: true
 categories: Skill
 ---
+
+
+
+Recently I started using a MacBook Pro at home. After a while I found the "natural direction scrolling" of the mouse pretty handy, and I got used to it.
+
+But on the Windows 7 machine at the office I had to switch back,
+
+so I remembered that a hook could solve this problem, and combined with some implementations I found online,
+
+I put together the little tool below. It's pretty simple. Sharing it with everyone.
+
+[https://github.com/everettjf/NatrualScrollMouseForWindows](https://github.com/everettjf/NatrualScrollMouseForWindows)
+
+<!-- more -->
+
+<!--ZH-->
 
 
 

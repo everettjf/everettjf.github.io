@@ -1,10 +1,304 @@
 ---
 layout: post
-title: "使用 fastlane 实现 iOS 持续集成"
+title: "iOS Continuous Integration with fastlane"
+title_zh: "使用 fastlane 实现 iOS 持续集成"
+lang_original: zh
 categories: Skill
 comments: true
 ---
 
+
+
+
+
+# Introduction
+Continuous integration is a "configure once, benefit long-term" piece of work. But many small companies don't have it. Configuring it back when I did Windows development felt simpler; configuring it for iOS this time, there seem to be quite a few steps. Organizing it here to share with everyone — please point out any mistakes promptly.
+
+This article mainly uses fastlane to configure iOS continuous integration: automatically compiling and packaging out multiple versions.
+
+I recently switched to iOS development, and the first task is to use Jenkins (you could say it's hudson's sibling) to configure continuous integration for the iOS project.
+After searching all sorts of materials, I organized the following key points.
+<!-- more -->
+
+1. Setting up Jenkins.
+1. Using the tools provided in fastlane to modify the project configuration.
+1. The gym or ipa tool to compile the project.
+
+# Goals
+
+1. Configure a computer to automatically fetch the code, and periodically package out ipa files of the following versions.
+  - Internal test version: an ipa file signed with a standard developer's Developer certificate.
+  - Public test version: an ipa file signed with an enterprise account's Distribute InHouse certificate.
+  - AppStore version: an ipa file signed with a standard developer's AppStore certificate.
+  - Channel versions: the internal test version, but with each channel's identifier added to Info.plist <DEL>（因为渠道例如fir.im 会使用自己的证书重新签名ipa）</DEL>
+PS: Added November 24, 2015 — fir.im does not re-sign the ipa.
+
+
+2. Keep the dSYM debug symbol file for each version.
+
+
+# Source Code
+[https://github.com/everettjf/Yolo/tree/master/FastlaneBasicDemo4iOS](https://github.com/everettjf/Yolo/tree/master/FastlaneBasicDemo4iOS)
+
+
+
+# Installation
+Both fastlane and shenzhen need to be installed via gem; switch gem to a `Taobao source`.
+
+1- Install fastlane
+  
+~~~
+sudo gem install fastlane
+~~~
+  
+  - fastlane is written in ruby, installed via gem.
+  - [https://fastlane.tools/](https://fastlane.tools/)
+
+2- Install shenzhen
+
+~~~
+  sudo gem install shenzhen
+~~~
+
+  - If you only use the gym command and not the ipa command, you can skip installing it.
+  - [https://github.com/nomad/shenzhen](https://github.com/nomad/shenzhen)
+
+# Example Steps
+1- In the directory at the same level as the xcodeproj file, run
+
+~~~
+fastlane init
+~~~
+
+fastlane is very powerful — it can even take screenshots automatically and automatically submit to AppStore review, but I only use the simplest packaging feature.
+There will be a series of questions here.
+
+~~~
+* Do you want to get started...? y
+* Do you have everything commited... ? y
+* App Identifier (com.krausefx.app): com.everettjf.fastlanedemo
+* Your Apple ID (fastlane@krausefx.com): xxxxxxxx@xxxx.com
+* ... updates to the App Store or Apple TestFlight? (y/n) n
+* Do you want to setup 'snapshot'... n
+* Do you want to use 'sigh'... n （是否自动下载provisioning文件）
+* The scheme name of your app: fastlanetest （如果就一个工程，也可不输入）
+~~~
+
+  One step above asks you to enter your AppleID, because fastlane (one of its tools, sigh — that letter is H) will automatically download the corresponding provisioning file. Automatically downloading the provisioning file is quite convenient for a Developer certificate to which you frequently add test devices. However, for the demo we won't auto-download.
+
+  After running this, a fastlane folder will be generated in the project directory.
+
+~~~
+drwxr-xr-x   5 everettjf  staff   170B Sep  8 22:32 fastlane
+drwxr-xr-x  10 everettjf  staff   340B Sep  8 22:00 fastlanedemo
+drwxr-xr-x   5 everettjf  staff   170B Sep  8 22:38 fastlanedemo.xcodeproj
+drwxr-xr-x   4 everettjf  staff   136B Sep  8 22:00 fastlanedemoTests
+~~~
+  
+  We need to modify two configuration files in the fastlane folder: Appfile and Fastfile. (They're actually ruby code.)
+
+2- Modify Appfile
+
+~~~ ruby
+app_identifier "com.everettjf.fastlanedemo"
+apple_id "aaa@aaa.com"
+
+for_lane :inhouse do
+  app_identifier "com.everettjf.fastlanedemoqiye"
+  apple_id "bbb@bbb.com"
+end
+~~~
+
+
+  The enterprise InHouse version and the AppStore version have different app_identifier and apple_id.
+  Here for_lane sets separate info for the :inhouse lane defined later in the Fastfile.
+
+3- Modify Fastfile
+
+  In this file you write the compile and packaging code for each version (Developer version, AppStore version, InHouse version, multiple channel versions),
+  each version goes through the following steps:
+  - Modify the version number and build number (modify to the externally passed version, e.g.: 1.0.0 and 100)
+  - 
+~~~ruby
+def prepare_version(options)
+    #say 'version number:'
+    #say options[:version]
+    increment_version_number(
+        version_number: options[:version],
+        xcodeproj: PROJECT_FILE_PATH,
+    )
+    #say 'build number:'
+    #say options[:build]
+    increment_build_number(
+        build_number: options[:build],
+        xcodeproj: PROJECT_FILE_PATH,
+    )
+end
+~~~
+
+  - Modify the app identifier (i.e. the bundle id, e.g.: com.everettjf.fastlanedemo)
+
+~~~ruby
+def update_app_identifier(app_id)
+    update_info_plist(
+        xcodeproj:PROJECT_FILE_PATH ,
+        app_identifier:app_id,
+        plist_path:"#{PLIST_FILE_PATH}"
+    )
+    update_info_plist(
+        xcodeproj:PROJECT_FILE_PATH ,
+        app_identifier:app_id,
+        plist_path:"#{UNITTEST_PLIST_FILE_PATH}"
+    )
+end
+~~~
+
+  - Modify the signing configuration, configuring the corresponding provision file
+
+~~~ruby
+def update_provision(typePrefix)
+  update_project_provisioning(
+      xcodeproj:PROJECT_FILE_PATH ,
+      profile:"./fastlane/provision/#{typePrefix}.mobileprovision",
+  )
+end
+~~~
+
+  - For channel versions, modify the corresponding string in the Info.plist file
+
+~~~ruby
+def set_info_plist_value(path,key,value)
+  sh "/usr/libexec/PlistBuddy -c \"set :#{key} #{value}\" #{path}"
+end
+def set_channel_id(channelId)
+    set_info_plist_value(
+        "./../fastlanedemo/#{PLIST_FILE_PATH}",
+        'ChannelID',
+        "#{channelId}"
+    )
+end
+~~~
+
+  - Compile and package into an ipa
+
+  This step uses the shenzhen tool; you could also use fastlane's recommended gym.
+
+~~~ruby
+def generate_ipa(typePrefix,options)
+  #say 'generate ipa'
+  fullVersion = options[:version] + '.' + options[:build]
+  channelId = options[:channel_id]
+  ipa(
+      configuration:"Release",
+      scheme:"#{SCHEME_NAME}",
+      destination:"./build",
+      ipa:"#{APP_NAME}_#{fullVersion}_#{typePrefix}.ipa",
+      archive:false
+  )
+  sh "mv ./../build/#{APP_NAME}.app.dSYM.zip ./../build/#{APP_NAME}_#{fullVersion}_#{typePrefix}.app.dSYM.zip"
+end
+~~~
+
+4- Write a shell script
+
+~~~
+#!/bin/sh
+
+#
+# usage:
+# > sh build.sh 1.0.0 200
+#
+
+versionNumber=$1 # 1.0.0
+buildNumber=$2 # 2000
+
+rm -rf build
+
+basicLanes="AdHoc AppStore Develop InHouse"
+for laneName in $basicLanes
+do
+    fastlane $laneName version:$versionNumber build:$buildNumber
+done
+
+channelIds="fir 91"
+for channelId in $channelIds
+do
+    fastlane Channel version:$versionNumber build:$buildNumber channel_id:$channelId
+done
+~~~
+
+
+~~~
+sh build.sh 1.0.0 100
+~~~
+
+  We pass in the major version number and an auto-incrementing id (usually the Jenkins build number).
+
+# Configuring Jenkins
+With a script that can compile in one click, we just let Jenkins call build.sh after fetching the code.
+
+Install
+
+~~~
+brew install jenkins
+~~~
+
+Configure code fetching, and call the shell after fetching the code:
+
+~~~
+sh build.sh 1.0.0 ${BUILD_NUMBER}
+~~~
+
+
+# Apple Developer Certificate Configuration
+Suppose we have two developer accounts, one standard developer account ($99, individual or company), and one enterprise account ($299).
+- Standard developer account: aaa@aaa.com
+
+~~~
+Identifier中增加com.everettjf.fastlanedemo
+Provisioning Profiles中增加一个 iOS Distribution(AdHoc 和 AppStore) 和 iOS Development
+~~~
+
+- Enterprise account: bbb@bbb.com
+
+~~~
+Identifier中增加com.everettjf.fastlanedemoqiye
+Provisioning Profiles中增加一个 iOS Distribution(AdInHouse)
+~~~
+
+# Related Documentation
+
+- fastlane: <https://github.com/KrauseFx/fastlane/tree/master/docs>
+- shenzhen : <https://github.com/nomad/shenzhen>
+
+# Other Approaches
+1. Jenkins's xcode plugin: Jenkins has an xcode plugin, and there are some articles online, but I didn't use it. I'm not sure whether it can
+dynamically swap certificates.
+2. Compile once, sign multiple times: before using fastlane, when I saw that fastlane provided a toolset, I used gym to first compile
+an ipa signed with the Developer certificate, then signed it with other certificates separately.
+
+# Important Addendum
+- The Xcode on the machine where Jenkins is installed must import the developer account (account info containing the private key, exported from the Xcode on the computer that first created the certificate)
+
+
+# Addendum, October 16, 2015
+Event: After Xcode 7 was released
+
+CFBundleIdentifier is recommended to use $(PRODUCT_BUNDLE_IDENTIFIER) instead of the original $(BUNDLE_IDENTIFIER). The $(BUNDLE_IDENTIFIER) in the Info.plist file will also automatically point to $(PRODUCT_BUNDLE_IDENTIFIER).
+
+Therefore, the action `update_info_list` provided by fastlane cannot update the $(PRODUCT_BUNDLE_IDENTIFIER) in the project file.
+This causes the original script to be unable to modify the bundle identifier at its new location when packaging the enterprise version. The current temporary workaround:
+
+~~~
+sh "sed -i '' 's/com.xxx.xxx/com.xxx.yyy/g' path/project.pbxproj"
+~~~
+
+For this I filed an issue to fastlane: <https://github.com/KrauseFx/fastlane/issues/684>
+
+fastlane will soon provide an updated way to do this.
+Thanks to the fastlane developers squarefrog and KrauseFx.
+
+<!--ZH-->
 
 
 
@@ -296,4 +590,3 @@ sh "sed -i '' 's/com.xxx.xxx/com.xxx.yyy/g' path/project.pbxproj"
 
 fastlane很快会提供更新的方式。
 感谢fastlane的开发者squarefrog和KrauseFx。
-

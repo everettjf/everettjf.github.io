@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "将 iOS 标准输出重定向到 UITextView"
+title: "Redirecting iOS Standard Output to a UITextView"
+title_zh: "将 iOS 标准输出重定向到 UITextView"
+lang_original: zh
 categories:
   - stdout
 tags:
@@ -9,6 +11,110 @@ tags:
   - stderr
 comments: true
 ---
+
+I came across a pretty interesting piece of code: an iOS project that redirects the content printed by printf into a UITextView.
+
+<!-- more -->
+
+After extracting the code, it's actually quite simple.
+
+
+
+```
+#include <stdlib.h>
+#include <stdio.h>
+
+static print_cbk_t gPrintFunc;
+
+static int stdout_redirect(void* prefix, const char* buffer, int size)
+{
+    if (gPrintFunc)
+        gPrintFunc(buffer, size);
+    return size;
+}
+
+void set_redirect_output(print_cbk_t f)
+{
+    gPrintFunc = f;
+
+    setvbuf(stdout, 0, _IOLBF, 0); // stdout: line-buffered
+    setvbuf(stderr, 0, _IONBF, 0); // stderr: unbuffered
+
+    stdout->_write = stdout_redirect;
+    stderr->_write = stdout_redirect;
+}
+
+```
+
+Then you use it in the ViewController roughly like this:
+
+
+```
+
+static UITextView *sTextView = nil;
+
+static void current_output(const char* buff, int len) {
+    NSString *text = [sTextView text];
+    text = [text stringByAppendingFormat:@"%s",buff];
+    [sTextView setText:text];
+}
+
+@interface ViewController ()
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    sTextView = self.textView;
+    
+    set_redirect_output(current_output);
+        
+    printf("hello\n");
+    printf("hello\n");
+    printf("hello\n");
+    printf("hello\n");
+
+}
+@end
+```
+
+
+After running it, printf output goes into the UITextView.
+
+
+![](/media/15832504339122.jpg)
+
+
+
+
+There's really not much to explain about how it works — the C library provides the support itself.
+
+```
+    setvbuf(stdout, 0, _IOLBF, 0); // stdout: line-buffered
+    setvbuf(stderr, 0, _IONBF, 0); // stderr: unbuffered
+```
+
+
+These two functions set standard output to "line-buffered" and "unbuffered" respectively. In other words, content going into stdout and stderr is output either by line or directly. This way the UITextView receives it in a more timely manner.
+
+
+---
+
+Writing fluff pieces is just relaxing and fun~ As long as it's interesting~
+
+---
+
+If you like it, follow the official account to show your support:
+
+![](/images/fun.png)
+
+<!--ZH-->
+
 
 看到一处代码挺有意思，iOS项目中把printf打印的内容重定向到了UITextView中。
 

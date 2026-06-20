@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "一种延迟 premain 阶段代码执行的方法"
+title: "A Method of Deferring Code Execution in the premain Stage"
+title_zh: "一种延迟 premain 阶段代码执行的方法"
+lang_original: zh
 categories:
   - Skill
 tags:
@@ -8,6 +10,162 @@ tags:
   - performance
 comments: true
 ---
+
+
+
+
+The following three ways can make code execute before the main function:
+
+1. All +load methods
+2. All C++ static initializers 
+3. All C/C++ __attribute__(constructor) functions
+
+
+# Problems with Executing Before the main Function
+
+1. Cannot be patched
+2. The time cost cannot be audited
+3. Calling UIKit-related methods causes some classes to be initialized prematurely
+4. Executed on the main thread, fully blocking
+
+
+<!-- more -->
+
+# How to Solve These Problems
+
+Can we provide a convenient way to migrate the code from before the main function to after the main function?
+
+## Source of the Idea
+
+I noticed that Facebook has a new section called FBInjectable. Studying the meaning of this section, we learn: at compile and link time, we can place some data into a custom section, and then retrieve the section's data in the program.
+
+If this data is a string, we can use the string to get a class name; if it's a function address, we can call it directly.
+
+(For the meaning of Facebook's FBInjectable section, refer to the article <https://everettjf.github.io/2016/08/20/facebook-explore-section-fbinjectable> )
+
+So how do we create an FBInjectable section?
+
+We can use the __attribute((used,section("segmentname,sectionname"))) keyword to put a variable into a special section.
+
+(For attribute, refer to <http://gcc.gnu.org/onlinedocs/gcc-3.2/gcc/Variable-Attributes.html> )
+
+For example:
+
+```
+char * kString1 __attribute((used,section("__DATA,FBInjectable"))) = "string 1";
+char * kString2 __attribute((used,section("__DATA,FBInjectable"))) = "string 2";
+char * kString3 __attribute((used,section("__DATA,FBInjectable"))) = "string 3";
+```
+
+After compilation, a FBInjectable section can be created under the program's DATA segment, with the addresses of the three variables kString1, kString2, kString3 as the FBInjectable section content.
+
+## How to Apply It
+
+Imitating Facebook's code, the code below can put a function address (the value of varSampleObject) into the QWLoadable section.
+
+```
+typedef void (*QWLoadableFunctionTemplate)();
+static void QWLoadableSampleFunction(){
+    // Do something
+}
+static QWLoadableFunctionTemplate varSampleObject __attribute((used, section("__DATA,QWLoadable"))) = QWLoadableSampleFunction;
+```
+
+Then, at startup, the main program retrieves the QWLoadable content via getsectiondata and calls them one by one.
+
+## Further Refinement
+
+To be able to label each function's name, we can have the function emit it outward, as follows:
+
+```
+typedef int (*QWLoadableFunctionCallback)(const char *);
+typedef void (*QWLoadableFunctionTemplate)(QWLoadableFunctionCallback);
+
+static void QWLoadableSampleFunction(QWLoadableFunctionCallback QWLoadableCallback){
+    if(0 != QWLoadableCallback("SampleObject")) return;
+
+    // Do something
+}
+
+static QWLoadableFunctionTemplate varSampleObject __attribute((used, section("__DATA,QWLoadable"))) = QWLoadableSampleFunction;
+
+```
+
+This way, the function tells the outside its "identifier" via QWLoadableCallback, and gives the outside the ability to filter itself out (not call it).
+
+
+## Calling at Startup
+
+```
+
+static int QWLoadableFunctionCallbackImpl(const char *name){
+    // filter by name
+    return 0;
+}
+
+static void QWLoadableRun(){
+    CFTimeInterval loadStart = CFAbsoluteTimeGetCurrent();
+    
+    Dl_info info;
+    int ret = dladdr(QWLoadableRun, &info);
+    if(ret == 0){
+        // fatal error
+    }
+    
+#ifndef __LP64__
+    const struct mach_header *mhp = (struct mach_header*)info.dli_fbase;
+    unsigned long size = 0;
+    uint32_t *memory = (uint32_t*)getsectiondata(mhp, QWLoadableSegmentName, QWLoadableSectionName, & size);
+#else /* defined(__LP64__) */
+    const struct mach_header_64 *mhp = (struct mach_header_64*)info.dli_fbase;
+    unsigned long size = 0;
+    uint64_t *memory = (uint64_t*)getsectiondata(mhp, QWLoadableSegmentName, QWLoadableSectionName, & size);
+#endif /* defined(__LP64__) */
+    
+    CFTimeInterval loadComplete = CFAbsoluteTimeGetCurrent();
+    NSLog(@"QWLoadable:loadcost:%@ms",@(1000.0*(loadComplete-loadStart)));
+    if(size == 0){
+        NSLog(@"QWLoadable:empty");
+        return;
+    }
+    
+    for(int idx = 0; idx < size/sizeof(void*); ++idx){
+        QWLoadableFunctionTemplate func = (QWLoadableFunctionTemplate)memory[idx];
+        func(QWLoadableFunctionCallbackImpl);
+    }
+    
+    NSLog(@"QWLoadable:callcost:%@ms",@(1000.0*(CFAbsoluteTimeGetCurrent()-loadComplete)));
+}
+```
+
+## Transformation
+
+The caller can do something like the below, migrating the code that was originally in +load to between the two macros (QWLoadableFunctionBegin and QWLoadableFunctionEnd).
+
+```
+QWLoadableFunctionBegin(FooObject)
+[BarObject userDefinedLoad];
+// anything here
+QWLoadableFunctionEnd(FooObject)
+```
+
+
+# Dynamic Libraries
+
+A dynamic library is an independent entity, so the QWLoadable section in a dynamic library needs to be handled separately.
+
+
+# Performance
+
+We migrated the pre-main code such as +load to after the main function, but we also added the time cost of reading a section.
+
+After testing, reading 100 function addresses takes less than 1ms on an iPhone5 device. We added this sub-1ms cost (and this 1ms is also auditable), in exchange for the auditability of all startup-stage behaviors, and most importantly, the ability to patch.
+
+# Reference Code
+
+<https://github.com/everettjf/Yolo/tree/master/LoadableMacro>
+
+<!--ZH-->
 
 
 
@@ -162,5 +320,3 @@ QWLoadableFunctionEnd(FooObject)
 # 参考代码
 
 <https://github.com/everettjf/Yolo/tree/master/LoadableMacro>
-
-

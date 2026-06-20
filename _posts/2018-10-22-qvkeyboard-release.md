@@ -1,12 +1,115 @@
 ---
 layout: post
-title: "QVKeyboard 发布：通过 macOS 用键盘给 iOS 打字的输入法"
+title: "QVKeyboard Released: An Input Method for Typing on iOS Using a macOS Keyboard"
+title_zh: "QVKeyboard 发布：通过 macOS 用键盘给 iOS 打字的输入法"
+lang_original: zh
 categories:
   - 产品
 tags:
   - 作品
 comments: true
 ---
+
+*USB Keyboard was formerly named QVKeyboard; the rename was perhaps to make it easier to remember and search for.*
+
+USB Keyboard is an input method app. After connecting your iPhone to a Mac via USB, you can type on the Mac and have it appear on the iPhone.
+
+<!-- more -->
+
+# Scenarios
+
+I ran into the following two scenarios:
+
+1. I often chat about tech with people on WeChat, but a lot of technical content requires typing a great deal, and typing on a phone is really uncomfortable for me. In some cases the computer isn't suitable for, or I don't want to, install the WeChat Mac client. I want to finish chatting quickly and get back to work quickly.
+2. Day One is a nice app. I bought the mobile version, but sometimes when I want to write a lot of content, typing on the phone is too much of a hassle.
+
+So I looked for some ready-made apps — they were either too expensive, too complicated to pair, unstable, or didn't support Chinese. Until one day I was browsing GitHub and saw an ancient library, PeerTalk. By connecting a USB cable you can pair instantly, skipping the process of entering an IP, searching over Bluetooth, etc. It's simple, direct, and fast.
+
+
+# Environment
+
+Currently the USB Keyboard mobile side is iOS-only, and the PC side is macOS-only. In the future I may adapt it to Android and Windows as needed.
+
+# Installation
+
+iOS App : 
+1. <https://itunes.apple.com/cn/app/qvkeyboard/id1439106456>
+2. Search for `qvkb`, `usbkeyboard`, or `qvkeyboard` — any of them will find it.
+
+![](/media/15402514895616.jpg)
+![](/media/15402515094809.jpg)
+![](/media/15402515243124.jpg)
+
+
+macOS Client : 
+
+1. GitHub <https://github.com/qvkeyboard/qvkeyboard/releases>
+2. Baidu Cloud <https://pan.baidu.com/s/1lRPMJcy22oSSiUDhM5yyAw>
+
+![](/media/15402511097109.jpg)
+
+
+# How to Use
+
+1. After installing USB Keyboard on iOS, open "Settings - General - Keyboard - Keyboards - Add New Keyboard", and tap "USB Keyboard" in the "Third-Party Keyboards" section.
+2. Tap USB Keyboard again, tap "Allow Full Access", then "Allow".
+3. Open any app screen where you can enter text, and switch the input method to USB Keyboard.
+4. Now the keyboard will display as follows:
+![](/media/15402274921197.jpg)
+5. Open the macOS side.
+The icon looks like this:
+![](/media/15402510498645.jpg)
+
+After opening, the interface looks like this:
+![](/media/15402275665008.jpg)
+6. At this point, if iOS and macOS connect successfully, both will display 🌈Ready for type:)
+
+![](/media/15402289330298.jpg)
+
+7. You can now type in the input box. Pressing Enter will send. Enjoy it :)
+
+
+# Two Input Modes
+
+- Single-line mode: In single-line mode, Enter sends immediately. Generally suitable for chatting, etc.
+- Multi-line mode: In multi-line mode, you need ⌘↩ to send. Generally suitable for pasting large amounts of text into Moments, etc.
+
+# Shortcuts
+
+The following three buttons on the macOS client have shortcuts, though there are no on-screen hints yet:
+
+- Delete : ⌥⌫
+- Return : ⌥↩
+- Send to iPhone (send the current content to iPhone): ⌘↩
+
+# The Delete Key
+
+When the text box is empty, continuing to press the `Delete` key will also send `Delete` to iOS.
+
+# Privacy
+
+Because it needs to communicate with the Mac side, "Allow Full Access" must be enabled. But for an input method, once full access is allowed, it inevitably introduces security risks. Although I haven't done anything malicious, the very existence of trust brings in the human factor.
+
+# How It Works
+
+The principle is actually very simple — see the open-source library <https://github.com/rsms/peertalk>
+
+# Code
+
+Emmm... not open-sourcing this one.
+
+# Summary
+
+Because the review process involved coordinating multiple devices, I even recorded a video specifically for it, posted at <https://youtu.be/-vr_rHpgwAM> — my spoken English is pretty poor, haha.
+
+Developing such a simple app also takes quite a bit of time, so in the future do support independent developers more. Also, in order to develop this app, I went nearly a month without updating the official account. Now it's finally released, and the next step is to keep learning and sharing.
+
+
+Welcome to follow the official account "Client Tech Review":
+![](/images/fun.png)
+
+
+<!--ZH-->
 
 *USB Keyboard 原名 QVKeyboard，改名或许是为了更容易记录和搜索*
 
@@ -105,5 +208,4 @@ Emmm...这次不开源了。
 
 欢迎关注订阅号「客户端技术评论」：
 ![](/images/fun.png)
-
 

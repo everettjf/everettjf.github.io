@@ -1,9 +1,173 @@
 ---
 layout: post
-title: "2016 年总结：加入蚂蚁金服三个月"
+title: "2016 Year in Review: Three Months After Joining Ant Financial"
+title_zh: "2016 年总结：加入蚂蚁金服三个月"
+lang_original: zh
 categories: Essay
 comments: true
 ---
+
+
+
+
+---
+
+
+# Every Job Change Is a Major Turning Point in Life
+
+Joining Ant Financial fulfilled a "little dream" I had back when I was in a second-tier city.
+
+
+<!-- more -->
+
+## A Bit of Long-Winded Background
+
+In June 2016, a friend at Alibaba said he had an internal referral quota, and each person was required to refer 3 people. With the mindset of "testing my own iOS skill level," I handed over my resume. But due to a series of mix-ups—this friend's manager was constantly traveling—it ended up being another Alibaba friend who referred me, which meant I had to choose a position through Alibaba's social recruitment channel.
+
+So I submitted my resume three times in succession: Xianyu iOS, DingTalk Mac, and Mobile Taobao iOS.
+
+Xianyu's phone interview passed quickly, followed by a video interview. The first round of the video interview was with one HR person and two technical colleagues (a manager and a P7). But that manager was constantly on the phone—he didn't even finish listening to my self-introduction, and barely asked any questions. The P7 technical colleague asked quite a few questions (he was also the one who did the phone interview); since we'd already talked a lot about iOS reverse engineering on the phone, this video interview leaned more toward the application level. The third round was with another HR person and Xianyu's head, Chuduan, who had me talk about my experience and my journey of learning technology, without asking technical questions. But having not done a non-technical interview in a long time, even though I was confident, the conversation exposed various "non-technical" problems, and I didn't pass the interview. (Too overconfident this time.)
+
+DingTalk Mac development—when I applied, both my friend and I thought I was a good fit. A comprehensive tech stack, 5 years of Windows client development experience and 1 year of iOS experience, and it met the requirements too. But contrary to expectations, my resume was deemed unsuitable outright.
+
+Mobile Taobao also passed the phone interview quickly, and the second round of the video interview went fairly smoothly, but there was one problem: the other party hadn't read my blog at all, knew very little about reverse engineering, and showed no interest in it. So we lacked some common ground. The third round was basically a non-technical interview too, and the HR opened with: do you know why Xianyu didn't pass you? I went through what I believed were the reasons one by one. Then they asked some common questions, like the biggest difficulty you've experienced—those "haha" kinds of questions. For these little non-technical questions, I had my own answers, but they may not have matched the interviewer's expected answers; I won't go into the details. The simple summary is: this time I was too eager to know why the previous interview failed, to the point that I came across as unnatural, answered while reading the other party's face too much, and lacked poise. (Too lacking in confidence this time.)
+
+There was also an important issue: I had once spent less than two months at a small company. At the time I didn't include this experience in my work history, but I did mention it in my growth narrative. This is a deducting factor that adds a bad impression, and may have been the main cause of failure.
+
+Of course, there were other issues. I had read the book "Rework," had stayed too long at traditional companies, and was set on getting out to pursue so-called freedom. The events of 2015—"spent less than two months at a small company," "stay-at-home full-time dad," "freelancing," "tried entrepreneurship (never really started)," "moving my whole family to Beijing to drift, despite already having bought a house in Jinan." These events one by one are hard to understand for those classmates who "just want a stable job," and even easier to misunderstand, haha.
+
+Later my friend also submitted an application to "Mogujie" in Hangzhou. The phone interview went well too, but they needed someone with more iOS experience. I later learned that the person who phone-interviewed me was "Yinshi," and I added him on WeChat.
+
+Four resume submissions, three phone or video interviews. They let this little rookie, who had never interviewed at a "big company," "get a taste of it." The interviews revealed many of my own shortcomings, and gave me a deeper understanding of myself. And so 2 months passed.
+
+And so, just work in peace.
+
+About that first interview failure, I also wrote an [experience summary](http://iosre.com/t/topic/4167) at the time.
+
+## However
+
+On a social platform I came across the WeChat of an Ant Financial colleague, and added him. I originally planned to interview again at the end of the year, but there were no more quotas at year-end. So I submitted my resume a fifth time (this time, on the resume, I laid out those free months of 2015 more clearly).
+
+This time I had zero hope (because it was already August, and I didn't want to interview anymore; I figured I'd wait until after the new year). I just wanted to make another friend, and it'd be even better if I could help solve some problems day to day.
+
+But this time Ant Financial valued my past C++ experience more, and valued reverse engineering skills more. The chat with HR was more natural this time too, and the HR colleague was younger and more cheerful.
+
+After 1 month of work handover and vacation, I joined Ant Financial on September 20th.
+
+Perhaps this is fate—people not meant to meet naturally won't. Things always develop in the direction most suited to oneself. Perhaps if I'd joined Xianyu or Taobao, I'd mostly be doing a pile of pure UI business work, which wouldn't have suited me. After joining Ant Financial, my main focus is Alipay's performance and stability, relatively distant from business—and this may be exactly where I'm good.
+
+Yes, that's just how it is.
+
+## However
+
+After joining, both life and work changed enormously compared to before:
+
+- Commute of 1 minute became commute of 50 minutes
+- Working 8 to 11 hours became working 9 to 12 hours
+
+This way, the time I spend with family at home each day decreased by 3 to 6 hours (2 hours commuting, plus 1 to 4 extra hours of work).
+
+Terrifying. This is what really experiencing the life of a Beijing office worker is like.
+
+**So, I urgently need to find a new balance among life, work, and learning.**
+
+When I first started working it was often like this:
+
+- 24 hours = 2 hours commuting + 12 hours working (10am to 10pm) + 8 hours sleep + 2 hours (washing up at home)
+- 24 hours = 2 hours commuting + 13 hours working (11am to 12am) + 8 hours sleep + 1 hour (washing up at home)
+
+But I saw many colleagues around me were like this:
+
+- 24 hours = 2 hours commuting + 10.5 hours working (10:30am to 9pm) + 8 hours sleep + 3.5 hours (at home)
+
+And many were like this:
+
+- 24 hours = 2 hours commuting + 12 hours working (10:30am to 10:30pm) + 8 hours sleep + 2 hours (at home)
+
+
+For me, with a family, I eventually balanced out this plan:
+
+- **24 hours = 2 hours commuting + 10 hours working (10am to 8pm) + 8 hours sleep + 4 hours (with family)**
+- Excluding lunch, the actual working time is 9 hours, which is normal. But this schedule is already very luxurious compared to colleagues around me. You can see everyone works very, very, very hard.
+- I can only say that normally I leave at 8pm; if there's a special situation, when overtime is needed I can't slack off.
+
+Speaking of working hours, a few terms come to mind:
+
+- Credit vs. toil: I firmly oppose "toil"—if something wasn't done well, it just wasn't done well; no amount of toil helps.
+- Attitude vs. results: similarly, no results, make up for it with attitude. That doesn't work!
+
+**Think of beautiful youth—I came here to apply my technical abilities and unearth technical value, not for so-called toil and attitude.**
+
+## Three Months' Gains
+
+Three months felt like a year had passed.
+
+Developing such a large App:
+
+- You must consider disaster recovery plans. Innovative technology needs a grayscale rollout plan.
+- Let data do the talking. Once an App has a large user base, data becomes important.
+- Releasing versions isn't so casual. Every version is the joint collaboration of many people.
+- Read documentation carefully—the complete functionality of every API, leave nothing out.
+- Don't fully trust Apple's documentation. Don't bet on the accuracy of Apple's docs; consider disaster recovery.
+- Don't let emotion replace thinking.
+- Don't casually question others' code; have evidence.
+- Give feedback promptly. Leave no gap for problems to occur. Don't have a thought and then not verify it.
+- When you should express dissenting opinions, express them seriously, with reasons and evidence.
+- When answering questions in IM, consider completeness, and say it all at once. Don't say it in segments. Problem, cause, scope, solution, time.
+
+
+# Live-Streaming App Development
+
+Before joining Ant Financial (before September 20th), at my original company I participated in developing two Apps, "51VV" and "VV Live." "VV Live" was the company's new product; development started from scratch in March, with 5 consecutive months of overtime, and finally on the first day after I left (September 21st), it passed Apple's review.
+
+I never expected to leave so early. It's always a bit hard to let go of a product developed with so much overtime. You can't have your cake and eat it too.
+
+
+# Status of Planned Goals
+
+[2016 Plan](https://everettjf.github.io/2016/01/01/2015-summary)
+
+## Did
+
+- Studied the source code of SDWebImage, YYCache, YYModel, MJRefresh, Aspects, Masonry, etc.
+- Read the books "iOS Application Security Attack and Defense in Practice," "The Tao of Objective-C Programming," "The Hacking Bible," "Introduction to OpenCV Programming," "Math for Programmers"
+- Admire navigation site <https://admire.so>: developed the Python backend.
+- LifeMail: 50% progress, not open-sourced, not finished.
+- Code learning platform: developed <https://github.com/everettjf/XSourceNote> but later found it not very meaningful, or rather the experience wasn't good, so I gave up.
+- Tomato Read: <https://github.com/everettjf/TomatoRead> later, after the Alibaba Cloud server expired, I didn't keep maintaining it.
+- Blog basically one post per month. Wrote a few articles at year-end and posted them on the internal network—I'll count those too.
+
+## Didn't Do
+
+- Source code I didn't study: AsyncDisplayKit, MachOView, class-dump.
+- Security: didn't continue to go deeper.
+
+
+# 2016 Summary
+
+I did many things, but not refined enough. **A good product—you only need one.**
+
+Think of beautiful youth; do meaningful things.
+
+
+
+# 2017 Plan
+
+I made a mind map and posted it on git as a record, but I won't make it public—I'll open it at the end of 2017.
+
+A simple list:
+
+- Study more source code
+- Write a book
+- Improve financial intelligence
+- Public blog, one post per month
+
+
+Detailed mind map:
+
+[Portal](https://github.com/everettjf/everettjf.github.io/blob/master/stuff/plan/plan2017.png)~~(closed)~~(open on December 31, 2017)
+
+<!--ZH-->
 
 
 
@@ -164,4 +328,3 @@ comments: true
 详细思维导图：
 
 [传送门](https://github.com/everettjf/everettjf.github.io/blob/master/stuff/plan/plan2017.png)~~(closed)~~(open 2017年12月31日打开)
-

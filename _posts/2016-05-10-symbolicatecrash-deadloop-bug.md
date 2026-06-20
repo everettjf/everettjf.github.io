@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "symbolicatecrash 死循环 Bug 排查记录"
+title: "Debugging Notes on the symbolicatecrash Infinite Loop Bug"
+title_zh: "symbolicatecrash 死循环 Bug 排查记录"
+lang_original: zh
 categories: Skill
 comments: true
 ---
@@ -9,6 +11,85 @@ comments: true
 
 
 
+
+# Background
+
+[Last year I wrote an article](https://everettjf.github.io/2015/09/09/ios-plcrashreporter) that explained how to use the symbolicatecrash tool to symbolicate crash information.
+
+Based on that approach, I built a small system for the company's product that automatically symbolicates crash information.
+
+- After the app collects crash information, it packages and uploads it to the company's crash-collection server.
+- A Python script periodically fetches crashes and locates the symbol files for the corresponding version on the internal Jenkins server.
+- After symbolication, everything is aggregated into a database.
+- A web page makes it easy to query, aggregating by module, version, stack, etc. This makes it convenient to find crash causes and track crash trends.
+<!-- more -->
+
+# Problem
+
+However, there was always one problem: when symbolicatecrash analyzed certain crashes (roughly 1/3 of the total), it would hit a state of `CPU 100%, and it never finishes`. ("Never finishes" is a guess—I ran it several times overnight and ultimately could only kill the process.) symbolicatecrash is a Perl script, and the perl process's CPU usage stayed at 100%.
+
+I guessed it must be a problem with this perl script, but various searches turned up no results.
+
+Temporary workaround: kill the analysis process if analyzing a crash takes longer than 15s. [Which is how this blog post came about](https://everettjf.github.io/2016/01/29/python27-subprocess-timeout)
+
+But solving it this way meant only about 2/3 of crashes could be analyzed. The problem was serious, but I put up with it.
+
+# Solution
+
+Half a year went by, and I figured I'd try to solve it again.
+
+A coworker [found an article](http://blog.csdn.net/lucky_06/article/details/48805227
+), and I excitedly grabbed it to try right away. (The article was written at the end of September, roughly right around the time I gave up looking...)
+
+> This is because the symbolicatecrash provided by Xcode goes into an infinite loop for logs with duplicate images.
+
+## Modify the symbolicatecrash File
+
+---
+
+Xcode 7.2 and earlier:
+/Applications/Xcode.app/Contents/SharedFrameworks/DTDeviceKitBase.framework/Versions/A/Resources/symbolicatecrash
+
+Xcode 7.3
+/Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/symbolicatecrash
+
+Reference: <https://forums.developer.apple.com/thread/43489>
+
+---
+
+Replace the following code:
+
+``` perl
+
+                # add ourselves to that chain
+                $images{$nextIDKey}{nextID} = $image{base};
+
+                # and store under the key we just recorded
+                $bundlename = $bundlename . $image{base};
+
+```
+
+with:
+
+``` perl
+
+            if ($image{uuid} ne $images{$bundlename}{uuid}) {
+
+                # add ourselves to that chain
+                $images{$nextIDKey}{nextID} = $image{base};
+
+                # and store under the key we just recorded
+                $bundlename = $bundlename . $image{base};
+```
+
+
+And that solved it. I don't know why Apple won't fix this problem.       
+
+# Summary
+
+You've got to have the spirit to dig all the way to the bottom.
+
+<!--ZH-->
 
 # 背景
 

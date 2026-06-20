@@ -1,12 +1,95 @@
 ---
 layout: post
-title: "iOS 启动性能优化系列文章目录"
+title: "Table of Contents for the iOS Launch Performance Optimization Series"
+title_zh: "iOS 启动性能优化系列文章目录"
+lang_original: zh
 categories:
   - 性能优化
 tags:
   - 汇总
 comments: true
 ---
+
+Over the past two-plus years, I've written a number of articles on iOS app launch performance optimization. This article puts together a simple table of contents.
+
+
+<!-- more -->
+
+## The SpringBoard Stage
+
+This is the stage where the iOS system's SpringBoard launches the app; the app's own process hasn't started yet.
+
+- [A First Look at LaunchScreen](https://everettjf.github.io/2018/09/18/launch-screen-async-with-process-creation/)
+- [Exploring SpringBoard with AppleTrace](https://everettjf.github.io/2018/10/28/appletrace-springboard/)
+
+## The pre-main Stage
+
+The stage within the app's own process, before the main function.
+
+- [A Method for Hooking Objective-C +load](https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/)
+- [A Method for Hooking C++ static initializers](https://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/)
+- [A Method for Delaying premain code](https://everettjf.github.io/2017/03/06/a-method-of-delay-premain-code/)
+- [iOS App Launch Performance Optimization (1) - premain](https://everettjf.github.io/2018/05/26/ios-app-launch-performance-part1/)
+- [Hooking All +load Methods (Including Categories)](https://everettjf.github.io/2018/08/19/ios-hook-really-all-load/)
+
+## The main Stage
+
+The stage from the main function to didFinishLaunching, and on to when the home screen finishes displaying.
+
+- [Methods for Getting the Current Time on iOS](https://everettjf.github.io/2018/08/07/get-current-time-on-ios-platform/)
+- [A Simple Thread Pool in C++](https://everettjf.github.io/2018/08/12/a-simple-cpp-thread-pool/)
+- [A Glance at mmap](https://everettjf.github.io/2018/09/01/mmap/)
+- [How FastImageCache Works](https://everettjf.github.io/2018/09/11/fastimagecache/)
+- [The Simple LRU Cache (LRUCache) in MMKV](https://everettjf.github.io/2018/09/27/lrucache-in-mmkv/)
+- [Methods for Getting the Thread Identifier](https://everettjf.github.io/2018/11/12/ios-thread-number/)
+- [The Simplest Launch Task Classification](https://everettjf.github.io/2018/08/24/most-simple-task-queue-model/)
+
+## Tools
+
+With good tools, analysis becomes a pleasure.
+
+- [AppleTrace Performance Analysis Tool](https://everettjf.github.io/2017/09/21/appletrace/)
+- [AppleTrace Combined with MonkeyDev to Trace Any App](https://everettjf.github.io/2017/10/12/appletrace-dancewith-monkeydev/)
+- [VSCode Extension Filter Line](https://everettjf.github.io/2018/07/03/vscode-extension-filter-line/)
+- [Trying Out the os_signpost API](https://everettjf.github.io/2018/08/13/os-signpost-tutorial/)
+- Instruments (TimeProfiler): I always wanted to write an article but never did. There's plenty online, so I won't bother.
+- dtrace: I always wanted to write an article but never did. You can refer to this book [Advanced Apple Debugging & Reverse Engineering](https://store.raywenderlich.com/products/advanced-apple-debugging-and-reverse-engineering)
+
+## Warm Launch
+
+- [Background Fetch](https://juejin.im/post/5bee3825e51d456d6b6f9486)
+
+90% of the content of this article was written by me two years ago on Alibaba's intranet. After I left Ant, colleagues on the mPaaS project organized and published it (though without my byline 😓). The most valuable part is the Background Fetch section. But that section is just the tip of the iceberg, or rather just the first step of a long march. If you want to learn more, you're welcome to join Meituan.
+
+
+## Resource Collection
+
+- [iOS App Launch Performance Optimization Materials](https://everettjf.github.io/2018/08/06/ios-launch-performance-collection/)
+
+## Cheatsheet
+
+- [iOS Debug Cheatsheet](https://everettjf.github.io/2016/05/25/my-ios-debug-cheatsheet/)
+
+## Areas to Explore
+
+- Profile-Guided Optimization (PGO) 
+- Improving Locality of Reference
+
+I'll just mention these two by name; if you want to actually pursue them, they're quite interesting — search for them yourself.
+
+## Summary
+
+Over the past month or so I've had a lot of miscellaneous things going on and haven't written articles, so this article serves as a table of contents to pad the count. It also gives those scattered past articles a classification.
+
+As for ideas on iOS app launch optimization, this article covers most of them at least. Of course, many of the articles above are fairly simple, and some optimization directions are just barely scratched the surface — going deeper is left as an exercise for the reader. Business governance and technical breakthroughs need to go hand in hand, and you also need to build various automated analysis and monitoring platforms in parallel — slow and steady, sustainable development, green planet (okay, I'm getting off track)...
+
+In the future I probably won't focus "so intensely on app launch optimization" the way I used to. Although "launch optimization" covers a lot of content, it's still too narrow. There are many, many more directions to explore. Let's get going... to put it more formally... let's set sail~
+
+
+Welcome to follow the official account "Client Tech Review":
+![](/images/fun.png)
+
+<!--ZH-->
 
 过去两年多的时间里，我写了一些iOS应用启动性能优化的文章，这篇文章整理个简单的目录。
 
@@ -86,4 +169,3 @@ iOS应用的启动优化思路，本文至少涵盖了大多数了。当然上�
 
 欢迎关注订阅号「客户端技术评论」：
 ![](/images/fun.png)
-

@@ -1,10 +1,51 @@
 ---
 layout: post
-title: "开源标签页滚动控件 TabPageScrollView 开发笔记"
+title: "Development Notes for the Open-Source Tab Page Scroll Control TabPageScrollView"
+title_zh: "开源标签页滚动控件 TabPageScrollView 开发笔记"
+lang_original: zh
 categories: Skill
 comments: true
 ---
 
+
+
+
+
+# Background
+Seeing so many good things on CocoaPods, and being new to iOS development, I wanted to get familiar with this workflow too.
+I thought of a simple Tab page I'd recently developed, and tried to polish it up, make it more general, and put it on CocoaPods.
+
+# The Result
+For usage and code, see: <https://github.com/everettjf/Yolo/tree/master/EVTTabPageScrollView>
+
+![demo](https://everettjf.github.io/images/extern/EVTTabPageScrollView.gif)
+<!-- more -->
+
+
+# Steps
+
+1. Create a template project
+    Reference link: <https://guides.cocoapods.org/making/using-pod-lib-create.html>
+    ```
+    pod lib create MyLibrary
+    ```
+2. Modify the description, write the library code
+3. Test
+    ```
+    pod lib lint
+    pod spec lint
+    ```
+4. Upload
+    ```
+    $ pod trunk register orta@cocoapods.org 'Orta Therox' --description='macbook air'
+    $ pod trunk push EVTTabPageScrollView.podspec
+    ```
+    Reference link: <https://guides.cocoapods.org/making/getting-setup-with-trunk>
+
+# Other
+This is still very simple — just an example of me trying out CocoaPods.
+
+<!--ZH-->
 
 
 

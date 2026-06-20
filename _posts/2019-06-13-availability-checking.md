@@ -1,12 +1,163 @@
 ---
 layout: post
-title: "探索 Availability Checking（@available）的内部实现"
+title: "Exploring the Internal Implementation of Availability Checking (@available)"
+title_zh: "探索 Availability Checking（@available）的内部实现"
+lang_original: zh
 categories:
   - 原理
 tags:
   - 原理
 comments: true
 ---
+
+In this article we'll explore the essence of `@avaliable` step by step.
+
+In [WWDC 2017: What's New in LLVM](https://developer.apple.com/videos/play/wwdc2017/411/), Apple introduced a new way of doing API availability checking, using syntax like `@avaliable`. For details, see this document: [Marking API Availability in Objective-C
+](https://developer.apple.com/documentation/swift/objective-c_and_c_code_customization/marking_api_availability_in_objective-c)
+
+<!-- more -->
+
+Among them, `@available()` can be used in conditional statements, like this:
+
+```
+if (@available(iOS 11, *)) {
+    // Use iOS 11 APIs.
+} else {
+    // Alternative code for earlier versions of iOS.
+}
+```
+
+I believe this is also the one everyone is most familiar with. So what exactly is `@avaliable`?
+
+
+## The Simplest Example
+
+Let's create a new iOS project, then call the following code in AppDelegate:
+
+```
+void test_available() {
+    if (@available(iOS 11, *)) {
+        // Use iOS 11 APIs.
+        NSLog(@"ios11");
+    } else {
+        // Alternative code for earlier versions of iOS.
+        NSLog(@"ios other");
+    }
+}
+```
+
+The example code is [here](https://github.com/everettjf/Yolo/tree/master/BukuzaoArchive/sample/avaliabletest/avaliabletest/AppDelegate.m).
+
+## Let's Reverse Engineer It
+
+After compiling (the simulator is fine), open the generated executable with Hopper and find this test_available, as shown:
+
+![](/media/15604434575850.jpg)
+
+Look at the decompiled pseudocode:
+![](/media/15604436909250.jpg)
+
+We can see that the `___isOSVersionAtLeast` function is called, where `0xb` is `iOS 11`, and presumably the following two `0x0` values are the second and third version components.
+
+Then Hopper finds this function,
+
+![](/media/15604441390827.jpg)
+
+At a glance, the guess is roughly that `dispatch_once` gets the current system version, then assigns it to the three global variables `_GlobalMajor`, `_GlobalMinor` and `_GlobalSubminor`.
+
+So how is the system version obtained inside `dispatch_once`? Hopper's decompiled pseudocode doesn't seem to show what's executed in the `block`. Switching to the assembly code view, we can see:
+
+![](/media/15604447370360.jpg)
+
+
+Here the `_parseSystemVersionPList` function is called. Let's continue looking at this function:
+![](/media/15604448185191.jpg)
+
+![](/media/15604451451816.jpg)
+
+
+![](/media/15604449285315.jpg)
+
+
+We can see there are operations on the file `/System/Library/CoreServices/SystemVersion.plist`, and there's also an `fopen`. So let's run Xcode and set a breakpoint on this fopen.
+
+![](/media/15604452404549.jpg)
+
+The file path is as follows:
+
+```
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/System/Library/CoreServices/SystemVersion.plist
+```
+
+Let's open it and take a look,
+
+![](/media/15604453014853.jpg)
+
+Now it's clear: in the end it accesses this file, gets the `ProductVersion` from it, and uses `sscanf` to parse out the three values `_GlobalMajor`, `_GlobalMinor` and `_GlobalSubminor`.
+
+
+> sscanf is so ancient. Seeing it feels like going back to the year I first learned C.
+
+
+## Interim Summary
+
+From the analysis so far, `@available(iOS 11, *)` will ultimately turn into the following pseudocode:
+
+```
+_GlobalMajor
+_GlobalMinor
+_GlobalSubminor
+
+void _parseSystemVersionPList() {
+    char *path = ".../System/Library/CoreServices/SystemVersion.plist";
+    fp = fopen(path)
+    read from fp
+    parse ProductVersion
+    sscanf into _GlobalMajor,_GlobalMinor,_GlobalSubminor
+}
+
+BOOL ___isOSVersionAtLeast(major,minor,subminor) {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _parseSystemVersionPList();     
+    });
+    return compare major,minor,subminor with _GlobalMajor,_GlobalMinor,_GlobalSubminor
+}
+```
+
+## How Does Clang Handle It
+
+
+We can search for the relevant code here: `https://github.com/llvm-mirror/clang/`.
+
+The AST used to represent available: `AvailabilitySpec`.
+
+https://github.com/llvm-mirror/clang/blob/master/include/clang/AST/Availability.h
+
+![](/media/15604461673229.jpg)
+
+I also found the code that creates the function,
+
+![](/media/15604462205628.jpg)
+
+
+I'm not too familiar with llvm specifically, so I won't go into detail (I can't really explain it either, ha). If you're interested, search for it yourself.
+
+
+## Final Summary
+
+Once you understand this essence, you'll use it more confidently from now on. Very interesting.
+
+---
+
+Welcome to subscribe :)
+
+![](/images/fun.png)
+
+
+
+
+<!--ZH-->
 
 这篇文章我们一步一步探索`@avaliable`的本质。
 

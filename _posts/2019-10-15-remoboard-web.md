@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "远程输入法 RemoBoard 新版发布：用浏览器给手机打字"
+title: "RemoBoard Remote Keyboard New Version Released: Type on Your Phone Using a Browser"
+title_zh: "远程输入法 RemoBoard 新版发布：用浏览器给手机打字"
+lang_original: zh
 categories:
   - 产品
 tags:
@@ -9,6 +11,186 @@ tags:
   - 作品
 comments: true
 ---
+
+Thanks to:
+
+- [SSPai: "Remote Keyboard" New Version Released, Type on Your Phone Using a Browser]( https://sspai.com/post/57008)
+- [iPlaysoft: Remote Keyboard - A Creative Productivity App That Lets You Type on Your Phone with a Computer Keyboard! Saves the Cost of a Bluetooth Keyboard](https://www.iplaysoft.com/remoboard.html)
+- [最美应用 (Most Beautiful Apps): This App Finally Solved a Hassle That's Bothered Me for So Many Years](https://mp.weixin.qq.com/s/PLWkVuEdJCk6cLGEQVZDbw)
+- [虚拟框架 (Virtual Framework): Remote Keyboard Is Released, Type on Your Phone Using a Computer](https://mp.weixin.qq.com/s/wC7clnEAGCHA09zrVd2s4w)
+- [小众软件 (Appinn): This Idea Is a Bit Wild: Remote Keyboard, Type on Your Phone Using a Computer](https://www.appinn.com/remoboard/amp/)
+
+Also thanks to "PriceTag" and other media for the promotion.
+
+---
+
+`Remote Keyboard` is a keyboard app that lets you `type on your phone using your computer`, making phone typing faster. When using Remote Keyboard, the phone displays a URL; visit this URL in a computer browser to start typing. The text entered in the browser is sent to the phone, thereby letting your computer type on your phone.
+
+The phone side supports iOS and Android, and on the computer you just need a browser (so it supports the three platforms macOS/Windows/Linux).
+
+In English systems, Remote Keyboard is displayed as `Remoboard`, meaning Remote Keyboard.
+
+![](/media/15711544847169.jpg)
+
+
+
+<!-- more -->
+
+
+Usually we don't need remote input, but in the following scenarios Remote Keyboard might help:
+
+## Scenarios
+
+Scenario 1:
+
+An app only has a phone version, no computer version (or you don't want to buy the computer version, ha), and using this app requires "a lot of text input work".
+
+1. For example, the DayOne journaling app on iOS. I bought the iOS version but don't want to buy the macOS version, so I can use Remote Keyboard to write journal entries day to day.
+2. Another example is WeChat chatting. Many companies don't allow installing the WeChat desktop client on work computers, so Remote Keyboard can speed up chatting. (Finish chatting faster, get back to work faster.) (For me, occasionally an online friend privately asks a question, and short text can't explain it clearly — I want to answer but don't want to type it all. With Remote Keyboard, I can type quickly.)
+3. Paired with the excellent Android text-writing app "纯纯写作" (Pure Writer), it can also speed up writing.
+
+Scenario 2:
+
+The phone side has quite a few excellent `programming environments`, such as JSBox, Pythonista, and the recently released Robomaster (controlling RoboMaster S1 with Python). Using Remote Keyboard, you can do phone-side programming more conveniently.
+
+Scenario 3:
+
+You can even install the keyboard on an Android smart TV, then visit the input URL in your phone's browser to speed up text input on the TV.
+
+## Download
+
+- iOS [App Store](https://apps.apple.com/cn/app/id1474458879)
+- Android [Coolapk](https://www.coolapk.com/apk/241412) or [Google Play Store](https://play.google.com/store/apps/details?id=com.everettjf.remoboard)
+
+## Quick Start
+
+### iOS Quick Start
+
+(1) Download Remote Keyboard from the App Store [App Store](https://apps.apple.com/cn/app/id1474458879)
+
+(2) Open `Settings > General > Keyboard > Keyboards > Add New Keyboard`
+
+(3) Tap `Remote Keyboard`
+
+![](/media/15711565435200.jpg)
+
+(4) Keyboard installation complete
+
+![](/media/15711565507727.jpg)
+
+(5) On the screen you just finished, tap `Remote Keyboard` again and `enable Allow Full Access` as shown below
+
+![](/media/15711565163725.jpg)
+
+(6) Now installation is complete. In a place where you can enter text, switch to "Remote Keyboard" and you'll see a URL (first make sure Wi-Fi is connected). Open this URL in your computer browser to start typing.
+
+Note:
+1. You need to make sure the phone and computer are connected to the same network, and the computer can ping the phone's IP address.
+2. Enter the full URL shown in the image below in the browser, for example: http://192.168.31.11:7777
+
+![](/media/15711566433576.jpg)
+
+Additional note: if macOS and iOS are logged into the same AppleId, you can use "Copy" and "Handoff" to open the URL on the computer more quickly. See the end of the article.
+
+### Android Quick Start
+
+(1) Install from [Coolapk](https://www.coolapk.com/apk/241412) or [Google Play Store](https://play.google.com/store/apps/details?id=com.everettjf.remoboard), then open the app and tap Enable Keyboard
+
+![](/media/15711572903292.jpg)
+
+![](/media/15711572968980.jpg)
+
+Here it might "prompt to restart" — in most cases just tap "OK" and ignore it.
+
+![](/media/15711573164862.jpg)
+
+(2) Switch the keyboard
+
+![](/media/15711573239250.jpg)
+
+(3) Now installation is complete. In a place where you can enter text, switch to "Remote Keyboard" and you'll see a URL (first make sure Wi-Fi is connected). Open this URL in your computer browser to start typing.
+
+Note:
+1. You need to make sure the phone and computer are connected to the same network, and the computer can ping the phone's IP address.
+2. Enter the full URL shown in the image below in the browser, for example: http://192.168.31.11:7777
+
+![](/media/15711573337744.jpg)
+
+
+## Input Modes
+
+
+### Input Modes
+
+There are three input modes:
+
+![](/media/15711573669509.jpg)
+
+(1) Standard input mode
+
+In this mode you can type "one line of text", then "press Enter to send".
+
+![](/media/15711573759717.jpg)
+
+(2) Multi-line input mode
+
+In this mode, you can "type or paste multiple lines of text" and "click a button" to send.
+
+![](/media/15711573838602.jpg)
+
+(3) Programming input mode
+
+![](/media/15711573928921.jpg)
+
+In this mode, text is sent as you type, which is great for some phone-side programming apps.
+
+## Input Tips
+
+In all three input modes, when the input text box content is empty, the following keys are also supported:
+
+1. Backspace: delete text on the phone
+2. Left and Right arrows: move the cursor left and right
+3. Up and Down arrows: move left and right by 20 characters. If there aren't 20 characters to the left or right on the phone, it won't move.
+4. 
+![](/media/15711582888909.jpg)
+
+
+
+## Copy and Handoff
+
+The iOS keyboard has "Copy" and "Handoff" buttons. The main use case currently is: iOS paired with macOS, both logged into the "same AppleID".
+
+![](/media/15711562848185.jpg)
+
+When you tap "Copy", the iOS clipboard content syncs to macOS. On macOS, open a browser, paste it into the address bar, and you can start typing.
+
+When you tap "Handoff", due to system limitations, it first jumps to "the main screen of Remote Keyboard". At this point a "browser icon" appears in the macOS Dock; click it to open the corresponding URL.
+
+![-w190](/media/15711562470401.jpg)
+
+
+## Lab
+
+When Remote Keyboard was first released, I wrote an [article introducing it](https://everettjf.github.io/2019/09/06/remoboard-release/). Back then there was no "browser input" method like now — it used the more ancient method of "installing a computer client", which was more cumbersome to use and "not very stable either". So in this new version I moved these two connection modes into the "Lab".
+
+The Lab includes the feature to switch the "connection mode", which can be switched between "Bluetooth" and "IP" connection modes. Regarding these two modes, the plan is as follows:
+
+1. Bluetooth connection mode: will be gradually optimized in the future.
+2. IP connection mode: about to be deprecated. Depending on the situation, it will gradually be replaced by the Http interface in the Web connection mode.
+
+In short, the features in the "Lab" are not recommended for use for now, ha.
+
+
+## Free
+
+It's completely free for now, and existing features won't be charged for in the future either. If possible, I'll develop some small paid features down the line.
+
+
+## Summary
+
+I hope everyone has fun. If possible, please help recommend it to more friends :)
+
+<!--ZH-->
 
 感谢:
 
@@ -187,4 +369,3 @@ iOS 输入法上会有个「复制」和「接力」按钮，目前的使用场�
 ## 总结
 
 希望大家玩的愉快，如果可以的话，帮忙推荐给更多朋友使用哦 :)
-

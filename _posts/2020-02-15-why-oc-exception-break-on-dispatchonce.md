@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "为什么 NSAssert 抛出的异常会在 dispatch_once 处中断"
+title: "Why Does an Exception Thrown by NSAssert Break at dispatch_once"
+title_zh: "为什么 NSAssert 抛出的异常会在 dispatch_once 处中断"
+lang_original: zh
 categories:
   - tips
 tags:
@@ -10,6 +12,130 @@ tags:
   - ios
 comments: true
 ---
+
+I believe everyone's company codebase has, to some degree, a number of assertions (such as NSAssert). A common assertion scenario is: to avoid the SDK's initialization method and feature interfaces being misused, the SDK developer checks in the feature interface whether initialization has already happened, and otherwise triggers an assertion. Of course there are all kinds of other scenarios.
+
+<!-- more -->
+
+## Exploring NSAssert
+
+This article explores a phenomenon of Objective-C's assertion method NSAssert. This phenomenon is fairly detailed and not easy to describe, so let's just dive in.
+
+Suppose we have the following assertion:
+
+```
+NSAssert(NO, @"should not call this");
+```
+
+When the assertion code has source available, it looks like this when triggered:
+
+![](/media/15817696181069.jpg)
+
+The full call stack is as follows:
+
+![](/media/15817696740923.jpg)
+
+Since the source is available, Xcode intelligently positions the editor at the NSAssert line. At the same time we also learn another piece of information: NSAssert actually produces an Exception, and the Exception triggers the C function `objc_exception_throw`.
+
+
+## Interaction with GCD
+
+But if your company has promoted converting Pods into static libraries (to speed up compilation; teams with a lot of people on a product usually do this), then the NSAssert line has no source, and the call stack will very likely look like the image below:
+![](/media/15817699224837.jpg)
+
+
+Of course, this doesn't only happen when there's no source. If the assertion is inside some GCD block and the context also has no source, it will look like the image above too. For example, the following code will cause Xcode to be unable to break at the code line.
+
+![](/media/15817701224885.jpg)
+
+
+Why does this happen? Let's look at the detailed call stack:
+
+![](/media/15817701588263.jpg)
+
+Looking carefully, there's no `objc_exception_throw` here. So let's add a symbolic breakpoint and check.
+
+![](/media/15817706969228.jpg)
+
+
+No problem — this method was indeed called. Let's look at the implementation of `objc_exception_throw`.
+https://opensource.apple.com/tarballs/objc4/ 
+Download the latest code. Find this method, as follows.
+
+![](/media/15817716916654.jpg)
+
+After reading it, I don't really have any ideas.
+
+Let's also look at these two GCD methods,
+
+![](/media/15817718460206.jpg)
+
+
+Then find the libdispatch code from here:
+https://opensource.apple.com/tarballs/libdispatch/
+
+![](/media/15817719822396.jpg)
+
+
+Now it's clear: _dispatch_client_callout catches the OC Exception in the GCD block, then directly calls objc_terminate. That is, this is the point that causes the call stack to break.
+
+That settles this issue for now.
+
+## dispatch_once
+
+For launch optimization, I wrote some launcher code. To avoid the internal code being executed multiple times, I added a dispatch_once. The launcher executes various kinds of launch logic. However, for a while, people kept saying my code was crashing.
+
+The general situation was as follows:
+
+![](/media/15817723562511.jpg)
+
+myRunner on the left side refers to the launcher. From the image above, it indeed crashed in my code.
+
+But what was the actual situation?
+
+![](/media/15817724251639.jpg)
+
+Because the code inside dispatch_once threw an OC exception. Big companies often run into this situation early on, and later they usually develop code specifically for assertions to locate the Owner — and as a result, because of dispatch_once, everyone ended up tracking it back to me.
+
+The simplest solution is to add an exception breakpoint. (That is, the symbolic breakpoint objc_exception_throw.)
+
+![](/media/15817726052193.jpg)
+
+Don't underestimate this operation, ha. I've seen many developers who don't know about it (this might be the first must-have skill for an iOS engineer moving from a small company to a big one).
+
+Thinking about the cause again, let's look at the call stack
+
+![](/media/15817728005548.jpg)
+
+_dispatch_client_callout is still present. But the slight difference is that dispatch_once's method is inline, written into the header file
+
+![](/media/15817728648084.jpg)
+
+Xcode will try to find the last line in the call stack that has matching code, locate it there, and show it to the developer.
+
+## How to Solve It
+
+The cause is figured out. So how do we work around this problem? For now it seems the answer is just don't use GCD.
+
+For example: C++'s std::call_once.
+
+![](/media/15817731685041.jpg)
+
+Another example is using the built-in lock of a static variable (this could be worth writing an article to explore).
+
+![](/media/15817731588446.jpg)
+
+For more methods, refer to:
+https://stackoverflow.com/questions/8412630/how-to-execute-a-piece-of-code-only-once
+
+
+
+If you like it, please follow the official account as encouragement:
+
+![](/images/fun.png)
+
+
+<!--ZH-->
 
 相信大家公司的代码中多多少少存在一些断言（例如NSAssert）。一种常见的断言场景是：SDK的开发者为了避免SDK的初始化方法与功能接口，会在功能接口中判断是否已经初始化，否则就触发断言。当然还有各种各样其他场景。
 

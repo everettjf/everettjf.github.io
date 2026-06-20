@@ -1,6 +1,8 @@
 ---
 layout: post
-title: "使用 Cydia 安装 AppleTrace Tweak"
+title: "Installing the AppleTrace Tweak via Cydia"
+title_zh: "使用 Cydia 安装 AppleTrace Tweak"
+lang_original: zh
 categories:
   - 工具
 tags:
@@ -8,6 +10,44 @@ tags:
   - tweak
 comments: true
 ---
+
+Add the Cydia repo `http://7we.win/cydia/` in Cydia, and you can install AppleTraceLoader, which then makes it easier to trace the objc_msgSend of any app.
+
+<!-- more -->
+
+
+# Installation
+
+On a jailbroken phone, open `http://7we.win/cydia/`, click `Add to Cydia`, refresh, then search for `AppleTraceLoader` and install it.
+
+![](/media/15316426709626.jpg)
+
+# Configuration
+
+Open Settings -> AppleTrace, where you can choose which app to trace.
+![](/media/15316427520641.jpg)
+
+![](/media/15316427818554.jpg)
+
+
+After selecting, restart the chosen App, and an `appletracedata` directory will be generated under that App's directory.
+
+Refer to the AppleTrace <https://github.com/everettjf/AppleTrace> documentation to generate the trace html file.
+
+# Setting Up the Cydia Repo
+
+Here I used GitHub Pages to set up the Cydia Repo. The address is as follows:
+
+https://github.com/crcgen
+
+Refer to AloneMonkey's Cydia Repo <https://github.com/AloneMonkey/cydiarepo>
+
+
+# It Could Also Have a UI
+
+Using frida's js interface together with Electron, you could develop a UI that makes it more convenient to fetch appletracedata. But this is neither important nor urgent, so I won't spend time tinkering with it.
+
+<!--ZH-->
 
 在cydia中添加cydia repo `http://7we.win/cydia/` ，可以安装AppleTraceLoader，然后可以更方便的trace任何一个app的objc_msgSend了。
 
@@ -44,4 +84,3 @@ https://github.com/crcgen
 # 还可以有个UI界面
 
 使用frida的js接口，配合Electron可以开发个界面更方便的获取appletracedata，不过此事不重要不紧急，就不投入时间倒腾啦。
-

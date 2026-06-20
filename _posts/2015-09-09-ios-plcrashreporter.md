@@ -1,10 +1,244 @@
 ---
 layout: post
-title: "使用 PLCrashReporter 进行 iOS 崩溃收集与分析"
+title: "iOS Crash Collection and Analysis with PLCrashReporter"
+title_zh: "使用 PLCrashReporter 进行 iOS 崩溃收集与分析"
+lang_original: zh
 categories: Skill
 comments: true
 ---
 
+
+
+
+
+
+
+
+# Introduction
+After an App goes live, if it crashes, are you just supposed to stare helplessly? You can't take the user's phone and import the crash log via Organizer, so you need to automatically collect crash logs when the program crashes, and upload the crash logs to the server the next time the program launches.
+
+1. The crash log should be associated with a particular revision of the code (if using svn). (Usually with continuous integration via Jenkins, you can indirectly associate it to the code through Jenkins's BuildNumber.)
+2. The dSYM symbol file for the corresponding version. (Can be configured to generate at link time.)
+<!-- more -->
+
+# Directly Calling System Functions to Get the Stack Info at Crash Time
+
+This approach can obtain simple crash information, but cannot work with the dSYM file to pinpoint the specific line of code. Also, the kinds of crash types it can capture are limited; obtaining more information requires more work (the open-source plcrashreporter below has already done this).
+
+- signal for capturing error signals
+- NSSetUncaughtExceptionHandler for uncaught OC exceptions
+
+~~~ c
+
+static int s_fatal_signals[] = {
+    SIGABRT,
+    SIGBUS,
+    SIGFPE,
+    SIGILL,
+    SIGSEGV,
+    SIGTRAP,
+    SIGTERM,
+    SIGKILL,
+};
+
+
+static int s_fatal_signal_num = sizeof(s_fatal_signals) / sizeof(s_fatal_signals[0]);
+
+void UncaughtExceptionHandler(NSException *exception) {
+    NSArray *arr = [exception callStackSymbols];//得到当前调用栈信息
+    NSString *reason = [exception reason];//非常重要，就是崩溃的原因
+    NSString *name = [exception name];//异常类型
+}
+
+void SignalHandler(int code)
+{
+    NSLog(@"signal handler = %d",code);
+}
+
+void InitCrashReport()
+{
+    // 1 linux错误信号捕获
+    for (int i = 0; i < s_fatal_signal_num; ++i) {
+        signal(s_fatal_signals[i], SignalHandler);
+    }
+    
+    // 2 objective-c未捕获异常的捕获
+    NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
+}
+int main(int argc, char * argv[]) {
+    @autoreleasepool {
+        InitCrashReport();
+
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
+}
+
+~~~ 
+
+# Using PLCrashReporter
+
+## Official Site 
+<https://www.plcrashreporter.org/>
+
+## Installation
+Can be installed via CocoaPods:
+~~~ 
+pod 'PLCrashReporter', '~> 1.2'
+~~~ 
+
+## Example
+~~~ c
+
+//
+ // Called to handle a pending crash report.
+ //
+- (void) handleCrashReport {
+     PLCrashReporter *crashReporter = [PLCrashReporter sharedReporter];
+     NSData *crashData;
+     NSError *error;
+
+     // Try loading the crash report
+     crashData = [crashReporter loadPendingCrashReportDataAndReturnError: &error];
+     if (crashData == nil) {
+         NSLog(@"Could not load crash report: %@", error);
+         [crashReporter purgePendingCrashReport];
+         return;
+     }
+    
+    [crashData writeToFile:[self crashDataPath] atomically:YES];
+
+     // We could send the report from here, but we'll just print out
+     // some debugging info instead
+     PLCrashReport *report = [[PLCrashReport alloc] initWithData: crashData error: &error];
+     if (report == nil) {
+         NSLog(@"Could not parse crash report");
+         [crashReporter purgePendingCrashReport];
+         return;
+     }
+
+     NSLog(@"Crashed on %@", report.systemInfo.timestamp);
+     NSLog(@"Crashed with signal %@ (code %@, address=0x%" PRIx64 ")", report.signalInfo.name,
+           report.signalInfo.code, report.signalInfo.address);
+    
+    NSString *humanText = [PLCrashReportTextFormatter stringValueForCrashReport:report withTextFormat:PLCrashReportTextFormatiOS];
+    
+    [self WriteContent:humanText];
+    
+     // Purge the report
+     [crashReporter purgePendingCrashReport];
+    
+     return;
+ }
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+    
+    PLCrashReporter *crashReporter = [PLCrashReporter sharedReporter];
+    NSError *error;
+    
+    // Check if we previously crashed
+    if ([crashReporter hasPendingCrashReport])
+        [self handleCrashReport];
+
+    // Enable the Crash Reporter
+    if (![crashReporter enableCrashReporterAndReturnError: &error])
+        NSLog(@"Warning: Could not enable crash reporter: %@", error);
+    
+    return YES;
+}
+
+~~~ 
+
+## Working with the dSYM File
+
+~~~ 
+     crashData = [crashReporter loadPendingCrashReportDataAndReturnError: &error];
+~~~ 
+The returned NSData is in plcrashreporter's private format; it can be converted into a standard Apple crash log via the officially provided `plcrashutil` tool.
+
+For example:
+
+1- Open the example project, run with Command + R, then quit the program.
+
+2- Run plcrashreporter2 separately through the simulator. Tap Exception to trigger a crash.
+
+3- Open the App again, and the App will automatically record the crash log as d.plcrash.
+
+4- Open the Xcode menu, Window -> Projects, click the little arrow to the right of Derived Data, and go into /Users/everettjf/Library/Developer/Xcode/DerivedData/plcrashreportertest2-aoaojvrcqilsxqcarfmgulsddpvc/
+
+5- Then manually go into the directory Build/Products/Debug-iphonesimulator, which holds the plcrashreportertest2.app.dSYM and plcrashreportertest2.app files. (For convenience of demonstration) copy these two files to the Desktop. (Note: when archiving for product release, the corresponding dSYM file is also generated, in another directory. These directories are actually all configurable; some tools, e.g. the gym in shenzhen or fastlane, automatically package the dSYM folder into a zip.) (Note again: dSYM is a folder.)
+
+6- Copy out the d.plcrash file. On my machine it's at this path 
+`/Users/everettjf/Library/Developer/CoreSimulator/Devices/319973DD-0853-494A-8688-DC73E733019D/data/Containers/Data/Application/D85F4320-1826-4EDD-8167-1197BFA5ACBA/Documents/` 
+(you can look at the terminal output) (the last folder differs for different simulators) — also copy it to the Desktop.
+
+7- Convert to Apple log format
+
+~~~ 
+$ plcrashutil convert --format=ios d.plcrash > apple.log
+~~~ 
+
+8- dwarfdump to view the uuid
+
+~~~ 
+$ dwarfdump --uuid plcrashreportertest2.app/plcrashreportertest2
+UUID: B1020E4A-07DD-35E4-B3F0-71E3B7CA49BB (x86_64) plcrashreportertest2.app/plcrashreportertest2
+$ dwarfdump --uuid plcrashreportertest2.app.dSYM
+UUID: B1020E4A-07DD-35E4-B3F0-71E3B7CA49BB (x86_64) plcrashreportertest2.app.dSYM/Contents/Resources/DWARF/plcrashreportertest2
+~~~ 
+
+9- View the crashlog's uuid
+
+~~~ 
+Binary Images:
+       0x107d23000 -        0x107d4efff +plcrashreportertest2 x86_64  <b1020e4a07dd35e4b3f071e3b7ca49bb> ......
+
+~~~ 
+
+10- If the three uuids match, you can analyze.
+
+11- The symbolicatecrash tool
+
+~~~ 
+    - 干脆把这个藏得这么深得工具也复制一份出来。
+
+Xcode7.2 及以前：
+/Applications/Xcode.app/Contents/SharedFrameworks/DTDeviceKitBase.framework/Versions/A/Resources/symbolicatecrash
+
+Xcode 7.3
+/Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/symbolicatecrash
+
+cd /Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/
+cp symbolicatecrash ~/Desktop
+    - 设置DEVELOPER_DIR。
+export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
+    - 导出。
+$ ./symbolicatecrash apple.log plcrashreportertest2.app.dSYM > result.log
+~~~ 
+
+12- Finally, atos, where 0x107d23000 can be seen after Binary Images:. 0x0000000107d24c3e is in the Last Exception Backtrace.
+
+~~~ 
+$ xcrun atos -o plcrashreportertest2.app/plcrashreportertest2 -l 0x107d23000
+0x0000000107d24c3e
+-[ViewController exceptionTouchUp:] (in plcrashreportertest2) (ViewController.m:84)
+~~~ 
+
+
+# Conclusion
+This last atos still requires manually entering things one by one, which is rather troublesome. I don't know whether there's a killer tool on Mac or iOS like windbg on Windows; I'll add it later once I find out.
+
+# Other Open-Source Projects
+- KSCrash
+  <https://github.com/kstenerud/KSCrash>
+
+# Reference Articles
+- <http://www.jamiegrove.com/software/fixing-bugs-using-os-x-crash-logs-and-atos-to-symbolicate-and-find-line-numbers>
+
+
+
+
+<!--ZH-->
 
 
 
@@ -233,7 +467,6 @@ $ xcrun atos -o plcrashreportertest2.app/plcrashreportertest2 -l 0x107d23000
 
 # 参考文章
 - <http://www.jamiegrove.com/software/fixing-bugs-using-os-x-crash-logs-and-atos-to-symbolicate-and-find-line-numbers>
-
 
 
 

@@ -1,12 +1,88 @@
 ---
 layout: post
-title: "FolderSizeView：用 TreeMap 直观展示文件夹空间占用的工具"
+title: "FolderSizeView: A Tool to Visualize Folder Space Usage with a TreeMap"
+title_zh: "FolderSizeView：用 TreeMap 直观展示文件夹空间占用的工具"
+lang_original: zh
 categories:
   - 工具
 tags:
   - 工具
 comments: true
 ---
+
+FolderSizeView can use a TreeMap to display the proportion of file sizes within a folder.
+
+![](/media/15624354225784.jpg)
+
+
+## Background
+
+There's often a need to analyze the size that files take up within a folder (for example, analyzing a mobile app's installation package size). For a long time, [GrandPerspective](http://grandperspectiv.sourceforge.net/) basically met this need, but while using it I often wished I could see the `parent-child relationship of folders`. FolderSizeView solves this small need.
+
+
+<!-- more -->
+
+## System Support
+
+macOS and Windows
+
+## Download
+
+[GitHub download link](https://github.com/foldersizeview/foldersizeview.github.io/releases)
+
+
+## How to Use
+
+Step one, open the software
+
+![](/media/15624354676264.jpg)
+
+
+Step two, drop the folder you want to analyze in
+
+For example, if I drop Wechat.app in, it displays as shown below.
+
+![](/media/15624355630220.jpg)
+
+## Options
+
+Via the menu `Action->Group by file extension` you can enable grouping by file type. As shown below:
+
+![](/media/15626040281694.jpg)
+
+Via the menu `Action->Sunburst Mode` you can display it with a sunburst chart (in most cases the TreeMap chart is good enough; the sunburst chart doesn't display well when there are a lot of files). As shown below:
+
+![](/media/15626040706222.jpg)
+
+
+
+## Source Code
+
+~~Nope, hehe.~~
+
+It's available now: <https://github.com/foldersizeview/foldersizeview>
+
+## Note
+
+The current version was developed quickly. `Traversing the folder is done recursively on the main thread, so if the folder has too much content, it will generally crash`. But for everyday analysis of an app's installation package and the like, there's no problem.
+
+
+## Summary
+
+Too simple — the article is finished already.
+
+
+---
+
+Welcome to subscribe :)
+
+![](/images/fun.png)
+
+
+
+
+
+<!--ZH-->
 
 FolderSizeView可以使用TreeMap方式展示一个文件夹内文件大小的占比情况。
 
