@@ -15,6 +15,11 @@ layout: null
       <item>
         <title>{{ post.title | xml_escape }}</title>
         {% assign feed_content = post.content | split: '<!--ZH-->' | first %}
+        {% comment %} RSS readers can't resolve relative URLs — make image/link URLs absolute. {% endcomment %}
+        {% assign feed_base = site.url | append: site.baseurl %}
+        {% assign src_abs = 'src="' | append: feed_base | append: '/' %}
+        {% assign href_abs = 'href="' | append: feed_base | append: '/' %}
+        {% assign feed_content = feed_content | replace: 'src="/', src_abs | replace: 'href="/', href_abs %}
         <description>{{ feed_content | xml_escape }}</description>
         <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
         <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
