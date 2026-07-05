@@ -26,11 +26,11 @@ See the `51VV` icon in the top-right corner; the image below is the `dark` icon 
 <!-- more -->
 
 
-![](https://everettjf.github.io/stuff/image/darkicon.PNG)
+![](/stuff/image/darkicon.PNG)
 
 The image below is the `normal` icon:
 
-![](https://everettjf.github.io/stuff/image/darkicon0.PNG)
+![](/stuff/image/darkicon0.PNG)
 
 
 
@@ -90,11 +90,11 @@ App启动过程一般是这样的：App图标颜色会首先变暗，变暗后�
 <!-- more -->
 
 
-![](https://everettjf.github.io/stuff/image/darkicon.PNG)
+![](/stuff/image/darkicon.PNG)
 
 下图是`正常`的图标：
 
-![](https://everettjf.github.io/stuff/image/darkicon0.PNG)
+![](/stuff/image/darkicon0.PNG)
 
 
 

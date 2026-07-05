@@ -22,7 +22,7 @@ Code Friend is an Xcode Extension that provides a JavaScript interface, so users
 
 Why did I develop this tool? To practice with JavaScriptCore.
 
-- Detailed introduction: <https://everettjf.github.io/2018/11/13/codefriend-tutorial/>
+- Detailed introduction: <https://xnu.app/2018/11/13/codefriend-tutorial/>
 - Official site: <https://qvcodefriend.github.io/>
 - Mac App Store: <https://itunes.apple.com/cn/app/code-friend/id1441249580>
 - Code: <https://github.com/qvcodefriend/CodeFriend>
@@ -34,7 +34,7 @@ USB Keyboard is an input method app. After connecting your iPhone to a Mac via U
 
 Why did I develop this tool? I saw the peertalk library, and at the same time I wanted to type faster in WeChat without using the macOS client.
 
-- Detailed introduction: <https://everettjf.github.io/2018/10/22/qvkeyboard-release/>
+- Detailed introduction: <https://xnu.app/2018/10/22/qvkeyboard-release/>
 - App Store: <https://itunes.apple.com/cn/app/qvkeyboard/id1439106456>
 - Code: <https://github.com/everettjf/USBKeyboard>
 
@@ -86,7 +86,7 @@ Code Friend 是一款Xcode Extension，提供了JavaScript的接口，用户可�
 
 为什么开发这个工具？为了练手JavaScriptCore。
 
-- 详细介绍：<https://everettjf.github.io/2018/11/13/codefriend-tutorial/>
+- 详细介绍：<https://xnu.app/2018/11/13/codefriend-tutorial/>
 - 官方地址：<https://qvcodefriend.github.io/>
 - Mac App Store 地址：<https://itunes.apple.com/cn/app/code-friend/id1441249580>
 - 代码：<https://github.com/qvcodefriend/CodeFriend>
@@ -98,7 +98,7 @@ USB Keyboard 是一个输入法应用，通过USB连接iPhone到Mac后，可以�
 
 为什么开发这个工具？看到了peertalk这个库，同时在不想使用macOS客户端的前提下，还想微信打字快一点。
 
-- 详细介绍：<https://everettjf.github.io/2018/10/22/qvkeyboard-release/>
+- 详细介绍：<https://xnu.app/2018/10/22/qvkeyboard-release/>
 - App Store：<https://itunes.apple.com/cn/app/qvkeyboard/id1439106456>
 - 代码：<https://github.com/everettjf/USBKeyboard>
 

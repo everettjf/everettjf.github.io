@@ -43,7 +43,7 @@ The core of FastImageCache is the image table. It's similar to the sprite sheet 
 
 The entire file is mapped into memory via mmap, and then the image data is read from memory. The use of mmap reduces data copies.
 
-mmap was introduced in a previous article, see <https://everettjf.github.io/2018/09/01/mmap/>
+mmap was introduced in a previous article, see <https://xnu.app/2018/09/01/mmap/>
 
 
 ## 2. Uncompressed Image Data
@@ -169,7 +169,7 @@ If we only want to optimize the home page loading speed of an app, there could b
 
 
 Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)
 
 
 <!--ZH-->
@@ -207,7 +207,7 @@ FastImageCache的核心是image table。类似游戏开发中的雪碧图 <http:
 
 将整个文件通过mmap映射到内存，然后从内存中读取图像数据。mmap的使用减少了数据拷贝。
 
-mmap在之前的文章介绍过，见 <https://everettjf.github.io/2018/09/01/mmap/>
+mmap在之前的文章介绍过，见 <https://xnu.app/2018/09/01/mmap/>
 
 
 ## 2. Uncompressed Image Data
@@ -333,5 +333,5 @@ inline size_t FICByteAlignForCoreAnimation(size_t bytesPerRow) {
 
 
 欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)
 

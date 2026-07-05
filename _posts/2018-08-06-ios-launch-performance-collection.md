@@ -91,25 +91,25 @@ I collect good resources here whenever I find them. *Updated continuously, last 
 
 9. iOS App Launch Performance Optimization (1) - premain
     
-    <https://everettjf.github.io/2018/05/26/ios-app-launch-performance-part1/>
+    <https://xnu.app/2018/05/26/ios-app-launch-performance-part1/>
     Just the line of thinking for the pre-main stage. The author said there would be follow-up articles, but it's been quiet for a long time — who knows what he's up to.
 
 10. Hook all +load methods
     
-    A method to hook objective c +load <https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/>
+    A method to hook objective c +load <https://xnu.app/2017/01/06/a-method-of-hook-objective-c-load/>
     
     Hook all +load methods (including Categories)
- <https://everettjf.github.io/2018/08/19/ios-hook-really-all-load/>
+ <https://xnu.app/2018/08/19/ios-hook-really-all-load/>
     
 11. A method to hook C++ static initializers
     
-    <https://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/>
+    <https://xnu.app/2017/02/06/a-method-of-hook-static-initializers/>
     The hook method in this article is quite possibly my own original creation. Strongly recommended. The Taobao talk also mentioned this method.
 
 12. A method to delay premain code
     
-    <https://everettjf.github.io/2017/03/06/a-method-of-delay-premain-code/>
-    A line of thinking discovered by studying a special section unique to Facebook's App (refer to the article <https://everettjf.github.io/2016/08/20/facebook-explore-section-fbinjectable/> ).
+    <https://xnu.app/2017/03/06/a-method-of-delay-premain-code/>
+    A line of thinking discovered by studying a special section unique to Facebook's App (refer to the article <https://xnu.app/2016/08/20/facebook-explore-section-fbinjectable/> ).
 
     
 # Tools
@@ -251,25 +251,25 @@ I've read all the articles above, or am at least reading them. Summarized here t
 
 9. iOS应用启动性能优化(1)-premain
     
-    <https://everettjf.github.io/2018/05/26/ios-app-launch-performance-part1/>
+    <https://xnu.app/2018/05/26/ios-app-launch-performance-part1/>
     仅仅是pre-main阶段的思路。作者说有后续的文章，但很久没动静了，不知道在搞什么。
 
 10. Hook所有+load方法
     
-    一种 hook objective c +load 的方法 <https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/>
+    一种 hook objective c +load 的方法 <https://xnu.app/2017/01/06/a-method-of-hook-objective-c-load/>
     
     Hook所有+load方法（包括Category）
- <https://everettjf.github.io/2018/08/19/ios-hook-really-all-load/>
+ <https://xnu.app/2018/08/19/ios-hook-really-all-load/>
     
 11. 一种 hook C++ static initializers 的方法
     
-    <https://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/>
+    <https://xnu.app/2017/02/06/a-method-of-hook-static-initializers/>
     这篇文章的hook方法，有较大的可能是我首创，强烈推荐。手淘的分享中也提了这个方法。
 
 12. 一种延迟 premain code 的方法
     
-    <https://everettjf.github.io/2017/03/06/a-method-of-delay-premain-code/>
-    通过学习Facebook的App中特有的section（参考文章 <https://everettjf.github.io/2016/08/20/facebook-explore-section-fbinjectable/> ），发现的一种思路。
+    <https://xnu.app/2017/03/06/a-method-of-delay-premain-code/>
+    通过学习Facebook的App中特有的section（参考文章 <https://xnu.app/2016/08/20/facebook-explore-section-fbinjectable/> ），发现的一种思路。
 
     
 # 工具

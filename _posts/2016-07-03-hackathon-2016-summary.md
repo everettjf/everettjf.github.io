@@ -55,7 +55,7 @@ The most important thing is the input of each face's info; I thought of three qu
 ---
 
 - Buttons, as shown below:
-![](https://everettjf.github.io/stuff/rubiks/app.jpg)
+![](/stuff/rubiks/app.jpg)
 
 - Voice, can use iFlytek recognition.
 - Photo, i.e. photograph each face. Recognize the colors at fixed positions.
@@ -148,7 +148,7 @@ In the end, I made it work using buttons and voice. The code is here. <https://g
 ---
 
 - 按钮如下图：
-![](https://everettjf.github.io/stuff/rubiks/app.jpg)
+![](/stuff/rubiks/app.jpg)
 
 - 语音，可以使用讯飞识别。
 - 拍照，也就是每个面都拍照。识别出固定位置的颜色。

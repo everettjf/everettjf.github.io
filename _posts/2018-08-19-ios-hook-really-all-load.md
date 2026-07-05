@@ -16,7 +16,7 @@ This article is for learning reference only, but the approach it describes has p
 
 ---
 
-About two years ago, when I first started doing performance optimization work, in order to hook all +load methods, I used Hopper to first list out all +load methods, then used CaptainHook in a dynamic library to specify each class name one by one to hook each +load method. I wrote an article that was published first internally (ATA) and then on my blog. The blog article URL is: <https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/>.
+About two years ago, when I first started doing performance optimization work, in order to hook all +load methods, I used Hopper to first list out all +load methods, then used CaptainHook in a dynamic library to specify each class name one by one to hook each +load method. I wrote an article that was published first internally (ATA) and then on my blog. The blog article URL is: <https://xnu.app/2017/01/06/a-method-of-hook-objective-c-load/>.
 
 This approach has two drawbacks:
 1. You first need static analysis (using Hopper) to see all +load methods, or use the objc runtime methods to get all class names that contain +load methods. Very cumbersome.
@@ -241,7 +241,7 @@ When I first wrote the code, I referenced the code of my classmate Jiale <https:
 Two years, gone in the blink of an eye, and yet all the ups and downs are still vivid. A single thought rises and a thousand mountains and rivers appear; a single thought fades and seas turn to fields. Press on bravely, young one.
 
 Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)
 
 # Addendum
 
@@ -254,7 +254,7 @@ Welcome to follow the WeChat official account "客户端技术评论":
 
 ---
 
-大概两年前刚开始做性能优化工作，为了Hook所有+load方法，是用Hopper先列出所有+load，然后使用CaptainHook在动态库中逐个指定类名来Hook每一个+load方法。写了一篇文章，先后发表到了内网（ATA）和博客，博客文章地址是： <https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/> 。
+大概两年前刚开始做性能优化工作，为了Hook所有+load方法，是用Hopper先列出所有+load，然后使用CaptainHook在动态库中逐个指定类名来Hook每一个+load方法。写了一篇文章，先后发表到了内网（ATA）和博客，博客文章地址是： <https://xnu.app/2017/01/06/a-method-of-hook-objective-c-load/> 。
 
 这个方法有两个缺点：
 1. 需要先静态分析（使用Hopper）来看到所有+load方法，或者使用objc runtime的方法获取所有包含+load方法的类名。很麻烦。
@@ -479,7 +479,7 @@ Hopper中看到Category中的+load，最终的符号没有体现出来。
 两年，眨眼而过，而是是非非，却历历在目。一念起万水千山，一念灭沧海桑田。勇往直前，少年。
 
 欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)
 
 # 补充
 

@@ -18,7 +18,7 @@ I thought of a simple Tab page I'd recently developed, and tried to polish it up
 # The Result
 For usage and code, see: <https://github.com/everettjf/Yolo/tree/master/EVTTabPageScrollView>
 
-![demo](https://everettjf.github.io/images/extern/EVTTabPageScrollView.gif)
+![demo](/images/extern/EVTTabPageScrollView.gif)
 <!-- more -->
 
 
@@ -58,7 +58,7 @@ This is still very simple — just an example of me trying out CocoaPods.
 # 最终
 使用方法及代码见：<https://github.com/everettjf/Yolo/tree/master/EVTTabPageScrollView>
 
-![demo](https://everettjf.github.io/images/extern/EVTTabPageScrollView.gif)
+![demo](/images/extern/EVTTabPageScrollView.gif)
 <!-- more -->
 
 

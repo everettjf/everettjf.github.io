@@ -16,7 +16,7 @@ comments: true
 
 Since I started iOS development on March 15 last year (2015), minus the 3 months in the middle as a full-time stay-at-home dad (and part-time O2O photography startup) (from May 10 to August 12), today (June 26, 2016) it has been a little over a year.
 
-Last November I wrote a [5-month summary of switching from C++ to iOS development](https://everettjf.github.io/2015/11/18/the-past-4-months-ios-develop-for-me), listing the knowledge I learned over nearly 5 months, and also making some plans.
+Last November I wrote a [5-month summary of switching from C++ to iOS development](/2015/11/18/the-past-4-months-ios-develop-for-me), listing the knowledge I learned over nearly 5 months, and also making some plans.
 
 This article continues from that one. Let me summarize what I learned over the last 6 months (from last December to today).
 
@@ -25,26 +25,26 @@ This article continues from that one. Let me summarize what I learned over the l
 
 # Getting Started
 
-From late November to early December last year, I tinkered for a long time and finally implemented an old idea (using flask+mongodb). [Snowflake Bookmark](https://everettjf.github.io/2015/12/13/snows_link_tutorial) went live. But unfortunately, it was both simple and cumbersome, with no good experience — it only fulfilled half of a sentiment. Later the site was shut down and evolved into [TomatoRead](https://everettjf.github.io/2016/05/13/how-to-write-a-simple-feed-reader) and [Admire design navigation](https://admire.so).
+From late November to early December last year, I tinkered for a long time and finally implemented an old idea (using flask+mongodb). [Snowflake Bookmark](/2015/12/13/snows_link_tutorial) went live. But unfortunately, it was both simple and cumbersome, with no good experience — it only fulfilled half of a sentiment. Later the site was shut down and evolved into [TomatoRead](/2016/05/13/how-to-write-a-simple-feed-reader) and [Admire design navigation](https://admire.so).
 
 Having settled this little sentiment, I focused fully on learning iOS.
 
 
 # Reverse Engineering
 
-From late November to late December, I spent nearly a month of evenings (the kid usually doesn't sleep until 11pm, so I tinkered until one or two am) studying the book *iOS App Reverse Engineering*, and at the end of the year produced an [Alipay voice-saving Tweak](https://github.com/everettjf/Yolobroccoli/AlipayWalletChatVoiceSaver), and also wrote [development notes](https://everettjf.github.io/2015/12/29/tweak-for-alipay-wallet-chat-voice-save).
+From late November to late December, I spent nearly a month of evenings (the kid usually doesn't sleep until 11pm, so I tinkered until one or two am) studying the book *iOS App Reverse Engineering*, and at the end of the year produced an [Alipay voice-saving Tweak](https://github.com/everettjf/Yolobroccoli/AlipayWalletChatVoiceSaver), and also wrote [development notes](/2015/12/29/tweak-for-alipay-wallet-chat-voice-save).
 
 In 2014 I was still working on security software similar to 360 Antivirus. At that time I carefully read and worked through the book *Practical Malware Analysis*, but didn't study further — I only stayed at the book's examples and simple analysis. Since my job was still business-focused, when customers reported problematic PE files, assembly was my weak point, so I mostly analyzed in Kingsoft FireEye and other tools, and didn't carefully analyze the assembly code myself.
 
 Maybe with this foundation, now looking at iOS app reverse engineering, and because of Objective-C's dynamic mechanism, basic reverse engineering is relatively easy to learn. I went through almost all the examples in the book one by one.
 
 
-Later, due to the need to develop an IM client at work, I reverse-engineered the implementations of WeChat and many other apps. Among them I also [summarized the workflow for reverse-engineering WeChat's message screen](https://everettjf.github.io/2016/06/19/reverse-explore-wechat-message-design).
+Later, due to the need to develop an IM client at work, I reverse-engineered the implementations of WeChat and many other apps. Among them I also [summarized the workflow for reverse-engineering WeChat's message screen](/2016/06/19/reverse-explore-wechat-message-design).
 
 
 # Studying Source Code
 
-I sometimes overdo the tinkering. To study source code I even spent a lot of precious spare time writing an Xcode plugin, [XSourceNote](https://everettjf.github.io/2016/02/16/xsourcenote-dev). The idea was good, but the experience wasn't great — it was just barely usable. Using this plugin I wrote a few source-reading notes.
+I sometimes overdo the tinkering. To study source code I even spent a lot of precious spare time writing an Xcode plugin, [XSourceNote](/2016/02/16/xsourcenote-dev). The idea was good, but the experience wasn't great — it was just barely usable. Using this plugin I wrote a few source-reading notes.
 
 - UITableView-FDTemplateLayoutCell study notes
 - YYCache study notes
@@ -71,7 +71,7 @@ I learned about OpenCV. To implement AR Rubik's cube solving. In the end at the 
 # Shipped App
 
 From Snowflake Bookmark to iOS Blog Picks, to the current App *TomatoRead* — a naive idea wanting to be realized always has to go through this process.
-I realized this little dream. I have an App I shipped myself. [The *TomatoRead* development summary is here](https://everettjf.github.io/2016/05/13/how-to-write-a-simple-feed-reader).
+I realized this little dream. I have an App I shipped myself. [The *TomatoRead* development summary is here](/2016/05/13/how-to-write-a-simple-feed-reader).
 
 
 
@@ -103,7 +103,7 @@ Thinking about my main work content since coming to Beijing:
 - Crash collection and analysis
 	- symbol download issues
 	- plcrashreporter
-	- [symbolicatecrash bug fix](https://everettjf.github.io/2016/05/10/symbolicatecrash-deadloop-bug)
+	- [symbolicatecrash bug fix](/2016/05/10/symbolicatecrash-deadloop-bug)
 	- python scheduled parsing, flask display
 - Chat room
 	- NSAttributedString
@@ -161,7 +161,7 @@ I can interleave WWDC study. Finishing the above plan should be fast (depending 
 
 自去年（2015年）3月15日开始iOS开发以来，去掉中间3个月的全职奶爸（兼职O2O摄影创业）（5月10日至8月12日），到今天（2016年6月26日）已经1年多一点。
 
-去年11月份写过一篇 [C++转iOS开发5个月总结](https://everettjf.github.io/2015/11/18/the-past-4-months-ios-develop-for-me) ，罗列了在接近5个月的时间内学习的知识，也做了一些计划。
+去年11月份写过一篇 [C++转iOS开发5个月总结](/2015/11/18/the-past-4-months-ios-develop-for-me) ，罗列了在接近5个月的时间内学习的知识，也做了一些计划。
 
 本篇文章就接着上篇继续。总结下最近6个月（去年12月至今天）的学习情况。
 
@@ -170,26 +170,26 @@ I can interleave WWDC study. Finishing the above plan should be fast (depending 
 
 # 起步
 
-去年11月底至12月初，折腾了好久终于把之前的一个想法实现了（使用flask+mongodb）。[雪花书签](https://everettjf.github.io/2015/12/13/snows_link_tutorial) 上线运行。但可惜，简单又麻烦、无体验，只是实现了半个情怀。后来网站关闭，改版进化为 [番茄阅读](https://everettjf.github.io/2016/05/13/how-to-write-a-simple-feed-reader) 和 [钦慕设计导航](https://admire.so) 。
+去年11月底至12月初，折腾了好久终于把之前的一个想法实现了（使用flask+mongodb）。[雪花书签](/2015/12/13/snows_link_tutorial) 上线运行。但可惜，简单又麻烦、无体验，只是实现了半个情怀。后来网站关闭，改版进化为 [番茄阅读](/2016/05/13/how-to-write-a-simple-feed-reader) 和 [钦慕设计导航](https://admire.so) 。
 
 了结了这个小情怀，就专心投入iOS学习中。
 
 
 # 逆向
 
-11月底开始，至12月底，几乎一个月的晚上时间（孩子一般11点才睡觉，我就折腾到一两点）用来学习《iOS应用逆向工程》这本书，最终年底产出一个 [支付宝语音保存Tweak](https://github.com/everettjf/Yolobroccoli/AlipayWalletChatVoiceSaver) ，也写了[开发笔记](https://everettjf.github.io/2015/12/29/tweak-for-alipay-wallet-chat-voice-save)。
+11月底开始，至12月底，几乎一个月的晚上时间（孩子一般11点才睡觉，我就折腾到一两点）用来学习《iOS应用逆向工程》这本书，最终年底产出一个 [支付宝语音保存Tweak](https://github.com/everettjf/Yolobroccoli/AlipayWalletChatVoiceSaver) ，也写了[开发笔记](/2015/12/29/tweak-for-alipay-wallet-chat-voice-save)。
 
 2014年我还在做类似360杀毒的安全软件，那时把《病毒分析实战》这本书仔细的边读边做了一遍，但没进一步学习，仅停留在了书中的例子和简单的分析上。由于工作仍然是以业务为主，客户上报了有问题的PE文件，汇编是我的弱势，更多是在金山火眼等其他工具中分析，自己并没有去仔细分析汇编代码。
 
 或许有这个基础，现在看iOS应用的逆向，且由于Objective C的动态机制，基础的逆向学习起来就比较容易。把这本书几乎所有例子逐个走了一遍。
 
 
-后来由于工作开发IM客户端的需要，逆向了微信等好多App的实现。其中微信消息界面的逆向也[简单总结了下流程](https://everettjf.github.io/2016/06/19/reverse-explore-wechat-message-design)。
+后来由于工作开发IM客户端的需要，逆向了微信等好多App的实现。其中微信消息界面的逆向也[简单总结了下流程](/2016/06/19/reverse-explore-wechat-message-design)。
 
 
 # 源码学习
 
-我有时有点折腾，为了学习源码还耗了大量宝贵业余时间写了个Xcode插件 [XSourceNote](https://everettjf.github.io/2016/02/16/xsourcenote-dev)。想法是好的，但使用起来体验并不是很好，仅能凑合用。用这个插件写了几篇源码阅读笔记。
+我有时有点折腾，为了学习源码还耗了大量宝贵业余时间写了个Xcode插件 [XSourceNote](/2016/02/16/xsourcenote-dev)。想法是好的，但使用起来体验并不是很好，仅能凑合用。用这个插件写了几篇源码阅读笔记。
 
 - UITableView-FDTemplateLayoutCell 学习笔记
 - YYCache 学习笔记
@@ -216,7 +216,7 @@ I can interleave WWDC study. Finishing the above plan should be fast (depending 
 # 上线App
 
 从雪花书签到iOS博客精选，到现在的App《番茄阅读》，天真的想法的想要实现，总要经历这个过程。
-实现了这个小梦想。有个自己上线的App。[《番茄阅读》开发总结在这里](https://everettjf.github.io/2016/05/13/how-to-write-a-simple-feed-reader)。
+实现了这个小梦想。有个自己上线的App。[《番茄阅读》开发总结在这里](/2016/05/13/how-to-write-a-simple-feed-reader)。
 
 
 
@@ -248,7 +248,7 @@ I can interleave WWDC study. Finishing the above plan should be fast (depending 
 - 崩溃收集与分析
 	- 符号下载问题
 	- plcrashreporter
-	- [symboliccrash的bug修复](https://everettjf.github.io/2016/05/10/symbolicatecrash-deadloop-bug)
+	- [symboliccrash的bug修复](/2016/05/10/symbolicatecrash-deadloop-bug)
 	- python 定时解析，flask展示
 - 聊天室
 	- NSAttributedString

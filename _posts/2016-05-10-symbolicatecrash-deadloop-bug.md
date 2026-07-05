@@ -14,7 +14,7 @@ comments: true
 
 # Background
 
-[Last year I wrote an article](https://everettjf.github.io/2015/09/09/ios-plcrashreporter) that explained how to use the symbolicatecrash tool to symbolicate crash information.
+[Last year I wrote an article](/2015/09/09/ios-plcrashreporter) that explained how to use the symbolicatecrash tool to symbolicate crash information.
 
 Based on that approach, I built a small system for the company's product that automatically symbolicates crash information.
 
@@ -30,7 +30,7 @@ However, there was always one problem: when symbolicatecrash analyzed certain cr
 
 I guessed it must be a problem with this perl script, but various searches turned up no results.
 
-Temporary workaround: kill the analysis process if analyzing a crash takes longer than 15s. [Which is how this blog post came about](https://everettjf.github.io/2016/01/29/python27-subprocess-timeout)
+Temporary workaround: kill the analysis process if analyzing a crash takes longer than 15s. [Which is how this blog post came about](/2016/01/29/python27-subprocess-timeout)
 
 But solving it this way meant only about 2/3 of crashes could be analyzed. The problem was serious, but I put up with it.
 
@@ -93,7 +93,7 @@ You've got to have the spirit to dig all the way to the bottom.
 
 # 背景
 
-[去年写过一篇文章](https://everettjf.github.io/2015/09/09/ios-plcrashreporter)，里面讲了如何使用symbolicatecrash工具符号化崩溃信息。
+[去年写过一篇文章](/2015/09/09/ios-plcrashreporter)，里面讲了如何使用symbolicatecrash工具符号化崩溃信息。
 
 当时基于这个方法，给公司的产品实现了一个自动符号化崩溃信息的小系统。
 
@@ -109,7 +109,7 @@ You've got to have the spirit to dig all the way to the bottom.
 
 猜测应该是这个perl脚本的问题，但各种搜索竟然没有找到结果。
 
-临时解决办法：分析崩溃超过15s就结束这个分析进程。[也就有了这个博客](https://everettjf.github.io/2016/01/29/python27-subprocess-timeout)
+临时解决办法：分析崩溃超过15s就结束这个分析进程。[也就有了这个博客](/2016/01/29/python27-subprocess-timeout)
 
 然而这样解决会导致只能分析出大约2/3的崩溃。问题很严重，不过也忍了。
 

@@ -128,7 +128,7 @@ Open WeChat and take a look — passionfruit is really Niubility.
 With this jailbroken device, there's a lot more to play with, and it can be a great aid in exploring performance optimization methods. For books on iOS reverse engineering, you can refer to "iOS Application Reverse Engineering" and "iOS Application Reverse Engineering and Security".
 
 Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)
 
 <!--ZH-->
 
@@ -251,4 +251,4 @@ Welcome to follow the WeChat official account "客户端技术评论":
 有了这台越狱设备，能玩耍的事情就多了，对探索性能优化的方法可以起到辅助作用。关于iOS逆向工程方面的书籍可以参考《iOS应用逆向工程》和《iOS应用逆向与安全》。
 
 欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)

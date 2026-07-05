@@ -179,7 +179,7 @@ That's it — simple and easy to use.
 
 
 Welcome to follow the WeChat official account "客户端技术评论" (Client Technology Review):
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)
 
 <!--ZH-->
 
@@ -352,5 +352,5 @@ NSLog(@"timeresult (s)= %ju", timeresult);
 
 
 欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)
 

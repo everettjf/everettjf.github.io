@@ -25,14 +25,14 @@ This development effort mainly produced two things:
 Three tabs: the first is the list of subscribed articles, the second is the blog list, and the third is various article/tutorial URLs I usually collect.
 As shown below:
 
-![](https://everettjf.github.io/stuff/tomato/1.png)
+![](/stuff/tomato/1.png)
 
 # Background
 
 - Originally I wanted to build a big, all-encompassing developer navigation site where you could find the best URLs for whatever you want to learn, but I didn't have that much time to collect URLs. Since my job is iOS development, I could focus only on iOS development URLs.
 - So I wanted to build an App that displays the blogs I collected and their RSS subscription info through the App.
 - The goal kept shrinking — maybe that's the process of a fake need turning into a real need.
-- For more background on this deeper tinkering, you can read [this article](http://everettjf.github.io/2016/02/24/iosblog-cc-dev-memory).
+- For more background on this deeper tinkering, you can read [this article](/2016/02/24/iosblog-cc-dev-memory).
 
 # Architecture
 
@@ -58,7 +58,7 @@ The web server is implemented with Django (I'm familiar with Python). Currently 
 - [Django getting-started docs](https://docs.djangoproject.com/en/1.9/intro/)
 - [Chrome Extension getting-started docs](https://developer.chrome.com/extensions/getstarted)
 
-![](https://everettjf.github.io/stuff/tomato/chrome.png)
+![](/stuff/tomato/chrome.png)
 
 
 
@@ -156,7 +156,7 @@ Loading animations like MBProgressHUD are all globally blocking. They can't meet
 I've been watching "The Brain" lately and learning Rubik's cube algorithms, and thought I could make a Rubik's-cube-like animation. To keep it simple and quick to use, I used Facebook's pop library — 9 colors fading in and out one by one, plus a status bar.
 
 
-![](https://everettjf.github.io/stuff/tomato/loading.png)
+![](/stuff/tomato/loading.png)
 
 
 
@@ -199,14 +199,14 @@ Another purpose of building this App is to apply the new knowledge and new techn
 三个Tab页，第一页为订阅的文章列表，第二页为博客列表，第三页为我平时收集的各种文章、教程等网址。
 如下图：
 
-![](https://everettjf.github.io/stuff/tomato/1.png)
+![](/stuff/tomato/1.png)
 
 # 背景
 
 - 最初我是想做个大而全的开发者导航网站，想学什么都能找到最优质的网址，但没有那么多时间去搜集网址。由于工作是iOS开发，可以只关注iOS开发类的网址。
 - 于是想做个App，将收集的博客以及博客的RSS订阅信息通过App展示出来。
 - 目标不断的缩小，或许就是伪需求变为真实需求的过程。
-- 更深入折腾的背景，可以看看[这篇文章](http://everettjf.github.io/2016/02/24/iosblog-cc-dev-memory)
+- 更深入折腾的背景，可以看看[这篇文章](/2016/02/24/iosblog-cc-dev-memory)
 
 # 架构
 
@@ -232,7 +232,7 @@ Web服务器使用Django实现（熟悉Python）。目前可以使用 [http://io
 - [Django入门文档](https://docs.djangoproject.com/en/1.9/intro/)
 - [Chrome Extension 入门文档](https://developer.chrome.com/extensions/getstarted)
 
-![](https://everettjf.github.io/stuff/tomato/chrome.png)
+![](/stuff/tomato/chrome.png)
 
 
 
@@ -330,7 +330,7 @@ RSS/Atom订阅拿到的文章内容是一段html代码。缺少css。程序内�
 最近看最强大脑，在学习魔方算法，想来可以做个类似魔方的动画。为了简单、快速可用，可以用 facebook的 pop 库，9个颜色挨个淡入淡出，再加个状态栏。
 
 
-![](https://everettjf.github.io/stuff/tomato/loading.png)
+![](/stuff/tomato/loading.png)
 
 
 
