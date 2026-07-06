@@ -14,7 +14,7 @@ Code: [https://github.com/everettjf/XBookmark](https://github.com/everettjf/XBoo
 
 # Result
 
-![menu](https://everettjf.github.io/images/extern/xbookmark0.3.0.png)
+![menu](/images/extern/xbookmark0.3.0.png)
 <!-- more -->
 
 # How to Use
@@ -56,8 +56,8 @@ I also read the source code of a few plugins.
 ## Install the Template, Create the Project
     Search for Xcode Plugin in the Templates section of Alcatraz. After installing, create the project from this template.
 
-![XcodePluginTemplate](https://everettjf.github.io/images/extern/xbookmarkdev1.png)
-![XcodePluginCreate](https://everettjf.github.io/images/extern/xbookmarkdev2.png)
+![XcodePluginTemplate](/images/extern/xbookmarkdev1.png)
+![XcodePluginCreate](/images/extern/xbookmarkdev2.png)
 
 ## Add the Menu
 
@@ -97,7 +97,7 @@ XBookmarkEntity *bookmark = [[XBookmarkEntity alloc]initWithSourcePath:sourcePat
 
 ## Add the Bookmark List
 
-![XBookmarkList](https://everettjf.github.io/images/extern/xbookmarkdev3.png)
+![XBookmarkList](/images/extern/xbookmarkdev3.png)
 
 ## Publish to Alcatraz
 Pretty simple — modify the config file and create a Pull Request.
@@ -143,7 +143,7 @@ Now it supports Xcode 8. I imitated XVim's installation method (re-sign Xcode, t
 
 # 效果
 
-![menu](https://everettjf.github.io/images/extern/xbookmark0.3.0.png)
+![menu](/images/extern/xbookmark0.3.0.png)
 <!-- more -->
 
 # 使用方法
@@ -185,8 +185,8 @@ Mac开发的文章：
 ## 安装模板、创建工程
     在 Alcatraz 中的 Templates 中搜索 Xcode Plugin。安装后从此模板创建工程。
 
-![XcodePluginTemplate](https://everettjf.github.io/images/extern/xbookmarkdev1.png)
-![XcodePluginCreate](https://everettjf.github.io/images/extern/xbookmarkdev2.png)
+![XcodePluginTemplate](/images/extern/xbookmarkdev1.png)
+![XcodePluginCreate](/images/extern/xbookmarkdev2.png)
 
 ## 增加菜单
 
@@ -226,7 +226,7 @@ XBookmarkEntity *bookmark = [[XBookmarkEntity alloc]initWithSourcePath:sourcePat
 
 ## 增加书签列表
 
-![XBookmarkList](https://everettjf.github.io/images/extern/xbookmarkdev3.png)
+![XBookmarkList](/images/extern/xbookmarkdev3.png)
 
 ## 发布到 Alcatraz
 挺简单，修改配置文件，创建一个 Pull Request 就可以。

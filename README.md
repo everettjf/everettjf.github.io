@@ -109,4 +109,8 @@ force one with `make redeploy`, and check progress with `make deploy-status`.
   feed are generated automatically via `jekyll-seo-tag` / `jekyll-sitemap`.
 - Fonts (Inter, Geist Mono) are self-hosted under `assets/fonts` and
   `assets/xnu/fonts` — no external Google Fonts request.
-- The `/projects` and product pages use Tailwind via the Play CDN (no build step).
+- The `/projects` and product pages use a precompiled Tailwind stylesheet
+  (`assets/xnu/css/tailwind.css`) and a self-hosted lucide icon bundle
+  (`assets/xnu/js/lucide-icons.min.js`) — no runtime CDN requests. After adding
+  new Tailwind classes or lucide icon names, rebuild both with `make assets`
+  (requires Node; sources live in `_build/`).

@@ -15,7 +15,7 @@ comments: true
 There are two ways to implement a chat UI:
 
 1. QQ's approach, which is also most apps' approach. Each message type has its own Cell, for example: TextCell, ImageCell, etc.
-2. WeChat's approach. So far I only know WeChat does this. [See this article for the implementation](https://everettjf.github.io/2016/06/19/reverse-explore-wechat-message-design).
+2. WeChat's approach. So far I only know WeChat does this. [See this article for the implementation](/2016/06/19/reverse-explore-wechat-message-design).
 
 This article mainly talks about a small UI animation glitch you may run into with the first approach.
 There are lots of reference code samples on GitHub using the first approach (I couldn't find ready-made code for the second), but a lot of that code has more or less small issues in real use.
@@ -53,7 +53,7 @@ Aside: the steps above come up very easily, and changing the tableView's frame s
 
 The final effect is as follows:
 
-![imbug](https://everettjf.github.io/stuff/eimkit/imbug0.gif)
+![imbug](/stuff/eimkit/imbug0.gif)
 
 Here's the problem:
 
@@ -91,7 +91,7 @@ When changing the frame in the tableView's cellForRowAtIndexPath, disable animat
 ```
 But this still isn't enough. Changing the Cell size still has an effect.
 
-![imbug](https://everettjf.github.io/stuff/eimkit/imbug.gif)
+![imbug](/stuff/eimkit/imbug.gif)
 
 
 
@@ -114,7 +114,7 @@ Don't change the tableView's size, only change its position.
 
 This is much better.
 
-![imbug](https://everettjf.github.io/stuff/eimkit/imbug1.gif)
+![imbug](/stuff/eimkit/imbug1.gif)
 
 ## Step three
 
@@ -154,7 +154,7 @@ It seems some third-party IM SDKs have similar problems. The Maimai app should b
 聊天界面，有两种实现方法：
 
 1. QQ的实现方式，也是大多数App的实现方式。每个类型的消息有各自不同的Cell，例如：TextCell，ImageCell等。
-2. 微信的实现方式。目前只知道微信这么干的。[实现方式见这个文章](https://everettjf.github.io/2016/06/19/reverse-explore-wechat-message-design)。
+2. 微信的实现方式。目前只知道微信这么干的。[实现方式见这个文章](/2016/06/19/reverse-explore-wechat-message-design)。
 
 这篇文章主要是讲第一种实现方式可能遇到的一个UI动画的小问题。
 GitHub上有很多参考代码都是第一种实现方式（第二种没找到现成的代码），然而好多代码在实际应用时或多或少有些小问题。
@@ -192,7 +192,7 @@ GitHub上有很多参考代码都是第一种实现方式（第二种没找到�
 
 最终效果如下：
 
-![imbug](https://everettjf.github.io/stuff/eimkit/imbug0.gif)
+![imbug](/stuff/eimkit/imbug0.gif)
 
 问题来了：
 
@@ -230,7 +230,7 @@ tableView的cellForRowAtIndexPath中改变frame时要禁用动画。
 ```
 然而这样还是不够，改变Cell大小时，还会有影响。
 
-![imbug](https://everettjf.github.io/stuff/eimkit/imbug.gif)
+![imbug](/stuff/eimkit/imbug.gif)
 
 
 
@@ -253,7 +253,7 @@ tableView的cellForRowAtIndexPath中改变frame时要禁用动画。
 
 这样就比较好了。
 
-![imbug](https://everettjf.github.io/stuff/eimkit/imbug1.gif)
+![imbug](/stuff/eimkit/imbug1.gif)
 
 ## 第三步
 

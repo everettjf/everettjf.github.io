@@ -41,7 +41,7 @@ int main(int argc, char * argv[]) {
 
 ## Removing the Protection
 
-Reference article: <https://everettjf.github.io/2015/12/20/amap-ios-client-kill-anti-debugging-protect/>
+Reference article: <https://xnu.app/2015/12/20/amap-ios-client-kill-anti-debugging-protect/>
 
 
 # RESTRICT section
@@ -118,7 +118,7 @@ int main(int argc, char * argv[]) {
 
 ## 去掉保护
 
-参考文章 <https://everettjf.github.io/2015/12/20/amap-ios-client-kill-anti-debugging-protect/>
+参考文章 <https://xnu.app/2015/12/20/amap-ios-client-kill-anti-debugging-protect/>
 
 
 # RESTRICT section

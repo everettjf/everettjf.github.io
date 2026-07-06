@@ -171,7 +171,7 @@ When you tap "Handoff", due to system limitations, it first jumps to "the main s
 
 ## Lab
 
-When Remote Keyboard was first released, I wrote an [article introducing it](https://everettjf.github.io/2019/09/06/remoboard-release/). Back then there was no "browser input" method like now — it used the more ancient method of "installing a computer client", which was more cumbersome to use and "not very stable either". So in this new version I moved these two connection modes into the "Lab".
+When Remote Keyboard was first released, I wrote an [article introducing it](/2019/09/06/remoboard-release/). Back then there was no "browser input" method like now — it used the more ancient method of "installing a computer client", which was more cumbersome to use and "not very stable either". So in this new version I moved these two connection modes into the "Lab".
 
 The Lab includes the feature to switch the "connection mode", which can be switched between "Bluetooth" and "IP" connection modes. Regarding these two modes, the plan is as follows:
 
@@ -351,7 +351,7 @@ iOS 输入法上会有个「复制」和「接力」按钮，目前的使用场�
 
 ## 实验室
 
-远程输入法首次发布时，我写过一篇[文章介绍](https://everettjf.github.io/2019/09/06/remoboard-release/)，那时还没有现在「浏览器输入」的方式。使用了更古老的「安装电脑端软件」的方式，使用方式上更麻烦，而且「稳定性也不太好」。因此这次新版本我把这两个连接模式移动到了「实验室」中。
+远程输入法首次发布时，我写过一篇[文章介绍](/2019/09/06/remoboard-release/)，那时还没有现在「浏览器输入」的方式。使用了更古老的「安装电脑端软件」的方式，使用方式上更麻烦，而且「稳定性也不太好」。因此这次新版本我把这两个连接模式移动到了「实验室」中。
 
 实验室中包含「连接模式」切换的功能，可以切换为「蓝牙」和「IP」连接模式。关于这两个模式，计划如下：
 

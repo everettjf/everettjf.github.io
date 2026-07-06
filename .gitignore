@@ -4,3 +4,5 @@ _site/
 .sass-cache
 .idea/
 .MWebMetaData/setting.json
+_build/node_modules
+_build/package-lock.json

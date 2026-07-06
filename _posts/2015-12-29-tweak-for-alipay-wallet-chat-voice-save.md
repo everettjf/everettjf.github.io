@@ -35,7 +35,7 @@ everettjfs-iPhone:/var/mobile/Containers/Bundle/Application/9DB7CE45-3B4C-42A3-9
 
 ## Remove the ptrace and __RESTRICT section Protections
 
-See: <https://everettjf.github.io/2015/12/28/simple-ios-antidebugging-and-antiantidebugging/>
+See: <https://xnu.app/2015/12/28/simple-ios-antidebugging-and-antiantidebugging/>
 
 After breaking the protections, you can use cycript.
 
@@ -125,7 +125,7 @@ In lldb, find the address of CTMessageCell playAudio, set a breakpoint, tap a vo
 
 Analyzing the playAudio code, internally it calls APPlayManager's play:FinishCallback.
 
-![playFinishCallback](http://d.pr/i/1jTaR+)
+*(Screenshot was hosted on Droplr and is no longer available.)*
 
 APChatMedia is passed in as the first argument.
 
@@ -168,7 +168,7 @@ lldb) p (char*)$r1
 (unsigned int) $20 = 1
 ~~~
 
-![VoiceCache](http://d.pr/i/13z9A+)
+*(Screenshot was hosted on Droplr and is no longer available.)*
 
 Actually, by this point, the NSData returned by queryVoiceDataForKey is the audio data we want. Save it, get it onto the computer, and you're done.
 
@@ -270,7 +270,7 @@ everettjfs-iPhone:/var/mobile/Containers/Bundle/Application/9DB7CE45-3B4C-42A3-9
 
 ## 去掉 ptrace 和 __RESTRICT section 两个保护
 
-参见：<https://everettjf.github.io/2015/12/28/simple-ios-antidebugging-and-antiantidebugging/>
+参见：<https://xnu.app/2015/12/28/simple-ios-antidebugging-and-antiantidebugging/>
 
 破掉保护后就可以使用cycript了。
 
@@ -360,7 +360,7 @@ lldb中找到 CTMessageCell playAudio 的地址，下断点，点击一条语音
 
 分析playAudio的代码，内部会调用 APPlayManager 的play:FinishCallback。
 
-![playFinishCallback](http://d.pr/i/1jTaR+)
+*（截图原托管于 Droplr，链接已失效）*
 
 APChatMedia会作为第一个参数传进入。
 
@@ -403,7 +403,7 @@ lldb) p (char*)$r1
 (unsigned int) $20 = 1
 ~~~
 
-![VoiceCache](http://d.pr/i/13z9A+)
+*（截图原托管于 Droplr，链接已失效）*
 
 其实到这里，queryVoiceDataForKey 返回的 NSData 就是要获取的音频数据了。保存下来，拿到电脑上就行啦。
 

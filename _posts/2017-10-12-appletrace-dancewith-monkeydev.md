@@ -12,11 +12,11 @@ comments: true
 
 AppleTrace paired with MonkeyDev can trace any App
 
-(Related article: <https://everettjf.github.io/2017/09/21/appletrace/> )
+(Related article: <https://xnu.app/2017/09/21/appletrace/> )
 
 # Result Demo:
 
-![appletrace](http://everettjf.github.io/stuff/appletrace/appletrace.gif)
+![appletrace](/stuff/appletrace/appletrace.gif)
 
 <!-- more -->
 
@@ -55,11 +55,11 @@ Unzip the zip file above, open trace.html, and press the keys w a s d to zoom an
 
 AppleTrace搭配MonkeyDev可实现Trace任意App
 
-(关联文章：<https://everettjf.github.io/2017/09/21/appletrace/> )
+(关联文章：<https://xnu.app/2017/09/21/appletrace/> )
 
 # 结果演示：
 
-![appletrace](http://everettjf.github.io/stuff/appletrace/appletrace.gif)
+![appletrace](/stuff/appletrace/appletrace.gif)
 
 <!-- more -->
 

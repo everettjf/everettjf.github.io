@@ -111,7 +111,7 @@ This article doesn't have much to do with performance optimization, but I always
 Very beginner-level, but it solved my own need, and I'm very happy.
 
 Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)
 
 
 
@@ -219,7 +219,7 @@ viewWillAppear时，左下角加一个UIButton就行了，事件可以调用 DDP
 很入门，但解决了自己的需求，很开森。
 
 欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)
 
 
 

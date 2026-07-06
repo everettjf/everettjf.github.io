@@ -14,7 +14,7 @@ comments: true
 On October 24, 2015, I took part in the [SegmentFault Hackathon 2015 Beijing](http://segmentfault.com/e/1160000003736572) event.
 
 Let me start with a picture:
-![hackathon](http://d.pr/i/1c2on+)
+*(The photo was hosted on Droplr and is no longer available.)*
 
 <!-- more -->
 
@@ -130,7 +130,7 @@ I should study this [http://developer.vuforia.com/](http://developer.vuforia.com
 2015年10月24日参加了 [SegmentFault Hackathon 2015 北京](http://segmentfault.com/e/1160000003736572) 活动。
 
 先上一张图片哈：
-![hackathon](http://d.pr/i/1c2on+)
+*（图片原托管于 Droplr，链接已失效）*
 
 <!-- more -->
 

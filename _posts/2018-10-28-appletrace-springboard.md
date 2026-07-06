@@ -20,9 +20,9 @@ AppleTrace is a "performance" analysis tool I developed (or rather, assembled) i
 
 I've written three articles before:
 
-1. AppleTrace performance analysis tool: <https://everettjf.github.io/2017/09/21/appletrace/>
-2. AppleTrace combined with MonkeyDev to trace any app: <https://everettjf.github.io/2017/10/12/appletrace-dancewith-monkeydev/>
-3. Installing the AppleTrace Tweak via Cydia: <https://everettjf.github.io/2018/07/10/appletrace-tweak-cydia-repo/>
+1. AppleTrace performance analysis tool: <https://xnu.app/2017/09/21/appletrace/>
+2. AppleTrace combined with MonkeyDev to trace any app: <https://xnu.app/2017/10/12/appletrace-dancewith-monkeydev/>
+3. Installing the AppleTrace Tweak via Cydia: <https://xnu.app/2018/07/10/appletrace-tweak-cydia-repo/>
 
 *Wow, I've actually written three articles — AppleTrace really can pad out the count.*
 
@@ -102,9 +102,9 @@ AppleTrace 是大概去年（2017年）9月份业余时间开发（或者叫组�
 
 以前写过三篇文章：
 
-1. AppleTrace 性能分析工具： <https://everettjf.github.io/2017/09/21/appletrace/>
-2. AppleTrace 搭配 MonkeyDev Trace任意App ： <https://everettjf.github.io/2017/10/12/appletrace-dancewith-monkeydev/>
-3. 使用 Cydia 安装 AppleTrace Tweak : <https://everettjf.github.io/2018/07/10/appletrace-tweak-cydia-repo/>
+1. AppleTrace 性能分析工具： <https://xnu.app/2017/09/21/appletrace/>
+2. AppleTrace 搭配 MonkeyDev Trace任意App ： <https://xnu.app/2017/10/12/appletrace-dancewith-monkeydev/>
+3. 使用 Cydia 安装 AppleTrace Tweak : <https://xnu.app/2018/07/10/appletrace-tweak-cydia-repo/>
 
 *哇，竟然写过三篇文章，AppleTrace真能凑数呀*
 

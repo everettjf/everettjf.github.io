@@ -125,7 +125,7 @@ I never expected to leave so early. It's always a bit hard to let go of a produc
 
 # Status of Planned Goals
 
-[2016 Plan](https://everettjf.github.io/2016/01/01/2015-summary)
+[2016 Plan](/2016/01/01/2015-summary)
 
 ## Did
 
@@ -287,7 +287,7 @@ Detailed mind map:
 
 # 计划完成情况
 
-[2016计划](https://everettjf.github.io/2016/01/01/2015-summary)
+[2016计划](/2016/01/01/2015-summary)
 
 ## 做了
 

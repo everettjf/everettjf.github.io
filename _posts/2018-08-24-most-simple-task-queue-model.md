@@ -138,7 +138,7 @@ TaskDeclare(TTRenderTask)
 ```
 
 
-Finally, using os_signpost (for os_signpost see the article https://everettjf.github.io/2018/08/13/os-signpost-tutorial/ ), you can see:
+Finally, using os_signpost (for os_signpost see the article /2018/08/13/os-signpost-tutorial/ ), you can see:
 
 ![](/media/15350423765697.jpg){:width="1153" height="191"}
 
@@ -156,7 +156,7 @@ This article really couldn't be any simpler. Bit of a filler. Ha.
 
 
 Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)
 
 <!--ZH-->
 
@@ -288,7 +288,7 @@ TaskDeclare(TTRenderTask)
 ```
 
 
-最后，使用os_signpost （os_signpost可以参考文章 https://everettjf.github.io/2018/08/13/os-signpost-tutorial/ ）可以看到：
+最后，使用os_signpost （os_signpost可以参考文章 /2018/08/13/os-signpost-tutorial/ ）可以看到：
 
 ![](/media/15350423765697.jpg){:width="1153" height="191"}
 
@@ -306,4 +306,4 @@ TaskDeclare(TTRenderTask)
 
 
 欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)

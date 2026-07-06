@@ -55,7 +55,7 @@ To see all +load methods, the manual approach is to filter Labels in hopper. As 
 ![](/media/15270382965409.jpg){:width="830" height="440"}
 
 
-For how to measure the time cost of +load methods, refer to the article <https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/>
+For how to measure the time cost of +load methods, refer to the article <https://xnu.app/2017/01/06/a-method-of-hook-objective-c-load/>
 
 
 # static initializers
@@ -64,7 +64,7 @@ To be precise: `C++ static initializers` and `C/C++ __attribute__(constructor) f
 
 This kind of code runs after +load methods and before the main method.
 
-`C++ static initializers`: these are easily produced in code written in C++ (or Objective C++). Refer to the section "What methods can produce an initializer?" in [this article](http://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/).
+`C++ static initializers`: these are easily produced in code written in C++ (or Objective C++). Refer to the section "What methods can produce an initializer?" in [this article](/2017/02/06/a-method-of-hook-static-initializers/).
 
 `C/C++ __attribute__(constructor) functions`: see the reference code below,
 
@@ -80,12 +80,12 @@ To see all initializers, in hopper you can:
 ![](/media/15273514962124.jpg){:width="964" height="806"}
 
 
-For how to measure the time cost of this kind of initializer, refer to the article <https://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/>
+For how to measure the time cost of this kind of initializer, refer to the article <https://xnu.app/2017/02/06/a-method-of-hook-static-initializers/>
 
 
 # An alternative to pre-main
 
-To make this kind of code's time cost "auditable," there's a possibly-viable alternative. Refer to the article <https://everettjf.github.io/2017/03/06/a-method-of-delay-premain-code/>
+To make this kind of code's time cost "auditable," there's a possibly-viable alternative. Refer to the article <https://xnu.app/2017/03/06/a-method-of-delay-premain-code/>
 
 
 # References
@@ -140,7 +140,7 @@ Objective C 的+load方法：dyld会在pre-main阶段，逐个调用当前image�
 ![](/media/15270382965409.jpg){:width="830" height="440"}
 
 
-如何统计+load方法的耗时，可以参考文章<https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/>
+如何统计+load方法的耗时，可以参考文章<https://xnu.app/2017/01/06/a-method-of-hook-objective-c-load/>
 
 
 # static initializers
@@ -149,7 +149,7 @@ Objective C 的+load方法：dyld会在pre-main阶段，逐个调用当前image�
 
 这类代码在+load方法之后，main方法之前执行。
 
-`C++ static initializers` ： 是在使用C++ （或者Objective C++）编写的代码中容易产生的，参考[这篇文章](http://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/) 中的”有哪些方法可以产生initializer？“。
+`C++ static initializers` ： 是在使用C++ （或者Objective C++）编写的代码中容易产生的，参考[这篇文章](/2017/02/06/a-method-of-hook-static-initializers/) 中的”有哪些方法可以产生initializer？“。
 
 `C/C++ __attribute__(constructor) functions`  ：参考代码如下，
 
@@ -165,12 +165,12 @@ __attribute__((constructor)) void calledFirst(){
 ![](/media/15273514962124.jpg){:width="964" height="806"}
 
 
-如何统计这类initializers的耗时，可以参考文章<https://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/>
+如何统计这类initializers的耗时，可以参考文章<https://xnu.app/2017/02/06/a-method-of-hook-static-initializers/>
 
 
 # pre-main的替代方案
 
-为了实现这类代码的“可审计耗时”，有个或许可行的替代方案，参考文章<https://everettjf.github.io/2017/03/06/a-method-of-delay-premain-code/>
+为了实现这类代码的“可审计耗时”，有个或许可行的替代方案，参考文章<https://xnu.app/2017/03/06/a-method-of-delay-premain-code/>
 
 
 # 参考

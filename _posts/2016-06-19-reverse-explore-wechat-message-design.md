@@ -21,7 +21,7 @@ The purpose of writing this article:
 - Share how WeChat implements its chat screen.
 - Demonstrate the main reverse-engineering workflow.
 
-PS: Originally I reverse-engineered WeChat in order to solve [a small problem](https://everettjf.github.io/2016/06/18/little-chat-ui-bug-resolve) in a project.
+PS: Originally I reverse-engineered WeChat in order to solve [a small problem](/2016/06/18/little-chat-ui-bug-resolve) in a project.
 <!-- more -->
 
 # Preparation
@@ -110,9 +110,9 @@ The "chat message screen" we focus on this time is BaseMsgContentViewController 
 Send all kinds of messages in the screen; here let's first send: text, image, location, voice.
 Observe with Reveal, as shown below:
 
-![img](https://everettjf.github.io/stuff/eimkit/1465648981061.png)
+![img](/stuff/eimkit/1465648981061.png)
 
-![img](https://everettjf.github.io/stuff/eimkit/1465649157982.png)
+![img](/stuff/eimkit/1465649157982.png)
 
 ### MMTableView
 
@@ -301,7 +301,7 @@ m_messageNodeClass is related to the following method:
 
 Decompile WeChat's binary with Hopper:
 
-![img](https://everettjf.github.io/stuff/eimkit/1465664951065.png)
+![img](/stuff/eimkit/1465664951065.png)
 
 Then disassemble into C-like code:
 
@@ -422,7 +422,7 @@ From these three methods starting with preCreateMessage, we can guess that the f
 
 Find the corresponding code by disassembling in Hopper:
 
-![img](https://everettjf.github.io/stuff/eimkit/1465666569528.png)
+![img](/stuff/eimkit/1465666569528.png)
 
 #### TimeNode
 
@@ -455,7 +455,7 @@ if(messageNodeData.m_view == nil){
 
 In the end it just builds this:
 
-![img](https://everettjf.github.io/stuff/eimkit/1465836652040.png)
+![img](/stuff/eimkit/1465836652040.png)
 
 
 
@@ -672,7 +672,7 @@ See the offset address after image list -o -f: 0x000e7000
 First look at the historical messages loaded by default when entering the chat message screen.
 
 In Hopper, find the file offset address of BaseMsgContentViewController::preCreateMessageContentNode: : 0x0160a444
-![img](https://everettjf.github.io/stuff/eimkit/1465992949249.png)
+![img](/stuff/eimkit/1465992949249.png)
 
 Compute the real offset address (I like using ipython as a calculator):
 
@@ -727,10 +727,10 @@ Out[4]: '0x160b516'
 ```
 
 Find this method in Hopper:
-![img](https://everettjf.github.io/stuff/eimkit/1466097350949.png)
+![img](/stuff/eimkit/1466097350949.png)
 
 Found the method:
-![img](https://everettjf.github.io/stuff/eimkit/1466097381889.png)
+![img](/stuff/eimkit/1466097381889.png)
 
 It's this method:
 
@@ -803,7 +803,7 @@ void -[BaseMsgContentViewController initHistroyMessageNodeData](void * self, voi
 
 Find the assembly code line for [r5 GetMessageArray]: 0x0160bb20.
 
-![img](https://everettjf.github.io/stuff/eimkit/1466104472059.png)
+![img](/stuff/eimkit/1466104472059.png)
 
 Set a breakpoint at this line, then output $r0.
 
@@ -891,7 +891,7 @@ objc_ivar_offset_CMessageMgr_m_oMsgDB is CMessageDB *m_oMsgDB;
 That is, it calls CMessageDB's GetMsgByCreateTime:r10
 
 PS:
-![img](https://everettjf.github.io/stuff/eimkit/1466141798790.png)
+![img](/stuff/eimkit/1466141798790.png)
 >  In Hopper you can see quite a bit of log info, and it even writes out the file name of the current implementation file.
 The suffix is .mm; of course it's not just this one — many WeChat classes are implemented in Objective-C++. Including the message main screen's BaseMsgContentViewController.mm, as well as many classes in CMessageMgr below. (Guessing, WeChat's early developers were probably people who did C++ Windows client development. The C-prefixed classes...)
 
@@ -1062,7 +1062,7 @@ The previous method is __NSThreadPerformPerform, so we know it was perform'd ove
 
 Let's look at MainThreadNotifyToExt's parameters. Set a breakpoint at the first line of code:
 
-![img](https://everettjf.github.io/stuff/eimkit/1466238259094.png)
+![img](/stuff/eimkit/1466238259094.png)
 
 Inspect with lldb:
 
@@ -1153,23 +1153,23 @@ I won't keep analyzing the specifics. We roughly understand the UI-related flow.
 WeChat pre-creates the message view into the data object and doesn't destroy it. "Doesn't destroy" means: exiting the conversation screen won't destroy it; continuously pulling down messages keeps creating more. At first glance this seems inconsiderate; let's look at WeChat's memory usage.
 
 First, kill the WeChat process and reopen it.
-![img](https://everettjf.github.io/stuff/eimkit/1466242953914.png)
+![img](/stuff/eimkit/1466242953914.png)
 
 Look at memory in this state:
 
-![img](https://everettjf.github.io/stuff/eimkit/1466240808797.png)
+![img](/stuff/eimkit/1466240808797.png)
 
 RSIZE=52M
 
 Then, enter the chat screen:
 
-![img](https://everettjf.github.io/stuff/eimkit/1466240901871.png)
+![img](/stuff/eimkit/1466240901871.png)
 
 RSIZE=56M
 
 Then, send a ton of messages (images, text, all kinds), 400+ of them, and pull them all down.
 
-![img](https://everettjf.github.io/stuff/eimkit/1466241021593.png)
+![img](/stuff/eimkit/1466241021593.png)
 
 RSIZE=81M
 
@@ -1188,11 +1188,11 @@ There should be a caching strategy; I'll research it when I have time.
 
 To support displaying many message types in an IM screen, the first thing you think of is definitely using multiple Cells. For example: TextCell, ImageCell, etc. The classic QQ actually uses this approach. You can check with Reveal.
 
-![img](https://everettjf.github.io/stuff/eimkit/1466241507427.png)
+![img](/stuff/eimkit/1466241507427.png)
 
 ## The Problem of Changing the frame in cellForRowAtIndexPath
 
-If you adopt QQ's Cell-based approach, there's a UI detail to watch out for. [See this article](https://everettjf.github.io/2016/06/18/little-chat-ui-bug-resolve).
+If you adopt QQ's Cell-based approach, there's a UI detail to watch out for. [See this article](/2016/06/18/little-chat-ui-bug-resolve).
 
 
 # Demo
@@ -1224,7 +1224,7 @@ I recommend the book *iOS App Reverse Engineering*, as well as the <http://iosre
 - 分享微信的聊天界面实现方式。
 - 展示逆向主要流程。
 
-PS: 最初是为了解决项目中的[一个小问题](https://everettjf.github.io/2016/06/18/little-chat-ui-bug-resolve)才逆向的微信。
+PS: 最初是为了解决项目中的[一个小问题](/2016/06/18/little-chat-ui-bug-resolve)才逆向的微信。
 <!-- more -->
 
 # 准备
@@ -1313,9 +1313,9 @@ cy# [[[UIWindow keyWindow] rootViewController] _printHierarchy].toString()
 界面中各种类型的消息都发送一下，这里先发送：文本、图片、位置、语音。
 使用Reveal观察，如下图：
 
-![img](https://everettjf.github.io/stuff/eimkit/1465648981061.png)
+![img](/stuff/eimkit/1465648981061.png)
 
-![img](https://everettjf.github.io/stuff/eimkit/1465649157982.png)
+![img](/stuff/eimkit/1465649157982.png)
 
 ### MMTableView
 
@@ -1504,7 +1504,7 @@ m_messageNodeClass与下面的方法有关：
 
 使用Hopper反编译WeChat的二进制文件：
 
-![img](https://everettjf.github.io/stuff/eimkit/1465664951065.png)
+![img](/stuff/eimkit/1465664951065.png)
 
 再反汇编为c代码：
 
@@ -1625,7 +1625,7 @@ MessageSysNodeView
 
 Hopper反汇编找到对应代码：
 
-![img](https://everettjf.github.io/stuff/eimkit/1465666569528.png)
+![img](/stuff/eimkit/1465666569528.png)
 
 #### TimeNode
 
@@ -1658,7 +1658,7 @@ if(messageNodeData.m_view == nil){
 
 最终就是构成这个：
 
-![img](https://everettjf.github.io/stuff/eimkit/1465836652040.png)
+![img](/stuff/eimkit/1465836652040.png)
 
 
 
@@ -1875,7 +1875,7 @@ libsystem_kernel.dylib`mach_msg_overwrite_trap:
 先看下聊天消息界面时默认加载的历史消息。
 
 hopper中找到BaseMsgContentViewController::preCreateMessageContentNode:  的文件偏移地址：0x0160a444
-![img](https://everettjf.github.io/stuff/eimkit/1465992949249.png)
+![img](/stuff/eimkit/1465992949249.png)
 
 计算出真实偏移地址（我比较喜欢拿ipython当计算器）：
 
@@ -1930,10 +1930,10 @@ Out[4]: '0x160b516'
 ```
 
 hopper 中找到这个方法：
-![img](https://everettjf.github.io/stuff/eimkit/1466097350949.png)
+![img](/stuff/eimkit/1466097350949.png)
 
 找到方法：
-![img](https://everettjf.github.io/stuff/eimkit/1466097381889.png)
+![img](/stuff/eimkit/1466097381889.png)
 
 就是这个方法：
 
@@ -2006,7 +2006,7 @@ void -[BaseMsgContentViewController initHistroyMessageNodeData](void * self, voi
 
 找到 [r5 GetMessageArray] 这句的汇编代码行 0x0160bb20。
 
-![img](https://everettjf.github.io/stuff/eimkit/1466104472059.png)
+![img](/stuff/eimkit/1466104472059.png)
 
 断点到这行，然后输出$r0。
 
@@ -2094,7 +2094,7 @@ objc_ivar_offset_CMessageMgr_m_oMsgDB 就是     CMessageDB *m_oMsgDB;
 也就是调用了 CMessageDB的GetMsgByCreateTime:r10
 
 PS:
-![img](https://everettjf.github.io/stuff/eimkit/1466141798790.png)
+![img](/stuff/eimkit/1466141798790.png)
 >  在hopper中能看到不少日志信息，而且写明了当前实现文件的文件名。
 后缀是.mm，当然不止这一个，微信好多类都是Objective C++实现的。包括消息主界面的 BaseMsgContentViewController.mm，以及下面CMessageMgr中的很多类。（猜测，微信的初期开发人员不少做Windows下C++开发客户端的哈。C开头的类……）
 
@@ -2265,7 +2265,7 @@ __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION__
 
 看看MainThreadNotifyToExt的参数。断点到第一行代码：
 
-![img](https://everettjf.github.io/stuff/eimkit/1466238259094.png)
+![img](/stuff/eimkit/1466238259094.png)
 
 lldb查看：
 
@@ -2356,23 +2356,23 @@ IMsgExt协议如下：
 微信这种把消息的view 预创建到实体中，且不销毁。不销毁的意思是：退出界面会话时不会销毁；不断的下拉消息会不断的创建。一眼感觉不太考虑，看看微信内存占用情况。
 
 首先，把微信进程结束后，重新打开。
-![img](https://everettjf.github.io/stuff/eimkit/1466242953914.png)
+![img](/stuff/eimkit/1466242953914.png)
 
 在这种状态下看看内存：
 
-![img](https://everettjf.github.io/stuff/eimkit/1466240808797.png)
+![img](/stuff/eimkit/1466240808797.png)
 
 RSIZE=52M
 
 然后，进入聊天界面：
 
-![img](https://everettjf.github.io/stuff/eimkit/1466240901871.png)
+![img](/stuff/eimkit/1466240901871.png)
 
 RSIZE=56M
 
 然后，使劲发消息（图片、文字各种消息），400多条，全部下拉下来。
 
-![img](https://everettjf.github.io/stuff/eimkit/1466241021593.png)
+![img](/stuff/eimkit/1466241021593.png)
 
 RSIZE=81M
 
@@ -2391,11 +2391,11 @@ RSIZE=81M
 
 要支持IM界面的多种类型消息展示，首先想到的肯定是使用多种Cell。例如：TextCell, ImageCell 等。经典的QQ，其实就是这种方式。可以用Reveal看看。
 
-![img](https://everettjf.github.io/stuff/eimkit/1466241507427.png)
+![img](/stuff/eimkit/1466241507427.png)
 
 ## cellForRowAtIndexPath中改变frame的问题
 
-如果采用QQ这种使用Cell的方案，有个UI上的细节问题要注意。[见这篇文章](https://everettjf.github.io/2016/06/18/little-chat-ui-bug-resolve)。
+如果采用QQ这种使用Cell的方案，有个UI上的细节问题要注意。[见这篇文章](/2016/06/18/little-chat-ui-bug-resolve)。
 
 
 # Demo

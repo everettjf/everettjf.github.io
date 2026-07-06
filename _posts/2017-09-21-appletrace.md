@@ -11,7 +11,7 @@ tags:
 comments: true
 ---
 
-(Related article: <https://everettjf.github.io/2017/10/12/appletrace-dancewith-monkeydev/> )
+(Related article: <https://xnu.app/2017/10/12/appletrace-dancewith-monkeydev/> )
 
 
 # Background
@@ -228,8 +228,8 @@ For the objc_msgSend hooking approach, some classes may not be of interest. We c
 
 ## Plan 3: Hook +load and C++ static initializers
 
-See [A method of hook static initializers](https://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/)
-and [A method of hook objective c +load](https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/)
+See [A method of hook static initializers](/2017/02/06/a-method-of-hook-static-initializers/)
+and [A method of hook objective c +load](/2017/01/06/a-method-of-hook-objective-c-load/)
 
 
 # Summary
@@ -240,7 +240,7 @@ If you have any questions, feel free to open an [issue](https://github.com/evere
 
 <!--ZH-->
 
-(关联文章：<https://everettjf.github.io/2017/10/12/appletrace-dancewith-monkeydev/> )
+(关联文章：<https://xnu.app/2017/10/12/appletrace-dancewith-monkeydev/> )
 
 
 # 背景
@@ -457,8 +457,8 @@ Hook objc_msgSend的方法，有的类可能并不关心。可以采用白名单
 
 ## 计划3：Hook +load and C++ static initializers
 
-见[A method of hook static initializers](https://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/)
-和[A method of hook objective c +load](https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/)
+见[A method of hook static initializers](/2017/02/06/a-method-of-hook-static-initializers/)
+和[A method of hook objective c +load](/2017/01/06/a-method-of-hook-objective-c-load/)
 
 
 # 总结

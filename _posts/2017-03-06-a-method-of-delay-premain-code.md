@@ -41,7 +41,7 @@ I noticed that Facebook has a new section called FBInjectable. Studying the mean
 
 If this data is a string, we can use the string to get a class name; if it's a function address, we can call it directly.
 
-(For the meaning of Facebook's FBInjectable section, refer to the article <https://everettjf.github.io/2016/08/20/facebook-explore-section-fbinjectable> )
+(For the meaning of Facebook's FBInjectable section, refer to the article <https://xnu.app/2016/08/20/facebook-explore-section-fbinjectable> )
 
 So how do we create an FBInjectable section?
 
@@ -197,7 +197,7 @@ After testing, reading 100 function addresses takes less than 1ms on an iPhone5 
 
 如果这个数据是字符串，我们可以通过字符串获取类名；如果是函数地址，我们可以直接调用。
 
-（关于 Facebook 的段 FBInjectable 的含义，可以参考文章 <https://everettjf.github.io/2016/08/20/facebook-explore-section-fbinjectable> ）
+（关于 Facebook 的段 FBInjectable 的含义，可以参考文章 <https://xnu.app/2016/08/20/facebook-explore-section-fbinjectable> ）
 
 那么如何创建FBInjectable段呢？
 

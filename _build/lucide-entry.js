@@ -1,0 +1,68 @@
+// Custom lucide bundle with only the icons this site uses, replacing the
+// full ~360KB UMD build previously loaded from unpkg. Exposes the same
+// window.lucide.createIcons() API the inline scripts already call.
+//
+// When adding a new icon name (data-lucide="..." or "icon" in _data/*.json),
+// add its PascalCase export here and run `make assets`.
+import {
+  createIcons,
+  ArrowLeft,
+  ArrowUpRight,
+  Bookmark,
+  Check,
+  Clock,
+  Code,
+  Copy,
+  Diff,
+  FileText,
+  Github,
+  Keyboard,
+  Languages,
+  Mail,
+  MessageCircle,
+  MessagesSquare,
+  Mic,
+  Monitor,
+  Moon,
+  Sparkles,
+  Sun,
+  Terminal,
+  Twitter,
+  Video,
+  Wand2,
+  Wifi,
+  Zap,
+} from 'lucide';
+
+const icons = {
+  ArrowLeft,
+  ArrowUpRight,
+  Bookmark,
+  Check,
+  Clock,
+  Code,
+  Copy,
+  Diff,
+  FileText,
+  Github,
+  Keyboard,
+  Languages,
+  Mail,
+  MessageCircle,
+  MessagesSquare,
+  Mic,
+  Monitor,
+  Moon,
+  Sparkles,
+  Sun,
+  Terminal,
+  Twitter,
+  Video,
+  Wand2,
+  Wifi,
+  Zap,
+};
+
+window.lucide = {
+  createIcons: (options) => createIcons({ icons, ...options }),
+};

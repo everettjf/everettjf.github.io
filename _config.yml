@@ -5,12 +5,10 @@ meta_description: "Full Stack Developer Everett"
 
 markdown: kramdown
 highlighter: rouge
-paginate: 10
 baseurl: ''
 domain_name: 'https://xnu.app'
 
 plugins:
-  - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-sitemap
 

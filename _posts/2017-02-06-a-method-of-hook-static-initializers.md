@@ -373,7 +373,7 @@ For details, refer to this article:
 
 - <http://www.jamiegrove.com/software/fixing-bugs-using-os-x-crash-logs-and-atos-to-symbolicate-and-find-line-numbers>
 or
-- <https://everettjf.github.io/2015/09/09/ios-plcrashreporter#dsym>
+- <https://xnu.app/2015/09/09/ios-plcrashreporter#dsym>
 
 # Code
 
@@ -750,7 +750,7 @@ _GLOBAL__sub_I_XXXXX.cpp (in Demo) + 1
 
 - <http://www.jamiegrove.com/software/fixing-bugs-using-os-x-crash-logs-and-atos-to-symbolicate-and-find-line-numbers>
 或者
-- <https://everettjf.github.io/2015/09/09/ios-plcrashreporter#dsym>
+- <https://xnu.app/2015/09/09/ios-plcrashreporter#dsym>
 
 # 代码
 

@@ -19,39 +19,39 @@ Over the past two-plus years, I've written a number of articles on iOS app launc
 
 This is the stage where the iOS system's SpringBoard launches the app; the app's own process hasn't started yet.
 
-- [A First Look at LaunchScreen](https://everettjf.github.io/2018/09/18/launch-screen-async-with-process-creation/)
-- [Exploring SpringBoard with AppleTrace](https://everettjf.github.io/2018/10/28/appletrace-springboard/)
+- [A First Look at LaunchScreen](/2018/09/18/launch-screen-async-with-process-creation/)
+- [Exploring SpringBoard with AppleTrace](/2018/10/28/appletrace-springboard/)
 
 ## The pre-main Stage
 
 The stage within the app's own process, before the main function.
 
-- [A Method for Hooking Objective-C +load](https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/)
-- [A Method for Hooking C++ static initializers](https://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/)
-- [A Method for Delaying premain code](https://everettjf.github.io/2017/03/06/a-method-of-delay-premain-code/)
-- [iOS App Launch Performance Optimization (1) - premain](https://everettjf.github.io/2018/05/26/ios-app-launch-performance-part1/)
-- [Hooking All +load Methods (Including Categories)](https://everettjf.github.io/2018/08/19/ios-hook-really-all-load/)
+- [A Method for Hooking Objective-C +load](/2017/01/06/a-method-of-hook-objective-c-load/)
+- [A Method for Hooking C++ static initializers](/2017/02/06/a-method-of-hook-static-initializers/)
+- [A Method for Delaying premain code](/2017/03/06/a-method-of-delay-premain-code/)
+- [iOS App Launch Performance Optimization (1) - premain](/2018/05/26/ios-app-launch-performance-part1/)
+- [Hooking All +load Methods (Including Categories)](/2018/08/19/ios-hook-really-all-load/)
 
 ## The main Stage
 
 The stage from the main function to didFinishLaunching, and on to when the home screen finishes displaying.
 
-- [Methods for Getting the Current Time on iOS](https://everettjf.github.io/2018/08/07/get-current-time-on-ios-platform/)
-- [A Simple Thread Pool in C++](https://everettjf.github.io/2018/08/12/a-simple-cpp-thread-pool/)
-- [A Glance at mmap](https://everettjf.github.io/2018/09/01/mmap/)
-- [How FastImageCache Works](https://everettjf.github.io/2018/09/11/fastimagecache/)
-- [The Simple LRU Cache (LRUCache) in MMKV](https://everettjf.github.io/2018/09/27/lrucache-in-mmkv/)
-- [Methods for Getting the Thread Identifier](https://everettjf.github.io/2018/11/12/ios-thread-number/)
-- [The Simplest Launch Task Classification](https://everettjf.github.io/2018/08/24/most-simple-task-queue-model/)
+- [Methods for Getting the Current Time on iOS](/2018/08/07/get-current-time-on-ios-platform/)
+- [A Simple Thread Pool in C++](/2018/08/12/a-simple-cpp-thread-pool/)
+- [A Glance at mmap](/2018/09/01/mmap/)
+- [How FastImageCache Works](/2018/09/11/fastimagecache/)
+- [The Simple LRU Cache (LRUCache) in MMKV](/2018/09/27/lrucache-in-mmkv/)
+- [Methods for Getting the Thread Identifier](/2018/11/12/ios-thread-number/)
+- [The Simplest Launch Task Classification](/2018/08/24/most-simple-task-queue-model/)
 
 ## Tools
 
 With good tools, analysis becomes a pleasure.
 
-- [AppleTrace Performance Analysis Tool](https://everettjf.github.io/2017/09/21/appletrace/)
-- [AppleTrace Combined with MonkeyDev to Trace Any App](https://everettjf.github.io/2017/10/12/appletrace-dancewith-monkeydev/)
-- [VSCode Extension Filter Line](https://everettjf.github.io/2018/07/03/vscode-extension-filter-line/)
-- [Trying Out the os_signpost API](https://everettjf.github.io/2018/08/13/os-signpost-tutorial/)
+- [AppleTrace Performance Analysis Tool](/2017/09/21/appletrace/)
+- [AppleTrace Combined with MonkeyDev to Trace Any App](/2017/10/12/appletrace-dancewith-monkeydev/)
+- [VSCode Extension Filter Line](/2018/07/03/vscode-extension-filter-line/)
+- [Trying Out the os_signpost API](/2018/08/13/os-signpost-tutorial/)
 - Instruments (TimeProfiler): I always wanted to write an article but never did. There's plenty online, so I won't bother.
 - dtrace: I always wanted to write an article but never did. You can refer to this book [Advanced Apple Debugging & Reverse Engineering](https://store.raywenderlich.com/products/advanced-apple-debugging-and-reverse-engineering)
 
@@ -64,11 +64,11 @@ With good tools, analysis becomes a pleasure.
 
 ## Resource Collection
 
-- [iOS App Launch Performance Optimization Materials](https://everettjf.github.io/2018/08/06/ios-launch-performance-collection/)
+- [iOS App Launch Performance Optimization Materials](/2018/08/06/ios-launch-performance-collection/)
 
 ## Cheatsheet
 
-- [iOS Debug Cheatsheet](https://everettjf.github.io/2016/05/25/my-ios-debug-cheatsheet/)
+- [iOS Debug Cheatsheet](/2016/05/25/my-ios-debug-cheatsheet/)
 
 ## Areas to Explore
 
@@ -100,39 +100,39 @@ Welcome to follow the official account "Client Tech Review":
 
 这个阶段是iOS系统的SpringBoard启动App的阶段，App本身进程还未启动。
 
-- [初步探索LaunchScreen](https://everettjf.github.io/2018/09/18/launch-screen-async-with-process-creation/)
-- [使用AppleTrace探索SpringBoard](https://everettjf.github.io/2018/10/28/appletrace-springboard/)
+- [初步探索LaunchScreen](/2018/09/18/launch-screen-async-with-process-creation/)
+- [使用AppleTrace探索SpringBoard](/2018/10/28/appletrace-springboard/)
 
 ## pre-main 阶段
 
 App自身进程中，main函数之前的阶段。
 
-- [一种 hook objective c +load 的方法](https://everettjf.github.io/2017/01/06/a-method-of-hook-objective-c-load/)
-- [一种 hook C++ static initializers 的方法](https://everettjf.github.io/2017/02/06/a-method-of-hook-static-initializers/)
-- [一种延迟 premain code 的方法](https://everettjf.github.io/2017/03/06/a-method-of-delay-premain-code/)
-- [iOS应用启动性能优化(1)-premain](https://everettjf.github.io/2018/05/26/ios-app-launch-performance-part1/)
-- [Hook所有+load方法（包括Category）](https://everettjf.github.io/2018/08/19/ios-hook-really-all-load/)
+- [一种 hook objective c +load 的方法](/2017/01/06/a-method-of-hook-objective-c-load/)
+- [一种 hook C++ static initializers 的方法](/2017/02/06/a-method-of-hook-static-initializers/)
+- [一种延迟 premain code 的方法](/2017/03/06/a-method-of-delay-premain-code/)
+- [iOS应用启动性能优化(1)-premain](/2018/05/26/ios-app-launch-performance-part1/)
+- [Hook所有+load方法（包括Category）](/2018/08/19/ios-hook-really-all-load/)
 
 ## main 阶段
 
 main函数到didFinishLaunching，再到首页显示完成的阶段。
 
-- [iOS时间获取方法](https://everettjf.github.io/2018/08/07/get-current-time-on-ios-platform/)
-- [C++实现简单的线程池](https://everettjf.github.io/2018/08/12/a-simple-cpp-thread-pool/)
-- [瞜一眼 mmap](https://everettjf.github.io/2018/09/01/mmap/)
-- [FastImageCache 原理](https://everettjf.github.io/2018/09/11/fastimagecache/)
-- [MMKV中的简单LRU缓存(LRUCache)](https://everettjf.github.io/2018/09/27/lrucache-in-mmkv/)
-- [线程标识获取方法](https://everettjf.github.io/2018/11/12/ios-thread-number/)
-- [最简单的启动任务分类](https://everettjf.github.io/2018/08/24/most-simple-task-queue-model/)
+- [iOS时间获取方法](/2018/08/07/get-current-time-on-ios-platform/)
+- [C++实现简单的线程池](/2018/08/12/a-simple-cpp-thread-pool/)
+- [瞜一眼 mmap](/2018/09/01/mmap/)
+- [FastImageCache 原理](/2018/09/11/fastimagecache/)
+- [MMKV中的简单LRU缓存(LRUCache)](/2018/09/27/lrucache-in-mmkv/)
+- [线程标识获取方法](/2018/11/12/ios-thread-number/)
+- [最简单的启动任务分类](/2018/08/24/most-simple-task-queue-model/)
 
 ## 工具
 
 工具好了，分析起来就愉快了。
 
-- [AppleTrace 性能分析工具](https://everettjf.github.io/2017/09/21/appletrace/)
-- [AppleTrace 搭配 MonkeyDev Trace任意App](https://everettjf.github.io/2017/10/12/appletrace-dancewith-monkeydev/)
-- [VSCode Extension Filter Line](https://everettjf.github.io/2018/07/03/vscode-extension-filter-line/)
-- [os_signpost API 尝鲜](https://everettjf.github.io/2018/08/13/os-signpost-tutorial/)
+- [AppleTrace 性能分析工具](/2017/09/21/appletrace/)
+- [AppleTrace 搭配 MonkeyDev Trace任意App](/2017/10/12/appletrace-dancewith-monkeydev/)
+- [VSCode Extension Filter Line](/2018/07/03/vscode-extension-filter-line/)
+- [os_signpost API 尝鲜](/2018/08/13/os-signpost-tutorial/)
 - Instruments (TimeProfiler) 一直想写篇文章，但没写。网上很多，就不写了。
 - dtrace 一直想写篇文章，但没写。可以参考这本书 [Advanced Apple Debugging & Reverse Engineering](https://store.raywenderlich.com/products/advanced-apple-debugging-and-reverse-engineering)
 
@@ -145,11 +145,11 @@ main函数到didFinishLaunching，再到首页显示完成的阶段。
 
 ## 资料收集
 
-- [iOS应用启动性能优化资料](https://everettjf.github.io/2018/08/06/ios-launch-performance-collection/)
+- [iOS应用启动性能优化资料](/2018/08/06/ios-launch-performance-collection/)
 
 ## 手册
 
-- [iOS调试速查表 (iOS Debug Cheatsheet)](https://everettjf.github.io/2016/05/25/my-ios-debug-cheatsheet/)
+- [iOS调试速查表 (iOS Debug Cheatsheet)](/2016/05/25/my-ios-debug-cheatsheet/)
 
 ## 可探索
 

@@ -13,7 +13,7 @@ A while ago I found that my Apple Developer account could no longer log in at <h
 
 Whenever I tried to log in, it showed the screen below:
 
-![apple1](https://everettjf.github.io/stuff/image/apple1.png)
+![apple1](/stuff/image/apple1.png)
 
 
 At first I thought it was a problem with the company network, but later I tried it at home, on a coworker's computer, in Chrome and in Safari, and it still didn't work.
@@ -22,7 +22,7 @@ I found someone online who had run into a similar problem and solved it by calli
 
 So I found the phone number,
 
-![apple1](https://everettjf.github.io/stuff/image/apple2.png)
+![apple1](/stuff/image/apple2.png)
 
 I called 4006 701 855, Mandarin service, waited a couple or three minutes, and it was fixed.
 
@@ -40,7 +40,7 @@ OK, problem solved.
 
 只要登录就提示下图：
 
-![apple1](https://everettjf.github.io/stuff/image/apple1.png)
+![apple1](/stuff/image/apple1.png)
 
 
 后来，开始以为公司网络问题，后来在家，在同事电脑，Chrome, Safari 都试了还不行。
@@ -49,7 +49,7 @@ OK, problem solved.
 
 于是找到电话，
 
-![apple1](https://everettjf.github.io/stuff/image/apple2.png)
+![apple1](/stuff/image/apple2.png)
 
 打了 4006 701 855 ，普通话服务，等了几个两三分钟，就解决了。
 

@@ -26,7 +26,7 @@ Below is a brief account of the exploration process.
 # Environment
 
 iOS 11.3.1 jailbroken
-For the jailbreak steps see: <https://everettjf.github.io/2018/08/30/ios1131-jailbreak-tutorial/>
+For the jailbreak steps see: <https://xnu.app/2018/08/30/ios1131-jailbreak-tutorial/>
 Other jailbroken phones can complete the steps below just as well.
 
 *A little plug here: to buy a jailbreakable phone you can contact WeChat "467444". I just bought an iPhone 6S 11.3.1 from him, and everything works fine so far.*
@@ -37,7 +37,7 @@ Other jailbroken phones can complete the steps below just as well.
 The steps use the following basics, which you can refer to when you run into problems:
 
 - iOS11下使用Xcode调试目标进程 (Using Xcode to debug a target process on iOS 11) <http://iosre.com/t/ios-11-app/12838>
-- iOS调试速查表 (iOS debugging cheatsheet) <https://everettjf.github.io/2016/05/25/my-ios-debug-cheatsheet/>
+- iOS调试速查表 (iOS debugging cheatsheet) <https://xnu.app/2016/05/25/my-ios-debug-cheatsheet/>
 - chisel <https://github.com/facebook/chisel>
 
 # Getting Started
@@ -288,7 +288,7 @@ Interesting, but also quite time-consuming, heh~
 
 
 Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)
 
 
 <!--ZH-->
@@ -308,7 +308,7 @@ Welcome to follow the WeChat official account "客户端技术评论":
 # 环境
 
 iOS 11.3.1 越狱
-越狱步骤见：<https://everettjf.github.io/2018/08/30/ios1131-jailbreak-tutorial/>
+越狱步骤见：<https://xnu.app/2018/08/30/ios1131-jailbreak-tutorial/>
 其他越狱手机一样可以完成下面的步骤。
 
 *这里打个小广告：购买可越狱的手机可以联系微信“467444"，我刚从他这买了个iPhone6S 11.3.1，目前使用一切正常。*
@@ -319,7 +319,7 @@ iOS 11.3.1 越狱
 步骤中用到了下面的基础，可以在遇到问题时参考这三个链接：
 
 - iOS11下使用Xcode调试目标进程 <http://iosre.com/t/ios-11-app/12838>
-- iOS调试速查表 <https://everettjf.github.io/2016/05/25/my-ios-debug-cheatsheet/>
+- iOS调试速查表 <https://xnu.app/2016/05/25/my-ios-debug-cheatsheet/>
 - chisel <https://github.com/facebook/chisel>
 
 # 开始
@@ -570,5 +570,5 @@ step-in 之后是这样
 
 
 欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)
 

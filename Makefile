@@ -1,7 +1,7 @@
 REPO := everettjf/everettjf.github.io
 
 .DEFAULT_GOAL := help
-.PHONY: help init health new new-bi draft serve serve-drafts build clean redeploy deploy-status
+.PHONY: help init health new new-bi draft serve serve-drafts build clean redeploy deploy-status assets
 
 help: ## Show this help
 	@echo "xnu.app site — common tasks:"
@@ -49,6 +49,11 @@ serve-drafts: ## Local preview including drafts
 
 build: ## Build the site into _site/
 	bundle exec jekyll build
+
+assets: ## Rebuild compiled Tailwind CSS + lucide icon bundle (needs Node)
+	cd _build && npm install --no-fund --no-audit
+	cd _build && npx tailwindcss -c tailwind.config.js -i input.css -o ../assets/xnu/css/tailwind.css --minify
+	cd _build && npx esbuild lucide-entry.js --bundle --minify --format=iife --outfile=../assets/xnu/js/lucide-icons.min.js
 
 clean: ## Remove build output and caches
 	rm -rf _site .jekyll-cache .sass-cache

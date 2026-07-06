@@ -17,7 +17,7 @@ Apps on iOS also have a multi-process architecture, and it has been around since
 
 The day after iBooksLookUpCloser was published to bigboss, a foreign friend emailed me, asking me to look at a Reddit question from a month earlier <https://www.reddit.com/r/jailbreak/comments/95vjgd/request_please_some_one_fulfill_this_request_pull/?st=JLMLKHHM&sh=093359ff>.
 
-For more on iBooksLookUpCloser, refer to the previous article <https://everettjf.github.io/2018/09/03/ibooks-dictionary-close-tweak/>.
+For more on iBooksLookUpCloser, refer to the previous article <https://xnu.app/2018/09/03/ibooks-dictionary-close-tweak/>.
 
 <!-- more -->
 
@@ -170,7 +170,7 @@ Having implemented this feature, reading English with iBooks or Safari is more e
 
 
 Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)
 
 <!--ZH-->
 
@@ -181,7 +181,7 @@ iOS中的App也存在多进程架构，而且是从iOS6就开始了，只是苹�
 
 iBooksLookUpCloser 发布到bigboss后的第二天，一位老外朋友就发来邮件，让我看看这个一个月前reddit的提问 <https://www.reddit.com/r/jailbreak/comments/95vjgd/request_please_some_one_fulfill_this_request_pull/?st=JLMLKHHM&sh=093359ff> 。
 
-关于iBooksLookUpCloser参考上篇文章 <https://everettjf.github.io/2018/09/03/ibooks-dictionary-close-tweak/> 。
+关于iBooksLookUpCloser参考上篇文章 <https://xnu.app/2018/09/03/ibooks-dictionary-close-tweak/> 。
 
 <!-- more -->
 
@@ -334,4 +334,4 @@ NSLog(@"%p",self);
 
 
 欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](https://everettjf.github.io/images/fun.png)
+![happyhackingstudio](/images/fun.png)

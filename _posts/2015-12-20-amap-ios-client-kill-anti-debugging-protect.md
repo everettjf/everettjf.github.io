@@ -15,7 +15,7 @@ I found that AMap (Gaode Maps) version 7.5.4 no longer has the sub function, but
 
 <!-- more -->
 
-![code](http://7xibfi.com1.z0.glb.clouddn.com/uploads/default/original/2X/3/36d0c61b45367ad359fcd472574bc6da38529425.png)
+*(Screenshot was hosted on a now-expired image host and is no longer available.)*
 
 So I figured I could just hook dlsym, and when the second argument is "ptrace", return a fake ptrace function.
 
@@ -100,7 +100,7 @@ PS: I found that both AMap and Alipay simply call ptrace(31,0,0,0) and don't han
 
 <!-- more -->
 
-![code](http://7xibfi.com1.z0.glb.clouddn.com/uploads/default/original/2X/3/36d0c61b45367ad359fcd472574bc6da38529425.png)
+*（截图原图床已过期，链接已失效）*
 
 想来可以直接hook dlsym，当第二个参数为"ptrace"时，返回一个假的ptrace函数。
 

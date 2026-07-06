@@ -11,7 +11,7 @@ comments: true
 ---
 
 
-**This article is a bit outdated. You can read the new article** [Remote Keyboard New Version Released: Type on Your Phone Using a Browser](https://everettjf.github.io/2019/10/15/remoboard-web/)
+**This article is a bit outdated. You can read the new article** [Remote Keyboard New Version Released: Type on Your Phone Using a Browser](/2019/10/15/remoboard-web/)
 
 ---
 
@@ -201,7 +201,7 @@ Although development took me quite a lot of time, I personally still feel it's a
 
 ## History
 
-Last year I developed a [USBKeyboard](https://everettjf.github.io/2018/10/22/qvkeyboard-release/). This keyboard required the phone and computer to be connected via "USB" in order to type. At the time, some online friends asked whether it could support "wireless input", so on and off this year I developed this "Remote Keyboard".
+Last year I developed a [USBKeyboard](/2018/10/22/qvkeyboard-release/). This keyboard required the phone and computer to be connected via "USB" in order to type. At the time, some online friends asked whether it could support "wireless input", so on and off this year I developed this "Remote Keyboard".
 
 Recently I also happened to be learning Android development, so all four platforms — iOS/Android/macOS/Windows — ended up being supported.
 
@@ -209,7 +209,7 @@ Recently I also happened to be learning Android development, so all four platfor
 <!--ZH-->
 
 
-**当前文章有点儿过时，可以看新文章** [远程输入法新版发布，用浏览器给手机打字](https://everettjf.github.io/2019/10/15/remoboard-web/)
+**当前文章有点儿过时，可以看新文章** [远程输入法新版发布，用浏览器给手机打字](/2019/10/15/remoboard-web/)
 
 ---
 
@@ -399,7 +399,7 @@ Windows端：
 
 ## 历史
 
-去年我开发了一个[USBKeyboard](https://everettjf.github.io/2018/10/22/qvkeyboard-release/)，这个输入法需要手机和电脑通过「USB」连接才可以输入，当时就有网友说能否支持「无线输入」，于是断断续续今年就开发了这个「远程输入法」。
+去年我开发了一个[USBKeyboard](/2018/10/22/qvkeyboard-release/)，这个输入法需要手机和电脑通过「USB」连接才可以输入，当时就有网友说能否支持「无线输入」，于是断断续续今年就开发了这个「远程输入法」。
 
 最近又恰逢我学习Android开发，因此iOS/Android/macOS/Windows四个平台就都支持了。
 
