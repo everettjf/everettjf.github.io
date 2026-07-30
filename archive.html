@@ -7,12 +7,18 @@ title: Archive
     <h1 class="page-title">Archive</h1>
     <p class="page-subtitle">All {{ site.posts.size }} posts.</p>
 
-    <ul class="archive-list">
-        {% for post in site.posts %}
-        <li>
-            <a class="archive-title" href="{{ post.url }}">{{ post.title }}</a>
-            <time class="archive-date" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-        </li>
-        {% endfor %}
-    </ul>
+    {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+    {% for year in posts_by_year %}
+    <section class="archive-year-group">
+        <h2 class="archive-year">{{ year.name }}</h2>
+        <ul class="archive-list">
+            {% for post in year.items %}
+            <li>
+                <a class="archive-title" href="{{ post.url }}">{{ post.title }}</a>
+                <time class="archive-date" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endfor %}
 </main>

@@ -51,6 +51,11 @@
             <a class="logo-link{% if is_home %} is-home{% endif %}" href="{{ site.baseurl }}/" aria-label="Home">
                 <span>everettjf</span><span class="cursor">_</span>
             </a>
+            <div class="nav-links">
+                <a class="nav-link{% if page.layout == 'post' or page.url == '/archive' or page.url == '/archive/' %} active{% endif %}" href="{{ site.baseurl }}/archive">Blog</a>
+                <a class="nav-link" href="{{ site.baseurl }}/projects/">Projects</a>
+                <a class="nav-link{% if page.url contains '/about' %} active{% endif %}" href="{{ site.baseurl }}/about">About</a>
+            </div>
         </nav>
     </div>
 
