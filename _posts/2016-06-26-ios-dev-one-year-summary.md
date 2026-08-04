@@ -25,7 +25,7 @@ This article continues from that one. Let me summarize what I learned over the l
 
 # Getting Started
 
-From late November to early December last year, I tinkered for a long time and finally implemented an old idea (using flask+mongodb). [Snowflake Bookmark](/2015/12/13/snows_link_tutorial) went live. But unfortunately, it was both simple and cumbersome, with no good experience — it only fulfilled half of a sentiment. Later the site was shut down and evolved into [TomatoRead](/2016/05/13/how-to-write-a-simple-feed-reader) and [Admire design navigation](https://admire.so).
+From late November to early December last year, I tinkered for a long time and finally implemented an old idea (using flask+mongodb). Snowflake Bookmark went live. But unfortunately, it was both simple and cumbersome, with no good experience — it only fulfilled half of a sentiment. Later the site was shut down and evolved into [TomatoRead](/2016/05/13/how-to-write-a-simple-feed-reader) and [Admire design navigation](https://admire.so).
 
 Having settled this little sentiment, I focused fully on learning iOS.
 
@@ -170,7 +170,7 @@ I can interleave WWDC study. Finishing the above plan should be fast (depending 
 
 # 起步
 
-去年11月底至12月初，折腾了好久终于把之前的一个想法实现了（使用flask+mongodb）。[雪花书签](/2015/12/13/snows_link_tutorial) 上线运行。但可惜，简单又麻烦、无体验，只是实现了半个情怀。后来网站关闭，改版进化为 [番茄阅读](/2016/05/13/how-to-write-a-simple-feed-reader) 和 [钦慕设计导航](https://admire.so) 。
+去年11月底至12月初，折腾了好久终于把之前的一个想法实现了（使用flask+mongodb）。雪花书签上线运行。但可惜，简单又麻烦、无体验，只是实现了半个情怀。后来网站关闭，改版进化为 [番茄阅读](/2016/05/13/how-to-write-a-simple-feed-reader) 和 [钦慕设计导航](https://admire.so) 。
 
 了结了这个小情怀，就专心投入iOS学习中。
 
@@ -293,5 +293,4 @@ I can interleave WWDC study. Finishing the above plan should be fast (depending 
 - 优先级：优先级很重要，尤其是“知道的越多，不知道的越多”的时候。
 
 **可以走的慢，但要按照优先级。不要总学新知识的入门资料，至少要在某一个方面继续学习。**
-
 

@@ -58,7 +58,7 @@ void * +[FBFeatureGatingConfigFactory applicationSpecificFeatureGatingConfig](vo
 
 # Summary
 
-**The specific exploration process is similar to the previous article [Exploring Facebook's iOS Client - The FBInjectable Section](/2016/08/15/facebook-explore-section-fbinjectable)**
+**The specific exploration process is similar to the previous article [Exploring Facebook's iOS Client - The FBInjectable Section](/2016/08/20/facebook-explore-section-fbinjectable/)**
 
 **I'll add a Demo when I have time.**
 
@@ -116,8 +116,7 @@ void * +[FBFeatureGatingConfigFactory applicationSpecificFeatureGatingConfig](vo
 
 # 总结
 
-**具体探索过程类似上一篇文章 [探索 Facebook iOS 客户端 - Section FBInjectable](/2016/08/15/facebook-explore-section-fbinjectable)**
+**具体探索过程类似上一篇文章 [探索 Facebook iOS 客户端 - Section FBInjectable](/2016/08/20/facebook-explore-section-fbinjectable/)**
 
 **Demo有时间再补充啦**
-
 

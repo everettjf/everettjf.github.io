@@ -21,12 +21,10 @@
     { "name": "WasmPatch", "pitch": "WebAssembly-driven hot patching for Objective-C apps.", "href": "https://github.com/everettjf/wasmpatch", "icon": "blocks", "platform": "Swift · C++" }
   ],
   "apps": [
-    { "name": "BabelTable", "pitch": "Real-time speech translation between two people, on one iPhone.", "href": "/speaktwo/", "icon": "messages-square", "platform": "iOS" },
-    { "name": "Lectern", "pitch": "Search, watch, and learn from WWDC sessions with synced transcripts.", "href": "/lectern/", "icon": "video", "platform": "macOS" },
+    { "name": "BabelTable", "pitch": "Real-time speech translation between two people, on one iPhone.", "href": "/babeltable/", "icon": "messages-square", "platform": "iOS" },
     { "name": "ScriptWidget", "pitch": "Build iOS, iPadOS and macOS widgets with JavaScript and JSX.", "href": "/scriptwidget/", "icon": "code", "platform": "iOS · macOS" },
     { "name": "StartMyApp", "pitch": "A keyboard-first app launcher for macOS with Apple Intelligence.", "href": "/startmyapp/", "icon": "zap", "platform": "macOS" },
     { "name": "TypeTide", "pitch": "System-wide translation and inline rewriting across macOS and Windows.", "href": "https://github.com/everettjf/TypeTide", "icon": "languages", "platform": "macOS · Windows" },
-    { "name": "Wizvoid", "pitch": "Run large language models entirely offline on your iPhone.", "href": "/wizvoid/", "icon": "wand-2", "platform": "iOS" },
     { "name": "CountMyDays", "pitch": "Countdowns and day-counters in beautiful, offline-first cards.", "href": "/countmydays/", "icon": "clock", "platform": "iOS" },
     { "name": "MyJSONDiff", "pitch": "A simple, native JSON diff tool for macOS.", "href": "/jsondiff/", "icon": "diff", "platform": "macOS" },
     { "name": "Remoboard", "pitch": "Type on your iPhone using the keyboard of your computer.", "href": "/remoboard/", "icon": "keyboard", "platform": "iOS · macOS" },
@@ -60,7 +58,7 @@
       "tagline": "Days counted up, days counted down — in plain, beautiful cards.",
       "description": "CountMyDays is for the dates worth remembering and the dates worth waiting for. Add a card, pick a color, and watch the number tick. Everything lives on your device. No accounts, no cloud, no analytics.",
       "links": [
-        { "label": "Download on the App Store", "href": "https://apps.apple.com/app/countmydays-days-counter/id6753280745", "primary": true }
+        { "label": "Download on the App Store", "href": "https://apps.apple.com/us/app/countmydays-days-counter/id6753280745", "primary": true }
       ],
       "features": [
         { "title": "Count up or down", "body": "Track how long since something happened, or how long until something will." },
@@ -90,34 +88,6 @@
         { "title": "No cloud", "body": "Your payloads never leave the app. No telemetry." }
       ],
       "privacy": true
-    },
-    "lectern": {
-      "name": "Lectern - Watch & Learn",
-      "platform": "macOS",
-      "icon": "video",
-      "tagline": "Search, watch, and learn from WWDC sessions.",
-      "description": "Lectern helps developers browse Apple developer videos by year and technology, search across session titles and transcripts, and jump directly to the moment a topic is mentioned. It keeps the learning workflow in one native app with local indexing, favorites, synced transcripts, and optional AI assistance.",
-      "links": [
-        { "label": "View on GitHub", "href": "https://github.com/everettjf/lectern", "primary": true }
-      ],
-      "features": [
-        { "title": "Transcript-first search", "body": "Search titles and transcripts with local full-text indexing, then jump straight to the matching timestamp." },
-        { "title": "Native session browser", "body": "Browse WWDC sessions in a fast three-column Mac interface built for scanning and repeated learning." },
-        { "title": "Synced playback", "body": "Watch video, read transcripts, inspect chapters, and open code snippets side by side." },
-        { "title": "Favorites", "body": "Save important sessions locally so you can return to them quickly." },
-        { "title": "Optional AI tools", "body": "Summarize, explain, draft questions, or start a blog outline using your own OpenAI-compatible credentials." },
-        { "title": "Local by default", "body": "Catalog data, transcript indexes, favorites, and settings are stored on your device." }
-      ],
-      "privacy": true,
-      "privacy_sections": [
-        { "heading": "Introduction", "body": "Lectern - Watch & Learn respects your privacy. This policy describes what data the app stores, what it accesses, and how optional online features work." },
-        { "heading": "Data collection", "body": "Lectern does not collect personal data, usage analytics, tracking data, or crash reports for the developer." },
-        { "heading": "Data stored on your device", "list": ["The WWDC catalog cache, transcript search index, favorites, playback-related state, settings, and logs are stored locally on your device.", "OpenAI-compatible API settings or sign-in tokens, if you choose to use AI features, are stored locally using the platform storage available to the app."] },
-        { "heading": "Apple developer content", "body": "Lectern accesses publicly available Apple developer session metadata, videos, transcripts, chapters, and related materials so you can browse and search them inside the app. Lectern is not affiliated with Apple Inc." },
-        { "heading": "Optional AI features", "body": "AI features are optional. If you enable them, the prompts or transcript excerpts you choose to send may be transmitted to your selected OpenAI-compatible service provider to generate a response. Lectern does not receive or store those requests on a developer-operated server." },
-        { "heading": "Data sharing", "body": "Lectern does not sell your data and does not share your data with third parties for advertising or marketing." },
-        { "heading": "Contact", "body": "Questions? Email xnuapp@gmail.com." }
-      ]
     },
     "notbadbookmark": {
       "name": "NotBadBookmark",
@@ -164,7 +134,7 @@
       "tagline": "Use your computer's keyboard to type on your iPhone.",
       "description": "Long messages, snippets of code, anything you'd rather not thumb out — Remoboard pairs the iPhone keyboard with whatever real keyboard is on your desk, over your local network. Open the iOS app, connect from your computer, and start typing.",
       "links": [
-        { "label": "Download on the App Store", "href": "https://apps.apple.com/app/id1474458879", "primary": true }
+        { "label": "Download on the App Store", "href": "https://apps.apple.com/us/app/remote-keyboard/id1474458879", "primary": true }
       ],
       "features": [
         { "title": "Cross-platform companion", "body": "Connect from macOS, Windows, or Linux. The iPhone is the receiver." },
@@ -176,17 +146,17 @@
       ],
       "privacy": true
     },
-    "speaktwo": {
-      "name": "SpeakTwo",
+    "babeltable": {
+      "name": "BabelTable",
       "platform": "iOS",
       "icon": "messages-square",
       "tagline": "Real-time speech translation between two people.",
-      "description": "SpeakTwo turns your iPhone into a shared interpreter. Set a language for each side, place the phone between you, and speak naturally — SpeakTwo transcribes and translates each turn live, powered by OpenAI's realtime translation model. Your API key stays on your device, so conversations go straight from your phone to OpenAI with no server in between.",
+      "description": "BabelTable turns your iPhone into a shared interpreter. Set a language for each side, place the phone between you, and speak naturally — BabelTable transcribes and translates each turn live, powered by OpenAI's realtime translation model. Your API key stays on your device, so conversations go straight from your phone to OpenAI with no server in between.",
       "links": [
         { "label": "View on GitHub", "href": "https://github.com/everettjf/babeltable", "primary": true }
       ],
       "features": [
-        { "title": "Two-way conversation", "body": "Assign a language to each person and let SpeakTwo translate back and forth in a single shared session." },
+        { "title": "Two-way conversation", "body": "Assign a language to each person and let BabelTable translate back and forth in a single shared session." },
         { "title": "Realtime translation", "body": "Audio streams directly to OpenAI's gpt-realtime-translate model, so speech is transcribed and translated as you talk." },
         { "title": "Bring your own key", "body": "Use your own OpenAI API key. It is stored locally in the iOS Keychain and never sent to a developer-operated server." },
         { "title": "Native SwiftUI app", "body": "A focused, native iOS interface built for quick, in-person conversations." },
@@ -195,9 +165,9 @@
       ],
       "privacy": true,
       "privacy_sections": [
-        { "heading": "Introduction", "body": "SpeakTwo is a bring-your-own-key real-time translation app. This policy describes what data the app stores and how its translation feature works." },
-        { "heading": "Data we collect", "body": "SpeakTwo does not collect, sell, or share personal data through a developer-operated server." },
-        { "heading": "OpenAI API key", "body": "Your OpenAI API key is stored locally on your device in the iOS Keychain. SpeakTwo does not send your API key to any server controlled by the developer." },
+        { "heading": "Introduction", "body": "BabelTable is a bring-your-own-key real-time translation app. This policy describes what data the app stores and how its translation feature works." },
+        { "heading": "Data we collect", "body": "BabelTable does not collect, sell, or share personal data through a developer-operated server." },
+        { "heading": "OpenAI API key", "body": "Your OpenAI API key is stored locally on your device in the iOS Keychain. BabelTable does not send your API key to any server controlled by the developer." },
         { "heading": "Speech and translation", "body": "When you start a translation session, audio is sent directly from the app to OpenAI's realtime translation service using the API key you provide. OpenAI processes that audio to provide transcription and translation responses." },
         { "heading": "Local conversation history", "body": "Conversation transcripts may be saved locally on your device so you can review prior sessions. These saved sessions are not uploaded to a developer-operated server." },
         { "heading": "Contact", "body": "For privacy questions or support, open an issue at https://github.com/everettjf/babeltable/issues or email xnuapp@gmail.com." }
@@ -210,7 +180,7 @@
       "tagline": "The fastest way to find and launch apps on macOS.",
       "description": "StartMyApp lives in your menu bar and replaces the slow Spotlight dance. Press a shortcut, type a few characters, hit return. Apple Intelligence suggests what you usually open next, so most launches need just one keystroke.",
       "links": [
-        { "label": "Download on the Mac App Store", "href": "https://apps.apple.com/app/startmyapp/id6753610893", "primary": true }
+        { "label": "Download on the Mac App Store", "href": "https://apps.apple.com/us/app/startmyapp-fast-app-launch/id6753610893", "primary": true }
       ],
       "features": [
         { "title": "Instant launch", "body": "Open any installed application with a global shortcut and a few keystrokes." },
@@ -219,53 +189,6 @@
         { "title": "Keyboard-first", "body": "Built for power users. The mouse is optional, end to end." },
         { "title": "Categories & ordering", "body": "Group apps the way you think about them, not how the Finder sorts them." },
         { "title": "Native and lightweight", "body": "A small Swift app. No Electron, no background bloat." }
-      ],
-      "privacy": true
-    },
-    "wiresnap": {
-      "name": "WireSnap",
-      "platform": "iOS",
-      "icon": "sparkles",
-      "tagline": "Learn any language from photos and screenshots.",
-      "description": "Point your camera at a sign, menu, or webpage. WireSnap recognizes the words, shows translations and parts of speech, and saves anything you want to remember. The fastest way to turn the world around you into a vocabulary deck.",
-      "links": [
-        { "label": "Download on the App Store", "href": "https://apps.apple.com/us/app/wiresnap/id6757732835", "primary": true }
-      ],
-      "features": [
-        { "title": "AI vision", "body": "Reads handwriting, signs, screenshots, and printed text in dozens of languages." },
-        { "title": "One-tap vocab", "body": "Tap any word in a photo to see meaning, pronunciation, and example uses." },
-        { "title": "Bring your own key", "body": "Use your own OpenAI / Anthropic key for unlimited usage, or stay on the free plan." },
-        { "title": "Personal deck", "body": "Save words to a deck for spaced review later." },
-        { "title": "Works on screenshots", "body": "Captures from games, web pages, and other apps work the same as photos." },
-        { "title": "Private", "body": "Images stay on device by default; only the OCR text is sent to the model you chose." }
-      ],
-      "privacy": true,
-      "privacy_sections": [
-        { "heading": "Introduction", "body": "WireSnap respects your privacy. This document describes what data the app collects and how it is used." },
-        { "heading": "Information we collect", "list": ["Images and screenshots you choose to process.", "API keys you supply for Bring-Your-Own-Key usage.", "Anonymous usage data and crash reports."] },
-        { "heading": "How we use information", "list": ["To run OCR and translation on the images you submit.", "To improve the app's reliability.", "To respond to questions you send to us directly."] },
-        { "heading": "Third-party services", "body": "When BYOK is enabled, your images and OCR output go straight to the API provider you configured. We do not relay or store that data on our servers." },
-        { "heading": "Data security", "body": "Where data is transmitted off-device, it is sent over TLS. API keys are stored encrypted in the system keychain." },
-        { "heading": "Data retention", "body": "We keep only what is needed to provide the service. You can clear your saved deck and remove API keys at any time inside the app." },
-        { "heading": "Contact", "body": "Questions? Email xnuapp@gmail.com." }
-      ]
-    },
-    "wizvoid": {
-      "name": "Wizvoid",
-      "platform": "iOS",
-      "icon": "wand-2",
-      "tagline": "Run large language models entirely offline, on your phone.",
-      "description": "Wizvoid runs open-source language models directly on iOS through Swift MLX. Pick a model, download it once, and chat without an internet connection. Everything you type and everything the model says stays on the device.",
-      "links": [
-        { "label": "Download on the App Store", "href": "https://apps.apple.com/us/app/id6741675035", "primary": true }
-      ],
-      "features": [
-        { "title": "18+ local models", "body": "From small instruct models to larger ones — pick what fits your device." },
-        { "title": "Powered by MLX", "body": "Apple's MLX framework runs efficiently on the Neural Engine." },
-        { "title": "Private by default", "body": "No network calls. No telemetry. No accounts." },
-        { "title": "Conversational", "body": "Chat threads with proper context windows and history." },
-        { "title": "Model switching", "body": "Swap between models mid-session to compare answers." },
-        { "title": "Works on a plane", "body": "Once a model is downloaded, no connection is needed." }
       ],
       "privacy": true
     }
