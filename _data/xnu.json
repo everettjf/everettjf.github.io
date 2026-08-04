@@ -2,18 +2,30 @@
   "support_email": "xnuapp@gmail.com",
   "discord_url": "https://discord.gg/eGzEaP6TzR",
   "open_source": [
+    { "name": "OpenRocky", "pitch": "The open-source voice-first AI agent for iPhone.", "href": "https://github.com/openrocky/openrocky", "icon": "mic", "platform": "Swift · iOS" },
+    { "name": "Graph Chat", "pitch": "A local-first, graph-native AI learning workspace.", "href": "https://github.com/everettjf/graphchat", "icon": "git-branch", "platform": "TypeScript · Web" },
     { "name": "Liney", "pitch": "A native macOS terminal workspace for multi-repo workflows.", "href": "https://github.com/everettjf/liney", "icon": "terminal", "platform": "Swift · macOS" },
     { "name": "MicroClaw", "pitch": "An agentic AI assistant that lives in your chats.", "href": "https://github.com/microclaw/microclaw", "icon": "mic", "platform": "Rust · CLI" },
+    { "name": "VM4A", "pitch": "Isolated macOS and Linux virtual machines for coding agents.", "href": "https://github.com/everettjf/vm4a", "icon": "box", "platform": "Swift · macOS" },
+    { "name": "TypeTide", "pitch": "System-wide AI translation and inline rewriting for macOS and Windows.", "href": "https://github.com/everettjf/TypeTide", "icon": "languages", "platform": "Swift · C++" },
+    { "name": "GrapeCompare", "pitch": "Fast, local file and folder comparison for macOS.", "href": "https://github.com/everettjf/grapecompare", "icon": "diff", "platform": "Swift · macOS" },
+    { "name": "BabelTable", "pitch": "Real-time two-way speech translation on one iPhone.", "href": "https://github.com/everettjf/babeltable", "icon": "messages-square", "platform": "Swift · iOS" },
+    { "name": "MyJSONDiff", "pitch": "A native, order-insensitive JSON comparison tool for macOS.", "href": "https://github.com/everettjf/jsondiff", "icon": "braces", "platform": "Swift · macOS" },
+    { "name": "Remoboard", "pitch": "Use a computer keyboard to type into any app on an iPhone.", "href": "https://github.com/everettjf/remoboard", "icon": "keyboard", "platform": "Swift · iOS" },
+    { "name": "ScriptWidget", "pitch": "Build native iOS and macOS widgets with JavaScript and JSX.", "href": "https://github.com/everettjf/scriptwidget", "icon": "code", "platform": "Swift · JavaScript" },
+    { "name": "StartMyApp", "pitch": "A fast, keyboard-first macOS application launcher.", "href": "https://github.com/everettjf/startmyapp", "icon": "zap", "platform": "Swift · macOS" },
+    { "name": "CountMyDays", "pitch": "Offline countdowns and cumulative day tracking for iPhone.", "href": "https://github.com/everettjf/countdays", "icon": "clock", "platform": "Swift · iOS" },
     { "name": "atosl-rs", "pitch": "A Rust replacement for Apple's atos — runs on Linux and macOS.", "href": "https://github.com/everettjf/atosl-rs", "icon": "terminal", "platform": "Rust · CLI" },
     { "name": "MachOExplorer", "pitch": "Explore Mach-O binary files on macOS and Windows.", "href": "https://github.com/everettjf/MachOExplorer", "icon": "terminal", "platform": "C++ · CLI" },
-    { "name": "AppleTrace", "pitch": "Trace Objective-C method calls and visualize the call chart.", "href": "https://github.com/everettjf/AppleTrace", "icon": "terminal", "platform": "C · ObjC" }
+    { "name": "AppleTrace", "pitch": "Trace Objective-C method calls and visualize the call chart.", "href": "https://github.com/everettjf/AppleTrace", "icon": "activity", "platform": "C · ObjC" },
+    { "name": "WasmPatch", "pitch": "WebAssembly-driven hot patching for Objective-C apps.", "href": "https://github.com/everettjf/wasmpatch", "icon": "blocks", "platform": "Swift · C++" }
   ],
   "apps": [
-    { "name": "SpeakTwo", "pitch": "Real-time speech translation between two people, on one iPhone.", "href": "/speaktwo/", "icon": "messages-square", "platform": "iOS" },
+    { "name": "BabelTable", "pitch": "Real-time speech translation between two people, on one iPhone.", "href": "/speaktwo/", "icon": "messages-square", "platform": "iOS" },
     { "name": "Lectern", "pitch": "Search, watch, and learn from WWDC sessions with synced transcripts.", "href": "/lectern/", "icon": "video", "platform": "macOS" },
     { "name": "ScriptWidget", "pitch": "Build iOS, iPadOS and macOS widgets with JavaScript and JSX.", "href": "/scriptwidget/", "icon": "code", "platform": "iOS · macOS" },
     { "name": "StartMyApp", "pitch": "A keyboard-first app launcher for macOS with Apple Intelligence.", "href": "/startmyapp/", "icon": "zap", "platform": "macOS" },
-    { "name": "Saypick", "pitch": "System-wide translation across every macOS app, powered by local AI.", "href": "https://everettjf.github.io/Saypick/", "icon": "languages", "platform": "macOS" },
+    { "name": "TypeTide", "pitch": "System-wide translation and inline rewriting across macOS and Windows.", "href": "https://github.com/everettjf/TypeTide", "icon": "languages", "platform": "macOS · Windows" },
     { "name": "Wizvoid", "pitch": "Run large language models entirely offline on your iPhone.", "href": "/wizvoid/", "icon": "wand-2", "platform": "iOS" },
     { "name": "CountMyDays", "pitch": "Countdowns and day-counters in beautiful, offline-first cards.", "href": "/countmydays/", "icon": "clock", "platform": "iOS" },
     { "name": "MyJSONDiff", "pitch": "A simple, native JSON diff tool for macOS.", "href": "/jsondiff/", "icon": "diff", "platform": "macOS" },
@@ -65,15 +77,15 @@
       "platform": "macOS",
       "icon": "diff",
       "tagline": "A simple, native JSON diff tool for macOS.",
-      "description": "Paste two JSON documents into the panes; the differences are highlighted side by side in real time. Auto-formats, validates, and remembers your last few comparisons. Useful when you need an answer in five seconds and don't want to open a tab.",
+      "description": "Paste two JSON documents into the panes and compare a deterministic, sorted representation side by side. Everything runs locally in a native SwiftUI app, so private payloads never leave your Mac.",
       "links": [
         { "label": "Download on the Mac App Store", "href": "https://apps.apple.com/us/app/myjsondiff/id6742816661", "primary": true }
       ],
       "features": [
-        { "title": "Side-by-side view", "body": "Two synchronized panes with line-level highlighting." },
-        { "title": "Live diff", "body": "Edits on either side re-diff instantly as you type." },
-        { "title": "Auto-format & validate", "body": "Pasted JSON is pretty-printed and validation errors are obvious." },
-        { "title": "Keyboard friendly", "body": "Open, paste, focus, swap — all with shortcuts." },
+        { "title": "Side-by-side diff", "body": "Added and removed lines stay aligned in two readable panes." },
+        { "title": "Order-insensitive", "body": "Object keys are sorted before comparison so key order does not create noise." },
+        { "title": "Format & validate", "body": "JSON is parsed and pretty-printed, with clear errors for invalid input." },
+        { "title": "Keyboard friendly", "body": "Compare, edit, clear, and navigate with native controls and shortcuts." },
         { "title": "Native performance", "body": "Built in SwiftUI. Opens instantly, idles cheaply." },
         { "title": "No cloud", "body": "Your payloads never leave the app. No telemetry." }
       ],
@@ -171,7 +183,7 @@
       "tagline": "Real-time speech translation between two people.",
       "description": "SpeakTwo turns your iPhone into a shared interpreter. Set a language for each side, place the phone between you, and speak naturally — SpeakTwo transcribes and translates each turn live, powered by OpenAI's realtime translation model. Your API key stays on your device, so conversations go straight from your phone to OpenAI with no server in between.",
       "links": [
-        { "label": "View on GitHub", "href": "https://github.com/everettjf/SpeakTwo", "primary": true }
+        { "label": "View on GitHub", "href": "https://github.com/everettjf/babeltable", "primary": true }
       ],
       "features": [
         { "title": "Two-way conversation", "body": "Assign a language to each person and let SpeakTwo translate back and forth in a single shared session." },
@@ -188,7 +200,7 @@
         { "heading": "OpenAI API key", "body": "Your OpenAI API key is stored locally on your device in the iOS Keychain. SpeakTwo does not send your API key to any server controlled by the developer." },
         { "heading": "Speech and translation", "body": "When you start a translation session, audio is sent directly from the app to OpenAI's realtime translation service using the API key you provide. OpenAI processes that audio to provide transcription and translation responses." },
         { "heading": "Local conversation history", "body": "Conversation transcripts may be saved locally on your device so you can review prior sessions. These saved sessions are not uploaded to a developer-operated server." },
-        { "heading": "Contact", "body": "For privacy questions or support, open an issue at https://github.com/everettjf/SpeakTwo/issues or email xnuapp@gmail.com." }
+        { "heading": "Contact", "body": "For privacy questions or support, open an issue at https://github.com/everettjf/babeltable/issues or email xnuapp@gmail.com." }
       ]
     },
     "startmyapp": {
