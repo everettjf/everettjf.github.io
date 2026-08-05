@@ -11,25 +11,12 @@ description: "Native apps, developer tools, and open-source projects by everettj
       I build native apps, command-line tools, and open-source experiments—mostly for Apple platforms, developer workflows, and AI.
     </p>
     <div class="mt-7 flex flex-wrap gap-3">
-      <a href="#recent" class="inline-flex items-center gap-2 rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-80">
-        See what’s new <i data-lucide="arrow-down" class="h-4 w-4"></i>
+      <a href="#featured" class="inline-flex items-center gap-2 rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-80">
+        Featured projects <i data-lucide="arrow-down" class="h-4 w-4"></i>
       </a>
       <a href="/projects/" class="inline-flex items-center gap-2 rounded-md border border-border px-4 py-2 text-sm font-medium transition-colors hover:bg-secondary">
         All projects <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
       </a>
-    </div>
-  </section>
-
-  <section id="recent" class="mb-16 scroll-mt-20 sm:mb-24">
-    <div class="mb-6 flex items-end justify-between border-b border-border pb-3">
-      <div>
-        <p class="mb-1 font-mono text-xs uppercase tracking-wider text-muted-foreground">Now building</p>
-        <h2 class="text-xl font-semibold tracking-tight sm:text-2xl">Recently active</h2>
-      </div>
-      <span class="hidden text-xs text-muted-foreground sm:block">Updated August 2026</span>
-    </div>
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      {% for p in site.data.xnu.recent_projects %}{% include xnu/project_card.html p=p %}{% endfor %}
     </div>
   </section>
 
@@ -43,6 +30,19 @@ description: "Native apps, developer tools, and open-source projects by everettj
     </div>
     <div class="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
       {% for p in site.data.xnu.featured_projects %}{% include xnu/product_row.html p=p %}{% endfor %}
+    </div>
+  </section>
+
+  <section id="app-store" class="mb-16 scroll-mt-20 sm:mb-20">
+    <div class="mb-4 flex items-baseline justify-between border-b border-border pb-3">
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">Download on the App Store</h2>
+        <p class="mt-1 text-xs text-muted-foreground">Ready-to-use apps for iPhone, iPad, and Mac.</p>
+      </div>
+      <span class="text-xs tabular-nums text-muted-foreground">{{ site.data.xnu.app_store | size }}</span>
+    </div>
+    <div class="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+      {% for p in site.data.xnu.app_store %}{% include xnu/product_row.html p=p %}{% endfor %}
     </div>
   </section>
 

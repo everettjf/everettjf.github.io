@@ -7,6 +7,17 @@ title: Blog
     <h1 class="page-title">Blog</h1>
     <p class="page-subtitle">Notes and articles from the archive · {{ site.posts.size }} posts.</p>
 
+    <aside class="wechat-follow" aria-labelledby="wechat-follow-title">
+        <div class="wechat-follow-copy">
+            <p class="wechat-follow-kicker">持续更新中</p>
+            <h2 id="wechat-follow-title">更多新文章，欢迎关注「吃灰思考」</h2>
+            <p>这里保留过去的技术文章。现在的思考、开发记录和新项目进展，主要更新在微信公众号。</p>
+        </div>
+        <img src="{{ site.baseurl }}/images/wechat-official-account.png"
+             alt="微信搜索公众号吃灰思考，或扫描二维码关注"
+             width="612" height="262" loading="lazy" decoding="async">
+    </aside>
+
     {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
     {% for year in posts_by_year %}
     <section class="archive-year-group">

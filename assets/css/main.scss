@@ -74,3 +74,52 @@ img { height: auto; }
   color: var(--color-link);
 }
 .translation-note-link:hover { color: var(--color-link-highlighted); }
+
+/* ----- blog / WeChat follow card ----- */
+.wechat-follow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 0.8fr);
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem 0 3.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-separator);
+  border-radius: 0.875rem;
+  background: var(--color-background-secondary);
+}
+.wechat-follow-kicker {
+  margin: 0 0 0.5rem;
+  color: #079b55;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.wechat-follow h2 {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  line-height: 1.45;
+}
+.wechat-follow-copy > p:last-child {
+  margin: 0.75rem 0 0;
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.wechat-follow img {
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 700px) {
+  .wechat-follow {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+    padding: 1.25rem;
+  }
+  .wechat-follow img { max-width: 26rem; }
+}

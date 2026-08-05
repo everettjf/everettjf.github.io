@@ -1,12 +1,6 @@
 {
   "support_email": "xnuapp@gmail.com",
   "discord_url": "https://discord.gg/eGzEaP6TzR",
-  "recent_projects": [
-    { "name": "MyJSONDiff", "pitch": "A native, order-insensitive JSON comparison tool for macOS.", "href": "https://github.com/everettjf/jsondiff", "icon": "diff", "platform": "Swift · macOS", "update": "New App Store build" },
-    { "name": "GrapeCompare", "pitch": "Fast, local file and folder comparison for macOS.", "href": "https://github.com/everettjf/grapecompare", "icon": "diff", "platform": "Swift · macOS", "update": "Faster large-folder diffs" },
-    { "name": "Voxraft", "pitch": "A focused native workspace for turning recordings into useful text.", "href": "https://github.com/everettjf/voxraft", "icon": "mic", "platform": "Swift · macOS", "update": "Refined UI and app icon" },
-    { "name": "ScriptWidget", "pitch": "Create native widgets for iOS and macOS using JavaScript and JSX.", "href": "https://github.com/everettjf/scriptwidget", "icon": "code", "platform": "Swift · JavaScript", "update": "New math animations" }
-  ],
   "featured_projects": [
     { "name": "MicroClaw", "pitch": "Rewrite OpenClaw with Rust.", "href": "https://github.com/microclaw/microclaw", "icon": "bot", "platform": "Rust" },
     { "name": "Liney", "pitch": "Yet another terminal for vibe coding.", "href": "https://github.com/everettjf/liney", "icon": "terminal", "platform": "Swift · macOS" },
