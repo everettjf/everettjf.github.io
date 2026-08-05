@@ -18,29 +18,55 @@ description: "A small collection of apps, command-line tools, and open-source pr
     </p>
   </div>
 
+  <section id="featured" class="mb-16 scroll-mt-20 sm:mb-20">
+    <div class="mb-4 flex items-baseline justify-between border-b border-border pb-3">
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">Featured projects</h2>
+        <p class="mt-1 text-xs text-muted-foreground">Open-source tools and experiments I am actively building.</p>
+      </div>
+      <span class="text-xs text-muted-foreground tabular-nums">{{ site.data.xnu.featured_projects | size }}</span>
+    </div>
+    <div class="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+      {% for p in site.data.xnu.featured_projects %}{% include xnu/product_row.html p=p %}{% endfor %}
+    </div>
+  </section>
+
+  <section id="app-store" class="mb-16 scroll-mt-20 sm:mb-20">
+    <div class="mb-4 flex items-baseline justify-between border-b border-border pb-3">
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">Download on the App Store</h2>
+        <p class="mt-1 text-xs text-muted-foreground">Ready-to-use apps for iPhone, iPad, and Mac.</p>
+      </div>
+      <span class="text-xs text-muted-foreground tabular-nums">{{ site.data.xnu.app_store | size }}</span>
+    </div>
+    <div class="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+      {% for p in site.data.xnu.app_store %}{% include xnu/product_row.html p=p %}{% endfor %}
+    </div>
+  </section>
+
+  <section id="homebrew" class="mb-16 scroll-mt-20 sm:mb-20">
+    <div class="mb-4 flex items-baseline justify-between border-b border-border pb-3">
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">Install with Homebrew</h2>
+        <p class="mt-1 text-xs text-muted-foreground">Mac apps and command-line tools, ready from your terminal.</p>
+      </div>
+      <span class="text-xs text-muted-foreground tabular-nums">{{ site.data.xnu.homebrew | size }}</span>
+    </div>
+    <div class="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+      {% for p in site.data.xnu.homebrew %}{% include xnu/product_row.html p=p %}{% endfor %}
+    </div>
+  </section>
+
   <section id="open-source" class="mb-16 scroll-mt-20 sm:mb-20">
     <div class="mb-4 flex items-baseline justify-between border-b border-border pb-3">
       <div>
-        <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">Open source projects</h2>
-        <p class="mt-1 text-xs text-muted-foreground">Libraries and command-line tools on GitHub.</p>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">More open source</h2>
+        <p class="mt-1 text-xs text-muted-foreground">More apps, libraries, and developer tools on GitHub.</p>
       </div>
       <span class="text-xs text-muted-foreground tabular-nums">{{ site.data.xnu.open_source | size }}</span>
     </div>
     <div class="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
       {% for p in site.data.xnu.open_source %}{% include xnu/product_row.html p=p %}{% endfor %}
-    </div>
-  </section>
-
-  <section id="apps" class="mb-16 scroll-mt-20 sm:mb-20">
-    <div class="mb-4 flex items-baseline justify-between border-b border-border pb-3">
-      <div>
-        <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">App projects</h2>
-        <p class="mt-1 text-xs text-muted-foreground">Consumer apps for macOS, iOS, and the browser.</p>
-      </div>
-      <span class="text-xs text-muted-foreground tabular-nums">{{ site.data.xnu.apps | size }}</span>
-    </div>
-    <div class="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
-      {% for p in site.data.xnu.apps %}{% include xnu/product_row.html p=p %}{% endfor %}
     </div>
   </section>
 </div>

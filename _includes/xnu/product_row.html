@@ -9,6 +9,7 @@
       <span class="shrink-0 text-xs text-muted-foreground/80 tabular-nums">{{ include.p.platform }}</span>
     </div>
     <p class="mt-0.5 text-sm text-muted-foreground leading-snug line-clamp-2">{{ include.p.pitch }}</p>
+    {% if include.p.install %}<code class="mt-2 block overflow-x-auto whitespace-nowrap text-xs text-muted-foreground">{{ include.p.install }}</code>{% endif %}
   </div>
   {% if is_external %}<i data-lucide="arrow-up-right" class="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground/40 group-hover:text-foreground transition-colors"></i>{% endif %}
 </a>
