@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Archive
+title: Blog
 ---
 
 <main>
-    <h1 class="page-title">Archive</h1>
-    <p class="page-subtitle">All {{ site.posts.size }} posts.</p>
+    <h1 class="page-title">Blog</h1>
+    <p class="page-subtitle">Notes and articles from the archive · {{ site.posts.size }} posts.</p>
 
     {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
     {% for year in posts_by_year %}

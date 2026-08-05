@@ -6,6 +6,7 @@
 // add its PascalCase export here and run `make assets`.
 import {
   createIcons,
+  ArrowDown,
   ArrowLeft,
   ArrowUpRight,
   Bookmark,
@@ -35,6 +36,7 @@ import {
 } from 'lucide';
 
 const icons = {
+  ArrowDown,
   ArrowLeft,
   ArrowUpRight,
   Bookmark,

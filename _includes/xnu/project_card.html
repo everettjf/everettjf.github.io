@@ -1,0 +1,21 @@
+{% assign is_external = false %}
+{% if include.p.href contains "http" %}{% assign is_external = true %}{% endif %}
+<a href="{{ include.p.href }}"{% if is_external %} target="_blank" rel="noopener noreferrer"{% endif %}
+   class="group relative flex min-h-48 flex-col overflow-hidden rounded-xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-foreground/25 hover:shadow-lg hover:shadow-foreground/5">
+  <div class="flex items-start justify-between">
+    <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary text-foreground">
+      <i data-lucide="{{ include.p.icon }}" class="h-4.5 w-4.5"></i>
+    </span>
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-border px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+      <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span> Active
+    </span>
+  </div>
+  <div class="mt-7 flex-1">
+    <h3 class="text-lg font-semibold tracking-tight">{{ include.p.name }}</h3>
+    <p class="mt-1.5 text-sm leading-relaxed text-muted-foreground">{{ include.p.pitch }}</p>
+  </div>
+  <div class="mt-5 flex items-center justify-between gap-4 border-t border-border pt-3 text-xs text-muted-foreground">
+    <span>{{ include.p.update }}</span>
+    <span class="flex shrink-0 items-center gap-1">{{ include.p.platform }} <i data-lucide="arrow-up-right" class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i></span>
+  </div>
+</a>
