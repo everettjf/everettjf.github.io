@@ -4,6 +4,7 @@
   "featured_projects": [
     { "name": "MicroClaw", "pitch": "Rewrite OpenClaw with Rust.", "href": "https://github.com/microclaw/microclaw", "icon": "bot", "platform": "Rust" },
     { "name": "Liney", "pitch": "Yet another terminal for vibe coding.", "href": "https://github.com/everettjf/liney", "icon": "terminal", "platform": "Swift · macOS" },
+    { "name": "EasyVM", "pitch": "Create and run native macOS and ARM64 Linux virtual machines on Apple silicon.", "href": "https://github.com/everettjf/easyvm", "icon": "monitor", "platform": "Swift · macOS" },
     { "name": "ScriptWidget", "pitch": "Create native widgets for iOS and macOS using JavaScript and a JSX-like syntax.", "href": "https://github.com/everettjf/scriptwidget", "icon": "code", "platform": "Swift · JavaScript" },
     { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "https://github.com/everettjf/remoboard", "icon": "keyboard", "platform": "Swift · iOS" },
     { "name": "MachOExplorer", "pitch": "A comprehensive tool for exploring Mach-O binary files.", "href": "https://github.com/everettjf/machoexplorer", "icon": "binary", "platform": "C++ · Desktop" },
@@ -23,6 +24,7 @@
   "homebrew": [
     { "name": "MicroClaw", "pitch": "An agentic AI assistant rewritten in Rust.", "href": "https://github.com/microclaw/microclaw", "icon": "bot", "platform": "Rust", "install": "brew tap microclaw/tap && brew install microclaw" },
     { "name": "Liney", "pitch": "A native terminal workspace for vibe coding.", "href": "https://github.com/everettjf/liney", "icon": "terminal", "platform": "macOS", "install": "brew install --cask everettjf/tap/liney" },
+    { "name": "EasyVM", "pitch": "A simple, native virtual machine app for Apple silicon Macs.", "href": "https://github.com/everettjf/easyvm", "icon": "monitor", "platform": "macOS", "install": "brew install --cask everettjf/tap/easyvm" },
     { "name": "MachOExplorer", "pitch": "Explore Mach-O binary files on macOS and Windows.", "href": "https://github.com/everettjf/machoexplorer", "icon": "binary", "platform": "macOS", "install": "brew install --cask everettjf/homebrew-tap/machoexplorer" },
     { "name": "TypeTide", "pitch": "System-wide AI translation and inline rewriting.", "href": "https://github.com/everettjf/TypeTide", "icon": "languages", "platform": "macOS", "install": "brew install --cask everettjf/typetide/typetide" }
   ],
