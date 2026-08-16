@@ -2,9 +2,16 @@
 # Custom overrides on top of screen.css.
 ---
 
-@use "syntax";
+@import "syntax";
 
 /* ----- self-hosted fonts (replaces Google Fonts) ----- */
+@font-face {
+  font-family: "Cascadia Code";
+  src: url("/assets/fonts/cascadia-code-latin-wght-normal.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
 @font-face {
   font-family: "Inter";
   src: url("/assets/fonts/inter-latin-wght-normal.woff2") format("woff2");
@@ -89,7 +96,7 @@ img { height: auto; }
 }
 .wechat-follow-kicker {
   margin: 0 0 0.5rem;
-  color: #079b55;
+  color: #9ece6a;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 600;

@@ -1,56 +1,20 @@
-/* Rouge / Pygments token colors, theme-aware via CSS custom properties. */
+/* Rouge / Pygments token colors — Tokyo Night palette. */
 
 :root {
-  --code-fg: #24292e;
-  --code-comment: #6a737d;
-  --code-keyword: #d73a49;
-  --code-string: #032f62;
-  --code-number: #005cc5;
-  --code-name: #6f42c1;
-  --code-type: #d73a49;
-  --code-tag: #22863a;
-  --code-attr: #6f42c1;
-  --code-builtin: #005cc5;
-  --code-error: #b31d28;
-  --code-error-bg: rgba(255, 129, 130, 0.15);
-  --code-inserted: #22863a;
-  --code-deleted: #b31d28;
-}
-
-:root[data-theme="dark"] {
-  --code-fg: #e6edf3;
-  --code-comment: #8b949e;
-  --code-keyword: #ff7b72;
-  --code-string: #a5d6ff;
-  --code-number: #79c0ff;
-  --code-name: #d2a8ff;
-  --code-type: #ff7b72;
-  --code-tag: #7ee787;
-  --code-attr: #d2a8ff;
-  --code-builtin: #79c0ff;
-  --code-error: #ffa198;
-  --code-error-bg: rgba(255, 129, 130, 0.15);
-  --code-inserted: #7ee787;
-  --code-deleted: #ffa198;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root[data-theme="system"] {
-    --code-fg: #e6edf3;
-    --code-comment: #8b949e;
-    --code-keyword: #ff7b72;
-    --code-string: #a5d6ff;
-    --code-number: #79c0ff;
-    --code-name: #d2a8ff;
-    --code-type: #ff7b72;
-    --code-tag: #7ee787;
-    --code-attr: #d2a8ff;
-    --code-builtin: #79c0ff;
-    --code-error: #ffa198;
-    --code-error-bg: rgba(255, 129, 130, 0.15);
-    --code-inserted: #7ee787;
-    --code-deleted: #ffa198;
-  }
+  --code-fg: #c0caf5;
+  --code-comment: #565f89;
+  --code-keyword: #bb9af7;
+  --code-string: #9ece6a;
+  --code-number: #ff9e64;
+  --code-name: #7aa2f7;
+  --code-type: #bb9af7;
+  --code-tag: #9ece6a;
+  --code-attr: #7dcfff;
+  --code-builtin: #7dcfff;
+  --code-error: #f7768e;
+  --code-error-bg: rgba(247, 118, 142, 0.15);
+  --code-inserted: #9ece6a;
+  --code-deleted: #f7768e;
 }
 
 .highlight {

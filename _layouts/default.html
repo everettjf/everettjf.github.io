@@ -4,20 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fafafa" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#171717" />
+    <meta name="theme-color" content="#1a1b26" />
 
     {% seo %}
 
     <script>
       (function () {
-        try {
-          var t = localStorage.getItem("app_theme");
-          if (t !== "system" && t !== "light" && t !== "dark") t = "system";
-          document.documentElement.dataset.theme = t;
-        } catch (e) {
-          document.documentElement.dataset.theme = "system";
-        }
         try {
           var l = localStorage.getItem("app_lang");
           if (l !== "zh" && l !== "en") l = "en";
@@ -29,7 +21,7 @@
       })();
     </script>
 
-    <link rel="preload" href="{{ site.baseurl }}/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ site.baseurl }}/assets/fonts/cascadia-code-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/screen.css" />
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/main.css" />
@@ -96,41 +88,10 @@
                     </li>
                 </ul>
             </div>
-            <div class="theme-switcher" role="group" aria-label="Theme">
-                <button type="button" data-theme-value="light" aria-label="Light">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-                </button>
-                <button type="button" data-theme-value="system" aria-label="System">
-                    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 20h8M12 17v3"/></svg>
-                </button>
-                <button type="button" data-theme-value="dark" aria-label="Dark">
-                    <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                </button>
-            </div>
         </footer>
     </div>
 
     <script>
-      (function () {
-        var root = document.documentElement;
-        var buttons = document.querySelectorAll(".theme-switcher button[data-theme-value]");
-        function sync() {
-          var current = root.dataset.theme || "system";
-          buttons.forEach(function (b) {
-            b.classList.toggle("active", b.dataset.themeValue === current);
-          });
-        }
-        buttons.forEach(function (b) {
-          b.addEventListener("click", function () {
-            var v = b.dataset.themeValue;
-            root.dataset.theme = v;
-            try { localStorage.setItem("app_theme", v); } catch (e) {}
-            sync();
-          });
-        });
-        sync();
-      })();
-
       (function () {
         var root = document.documentElement;
         function syncLang() {
