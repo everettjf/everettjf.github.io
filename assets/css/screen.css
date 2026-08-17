@@ -6,8 +6,8 @@
 :root {
   --color-background: #1a1b26;        /* Tokyo Night bg */
   --color-background-secondary: #1f2335; /* Tokyo Night bg_dark panel */
-  --color-primary: #c0caf5;           /* fg */
-  --color-secondary: #9aa5ce;         /* fg dim */
+  --color-primary: #d8def7;           /* fg, brightened */
+  --color-secondary: #a9b1d6;         /* fg dim, brightened */
   --color-tertiary: #565f89;          /* comment */
   --color-separator: rgba(192, 202, 245, 0.12);
   --color-link: #7dcfff;              /* cyan */
@@ -46,7 +46,7 @@ body {
   color: var(--color-primary);
   font-family: var(--font-sans);
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
 }

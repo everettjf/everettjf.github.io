@@ -22,17 +22,17 @@
     :root {
       /* Tokyo Night (dark-only, omarchy.org-inspired) */
       --background: 235 19% 13%;        /* #1a1b26 */
-      --foreground: 229 73% 86%;        /* #c0caf5 */
+      --foreground: 228 66% 91%;        /* #d8def7 brightened */
       --card: 229 26% 16%;              /* #1f2335 */
-      --card-foreground: 229 73% 86%;
+      --card-foreground: 228 66% 91%;
       --popover: 229 26% 16%;
-      --popover-foreground: 229 73% 86%;
+      --popover-foreground: 228 66% 91%;
       --primary: 202 100% 75%;        /* #7dcfff cyan */
       --primary-foreground: 235 19% 13%;
       --secondary: 230 24% 19%;         /* #24283b */
-      --secondary-foreground: 229 73% 86%;
+      --secondary-foreground: 228 66% 91%;
       --muted: 230 24% 19%;
-      --muted-foreground: 227 35% 71%;  /* #9aa5ce */
+      --muted-foreground: 229 35% 75%;  /* #a9b1d6 brightened */
       --accent: 230 24% 19%;
       --accent-foreground: 202 100% 75%;/* #7dcfff cyan on hover surfaces */
       --destructive: 349 89% 72%;       /* #f7768e */
@@ -49,7 +49,7 @@
     .line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
   </style>
 </head>
-<body class="bg-background text-foreground font-sans font-light antialiased">
+<body class="bg-background text-foreground font-sans antialiased">
 {% unless page.bare %}
   <div class="flex min-h-screen flex-col">
     {% include xnu/header.html %}
