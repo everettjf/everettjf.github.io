@@ -7,7 +7,7 @@
   --color-background: #282a36;        /* Dracula bg */
   --color-background-secondary: #21222c; /* darker panel */
   --color-primary: #f8f8f2;           /* fg */
-  --color-secondary: #a8b0c8;         /* fg dim */
+  --color-secondary: #c8d0e8;         /* fg dim, brighter */
   --color-tertiary: #6272a4;          /* comment */
   --color-separator: rgba(248, 248, 242, 0.12);
   --color-link: #8be9fd;              /* cyan */
@@ -36,8 +36,6 @@ img { max-width: 100%; display: block; }
 
 html {
   scroll-padding-top: 100px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-size-adjust: 100%;
 }
 

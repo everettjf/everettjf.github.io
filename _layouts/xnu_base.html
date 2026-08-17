@@ -32,7 +32,7 @@
       --secondary: 232 14% 31%;         /* #44475a */
       --secondary-foreground: 60 30% 96%;
       --muted: 232 14% 31%;
-      --muted-foreground: 225 23% 72%;  /* #a8b0c8 */
+      --muted-foreground: 225 41% 85%;  /* #c8d0e8, brighter */
       --accent: 232 14% 31%;
       --accent-foreground: 191 97% 77%; /* cyan on hover surfaces */
       --destructive: 0 100% 67%;        /* #ff5555 */
@@ -42,7 +42,7 @@
       --ring: 191 97% 77%;
       --radius: 0.5rem;
     }
-    html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    html { text-rendering: optimizeLegibility; }
     body { font-feature-settings: "rlig" 1, "calt" 1; }
     ::selection { background-color: rgba(139, 233, 253, 0.25); }
     a:active { color: hsl(var(--primary)); }
@@ -50,7 +50,7 @@
     .line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
   </style>
 </head>
-<body class="bg-background text-foreground font-sans antialiased">
+<body class="bg-background text-foreground font-sans">
 {% unless page.bare %}
   <div class="flex min-h-screen flex-col">
     {% include xnu/header.html %}
