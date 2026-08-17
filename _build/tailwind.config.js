@@ -25,8 +25,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Geist', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        mono: ['Geist Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        sans: ['Cascadia Code', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', 'monospace'],
+        mono: ['Cascadia Code', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', 'monospace'],
       },
       colors: {
         background: 'hsl(var(--background))',

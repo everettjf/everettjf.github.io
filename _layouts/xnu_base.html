@@ -1,92 +1,55 @@
 <!doctype html>
-<html lang="en" class="">
+<html lang="en" class="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fcfcfc" />
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#09090b" />
+  <meta name="theme-color" content="#1a1b26" />
   {% seo %}
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
-
-  <!-- Theme: applied before paint to avoid a flash -->
-  <script>
-  (function () {
-    try {
-      var t = localStorage.getItem('app_theme') || 'system';
-      var d = t === 'dark' || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      if (d) document.documentElement.classList.add('dark');
-      document.documentElement.style.colorScheme = d ? 'dark' : 'light';
-    } catch (e) {}
-  })();
-  </script>
 
   <!-- Precompiled Tailwind (sources in _build/, rebuild with `make assets`). -->
   <link rel="stylesheet" href="/assets/xnu/css/tailwind.css" />
 
   <style>
     @font-face {
-      font-family: 'Geist';
-      src: url('/assets/xnu/fonts/GeistVF.woff') format('woff');
-      font-weight: 100 900;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'Geist Mono';
-      src: url('/assets/xnu/fonts/GeistMonoVF.woff') format('woff');
-      font-weight: 100 900;
+      font-family: 'Cascadia Code';
+      src: url('/assets/fonts/cascadia-code-latin-wght-normal.woff2') format('woff2');
+      font-weight: 200 700;
+      font-style: normal;
       font-display: swap;
     }
     :root {
-      --background: 0 0% 99%;
-      --foreground: 240 10% 4%;
-      --card: 0 0% 100%;
-      --card-foreground: 240 10% 4%;
-      --popover: 0 0% 100%;
-      --popover-foreground: 240 10% 4%;
-      --primary: 240 10% 4%;
-      --primary-foreground: 0 0% 99%;
-      --secondary: 240 5% 96%;
-      --secondary-foreground: 240 10% 4%;
-      --muted: 240 5% 96%;
-      --muted-foreground: 240 4% 46%;
-      --accent: 240 5% 96%;
-      --accent-foreground: 240 10% 4%;
-      --destructive: 0 84% 60%;
-      --destructive-foreground: 0 0% 99%;
-      --border: 240 6% 90%;
-      --input: 240 6% 90%;
-      --ring: 240 10% 4%;
+      /* Tokyo Night (dark-only, omarchy.org-inspired) */
+      --background: 235 19% 13%;        /* #1a1b26 */
+      --foreground: 229 73% 86%;        /* #c0caf5 */
+      --card: 229 26% 16%;              /* #1f2335 */
+      --card-foreground: 229 73% 86%;
+      --popover: 229 26% 16%;
+      --popover-foreground: 229 73% 86%;
+      --primary: 221 89% 72%;           /* #7aa2f7 blue */
+      --primary-foreground: 235 19% 13%;
+      --secondary: 230 24% 19%;         /* #24283b */
+      --secondary-foreground: 229 73% 86%;
+      --muted: 230 24% 19%;
+      --muted-foreground: 227 35% 71%;  /* #9aa5ce */
+      --accent: 230 24% 19%;
+      --accent-foreground: 202 100% 75%;/* #7dcfff cyan on hover surfaces */
+      --destructive: 349 89% 72%;       /* #f7768e */
+      --destructive-foreground: 235 19% 13%;
+      --border: 229 23% 24%;
+      --input: 229 23% 24%;
+      --ring: 221 89% 72%;
       --radius: 0.5rem;
-    }
-    .dark {
-      --background: 240 10% 4%;
-      --foreground: 0 0% 98%;
-      --card: 240 8% 7%;
-      --card-foreground: 0 0% 98%;
-      --popover: 240 8% 7%;
-      --popover-foreground: 0 0% 98%;
-      --primary: 0 0% 98%;
-      --primary-foreground: 240 10% 4%;
-      --secondary: 240 6% 12%;
-      --secondary-foreground: 0 0% 98%;
-      --muted: 240 6% 12%;
-      --muted-foreground: 240 5% 65%;
-      --accent: 240 6% 12%;
-      --accent-foreground: 0 0% 98%;
-      --destructive: 0 62% 50%;
-      --destructive-foreground: 0 0% 98%;
-      --border: 240 6% 16%;
-      --input: 240 6% 16%;
-      --ring: 0 0% 83%;
     }
     html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
     body { font-feature-settings: "rlig" 1, "calt" 1; }
+    ::selection { background-color: rgba(125, 207, 255, 0.25); }
     .line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
     .line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
   </style>
 </head>
-<body class="bg-background text-foreground font-sans antialiased">
+<body class="bg-background text-foreground font-sans font-light antialiased">
 {% unless page.bare %}
   <div class="flex min-h-screen flex-col">
     {% include xnu/header.html %}
@@ -121,42 +84,6 @@
           try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(ta); done();
         }
       };
-
-      // Theme toggle (system / light / dark), mirrors the original app.
-      var KEY = 'app_theme';
-      function apply(theme) {
-        var resolved = theme === 'system'
-          ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-          : theme;
-        document.documentElement.classList.toggle('dark', resolved === 'dark');
-        document.documentElement.style.colorScheme = resolved;
-      }
-      function current() { try { return localStorage.getItem(KEY) || 'system'; } catch (e) { return 'system'; } }
-      window.__xnuSetTheme = function (t) {
-        try { localStorage.setItem(KEY, t); } catch (e) {}
-        apply(t);
-        document.querySelectorAll('[data-theme-opt]').forEach(function (el) {
-          el.querySelector('[data-check]').style.visibility = el.getAttribute('data-theme-opt') === t ? 'visible' : 'hidden';
-        });
-        icons();
-      };
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
-        if (current() === 'system') apply('system');
-      });
-      document.addEventListener('DOMContentLoaded', function () {
-        var t = current();
-        document.querySelectorAll('[data-theme-opt]').forEach(function (el) {
-          var chk = el.querySelector('[data-check]');
-          if (chk) chk.style.visibility = el.getAttribute('data-theme-opt') === t ? 'visible' : 'hidden';
-        });
-        var btn = document.querySelector('[data-theme-trigger]');
-        var menu = document.querySelector('[data-theme-menu]');
-        if (btn && menu) {
-          btn.addEventListener('click', function (e) { e.stopPropagation(); menu.classList.toggle('hidden'); });
-          document.addEventListener('click', function () { menu.classList.add('hidden'); });
-          menu.addEventListener('click', function (e) { e.stopPropagation(); });
-        }
-      });
     })();
   </script>
 </body>
