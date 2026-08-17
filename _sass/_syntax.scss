@@ -1,20 +1,20 @@
-/* Rouge / Pygments token colors — Tokyo Night palette. */
+/* Rouge / Pygments token colors — Dracula palette. */
 
 :root {
-  --code-fg: #c0caf5;
-  --code-comment: #565f89;
-  --code-keyword: #bb9af7;
-  --code-string: #9ece6a;
-  --code-number: #ff9e64;
-  --code-name: #7aa2f7;
-  --code-type: #bb9af7;
-  --code-tag: #9ece6a;
-  --code-attr: #7dcfff;
-  --code-builtin: #7dcfff;
-  --code-error: #f7768e;
-  --code-error-bg: rgba(247, 118, 142, 0.15);
-  --code-inserted: #9ece6a;
-  --code-deleted: #f7768e;
+  --code-fg: #f8f8f2;
+  --code-comment: #6272a4;
+  --code-keyword: #ff79c6;
+  --code-string: #f1fa8c;
+  --code-number: #bd93f9;
+  --code-name: #50fa7b;
+  --code-type: #8be9fd;
+  --code-tag: #ff79c6;
+  --code-attr: #50fa7b;
+  --code-builtin: #8be9fd;
+  --code-error: #ff5555;
+  --code-error-bg: rgba(255, 85, 85, 0.15);
+  --code-inserted: #50fa7b;
+  --code-deleted: #ff5555;
 }
 
 .highlight {

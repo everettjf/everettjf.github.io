@@ -1,19 +1,19 @@
 /* ------------------------------------------------------------------
- * everettjf.github.io — dark terminal theme inspired by omarchy.org
- * (Tokyo Night palette, monospace-first)
+ * everettjf.github.io — dark terminal theme (Dracula palette,
+ * monospace-first)
  * ------------------------------------------------------------------ */
 
 :root {
-  --color-background: #1a1b26;        /* Tokyo Night bg */
-  --color-background-secondary: #1f2335; /* Tokyo Night bg_dark panel */
-  --color-primary: #d8def7;           /* fg, brightened */
-  --color-secondary: #a9b1d6;         /* fg dim, brightened */
-  --color-tertiary: #565f89;          /* comment */
-  --color-separator: rgba(192, 202, 245, 0.12);
-  --color-link: #7dcfff;              /* cyan */
-  --color-link-highlighted: #ffffff;  /* white on hover, like omarchy */
-  --color-accent: #9ece6a;            /* green */
-  --color-code-bg: #24283b;           /* bg_highlight */
+  --color-background: #282a36;        /* Dracula bg */
+  --color-background-secondary: #21222c; /* darker panel */
+  --color-primary: #f8f8f2;           /* fg */
+  --color-secondary: #a8b0c8;         /* fg dim */
+  --color-tertiary: #6272a4;          /* comment */
+  --color-separator: rgba(248, 248, 242, 0.12);
+  --color-link: #8be9fd;              /* cyan */
+  --color-link-highlighted: #ff79c6;  /* pink on hover */
+  --color-accent: #50fa7b;            /* green */
+  --color-code-bg: #44475a;           /* current line */
 
   --font-sans: "Cascadia Code", ui-monospace, SFMono-Regular, "SF Mono",
     Menlo, Consolas, "PingFang SC", "Hiragino Sans GB", "Noto Sans SC",
@@ -52,7 +52,7 @@ body {
 }
 
 ::selection {
-  background-color: rgba(125, 207, 255, 0.25);
+  background-color: rgba(139, 233, 253, 0.25);
 }
 
 a {
