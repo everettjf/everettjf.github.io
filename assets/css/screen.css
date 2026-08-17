@@ -10,8 +10,8 @@
   --color-secondary: #9aa5ce;         /* fg dim */
   --color-tertiary: #565f89;          /* comment */
   --color-separator: rgba(192, 202, 245, 0.12);
-  --color-link: #7aa2f7;              /* blue */
-  --color-link-highlighted: #7dcfff;  /* cyan */
+  --color-link: #7dcfff;              /* cyan */
+  --color-link-highlighted: #ffffff;  /* white on hover, like omarchy */
   --color-accent: #9ece6a;            /* green */
   --color-code-bg: #24283b;           /* bg_highlight */
 
