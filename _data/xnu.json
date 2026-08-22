@@ -3,9 +3,9 @@
   "discord_url": "https://discord.gg/eGzEaP6TzR",
   "featured_apps": [
     { "name": "ScriptWidget", "pitch": "Create native widgets for iOS and macOS using JavaScript and a JSX-like syntax.", "href": "/scriptwidget/", "icon": "code", "platform": "Swift · JavaScript", "badges": ["App Store", "Open source"] },
-    { "name": "TypeTide", "pitch": "System-wide AI translation and inline rewriting.", "href": "/TypeTide/", "icon": "languages", "platform": "macOS · Windows", "badges": ["Homebrew", "Open source"] },
+    { "name": "TypeTide", "pitch": "System-wide AI translation and inline rewriting.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows", "badges": ["Homebrew", "Open source"] },
     { "name": "IPAView", "pitch": "Inspect IPA identity, frameworks, entitlements, privacy manifests, and more locally on your Mac.", "href": "/ipaview/", "icon": "package-search", "platform": "Swift · macOS", "badges": ["App Store", "Open source"] },
-    { "name": "GrapeCompare", "pitch": "Fast, local file and folder comparison for macOS.", "href": "/GrapeCompare/", "icon": "diff", "platform": "Swift · macOS", "badges": ["App Store", "Open source"] },
+    { "name": "GrapeCompare", "pitch": "Fast, local file and folder comparison for macOS.", "href": "/grapecompare/", "icon": "diff", "platform": "Swift · macOS", "badges": ["App Store", "Open source"] },
     { "name": "DSH iOS", "pitch": "Run DeepSeek Harness entirely on your iPad or iPhone.", "href": "/dsh-ios/", "icon": "tablet-smartphone", "platform": "iOS · iPadOS", "badges": ["Open source", "Experimental"] }
   ],
   "legacy_apps": [
@@ -18,20 +18,20 @@
   "developer_tools": [
     { "name": "MicroClaw", "pitch": "An agentic AI assistant rewritten in Rust.", "href": "https://github.com/microclaw/microclaw", "icon": "bot", "platform": "Rust", "install": "brew tap microclaw/tap && brew install microclaw", "badges": ["Homebrew", "Open source"] },
     { "name": "Liney", "pitch": "A native terminal workspace for vibe coding.", "href": "https://github.com/everettjf/liney", "icon": "terminal", "platform": "macOS", "install": "brew install --cask everettjf/tap/liney", "badges": ["Homebrew", "Open source"] },
-    { "name": "EasyVM", "pitch": "A simple, native virtual machine app for Apple silicon Macs.", "href": "https://github.com/everettjf/easyvm", "icon": "monitor", "platform": "macOS", "install": "brew install --cask everettjf/tap/easyvm", "badges": ["Homebrew", "Open source"] },
-    { "name": "MachOExplorer", "pitch": "Explore Mach-O binary files on macOS and Windows.", "href": "https://github.com/everettjf/machoexplorer", "icon": "binary", "platform": "macOS", "install": "brew install --cask everettjf/homebrew-tap/machoexplorer", "badges": ["Homebrew", "Open source"] },
-    { "name": "AppleTrace", "pitch": "Trace Objective-C method calls and export Perfetto timelines.", "href": "https://github.com/everettjf/appletrace", "icon": "activity", "platform": "C · Objective-C", "badges": ["Open source"] },
-    { "name": "atosl-rs", "pitch": "Symbolicate Apple crash addresses on Linux with a Rust replacement for atos.", "href": "https://github.com/everettjf/atosl-rs", "icon": "terminal", "platform": "Rust · CLI", "badges": ["Open source"] },
-    { "name": "WasmPatch", "pitch": "WebAssembly-driven patching for iOS and macOS Objective-C apps.", "href": "https://github.com/everettjf/wasmpatch", "icon": "blocks", "platform": "Swift · C++", "badges": ["Open source"] },
-    { "name": "BYOKit", "pitch": "Reusable Bring Your Own Key configuration UI for Apple-platform apps.", "href": "https://github.com/everettjf/byokit", "icon": "key-round", "platform": "Swift Package", "badges": ["Open source"] },
-    { "name": "ReadWrite", "pitch": "A cross-platform reader and Markdown writing workspace.", "href": "https://github.com/everettjf/readwrite", "icon": "book-open", "platform": "Desktop", "badges": ["Open source"] },
+    { "name": "EasyVM", "pitch": "A simple, native virtual machine app for Apple silicon Macs.", "href": "/easyvm/", "icon": "monitor", "platform": "macOS", "install": "brew install --cask everettjf/tap/easyvm", "badges": ["Homebrew", "Open source"] },
+    { "name": "MachOExplorer", "pitch": "Explore Mach-O binary files on macOS and Windows.", "href": "/machoexplorer/", "icon": "binary", "platform": "macOS", "install": "brew install --cask everettjf/homebrew-tap/machoexplorer", "badges": ["Homebrew", "Open source"] },
+    { "name": "AppleTrace", "pitch": "Trace Objective-C method calls and export Perfetto timelines.", "href": "/appletrace/", "icon": "activity", "platform": "C · Objective-C", "badges": ["Open source"] },
+    { "name": "atosl-rs", "pitch": "Symbolicate Apple crash addresses on Linux with a Rust replacement for atos.", "href": "/atosl-rs/", "icon": "terminal", "platform": "Rust · CLI", "badges": ["Open source"] },
+    { "name": "WasmPatch", "pitch": "WebAssembly-driven patching for iOS and macOS Objective-C apps.", "href": "/wasmpatch/", "icon": "blocks", "platform": "Swift · C++", "badges": ["Open source"] },
+    { "name": "BYOKit", "pitch": "Reusable Bring Your Own Key configuration UI for Apple-platform apps.", "href": "/byokit/", "icon": "key-round", "platform": "Swift Package", "badges": ["Open source"] },
+    { "name": "ReadWrite", "pitch": "A cross-platform reader and Markdown writing workspace.", "href": "/readwrite/", "icon": "book-open", "platform": "Desktop", "badges": ["Open source"] },
     { "name": "Digstar", "pitch": "Analyze who starred a repository, where discovery came from, and whether growth is durable.", "href": "https://github.com/everettjf/digstar", "icon": "chart-no-axes-combined", "platform": "TypeScript · CLI", "badges": ["Open source"] },
     { "name": "JSPower", "pitch": "Run local JavaScript text-automation recipes from Xcode's Editor menu.", "href": "https://github.com/everettjf/jspowerxcode", "icon": "wand-sparkles", "platform": "Swift · Xcode", "badges": ["Open source"] }
   ],
   "research_labs": [
-    { "name": "Veilpath", "pitch": "A guarded iPhone and iPad container explorer built for security research.", "href": "https://github.com/everettjf/veilpath", "icon": "shield", "platform": "Swift · Security research", "badges": ["Open source", "Experimental"] },
-    { "name": "Graph Chat", "pitch": "A local-first, graph-native AI learning workspace.", "href": "https://github.com/everettjf/graphchat", "icon": "git-branch", "platform": "TypeScript · Web", "badges": ["Open source", "Experimental"] },
-    { "name": "BabelTable", "pitch": "Real-time two-way speech translation on one iPhone.", "href": "https://github.com/everettjf/babeltable", "icon": "messages-square", "platform": "Swift · iOS", "badges": ["Open source", "Experimental"] }
+    { "name": "Veilpath", "pitch": "A guarded iPhone and iPad container explorer built for security research.", "href": "/veilpath/", "icon": "shield", "platform": "Swift · Security research", "badges": ["Open source", "Experimental"] },
+    { "name": "Graph Chat", "pitch": "A local-first, graph-native AI learning workspace.", "href": "/graphchat/", "icon": "git-branch", "platform": "TypeScript · Web", "badges": ["Open source", "Experimental"] },
+    { "name": "BabelTable", "pitch": "Real-time two-way speech translation on one iPhone.", "href": "/babeltable/", "icon": "messages-square", "platform": "Swift · iOS", "badges": ["Open source", "Experimental"] }
   ],
   "independent_projects": [
     { "name": "MWFL", "pitch": "A modern C++20 foundation for native Windows desktop apps with real HWND controls.", "href": "https://github.com/mwfl/mwfl", "icon": "panels-top-left", "platform": "C++20 · Windows", "badges": ["Open source", "Independent"] }
@@ -40,7 +40,7 @@
     { "name": "BabelTable", "pitch": "Real-time speech translation between two people, on one iPhone.", "href": "/babeltable/", "icon": "messages-square", "platform": "iOS" },
     { "name": "ScriptWidget", "pitch": "Build iOS, iPadOS and macOS widgets with JavaScript and JSX.", "href": "/scriptwidget/", "icon": "code", "platform": "iOS · macOS" },
     { "name": "StartMyApp", "pitch": "A keyboard-first app launcher for macOS with Apple Intelligence.", "href": "/startmyapp/", "icon": "zap", "platform": "macOS" },
-    { "name": "TypeTide", "pitch": "System-wide translation and inline rewriting across macOS and Windows.", "href": "https://github.com/everettjf/TypeTide", "icon": "languages", "platform": "macOS · Windows" },
+    { "name": "TypeTide", "pitch": "System-wide translation and inline rewriting across macOS and Windows.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows" },
     { "name": "CountMyDays", "pitch": "Countdowns and day-counters in beautiful, offline-first cards.", "href": "/countmydays/", "icon": "clock", "platform": "iOS" },
     { "name": "MyJSONDiff", "pitch": "A simple, native JSON diff tool for macOS.", "href": "/jsondiff/", "icon": "diff", "platform": "macOS" },
     { "name": "Remoboard", "pitch": "Type on your iPhone using the keyboard of your computer.", "href": "/remoboard/", "icon": "keyboard", "platform": "iOS · macOS" },
@@ -48,26 +48,6 @@
     { "name": "NotBadBookmark", "pitch": "A modern, fast replacement for Chrome's bookmark manager.", "href": "/notbadbookmark/", "icon": "bookmark", "platform": "Chrome" }
   ],
   "products": {
-    "typetide": {
-      "name": "TypeTide",
-      "platform": "macOS · Windows",
-      "icon": "languages",
-      "badges": ["Homebrew", "Open source"],
-      "tagline": "Translate selected text and rewrite replies in place, in any app.",
-      "description": "TypeTide turns translation into a system-wide action. Use a shortcut to translate selected text or rewrite what you typed into another language without leaving the current app. Run locally with Ollama or connect an OpenAI-compatible endpoint you choose.",
-      "links": [
-        { "label": "View on GitHub", "href": "https://github.com/everettjf/typetide", "primary": true },
-        { "label": "Download the latest release", "href": "https://github.com/everettjf/typetide/releases/latest" }
-      ],
-      "features": [
-        { "title": "Translate anywhere", "body": "Select text in mail, chat, an IDE, or a browser and open a streaming translation beside it." },
-        { "title": "Rewrite in place", "body": "Type in your language, press a shortcut, and replace the current input with the translated result." },
-        { "title": "Local or cloud", "body": "Use Ollama for offline processing or bring an OpenAI-compatible endpoint." },
-        { "title": "Native on both platforms", "body": "SwiftUI on macOS and Win32 C++ on Windows, with no Electron runtime." },
-        { "title": "Configurable shortcuts", "body": "Set separate read and write actions, directions, styles, and trigger behavior." },
-        { "title": "Private diagnostics", "body": "Operational events stay on device and never include selected text, translations, or credentials." }
-      ]
-    },
     "ipaview": {
       "name": "IPAView",
       "platform": "macOS",
@@ -86,46 +66,6 @@
         { "title": "Local processing", "body": "Extraction happens in the app sandbox; no archive contents are uploaded." },
         { "title": "JSON reports", "body": "Export structured audit results for reviews, automation, or archival." },
         { "title": "Native macOS workflow", "body": "A focused Mac app for inspecting release candidates without a web upload." }
-      ]
-    },
-    "grapecompare": {
-      "name": "GrapeCompare",
-      "platform": "macOS",
-      "icon": "diff",
-      "badges": ["App Store", "Open source"],
-      "tagline": "Fast, accurate file and folder comparison for macOS.",
-      "description": "GrapeCompare is a native SwiftUI comparison workspace for text, folders, images, JSON, plist, and Git changes. It keeps comparisons local and combines readable diffs with safe copy, merge, and export workflows.",
-      "links": [
-        { "label": "Download on the Mac App Store", "href": "https://apps.apple.com/app/id6796778424", "primary": true },
-        { "label": "View on GitHub", "href": "https://github.com/everettjf/grapecompare" }
-      ],
-      "features": [
-        { "title": "File and folder diff", "body": "Compare aligned text changes or browse a recursive, filterable folder result tree." },
-        { "title": "Three-way merge", "body": "Review base, ours, and theirs with explicit conflict resolution." },
-        { "title": "Structured comparison", "body": "Compare images, JSON, and plist content with formats designed for each type." },
-        { "title": "Git workflows", "body": "Inspect branches, commits, the index, and the working tree without changing repository state." },
-        { "title": "Safe file operations", "body": "Preview copy and replace plans with validation, cancellation, results, and recoverable Trash operations." },
-        { "title": "Native and private", "body": "All selected content is processed locally in a sandboxed macOS app." }
-      ]
-    },
-    "dsh-ios": {
-      "name": "DSH iOS",
-      "platform": "iOS · iPadOS",
-      "icon": "tablet-smartphone",
-      "badges": ["Open source", "Experimental"],
-      "tagline": "Run DeepSeek Harness entirely on an iPad or iPhone.",
-      "description": "DSH embeds an Alpine Linux userspace, Node.js, and DeepSeek Harness inside a native iOS app. Sessions, tools, workspaces, and the shell run on the device; only model API requests leave it.",
-      "links": [
-        { "label": "View on GitHub", "href": "https://github.com/everettjf/dsh-ios", "primary": true },
-        { "label": "Watch the walkthrough", "href": "https://github.com/everettjf/dsh-ios/blob/main/docs/dsh-ios-walkthrough.mp4" }
-      ],
-      "features": [
-        { "title": "On-device harness", "body": "Alpine Linux, Node.js, and the real DeepSeek Harness UI run inside the app." },
-        { "title": "Sessions and workspace", "body": "Use the harness model picker, permission presets, agent sessions, and project workspace." },
-        { "title": "Integrated shell", "body": "Open a terminal in the same guest to inspect files or install additional Alpine packages." },
-        { "title": "Supervised server", "body": "The native host manages readiness, health checks, restart behavior, and live logs." },
-        { "title": "Safe guest updates", "body": "New bundled images migrate user settings, credentials, sessions, and workspace data." },
-        { "title": "Apple capability bridge", "body": "Explicitly gated tools can access selected device capabilities with system permissions and confirmations." }
       ]
     },
     "bssidscan": {
@@ -222,33 +162,6 @@
         { "title": "Free desktop apps", "body": "Companion apps for desktop are free downloads." }
       ],
       "privacy": true
-    },
-    "babeltable": {
-      "name": "BabelTable",
-      "platform": "iOS",
-      "icon": "messages-square",
-      "tagline": "Real-time speech translation between two people.",
-      "description": "BabelTable turns your iPhone into a shared interpreter. Set a language for each side, place the phone between you, and speak naturally — BabelTable transcribes and translates each turn live, powered by OpenAI's realtime translation model. Your API key stays on your device, so conversations go straight from your phone to OpenAI with no server in between.",
-      "links": [
-        { "label": "View on GitHub", "href": "https://github.com/everettjf/babeltable", "primary": true }
-      ],
-      "features": [
-        { "title": "Two-way conversation", "body": "Assign a language to each person and let BabelTable translate back and forth in a single shared session." },
-        { "title": "Realtime translation", "body": "Audio streams directly to OpenAI's gpt-realtime-translate model, so speech is transcribed and translated as you talk." },
-        { "title": "Bring your own key", "body": "Use your own OpenAI API key. It is stored locally in the iOS Keychain and never sent to a developer-operated server." },
-        { "title": "Native SwiftUI app", "body": "A focused, native iOS interface built for quick, in-person conversations." },
-        { "title": "Local history", "body": "Conversation transcripts can be saved on your device so you can review prior sessions." },
-        { "title": "Private by design", "body": "No developer-operated backend. Your audio and key go only to OpenAI using the credentials you provide." }
-      ],
-      "privacy": true,
-      "privacy_sections": [
-        { "heading": "Introduction", "body": "BabelTable is a bring-your-own-key real-time translation app. This policy describes what data the app stores and how its translation feature works." },
-        { "heading": "Data we collect", "body": "BabelTable does not collect, sell, or share personal data through a developer-operated server." },
-        { "heading": "OpenAI API key", "body": "Your OpenAI API key is stored locally on your device in the iOS Keychain. BabelTable does not send your API key to any server controlled by the developer." },
-        { "heading": "Speech and translation", "body": "When you start a translation session, audio is sent directly from the app to OpenAI's realtime translation service using the API key you provide. OpenAI processes that audio to provide transcription and translation responses." },
-        { "heading": "Local conversation history", "body": "Conversation transcripts may be saved locally on your device so you can review prior sessions. These saved sessions are not uploaded to a developer-operated server." },
-        { "heading": "Contact", "body": "For privacy questions or support, open an issue at https://github.com/everettjf/babeltable/issues or email xnuapp@gmail.com." }
-      ]
     },
     "startmyapp": {
       "name": "StartMyApp",
