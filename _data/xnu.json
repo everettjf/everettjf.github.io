@@ -4,6 +4,7 @@
   "featured_apps": [
     { "name": "ScriptWidget", "pitch": "Create native widgets for iOS and macOS using JavaScript and a JSX-like syntax.", "href": "/scriptwidget/", "icon": "code", "platform": "Swift · JavaScript", "badges": ["App Store", "Open source"] },
     { "name": "TypeTide", "pitch": "System-wide AI translation and inline rewriting.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows", "badges": ["Homebrew", "Open source"] },
+    { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"] },
     { "name": "GrapeCompare", "pitch": "Fast, local file and folder comparison for macOS.", "href": "/grapecompare/", "icon": "diff", "platform": "Swift · macOS", "install": "brew install --cask everettjf/tap/grapecompare", "badges": ["Homebrew", "Open source"] },
     { "name": "DSH iOS", "pitch": "Run DeepSeek Harness entirely on your iPad or iPhone.", "href": "/dsh-ios/", "icon": "tablet-smartphone", "platform": "iOS · iPadOS", "badges": ["Open source", "Experimental"] }
   ],
