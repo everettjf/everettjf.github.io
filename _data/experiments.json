@@ -1,0 +1,24 @@
+{
+  "experiments": [
+    {
+      "id": "remoboard-scriptwidget-2026-08",
+      "source": "Remoboard",
+      "destination": "ScriptWidget",
+      "placement": "home_featured_card",
+      "status": "awaiting_app_release",
+      "primary_metric": "first_time_downloads",
+      "secondary_metrics": ["landing_view", "app_store_click"],
+      "minimum_run_days": 14
+    },
+    {
+      "id": "bssidscan-scriptwidget-2026-08",
+      "source": "BSSIDScan",
+      "destination": "ScriptWidget",
+      "placement": "settings_featured_card",
+      "status": "awaiting_app_release",
+      "primary_metric": "first_time_downloads",
+      "secondary_metrics": ["landing_view", "app_store_click"],
+      "minimum_run_days": 14
+    }
+  ]
+}
