@@ -4,7 +4,6 @@
   "featured_apps": [
     { "name": "ScriptWidget", "pitch": "Create native widgets for iOS and macOS using JavaScript and a JSX-like syntax.", "href": "/scriptwidget/", "icon": "code", "platform": "Swift · JavaScript", "badges": ["App Store", "Open source"] },
     { "name": "TypeTide", "pitch": "System-wide AI translation and inline rewriting.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows", "badges": ["Homebrew", "Open source"] },
-    { "name": "IPAView", "pitch": "Inspect IPA identity, frameworks, entitlements, privacy manifests, and more locally on your Mac.", "href": "/ipaview/", "icon": "package-search", "platform": "Swift · macOS", "badges": ["App Store", "Open source"] },
     { "name": "GrapeCompare", "pitch": "Fast, local file and folder comparison for macOS.", "href": "/grapecompare/", "icon": "diff", "platform": "Swift · macOS", "badges": ["App Store", "Open source"] },
     { "name": "DSH iOS", "pitch": "Run DeepSeek Harness entirely on your iPad or iPhone.", "href": "/dsh-ios/", "icon": "tablet-smartphone", "platform": "iOS · iPadOS", "badges": ["Open source", "Experimental"] }
   ],
@@ -20,6 +19,7 @@
     { "name": "Liney", "pitch": "A native terminal workspace for vibe coding.", "href": "https://github.com/everettjf/liney", "icon": "terminal", "platform": "macOS", "install": "brew install --cask everettjf/tap/liney", "badges": ["Homebrew", "Open source"] },
     { "name": "EasyVM", "pitch": "A simple, native virtual machine app for Apple silicon Macs.", "href": "/easyvm/", "icon": "monitor", "platform": "macOS", "install": "brew install --cask everettjf/tap/easyvm", "badges": ["Homebrew", "Open source"] },
     { "name": "MachOExplorer", "pitch": "Explore Mach-O binary files on macOS and Windows.", "href": "/machoexplorer/", "icon": "binary", "platform": "macOS", "install": "brew install --cask everettjf/homebrew-tap/machoexplorer", "badges": ["Homebrew", "Open source"] },
+    { "name": "IPAView", "pitch": "Inspect IPA identity, frameworks, entitlements, privacy manifests, and more locally on your Mac.", "href": "/ipaview/", "icon": "package-search", "platform": "Swift · macOS", "install": "brew install --cask everettjf/tap/ipaview", "badges": ["Homebrew", "Open source", "Low maintenance"] },
     { "name": "AppleTrace", "pitch": "Trace Objective-C method calls and export Perfetto timelines.", "href": "/appletrace/", "icon": "activity", "platform": "C · Objective-C", "badges": ["Open source"] },
     { "name": "atosl-rs", "pitch": "Symbolicate Apple crash addresses on Linux with a Rust replacement for atos.", "href": "/atosl-rs/", "icon": "terminal", "platform": "Rust · CLI", "badges": ["Open source"] },
     { "name": "WasmPatch", "pitch": "WebAssembly-driven patching for iOS and macOS Objective-C apps.", "href": "/wasmpatch/", "icon": "blocks", "platform": "Swift · C++", "badges": ["Open source"] },
