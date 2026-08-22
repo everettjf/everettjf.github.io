@@ -12,13 +12,14 @@ archive: false
 <main>
     <article>
         <header>
-            <h1 class="page-title">
+            <p class="terminal-label mb-5">note</p>
+            <h1 class="page-title post-title">
                 {% if has_zh %}
                 <span class="lang-en" lang="en">{{ page.title }}</span>
                 <span class="lang-zh" lang="zh">{{ page.title_zh | default: page.title }}</span>
                 {% else %}
                 {{ page.title }}
-                {% endif %}
+                {% endif %}<span class="terminal-cursor" aria-hidden="true"></span>
             </h1>
             <p class="page-subtitle">
                 <time datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%B %-d, %Y" }}</time>
@@ -40,19 +41,19 @@ archive: false
             <p class="translation-note">Translated from Chinese — <button type="button" class="translation-note-link" data-lang-value="zh">view original</button>.</p>
             {% endif %}
             <section class="md-reader" style="margin-top: 2rem;">
-                {% include toc.html html=en_html %}
+                {% include toc.html html=en_html class="toc" %}
                 {{ en_html }}
             </section>
         </div>
         <div class="lang-zh" lang="zh">
             <section class="md-reader" style="margin-top: 2rem;">
-                {% include toc.html html=zh_html %}
+                {% include toc.html html=zh_html class="toc" %}
                 {{ zh_html }}
             </section>
         </div>
         {% else %}
         <section class="md-reader" style="margin-top: 4rem;">
-            {% include toc.html html=content %}
+            {% include toc.html html=content class="toc" %}
             {{ content }}
         </section>
         {% endif %}

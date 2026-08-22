@@ -10,6 +10,7 @@
 
   <!-- Precompiled Tailwind (sources in _build/, rebuild with `make assets`). -->
   <link rel="stylesheet" href="/assets/xnu/css/tailwind.css" />
+  {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'default' %}<link rel="stylesheet" href="/assets/xnu/css/blog.css" />{% endif %}
 
   <style>
     @font-face {
