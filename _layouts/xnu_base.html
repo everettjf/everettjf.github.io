@@ -92,6 +92,28 @@
           try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(ta); done();
         }
       };
+
+      // Provider-neutral, cookie-free event layer. A future analytics provider can
+      // consume `xnu:track`, `dataLayer`, or the Plausible-compatible calls below.
+      window.__xnuTrack = function (name, props) {
+        var payload = { event: name, props: props || {}, path: location.pathname };
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(payload);
+        document.documentElement.setAttribute('data-last-track', name);
+        if (typeof window.plausible === 'function') window.plausible(name, { props: payload.props });
+        document.dispatchEvent(new CustomEvent('xnu:track', { detail: payload }));
+      };
+
+      document.addEventListener('click', function (event) {
+        var target = event.target.closest && event.target.closest('[data-track]');
+        if (!target) return;
+        var props = {};
+        Array.prototype.forEach.call(target.attributes, function (attr) {
+          if (attr.name.indexOf('data-track-') === 0) props[attr.name.slice(11)] = attr.value;
+        });
+        props.href = target.getAttribute('href') || '';
+        window.__xnuTrack(target.getAttribute('data-track'), props);
+      });
     })();
   </script>
 </body>

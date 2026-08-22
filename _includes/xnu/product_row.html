@@ -1,6 +1,7 @@
 {% assign is_external = false %}
 {% if include.p.href contains "http" %}{% assign is_external = true %}{% endif %}
 <a href="{{ include.p.href }}"{% if is_external %} target="_blank" rel="noopener noreferrer"{% endif %}
+   data-track="project_card" data-track-project="{{ include.p.name | slugify }}" data-track-location="{{ page.url }}"
    class="group terminal-panel flex min-h-[132px] items-start gap-3 p-5 transition-colors hover:border-primary/50 hover:bg-secondary/60">
   <span class="flex h-8 w-8 shrink-0 items-center justify-center border border-border bg-background text-primary transition-colors group-hover:border-primary/50"><i data-lucide="{{ include.p.icon }}" class="h-4 w-4"></i></span>
   <div class="flex-1 min-w-0">
@@ -9,6 +10,7 @@
       <span class="shrink-0 text-[10px] text-muted-foreground tabular-nums">{{ include.p.platform }}</span>
     </div>
     <p class="mt-2 text-xs text-muted-foreground leading-relaxed line-clamp-3">// {{ include.p.pitch }}</p>
+    {% if include.p.badges %}<div class="mt-3 flex flex-wrap gap-1.5">{% for badge in include.p.badges %}<span class="border border-border px-1.5 py-0.5 text-[9px] uppercase tracking-wider text-muted-foreground group-hover:border-primary/30">{{ badge }}</span>{% endfor %}</div>{% endif %}
     {% if include.p.install %}<code class="mt-2 block overflow-x-auto whitespace-nowrap text-xs text-muted-foreground">{{ include.p.install }}</code>{% endif %}
   </div>
   {% if is_external %}<i data-lucide="arrow-up-right" class="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground/40 group-hover:text-primary transition-colors"></i>{% endif %}

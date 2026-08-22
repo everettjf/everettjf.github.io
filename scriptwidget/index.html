@@ -15,8 +15,9 @@ description: "Build iOS, iPadOS, and macOS widgets with JavaScript + JSX, powere
       <i data-lucide="code" class="h-5 w-5"></i>
     </div>
     <div>
-      <h1 class="text-2xl font-semibold tracking-tight">ScriptWidget</h1>
+      <h1 class="text-3xl font-bold tracking-tight">ScriptWidget<span class="terminal-cursor" aria-hidden="true"></span></h1>
       <p class="text-sm text-muted-foreground mt-0.5">iOS · iPadOS · macOS</p>
+      <div class="mt-2 flex flex-wrap gap-1.5"><span class="border border-border px-1.5 py-0.5 text-[9px] uppercase tracking-wider text-muted-foreground">App Store</span><span class="border border-border px-1.5 py-0.5 text-[9px] uppercase tracking-wider text-muted-foreground">Open source</span></div>
     </div>
   </div>
 
@@ -35,16 +36,20 @@ $render(
 
   <div class="flex flex-wrap items-center gap-3 mb-16">
     <a href="https://apps.apple.com/us/app/scriptwidget/id1555600758" target="_blank" rel="noopener noreferrer"
-       class="inline-flex items-center gap-1.5 rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background hover:bg-foreground/90 transition-colors">
+       data-track="product_cta" data-track-project="scriptwidget" data-track-label="app_store"
+       class="inline-flex items-center gap-1.5 bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-85 transition-opacity">
       Get the app<i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
     </a>
-    <a href="/scriptwidget/api/" class="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors">Read the docs</a>
+    <a href="https://github.com/everettjf/scriptwidget" target="_blank" rel="noopener noreferrer" data-track="product_cta" data-track-project="scriptwidget" data-track-label="github" class="inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors">View on GitHub<i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i></a>
+    <a href="/scriptwidget/api/" data-track="product_cta" data-track-project="scriptwidget" data-track-label="docs" class="inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors">Read the docs</a>
     <a href="{{ site.data.xnu.discord_url }}" target="_blank" rel="noopener noreferrer"
-       class="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+       data-track="community_cta" data-track-project="scriptwidget" data-track-label="discord"
+       class="inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors">
       <i data-lucide="message-circle" class="h-4 w-4"></i>Join Discord
     </a>
     <a href="mailto:{{ site.data.xnu.support_email }}?subject=ScriptWidget%20%E2%80%94%20Feedback%20%2F%20Support"
-       class="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-secondary transition-colors">
+       data-track="support_cta" data-track-project="scriptwidget" data-track-label="email"
+       class="inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors">
       <i data-lucide="mail" class="h-4 w-4"></i>Feedback
     </a>
   </div>
