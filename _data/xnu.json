@@ -1,41 +1,38 @@
 {
   "support_email": "xnuapp@gmail.com",
   "discord_url": "https://discord.gg/eGzEaP6TzR",
-  "featured_projects": [
-    { "name": "MicroClaw", "pitch": "Rewrite OpenClaw with Rust.", "href": "https://github.com/microclaw/microclaw", "icon": "bot", "platform": "Rust" },
-    { "name": "Liney", "pitch": "Yet another terminal for vibe coding.", "href": "https://github.com/everettjf/liney", "icon": "terminal", "platform": "Swift · macOS" },
-    { "name": "EasyVM", "pitch": "Create and run native macOS and ARM64 Linux virtual machines on Apple silicon.", "href": "https://github.com/everettjf/easyvm", "icon": "monitor", "platform": "Swift · macOS" },
+  "featured_apps": [
     { "name": "ScriptWidget", "pitch": "Create native widgets for iOS and macOS using JavaScript and a JSX-like syntax.", "href": "https://github.com/everettjf/scriptwidget", "icon": "code", "platform": "Swift · JavaScript" },
-    { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "https://github.com/everettjf/remoboard", "icon": "keyboard", "platform": "Swift · iOS" },
-    { "name": "MachOExplorer", "pitch": "A comprehensive tool for exploring Mach-O binary files.", "href": "https://github.com/everettjf/machoexplorer", "icon": "binary", "platform": "C++ · Desktop" },
-    { "name": "atosl-rs", "pitch": "A Rust-based replacement for Apple's atos tool on Linux for symbolication.", "href": "https://github.com/everettjf/atosl-rs", "icon": "terminal", "platform": "Rust · CLI" },
-    { "name": "WasmPatch", "pitch": "A patch module for iOS and macOS apps using WebAssembly.", "href": "https://github.com/everettjf/wasmpatch", "icon": "blocks", "platform": "Swift · C++" },
-    { "name": "AppleTrace", "pitch": "A powerful tool for tracing Objective-C method calls.", "href": "https://github.com/everettjf/appletrace", "icon": "activity", "platform": "C · ObjC" }
+    { "name": "TypeTide", "pitch": "System-wide AI translation and inline rewriting.", "href": "https://github.com/everettjf/typetide", "icon": "languages", "platform": "macOS · Windows" },
+    { "name": "IPAView", "pitch": "Inspect IPA identity, frameworks, entitlements, privacy manifests, and more locally on your Mac.", "href": "https://github.com/everettjf/ipaview", "icon": "package-search", "platform": "Swift · macOS" },
+    { "name": "GrapeCompare", "pitch": "Fast, local file and folder comparison for macOS.", "href": "https://github.com/everettjf/grapecompare", "icon": "diff", "platform": "Swift · macOS" },
+    { "name": "DSH iOS", "pitch": "Run DeepSeek Harness entirely on your iPad or iPhone.", "href": "https://github.com/everettjf/dsh-ios", "icon": "tablet-smartphone", "platform": "iOS · iPadOS" }
   ],
-  "app_store": [
-    { "name": "ScriptWidget", "pitch": "Create native widgets with JavaScript and a JSX-like syntax.", "href": "https://apps.apple.com/us/app/scriptwidget/id1555600758", "icon": "code", "platform": "iOS · macOS" },
-    { "name": "GrapeCompare", "pitch": "Compare files and folders quickly with a native Mac app.", "href": "https://apps.apple.com/app/id6796778424", "icon": "diff", "platform": "macOS" },
+  "legacy_apps": [
+    { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "https://apps.apple.com/us/app/remote-keyboard/id1474458879", "icon": "keyboard", "platform": "iOS" },
+    { "name": "BSSIDScan", "pitch": "Discover and analyze nearby Wi-Fi networks.", "href": "https://apps.apple.com/us/app/bssid-scan/id1442586100", "icon": "wifi", "platform": "iOS" },
     { "name": "StartMyApp", "pitch": "A fast, keyboard-first application launcher.", "href": "https://apps.apple.com/us/app/startmyapp-fast-app-launch/id6753610893", "icon": "zap", "platform": "macOS" },
     { "name": "CountMyDays", "pitch": "Offline countdowns and cumulative day tracking.", "href": "https://apps.apple.com/us/app/countmydays-days-counter/id6753280745", "icon": "clock", "platform": "iOS" },
-    { "name": "MyJSONDiff", "pitch": "A native, order-insensitive JSON comparison tool.", "href": "https://apps.apple.com/us/app/myjsondiff/id6742816661", "icon": "braces", "platform": "macOS" },
-    { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "https://apps.apple.com/us/app/remote-keyboard/id1474458879", "icon": "keyboard", "platform": "iOS" },
-    { "name": "BSSIDScan", "pitch": "Discover and analyze nearby Wi-Fi networks.", "href": "https://apps.apple.com/us/app/bssid-scan/id1442586100", "icon": "wifi", "platform": "iOS" }
+    { "name": "MyJSONDiff", "pitch": "A native, order-insensitive JSON comparison tool.", "href": "https://apps.apple.com/us/app/myjsondiff/id6742816661", "icon": "braces", "platform": "macOS" }
   ],
-  "homebrew": [
+  "developer_tools": [
     { "name": "MicroClaw", "pitch": "An agentic AI assistant rewritten in Rust.", "href": "https://github.com/microclaw/microclaw", "icon": "bot", "platform": "Rust", "install": "brew tap microclaw/tap && brew install microclaw" },
     { "name": "Liney", "pitch": "A native terminal workspace for vibe coding.", "href": "https://github.com/everettjf/liney", "icon": "terminal", "platform": "macOS", "install": "brew install --cask everettjf/tap/liney" },
     { "name": "EasyVM", "pitch": "A simple, native virtual machine app for Apple silicon Macs.", "href": "https://github.com/everettjf/easyvm", "icon": "monitor", "platform": "macOS", "install": "brew install --cask everettjf/tap/easyvm" },
     { "name": "MachOExplorer", "pitch": "Explore Mach-O binary files on macOS and Windows.", "href": "https://github.com/everettjf/machoexplorer", "icon": "binary", "platform": "macOS", "install": "brew install --cask everettjf/homebrew-tap/machoexplorer" },
-    { "name": "TypeTide", "pitch": "System-wide AI translation and inline rewriting.", "href": "https://github.com/everettjf/TypeTide", "icon": "languages", "platform": "macOS", "install": "brew install --cask everettjf/typetide/typetide" }
+    { "name": "AppleTrace", "pitch": "Trace Objective-C method calls and export Perfetto timelines.", "href": "https://github.com/everettjf/appletrace", "icon": "activity", "platform": "C · Objective-C" },
+    { "name": "atosl-rs", "pitch": "Symbolicate Apple crash addresses on Linux with a Rust replacement for atos.", "href": "https://github.com/everettjf/atosl-rs", "icon": "terminal", "platform": "Rust · CLI" },
+    { "name": "WasmPatch", "pitch": "WebAssembly-driven patching for iOS and macOS Objective-C apps.", "href": "https://github.com/everettjf/wasmpatch", "icon": "blocks", "platform": "Swift · C++" },
+    { "name": "BYOKit", "pitch": "Reusable Bring Your Own Key configuration UI for Apple-platform apps.", "href": "https://github.com/everettjf/byokit", "icon": "key-round", "platform": "Swift Package" },
+    { "name": "ReadWrite", "pitch": "A cross-platform reader and Markdown writing workspace.", "href": "https://github.com/everettjf/readwrite", "icon": "book-open", "platform": "Desktop" }
   ],
-  "open_source": [
+  "research_labs": [
+    { "name": "Veilpath", "pitch": "A guarded iPhone and iPad container explorer built for security research.", "href": "https://github.com/everettjf/veilpath", "icon": "shield", "platform": "Swift · Security research" },
     { "name": "Graph Chat", "pitch": "A local-first, graph-native AI learning workspace.", "href": "https://github.com/everettjf/graphchat", "icon": "git-branch", "platform": "TypeScript · Web" },
-    { "name": "TypeTide", "pitch": "System-wide AI translation and inline rewriting for macOS and Windows.", "href": "https://github.com/everettjf/TypeTide", "icon": "languages", "platform": "Swift · C++" },
-    { "name": "GrapeCompare", "pitch": "Fast, local file and folder comparison for macOS.", "href": "https://github.com/everettjf/grapecompare", "icon": "diff", "platform": "Swift · macOS" },
-    { "name": "BabelTable", "pitch": "Real-time two-way speech translation on one iPhone.", "href": "https://github.com/everettjf/babeltable", "icon": "messages-square", "platform": "Swift · iOS" },
-    { "name": "MyJSONDiff", "pitch": "A native, order-insensitive JSON comparison tool for macOS.", "href": "https://github.com/everettjf/jsondiff", "icon": "braces", "platform": "Swift · macOS" },
-    { "name": "StartMyApp", "pitch": "A fast, keyboard-first macOS application launcher.", "href": "https://github.com/everettjf/startmyapp", "icon": "zap", "platform": "Swift · macOS" },
-    { "name": "CountMyDays", "pitch": "Offline countdowns and cumulative day tracking for iPhone.", "href": "https://github.com/everettjf/countdays", "icon": "clock", "platform": "Swift · iOS" }
+    { "name": "BabelTable", "pitch": "Real-time two-way speech translation on one iPhone.", "href": "https://github.com/everettjf/babeltable", "icon": "messages-square", "platform": "Swift · iOS" }
+  ],
+  "independent_projects": [
+    { "name": "MWFL", "pitch": "A modern C++20 foundation for native Windows desktop apps with real HWND controls.", "href": "https://github.com/mwfl/mwfl", "icon": "panels-top-left", "platform": "C++20 · Windows" }
   ],
   "apps": [
     { "name": "BabelTable", "pitch": "Real-time speech translation between two people, on one iPhone.", "href": "/babeltable/", "icon": "messages-square", "platform": "iOS" },
@@ -122,25 +119,6 @@
         { "title": "Keyboard navigation", "body": "Arrow keys, enter, escape — get around without a mouse." },
         { "title": "Light + dark", "body": "Follows your system theme." },
         { "title": "No new account", "body": "Sits on top of Chrome's own bookmark store. Sync still works." }
-      ],
-      "privacy": true
-    },
-    "plainmd": {
-      "name": "PlainMD",
-      "platform": "Android",
-      "icon": "file-text",
-      "tagline": "A focused Markdown editor for Android.",
-      "description": "A small, fast Markdown editor for Android. Write on the left, preview on the right (or one tap to switch). Files live wherever you tell them to via the system file picker — no folder lock-in, no cloud, no nag screens.",
-      "links": [
-        { "label": "Contact for download", "href": "mailto:xnuapp@gmail.com?subject=PlainMD%20download", "primary": true }
-      ],
-      "features": [
-        { "title": "Edit / preview toggle", "body": "A single tap swaps between writing and reading mode." },
-        { "title": "Real Markdown", "body": "Tables, task lists, strikethrough, fenced code, LaTeX math." },
-        { "title": "Save anywhere", "body": "Uses the system file picker — keep notes in any folder or cloud you already use." },
-        { "title": "Adjustable type", "body": "Comfortable text sizes and themes for long writing sessions." },
-        { "title": "Syntax highlighting", "body": "Code blocks get language-aware coloring." },
-        { "title": "Autosave drafts", "body": "Never lose a paragraph to an accidental back-button." }
       ],
       "privacy": true
     },
