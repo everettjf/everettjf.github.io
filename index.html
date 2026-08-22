@@ -3,56 +3,60 @@ layout: xnu_base
 title: "XNU — Apps and open-source projects by everettjf"
 description: "Native apps, developer tools, and open-source projects by everettjf."
 ---
-<div class="mx-auto max-w-5xl px-5 pb-20 pt-14 sm:px-6 sm:pt-20">
-  <section class="mb-16 max-w-3xl sm:mb-24">
-    <p class="mb-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">Independent software by everettjf</p>
-    <h1 class="text-5xl font-bold tracking-tighter sm:text-7xl">Stay focused.<br>Keep innovating.</h1>
-    <p class="mt-6 max-w-2xl text-base leading-relaxed text-foreground/75 sm:text-lg">
+<div class="mx-auto max-w-5xl px-5 pb-20 sm:px-6">
+  <section class="min-h-[560px] border-b border-border py-20 sm:flex sm:min-h-[620px] sm:items-center sm:py-24">
+    <div class="max-w-3xl">
+    <p class="terminal-label mb-6">independent_software</p>
+    <h1 class="text-5xl font-bold leading-[.98] tracking-tighter sm:text-7xl">Stay focused.<br>Keep innovating.<span class="terminal-cursor" aria-hidden="true"></span></h1>
+    <p class="mt-8 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
       I build native apps, command-line tools, and open-source experiments—mostly for Apple platforms, developer workflows, and AI.
     </p>
     <div class="mt-7 flex flex-wrap gap-3">
-      <a href="#featured" class="inline-flex items-center gap-2 rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-80">
-        Featured projects <i data-lucide="arrow-down" class="h-4 w-4"></i>
+      <a href="#featured" class="inline-flex items-center gap-2 bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-85">
+        [ featured projects ]
       </a>
-      <a href="/projects/" class="inline-flex items-center gap-2 rounded-md border border-border px-4 py-2 text-sm font-medium transition-colors hover:bg-secondary">
-        All projects <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+      <a href="/projects/" class="inline-flex items-center gap-2 border border-primary/60 px-4 py-2.5 text-xs font-semibold text-primary transition-colors hover:bg-primary/10">
+        [ all projects ↗ ]
       </a>
+    </div>
     </div>
   </section>
 
-  <section id="featured" class="mb-16 scroll-mt-20 sm:mb-20">
+  <section id="featured" class="border-b border-border py-16 scroll-mt-20 sm:py-20">
     <div class="mb-4 flex items-baseline justify-between border-b border-border pb-3">
       <div>
-        <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">Featured apps</h2>
-        <p class="mt-1 text-xs text-muted-foreground">The products receiving active development and growth work.</p>
+        <p class="terminal-label">featured_apps</p>
+        <h2 class="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">Built for daily use.</h2>
+        <p class="mt-2 text-xs text-muted-foreground">// products receiving active development and growth work.</p>
       </div>
       <span class="text-xs tabular-nums text-muted-foreground">{{ site.data.xnu.featured_apps | size }}</span>
     </div>
-    <div class="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
       {% for p in site.data.xnu.featured_apps %}{% include xnu/product_row.html p=p %}{% endfor %}
     </div>
   </section>
 
-  <section id="established-apps" class="mb-16 scroll-mt-20 sm:mb-20">
+  <section id="established-apps" class="border-b border-border py-16 scroll-mt-20 sm:py-20">
     <div class="mb-4 flex items-baseline justify-between border-b border-border pb-3">
       <div>
-        <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">Established apps</h2>
-        <p class="mt-1 text-xs text-muted-foreground">Mature App Store products kept available for their existing users.</p>
+        <p class="terminal-label">established_apps</p>
+        <h2 class="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">Still useful. Still available.</h2>
+        <p class="mt-2 text-xs text-muted-foreground">// mature App Store products with an existing audience.</p>
       </div>
       <span class="text-xs tabular-nums text-muted-foreground">{{ site.data.xnu.legacy_apps | size }}</span>
     </div>
-    <div class="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
       {% for p in site.data.xnu.legacy_apps %}{% include xnu/product_row.html p=p %}{% endfor %}
     </div>
   </section>
 
-  <section class="rounded-xl border border-border bg-secondary/35 px-5 py-6 sm:flex sm:items-center sm:justify-between sm:px-7">
+  <section class="terminal-panel mt-16 px-5 py-6 sm:flex sm:items-center sm:justify-between sm:px-7">
     <div>
-      <h2 class="font-semibold tracking-tight">There’s more in the workshop.</h2>
-      <p class="mt-1 text-sm text-muted-foreground">Browse App Store releases, Homebrew tools, and the full open-source catalog.</p>
+      <h2 class="font-semibold tracking-tight">$ open ./projects</h2>
+      <p class="mt-2 text-xs text-muted-foreground">// App Store releases, Homebrew tools, and the full open-source catalog.</p>
     </div>
-    <a href="/projects/" class="mt-4 inline-flex shrink-0 items-center gap-1.5 text-sm font-medium hover:underline sm:ml-8 sm:mt-0">
-      View all projects <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+    <a href="/projects/" class="mt-4 inline-flex shrink-0 items-center gap-1.5 text-xs font-semibold text-primary hover:underline sm:ml-8 sm:mt-0">
+      [ view all projects ↗ ]
     </a>
   </section>
 </div>
