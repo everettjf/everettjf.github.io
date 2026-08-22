@@ -25,8 +25,8 @@
     { "name": "WasmPatch", "pitch": "WebAssembly-driven patching for iOS and macOS Objective-C apps.", "href": "/wasmpatch/", "icon": "blocks", "platform": "Swift · C++", "badges": ["Open source"] },
     { "name": "BYOKit", "pitch": "Reusable Bring Your Own Key configuration UI for Apple-platform apps.", "href": "/byokit/", "icon": "key-round", "platform": "Swift Package", "badges": ["Open source"] },
     { "name": "ReadWrite", "pitch": "A cross-platform reader and Markdown writing workspace.", "href": "/readwrite/", "icon": "book-open", "platform": "Desktop", "badges": ["Open source"] },
-    { "name": "Digstar", "pitch": "Analyze who starred a repository, where discovery came from, and whether growth is durable.", "href": "https://github.com/everettjf/digstar", "icon": "chart-no-axes-combined", "platform": "TypeScript · CLI", "badges": ["Open source"] },
-    { "name": "JSPower", "pitch": "Run local JavaScript text-automation recipes from Xcode's Editor menu.", "href": "https://github.com/everettjf/jspowerxcode", "icon": "wand-sparkles", "platform": "Swift · Xcode", "badges": ["Open source"] }
+    { "name": "JSPower", "pitch": "Run local JavaScript text-automation recipes from Xcode's Editor menu.", "href": "https://github.com/everettjf/jspowerxcode", "icon": "wand-sparkles", "platform": "Swift · Xcode", "badges": ["Open source"] },
+    { "name": "Digstar", "pitch": "Analyze who starred a repository, where discovery came from, and whether growth is durable.", "href": "https://github.com/everettjf/digstar", "icon": "chart-no-axes-combined", "platform": "TypeScript · CLI", "badges": ["Open source", "Utility"] }
   ],
   "research_labs": [
     { "name": "Veilpath", "pitch": "A guarded iPhone and iPad container explorer built for security research.", "href": "/veilpath/", "icon": "shield", "platform": "Swift · Security research", "badges": ["Open source", "Experimental"] },
