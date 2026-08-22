@@ -4,7 +4,8 @@ layout: default
 
 <main>
     <article>
-        <h1 class="page-title">{{ page.title }}</h1>
+        <p class="terminal-label mb-5">page</p>
+        <h1 class="page-title">{{ page.title }}<span class="terminal-cursor" aria-hidden="true"></span></h1>
         <section class="md-reader" style="margin-top: 3rem;">
             {{ content }}
         </section>

@@ -1,14 +1,22 @@
 <header class="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur">
+  {% assign window_title = 'README.md' %}
+  {% if page.layout == 'post' or page.url == '/archive' or page.url == '/archive/' %}{% assign window_title = 'notes.md' %}
+  {% elsif page.url == '/projects/' %}{% assign window_title = 'projects.md' %}
+  {% elsif page.url contains '/about' %}{% assign window_title = 'about.md' %}
+  {% elsif page.product %}{% assign window_title = page.product | append: '.md' %}
+  {% endif %}
   <div class="mx-auto flex h-12 max-w-5xl items-center justify-between px-5 sm:px-6">
     <a href="/" class="flex items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground">
       <span class="flex gap-1.5" aria-hidden="true"><i class="h-2.5 w-2.5 rounded-full bg-[#e06c5f]"></i><i class="h-2.5 w-2.5 rounded-full bg-[#d8a657]"></i><i class="h-2.5 w-2.5 rounded-full bg-primary"></i></span>
-      <span class="hidden sm:inline">~/xnu — projects.md</span>
+      <span class="hidden sm:inline">~/xnu — {{ window_title }}</span>
       <span class="sm:hidden">~/xnu</span>
     </a>
+    {% assign notes_active = false %}{% if page.layout == 'post' or page.url == '/archive' or page.url == '/archive/' %}{% assign notes_active = true %}{% endif %}
     <nav class="flex items-center gap-3 text-xs text-muted-foreground sm:gap-5">
-      <a href="/" class="hover:text-primary transition-colors">home</a>
-      <a href="/projects/" class="hover:text-primary transition-colors">projects</a>
-      <a href="/archive" class="hidden hover:text-primary transition-colors sm:inline">notes</a>
+      <a href="/"{% if page.url == '/' %} aria-current="page"{% endif %} class="hover:text-primary transition-colors{% if page.url == '/' %} text-primary{% endif %}">home</a>
+      <a href="/projects/"{% if page.url == '/projects/' %} aria-current="page"{% endif %} class="hover:text-primary transition-colors{% if page.url == '/projects/' %} text-primary{% endif %}">projects</a>
+      <a href="/archive"{% if notes_active %} aria-current="page"{% endif %} class="hidden hover:text-primary transition-colors sm:inline{% if notes_active %} text-primary{% endif %}">notes</a>
+      <a href="/about"{% if page.url contains '/about' %} aria-current="page"{% endif %} class="hidden hover:text-primary transition-colors sm:inline{% if page.url contains '/about' %} text-primary{% endif %}">about</a>
       <a href="https://github.com/everettjf" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
          data-track="site_cta" data-track-label="github" data-track-location="header"
          class="inline-flex h-7 w-7 items-center justify-center hover:text-primary transition-colors">
