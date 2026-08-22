@@ -48,26 +48,6 @@
     { "name": "NotBadBookmark", "pitch": "A modern, fast replacement for Chrome's bookmark manager.", "href": "/notbadbookmark/", "icon": "bookmark", "platform": "Chrome" }
   ],
   "products": {
-    "ipaview": {
-      "name": "IPAView",
-      "platform": "macOS",
-      "icon": "package-search",
-      "badges": ["App Store", "Open source"],
-      "tagline": "Audit an iOS IPA locally before it ships.",
-      "description": "Drop an IPA into IPAView to inspect app identity, installed size, embedded frameworks and extensions, localizations, Privacy Manifest coverage, Mach-O architectures, provisioning details, and entitlements. Archive contents stay on your Mac.",
-      "links": [
-        { "label": "Download on the Mac App Store", "href": "https://apps.apple.com/us/app/ipaview-for-dev/id6475201960?mt=12", "primary": true },
-        { "label": "View on GitHub", "href": "https://github.com/everettjf/ipaview" }
-      ],
-      "features": [
-        { "title": "Identity and signing", "body": "Review bundle identity, provisioning details, entitlements, and embedded targets." },
-        { "title": "Privacy coverage", "body": "Inspect Privacy Manifests across the application and its embedded frameworks." },
-        { "title": "Binary inventory", "body": "See Mach-O architectures, installed size, frameworks, extensions, and localizations." },
-        { "title": "Local processing", "body": "Extraction happens in the app sandbox; no archive contents are uploaded." },
-        { "title": "JSON reports", "body": "Export structured audit results for reviews, automation, or archival." },
-        { "title": "Native macOS workflow", "body": "A focused Mac app for inspecting release candidates without a web upload." }
-      ]
-    },
     "bssidscan": {
       "name": "BSSIDScan",
       "platform": "iOS",
