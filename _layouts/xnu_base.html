@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#282a36" />
+  <meta name="theme-color" content="#0e0d0b" />
   {% seo %}
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
@@ -20,37 +20,44 @@
       font-display: swap;
     }
     :root {
-      /* Dracula (dark-only) */
-      --background: 231 15% 18%;        /* #282a36 */
-      --foreground: 60 30% 96%;         /* #f8f8f2 */
-      --card: 235 14% 15%;              /* #21222c */
-      --card-foreground: 60 30% 96%;
-      --popover: 235 14% 15%;
-      --popover-foreground: 60 30% 96%;
-      --primary: 191 97% 77%;           /* #8be9fd cyan */
-      --primary-foreground: 231 15% 18%;
-      --secondary: 232 14% 31%;         /* #44475a */
-      --secondary-foreground: 60 30% 96%;
-      --muted: 232 14% 31%;
-      --muted-foreground: 225 41% 85%;  /* #c8d0e8, brighter */
-      --accent: 232 14% 31%;
-      --accent-foreground: 191 97% 77%; /* cyan on hover surfaces */
-      --destructive: 0 100% 67%;        /* #ff5555 */
-      --destructive-foreground: 60 30% 96%;
-      --border: 232 14% 31%;
-      --input: 232 14% 31%;
-      --ring: 191 97% 77%;
-      --radius: 0.5rem;
+      --background: 40 10% 5%;          /* warm near-black */
+      --foreground: 48 17% 81%;         /* warm paper */
+      --card: 45 10% 7%;
+      --card-foreground: 48 17% 81%;
+      --popover: 45 10% 7%;
+      --popover-foreground: 48 17% 81%;
+      --primary: 91 52% 61%;            /* terminal green */
+      --primary-foreground: 40 10% 5%;
+      --secondary: 45 11% 10%;
+      --secondary-foreground: 48 17% 81%;
+      --muted: 45 11% 10%;
+      --muted-foreground: 42 11% 54%;
+      --accent: 33 62% 58%;             /* warm amber */
+      --accent-foreground: 40 10% 5%;
+      --destructive: 7 61% 61%;
+      --destructive-foreground: 40 10% 5%;
+      --border: 45 11% 13%;
+      --input: 45 11% 13%;
+      --ring: 91 52% 61%;
+      --radius: 0.15rem;
     }
     html { text-rendering: optimizeLegibility; }
     body { font-feature-settings: "rlig" 1, "calt" 1; }
-    ::selection { background-color: rgba(139, 233, 253, 0.25); }
+    body { letter-spacing: -0.015em; }
+    ::selection { background-color: rgba(153, 202, 103, 0.28); }
     a:active { color: hsl(var(--primary)); }
+    a:focus-visible, button:focus-visible { outline: 1px solid hsl(var(--primary)); outline-offset: 4px; }
+    .terminal-label { color: hsl(var(--primary)); font-size: .72rem; letter-spacing: .08em; }
+    .terminal-label::before { content: "## "; }
+    .terminal-panel { border: 1px solid hsl(var(--border)); background: hsl(var(--card)); }
+    .terminal-cursor { display:inline-block; width:.55em; height:1em; margin-left:.12em; vertical-align:-.08em; background:hsl(var(--primary)); animation:blink 1.15s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .terminal-cursor { animation: none; } }
     .line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
     .line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
   </style>
 </head>
-<body class="bg-background text-foreground font-sans font-light">
+<body class="bg-background text-foreground font-mono font-normal antialiased">
 {% unless page.bare %}
   <div class="flex min-h-screen flex-col">
     {% include xnu/header.html %}
