@@ -15,6 +15,7 @@ layout: xnu_base
     <div>
       <h1 class="text-3xl font-bold tracking-tight">{{ prod.name }}<span class="terminal-cursor" aria-hidden="true"></span></h1>
       <p class="text-sm text-muted-foreground mt-0.5">{{ prod.platform }}</p>
+      {% if prod.badges %}<div class="mt-2 flex flex-wrap gap-1.5">{% for badge in prod.badges %}<span class="border border-border px-1.5 py-0.5 text-[9px] uppercase tracking-wider text-muted-foreground">{{ badge }}</span>{% endfor %}</div>{% endif %}
     </div>
   </div>
 
@@ -25,16 +26,19 @@ layout: xnu_base
     {% for link in prod.links %}
       {% assign is_external = false %}{% if link.href contains "http" %}{% assign is_external = true %}{% endif %}
       <a href="{{ link.href }}"{% if is_external %} target="_blank" rel="noopener noreferrer"{% endif %}
+        data-track="product_cta" data-track-project="{{ page.product }}" data-track-label="{{ link.label | slugify }}"
         class="{% if link.primary %}inline-flex items-center gap-1.5 bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-85 transition-opacity{% else %}inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors{% endif %}">
         {{ link.label }}{% if is_external %}<i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>{% endif %}
       </a>
     {% endfor %}
     <a href="{{ site.data.xnu.discord_url }}" target="_blank" rel="noopener noreferrer"
+       data-track="community_cta" data-track-project="{{ page.product }}" data-track-label="discord"
        class="inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors">
       <i data-lucide="message-circle" class="h-4 w-4"></i>
       Join Discord
     </a>
     <a href="mailto:{{ site.data.xnu.support_email }}?subject={{ prod.name | url_encode }}%20%E2%80%94%20Feedback%20%2F%20Support"
+       data-track="support_cta" data-track-project="{{ page.product }}" data-track-label="email"
        class="inline-flex items-center gap-1.5 border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors">
       <i data-lucide="mail" class="h-4 w-4"></i>
       Feedback
