@@ -1,0 +1,38 @@
+---
+layout: xnu_base
+title: Growth
+permalink: /growth/
+description: Public growth baseline and active product experiments.
+---
+<div class="mx-auto max-w-5xl px-5 py-16 sm:px-6 sm:py-20">
+  <div class="mb-14 max-w-3xl">
+    <p class="terminal-label mb-4">growth_baseline</p>
+    <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">Build useful things. Measure whether people find them.</h1>
+    <p class="mt-4 text-sm leading-relaxed text-muted-foreground">A lightweight, public baseline for open-source discovery and product cross-promotion. App Store download data stays in App Store Connect.</p>
+    <p class="mt-3 text-xs text-muted-foreground">Last snapshot: {{ site.data.growth.updated_at }}</p>
+  </div>
+
+  <section class="mb-16">
+    <div class="mb-5 flex items-end justify-between gap-4"><p class="terminal-label">repository_stars</p><span class="text-xs text-muted-foreground">weekly snapshot</span></div>
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {% for repo in site.data.growth.repositories %}
+      <a href="https://github.com/{{ repo.repo }}" target="_blank" rel="noopener noreferrer" data-track="growth_repo" data-track-project="{{ repo.name | slugify }}" class="terminal-panel p-5 transition-colors hover:border-primary/50">
+        <div class="flex items-baseline justify-between gap-3"><h2 class="text-sm font-semibold">{{ repo.name }}</h2><span class="text-lg tabular-nums text-primary">{{ repo.stars }}</span></div>
+        <p class="mt-2 text-xs text-muted-foreground">{{ repo.priority }} · Star on GitHub ↗</p>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section>
+    <p class="terminal-label mb-5">active_experiments</p>
+    <div class="space-y-3">
+      {% for experiment in site.data.experiments.experiments %}
+      <div class="terminal-panel p-5">
+        <div class="flex flex-wrap items-center justify-between gap-3"><h2 class="text-sm font-semibold">{{ experiment.source }} → {{ experiment.destination }}</h2><span class="border border-border px-2 py-1 text-[10px] uppercase text-muted-foreground">{{ experiment.status | replace: '_', ' ' }}</span></div>
+        <p class="mt-3 text-xs leading-relaxed text-muted-foreground">Placement: {{ experiment.placement }} · Primary: {{ experiment.primary_metric }} · Minimum run: {{ experiment.minimum_run_days }} days</p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>

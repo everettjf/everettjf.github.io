@@ -1,0 +1,53 @@
+{
+  "updated_at": "2026-08-22",
+  "repositories": [
+    {
+      "name": "ScriptWidget",
+      "repo": "everettjf/scriptwidget",
+      "stars": 276,
+      "priority": "core"
+    },
+    {
+      "name": "TypeTide",
+      "repo": "everettjf/typetide",
+      "stars": 11,
+      "priority": "core"
+    },
+    {
+      "name": "Remoboard",
+      "repo": "everettjf/remoboard",
+      "stars": 4,
+      "priority": "established"
+    },
+    {
+      "name": "GrapeCompare",
+      "repo": "everettjf/grapecompare",
+      "stars": 3,
+      "priority": "maintained"
+    },
+    {
+      "name": "IPAView",
+      "repo": "everettjf/ipaview",
+      "stars": 2,
+      "priority": "low"
+    },
+    {
+      "name": "JSPower",
+      "repo": "everettjf/jspowerxcode",
+      "stars": 0,
+      "priority": "incubating"
+    },
+    {
+      "name": "Digstar",
+      "repo": "everettjf/digstar",
+      "stars": 0,
+      "priority": "utility"
+    }
+  ],
+  "snapshots": [
+    {
+      "date": "2026-08-22",
+      "total_stars": 296
+    }
+  ]
+}
