@@ -23,26 +23,26 @@ description: "Native apps, developer tools, and open-source projects by everettj
   <section id="featured" class="mb-16 scroll-mt-20 sm:mb-20">
     <div class="mb-4 flex items-baseline justify-between border-b border-border pb-3">
       <div>
-        <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">Featured projects</h2>
-        <p class="mt-1 text-xs text-muted-foreground">A selection of apps, tools, and experiments worth exploring.</p>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">Featured apps</h2>
+        <p class="mt-1 text-xs text-muted-foreground">The products receiving active development and growth work.</p>
       </div>
-      <span class="text-xs tabular-nums text-muted-foreground">{{ site.data.xnu.featured_projects | size }}</span>
+      <span class="text-xs tabular-nums text-muted-foreground">{{ site.data.xnu.featured_apps | size }}</span>
     </div>
     <div class="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
-      {% for p in site.data.xnu.featured_projects %}{% include xnu/product_row.html p=p %}{% endfor %}
+      {% for p in site.data.xnu.featured_apps %}{% include xnu/product_row.html p=p %}{% endfor %}
     </div>
   </section>
 
-  <section id="app-store" class="mb-16 scroll-mt-20 sm:mb-20">
+  <section id="established-apps" class="mb-16 scroll-mt-20 sm:mb-20">
     <div class="mb-4 flex items-baseline justify-between border-b border-border pb-3">
       <div>
-        <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">Download on the App Store</h2>
-        <p class="mt-1 text-xs text-muted-foreground">Ready-to-use apps for iPhone, iPad, and Mac.</p>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">Established apps</h2>
+        <p class="mt-1 text-xs text-muted-foreground">Mature App Store products kept available for their existing users.</p>
       </div>
-      <span class="text-xs tabular-nums text-muted-foreground">{{ site.data.xnu.app_store | size }}</span>
+      <span class="text-xs tabular-nums text-muted-foreground">{{ site.data.xnu.legacy_apps | size }}</span>
     </div>
     <div class="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
-      {% for p in site.data.xnu.app_store %}{% include xnu/product_row.html p=p %}{% endfor %}
+      {% for p in site.data.xnu.legacy_apps %}{% include xnu/product_row.html p=p %}{% endfor %}
     </div>
   </section>
 
