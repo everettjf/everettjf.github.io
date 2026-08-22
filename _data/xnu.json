@@ -24,7 +24,9 @@
     { "name": "atosl-rs", "pitch": "Symbolicate Apple crash addresses on Linux with a Rust replacement for atos.", "href": "https://github.com/everettjf/atosl-rs", "icon": "terminal", "platform": "Rust · CLI" },
     { "name": "WasmPatch", "pitch": "WebAssembly-driven patching for iOS and macOS Objective-C apps.", "href": "https://github.com/everettjf/wasmpatch", "icon": "blocks", "platform": "Swift · C++" },
     { "name": "BYOKit", "pitch": "Reusable Bring Your Own Key configuration UI for Apple-platform apps.", "href": "https://github.com/everettjf/byokit", "icon": "key-round", "platform": "Swift Package" },
-    { "name": "ReadWrite", "pitch": "A cross-platform reader and Markdown writing workspace.", "href": "https://github.com/everettjf/readwrite", "icon": "book-open", "platform": "Desktop" }
+    { "name": "ReadWrite", "pitch": "A cross-platform reader and Markdown writing workspace.", "href": "https://github.com/everettjf/readwrite", "icon": "book-open", "platform": "Desktop" },
+    { "name": "Digstar", "pitch": "Analyze who starred a repository, where discovery came from, and whether growth is durable.", "href": "https://github.com/everettjf/digstar", "icon": "chart-no-axes-combined", "platform": "TypeScript · CLI" },
+    { "name": "JSPower", "pitch": "Run local JavaScript text-automation recipes from Xcode's Editor menu.", "href": "https://github.com/everettjf/jspowerxcode", "icon": "wand-sparkles", "platform": "Swift · Xcode" }
   ],
   "research_labs": [
     { "name": "Veilpath", "pitch": "A guarded iPhone and iPad container explorer built for security research.", "href": "https://github.com/everettjf/veilpath", "icon": "shield", "platform": "Swift · Security research" },
