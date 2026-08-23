@@ -4,12 +4,12 @@
   "featured_apps": [
     { "name": "ScriptWidget", "pitch": "Create native widgets for iOS and macOS using JavaScript and a JSX-like syntax.", "href": "/scriptwidget/", "icon": "code", "platform": "Swift · JavaScript", "badges": ["App Store", "Open source"] },
     { "name": "TypeTide", "pitch": "System-wide AI translation and inline rewriting.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows", "badges": ["Homebrew", "Open source"] },
-    { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"] },
+    { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "https://everettjf.github.io/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"] },
     { "name": "GrapeCompare", "pitch": "Fast, local file and folder comparison for macOS.", "href": "/grapecompare/", "icon": "diff", "platform": "Swift · macOS", "install": "brew install --cask everettjf/tap/grapecompare", "badges": ["Homebrew", "Open source"] },
     { "name": "DSH iOS", "pitch": "Run DeepSeek Harness entirely on your iPad or iPhone.", "href": "/dsh-ios/", "icon": "tablet-smartphone", "platform": "iOS · iPadOS", "badges": ["Open source", "Experimental"] }
   ],
   "legacy_apps": [
-    { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"] },
+    { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "https://everettjf.github.io/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"] },
     { "name": "BSSIDScan", "pitch": "Discover and analyze nearby Wi-Fi networks.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS", "badges": ["App Store", "Established"] },
     { "name": "LaunchDeck", "pitch": "A fast, keyboard-first application launcher.", "href": "https://xnu.app/launchdeck/", "icon": "zap", "platform": "macOS", "badges": ["App Store", "Open source"] },
     { "name": "CountMyDays", "pitch": "Offline countdowns and cumulative day tracking.", "href": "/countmydays/", "icon": "clock", "platform": "iOS", "badges": ["App Store", "Established"] },
@@ -43,7 +43,7 @@
     { "name": "TypeTide", "pitch": "System-wide translation and inline rewriting across macOS and Windows.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows" },
     { "name": "CountMyDays", "pitch": "Countdowns and day-counters in beautiful, offline-first cards.", "href": "/countmydays/", "icon": "clock", "platform": "iOS" },
     { "name": "JSON Compare", "pitch": "A simple, native JSON diff tool for macOS.", "href": "/jsoncompare/", "icon": "diff", "platform": "macOS" },
-    { "name": "Remoboard", "pitch": "Type on your iPhone using the keyboard of your computer.", "href": "/remoboard/", "icon": "keyboard", "platform": "iOS · macOS" },
+    { "name": "Remoboard", "pitch": "Type on your iPhone using the keyboard of your computer.", "href": "https://everettjf.github.io/remoboard/", "icon": "keyboard", "platform": "iOS · macOS" },
     { "name": "BSSIDScan", "pitch": "Discover and analyze WiFi networks around you.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS" },
     { "name": "NotBadBookmark", "pitch": "A modern, fast replacement for Chrome's bookmark manager.", "href": "/notbadbookmark/", "icon": "bookmark", "platform": "Chrome" }
   ],
@@ -123,25 +123,6 @@
         { "title": "Keyboard navigation", "body": "Arrow keys, enter, escape — get around without a mouse." },
         { "title": "Light + dark", "body": "Follows your system theme." },
         { "title": "No new account", "body": "Sits on top of Chrome's own bookmark store. Sync still works." }
-      ],
-      "privacy": true
-    },
-    "remoboard": {
-      "name": "Remoboard",
-      "platform": "iOS · macOS · Windows · Linux",
-      "icon": "keyboard",
-      "tagline": "Use your computer's keyboard to type on your iPhone.",
-      "description": "Long messages, snippets of code, anything you'd rather not thumb out — Remoboard pairs the iPhone keyboard with whatever real keyboard is on your desk, over your local network. Open the iOS app, connect from your computer, and start typing.",
-      "links": [
-        { "label": "Download on the App Store", "href": "https://apps.apple.com/us/app/remote-keyboard/id1474458879", "primary": true }
-      ],
-      "features": [
-        { "title": "Cross-platform companion", "body": "Connect from macOS, Windows, or Linux. The iPhone is the receiver." },
-        { "title": "Local network only", "body": "Pairing stays on your Wi-Fi. Nothing routes through our servers." },
-        { "title": "Low latency", "body": "Type at full speed — keystrokes arrive on the iPhone with no perceptible lag." },
-        { "title": "Works in any app", "body": "Anywhere the iOS keyboard appears, Remoboard can type into it." },
-        { "title": "Quick pair", "body": "QR-code pairing, no manual IP juggling." },
-        { "title": "Free desktop apps", "body": "Companion apps for desktop are free downloads." }
       ],
       "privacy": true
     },
