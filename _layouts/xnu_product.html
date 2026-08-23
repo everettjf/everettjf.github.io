@@ -20,7 +20,13 @@ layout: xnu_base
   </div>
 
   <p class="text-lg leading-relaxed text-foreground mb-3">{{ prod.tagline }}</p>
-  <p class="text-sm leading-relaxed text-muted-foreground mb-10">{{ prod.description }}</p>
+  <p class="text-sm leading-relaxed text-muted-foreground{% unless prod.install %} mb-10{% endunless %}">{{ prod.description }}</p>
+
+  {% if prod.install %}
+  <div class="my-6 overflow-x-auto border border-border bg-card px-4 py-3" aria-label="Installation command">
+    <code class="whitespace-nowrap text-sm text-foreground">{{ prod.install }}</code>
+  </div>
+  {% endif %}
 
   <div class="flex flex-wrap items-center gap-3 mb-16">
     {% for link in prod.links %}

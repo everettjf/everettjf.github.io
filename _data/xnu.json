@@ -13,7 +13,7 @@
     { "name": "BSSIDScan", "pitch": "Discover and analyze nearby Wi-Fi networks.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS", "badges": ["App Store", "Established"] },
     { "name": "LaunchDeck", "pitch": "A fast, keyboard-first application launcher.", "href": "https://xnu.app/launchdeck/", "icon": "zap", "platform": "macOS", "badges": ["App Store", "Open source"] },
     { "name": "CountMyDays", "pitch": "Offline countdowns and cumulative day tracking.", "href": "/countmydays/", "icon": "clock", "platform": "iOS", "badges": ["App Store", "Established"] },
-    { "name": "MyJSONDiff", "pitch": "A native, order-insensitive JSON comparison tool.", "href": "/jsondiff/", "icon": "braces", "platform": "macOS", "badges": ["App Store", "Established"] }
+    { "name": "MyJSONDiff", "pitch": "A native, order-insensitive JSON comparison tool.", "href": "/jsondiff/", "icon": "braces", "platform": "macOS", "install": "brew install --cask everettjf/tap/myjsondiff", "badges": ["Homebrew", "Open source"] }
   ],
   "developer_tools": [
     { "name": "MicroClaw", "pitch": "An agentic AI assistant rewritten in Rust.", "href": "https://github.com/microclaw/microclaw", "icon": "bot", "platform": "Rust", "install": "brew tap microclaw/tap && brew install microclaw", "badges": ["Homebrew", "Open source"] },
@@ -93,8 +93,10 @@
       "icon": "diff",
       "tagline": "A simple, native JSON diff tool for macOS.",
       "description": "Paste two JSON documents into the panes and compare a deterministic, sorted representation side by side. Everything runs locally in a native SwiftUI app, so private payloads never leave your Mac.",
+      "install": "brew install --cask everettjf/tap/myjsondiff",
       "links": [
-        { "label": "Download on the Mac App Store", "href": "https://apps.apple.com/us/app/myjsondiff/id6742816661", "primary": true }
+        { "label": "Install with Homebrew", "href": "https://github.com/everettjf/jsondiff#installation", "primary": true },
+        { "label": "View source on GitHub", "href": "https://github.com/everettjf/jsondiff" }
       ],
       "features": [
         { "title": "Side-by-side diff", "body": "Added and removed lines stay aligned in two readable panes." },
