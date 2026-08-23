@@ -32,8 +32,8 @@
       "priority": "low"
     },
     {
-      "name": "JSPower",
-      "repo": "everettjf/jspowerxcode",
+      "name": "EditSmith",
+      "repo": "everettjf/editsmith",
       "stars": 0,
       "priority": "incubating"
     },

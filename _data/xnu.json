@@ -25,7 +25,7 @@
     { "name": "atosl-rs", "pitch": "Symbolicate Apple crash addresses on Linux with a Rust replacement for atos.", "href": "/atosl-rs/", "icon": "terminal", "platform": "Rust · CLI", "badges": ["Open source"] },
     { "name": "WasmPatch", "pitch": "WebAssembly-driven patching for iOS and macOS Objective-C apps.", "href": "/wasmpatch/", "icon": "blocks", "platform": "Swift · C++", "badges": ["Open source"] },
     { "name": "BYOKit", "pitch": "Reusable Bring Your Own Key configuration UI for Apple-platform apps.", "href": "/byokit/", "icon": "key-round", "platform": "Swift Package", "badges": ["Open source"] },
-    { "name": "JSPower", "pitch": "Run local JavaScript text-automation recipes from Xcode's Editor menu.", "href": "https://xnu.app/jspowerxcode/", "icon": "wand-sparkles", "platform": "Swift · Xcode", "badges": ["Open source"] },
+    { "name": "EditSmith", "pitch": "Create, test, and run local text actions from Xcode's Editor menu.", "href": "https://xnu.app/editsmith/", "icon": "hammer", "platform": "Swift · Xcode", "badges": ["Open source"] },
     { "name": "Digstar", "pitch": "Analyze who starred a repository, where discovery came from, and whether growth is durable.", "href": "https://github.com/everettjf/digstar", "icon": "chart-no-axes-combined", "platform": "TypeScript · CLI", "badges": ["Open source", "Utility"] }
   ],
   "research_labs": [
