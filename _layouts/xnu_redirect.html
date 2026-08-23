@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="0; url={{ page.redirect_to | relative_url }}">
+    <link rel="canonical" href="{{ page.redirect_to | absolute_url }}">
+    <title>{{ page.title | escape }}</title>
+    <script>window.location.replace({{ page.redirect_to | relative_url | jsonify }});</script>
+  </head>
+  <body>
+    <p>This page has moved to <a href="{{ page.redirect_to | relative_url }}">{{ page.title | escape }}</a>.</p>
+  </body>
+</html>

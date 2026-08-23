@@ -38,6 +38,12 @@
       "priority": "incubating"
     },
     {
+      "name": "LaunchDeck",
+      "repo": "everettjf/launchdeck",
+      "stars": 0,
+      "priority": "maintained"
+    },
+    {
       "name": "Digstar",
       "repo": "everettjf/digstar",
       "stars": 0,
