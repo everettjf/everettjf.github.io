@@ -18,6 +18,7 @@ module.exports = {
     '../notbadbookmark/**/*.html',
     '../bssidscan/**/*.html',
     '../jsondiff/**/*.html',
+    '../jsoncompare/**/*.html',
     '../babeltable/**/*.html',
     '../startmyapp/**/*.html',
     '../launchdeck/**/*.html',
