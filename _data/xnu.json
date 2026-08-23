@@ -11,7 +11,7 @@
   "legacy_apps": [
     { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"] },
     { "name": "BSSIDScan", "pitch": "Discover and analyze nearby Wi-Fi networks.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS", "badges": ["App Store", "Established"] },
-    { "name": "LaunchDeck", "pitch": "A fast, keyboard-first application launcher.", "href": "https://everettjf.github.io/launchdeck/", "icon": "zap", "platform": "macOS", "badges": ["App Store", "Open source"] },
+    { "name": "LaunchDeck", "pitch": "A fast, keyboard-first application launcher.", "href": "https://xnu.app/launchdeck/", "icon": "zap", "platform": "macOS", "badges": ["App Store", "Open source"] },
     { "name": "CountMyDays", "pitch": "Offline countdowns and cumulative day tracking.", "href": "/countmydays/", "icon": "clock", "platform": "iOS", "badges": ["App Store", "Established"] },
     { "name": "MyJSONDiff", "pitch": "A native, order-insensitive JSON comparison tool.", "href": "/jsondiff/", "icon": "braces", "platform": "macOS", "badges": ["App Store", "Established"] }
   ],
@@ -26,7 +26,7 @@
     { "name": "WasmPatch", "pitch": "WebAssembly-driven patching for iOS and macOS Objective-C apps.", "href": "/wasmpatch/", "icon": "blocks", "platform": "Swift · C++", "badges": ["Open source"] },
     { "name": "BYOKit", "pitch": "Reusable Bring Your Own Key configuration UI for Apple-platform apps.", "href": "/byokit/", "icon": "key-round", "platform": "Swift Package", "badges": ["Open source"] },
     { "name": "ReadWrite", "pitch": "A cross-platform reader and Markdown writing workspace.", "href": "/readwrite/", "icon": "book-open", "platform": "Desktop", "badges": ["Open source"] },
-    { "name": "JSPower", "pitch": "Run local JavaScript text-automation recipes from Xcode's Editor menu.", "href": "https://everettjf.github.io/jspowerxcode/", "icon": "wand-sparkles", "platform": "Swift · Xcode", "badges": ["Open source"] },
+    { "name": "JSPower", "pitch": "Run local JavaScript text-automation recipes from Xcode's Editor menu.", "href": "https://xnu.app/jspowerxcode/", "icon": "wand-sparkles", "platform": "Swift · Xcode", "badges": ["Open source"] },
     { "name": "Digstar", "pitch": "Analyze who starred a repository, where discovery came from, and whether growth is durable.", "href": "https://github.com/everettjf/digstar", "icon": "chart-no-axes-combined", "platform": "TypeScript · CLI", "badges": ["Open source", "Utility"] }
   ],
   "research_labs": [
@@ -40,7 +40,7 @@
   "apps": [
     { "name": "BabelTable", "pitch": "Real-time speech translation between two people, on one iPhone.", "href": "/babeltable/", "icon": "messages-square", "platform": "iOS" },
     { "name": "ScriptWidget", "pitch": "Build iOS, iPadOS and macOS widgets with JavaScript and JSX.", "href": "/scriptwidget/", "icon": "code", "platform": "iOS · macOS" },
-    { "name": "LaunchDeck", "pitch": "A keyboard-first app launcher for macOS with optional Apple Intelligence search.", "href": "https://everettjf.github.io/launchdeck/", "icon": "zap", "platform": "macOS" },
+    { "name": "LaunchDeck", "pitch": "A keyboard-first app launcher for macOS with optional Apple Intelligence search.", "href": "https://xnu.app/launchdeck/", "icon": "zap", "platform": "macOS" },
     { "name": "TypeTide", "pitch": "System-wide translation and inline rewriting across macOS and Windows.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows" },
     { "name": "CountMyDays", "pitch": "Countdowns and day-counters in beautiful, offline-first cards.", "href": "/countmydays/", "icon": "clock", "platform": "iOS" },
     { "name": "MyJSONDiff", "pitch": "A simple, native JSON diff tool for macOS.", "href": "/jsondiff/", "icon": "diff", "platform": "macOS" },
