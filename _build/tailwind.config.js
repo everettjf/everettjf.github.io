@@ -12,7 +12,6 @@ module.exports = {
     '../_data/xnu.json',
     '../_data/scriptwidget.json',
     '../projects/**/*.html',
-    '../remoboard/**/*.html',
     '../countmydays/**/*.html',
     '../scriptwidget/**/*.html',
     '../notbadbookmark/**/*.html',
