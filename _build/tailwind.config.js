@@ -20,6 +20,7 @@ module.exports = {
     '../jsondiff/**/*.html',
     '../babeltable/**/*.html',
     '../startmyapp/**/*.html',
+    '../launchdeck/**/*.html',
   ],
   theme: {
     extend: {

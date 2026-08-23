@@ -11,7 +11,7 @@
   "legacy_apps": [
     { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"] },
     { "name": "BSSIDScan", "pitch": "Discover and analyze nearby Wi-Fi networks.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS", "badges": ["App Store", "Established"] },
-    { "name": "StartMyApp", "pitch": "A fast, keyboard-first application launcher.", "href": "/startmyapp/", "icon": "zap", "platform": "macOS", "badges": ["App Store", "Established"] },
+    { "name": "LaunchDeck", "pitch": "A fast, keyboard-first application launcher.", "href": "/launchdeck/", "icon": "zap", "platform": "macOS", "badges": ["App Store", "Open source"] },
     { "name": "CountMyDays", "pitch": "Offline countdowns and cumulative day tracking.", "href": "/countmydays/", "icon": "clock", "platform": "iOS", "badges": ["App Store", "Established"] },
     { "name": "MyJSONDiff", "pitch": "A native, order-insensitive JSON comparison tool.", "href": "/jsondiff/", "icon": "braces", "platform": "macOS", "badges": ["App Store", "Established"] }
   ],
@@ -40,7 +40,7 @@
   "apps": [
     { "name": "BabelTable", "pitch": "Real-time speech translation between two people, on one iPhone.", "href": "/babeltable/", "icon": "messages-square", "platform": "iOS" },
     { "name": "ScriptWidget", "pitch": "Build iOS, iPadOS and macOS widgets with JavaScript and JSX.", "href": "/scriptwidget/", "icon": "code", "platform": "iOS · macOS" },
-    { "name": "StartMyApp", "pitch": "A keyboard-first app launcher for macOS with Apple Intelligence.", "href": "/startmyapp/", "icon": "zap", "platform": "macOS" },
+    { "name": "LaunchDeck", "pitch": "A keyboard-first app launcher for macOS with optional Apple Intelligence search.", "href": "/launchdeck/", "icon": "zap", "platform": "macOS" },
     { "name": "TypeTide", "pitch": "System-wide translation and inline rewriting across macOS and Windows.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows" },
     { "name": "CountMyDays", "pitch": "Countdowns and day-counters in beautiful, offline-first cards.", "href": "/countmydays/", "icon": "clock", "platform": "iOS" },
     { "name": "MyJSONDiff", "pitch": "A simple, native JSON diff tool for macOS.", "href": "/jsondiff/", "icon": "diff", "platform": "macOS" },
@@ -144,14 +144,15 @@
       ],
       "privacy": true
     },
-    "startmyapp": {
-      "name": "StartMyApp",
+    "launchdeck": {
+      "name": "LaunchDeck",
       "platform": "macOS",
       "icon": "zap",
       "tagline": "The fastest way to find and launch apps on macOS.",
-      "description": "StartMyApp lives in your menu bar and replaces the slow Spotlight dance. Press a shortcut, type a few characters, hit return. Apple Intelligence suggests what you usually open next, so most launches need just one keystroke.",
+      "description": "LaunchDeck lives in your menu bar and keeps application launching fast and keyboard-first. Press a shortcut, type a few characters, and hit return. Optional on-device Apple Intelligence adds semantic search when a name is not enough.",
       "links": [
-        { "label": "Download on the Mac App Store", "href": "https://apps.apple.com/us/app/startmyapp-fast-app-launch/id6753610893", "primary": true }
+        { "label": "Download on the Mac App Store", "href": "https://apps.apple.com/us/app/startmyapp-fast-app-launch/id6753610893", "primary": true },
+        { "label": "View source on GitHub", "href": "https://github.com/everettjf/launchdeck" }
       ],
       "features": [
         { "title": "Instant launch", "body": "Open any installed application with a global shortcut and a few keystrokes." },
