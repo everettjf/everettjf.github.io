@@ -2,7 +2,7 @@
 {% if include.p.href contains "http" %}{% assign is_external = true %}{% endif %}
 <a href="{{ include.p.href }}"{% if is_external %} target="_blank" rel="noopener noreferrer"{% endif %}
    data-track="project_card" data-track-project="{{ include.p.name | slugify }}" data-track-location="{{ page.url }}"
-   class="group terminal-panel flex min-h-[132px] items-start gap-3 p-5 transition-colors hover:border-primary/50 hover:bg-secondary/60">
+   data-motion-card class="group terminal-panel flex min-h-[132px] items-start gap-3 p-5 transition-colors hover:border-primary/50 hover:bg-secondary/60">
   <span class="flex h-8 w-8 shrink-0 items-center justify-center border border-border bg-background text-primary transition-colors group-hover:border-primary/50"><i data-lucide="{{ include.p.icon }}" class="h-4 w-4"></i></span>
   <div class="flex-1 min-w-0">
     <div class="flex items-baseline justify-between gap-3">

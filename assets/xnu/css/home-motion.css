@@ -1,0 +1,22 @@
+/* Small, purposeful motion for the portfolio home page. */
+[data-motion-card] {
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-motion-card]:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-motion-card] {
+    transition: border-color 180ms ease, background-color 180ms ease;
+    will-change: auto;
+  }
+
+  [data-motion-card]:hover {
+    transform: none;
+  }
+}
