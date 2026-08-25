@@ -24,7 +24,7 @@ Do not treat landing visits as impressions inside the source app. Do not infer d
 1. Record each released source-app version and release date.
 2. Export landing and App Store click events by source and content.
 3. Record App Store campaign product-page views and first-time downloads.
-4. Review the automated GitHub star snapshot and use Digstar for any material ScriptWidget spike.
+4. Review the automated GitHub star snapshot and investigate any material ScriptWidget spike.
 5. Keep a placement for at least 14 days unless it is broken or misleading.
 6. Decide: keep, revise copy/placement, or remove. Record the decision beside the experiment.
 
