@@ -16,6 +16,7 @@
     { "name": "JSON Compare", "pitch": "A native, order-insensitive JSON comparison tool.", "href": "/jsoncompare/", "icon": "braces", "platform": "macOS", "install": "brew install --cask everettjf/tap/jsoncompare", "badges": ["Homebrew", "Open source"] }
   ],
   "developer_tools": [
+    { "name": "ByteTrawl", "pitch": "Statically inspect apps, packages, archives, and PE, Mach-O, or ELF binaries.", "href": "/bytetrawl/", "icon": "binary", "platform": "Rust · macOS", "install": "brew install --cask everettjf/tap/bytetrawl", "badges": ["Homebrew", "CLI", "Private source"] },
     { "name": "MicroClaw", "pitch": "An agentic AI assistant rewritten in Rust.", "href": "https://github.com/microclaw/microclaw", "icon": "bot", "platform": "Rust", "install": "brew tap microclaw/tap && brew install microclaw", "badges": ["Homebrew", "Open source"] },
     { "name": "Liney", "pitch": "A native terminal workspace for vibe coding.", "href": "https://github.com/everettjf/liney", "icon": "terminal", "platform": "macOS", "install": "brew install --cask everettjf/tap/liney", "badges": ["Homebrew", "Open source"] },
     { "name": "EasyVM", "pitch": "A simple, native virtual machine app for Apple silicon Macs.", "href": "/easyvm/", "icon": "monitor", "platform": "macOS", "install": "brew install --cask everettjf/tap/easyvm", "badges": ["Homebrew", "Open source"] },
