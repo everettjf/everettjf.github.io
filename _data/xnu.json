@@ -6,7 +6,8 @@
     { "name": "TypeTide", "pitch": "System-wide AI translation and inline rewriting.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows", "badges": ["Homebrew", "Open source"] },
     { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "https://everettjf.github.io/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"] },
     { "name": "GrapeCompare", "pitch": "Fast, local file and folder comparison for macOS.", "href": "/grapecompare/", "icon": "diff", "platform": "Swift · macOS", "install": "brew install --cask everettjf/tap/grapecompare", "badges": ["Homebrew", "Open source"] },
-    { "name": "DSH iOS", "pitch": "Run DeepSeek Harness entirely on your iPad or iPhone.", "href": "/dsh-ios/", "icon": "tablet-smartphone", "platform": "iOS · iPadOS", "badges": ["Open source", "Experimental"] }
+    { "name": "EasyVM", "pitch": "A simple, native virtual machine app for Apple silicon Macs.", "href": "/easyvm/", "icon": "monitor", "platform": "macOS", "install": "brew install --cask everettjf/tap/easyvm", "badges": ["Homebrew", "Open source"] },
+    { "name": "MicroClaw", "pitch": "An agentic AI assistant rewritten in Rust.", "href": "https://github.com/microclaw/microclaw", "icon": "bot", "platform": "Rust", "install": "brew tap microclaw/tap && brew install microclaw", "badges": ["Homebrew", "Open source"] }
   ],
   "legacy_apps": [
     { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "https://everettjf.github.io/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"] },
