@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-09-07",
+  "updated_at": "2026-09-14",
   "repositories": [
     {
       "name": "ScriptWidget",
       "repo": "everettjf/scriptwidget",
-      "stars": 278,
+      "stars": 282,
       "priority": "core"
     },
     {
       "name": "TypeTide",
       "repo": "everettjf/typetide",
-      "stars": 14,
+      "stars": 18,
       "priority": "core"
     },
     {
       "name": "Remoboard",
       "repo": "everettjf/remoboard",
-      "stars": 4,
+      "stars": 5,
       "priority": "established"
     },
     {
@@ -60,6 +60,10 @@
     {
       "date": "2026-09-07",
       "total_stars": 301
+    },
+    {
+      "date": "2026-09-14",
+      "total_stars": 310
     }
   ]
 }
