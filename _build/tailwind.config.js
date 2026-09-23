@@ -13,7 +13,7 @@ module.exports = {
     '../_data/xnu.json',
     '../_data/scriptwidget.json',
     '../projects/**/*.html',
-    '../countmydays/**/*.html',
+    '../dayvella/**/*.html',
     '../scriptwidget/**/*.html',
     '../notbadbookmark/**/*.html',
     '../bssidscan/**/*.html',

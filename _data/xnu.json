@@ -10,7 +10,7 @@
     { "name": "ScriptWidget", "pitch": "Create native widgets for iOS and macOS using JavaScript and a JSX-like syntax.", "href": "/scriptwidget/", "icon": "code", "platform": "iOS · macOS", "badges": ["App Store", "Open source"], "screenshot": "/images/products/scriptwidget.jpg", "screenshot_alt": "A gallery of widgets created with ScriptWidget", "screenshot_width": 1900, "screenshot_height": 1560, "screenshot_source": "https://raw.githubusercontent.com/everettjf/scriptwidget/main/Resource/WidgetDemoScreenshots/_contact-sheet-1.jpg", "download_url": "https://apps.apple.com/us/app/scriptwidget/id1555600758", "download_label": "Get ScriptWidget", "home_url": "https://xnu.app/scriptwidget/", "home_maintained": true, "status": "Maintained" },
     { "name": "BSSIDScan", "pitch": "Discover and analyze nearby Wi-Fi networks.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS", "badges": ["App Store", "Established"], "status": "Maintained" },
     { "name": "LaunchDeck", "pitch": "Find apps, files, and reusable actions from your keyboard.", "href": "https://xnu.app/launchdeck/", "icon": "zap", "platform": "macOS 26+", "badges": ["Homebrew", "Open source"], "status": "Maintained" },
-    { "name": "CountMyDays", "pitch": "Keep meaningful dates close, with countdowns, widgets, and iCloud sync.", "href": "/countmydays/", "icon": "clock", "platform": "iOS", "badges": ["App Store", "Established"], "status": "Maintained" }
+    { "name": "Dayvella", "pitch": "Keep meaningful dates close, with countdowns, widgets, and iCloud sync.", "href": "/dayvella/", "icon": "clock", "platform": "iOS", "badges": ["App Store", "Established"], "status": "Maintained" }
   ],
   "developer_tools": [
     { "name": "ByteTrawl", "pitch": "Statically inspect apps, packages, archives, and PE, Mach-O, or ELF binaries.", "href": "/bytetrawl/", "icon": "binary", "platform": "Rust · macOS", "install": "brew install --cask everettjf/tap/bytetrawl", "badges": ["Homebrew", "CLI", "Private source"], "status": "Maintained" },
@@ -34,7 +34,7 @@
     { "name": "ScriptWidget", "pitch": "Build iOS, iPadOS and macOS widgets with JavaScript and JSX.", "href": "/scriptwidget/", "icon": "code", "platform": "iOS · macOS" },
     { "name": "LaunchDeck", "pitch": "A keyboard-first app launcher for macOS with optional Apple Intelligence search.", "href": "https://xnu.app/launchdeck/", "icon": "zap", "platform": "macOS" },
     { "name": "TypeTide", "pitch": "Translate where you type. Built-in offline translation on Apple Silicon; Ollama or your API on Mac and Windows.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows" },
-    { "name": "CountMyDays", "pitch": "Countdowns and day-counters in beautiful, offline-first cards.", "href": "/countmydays/", "icon": "clock", "platform": "iOS" },
+    { "name": "Dayvella", "pitch": "Countdowns and day-counters in beautiful, offline-first cards.", "href": "/dayvella/", "icon": "clock", "platform": "iOS" },
     { "name": "JSON Compare", "pitch": "A simple, native JSON diff tool for macOS.", "href": "/jsoncompare/", "icon": "diff", "platform": "macOS" },
     { "name": "Remoboard", "pitch": "Type on your iPhone using the keyboard of your computer.", "href": "https://everettjf.github.io/remoboard/", "icon": "keyboard", "platform": "iOS · macOS" },
     { "name": "BSSIDScan", "pitch": "Discover and analyze WiFi networks around you.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS" },
@@ -60,14 +60,14 @@
       ],
       "privacy": true
     },
-    "countmydays": {
-      "name": "CountMyDays",
+    "dayvella": {
+      "name": "Dayvella",
       "platform": "iOS · iPadOS",
       "icon": "clock",
       "tagline": "Keep the dates worth remembering close.",
-      "description": "CountMyDays is for the dates worth remembering and the dates worth waiting for. Track birthdays, anniversaries, trips, and personal milestones with cards and widgets. Entries are stored locally for offline access and automatically synchronized through your iCloud account.",
+      "description": "Dayvella (formerly CountMyDays) is for the dates worth remembering and the dates worth waiting for. Track birthdays, anniversaries, trips, and personal milestones with cards and widgets. Entries are stored locally for offline access and automatically synchronized through your iCloud account.",
       "links": [
-        { "label": "Download on the App Store", "href": "https://apps.apple.com/us/app/countmydays-days-counter/id6753280745", "primary": true }
+        { "label": "Download on the App Store", "href": "https://apps.apple.com/app/id6753280745", "primary": true }
       ],
       "features": [
         { "title": "Count up or down", "body": "Track how long since something happened, or how long until something will." },
