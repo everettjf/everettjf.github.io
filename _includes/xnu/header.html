@@ -15,7 +15,7 @@
     <nav class="flex items-center gap-3 text-xs text-muted-foreground sm:gap-5">
       <a href="/"{% if page.url == '/' %} aria-current="page"{% endif %} class="hover:text-primary transition-colors{% if page.url == '/' %} text-primary{% endif %}">home</a>
       <a href="/projects/"{% if page.url == '/projects/' %} aria-current="page"{% endif %} class="hover:text-primary transition-colors{% if page.url == '/projects/' %} text-primary{% endif %}">projects</a>
-      <a href="/archive"{% if notes_active %} aria-current="page"{% endif %} class="hidden hover:text-primary transition-colors sm:inline{% if notes_active %} text-primary{% endif %}">notes</a>
+      <a href="/archive"{% if notes_active %} aria-current="page"{% endif %} class="hidden hover:text-primary transition-colors sm:inline{% if notes_active %} text-primary{% endif %}">blogs</a>
       <a href="/about"{% if page.url contains '/about' %} aria-current="page"{% endif %} class="hidden hover:text-primary transition-colors sm:inline{% if page.url contains '/about' %} text-primary{% endif %}">about</a>
       <a href="https://github.com/everettjf" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
          data-track="site_cta" data-track-label="github" data-track-location="header"
