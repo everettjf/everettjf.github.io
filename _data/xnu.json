@@ -6,31 +6,26 @@
     { "name": "TypeTide", "pitch": "System-wide AI translation and inline rewriting.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows", "badges": ["Homebrew", "Open source"] },
     { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "https://everettjf.github.io/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"] },
     { "name": "GrapeCompare", "pitch": "Fast, local file and folder comparison for macOS.", "href": "/grapecompare/", "icon": "diff", "platform": "Swift · macOS", "install": "brew install --cask everettjf/tap/grapecompare", "badges": ["Homebrew", "Open source"] },
-    { "name": "EasyVM", "pitch": "A simple, native virtual machine app for Apple silicon Macs.", "href": "/easyvm/", "icon": "monitor", "platform": "macOS", "install": "brew install --cask everettjf/tap/easyvm", "badges": ["Homebrew", "Open source"] },
     { "name": "MicroClaw", "pitch": "An agentic AI assistant rewritten in Rust.", "href": "https://github.com/microclaw/microclaw", "icon": "bot", "platform": "Rust", "install": "brew tap microclaw/tap && brew install microclaw", "badges": ["Homebrew", "Open source"] }
   ],
   "legacy_apps": [
     { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "https://everettjf.github.io/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"] },
     { "name": "BSSIDScan", "pitch": "Discover and analyze nearby Wi-Fi networks.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS", "badges": ["App Store", "Established"] },
     { "name": "LaunchDeck", "pitch": "A fast, keyboard-first application launcher.", "href": "https://xnu.app/launchdeck/", "icon": "zap", "platform": "macOS", "badges": ["App Store", "Open source"] },
-    { "name": "CountMyDays", "pitch": "Offline countdowns and cumulative day tracking.", "href": "/countmydays/", "icon": "clock", "platform": "iOS", "badges": ["App Store", "Established"] },
-    { "name": "JSON Compare", "pitch": "A native, order-insensitive JSON comparison tool.", "href": "/jsoncompare/", "icon": "braces", "platform": "macOS", "install": "brew install --cask everettjf/tap/jsoncompare", "badges": ["Homebrew", "Open source"] }
+    { "name": "CountMyDays", "pitch": "Offline countdowns and cumulative day tracking.", "href": "/countmydays/", "icon": "clock", "platform": "iOS", "badges": ["App Store", "Established"] }
   ],
   "developer_tools": [
     { "name": "ByteTrawl", "pitch": "Statically inspect apps, packages, archives, and PE, Mach-O, or ELF binaries.", "href": "/bytetrawl/", "icon": "binary", "platform": "Rust · macOS", "install": "brew install --cask everettjf/tap/bytetrawl", "badges": ["Homebrew", "CLI", "Private source"] },
     { "name": "MicroClaw", "pitch": "An agentic AI assistant rewritten in Rust.", "href": "https://github.com/microclaw/microclaw", "icon": "bot", "platform": "Rust", "install": "brew tap microclaw/tap && brew install microclaw", "badges": ["Homebrew", "Open source"] },
     { "name": "Liney", "pitch": "A native terminal workspace for vibe coding.", "href": "https://github.com/everettjf/liney", "icon": "terminal", "platform": "macOS", "install": "brew install --cask everettjf/tap/liney", "badges": ["Homebrew", "Open source"] },
-    { "name": "EasyVM", "pitch": "A simple, native virtual machine app for Apple silicon Macs.", "href": "/easyvm/", "icon": "monitor", "platform": "macOS", "install": "brew install --cask everettjf/tap/easyvm", "badges": ["Homebrew", "Open source"] },
     { "name": "MachOExplorer", "pitch": "Explore Mach-O binary files on macOS and Windows.", "href": "/machoexplorer/", "icon": "binary", "platform": "macOS", "install": "brew install --cask everettjf/homebrew-tap/machoexplorer", "badges": ["Homebrew", "Open source"] },
     { "name": "AppleTrace", "pitch": "Trace Objective-C method calls and export Perfetto timelines.", "href": "/appletrace/", "icon": "activity", "platform": "C · Objective-C", "badges": ["Open source"] },
     { "name": "atosl-rs", "pitch": "Symbolicate Apple crash addresses on Linux with a Rust replacement for atos.", "href": "/atosl-rs/", "icon": "terminal", "platform": "Rust · CLI", "badges": ["Open source"] },
     { "name": "WasmPatch", "pitch": "WebAssembly-driven patching for iOS and macOS Objective-C apps.", "href": "/wasmpatch/", "icon": "blocks", "platform": "Swift · C++", "badges": ["Open source"] },
-    { "name": "BYOKit", "pitch": "Reusable Bring Your Own Key configuration UI for Apple-platform apps.", "href": "/byokit/", "icon": "key-round", "platform": "Swift Package", "badges": ["Open source"] },
     { "name": "EditSmith", "pitch": "Create, test, and run local text actions from Xcode's Editor menu.", "href": "https://xnu.app/editsmith/", "icon": "hammer", "platform": "Swift · Xcode", "badges": ["Open source"] }
   ],
   "research_labs": [
     { "name": "Veilpath", "pitch": "A guarded iPhone and iPad container explorer built for security research.", "href": "/veilpath/", "icon": "shield", "platform": "Swift · Security research", "badges": ["Open source", "Experimental"] },
-    { "name": "Graph Chat", "pitch": "A local-first, graph-native AI learning workspace.", "href": "/graphchat/", "icon": "git-branch", "platform": "TypeScript · Web", "badges": ["Open source", "Experimental"] },
     { "name": "BabelTable", "pitch": "Real-time two-way speech translation on one iPhone.", "href": "/babeltable/", "icon": "messages-square", "platform": "Swift · iOS", "badges": ["Open source", "Experimental"] }
   ],
   "independent_projects": [
