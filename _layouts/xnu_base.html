@@ -11,12 +11,14 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
   <link rel="manifest" href="/images/site.webmanifest" />
 
+  {% assign asset_version = site.time | date: "%s" %}
+  <!-- Version assets per build so cached CSS cannot lag behind new markup. -->
   <!-- Precompiled Tailwind (sources in _build/, rebuild with `make assets`). -->
-  <link rel="stylesheet" href="/assets/xnu/css/tailwind.css" />
-  {% if page.url == '/' %}<link rel="stylesheet" href="/assets/xnu/css/home-motion.css" />{% endif %}
-  {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'default' %}<link rel="stylesheet" href="/assets/xnu/css/blog.css" />{% endif %}
+  <link rel="stylesheet" href="/assets/xnu/css/tailwind.css?v={{ asset_version }}" />
+  {% if page.url == '/' %}<link rel="stylesheet" href="/assets/xnu/css/home-motion.css?v={{ asset_version }}" />{% endif %}
+  {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'default' %}<link rel="stylesheet" href="/assets/xnu/css/blog.css?v={{ asset_version }}" />{% endif %}
 
-  <link rel="stylesheet" href="/assets/xnu/css/site.css" />
+  <link rel="stylesheet" href="/assets/xnu/css/site.css?v={{ asset_version }}" />
 
   <style>
     @font-face {
