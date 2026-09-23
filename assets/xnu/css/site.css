@@ -7,11 +7,11 @@
 header nav a { min-height: 44px; display: inline-flex; align-items: center; }
 .mobile-menu { display: none; }
 /* Explicit hero spacing keeps the layout independent of generated utilities. */
-.home-hero { padding: 6rem 0 6.5rem; }
-.home-eyebrow { margin-bottom: 2.5rem; }
+.home-hero { padding: 4.5rem 0; }
+.home-eyebrow { margin-bottom: 2rem; }
 .home-headline { font-size: 4.5rem; line-height: 1.12; }
-.home-intro { max-width: 38rem; margin-top: 2.5rem; font-size: 1.125rem; line-height: 1.85; }
-.home-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 3rem; }
+.home-intro { max-width: 38rem; margin-top: 1.75rem; font-size: 1.125rem; line-height: 1.85; }
+.home-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
 .home-actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: .875rem 1.25rem; font-size: .8125rem; line-height: 1.5; }
 @media (max-width: 639px) {
   .home-hero { padding: 4rem 0 4.5rem; }
@@ -47,4 +47,41 @@ header nav a { min-height: 44px; display: inline-flex; align-items: center; }
   .showcase-image { border-right: 0; border-bottom: 1px solid hsl(var(--border)); }
   .showcase-image img { height: 240px; }
   .showcase-copy { padding: 1.5rem; }
+}
+
+/* Personal home: a clear path from featured work to writing and contact. */
+.skip-link { position: fixed; top: -5rem; left: 1rem; z-index: 100; padding: .75rem 1rem; background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+.skip-link:focus { top: 1rem; }
+#main-content:focus { outline: none; }
+.home-section { padding: 4rem 0; border-bottom: 1px solid hsl(var(--border)); scroll-margin-top: 5rem; }
+.home-section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1.25rem; }
+.home-section-heading h2 { margin-top: .75rem; font-size: 1.75rem; line-height: 1.3; font-weight: 650; letter-spacing: -.04em; }
+.home-section-heading > a, .follow-links a { display: inline-flex; align-items: center; min-height: 44px; font-size: .75rem; color: hsl(var(--primary)); }
+.home-section-heading > a { flex-shrink: 0; }
+.home-section-heading > a:hover, .follow-links a:hover, .writing-item:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
+.section-intro { margin: 1rem 0 1.75rem; max-width: 40rem; color: hsl(var(--muted-foreground)); font-size: 1rem; line-height: 1.75; }
+.maintained-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
+.maintained-grid > a { display: block; }
+.maintained-grid > a > span { margin-bottom: 1rem; }
+.maintained-grid > a > svg, .maintained-grid code { display: none; }
+.project-status { margin-top: .75rem; font-size: .6875rem; color: hsl(var(--primary)); }
+.showcase-status { color: hsl(var(--muted-foreground)); }
+.writing-item { display: grid; grid-template-columns: 7rem 1fr 1rem; align-items: baseline; gap: 1rem; padding: 1.5rem 0; border-top: 1px solid hsl(var(--border)); }
+.writing-item time { color: hsl(var(--muted-foreground)); font-size: .75rem; }
+.writing-item h3 { font-size: .9375rem; line-height: 1.65; }
+.writing-item > span { color: hsl(var(--primary)); }
+.follow-note { margin-top: 2rem; padding: 1.5rem; border: 1px solid hsl(var(--border)); background: hsl(var(--card)); }
+.follow-note h3 { font-size: .9375rem; font-weight: 600; }
+.follow-note p { margin-top: .75rem; max-width: 40rem; color: hsl(var(--muted-foreground)); font-size: .875rem; line-height: 1.9; }
+.follow-links { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; margin-top: .75rem; }
+.catalog-nav { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid hsl(var(--border)); }
+.catalog-nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: .75rem; color: hsl(var(--primary)); }
+.catalog-nav a:hover { text-decoration: underline; }
+#wechat { scroll-margin-top: 6rem; }
+@media (max-width: 767px) {
+  .maintained-grid { grid-template-columns: 1fr; }
+  .home-section-heading { align-items: start; flex-direction: column; gap: .5rem; }
+  .home-section-heading h2 { font-size: 1.5rem; }
+  .writing-item { grid-template-columns: 1fr 1rem; gap: .5rem; }
+  .writing-item time { grid-column: 1 / -1; }
 }

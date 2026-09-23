@@ -3,13 +3,13 @@
     <img src="{{ include.p.screenshot }}" alt="{{ include.p.screenshot_alt | escape }}" width="{{ include.p.screenshot_width }}" height="{{ include.p.screenshot_height }}" loading="lazy" decoding="async">
   </a>
   <div class="showcase-copy">
-    <p class="showcase-platform">{{ include.p.platform }}</p>
+    <p class="showcase-platform">{{ include.p.platform }} <span class="showcase-status">/ {{ include.p.status }}</span></p>
     <h3>{{ include.p.name }}</h3>
     <p class="reading-copy showcase-description">{{ include.p.pitch }}</p>
     {% if include.p.store_note %}<p class="reading-copy showcase-note">{{ include.p.store_note }}</p>{% endif %}
     <div class="showcase-actions">
       {% include xnu/external_link.html href=include.p.download_url label=include.p.download_label class="download-link" %}
-      {% include xnu/external_link.html href=include.p.home_url label="Explore" class="explore-link" %}
+      {% if include.p.download_url != include.p.home_url %}{% include xnu/external_link.html href=include.p.home_url label="Explore" class="explore-link" %}{% endif %}
     </div>
   </div>
 </article>

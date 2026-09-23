@@ -10,6 +10,7 @@
       <span class="shrink-0 text-xs text-muted-foreground tabular-nums">{{ include.p.platform }}</span>
     </div>
     <p class="reading-copy mt-2 text-sm text-muted-foreground leading-relaxed line-clamp-3">// {{ include.p.pitch }}</p>
+    {% if include.p.status %}<p class="project-status">{{ include.p.status }}</p>{% endif %}
     {% if include.p.badges %}<div class="mt-3 flex flex-wrap gap-1.5">{% for badge in include.p.badges %}<span class="border border-border px-1.5 py-0.5 text-xs uppercase tracking-wider text-muted-foreground group-hover:border-primary/30">{{ badge }}</span>{% endfor %}</div>{% endif %}
     {% if include.p.install %}<code class="mt-2 block overflow-x-auto whitespace-nowrap text-xs text-muted-foreground">{{ include.p.install }}</code>{% endif %}
   </div>

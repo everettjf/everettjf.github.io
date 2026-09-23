@@ -2,31 +2,29 @@
   "support_email": "xnuapp@gmail.com",
   "discord_url": "https://discord.gg/eGzEaP6TzR",
   "featured_apps": [
-    { "name": "TypeTide", "pitch": "Translate where you type. Built-in offline translation on Apple Silicon; Ollama or your API on Mac and Windows.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows", "badges": ["Homebrew", "Open source"], "home_featured": true, "screenshot": "/images/products/typetide.png", "screenshot_alt": "TypeTide’s floating translation button beside selected text", "screenshot_width": 1240, "screenshot_height": 340, "screenshot_source": "https://raw.githubusercontent.com/everettjf/typetide/main/docs/screenshots/icon.png", "download_url": "https://xnu.app/typetide/#top", "download_label": "Download TypeTide", "home_url": "https://xnu.app/typetide/" },
-    { "name": "GrapeCompare", "pitch": "Compare files, folders, and images locally on your Mac. Mac App Store release in preparation.", "href": "/grapecompare/", "icon": "diff", "platform": "macOS 15+", "badges": ["Mac App Store — Coming soon", "Open source"] },
-    { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "https://everettjf.github.io/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"], "home_featured": true, "screenshot": "/images/products/remoboard.jpg", "screenshot_alt": "Remote Keyboard for iPhone, the App Store version of Remoboard", "screenshot_width": 392, "screenshot_height": 696, "screenshot_source": "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/e9/66/d4/e966d406-274c-bd4d-3039-ee2f0bacc8d8/pr_source.jpg/392x696bb.jpg", "download_url": "https://apps.apple.com/us/app/remote-keyboard/id1474458879", "download_label": "Get Remote Keyboard", "home_url": "https://xnu.app/remoboard/", "store_note": "Available on the App Store as Remote Keyboard." },
-    { "name": "ScriptWidget", "pitch": "Create native widgets for iOS and macOS using JavaScript and a JSX-like syntax.", "href": "/scriptwidget/", "icon": "code", "platform": "Swift · JavaScript", "badges": ["App Store", "Open source"], "home_featured": true, "screenshot": "/images/products/scriptwidget.jpg", "screenshot_alt": "A gallery of widgets created with ScriptWidget", "screenshot_width": 1900, "screenshot_height": 1560, "screenshot_source": "https://raw.githubusercontent.com/everettjf/scriptwidget/main/Resource/WidgetDemoScreenshots/_contact-sheet-1.jpg", "download_url": "https://apps.apple.com/us/app/scriptwidget/id1555600758", "download_label": "Get ScriptWidget", "home_url": "https://xnu.app/scriptwidget/" },
-    { "name": "MicroClaw", "pitch": "An agentic AI assistant rewritten in Rust.", "href": "https://github.com/microclaw/microclaw", "icon": "bot", "platform": "Rust", "install": "brew tap microclaw/tap && brew install microclaw", "badges": ["Homebrew", "Open source"] }
+    { "name": "TypeTide", "pitch": "Translate where you type. Built-in offline translation on Apple Silicon; Ollama or your API on Mac and Windows.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows", "badges": ["Homebrew", "Open source"], "home_featured": true, "screenshot": "/images/products/typetide.png", "screenshot_alt": "TypeTide’s floating translation button beside selected text", "screenshot_width": 1240, "screenshot_height": 340, "screenshot_source": "https://raw.githubusercontent.com/everettjf/typetide/main/docs/screenshots/icon.png", "download_url": "https://xnu.app/typetide/#top", "download_label": "Download TypeTide", "home_url": "https://xnu.app/typetide/", "status": "Active development", "store_note": "Built-in translation needs an initial model download and an Apple Silicon Mac." },
+    { "name": "GrapeCompare", "pitch": "See what changed. Compare files, folders, and images locally on your Mac.", "href": "/grapecompare/", "icon": "diff", "platform": "macOS 15+", "badges": ["Mac App Store — Coming soon", "Open source"], "home_featured": true, "status": "In preparation", "screenshot": "/images/products/grapecompare.png", "screenshot_alt": "GrapeCompare highlighting additions and removals in two Swift files", "screenshot_width": 2560, "screenshot_height": 1600, "screenshot_source": "https://github.com/everettjf/grapecompare/blob/main/docs/assets/file-diff.png", "home_url": "https://xnu.app/grapecompare/", "download_url": "https://xnu.app/grapecompare/", "download_label": "Preview GrapeCompare", "store_note": "Mac App Store release in preparation." }
   ],
   "legacy_apps": [
-    { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "https://everettjf.github.io/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"] },
-    { "name": "BSSIDScan", "pitch": "Discover and analyze nearby Wi-Fi networks.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS", "badges": ["App Store", "Established"] },
-    { "name": "LaunchDeck", "pitch": "A fast, keyboard-first application launcher.", "href": "https://xnu.app/launchdeck/", "icon": "zap", "platform": "macOS", "badges": ["App Store", "Open source"] },
-    { "name": "CountMyDays", "pitch": "Offline countdowns and cumulative day tracking.", "href": "/countmydays/", "icon": "clock", "platform": "iOS", "badges": ["App Store", "Established"] }
+    { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"], "screenshot": "/images/products/remoboard.jpg", "screenshot_alt": "Remote Keyboard for iPhone, the App Store version of Remoboard", "screenshot_width": 392, "screenshot_height": 696, "screenshot_source": "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/e9/66/d4/e966d406-274c-bd4d-3039-ee2f0bacc8d8/pr_source.jpg/392x696bb.jpg", "download_url": "https://apps.apple.com/us/app/remote-keyboard/id1474458879", "download_label": "Get Remote Keyboard", "home_url": "https://xnu.app/remoboard/", "store_note": "Available on the App Store as Remote Keyboard.", "home_maintained": true, "status": "Maintained" },
+    { "name": "ScriptWidget", "pitch": "Create native widgets for iOS and macOS using JavaScript and a JSX-like syntax.", "href": "/scriptwidget/", "icon": "code", "platform": "iOS · macOS", "badges": ["App Store", "Open source"], "screenshot": "/images/products/scriptwidget.jpg", "screenshot_alt": "A gallery of widgets created with ScriptWidget", "screenshot_width": 1900, "screenshot_height": 1560, "screenshot_source": "https://raw.githubusercontent.com/everettjf/scriptwidget/main/Resource/WidgetDemoScreenshots/_contact-sheet-1.jpg", "download_url": "https://apps.apple.com/us/app/scriptwidget/id1555600758", "download_label": "Get ScriptWidget", "home_url": "https://xnu.app/scriptwidget/", "home_maintained": true, "status": "Maintained" },
+    { "name": "BSSIDScan", "pitch": "Discover and analyze nearby Wi-Fi networks.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS", "badges": ["App Store", "Established"], "status": "Maintained" },
+    { "name": "LaunchDeck", "pitch": "Find apps, files, and reusable actions from your keyboard.", "href": "https://xnu.app/launchdeck/", "icon": "zap", "platform": "macOS 26+", "badges": ["Homebrew", "Open source"], "status": "Maintained" },
+    { "name": "CountMyDays", "pitch": "Keep meaningful dates close, with countdowns, widgets, and iCloud sync.", "href": "/countmydays/", "icon": "clock", "platform": "iOS", "badges": ["App Store", "Established"], "status": "Maintained" }
   ],
   "developer_tools": [
-    { "name": "ByteTrawl", "pitch": "Statically inspect apps, packages, archives, and PE, Mach-O, or ELF binaries.", "href": "/bytetrawl/", "icon": "binary", "platform": "Rust · macOS", "install": "brew install --cask everettjf/tap/bytetrawl", "badges": ["Homebrew", "CLI", "Private source"] },
-    { "name": "MicroClaw", "pitch": "An agentic AI assistant rewritten in Rust.", "href": "https://github.com/microclaw/microclaw", "icon": "bot", "platform": "Rust", "install": "brew tap microclaw/tap && brew install microclaw", "badges": ["Homebrew", "Open source"] },
-    { "name": "Liney", "pitch": "A native terminal workspace for vibe coding.", "href": "https://github.com/everettjf/liney", "icon": "terminal", "platform": "macOS", "install": "brew install --cask everettjf/tap/liney", "badges": ["Homebrew", "Open source"] },
-    { "name": "MachOExplorer", "pitch": "Explore Mach-O binary files on macOS and Windows.", "href": "/machoexplorer/", "icon": "binary", "platform": "macOS", "install": "brew install --cask everettjf/homebrew-tap/machoexplorer", "badges": ["Homebrew", "Open source"] },
-    { "name": "AppleTrace", "pitch": "Trace Objective-C method calls and export Perfetto timelines.", "href": "/appletrace/", "icon": "activity", "platform": "C · Objective-C", "badges": ["Open source"] },
-    { "name": "atosl-rs", "pitch": "Symbolicate Apple crash addresses on Linux with a Rust replacement for atos.", "href": "/atosl-rs/", "icon": "terminal", "platform": "Rust · CLI", "badges": ["Open source"] },
-    { "name": "WasmPatch", "pitch": "WebAssembly-driven patching for iOS and macOS Objective-C apps.", "href": "/wasmpatch/", "icon": "blocks", "platform": "Swift · C++", "badges": ["Open source"] },
-    { "name": "EditSmith", "pitch": "Create, test, and run local text actions from Xcode's Editor menu.", "href": "https://xnu.app/editsmith/", "icon": "hammer", "platform": "Swift · Xcode", "badges": ["Open source"] }
+    { "name": "ByteTrawl", "pitch": "Statically inspect apps, packages, archives, and PE, Mach-O, or ELF binaries.", "href": "/bytetrawl/", "icon": "binary", "platform": "Rust · macOS", "install": "brew install --cask everettjf/tap/bytetrawl", "badges": ["Homebrew", "CLI", "Private source"], "status": "Maintained" },
+    { "name": "MicroClaw", "pitch": "An agentic AI assistant rewritten in Rust.", "href": "https://github.com/microclaw/microclaw", "icon": "bot", "platform": "Rust", "install": "brew tap microclaw/tap && brew install microclaw", "badges": ["Homebrew", "Open source"], "status": "Maintained" },
+    { "name": "Liney", "pitch": "A native terminal workspace for vibe coding.", "href": "https://github.com/everettjf/liney", "icon": "terminal", "platform": "macOS", "install": "brew install --cask everettjf/tap/liney", "badges": ["Homebrew", "Open source"], "status": "Maintained", "home_maintained": true },
+    { "name": "MachOExplorer", "pitch": "Explore Mach-O binary files on macOS and Windows.", "href": "/machoexplorer/", "icon": "binary", "platform": "macOS", "install": "brew install --cask everettjf/homebrew-tap/machoexplorer", "badges": ["Homebrew", "Open source"], "status": "Maintained" },
+    { "name": "AppleTrace", "pitch": "Trace Objective-C method calls and export Perfetto timelines.", "href": "/appletrace/", "icon": "activity", "platform": "C · Objective-C", "badges": ["Open source"], "status": "Maintained" },
+    { "name": "atosl-rs", "pitch": "Symbolicate Apple crash addresses on Linux with a Rust replacement for atos.", "href": "/atosl-rs/", "icon": "terminal", "platform": "Rust · CLI", "badges": ["Open source"], "status": "Maintained" },
+    { "name": "WasmPatch", "pitch": "WebAssembly-driven patching for iOS and macOS Objective-C apps.", "href": "/wasmpatch/", "icon": "blocks", "platform": "Swift · C++", "badges": ["Open source"], "status": "Maintained" },
+    { "name": "EditSmith", "pitch": "Create, test, and run local text actions from Xcode's Editor menu.", "href": "https://xnu.app/editsmith/", "icon": "hammer", "platform": "Swift · Xcode", "badges": ["Open source"], "status": "Maintained" }
   ],
   "research_labs": [
-    { "name": "Veilpath", "pitch": "A guarded iPhone and iPad container explorer built for security research.", "href": "/veilpath/", "icon": "shield", "platform": "Swift · Security research", "badges": ["Open source", "Experimental"] },
-    { "name": "BabelTable", "pitch": "Real-time two-way speech translation on one iPhone.", "href": "/babeltable/", "icon": "messages-square", "platform": "Swift · iOS", "badges": ["Open source", "Experimental"] }
+    { "name": "Veilpath", "pitch": "A guarded iPhone and iPad container explorer built for security research.", "href": "/veilpath/", "icon": "shield", "platform": "Swift · Security research", "badges": ["Open source", "Experimental"], "status": "Experimental" },
+    { "name": "BabelTable", "pitch": "Real-time two-way speech translation on one iPhone.", "href": "/babeltable/", "icon": "messages-square", "platform": "Swift · iOS", "badges": ["Open source", "Experimental"], "status": "Experimental" }
   ],
   "independent_projects": [
     { "name": "MWFL", "pitch": "A modern C++20 foundation for native Windows desktop apps with real HWND controls.", "href": "https://github.com/mwfl/mwfl", "icon": "panels-top-left", "platform": "C++20 · Windows", "badges": ["Open source", "Independent"] }
@@ -66,15 +64,15 @@
       "name": "CountMyDays",
       "platform": "iOS · iPadOS",
       "icon": "clock",
-      "tagline": "Days counted up, days counted down — in plain, beautiful cards.",
-      "description": "CountMyDays is for the dates worth remembering and the dates worth waiting for. Add a card, pick a color, and watch the number tick. Everything lives on your device. No accounts, no cloud, no analytics.",
+      "tagline": "Keep the dates worth remembering close.",
+      "description": "CountMyDays is for the dates worth remembering and the dates worth waiting for. Track birthdays, anniversaries, trips, and personal milestones with cards and widgets. Entries are stored locally for offline access and automatically synchronized through your iCloud account.",
       "links": [
         { "label": "Download on the App Store", "href": "https://apps.apple.com/us/app/countmydays-days-counter/id6753280745", "primary": true }
       ],
       "features": [
         { "title": "Count up or down", "body": "Track how long since something happened, or how long until something will." },
         { "title": "Gradient cards", "body": "Pick a color and a style. Pin favorites to the top." },
-        { "title": "Offline-first", "body": "All data stays on your device. Nothing syncs unless you ask." },
+        { "title": "Offline access + iCloud", "body": "Use your entries offline. Changes sync automatically through your iCloud account when available." },
         { "title": "Import & export", "body": "Move your cards between devices via a JSON file you own." },
         { "title": "Widgets", "body": "Surface the dates you care about on the home screen." },
         { "title": "Free", "body": "No subscriptions. No upsells." }
@@ -107,7 +105,7 @@
       "platform": "Chrome extension",
       "icon": "bookmark",
       "tagline": "A modern replacement for Chrome's default bookmark manager.",
-      "description": "If you save a lot of links, the built-in manager is painful. NotBadBookmark is a clean, fast extension with real search, drag-and-drop folders, and favicons that actually load. It uses Chrome's own bookmark store, so nothing leaks and nothing locks in.",
+      "description": "If you save a lot of links, the built-in manager is painful. NotBadBookmark is a clean, fast extension with real search, drag-and-drop folders, and favicons that actually load. It uses Chrome's own bookmark store, so your existing bookmarks and browser sync remain available.",
       "links": [
         { "label": "Add to Chrome", "href": "https://chromewebstore.google.com/detail/notbadbookmark/mablekconlhfomebomdjbohbjmgceana", "primary": true }
       ],
@@ -123,23 +121,31 @@
     },
     "launchdeck": {
       "name": "LaunchDeck",
-      "platform": "macOS",
+      "platform": "macOS 26+",
       "icon": "zap",
-      "tagline": "The fastest way to find and launch apps on macOS.",
-      "description": "LaunchDeck lives in your menu bar and keeps application launching fast and keyboard-first. Press a shortcut, type a few characters, and hit return. Optional on-device Apple Intelligence adds semantic search when a name is not enough.",
+      "tagline": "Apps, files, and actions at your fingertips.",
+      "description": "A keyboard-first macOS launcher for apps, files, and reusable workflows. Optional on-device intent search uses Apple Intelligence on supported hardware. Distributed through Homebrew and GitHub Releases.",
       "links": [
-        { "label": "Download on the Mac App Store", "href": "https://apps.apple.com/us/app/startmyapp-fast-app-launch/id6753610893", "primary": true },
+        { "label": "Download from GitHub Releases", "href": "https://github.com/everettjf/launchdeck/releases/latest", "primary": true },
         { "label": "View source on GitHub", "href": "https://github.com/everettjf/launchdeck" }
       ],
       "features": [
         { "title": "Instant launch", "body": "Open any installed application with a global shortcut and a few keystrokes." },
         { "title": "Fuzzy search", "body": "Match by name, category, or aliases — typos and abbreviations are fine." },
-        { "title": "Apple Intelligence suggestions", "body": "Smart ranking learns the apps you actually use at this time of day." },
+        { "title": "Optional intent search", "body": "Describe what you want to do. Requires Apple Intelligence-capable hardware and an available on-device model." },
         { "title": "Keyboard-first", "body": "Built for power users. The mouse is optional, end to end." },
         { "title": "Categories & ordering", "body": "Group apps the way you think about them, not how the Finder sorts them." },
         { "title": "Native and lightweight", "body": "A small Swift app. No Electron, no background bloat." }
       ],
-      "privacy": true
+      "privacy": true,
+      "install": "brew install --cask everettjf/tap/launchdeck"
     }
-  }
+  },
+  "catalog_sections": [
+    { "key": "featured_apps", "id": "featured", "title": "Current focus", "description": "The two products I am focusing on now. Availability is shown on each card." },
+    { "key": "legacy_apps", "id": "legacy-apps", "title": "Everyday apps", "description": "Apps I continue to maintain for everyday tasks." },
+    { "key": "developer_tools", "id": "developer-tools", "title": "Developer tools", "description": "Focused tools for building, debugging, and working with code." },
+    { "key": "research_labs", "id": "research-labs", "title": "Experiments", "description": "Public projects still being explored. Features and direction may change." },
+    { "key": "independent_projects", "id": "independent-projects", "title": "Independent projects", "description": "Projects with their own audience, brand, and community." }
+  ]
 }

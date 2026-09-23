@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0e0d0b" />
   {% seo %}
+  <link rel="alternate" type="application/rss+xml" title="Everett — writing" href="/feed.xml" />
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
@@ -68,9 +69,10 @@
 </head>
 <body class="bg-background text-foreground font-mono font-normal antialiased">
 {% unless page.bare %}
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="flex min-h-screen flex-col">
     {% include xnu/header.html %}
-    <main class="flex-1">
+    <main id="main-content" tabindex="-1" class="flex-1">
       {{ content }}
     </main>
     {% include xnu/footer.html %}
@@ -80,7 +82,7 @@
 {% endunless %}
 
   <!-- Self-hosted subset of lucide icons (sources in _build/lucide-entry.js, rebuild with `make assets`). -->
-  <script src="/assets/xnu/js/lucide-icons.min.js"></script>
+  <script src="/assets/xnu/js/lucide-icons.min.js?v={{ asset_version }}"></script>
   {% if page.url == '/' %}<script src="/assets/xnu/js/anime.umd.min.js"></script>{% endif %}
   <script>
     (function () {

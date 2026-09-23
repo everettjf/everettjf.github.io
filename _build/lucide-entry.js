@@ -6,6 +6,12 @@
 // add its PascalCase export here and run `make assets`.
 import {
   createIcons,
+  Activity,
+  Binary,
+  Blocks,
+  Bot,
+  PanelsTopLeft,
+  Shield,
   ArrowDown,
   ArrowLeft,
   ArrowUpRight,
@@ -37,6 +43,12 @@ import {
 } from 'lucide';
 
 const icons = {
+  Activity,
+  Binary,
+  Blocks,
+  Bot,
+  PanelsTopLeft,
+  Shield,
   ArrowDown,
   ArrowLeft,
   ArrowUpRight,
