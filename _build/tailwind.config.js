@@ -1,9 +1,10 @@
 // Mirrors the config previously passed inline to the Tailwind Play CDN
 // in _layouts/xnu_base.html. Regenerate the compiled stylesheet with
-// `make tailwind` (see Makefile) after changing classes in xnu pages.
+// `make assets` (see Makefile) after changing classes in xnu pages.
 module.exports = {
   darkMode: 'class',
   content: [
+    '../index.html',
     '../_layouts/xnu_base.html',
     '../_layouts/xnu_product.html',
     '../_layouts/xnu_privacy.html',
