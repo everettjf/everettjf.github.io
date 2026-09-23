@@ -1,6 +1,6 @@
 <header class="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur">
   {% assign window_title = 'README.md' %}
-  {% if page.layout == 'post' or page.url == '/archive' or page.url == '/archive/' %}{% assign window_title = 'notes.md' %}
+  {% if page.layout == 'post' or page.url == '/archive' or page.url == '/archive/' %}{% assign window_title = 'blogs.md' %}
   {% elsif page.url == '/projects/' %}{% assign window_title = 'projects.md' %}
   {% elsif page.url contains '/about' %}{% assign window_title = 'about.md' %}
   {% elsif page.product %}{% assign window_title = page.product | append: '.md' %}
@@ -11,23 +11,15 @@
       <span class="hidden sm:inline">~/xnu — {{ window_title }}</span>
       <span class="sm:hidden">~/xnu</span>
     </a>
-    {% assign notes_active = false %}{% if page.layout == 'post' or page.url == '/archive' or page.url == '/archive/' %}{% assign notes_active = true %}{% endif %}
-    <nav class="flex items-center gap-3 text-xs text-muted-foreground sm:gap-5">
-      <a href="/"{% if page.url == '/' %} aria-current="page"{% endif %} class="hover:text-primary transition-colors{% if page.url == '/' %} text-primary{% endif %}">home</a>
-      <a href="/projects/"{% if page.url == '/projects/' %} aria-current="page"{% endif %} class="hover:text-primary transition-colors{% if page.url == '/projects/' %} text-primary{% endif %}">projects</a>
-      <a href="/archive"{% if notes_active %} aria-current="page"{% endif %} class="hidden hover:text-primary transition-colors sm:inline{% if notes_active %} text-primary{% endif %}">blogs</a>
-      <a href="/about"{% if page.url contains '/about' %} aria-current="page"{% endif %} class="hidden hover:text-primary transition-colors sm:inline{% if page.url contains '/about' %} text-primary{% endif %}">about</a>
-      <a href="https://github.com/everettjf" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-         data-track="site_cta" data-track-label="github" data-track-location="header"
-         class="inline-flex h-7 w-7 items-center justify-center hover:text-primary transition-colors">
-        <i data-lucide="github" class="h-4 w-4"></i>
-      </a>
-      <a href="{{ site.data.xnu.discord_url }}" target="_blank" rel="noopener noreferrer"
-         data-track="site_cta" data-track-label="discord" data-track-location="header"
-         class="inline-flex items-center gap-1.5 hover:text-primary transition-colors">
-        <i data-lucide="message-circle" class="h-3.5 w-3.5"></i>
-        Join Discord
-      </a>
+    {% assign blogs_active = false %}{% if page.layout == 'post' or page.url == '/archive' or page.url == '/archive/' %}{% assign blogs_active = true %}{% endif %}
+    <nav aria-label="Main navigation" class="desktop-nav flex items-center gap-3 text-xs text-muted-foreground sm:gap-5">
+      {% include xnu/nav_links.html %}
     </nav>
+    <details class="mobile-menu">
+      <summary>menu <span aria-hidden="true">+</span></summary>
+      <nav aria-label="Mobile navigation">
+        {% include xnu/nav_links.html %}
+      </nav>
+    </details>
   </div>
 </header>

@@ -1,13 +1,47 @@
 ---
 layout: default
-title: Blog
+title: Blogs
 ---
 
 <main>
     <p class="terminal-label mb-5">writing_archive</p>
-    <h1 class="page-title">Blog<span class="terminal-cursor" aria-hidden="true"></span></h1>
-    <p class="page-subtitle">Notes and articles from the archive · {{ site.posts.size }} posts.</p>
+    <h1 class="page-title">Blogs<span class="terminal-cursor" aria-hidden="true"></span></h1>
+    <p class="page-subtitle">Development notes and technical articles · {{ site.posts.size }} posts.</p>
 
+    <section class="featured-writing" aria-labelledby="featured-writing-title">
+        <h2 id="featured-writing-title">Start here</h2>
+        <p class="reading-copy">A selection on runtimes, debugging, and building apps.</p>
+        <ul>
+        {% for url in site.data.featured_posts %}
+          {% assign featured_post = site.posts | where: "url", url | first %}
+          {% if featured_post %}<li><a href="{{ featured_post.url }}">{{ featured_post.title | escape }}</a><span>{{ featured_post.date | date: "%Y" }}</span></li>{% endif %}
+        {% endfor %}
+        </ul>
+    </section>
+    <form class="archive-filters" role="search" hidden>
+        <div><label for="post-search">Search articles</label><input id="post-search" type="search" placeholder="Title in English or 中文" autocomplete="off"></div>
+        <div><label for="post-topic">Topic</label><select id="post-topic"><option value="">All topics</option>
+        {% assign categories = site.categories %}
+        {% for category in categories %}{% assign topic_name = category[0] | strip %}{% if topic_name != empty %}<option value="{{ category[0] | escape }}">{{ category[0] | escape }} ({{ category[1].size }})</option>{% endif %}{% endfor %}
+        </select></div>
+        <button type="reset">Reset</button>
+    </form>
+    <p id="archive-results" class="archive-results" role="status" aria-live="polite" hidden></p>
+    <p id="archive-empty" class="reading-copy" hidden>No matching articles. Try a different title or choose All topics.</p>
+    {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+    {% for year in posts_by_year %}
+    <section class="archive-year-group">
+        <h2 class="archive-year">{{ year.name }}</h2>
+        <ul class="archive-list">
+            {% for post in year.items %}
+            <li data-post-title="{{ post.title | append: ' ' | append: post.title_zh | escape }}" data-post-topics="{{ post.categories | jsonify | escape }}">
+                <a class="archive-title" href="{{ post.url }}">{{ post.title }}</a>
+                <time class="archive-date" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endfor %}
     <aside class="wechat-follow" aria-labelledby="wechat-follow-title">
         <div class="wechat-follow-copy">
             <p class="wechat-follow-kicker">持续更新中</p>
@@ -18,19 +52,5 @@ title: Blog
              alt="微信搜索公众号吃灰思考，或扫描二维码关注"
              width="612" height="262" loading="lazy" decoding="async">
     </aside>
-
-    {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
-    {% for year in posts_by_year %}
-    <section class="archive-year-group">
-        <h2 class="archive-year">{{ year.name }}</h2>
-        <ul class="archive-list">
-            {% for post in year.items %}
-            <li>
-                <a class="archive-title" href="{{ post.url }}">{{ post.title }}</a>
-                <time class="archive-date" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-            </li>
-            {% endfor %}
-        </ul>
-    </section>
-    {% endfor %}
 </main>
+<script src="/assets/xnu/js/archive.js" defer></script>
