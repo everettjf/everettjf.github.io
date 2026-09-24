@@ -117,55 +117,7 @@
         { "title": "Light + dark", "body": "Follows your system theme." },
         { "title": "No new account", "body": "Sits on top of Chrome's own bookmark store. Sync still works." }
       ],
-      "privacy": true,
-      "privacy_sections": [
-        {
-          "heading": "Effective date and scope",
-          "body": "September 24, 2026. This policy describes NotBadBookmark version 1.1.0 and later, including version 1.1.1."
-        },
-        {
-          "heading": "Information collection",
-          "body": "NotBadBookmark has no account, analytics, advertising, or developer-operated backend. The extension does not send bookmark titles, URLs, tags, or recovery snapshots to our servers. Website icons use local placeholders; these versions do not request Google's favicon service."
-        },
-        {
-          "heading": "Bookmarks and browser synchronization",
-          "body": "Bookmarks are read and written through Chrome’s native bookmark store. Chrome may synchronize those bookmarks according to your browser and account settings. This is separate from NotBadBookmark’s local metadata."
-        },
-        {
-          "heading": "Local storage and retention",
-          "list": [
-            "Tags are stored in the extension’s IndexedDB database.",
-            "UI preferences, deletion recovery snapshots (including bookmark titles, URLs, folder structure, and tags), and recent import reports are stored in chrome.storage.local. The extension does not synchronize this metadata.",
-            "Import reports retain the latest 20 operations. Recovery snapshots remain local until extension data is removed.",
-            "Export an independent JSON backup before clearing extension data or uninstalling. Removing extension data is separate from deleting bookmarks in Chrome."
-          ]
-        },
-        {
-          "heading": "Actions you control",
-          "list": [
-            "Import reads a file you choose and adds its bookmarks to Chrome.",
-            "Export writes a file to your device. JSON backups include tags and folder structure. You decide whether and where to share exported files.",
-            "Opening a bookmark navigates to that website, whose own privacy policy applies.",
-            "Copying a link writes it to your system clipboard."
-          ]
-        },
-        {
-          "heading": "Permissions",
-          "body": "The extension does not request host permissions or scan website contents.",
-          "list": [
-            "bookmarks: read, create, edit, move, and remove bookmarks and folders at your request.",
-            "storage: save preferences, local recovery snapshots, and import reports."
-          ]
-        },
-        {
-          "heading": "Recovery limitations",
-          "body": "Recovery depends on local storage being available and cannot restore original Chrome IDs or native creation dates. Local recovery is not a substitute for an independent exported backup."
-        },
-        {
-          "heading": "Contact",
-          "body": "For product or privacy questions, email xnuapp@gmail.com. Do not attach a personal bookmark backup to a public issue."
-        }
-      ]
+      "privacy": true
     },
     "launchdeck": {
       "name": "LaunchDeck",
