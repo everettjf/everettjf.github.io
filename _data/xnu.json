@@ -38,7 +38,7 @@
     { "name": "JSON Compare", "pitch": "A simple, native JSON diff tool for macOS.", "href": "/jsoncompare/", "icon": "diff", "platform": "macOS" },
     { "name": "Remoboard", "pitch": "Type on your iPhone using the keyboard of your computer.", "href": "https://everettjf.github.io/remoboard/", "icon": "keyboard", "platform": "iOS · macOS" },
     { "name": "BSSIDScan", "pitch": "Discover and analyze WiFi networks around you.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS" },
-    { "name": "NotBadBookmark", "pitch": "A modern, fast replacement for Chrome's bookmark manager.", "href": "/notbadbookmark/", "icon": "bookmark", "platform": "Chrome" }
+    { "name": "NotbadBookmark", "pitch": "A modern, fast replacement for Chrome's bookmark manager.", "href": "/notbadbookmark/", "icon": "bookmark", "platform": "Chrome" }
   ],
   "products": {
     "bssidscan": {
@@ -101,11 +101,11 @@
       "privacy": true
     },
     "notbadbookmark": {
-      "name": "NotBadBookmark",
+      "name": "NotbadBookmark",
       "platform": "Chrome extension",
       "icon": "bookmark",
       "tagline": "A modern replacement for Chrome's default bookmark manager.",
-      "description": "If you save a lot of links, the built-in manager is painful. NotBadBookmark is a clean, fast extension with real search, drag-and-drop folders, and light and dark themes. It uses Chrome's own bookmark store, so your existing bookmarks and browser sync remain available.",
+      "description": "If you save a lot of links, the built-in manager is painful. NotbadBookmark is a clean, fast extension with real search, drag-and-drop folders, and light and dark themes. It uses Chrome's own bookmark store, so your existing bookmarks and browser sync remain available.",
       "links": [
         { "label": "Add to Chrome", "href": "https://chromewebstore.google.com/detail/notbadbookmark/mablekconlhfomebomdjbohbjmgceana", "primary": true }
       ],
