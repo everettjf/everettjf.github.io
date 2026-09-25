@@ -15,8 +15,8 @@ plugins:
 # Details for the RSS feed generator and SEO tags
 url:            'https://xnu.app'
 author:         'Everett'
-authorimage: /images/everettjf.png
-logo:           /images/everettjf.png
+authorimage: /images/android-chrome-512x512.png
+logo:           /images/android-chrome-512x512.png
 
 permalink: /:year/:month/:day/:title/
 location: 'Cupertino, CA'
@@ -27,7 +27,7 @@ defaults:
   - scope:
       path: ""
     values:
-      image: /images/everettjf.png
+      image: /images/android-chrome-512x512.png
 
 # Keep sitemap from indexing build/repo noise
 exclude:
