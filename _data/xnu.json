@@ -10,7 +10,8 @@
     { "name": "ScriptWidget", "pitch": "Create native widgets for iOS and macOS using JavaScript and a JSX-like syntax.", "href": "/scriptwidget/", "icon": "code", "platform": "iOS · macOS", "badges": ["App Store", "Open source"], "screenshot": "/images/products/scriptwidget.jpg", "screenshot_alt": "A gallery of widgets created with ScriptWidget", "screenshot_width": 1900, "screenshot_height": 1560, "screenshot_source": "https://raw.githubusercontent.com/everettjf/scriptwidget/main/Resource/WidgetDemoScreenshots/_contact-sheet-1.jpg", "download_url": "https://apps.apple.com/us/app/scriptwidget/id1555600758", "download_label": "Get ScriptWidget", "home_url": "https://xnu.app/scriptwidget/", "home_maintained": true, "status": "Maintained" },
     { "name": "BSSIDScan", "pitch": "Discover and analyze nearby Wi-Fi networks.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS", "badges": ["App Store", "Established"], "status": "Maintained" },
     { "name": "LaunchDeck", "pitch": "Find apps, files, and reusable actions from your keyboard.", "href": "https://xnu.app/launchdeck/", "icon": "zap", "platform": "macOS 26+", "badges": ["Homebrew", "Open source"], "status": "Maintained" },
-    { "name": "Dayvella", "pitch": "Keep meaningful dates close, with countdowns, widgets, and iCloud sync.", "href": "/dayvella/", "icon": "clock", "platform": "iOS", "badges": ["App Store", "Established"], "status": "Maintained" }
+    { "name": "Dayvella", "pitch": "Keep meaningful dates close, with countdowns, widgets, and iCloud sync.", "href": "/dayvella/", "icon": "clock", "platform": "iOS", "badges": ["App Store", "Established"], "status": "Maintained" },
+    { "name": "Titled", "pitch": "Save web pages as PDFs with filenames you can recognize later.", "href": "/titled/", "icon": "file-text", "platform": "iOS · iPadOS", "badges": ["App Store — In preparation"], "status": "In preparation" }
   ],
   "developer_tools": [
     { "name": "ByteTrawl", "pitch": "Statically inspect apps, packages, archives, and PE, Mach-O, or ELF binaries.", "href": "/bytetrawl/", "icon": "binary", "platform": "Rust · macOS", "install": "brew install --cask everettjf/tap/bytetrawl", "badges": ["Homebrew", "CLI", "Private source"], "status": "Maintained" },
@@ -35,6 +36,7 @@
     { "name": "LaunchDeck", "pitch": "A keyboard-first app launcher for macOS with optional Apple Intelligence search.", "href": "https://xnu.app/launchdeck/", "icon": "zap", "platform": "macOS" },
     { "name": "TypeTide", "pitch": "Translate where you type. Built-in offline translation on Apple Silicon; Ollama or your API on Mac and Windows.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows" },
     { "name": "Dayvella", "pitch": "Countdowns and day-counters in beautiful, offline-first cards.", "href": "/dayvella/", "icon": "clock", "platform": "iOS" },
+    { "name": "Titled", "pitch": "Save web pages as correctly titled PDFs.", "href": "/titled/", "icon": "file-text", "platform": "iOS · iPadOS" },
     { "name": "JSON Compare", "pitch": "A simple, native JSON diff tool for macOS.", "href": "/jsoncompare/", "icon": "diff", "platform": "macOS" },
     { "name": "Remoboard", "pitch": "Type on your iPhone using the keyboard of your computer.", "href": "https://everettjf.github.io/remoboard/", "icon": "keyboard", "platform": "iOS · macOS" },
     { "name": "BSSIDScan", "pitch": "Discover and analyze WiFi networks around you.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS" },
@@ -78,6 +80,30 @@
         { "title": "Free", "body": "No subscriptions. No upsells." }
       ],
       "privacy": true
+    },
+    "titled": {
+      "name": "Titled",
+      "platform": "iOS · iPadOS",
+      "icon": "file-text",
+      "tagline": "Save web pages as PDFs with titles you can recognize later.",
+      "description": "Preview a web page, create a PDF, and keep its filename and internal title in sync. Titled includes a searchable library and a Safari share extension.",
+      "links": [
+        { "label": "Get help", "href": "/titled/support/", "primary": true }
+      ],
+      "features": [
+        { "title": "Meaningful names", "body": "Extract page titles and keep PDF filenames and internal titles aligned, including after renaming." },
+        { "title": "Review before saving", "body": "Check the page preview before creating a PDF; some sites limit printing or need a login." },
+        { "title": "Saved library", "body": "Search, sort, read, rename, and delete PDFs stored locally or in your iCloud documents." },
+        { "title": "Share extension", "body": "Create a PDF from a web URL shared through the system share sheet." }
+      ],
+      "privacy": true,
+      "privacy_sections": [
+        { "heading": "Documents and settings", "body": "Titled converts web pages on your device. PDFs remain in the app's local storage, shared App Group storage, or your own iCloud document storage. Settings and reading positions are stored on your device. iCloud storage and synchronization are provided by Apple under your Apple account." },
+        { "heading": "Website connections", "body": "Loading a page connects directly to that website and its resources. The website may receive your IP address, use cookies, or require a login. Its privacy policy applies. Titled does not bypass website access restrictions. Deleting a PDF does not delete website cookies." },
+        { "heading": "Sharing", "body": "You choose which PDF to share and where. Generated PDFs include the source web address in their metadata; the address may contain query parameters and travels with exported copies. Review it before sharing." },
+        { "heading": "Analytics and advertising", "body": "Titled contains no advertising or analytics SDKs. The developer does not operate a content-upload service for PDF conversion." },
+        { "heading": "Contact", "body": "For privacy questions, email xnuapp@gmail.com. This policy was updated September 22, 2026." }
+      ]
     },
     "jsoncompare": {
       "name": "JSON Compare",
