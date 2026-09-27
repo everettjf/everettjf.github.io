@@ -132,6 +132,175 @@
       ],
       "privacy": true
     },
+    "voicedraft": {
+      "name": "VoiceDraft",
+      "platform": "iOS · iPadOS",
+      "icon": "mic",
+      "tagline": "Turn a recording into something you can edit and share.",
+      "description": "Record an idea or import audio, keep the original and transcript, then shape it into a plan, document, presentation outline, or short book. Review and edit the result before exporting a PDF.",
+      "links": [
+        {
+          "label": "Get help",
+          "href": "/voicedraft/support/",
+          "primary": true
+        }
+      ],
+      "features": [
+        {
+          "title": "Record or import",
+          "body": "Keep the source audio and a timestamped transcript so you can return to what you said."
+        },
+        {
+          "title": "Structured output",
+          "body": "Create a plan, document, presentation outline, or short book and edit its sections."
+        },
+        {
+          "title": "Apple-first processing",
+          "body": "Use on-device speech recognition and generation; eligible longer tasks may use Apple Private Cloud Compute."
+        },
+        {
+          "title": "Optional providers",
+          "body": "Configure an external model provider yourself. Sending original audio requires separate destination-specific consent."
+        },
+        {
+          "title": "Export",
+          "body": "Review a PDF, share it, or keep working on the result in the app."
+        }
+      ],
+      "privacy": true,
+      "privacy_sections": [
+        {
+          "heading": "Recordings and local data",
+          "body": "Recordings and exported PDFs are kept in your VoiceDraft folder in iCloud Drive when available, or locally on your device when iCloud Drive is unavailable. Transcripts, generated outputs, settings, and evidence links are stored locally. iCloud Drive sync is provided by Apple under your Apple Account; the developer cannot read your iCloud Drive."
+        },
+        {
+          "heading": "Apple processing",
+          "body": "Default speech transcription runs on device. Short generation uses Apple’s on-device model. Eligible longer or more complex generation may use Apple Private Cloud Compute. Availability and processing by Apple follow its applicable terms."
+        },
+        {
+          "heading": "Optional external providers",
+          "body": "External generation and audio transcription are separate choices and are off by default. Generation can send transcripts, timestamped source segments, and output settings to the provider you configure. Original audio is sent only after destination-specific consent. Optional web research sends only the conclusion you select after a separate destination disclosure. Provider retention and account practices are governed by that provider."
+        },
+        {
+          "heading": "Keys, sharing, and deletion",
+          "body": "External-provider keys are stored in Apple Keychain. You choose when to share exported files. You can delete recordings, outputs, keys, and local app data in Settings; exported copies and provider-held copies must be managed separately."
+        },
+        {
+          "heading": "Analytics and contact",
+          "body": "VoiceDraft has no advertising or analytics SDK and does not operate a server for your content. If you email support, we receive the information you choose to send so we can reply. Contact xnuapp@gmail.com. Updated September 27, 2026."
+        }
+      ]
+    },
+    "palmino": {
+      "name": "Palmino",
+      "platform": "iOS · iPadOS",
+      "icon": "bot",
+      "tagline": "A native assistant for multi-step work on iPhone and iPad.",
+      "description": "Palmino combines a Swift-native conversation interface with model providers, sessions, governed tools, and optional MCP or Linux tools. You configure the provider and approve sensitive actions.",
+      "links": [
+        {
+          "label": "Get help",
+          "href": "/palmino/support/",
+          "primary": true
+        }
+      ],
+      "features": [
+        {
+          "title": "Model choice",
+          "body": "Connect an OpenAI-compatible or DeepSeek provider with your own account and key."
+        },
+        {
+          "title": "Sessions and attachments",
+          "body": "Keep conversations and selected files in local app storage."
+        },
+        {
+          "title": "Governed tools",
+          "body": "Control access to Apple capabilities and confirm sensitive write actions."
+        },
+        {
+          "title": "Optional MCP",
+          "body": "Connect a remote HTTPS MCP server or a local guest server when you configure one."
+        },
+        {
+          "title": "Optional Linux tools",
+          "body": "Run approved shell and Git work in an isolated local Linux environment."
+        }
+      ],
+      "privacy": true,
+      "privacy_sections": [
+        {
+          "heading": "Conversations and local storage",
+          "body": "Palmino stores sessions, activity history, settings, and attachments in app storage on your device. Provider and MCP credentials are held in Apple Keychain. Device backups may include local app data according to your settings."
+        },
+        {
+          "heading": "Model providers",
+          "body": "When you send a request, the model provider you configured receives the conversation content, instructions, and any selected attachment or tool result included in that request. Its privacy policy, retention rules, and your account settings govern that processing. Palmino does not include a developer-operated model relay."
+        },
+        {
+          "heading": "Tools and permissions",
+          "body": "Apple capability tools may access data such as files, photos, location, contacts, calendars, reminders, or health information only when the relevant feature is used and iOS permissions and in-app tool controls allow it. Returned tool data can become part of a model request. Review the destination and tool approvals before using sensitive data."
+        },
+        {
+          "heading": "Optional MCP and Linux",
+          "body": "A remote MCP server receives tool requests and data you send through that connection. Local guest tools run on your device; commands such as curl, Git, or SSH can connect to outside services when you approve their use. External services have their own privacy practices."
+        },
+        {
+          "heading": "Sharing and contact",
+          "body": "You control exports and files shared from the app. Palmino has no advertising or tracking SDK. If you email support, we receive the information you send so we can reply. Contact xnuapp@gmail.com. Updated September 27, 2026."
+        }
+      ]
+    },
+    "yewlio": {
+      "name": "Yewlio",
+      "platform": "iOS · iPadOS",
+      "icon": "book-open",
+      "tagline": "Read PDFs, explore passages, and keep what you learn.",
+      "description": "Import a PDF, annotate it, ask for help with selected text, and save your own study notes with links back to the source. The first release keeps your library on device.",
+      "links": [
+        {
+          "label": "Get help",
+          "href": "/yewlio/support/",
+          "primary": true
+        }
+      ],
+      "features": [
+        {
+          "title": "Read and annotate",
+          "body": "Search PDFs, bookmark pages, highlight text, and add PencilKit annotations."
+        },
+        {
+          "title": "Understand passages",
+          "body": "Use Apple on-device AI or explicitly select Private Cloud Compute for explanations and translation."
+        },
+        {
+          "title": "Study notes",
+          "body": "Save and edit your own understanding with source-page links."
+        },
+        {
+          "title": "Back up and export",
+          "body": "Choose when and where to export notes, annotated PDFs, or a library backup."
+        }
+      ],
+      "privacy": true,
+      "privacy_sections": [
+        {
+          "heading": "Documents and notes",
+          "body": "Imported PDFs, annotations, reading positions, and study notes are stored locally on your device. This release does not enable optional CloudKit library sync. Device backups and file locations you choose may be managed by Apple or another storage provider under their policies."
+        },
+        {
+          "heading": "Apple AI",
+          "body": "On-device requests are processed on your device. If you explicitly select Private Cloud Compute, selected text, page references, your optional question, and task instructions are processed by Apple. The PDF file, handwriting, document title, and personal study notes are not included in that request. Apple controls PCC availability and usage limits."
+        },
+        {
+          "heading": "Saved responses and sharing",
+          "body": "AI responses are cached in memory during use. Responses you save become local study notes. You choose when and where to export notes, annotated PDFs, or backups. Deleting a local item does not remove separately exported copies or backups."
+        },
+        {
+          "heading": "Analytics and contact",
+          "body": "Yewlio has no advertising or tracking SDK and does not operate a server for your library or AI requests. Apple may handle App Store and device diagnostics under your settings. If you email support, we receive the information you choose to send so we can reply. Contact xnuapp@gmail.com. Updated September 27, 2026."
+        }
+      ]
+    },
     "launchdeck": {
       "name": "LaunchDeck",
       "platform": "macOS 26+",
