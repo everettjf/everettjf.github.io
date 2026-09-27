@@ -68,31 +68,6 @@
         { "heading": "Contact", "body": "If you email us for support, we receive your message and email address so we can reply. For privacy questions, email xnuapp@gmail.com. This policy was updated September 27, 2026." }
       ]
     },
-    "dayvella": {
-      "name": "Dayvella",
-      "platform": "iOS · iPadOS",
-      "icon": "clock",
-      "tagline": "Keep the dates worth remembering close.",
-      "description": "Dayvella (formerly CountMyDays) is for the dates worth remembering and the dates worth waiting for. Track birthdays, anniversaries, trips, and personal milestones with cards and widgets. Entries are stored locally for offline access and automatically synchronized through your iCloud account.",
-      "links": [
-        { "label": "Download on the App Store", "href": "https://apps.apple.com/app/id6753280745", "primary": true }
-      ],
-      "features": [
-        { "title": "Count up or down", "body": "Track how long since something happened, or how long until something will." },
-        { "title": "Gradient cards", "body": "Pick a color and a style. Pin favorites to the top." },
-        { "title": "Offline access + iCloud", "body": "Use your entries offline. Changes sync automatically through your iCloud account when available." },
-        { "title": "Import & export", "body": "Move your cards between devices via a JSON file you own." },
-        { "title": "Widgets", "body": "Surface the dates you care about on the home screen." },
-        { "title": "Free", "body": "No subscriptions. No upsells." }
-      ],
-      "privacy": true,
-      "privacy_sections": [
-        { "heading": "Dates and settings", "body": "Dayvella stores your entries and settings on your device. When iCloud is available, entries synchronize through Apple's iCloud service under your Apple account. The developer does not operate a server for your entries or receive their contents." },
-        { "heading": "Analytics and advertising", "body": "Dayvella has no advertising or in-app analytics SDK. The app does not send usage data or crash reports to a developer-operated service. Apple may handle device diagnostics according to your Apple settings." },
-        { "heading": "Import and export", "body": "You choose when to import or export a JSON backup and where to save or share it. Files you export are under your control." },
-        { "heading": "Contact", "body": "If you email us for support, we receive the message and your email address so we can reply. For privacy questions, email xnuapp@gmail.com. This policy was updated September 27, 2026." }
-      ]
-    },
     "titled": {
       "name": "Titled",
       "platform": "iOS · iPadOS",
