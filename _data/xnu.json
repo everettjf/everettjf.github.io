@@ -39,7 +39,7 @@
     { "name": "Titled", "pitch": "Save web pages as correctly titled PDFs.", "href": "/titled/", "icon": "file-text", "platform": "iOS · iPadOS" },
     { "name": "JSON Compare", "pitch": "A simple, native JSON diff tool for macOS.", "href": "/jsoncompare/", "icon": "diff", "platform": "macOS" },
     { "name": "Remoboard", "pitch": "Type on your iPhone using the keyboard of your computer.", "href": "https://everettjf.github.io/remoboard/", "icon": "keyboard", "platform": "iOS · macOS" },
-    { "name": "BSSIDScan", "pitch": "Discover and analyze WiFi networks around you.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS" },
+    { "name": "BSSIDScan", "pitch": "Review Wi-Fi observations recorded on your device.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS" },
     { "name": "NotbadBookmark", "pitch": "A modern, fast replacement for Chrome's bookmark manager.", "href": "/notbadbookmark/", "icon": "bookmark", "platform": "Chrome" }
   ],
   "products": {
@@ -47,20 +47,26 @@
       "name": "BSSIDScan",
       "platform": "iOS",
       "icon": "wifi",
-      "tagline": "Discover and analyze the WiFi networks around you.",
-      "description": "BSSIDScan lists every network in range, with their BSSIDs, security types, channels and signal strengths. Useful for diagnosing flaky home WiFi, picking a quiet channel, or just being curious about what's broadcasting nearby.",
+      "tagline": "Review Wi-Fi observations recorded on your device.",
+      "description": "BSSIDScan keeps a local history of Wi-Fi events made available through Apple's Hotspot Helper capability. Inspect network identifiers, signal levels and timestamps, then search, filter or export observations for diagnostics. Available events depend on your device and iOS.",
       "links": [
         { "label": "Download on the App Store", "href": "https://apps.apple.com/us/app/bssid-scan/id1442586100", "primary": true }
       ],
       "features": [
-        { "title": "BSSID discovery", "body": "See the BSSID of every network in range, not just SSIDs." },
-        { "title": "Security details", "body": "WEP, WPA2, WPA3 — see what each network is using." },
-        { "title": "Live signal strength", "body": "Refreshes constantly so you can find the strongest spot in the room." },
-        { "title": "Channel info", "body": "Spot crowded channels at a glance." },
-        { "title": "Sort & filter", "body": "By name, channel, security, or signal strength." },
-        { "title": "No login", "body": "Open it, scan. That's it." }
+        { "title": "Event history", "body": "Review Wi-Fi connection and scan events available to the app." },
+        { "title": "Network details", "body": "Inspect recorded SSIDs, BSSIDs, signal strength, security status and timestamps." },
+        { "title": "Search and filter", "body": "Find events by network identifier, time range or event type." },
+        { "title": "Export", "body": "Save selected observations as JSON or Markdown for your own analysis." },
+        { "title": "Local storage", "body": "Keep recorded events on your device in an encrypted database." },
+        { "title": "No login", "body": "Use the app without creating an account." }
       ],
-      "privacy": true
+      "privacy": true,
+      "privacy_sections": [
+        { "heading": "Wi-Fi observations", "body": "BSSIDScan records Wi-Fi events and network identifiers that iOS makes available to the app. These records are stored in an encrypted database on your device. The developer does not receive your Wi-Fi history." },
+        { "heading": "Analytics and advertising", "body": "The app has no advertising or in-app analytics SDK and does not send usage data or crash reports to a developer-operated service. Apple may handle device diagnostics according to your Apple settings." },
+        { "heading": "Export", "body": "You choose when to export observations as JSON or Markdown and where to save or share them. Network identifiers in exported files may be sensitive; review a file before sharing it." },
+        { "heading": "Contact", "body": "If you email us for support, we receive your message and email address so we can reply. For privacy questions, email xnuapp@gmail.com. This policy was updated September 27, 2026." }
+      ]
     },
     "dayvella": {
       "name": "Dayvella",
