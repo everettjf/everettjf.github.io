@@ -9,8 +9,8 @@ layout: xnu_base
   </a>
 
   <div class="flex items-start gap-4 mb-6">
-    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-border bg-card">
-      <i data-lucide="{{ prod.icon }}" class="h-5 w-5"></i>
+    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-border bg-card overflow-hidden">
+      {% if prod.icon_image %}<img src="{{ prod.icon_image }}" alt="" width="40" height="40" class="h-full w-full object-cover">{% else %}<i data-lucide="{{ prod.icon }}" class="h-5 w-5"></i>{% endif %}
     </div>
     <div>
       <h1 class="text-3xl font-bold tracking-tight">{{ prod.name }}<span class="terminal-cursor" aria-hidden="true"></span></h1>
