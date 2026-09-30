@@ -137,7 +137,7 @@
       "platform": "iOS · iPadOS",
       "icon": "mic",
       "tagline": "Turn a recording into something you can edit and share.",
-      "description": "Record an idea or import audio, keep the original and transcript, then shape it into a plan, document, presentation outline, or short book. Review and edit the result before exporting a PDF.",
+      "description": "Record an idea or import audio, then choose an editable action: summarize it, research the topic with sources, prepare to act, or use your own prompt. Every result is an editable Markdown document.",
       "links": [
         {
           "label": "Get help",
@@ -151,8 +151,8 @@
           "body": "Keep the source audio and a timestamped transcript so you can return to what you said."
         },
         {
-          "title": "Structured output",
-          "body": "Create a plan, document, presentation outline, or short book and edit its sections."
+          "title": "Editable actions",
+          "body": "Choose from three built-in prompts or create your own. Each action produces one Markdown draft you can preview and edit."
         },
         {
           "title": "Apple-first processing",
@@ -163,15 +163,15 @@
           "body": "Configure an external model provider yourself. Sending original audio requires separate destination-specific consent."
         },
         {
-          "title": "Export",
-          "body": "Review a PDF, share it, or keep working on the result in the app."
+          "title": "Copy or share",
+          "body": "Copy the Markdown or share a .md file. Keep the original recording and transcript for reference."
         }
       ],
       "privacy": true,
       "privacy_sections": [
         {
           "heading": "Recordings and local data",
-          "body": "Recordings and exported PDFs are kept in your VoiceDraft folder in iCloud Drive when available, or locally on your device when iCloud Drive is unavailable. Transcripts, generated outputs, settings, and evidence links are stored locally. iCloud Drive sync is provided by Apple under your Apple Account; the developer cannot read your iCloud Drive."
+          "body": "Recordings and exported Markdown files are kept in your VoiceDraft folder in iCloud Drive when available, or locally on your device when iCloud Drive is unavailable. Transcripts, generated outputs, settings, and prompts are stored locally. iCloud Drive sync is provided by Apple under your Apple Account; the developer cannot read your iCloud Drive."
         },
         {
           "heading": "Apple processing",
@@ -179,7 +179,7 @@
         },
         {
           "heading": "Optional external providers",
-          "body": "External generation and audio transcription are separate choices and are off by default. Generation can send transcripts, timestamped source segments, and output settings to the provider you configure. Original audio is sent only after destination-specific consent. Optional web research sends only the conclusion you select after a separate destination disclosure. Provider retention and account practices are governed by that provider."
+          "body": "External generation and audio transcription are separate choices and are off by default. Generation can send transcripts, timestamped source segments, and selected prompt instructions to the provider you configure. Original audio is sent only after destination-specific consent. The Research action sends the transcript and selected prompt, but not the audio, to a configured web-search provider after a separate confirmation. Provider retention and account practices are governed by that provider."
         },
         {
           "heading": "Keys, sharing, and deletion",
@@ -187,7 +187,7 @@
         },
         {
           "heading": "Analytics and contact",
-          "body": "VoiceDraft has no advertising or analytics SDK and does not operate a server for your content. If you email support, we receive the information you choose to send so we can reply. Contact xnuapp@gmail.com. Updated September 27, 2026."
+          "body": "VoiceDraft has no advertising or analytics SDK and does not operate a server for your content. If you email support, we receive the information you choose to send so we can reply. Contact xnuapp@gmail.com. Updated September 30, 2026."
         }
       ]
     },
