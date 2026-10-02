@@ -251,8 +251,8 @@
         }
       ]
     },
-    "folivyn": {
-      "name": "页澄 · Folivyn",
+    "yefoli": {
+      "name": "页澄 · Yefoli",
       "platform": "iOS · iPadOS",
       "icon": "book-open",
       "tagline": "Read PDFs, explore passages, and keep what you learn.",
@@ -260,7 +260,7 @@
       "links": [
         {
           "label": "Get help",
-          "href": "/folivyn/support/",
+          "href": "/yefoli/support/",
           "primary": true
         }
       ],
@@ -298,7 +298,7 @@
         },
         {
           "heading": "Analytics and contact",
-          "body": "Folivyn has no advertising or tracking SDK and does not operate a server for your library or AI requests. Apple may handle App Store and device diagnostics under your settings. If you email support, we receive the information you choose to send so we can reply. Contact xnuapp@gmail.com. Updated September 27, 2026."
+          "body": "Yefoli has no advertising or tracking SDK and does not operate a server for your library or AI requests. Apple may handle App Store and device diagnostics under your settings. If you email support, we receive the information you choose to send so we can reply. Contact xnuapp@gmail.com. Updated September 27, 2026."
         }
       ]
     },
