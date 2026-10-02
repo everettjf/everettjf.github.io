@@ -251,8 +251,8 @@
         }
       ]
     },
-    "yefoli": {
-      "name": "页澄 · Yefoli",
+    "folucent": {
+      "name": "页澄 · Folucent",
       "platform": "iOS · iPadOS",
       "icon": "book-open",
       "tagline": "Read PDFs, explore passages, and keep what you learn.",
@@ -260,7 +260,7 @@
       "links": [
         {
           "label": "Get help",
-          "href": "/yefoli/support/",
+          "href": "/folucent/support/",
           "primary": true
         }
       ],
@@ -298,7 +298,7 @@
         },
         {
           "heading": "Analytics and contact",
-          "body": "Yefoli has no advertising or tracking SDK and does not operate a server for your library or AI requests. Apple may handle App Store and device diagnostics under your settings. If you email support, we receive the information you choose to send so we can reply. Contact xnuapp@gmail.com. Updated September 27, 2026."
+          "body": "Folucent has no advertising or tracking SDK and does not operate a server for your library or AI requests. Apple may handle App Store and device diagnostics under your settings. If you email support, we receive the information you choose to send so we can reply. Contact xnuapp@gmail.com. Updated September 27, 2026."
         }
       ]
     },
