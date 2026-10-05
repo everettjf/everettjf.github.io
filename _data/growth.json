@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-28",
+  "updated_at": "2026-10-05",
   "repositories": [
     {
       "name": "ScriptWidget",
       "repo": "everettjf/scriptwidget",
-      "stars": 287,
+      "stars": 288,
       "priority": "core"
     },
     {
@@ -72,6 +72,10 @@
     {
       "date": "2026-09-28",
       "total_stars": 323
+    },
+    {
+      "date": "2026-10-05",
+      "total_stars": 324
     }
   ]
 }
