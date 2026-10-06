@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0e0d0b" />
+  <meta name="theme-color" content="{% if page.product == 'palmino' %}#172019{% else %}#0e0d0b{% endif %}" />
   {% seo %}
   <link rel="alternate" type="application/rss+xml" title="Everett — writing" href="/feed.xml" />
   {% if page.product == 'palmino' %}
@@ -56,6 +56,20 @@
       --ring: 91 52% 61%;
       --radius: 0.15rem;
     }
+    {% if page.product == 'palmino' %}
+    :root {
+      --background: 133 16% 11%; --foreground: 84 33% 97%;
+      --card: 125 15% 15%; --card-foreground: 84 33% 97%;
+      --popover: 125 15% 15%; --popover-foreground: 84 33% 97%;
+      --primary: 72 100% 50%; --primary-foreground: 133 16% 11%;
+      --secondary: 125 14% 18%; --secondary-foreground: 84 33% 97%;
+      --muted: 125 14% 18%; --muted-foreground: 91 15% 72%;
+      --accent: 72 100% 50%; --accent-foreground: 133 16% 11%;
+      --border: 106 14% 25%; --input: 106 14% 25%; --ring: 72 100% 50%;
+      --radius: .75rem;
+    }
+    ::selection { background-color: rgba(204,255,0,.28); }
+    {% endif %}
     html { text-rendering: optimizeLegibility; }
     body { font-feature-settings: "rlig" 1, "calt" 1; }
     body { letter-spacing: -0.015em; }
