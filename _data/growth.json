@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-10-05",
+  "updated_at": "2026-10-12",
   "repositories": [
     {
       "name": "ScriptWidget",
       "repo": "everettjf/scriptwidget",
-      "stars": 288,
+      "stars": 291,
       "priority": "core"
     },
     {
       "name": "TypeTide",
       "repo": "everettjf/typetide",
-      "stars": 24,
+      "stars": 26,
       "priority": "core"
     },
     {
@@ -76,6 +76,10 @@
     {
       "date": "2026-10-05",
       "total_stars": 324
+    },
+    {
+      "date": "2026-10-12",
+      "total_stars": 329
     }
   ]
 }
