@@ -231,23 +231,39 @@
       "privacy_sections": [
         {
           "heading": "Conversations and local storage",
-          "body": "Palmino stores sessions, activity history, settings, and attachments in app storage on your device. Provider and MCP credentials are held in Apple Keychain. Starting with version 1.0.26 build 38, conversation iCloud sync is unavailable and the app marks its Library, Documents, and shared app-group storage as excluded from automatic device backup to protect health information. Earlier builds may include app data in device backups according to your settings. Updating does not delete previously stored cloud data. Explicit exports remain under your control."
+          "body": "Palmino stores conversations, activity history, settings, and attachments on your device. Provider and MCP credentials are held in Apple Keychain. Starting with version 1.0.26 build 38, Palmino disables automatic conversation and attachment sync to iCloud and excludes its app-managed files from automatic device backup to protect health information. Earlier builds may include app data in backups or cloud sync according to your settings. Updating does not delete previously stored cloud data or backups. You control any explicit exports and their destination."
         },
         {
           "heading": "Model providers",
-          "body": "When you send a request, the model provider you configured receives the conversation content, instructions, and any selected attachment or tool result included in that request. Its privacy policy, retention rules, and your account settings govern that processing. Palmino does not include a developer-operated model relay."
+          "body": "When you send a request, your configured model provider receives the conversation content, instructions, and attachment or tool content included in that request. Image Studio sends generation requests to OpenAI. The provider’s privacy policy, retention rules, and your account settings govern its processing. Review those terms before sharing sensitive content. Palmino does not operate a model relay. A compatible provider account and your own API key are required for remote AI features; provider usage charges may apply."
         },
         {
           "heading": "Tools and permissions",
-          "body": "Apple capability tools may access data such as files, photos, location, contacts, calendars, reminders, or health information only when the relevant feature is used and iOS permissions and in-app tool controls allow it. Returned tool data can become part of a model request. Review the destination and tool approvals before using sensitive data. Health tools can read activity, heart rate, sleep, and workouts, or separately record user-confirmed nutrition, hydration, and body mass. In build 38 and later, each HealthKit action requires an additional confirmation explaining that the requested health values and results may be sent to the configured model services; declining prevents that action. HealthKit system authorization is separate from this sharing confirmation. Health information is not used by Palmino for advertising or tracking. Voice Conversation sends microphone audio to OpenAI when you start that feature; optional local transcription uses an explicitly downloaded on-device model."
+          "body": "Apple capability tools may access files, photos, location, contacts, calendars, reminders, or other device data when the relevant feature is used and the applicable system permissions and in-app tool controls allow it. Returned tool data can become part of a model request. Review the destination and action confirmations before using sensitive data."
+        },
+        {
+          "heading": "Apple Health",
+          "body": "Optional health tools help you review activity, heart rate, sleep, and workouts, or separately record user-confirmed nutrition, hydration, and body mass. In version 1.0.26 build 38 and later, each HealthKit action requires an additional confirmation naming the configured model services that may receive the requested health values and results; declining stops that action. HealthKit system authorization is separate. If automatic backup protection cannot be verified, Palmino disables health access and shows a warning. Palmino does not use health information for advertising or tracking. Apple Health’s own data storage and iCloud settings are managed separately by Apple and iOS."
+        },
+        {
+          "heading": "Voice and local transcription",
+          "body": "Voice Conversation sends microphone audio and the conversation content needed for that feature to OpenAI when you start it. Optional local transcription processes recordings on your device using a model you explicitly download. Content from a recording or transcript can still be sent to a model provider when you include it in a request."
         },
         {
           "heading": "Optional MCP and Linux",
-          "body": "A remote MCP server receives tool requests and data you send through that connection. Local guest tools run on your device; commands such as curl, Git, or SSH can connect to outside services when you approve their use. External services have their own privacy practices."
+          "body": "A remote MCP server receives tool requests and data you send through that connection. Local guest tools run on your device; network commands and connected services can send data off-device when you approve their use. These external services have their own privacy practices."
+        },
+        {
+          "heading": "Retention and deletion",
+          "body": "Saved conversations remain in local app storage until you delete them. Delete a conversation from the conversation list. Documents, recordings, workspace files, and any exports you keep separately may need to be managed in their respective locations or retention settings. Removing local content does not recall data already sent to model providers or MCP servers, delete earlier cloud copies or backups, or delete records in Apple Health. Manage those copies with the relevant service or in Apple Health. Palmino has no account to delete, and we cannot remotely access or erase your on-device conversations."
+        },
+        {
+          "heading": "Withdrawing permission and removing keys",
+          "body": "To stop future access, disable the relevant capability in More → Settings → Tool Permissions and revoke system access in iOS Settings or Apple Health. You can decline an individual action confirmation. Remove a provider or clear its key in Settings and save; manage MCP connections separately. Voice Conversation has its own OpenAI key setting. Removing a saved key does not revoke it at the provider: revoke it in the provider’s account controls if needed. These actions do not undo earlier disclosures or Health records."
         },
         {
           "heading": "Sharing and contact",
-          "body": "You control exports and files shared from the app, including their destination. Keep exports containing health information in a destination appropriate for that sensitive data. Palmino has no advertising or tracking SDK. If you email support, we receive the information you send so we can reply. Contact xnuapp@gmail.com. Updated October 21, 2026."
+          "body": "You control exports and shared files. Choose a destination suitable for any sensitive health information they contain. Palmino has no advertising or tracking SDK. If you email support, we receive your message and any material you send so we can respond; contact us to request deletion of support correspondence. Do not send API keys or personal health records. For privacy questions or requests, contact xnuapp@gmail.com. Updated October 21, 2026."
         }
       ]
     },
