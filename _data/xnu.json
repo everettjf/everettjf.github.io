@@ -235,7 +235,15 @@
         },
         {
           "heading": "Model providers",
-          "body": "When you send a request, your configured model provider receives the conversation content, instructions, and attachment or tool content included in that request. Image Studio sends generation requests to OpenAI. The provider’s privacy policy, retention rules, and your account settings govern its processing. Review those terms before sharing sensitive content. Palmino does not operate a model relay. A compatible provider account and your own API key are required for remote AI features; provider usage charges may apply."
+          "body": "When you use remote AI, data goes directly from your device to the provider endpoint you configure, such as DeepSeek, OpenAI, or an OpenAI-compatible service. Chat requests can include your messages and conversation history, task instructions, saved personalization, attached images, extracted document text, and tool results. Depending on the tools you choose, results may include contacts, calendar events, reminders, location, or health information. These data are used to generate your requested response. Image Studio sends your prompt and, for edits, the selected original image to its configured image provider; it is not always OpenAI. Palmino does not operate a model relay. Remote providers require your own account and API key and may charge for use."
+        },
+        {
+          "heading": "Consent before AI data sharing",
+          "body": "Starting with version 1.0.26 build 39, Palmino names the actual recipient and endpoint, describes the data sent and its purpose, and requests your permission before that AI feature sends data. Consent is separate for chat, images, transcript organization, and live voice, and applies to future requests for that recipient and feature, including scheduled tasks. Each fallback service requires its own approval. Changing a provider name or endpoint asks again. Declining sends no request to that service. Reset future sharing permissions in Settings → AI Data Sharing. This does not recall data already sent. HealthKit actions also retain their separate per-action sharing confirmation and system authorization."
+        },
+        {
+          "heading": "Third-party protection and provider choice",
+          "body": "We do not permit third parties engaged by Palmino to sell shared personal data, use health data for advertising, or use shared data for unrelated purposes, and require protection at least equivalent to this policy. Palmino has no developer-operated AI service or model relay. Independently configured providers are chosen and contracted by you; we cannot verify or guarantee the practices of an arbitrary custom endpoint. Only configure a service whose privacy, security, retention and deletion protections meet these standards. OpenAI and DeepSeek process requests under their respective privacy policies and your account terms; review those policies and retention controls before granting sharing permission. Do not send sensitive information to a provider whose protections you have not verified."
         },
         {
           "heading": "Tools and permissions",
@@ -247,7 +255,7 @@
         },
         {
           "heading": "Voice and local transcription",
-          "body": "Voice Conversation sends microphone audio and the conversation content needed for that feature to OpenAI when you start it. Optional local transcription processes recordings on your device using a model you explicitly download. Content from a recording or transcript can still be sent to a model provider when you include it in a request."
+          "body": "After separate voice-sharing consent, Voice Conversation sends live microphone audio, voice transcripts, recent chat context, and delegated task instructions, status and results to OpenAI to provide spoken responses. Recording organization can send transcript excerpts, intermediate summaries and your instructions to your selected AI provider after separate consent; original recording audio is not sent by that feature. On-device Whisper transcription uses a model you explicitly download. Apple speech recognition uses Apple’s system permission and service behavior. On-device document generation stays on the device; the separately selected Private Cloud Compute option sends transcript text and instructions to Apple after confirmation. Content you later attach to a chat is covered by that chat’s sharing consent."
         },
         {
           "heading": "Optional MCP and Linux",
@@ -263,7 +271,7 @@
         },
         {
           "heading": "Sharing and contact",
-          "body": "You control exports and shared files. Choose a destination suitable for any sensitive health information they contain. Palmino has no advertising or tracking SDK. If you email support, we receive your message and any material you send so we can respond; contact us to request deletion of support correspondence. Do not send API keys or personal health records. For privacy questions or requests, contact xnuapp@gmail.com. Updated October 21, 2026."
+          "body": "You control exports and shared files. Choose a destination suitable for any sensitive health information they contain. Palmino has no advertising or tracking SDK. If you email support, we receive your message and any material you send so we can respond; contact us to request deletion of support correspondence. Do not send API keys or personal health records. For privacy questions or requests, contact xnuapp@gmail.com. Updated October 23, 2026. Effective for the build 39 consent flow when that update is installed."
         }
       ]
     },
