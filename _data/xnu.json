@@ -309,20 +309,28 @@
       "privacy": true,
       "privacy_sections": [
         {
-          "heading": "Documents and notes",
-          "body": "Imported PDFs, annotations, reading positions, and study notes are stored locally on your device. This release does not enable optional CloudKit library sync. Device backups and file locations you choose may be managed by Apple or another storage provider under their policies."
+          "heading": "About this policy",
+          "body": "Folucent is a PDF reading and learning app developed by Feng Zhu. Updated October 24, 2026. Custom-service provisions apply to Folucent 1.3.0 and later when installed."
+        },
+        {
+          "heading": "Your documents and notes",
+          "body": "Imported PDFs, annotations, reading positions, and study notes are stored locally on your device. Folucent does not operate a server that receives your library. This release does not enable Folucent's optional CloudKit library sync. Device backups and file locations you choose may be managed by Apple or another storage provider under that provider's policies."
         },
         {
           "heading": "Apple AI",
-          "body": "On-device requests are processed on your device. If you explicitly select Private Cloud Compute, selected text, page references, your optional question, and task instructions are processed by Apple. The PDF file, handwriting, document title, and personal study notes are not included in that request. Apple controls PCC availability and usage limits."
+          "body": "You choose the AI model in AI Settings. On-device requests are processed on your device. When you choose Private Cloud Compute and request AI assistance, selected text, page references, limited nearby context for explanations, your optional question, and task instructions are processed using Apple's Private Cloud Compute service. Folucent does not attach the PDF file, handwriting, library filename, or personal study notes. Selected source text and nearby context may themselves contain titles or other identifying information. Apple controls service availability and usage limits. Apple describes PCC as processing requests without retaining the submitted personal data or making it accessible to Apple. Read Apple's explanation at https://security.apple.com/documentation/private-cloud-compute/ . AI responses are cached in memory during use. Responses you choose to save become part of your locally stored study notes. Folucent does not collect AI prompts or responses on a developer-operated server and does not use them to train models."
         },
         {
-          "heading": "Saved responses and sharing",
-          "body": "AI responses are cached in memory during use. Responses you save become local study notes. You choose when and where to export notes, annotated PDFs, or backups. Deleting a local item does not remove separately exported copies or backups."
+          "heading": "Optional custom AI services",
+          "body": "You may explicitly configure an HTTPS OpenAI-compatible text Chat Completions endpoint and model. After you allow sending to that endpoint and request an explanation, translation, or follow-up, Folucent sends the task instructions, selected text and page references, your optional question, and limited nearby context for explanations directly to the configured service. The PDF file, library filename, handwriting and personal notes are not attached; selected source text and nearby context may themselves contain identifying information. OCR text must be reviewed first. Opening the panel, changing pages, and restoring drafts do not start custom requests. Folucent does not automatically switch services. The API key is stored in this device’s Keychain with synchronization disabled and device-only accessibility. It is excluded from Folucent library backups, exports, and sync. The key is sent as an authorization header only to the configured endpoint; redirects are rejected. Changing the endpoint requires a key and permission again. You can remove the key in AI Settings and save the change; existing saved notes and answers are retained. OS device migration and app removal behavior follow Apple’s Keychain rules. The configured service can associate requests with your service account through the API key. The configured service receives your requests under its own privacy, retention, availability and billing policies. Folucent does not promise that a third-party service retains no data. Connection tests send fixed test text, without a PDF passage, and may incur charges. Long translations and output repair may involve additional requests. All results still require comparison with the source."
         },
         {
-          "heading": "Analytics and contact",
-          "body": "Folucent has no advertising or tracking SDK and does not operate a server for your library or AI requests. Apple may handle App Store and device diagnostics under your settings. If you email support, we receive the information you choose to send so we can reply. Contact xnuapp@gmail.com. Updated September 27, 2026."
+          "heading": "Tracking and analytics",
+          "body": "Folucent includes no advertising, tracking SDK, or developer-operated analytics service. Apple may provide App Store or diagnostic information under your Apple privacy settings and Apple's policies."
+        },
+        {
+          "heading": "Export, deletion, and support",
+          "body": "You can export notes, annotated PDFs, or a library backup to a destination you choose. Removing a document or note affects its local app copy; separately exported files and backups must be managed separately. Deleting the app removes its local app data, subject to operating-system backup behavior. If you contact support, information you choose to send is used to respond to your request. Avoid sending private PDFs or unnecessary personal information. For privacy questions, email xnuapp@gmail.com. The public policy is https://xnu.app/folucent/privacy/."
         }
       ]
     },
