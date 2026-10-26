@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-10-19",
+  "updated_at": "2026-10-26",
   "repositories": [
     {
       "name": "ScriptWidget",
       "repo": "everettjf/scriptwidget",
-      "stars": 292,
+      "stars": 294,
       "priority": "core"
     },
     {
       "name": "TypeTide",
       "repo": "everettjf/typetide",
-      "stars": 28,
+      "stars": 31,
       "priority": "core"
     },
     {
@@ -22,19 +22,19 @@
     {
       "name": "GrapeCompare",
       "repo": "everettjf/grapecompare",
-      "stars": 3,
+      "stars": 4,
       "priority": "maintained"
     },
     {
       "name": "IPAView",
       "repo": "everettjf/ipaview",
-      "stars": 2,
+      "stars": 1,
       "priority": "low"
     },
     {
       "name": "EditSmith",
       "repo": "everettjf/editsmith",
-      "stars": 0,
+      "stars": 1,
       "priority": "incubating"
     },
     {
@@ -84,6 +84,10 @@
     {
       "date": "2026-10-19",
       "total_stars": 332
+    },
+    {
+      "date": "2026-10-26",
+      "total_stars": 338
     }
   ]
 }
