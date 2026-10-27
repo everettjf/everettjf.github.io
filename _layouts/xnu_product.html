@@ -63,6 +63,8 @@ layout: xnu_base
     </div>
   </div>
 
+  {% if prod.pricing %}{% include xnu/pricing.html pricing=prod.pricing %}{% endif %}
+
   {% if prod.privacy %}
   <div class="mt-16 text-sm">
     <a href="/{{ page.product }}/privacy/" class="text-muted-foreground hover:text-foreground transition-colors">Privacy policy →</a>

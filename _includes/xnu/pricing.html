@@ -1,0 +1,36 @@
+{% assign pricing = include.pricing %}
+<section id="pricing" class="product-pricing" aria-labelledby="pricing-heading">
+  <p class="terminal-label">pricing</p>
+  <h2 id="pricing-heading">{{ pricing.heading | escape }}</h2>
+  <p class="reading-copy pricing-intro">{{ pricing.intro | escape }}</p>
+  <p class="reading-copy pricing-availability">{{ pricing.availability | escape }}</p>
+
+  <div class="pricing-plans">
+    {% for plan in pricing.plans %}
+    <article class="pricing-plan" aria-labelledby="pricing-plan-{{ forloop.index }}">
+      <p class="pricing-status">{{ plan.status | escape }}</p>
+      <h3 id="pricing-plan-{{ forloop.index }}">{{ plan.name | escape }}</h3>
+      <p class="pricing-amount">{{ plan.price | escape }}</p>
+      <p class="pricing-billing">{{ plan.billing | escape }}</p>
+      <p class="reading-copy pricing-description">{{ plan.description | escape }}</p>
+      {% if plan.note %}<p class="reading-copy pricing-note">{{ plan.note | escape }}</p>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+
+  <table class="pricing-comparison reading-copy">
+    <caption>Compare Free and Pro</caption>
+    <thead><tr><th scope="col">Feature</th><th scope="col">Free</th><th scope="col">Pro</th></tr></thead>
+    <tbody>
+      {% for row in pricing.rows %}
+      <tr><th scope="row">{{ row.feature | escape }}</th><td>{{ row.free | escape }}</td><td>{{ row.pro | escape }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="pricing-details reading-copy">
+    {% for note in pricing.notes %}
+    <div><h3>{{ note.title | escape }}</h3><p>{{ note.body | escape }}</p></div>
+    {% endfor %}
+  </div>
+</section>

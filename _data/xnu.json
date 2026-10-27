@@ -277,25 +277,29 @@
     },
     "folucent": {
       "name": "页澄 · Folucent",
-      "platform": "iOS · iPadOS",
+      "platform": "iPhone · iPad · Mac",
       "icon": "book-open",
       "tagline": "Read PDFs, explore passages, and keep what you learn.",
-      "description": "Import a PDF, annotate it, ask for help with selected text, and save your own study notes with links back to the source. The first release keeps your library on device.",
+      "description": "Read and annotate PDFs, explore selected passages, and keep your own understanding linked to the source. Your library stays on your device.",
       "links": [
         {
           "label": "Get help",
           "href": "/folucent/support/",
           "primary": true
+        },
+        {
+          "label": "Pricing",
+          "href": "/folucent/#pricing"
         }
       ],
       "features": [
         {
           "title": "Read and annotate",
-          "body": "Search PDFs, bookmark pages, highlight text, and add PencilKit annotations."
+          "body": "Search PDFs, bookmark pages, highlight text, and add Apple Pencil handwriting on iPad."
         },
         {
           "title": "Understand passages",
-          "body": "Use Apple on-device AI or explicitly select Private Cloud Compute for explanations and translation."
+          "body": "Choose Apple on-device AI, Private Cloud Compute, or your own compatible AI service for explanations and translation. Availability depends on your device and selected service."
         },
         {
           "title": "Study notes",
@@ -332,7 +336,80 @@
           "heading": "Export, deletion, and support",
           "body": "You can export notes, annotated PDFs, or a library backup to a destination you choose. Removing a document or note affects its local app copy; separately exported files and backups must be managed separately. Deleting the app removes its local app data, subject to operating-system backup behavior. If you contact support, information you choose to send is used to respond to your request. Avoid sending private PDFs or unnecessary personal information. For privacy questions, email xnuapp@gmail.com. The public policy is https://xnu.app/folucent/privacy/."
         }
-      ]
+      ],
+      "pricing": {
+        "heading": "Free to read. Pro to bring ideas together.",
+        "intro": "The everyday reading and learning tools stay free. Pro adds ways to organize notes across books and shape a study guide your way.",
+        "availability": "Pro is in TestFlight testing in version 1.4.0. It is not yet available to purchase in the App Store release.",
+        "plans": [
+          {
+            "name": "Free",
+            "status": "Available now",
+            "price": "$0",
+            "billing": "No purchase required",
+            "description": "Read, annotate, understand passages, and keep your own notes."
+          },
+          {
+            "name": "Folucent Pro",
+            "status": "TestFlight preview",
+            "price": "US$14.99",
+            "billing": "Planned price · one-time purchase",
+            "description": "Everything in Free, plus cross-book study collections and custom Markdown study guides.",
+            "note": "No subscription. Local prices and availability will be shown in the app when Pro launches."
+          }
+        ],
+        "rows": [
+          {
+            "feature": "PDF reading, search, bookmarks and annotations",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "OCR and text review",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "Apple AI and custom AI service configuration",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "Study notes, source-page links and basic review",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "Existing Markdown / PDF exports and library backups",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "Create and organize collections across books",
+            "free": "Not included",
+            "pro": "Included"
+          },
+          {
+            "feature": "Custom Markdown study guides: title, passages, saved AI results and book grouping",
+            "free": "Not included",
+            "pro": "Included"
+          }
+        ],
+        "notes": [
+          {
+            "title": "AI fees are separate",
+            "body": "Pro does not include API credits or change Apple AI availability. Any third-party AI service charges you under its own terms; you choose and configure that service."
+          },
+          {
+            "title": "Your work stays yours",
+            "body": "If Pro access is refunded or revoked, your saved collections and notes remain readable and available for standard export. You can still remove members and delete collections."
+          },
+          {
+            "title": "Restore purchases, keep data local",
+            "body": "Restore Purchases is included on iPhone, iPad and native Mac. Purchase and cross-device restoration are being tested in TestFlight. Restoring a purchase does not sync your library; app-level cloud sync is not enabled."
+          }
+        ]
+      }
     },
     "launchdeck": {
       "name": "LaunchDeck",
