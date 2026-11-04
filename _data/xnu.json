@@ -43,6 +43,74 @@
     { "name": "NotbadBookmark", "pitch": "A modern, fast replacement for Chrome's bookmark manager.", "href": "/notbadbookmark/", "icon": "bookmark", "platform": "Chrome" }
   ],
   "products": {
+    "sixup": {
+      "name": "SixUp",
+      "platform": "iOS · iPadOS",
+      "icon": "graduation-cap",
+      "icon_image": "/images/products/sixup-icon.png",
+      "tagline": "A 90-day study plan for the new TOEFL iBT.",
+      "description": "SixUp builds a daily TOEFL plan from your exam date and study time, with practice for all 12 task types of the 2026 test, 4,000 TOEFL words with spaced repetition, and a daily commute playlist of lectures and speaking models.",
+      "links": [
+        {
+          "label": "Get help",
+          "href": "/sixup/support/",
+          "primary": true
+        }
+      ],
+      "features": [
+        {
+          "title": "Daily plan",
+          "body": "Foundation, intensive and sprint phases sized to your exam date and the minutes you set, with check-ins, reminders and widgets."
+        },
+        {
+          "title": "All 12 task types",
+          "body": "Over 1,200 original reading, listening, writing and speaking questions, each with an explanation."
+        },
+        {
+          "title": "Commute listening",
+          "body": "A daily playlist of lectures, conversations, passages and speaking models that keeps playing with the screen locked."
+        },
+        {
+          "title": "4,000 TOEFL words",
+          "body": "IPA, meanings and example sentences with spaced repetition, a vocabulary test and a word notebook."
+        },
+        {
+          "title": "On-device scoring",
+          "body": "Speaking is transcribed and scored on your device; writing feedback uses Apple's on-device model where available."
+        }
+      ],
+      "privacy": true,
+      "privacy_sections": [
+        {
+          "heading": "No data collection",
+          "body": "SixUp has no account system, no advertising, no analytics and no tracking. The developer does not receive information about you or how you use the app."
+        },
+        {
+          "heading": "Study data stays on your device",
+          "body": "Your plan, check-ins, answers, scores, word reviews and saved words are stored on your device."
+        },
+        {
+          "heading": "Recordings and writing",
+          "body": "Recordings made for speaking practice are transcribed and scored on your device and are never uploaded. Essays and answers are scored on your device, including by Apple's on-device model on supported devices."
+        },
+        {
+          "heading": "iCloud sync",
+          "body": "If you are signed in to iCloud, your study progress syncs between your own devices through Apple's iCloud key-value storage under Apple's privacy policy. The developer cannot access it. Recordings are not synced."
+        },
+        {
+          "heading": "Permissions",
+          "list": [
+            "Microphone: records your spoken answers for speaking practice.",
+            "Speech recognition: transcribes those recordings on your device.",
+            "Notifications: the daily study reminder you choose."
+          ]
+        },
+        {
+          "heading": "Contact",
+          "body": "Questions about this policy: xnuapp@gmail.com."
+        }
+      ]
+    },
     "bssidscan": {
       "name": "BSSIDScan",
       "platform": "iOS",
