@@ -82,8 +82,12 @@
       "privacy": true,
       "privacy_sections": [
         {
-          "heading": "No data collection",
-          "body": "SixUp has no account system, no advertising, no analytics and no tracking. The developer does not receive information about you or how you use the app."
+          "heading": "What we collect",
+          "body": "SixUp has no account system, no advertising, no analytics and no tracking. The only data that leaves your device is purchase information for SixUp Pro, described below."
+        },
+        {
+          "heading": "Purchases",
+          "body": "SixUp Pro is a one-time in-app purchase processed by Apple. To confirm and restore it, the app uses RevenueCat, which receives a random anonymous ID created by the app and your App Store purchase record (product, price and date). It is used only to unlock SixUp Pro on your devices, is not linked to your name or email, and is never used for tracking or advertising. RevenueCat's privacy policy: https://www.revenuecat.com/privacy."
         },
         {
           "heading": "Study data stays on your device",
