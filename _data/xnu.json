@@ -386,7 +386,7 @@
       "privacy_sections": [
         {
           "heading": "About this policy",
-          "body": "Folucent is a PDF reading and learning app developed by Feng Zhu. Updated October 24, 2026. Custom-service provisions apply to Folucent 1.3.0 and later when installed."
+          "body": "Folucent is a PDF reading and learning app developed by Feng Zhu. Updated November 7, 2026. Custom-service provisions apply to Folucent 1.3.0 and later when installed. In-app purchase provisions apply to Folucent 1.6.0 and later when installed."
         },
         {
           "heading": "Your documents and notes",
@@ -401,8 +401,12 @@
           "body": "You may explicitly configure an HTTPS OpenAI-compatible text Chat Completions endpoint and model. After you allow sending to that endpoint and request an explanation, translation, or follow-up, Folucent sends the task instructions, selected text and page references, your optional question, and limited nearby context for explanations directly to the configured service. The PDF file, library filename, handwriting and personal notes are not attached; selected source text and nearby context may themselves contain identifying information. OCR text must be reviewed first. Opening the panel, changing pages, and restoring drafts do not start custom requests. Folucent does not automatically switch services. The API key is stored in this device’s Keychain with synchronization disabled and device-only accessibility. It is excluded from Folucent library backups, exports, and sync. The key is sent as an authorization header only to the configured endpoint; redirects are rejected. Changing the endpoint requires a key and permission again. You can remove the key in AI Settings and save the change; existing saved notes and answers are retained. OS device migration and app removal behavior follow Apple’s Keychain rules. The configured service can associate requests with your service account through the API key. The configured service receives your requests under its own privacy, retention, availability and billing policies. Folucent does not promise that a third-party service retains no data. Connection tests send fixed test text, without a PDF passage, and may incur charges. Long translations and output repair may involve additional requests. All results still require comparison with the source."
         },
         {
+          "heading": "In-app purchases",
+          "body": "Folucent Pro purchases are made through Apple's App Store. Starting with Folucent 1.6.0, Folucent sends purchase information to RevenueCat, Inc., a third-party purchase-processing service, so it can confirm and restore Pro access. This includes the product purchased, transaction identifiers, purchase dates, App Store country and price information, and a random anonymous app user identifier created by the app. Folucent does not create an app account and does not send your PDFs, notes, highlights, or AI requests to RevenueCat. RevenueCat processes this information under its own privacy policy at https://www.revenuecat.com/privacy/ . Apple processes payment details; Folucent never receives them."
+        },
+        {
           "heading": "Tracking and analytics",
-          "body": "Folucent includes no advertising, tracking SDK, or developer-operated analytics service. Apple may provide App Store or diagnostic information under your Apple privacy settings and Apple's policies."
+          "body": "Folucent includes no advertising or tracking SDK and does not use purchase information for tracking. Purchase records in RevenueCat are used to provide Pro access and aggregate purchase reporting. Apple may provide App Store or diagnostic information under your Apple privacy settings and Apple's policies."
         },
         {
           "heading": "Export, deletion, and support",
