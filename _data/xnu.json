@@ -88,11 +88,80 @@
           "body": "English, Chinese, Spanish, Portuguese, French, German, Italian, Japanese, Korean, Russian, Hindi, Indonesian and Vietnamese. Availability depends on your device and Apple's models."
         }
       ],
+      "pricing": {
+        "heading": "Free for everyday conversations. Pro for unlimited time.",
+        "intro": "Every feature is in the free version. Live translation is free for 2 hours a day; BabelTable Pro removes the daily limit.",
+        "availability": "BabelTable Pro arrives in version 1.1, now in TestFlight testing. The current App Store version has no daily limit and no purchases.",
+        "plans": [
+          {
+            "name": "Free",
+            "status": "Included",
+            "price": "$0",
+            "billing": "2 hours of live translation a day",
+            "description": "Face-to-face and side-by-side translation, offline use, all 13 languages, and local history.",
+            "note": "Only live listening counts toward the 2 hours. The allowance resets at local midnight."
+          },
+          {
+            "name": "BabelTable Pro",
+            "status": "Optional upgrade",
+            "price": "US$3.99",
+            "billing": "per month · or US$19.99 a year · or US$39.99 once",
+            "description": "Everything in Free, with no daily limit on translation time.",
+            "note": "Your local App Store price is shown in the app. Subscriptions renew automatically until cancelled in your App Store account settings; Lifetime is a one-time purchase."
+          }
+        ],
+        "rows": [
+          {
+            "feature": "Face-to-face and side-by-side translation",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "Offline use after preparing language models",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "All 13 language choices",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "Local history, transcript sharing and diagnostics",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "No account, no cloud translation",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "Daily live translation time",
+            "free": "2 hours",
+            "pro": "Unlimited"
+          }
+        ],
+        "notes": [
+          {
+            "title": "What counts toward the 2 hours",
+            "body": "Only time the microphone is listening during a conversation. Preparing models, pauses, and reading History don't count. If time runs out mid-conversation, the current phrase finishes and the conversation is saved to History before the upgrade screen appears."
+          },
+          {
+            "title": "Pro works offline",
+            "body": "Pro status is kept on your device, so it keeps working in airplane mode. Restore Purchases brings Pro to your other devices signed in with the same Apple Account."
+          },
+          {
+            "title": "Early supporters keep unlimited time",
+            "body": "If you installed version 1.0 before the daily limit existed, you keep unlimited translation automatically, with no purchase needed."
+          }
+        ]
+      },
       "privacy": true,
       "privacy_sections": [
         {
           "heading": "On-device speech and translation",
-          "body": "BabelTable uses Apple's on-device speech recognition and Translation frameworks. Conversation audio and text are not sent to a developer server or a cloud translation provider. There is no account, API key, advertising SDK, tracking, or remote text refinement. Make sure everyone agrees before using the microphone."
+          "body": "BabelTable uses Apple's on-device speech recognition and Translation frameworks. Conversation audio and text are not sent to a developer server or a cloud translation provider. There is no account, API key, advertising SDK, analytics, tracking, or remote text refinement. Make sure everyone agrees before using the microphone."
         },
         {
           "heading": "Microphone audio",
@@ -108,13 +177,21 @@
         },
         {
           "heading": "Diagnostics and usage",
-          "body": "Conversation duration and a bounded diagnostic log are stored only on your device. Diagnostics do not intentionally include conversation text or audio. You can inspect, clear, or share diagnostics in Settings. There is no remote usage reporting."
+          "body": "Conversation duration and a bounded diagnostic log are stored only on your device. Diagnostics do not intentionally include conversation text or audio. You can inspect, clear, or share diagnostics in Settings. The free daily translation allowance is counted on your device from time only. There is no remote usage reporting."
         },
         {
           "heading": "Permissions",
           "list": [
             "Microphone: captures speech for live transcription and translation on your device."
           ]
+        },
+        {
+          "heading": "Purchases",
+          "body": "Starting with version 1.1, translation is free for 2 hours a day, and BabelTable Pro, an optional subscription or one-time purchase, removes the daily limit. Purchases are processed by Apple and recorded by RevenueCat, Inc., a purchase-management service, so the app can confirm your Pro status and restore it on your devices. RevenueCat receives a random anonymous app user ID, your purchase and subscription records, the app version, basic device information such as the operating system version and App Store storefront, and the IP address that any web request carries. RevenueCat does not receive your name, email, conversations, audio, transcripts, translations, language choices, or usage time. This information is not used for advertising or tracking. Pro status is cached on your device so it keeps working offline. RevenueCat processes this information under its own privacy policy at https://www.revenuecat.com/privacy/ . Payment details are handled only by Apple."
+        },
+        {
+          "heading": "Early supporters",
+          "body": "People who installed version 1.0 before the daily limit existed keep unlimited translation without a purchase. The app checks this on the device using Apple's signed app transaction; nothing is sent to the developer."
         },
         {
           "heading": "Contact",
