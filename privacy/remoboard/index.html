@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="canonical" href="https://xnu.app/privacy/remoboard/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Privacy policy for Remoboard.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%231f8a5b'/%3E%3Crect x='13' y='18' width='38' height='28' rx='7' fill='none' stroke='white' stroke-width='4'/%3E%3Cpath d='M21 27h2m7 0h2m7 0h2M21 36h20' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <title>Privacy — Remoboard</title>
+  <style>
+:root {
+  color-scheme: light;
+  --ink: #17211c;
+  --muted: #617069;
+  --paper: #f7f4ed;
+  --card: rgba(255, 255, 255, 0.72);
+  --line: rgba(23, 33, 28, 0.12);
+  --green: #1f8a5b;
+  --green-dark: #14633f;
+  --lime: #c9f36b;
+  --shadow: 0 24px 80px rgba(35, 53, 44, 0.14);
+}
+
+* { box-sizing: border-box; }
+html { overflow-x: hidden; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 85% 8%, rgba(201, 243, 107, 0.32), transparent 27rem),
+    radial-gradient(circle at 8% 40%, rgba(87, 188, 143, 0.16), transparent 30rem),
+    var(--paper);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+.shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; }
+.brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 750; text-decoration: none; }
+.brand-mark {
+  display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px;
+  color: white; background: var(--green); box-shadow: 0 8px 22px rgba(31, 138, 91, 0.25);
+}
+.brand-mark svg { width: 19px; }
+.nav-links { display: flex; align-items: center; gap: 22px; }
+.nav-links a { color: var(--muted); font-size: 14px; text-decoration: none; }
+.nav-links a:hover { color: var(--ink); }
+
+.hero { display: grid; grid-template-columns: 1.04fr .96fr; align-items: center; gap: 68px; min-height: 690px; padding: 48px 0 94px; }
+.eyebrow { display: flex; align-items: center; gap: 9px; color: var(--green-dark); font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+.eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--green); }
+h1 { margin: 18px 0 22px; max-width: 680px; font-size: clamp(52px, 7.4vw, 86px); line-height: .98; letter-spacing: -.065em; }
+.lede { max-width: 590px; margin: 0; color: var(--muted); font-size: clamp(18px, 2vw, 22px); line-height: 1.55; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 0 20px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.6); font-size: 15px; font-weight: 700; text-decoration: none; transition: transform .18s ease, box-shadow .18s ease; }
+.button:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(35,53,44,.1); }
+.button.primary { border-color: var(--ink); color: white; background: var(--ink); }
+.button svg { width: 18px; }
+
+.stage { position: relative; min-height: 510px; }
+.orbit { position: absolute; inset: 18px 0 0 6%; border: 1px dashed rgba(31,138,91,.25); border-radius: 50%; transform: rotate(-12deg); }
+.desktop {
+  position: absolute; top: 42px; right: 8%; width: 84%; padding: 12px; border: 1px solid rgba(255,255,255,.85); border-radius: 25px;
+  background: rgba(255,255,255,.58); box-shadow: var(--shadow); backdrop-filter: blur(18px); transform: rotate(2deg);
+}
+.browser-bar { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 9px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #cbd5cf; }
+.address { flex: 1; margin-left: 6px; padding: 6px 10px; border-radius: 8px; color: #728078; background: rgba(240,244,241,.9); font: 9px ui-monospace, SFMono-Regular, Menlo, monospace; }
+.browser-body { min-height: 264px; padding: 28px; border-radius: 15px; color: white; background: #14211a; }
+.browser-body small { color: #95a79d; font: 10px ui-monospace, SFMono-Regular, Menlo, monospace; }
+.typing { margin-top: 34px; font-size: clamp(17px, 2.4vw, 27px); line-height: 1.35; }
+.cursor { display: inline-block; width: 2px; height: 1em; margin-left: 3px; vertical-align: -.15em; background: var(--lime); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.send-pill { display: inline-flex; margin-top: 35px; padding: 9px 14px; border-radius: 9px; color: #183221; background: var(--lime); font-size: 11px; font-weight: 800; }
+.phone {
+  position: absolute; right: 0; bottom: 0; width: 155px; height: 310px; padding: 8px; border-radius: 34px; background: #121815; box-shadow: 0 24px 70px rgba(23,33,28,.3); transform: rotate(-5deg);
+}
+.phone-screen { position: relative; height: 100%; overflow: hidden; border-radius: 27px; background: linear-gradient(160deg, #e9f7ee, #f9fbf5 55%); }
+.island { width: 54px; height: 14px; margin: 8px auto; border-radius: 10px; background: #121815; }
+.message { margin: 50px 13px 0; padding: 12px; border-radius: 15px 15px 4px 15px; color: white; background: var(--green); font-size: 10px; line-height: 1.45; }
+.keyboard { position: absolute; right: 0; bottom: 0; left: 0; padding: 10px 8px 13px; background: rgba(218,225,220,.92); }
+.keys { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.key { height: 15px; border-radius: 3px; background: white; box-shadow: 0 1px 1px rgba(0,0,0,.14); }
+
+.strip { border-block: 1px solid var(--line); background: rgba(255,255,255,.35); }
+.strip-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; }
+.stat { padding: 29px 24px; border-left: 1px solid var(--line); }
+.stat:first-child { border-left: 0; }
+.stat strong { display: block; margin-bottom: 5px; font-size: 16px; }
+.stat span { color: var(--muted); font-size: 13px; }
+
+.section { padding: 112px 0; }
+.section-head { display: grid; grid-template-columns: .8fr 1.2fr; gap: 52px; margin-bottom: 52px; }
+.section h2 { margin: 0; font-size: clamp(34px, 5vw, 56px); line-height: 1.05; letter-spacing: -.045em; }
+.section-head p { margin: 4px 0 0; color: var(--muted); font-size: 17px; line-height: 1.65; }
+.steps, .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { padding: 28px; border: 1px solid var(--line); border-radius: 22px; background: var(--card); box-shadow: 0 10px 40px rgba(35,53,44,.05); }
+.number { display: grid; place-items: center; width: 32px; height: 32px; margin-bottom: 44px; border-radius: 50%; color: white; background: var(--green); font: 700 13px ui-monospace, monospace; }
+.card h3 { margin: 0 0 9px; font-size: 18px; }
+.card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.feature-icon { width: 38px; height: 38px; margin-bottom: 32px; color: var(--green); }
+.dark { color: white; background: #14211a; }
+.dark .section-head p, .dark .card p { color: #9cadA3; }
+.dark .card { border-color: rgba(255,255,255,.1); background: rgba(255,255,255,.045); box-shadow: none; }
+.dark .feature-icon { color: var(--lime); }
+.privacy-note { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 36px; border: 1px solid var(--line); border-radius: 24px; background: white; }
+.privacy-note h3 { margin: 0 0 6px; font-size: 21px; }
+.privacy-note p { margin: 0; color: var(--muted); line-height: 1.55; }
+footer { display: flex; justify-content: space-between; gap: 20px; padding: 42px 0; color: var(--muted); font-size: 13px; }
+footer div { display: flex; gap: 18px; }
+footer a { text-decoration: none; }
+
+.legal { width: min(760px, calc(100% - 40px)); margin: 0 auto; padding: 70px 0 110px; }
+.legal h1 { font-size: clamp(42px, 7vw, 68px); }
+.legal .updated { color: var(--muted); }
+.legal section { margin-top: 44px; }
+.legal h2 { margin: 0 0 10px; font-size: 21px; letter-spacing: -.02em; }
+.legal p, .legal li { color: var(--muted); line-height: 1.7; }
+.legal a { color: var(--green-dark); }
+
+@media (max-width: 820px) {
+  .hero { grid-template-columns: 1fr; gap: 28px; padding-top: 50px; }
+  .stage { min-height: 450px; }
+  .section-head { grid-template-columns: 1fr; gap: 20px; }
+  .steps, .features { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .shell { width: min(100% - 28px, 1120px); }
+  .nav-links a:not(:last-child) { display: none; }
+  h1 { font-size: 50px; }
+  .hero { min-height: auto; padding-bottom: 70px; }
+  .stage { min-height: 370px; }
+  .desktop { right: 2%; width: 96%; }
+  .phone { width: 125px; height: 250px; }
+  .browser-body { min-height: 215px; padding: 21px; }
+  .strip-inner { grid-template-columns: 1fr; }
+  .stat { border-left: 0; border-top: 1px solid var(--line); }
+  .stat:first-child { border-top: 0; }
+  .section { padding: 78px 0; }
+  .privacy-note, footer { align-items: flex-start; flex-direction: column; }
+}
+
+</style>
+</head>
+<body>
+  <header class="shell nav"><a class="brand" href="https://xnu.app/remoboard/"><span class="brand-mark" aria-hidden="true">R</span>Remoboard</a><nav class="nav-links"><a href="https://xnu.app/remoboard/">Back to home</a></nav></header>
+  <main class="legal">
+    <div class="eyebrow">Privacy</div>
+    <h1>Your typing is yours.</h1>
+    <p class="updated">Last updated: November 7, 2026</p>
+    <section><h2>What Remoboard does</h2><p>Remoboard turns your iPhone keyboard extension into a small local web server. A browser on the same local network can pair with the keyboard and send text or explicit clipboard commands directly to the phone.</p></section>
+    <section><h2>Developer-operated services</h2><p>Remoboard does not require an account and does not route typed text, pairing PINs, clipboard content, quick words, or connection diagnostics through a server operated by the developer. The app does not use advertising trackers.</p></section>
+    <section><h2>Data stored on your device</h2><p>Settings, quick words, snippets, trusted-computer records and the keyboard theme are stored locally in the Remoboard app group. For trusted computers the phone keeps only a one-way hash of each access token, the browser label you see in the list (for example “Chrome · macOS”) and when it was last used. Send history and the trusted-computer token are kept in your computer’s browser storage for that page only. Connection diagnostics, when available, are stored locally with text payloads redacted. You control whether to export diagnostic information.</p></section>
+    <section><h2>In-app purchases</h2><p>Remoboard Pro is an optional in-app purchase. Purchases are processed by Apple. The Remoboard host app (never the keyboard extension) uses RevenueCat to validate purchases and restore them across your devices. RevenueCat receives an anonymous app user ID, your App Store transaction and receipt information, the app version and basic device information (such as OS version and locale). It never receives your typed text, clipboard content, quick words, snippets or diagnostics. See <a href="https://www.revenuecat.com/privacy">RevenueCat’s privacy policy</a>. The host app checks your purchase status with RevenueCat when it opens; the keyboard only reads the cached result on your device.</p></section>
+    <section><h2>Local network and Full Access</h2><p>iOS requires “Allow Full Access” for a third-party keyboard to communicate over the local network. Remoboard uses that access to accept connections from your browser. PIN pairing is on by default: a browser must enter the code shown on the keyboard before it can type. You can turn off this requirement in the app settings. If you do, other devices that can reach the local address may connect, so use that option only on networks you trust.</p></section>
+    <section><h2>Clipboard access</h2><p>Clipboard content (text or, with Remoboard Pro, images) is read or written only when you explicitly use a clipboard action in the paired browser interface, or insert a snippet that contains the {clipboard} variable. Remote clipboard reads and writes can each be turned off in the app. Clipboard content travels over the direct local connection.</p></section>
+    <section><h2>Third-party destinations</h2><p>If you follow links from this site to the App Store, GitHub, or Discord, those services apply their own privacy policies. The Remoboard app itself does not send your typed content to them.</p></section>
+    <section><h2>Questions</h2><p>Open a <a href="https://github.com/everettjf/remoboard/issues">GitHub issue</a> for support or join the <a href="https://discord.gg/eGzEaP6TzR">community Discord</a>.</p></section>
+  </main>
+  <footer class="shell"><span>© 2026 Remoboard</span><div><a href="https://xnu.app/remoboard/">Home</a><a href="https://github.com/everettjf/remoboard">Source</a></div></footer>
+</body>
+</html>
