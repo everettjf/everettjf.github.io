@@ -305,9 +305,9 @@
           {
             "name": "BabelTable Pro",
             "status": "Optional upgrade",
-            "price": "US$1.99",
-            "billing": "per month · or US$9.99 a year · or US$14.99 once",
-            "description": "Everything in Free, with no daily limit on translation time.",
+            "price": "US$14.99",
+            "billing": "once, unlimited for good · or US$9.99 a year · or US$1.99 a month",
+            "description": "Everything in Free, with no daily limit on translation time. Lifetime is the best value: pay once, no subscription.",
             "note": "Your local App Store price is shown in the app. Subscriptions renew automatically until cancelled in your App Store account settings; Lifetime is a one-time purchase."
           }
         ],
