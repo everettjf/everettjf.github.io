@@ -93,7 +93,7 @@
       "pricing": {
         "heading": "Free for everyday comparison. Pro for specialist work.",
         "intro": "File, folder, image and developer-format comparison stay free. Pro adds specialist tools. Every Pro feature can be tried three times for free.",
-        "availability": "GrapeCompare Pro arrives with version 1.1.0, which is in App Review. Version 1.0 does not include Pro.",
+        "availability": "GrapeCompare Pro requires GrapeCompare 1.1.0 or later. Earlier versions do not include Pro.",
         "plans": [
           {
             "name": "Free",
@@ -104,7 +104,7 @@
           },
           {
             "name": "Pro Lifetime",
-            "status": "With version 1.1.0",
+            "status": "Version 1.1.0 or later",
             "price": "US$19.99",
             "billing": "One-time purchase",
             "description": "Every current Pro feature, unlocked permanently.",
@@ -112,7 +112,7 @@
           },
           {
             "name": "Pro Yearly",
-            "status": "With version 1.1.0",
+            "status": "Version 1.1.0 or later",
             "price": "US$7.99",
             "billing": "Per year · auto-renewing",
             "description": "Every Pro feature for as long as the subscription is active.",
