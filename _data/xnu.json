@@ -377,6 +377,10 @@
           "body": "Transcripts and translations are saved in local app storage, and you can delete them in History. Device backups may include this storage depending on your system settings. The developer does not receive these archives. Sharing uses the system share sheet only when you request it; the destination you choose controls the shared copy."
         },
         {
+          "heading": "Read-aloud, phrasebook, PDF export, and summaries",
+          "body": "Translations you choose to hear are read aloud with voices installed on your device, and the microphone pauses while they play so the phone does not transcribe itself. Phrases you save in the phrasebook are stored only on your device and translated with installed models. Bilingual PDF exports are created on your device and leave it only when you share them. Conversation summaries (BabelTable Pro) are created on your device by Apple Intelligence; the transcript is not sent to the developer or to a server. A summary is saved with its conversation in History and is deleted with it."
+        },
+        {
           "heading": "Diagnostics and usage",
           "body": "Conversation duration and a bounded diagnostic log are stored only on your device. Diagnostics do not intentionally include conversation text or audio. You can inspect, clear, or share diagnostics in Settings. The free daily translation allowance is counted on your device from time only. There is no remote usage reporting."
         },
