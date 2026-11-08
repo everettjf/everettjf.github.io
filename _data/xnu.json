@@ -3,7 +3,7 @@
   "discord_url": "https://discord.gg/eGzEaP6TzR",
   "featured_apps": [
     { "name": "TypeTide", "pitch": "Translate where you type. Built-in offline translation on Apple Silicon Macs and Windows. Ollama and your API are optional.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows", "badges": ["Homebrew", "Open source"], "home_featured": true, "screenshot": "/images/products/typetide.png", "screenshot_alt": "TypeTide’s floating translation button beside selected text", "screenshot_width": 1240, "screenshot_height": 340, "screenshot_source": "https://raw.githubusercontent.com/everettjf/typetide/main/docs/screenshots/icon.png", "download_url": "https://xnu.app/typetide/#top", "download_label": "Download TypeTide", "home_url": "https://xnu.app/typetide/", "status": "Active development", "store_note": "Built-in translation needs a one-time model download on Apple Silicon Macs or Windows; Intel Macs use Ollama or an API." },
-    { "name": "GrapeCompare", "pitch": "See what changed. Compare files, folders, and images locally on your Mac.", "href": "/grapecompare/", "icon": "diff", "platform": "macOS 15+", "badges": ["Mac App Store", "Open source"], "home_featured": true, "status": "Available", "screenshot": "/images/products/grapecompare.png", "screenshot_alt": "GrapeCompare highlighting additions and removals in two Swift files", "screenshot_width": 2560, "screenshot_height": 1600, "screenshot_source": "https://github.com/everettjf/grapecompare/blob/main/docs/assets/file-diff.png", "home_url": "https://xnu.app/grapecompare/", "download_url": "https://apps.apple.com/us/app/grapecompare/id6796778424?mt=12", "download_label": "Mac App Store", "store_note": "Available on the Mac App Store. Requires macOS 15 or later." }
+    { "name": "GrapeCompare", "pitch": "See what changed. Compare files, folders, and images locally on your Mac.", "href": "/grapecompare/", "icon": "diff", "platform": "macOS 15+", "badges": ["Mac App Store"], "home_featured": true, "status": "Available", "screenshot": "/images/products/grapecompare.png", "screenshot_alt": "GrapeCompare highlighting additions and removals in two Swift files", "screenshot_width": 2560, "screenshot_height": 1600, "home_url": "https://xnu.app/grapecompare/", "download_url": "https://apps.apple.com/us/app/grapecompare/id6796778424?mt=12", "download_label": "Mac App Store", "store_note": "Available on the Mac App Store. Requires macOS 15 or later." }
   ],
   "legacy_apps": [
     { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"], "screenshot": "/images/products/remoboard.jpg", "screenshot_alt": "Remote Keyboard for iPhone, the App Store version of Remoboard", "screenshot_width": 392, "screenshot_height": 696, "screenshot_source": "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/e9/66/d4/e966d406-274c-bd4d-3039-ee2f0bacc8d8/pr_source.jpg/392x696bb.jpg", "download_url": "https://apps.apple.com/us/app/remote-keyboard/id1474458879", "download_label": "Get Remote Keyboard", "home_url": "https://xnu.app/remoboard/", "store_note": "Available on the App Store as Remote Keyboard.", "home_maintained": true, "status": "Maintained" },
@@ -43,6 +43,207 @@
     { "name": "NotbadBookmark", "pitch": "A modern, fast replacement for Chrome's bookmark manager.", "href": "/notbadbookmark/", "icon": "bookmark", "platform": "Chrome" }
   ],
   "products": {
+    "grapecompare": {
+      "name": "GrapeCompare",
+      "platform": "macOS 15+",
+      "icon": "diff",
+      "icon_image": "/images/products/grapecompare-icon.png",
+      "badges": [
+        "Mac App Store"
+      ],
+      "tagline": "See every difference. Keep complete control.",
+      "description": "GrapeCompare compares files, folders, images, structured data and three-way merges on your Mac, inside the macOS App Sandbox. There is no account, analytics or cloud upload. The core app is free; GrapeCompare Pro is an optional upgrade.",
+      "links": [
+        {
+          "label": "Download on the Mac App Store",
+          "href": "https://apps.apple.com/us/app/grapecompare/id6796778424?mt=12",
+          "primary": true
+        },
+        {
+          "label": "Get help",
+          "href": "/grapecompare/support.html"
+        }
+      ],
+      "features": [
+        {
+          "title": "Files and text",
+          "body": "Side-by-side line and character differences, navigation, filters, unchanged-text folding, editable output and unified patch export."
+        },
+        {
+          "title": "Folders",
+          "body": "Recursive folder comparison with search, inline preview, and reviewed copy, replace, move and recoverable delete, with preflight checks and durable undo."
+        },
+        {
+          "title": "Images",
+          "body": "Two-up, split, blink and difference views with synchronized zoom, metadata, pixel sampling, thresholds and channels."
+        },
+        {
+          "title": "Developer formats",
+          "body": "Semantic JSON, property list, XCStrings and Xcode project comparison, plus app bundle, signature, entitlement, Mach-O and asset catalog inspection."
+        },
+        {
+          "title": "Native Mac workflow",
+          "body": "Finder Open With, drag and drop, a file shelf for up to 16 versions, and the Compare Files Shortcut. Access is limited to items you select."
+        },
+        {
+          "title": "GrapeCompare Pro",
+          "body": "Three-way merge, on-device AI change summaries, moved-block detection, .app/.ipa/.xcarchive build comparison, PDF/Word/Excel/CSV comparison, screenshot regression, folder snapshots, HTML reports, replacement rules and color themes."
+        }
+      ],
+      "pricing": {
+        "heading": "Free for everyday comparison. Pro for specialist work.",
+        "intro": "File, folder, image and developer-format comparison stay free. Pro adds specialist tools. Every Pro feature can be tried three times for free.",
+        "availability": "GrapeCompare Pro arrives with version 1.1.0, which is in App Review. Version 1.0 does not include Pro.",
+        "plans": [
+          {
+            "name": "Free",
+            "status": "Available now",
+            "price": "$0",
+            "billing": "No purchase required",
+            "description": "Files, folders, images, structured data and app bundle inspection."
+          },
+          {
+            "name": "Pro Lifetime",
+            "status": "With version 1.1.0",
+            "price": "US$19.99",
+            "billing": "One-time purchase",
+            "description": "Every current Pro feature, unlocked permanently.",
+            "note": "Local prices are shown in the app."
+          },
+          {
+            "name": "Pro Yearly",
+            "status": "With version 1.1.0",
+            "price": "US$7.99",
+            "billing": "Per year · auto-renewing",
+            "description": "Every Pro feature for as long as the subscription is active.",
+            "note": "Manage or cancel in your Apple Account subscriptions."
+          }
+        ],
+        "rows": [
+          {
+            "feature": "Text and file comparison, patch export",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "Folder comparison and reviewed file operations",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "Image comparison",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "JSON, plist, XCStrings, Xcode project and app bundle inspection",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "PDF comparison report",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "Three-way text and image merge",
+            "free": "3 free tries",
+            "pro": "Included"
+          },
+          {
+            "feature": "On-device AI change summary (Apple Intelligence)",
+            "free": "3 free tries",
+            "pro": "Included"
+          },
+          {
+            "feature": "Moved-block detection",
+            "free": "3 free tries",
+            "pro": "Included"
+          },
+          {
+            "feature": ".app, .ipa and .xcarchive build comparison",
+            "free": "3 free tries",
+            "pro": "Included"
+          },
+          {
+            "feature": "PDF, Word, Excel and CSV document comparison",
+            "free": "3 free tries",
+            "pro": "Included"
+          },
+          {
+            "feature": "Screenshot regression and folder snapshots",
+            "free": "3 free tries",
+            "pro": "Included"
+          },
+          {
+            "feature": "Rich HTML reports, replacement rules and color themes",
+            "free": "3 free tries",
+            "pro": "Included"
+          }
+        ],
+        "notes": [
+          {
+            "title": "Existing users",
+            "body": "If you downloaded GrapeCompare before version 1.1.0, every Pro feature is unlocked for you at no cost."
+          },
+          {
+            "title": "Restore purchases",
+            "body": "Open GrapeCompare Pro in the app menu or Settings and choose Restore Purchases on any Mac signed in to the same Apple Account."
+          }
+        ]
+      },
+      "privacy": true,
+      "privacy_sections": [
+        {
+          "heading": "Overview",
+          "body": "Effective November 7, 2026. GrapeCompare compares files privately on your Mac. Your files and their contents never leave your device. The only information exchanged over the network is anonymous purchase status for GrapeCompare Pro."
+        },
+        {
+          "heading": "Data collection",
+          "body": "GrapeCompare does not collect personal information, usage analytics, diagnostics, advertising identifiers or tracking data, and it does not require an account. To unlock GrapeCompare Pro, the app checks App Store purchase history through RevenueCat, our in-app purchase provider, using a random anonymous identifier. Purchase history is not linked to your identity and is never used for tracking or advertising."
+        },
+        {
+          "heading": "Files and folders",
+          "body": "App Sandbox limits GrapeCompare to files and folders you explicitly select. They are read and compared locally. Their contents and metadata are not uploaded to the developer or any third party."
+        },
+        {
+          "heading": "Data stored on your Mac",
+          "body": "GrapeCompare stores app preferences, security-scoped bookmarks for comparisons you choose to keep, recent comparison names, Pro trial counts and transactional operation journals inside its sandbox container. This data is used only to provide app features and is not transmitted off the device."
+        },
+        {
+          "heading": "Demo data",
+          "body": "The optional demo files and folders are generated locally by the app and stay on your Mac. Loading demo data does not make a network request."
+        },
+        {
+          "heading": "Third-party services",
+          "list": [
+            "RevenueCat: verifies in-app purchases using an anonymous identifier and App Store transaction data. See RevenueCat's privacy policy at https://www.revenuecat.com/privacy.",
+            "Apple: processes payments through the App Store.",
+            "Apple Intelligence: AI change summaries run on your Mac. Diff content is never sent to the developer or a cloud service."
+          ]
+        },
+        {
+          "heading": "No tracking",
+          "body": "GrapeCompare contains no analytics, advertising, social or tracking SDKs."
+        },
+        {
+          "heading": "Data retention and deletion",
+          "body": "The developer stores no file data. RevenueCat keeps anonymous purchase records so purchases can be restored; contact us to request their deletion. You can clear recent comparisons and operation history in the app. Uninstalling GrapeCompare and removing its sandbox container deletes its remaining local data."
+        },
+        {
+          "heading": "Children",
+          "body": "GrapeCompare does not knowingly collect personal data from children."
+        },
+        {
+          "heading": "Changes",
+          "body": "If the app's data practices change, this policy will be updated before the change is released."
+        },
+        {
+          "heading": "Contact",
+          "body": "Questions about this policy: xnuapp@gmail.com. Please do not include confidential comparison content."
+        }
+      ]
+    },
     "babeltable": {
       "name": "BabelTable",
       "platform": "iOS · iPadOS 27+",

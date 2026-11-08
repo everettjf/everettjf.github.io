@@ -20,12 +20,6 @@
       "priority": "established"
     },
     {
-      "name": "GrapeCompare",
-      "repo": "everettjf/grapecompare",
-      "stars": 4,
-      "priority": "maintained"
-    },
-    {
       "name": "IPAView",
       "repo": "everettjf/ipaview",
       "stars": 1,
