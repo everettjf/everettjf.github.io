@@ -25,7 +25,7 @@
   ],
   "research_labs": [
     { "name": "Veilpath", "pitch": "A guarded iPhone and iPad container explorer built for security research.", "href": "/veilpath/", "icon": "shield", "platform": "Swift · Security research", "badges": ["Open source", "Experimental"], "status": "Experimental" },
-    { "name": "BabelTable", "pitch": "Real-time two-way speech translation on one iPhone.", "href": "/babeltable/", "icon": "messages-square", "platform": "Swift · iOS", "badges": ["Open source", "Experimental"], "status": "Experimental" }
+    { "name": "BabelTable", "pitch": "Offline two-way speech translation on one iPhone.", "href": "/babeltable/", "icon": "messages-square", "platform": "iOS 27", "badges": ["App Store", "Experimental"], "status": "Experimental" }
   ],
   "independent_projects": [
     { "name": "MWFL", "pitch": "A modern C++20 foundation for native Windows desktop apps with real HWND controls.", "href": "https://github.com/mwfl/mwfl", "icon": "panels-top-left", "platform": "C++20 · Windows", "badges": ["Open source", "Independent"] }
@@ -43,6 +43,85 @@
     { "name": "NotbadBookmark", "pitch": "A modern, fast replacement for Chrome's bookmark manager.", "href": "/notbadbookmark/", "icon": "bookmark", "platform": "Chrome" }
   ],
   "products": {
+    "babeltable": {
+      "name": "BabelTable",
+      "platform": "iOS · iPadOS 27+",
+      "icon": "messages-square",
+      "icon_image": "/images/products/babeltable-icon.png",
+      "badges": ["App Store"],
+      "tagline": "Two people. Two languages. One phone on the table.",
+      "description": "BabelTable transcribes speech on your device and translates each completed phrase. Choose the speaking language and take turns — even in airplane mode once the language models are prepared.",
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "href": "https://apps.apple.com/us/app/babeltable/id6807469213",
+          "primary": true
+        },
+        {
+          "label": "Get help",
+          "href": "/babeltable/support/"
+        }
+      ],
+      "features": [
+        {
+          "title": "Live two-way translation",
+          "body": "Choose the speaking language, watch progressive captions, and read the translation after each phrase. Switch languages when the other person speaks."
+        },
+        {
+          "title": "Face-to-face mode",
+          "body": "The top panel is rotated 180° for the person across the table, so each side reads their own language the right way up."
+        },
+        {
+          "title": "Side-by-side chat",
+          "body": "One chronological thread shows every phrase and its translation in order. Switch layouts without losing the conversation."
+        },
+        {
+          "title": "Offline after setup",
+          "body": "Download Apple's speech and translation models once while online. Prepared language pairs then work without a connection, including airplane mode."
+        },
+        {
+          "title": "Local history",
+          "body": "Conversations are saved on your device. Read, delete, or share a transcript as text whenever you choose."
+        },
+        {
+          "title": "13 language choices",
+          "body": "English, Chinese, Spanish, Portuguese, French, German, Italian, Japanese, Korean, Russian, Hindi, Indonesian and Vietnamese. Availability depends on your device and Apple's models."
+        }
+      ],
+      "privacy": true,
+      "privacy_sections": [
+        {
+          "heading": "On-device speech and translation",
+          "body": "BabelTable uses Apple's on-device speech recognition and Translation frameworks. Conversation audio and text are not sent to a developer server or a cloud translation provider. There is no account, API key, advertising SDK, tracking, or remote text refinement. Make sure everyone agrees before using the microphone."
+        },
+        {
+          "heading": "Microphone audio",
+          "body": "Microphone audio is processed in memory and is not saved as recordings. Capture stops when you stop the conversation, background the app, or an interruption pauses the session. Speech during a pause is not recorded."
+        },
+        {
+          "heading": "Language models and Apple services",
+          "body": "An internet connection is required to download speech and translation models before first use, and when preparing a different pair or replacing removed models. Apple manages these downloads, and the app does not fall back to a cloud translation service. Apple's frameworks may collect API usage and performance metrics, including app identity and language information; Apple states these metrics exclude original and translated content. Apple's services are governed by Apple's privacy policy."
+        },
+        {
+          "heading": "Local history and sharing",
+          "body": "Transcripts and translations are saved in local app storage, and you can delete them in History. Device backups may include this storage depending on your system settings. The developer does not receive these archives. Sharing uses the system share sheet only when you request it; the destination you choose controls the shared copy."
+        },
+        {
+          "heading": "Diagnostics and usage",
+          "body": "Conversation duration and a bounded diagnostic log are stored only on your device. Diagnostics do not intentionally include conversation text or audio. You can inspect, clear, or share diagnostics in Settings. There is no remote usage reporting."
+        },
+        {
+          "heading": "Permissions",
+          "list": [
+            "Microphone: captures speech for live transcription and translation on your device."
+          ]
+        },
+        {
+          "heading": "Contact",
+          "body": "Questions about this policy: xnuapp@gmail.com. Please do not include private conversations or other sensitive information."
+        }
+      ]
+    },
     "sixup": {
       "name": "SixUp",
       "platform": "iOS · iPadOS",
