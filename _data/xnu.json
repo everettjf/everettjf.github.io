@@ -290,16 +290,16 @@
         }
       ],
       "pricing": {
-        "heading": "Free for everyday conversations. Pro for unlimited time.",
-        "intro": "Every feature is in the free version. Live translation is free for 2 hours a day; BabelTable Pro removes the daily limit.",
-        "availability": "BabelTable Pro arrives in version 1.1, now in TestFlight testing. The current App Store version has no daily limit and no purchases.",
+        "heading": "Free for everyday conversations. Pro for unlimited time and extra tools.",
+        "intro": "Live translation is free for 2 hours a day, with read-aloud, large text, and History search included. BabelTable Pro removes the daily limit and adds tools for travel and work.",
+        "availability": "BabelTable Pro and the new tools below arrive in version 1.1, now in TestFlight testing. The current App Store version has no daily limit and no purchases.",
         "plans": [
           {
             "name": "Free",
             "status": "Included",
             "price": "$0",
             "billing": "2 hours of live translation a day",
-            "description": "Face-to-face and side-by-side translation, offline use, all 13 languages, and local history.",
+            "description": "Face-to-face and side-by-side translation, offline use, all 13 languages, tap-to-hear read-aloud, large text, and local history with search and stars.",
             "note": "Only live listening counts toward the 2 hours. The allowance resets at local midnight."
           },
           {
@@ -307,7 +307,7 @@
             "status": "Optional upgrade",
             "price": "US$14.99",
             "billing": "once, unlimited for good · or US$9.99 a year · or US$1.99 a month",
-            "description": "Everything in Free, with no daily limit on translation time. Lifetime is the best value: pay once, no subscription.",
+            "description": "Everything in Free with no daily limit, plus auto read-aloud, a phrasebook, bilingual PDF export, on-device summaries, and themes and app icons. Lifetime is the best value: pay once, no subscription.",
             "note": "Your local App Store price is shown in the app. Subscriptions renew automatically until cancelled in your App Store account settings; Lifetime is a one-time purchase."
           }
         ],
@@ -333,6 +333,16 @@
             "pro": "Included"
           },
           {
+            "feature": "Tap to read aloud and large-text display",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
+            "feature": "History search and stars",
+            "free": "Included",
+            "pro": "Included"
+          },
+          {
             "feature": "No account, no cloud translation",
             "free": "Included",
             "pro": "Included"
@@ -341,6 +351,31 @@
             "feature": "Daily live translation time",
             "free": "2 hours",
             "pro": "Unlimited"
+          },
+          {
+            "feature": "Auto read-aloud of every translation",
+            "free": "Not included",
+            "pro": "Included"
+          },
+          {
+            "feature": "Phrasebook in all 13 languages, plus your own phrases",
+            "free": "Not included",
+            "pro": "Included"
+          },
+          {
+            "feature": "Bilingual PDF export",
+            "free": "Not included",
+            "pro": "Included"
+          },
+          {
+            "feature": "On-device conversation summaries (Apple Intelligence)",
+            "free": "Not included",
+            "pro": "Included"
+          },
+          {
+            "feature": "Color themes and alternate app icons",
+            "free": "Not included",
+            "pro": "Included"
           }
         ],
         "notes": [
@@ -354,7 +389,11 @@
           },
           {
             "title": "Early supporters keep unlimited time",
-            "body": "If you installed version 1.0 before the daily limit existed, you keep unlimited translation automatically, with no purchase needed."
+            "body": "If you installed version 1.0 before the daily limit existed, you keep unlimited translation and every Pro tool automatically, with no purchase needed."
+          },
+          {
+            "title": "Summaries need Apple Intelligence",
+            "body": "Conversation summaries are created on your device by Apple Intelligence, so they need a supported device with Apple Intelligence turned on. The transcript is never sent to a server."
           }
         ]
       },
