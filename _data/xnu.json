@@ -1,5 +1,5 @@
 {
-  "support_email": "xnuapp@gmail.com",
+  "support_email": "atomsprout@gmail.com",
   "discord_url": "https://discord.gg/eGzEaP6TzR",
   "featured_apps": [
     {
@@ -18,9 +18,9 @@
       "screenshot_width": 1240,
       "screenshot_height": 340,
       "screenshot_source": "https://raw.githubusercontent.com/everettjf/typetide/main/docs/screenshots/icon.png",
-      "download_url": "https://xnu.app/typetide/#top",
+      "download_url": "https://atomsprout.com/typetide/#top",
       "download_label": "Download TypeTide",
-      "home_url": "https://xnu.app/typetide/",
+      "home_url": "https://atomsprout.com/typetide/",
       "status": "Active development",
       "store_note": "Built-in translation needs a one-time model download on Apple Silicon Macs or Windows; Intel Macs use Ollama or an API."
     }
@@ -29,7 +29,7 @@
     {
       "name": "LaunchDeck",
       "pitch": "Find apps, files, and reusable actions from your keyboard.",
-      "href": "https://xnu.app/launchdeck/",
+      "href": "https://atomsprout.com/launchdeck/",
       "icon": "zap",
       "platform": "macOS 26+",
       "badges": [
@@ -159,7 +159,7 @@
     {
       "name": "LaunchDeck",
       "pitch": "A keyboard-first app launcher for macOS with optional Apple Intelligence search.",
-      "href": "https://xnu.app/launchdeck/",
+      "href": "https://atomsprout.com/launchdeck/",
       "icon": "zap",
       "platform": "macOS"
     },
@@ -244,7 +244,7 @@
         },
         {
           "heading": "Contact",
-          "body": "For privacy questions, email xnuapp@gmail.com. This policy was updated September 22, 2026."
+          "body": "For privacy questions, email atomsprout@gmail.com. This policy was updated September 22, 2026."
         }
       ]
     },
@@ -390,7 +390,7 @@
         },
         {
           "heading": "Analytics and contact",
-          "body": "VoiceDraft has no advertising or analytics SDK and does not operate a server for your content. If you email support, we receive the information you choose to send so we can reply. Contact xnuapp@gmail.com. Updated September 30, 2026."
+          "body": "VoiceDraft has no advertising or analytics SDK and does not operate a server for your content. If you email support, we receive the information you choose to send so we can reply. Contact atomsprout@gmail.com. Updated September 30, 2026."
         }
       ]
     },
