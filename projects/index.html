@@ -1,40 +1,6 @@
 ---
-layout: xnu_base
+layout: company_redirect
 permalink: /projects/
-title: "Open source"
-description: "Open-source tools and experiments by everettjf. Released apps and games live at AtomSprout."
+title: "Works — AtomSprout"
+company_path: /
 ---
-<div class="mx-auto max-w-5xl px-5 pb-16 sm:px-6">
-  <div class="border-b border-border py-20 sm:py-28">
-    <p class="terminal-label mb-5">project_index</p>
-    <h1 class="text-5xl font-bold tracking-tighter sm:text-7xl">Open source<span class="terminal-cursor" aria-hidden="true"></span></h1>
-    <p class="mt-6 max-w-xl text-sm leading-relaxed text-foreground sm:text-base">
-      Tools, experiments, and things learned by building.
-    </p>
-    <p class="mt-2 text-sm text-muted-foreground">
-      By
-      <a href="https://github.com/everettjf" target="_blank" rel="noopener noreferrer"
-         class="underline underline-offset-4 decoration-muted-foreground/40 hover:text-foreground hover:decoration-foreground">everettjf</a>.
-      Released apps, App Store downloads, and product support now live at <a href="{{ site.company_url }}" target="_blank" rel="noopener noreferrer" class="underline">AtomSprout ↗</a>.
-    </p>
-  </div>
-
-  <nav class="catalog-nav" aria-label="Project categories">
-    {% for group in site.data.xnu.catalog_sections %}<a href="#{{ group.id }}">{{ group.title }}</a>{% endfor %}
-  </nav>
-  {% for group in site.data.xnu.catalog_sections %}
-    {% assign entries = site.data.xnu[group.key] %}
-    <section id="{{ group.id }}" class="border-b border-border py-16 scroll-mt-20 sm:py-20">
-      <div class="mb-4 flex items-baseline justify-between border-b border-border pb-3">
-        <div>
-          <h2 class="text-sm font-semibold uppercase tracking-wider text-foreground">{{ group.title }}</h2>
-          <p class="mt-1 text-xs text-muted-foreground">{{ group.description }}</p>
-        </div>
-        <span class="text-xs text-muted-foreground tabular-nums">{{ entries | size }}</span>
-      </div>
-      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {% for p in entries %}{% include xnu/product_row.html p=p %}{% endfor %}
-      </div>
-    </section>
-  {% endfor %}
-</div>

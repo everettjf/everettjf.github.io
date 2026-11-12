@@ -3,7 +3,7 @@ layout: default
 title: Writing
 ---
 
-<main>
+<div>
     <p class="terminal-label mb-5">writing_archive</p>
     <h1 class="page-title">Writing<span class="terminal-cursor" aria-hidden="true"></span></h1>
     <p class="page-subtitle">Development notes and technical articles · {{ site.posts.size }} posts.</p>
@@ -18,39 +18,5 @@ title: Writing
         {% endfor %}
         </ul>
     </section>
-    <form class="archive-filters" role="search" hidden>
-        <div><label for="post-search">Search articles</label><input id="post-search" type="search" placeholder="Title in English or 中文" autocomplete="off"></div>
-        <div><label for="post-topic">Topic</label><select id="post-topic"><option value="">All topics</option>
-        {% assign categories = site.categories %}
-        {% for category in categories %}{% assign topic_name = category[0] | strip %}{% if topic_name != empty %}<option value="{{ category[0] | escape }}">{{ category[0] | escape }} ({{ category[1].size }})</option>{% endif %}{% endfor %}
-        </select></div>
-        <button type="reset">Reset</button>
-    </form>
-    <p id="archive-results" class="archive-results" role="status" aria-live="polite" hidden></p>
-    <p id="archive-empty" class="reading-copy" hidden>No matching articles. Try a different title or choose All topics.</p>
-    {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
-    {% for year in posts_by_year %}
-    <section class="archive-year-group">
-        <h2 class="archive-year">{{ year.name }}</h2>
-        <ul class="archive-list">
-            {% for post in year.items %}
-            <li data-post-title="{{ post.title | append: ' ' | append: post.title_zh | escape }}" data-post-topics="{{ post.categories | jsonify | escape }}">
-                <a class="archive-title" href="{{ post.url }}">{{ post.title }}</a>
-                <time class="archive-date" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-            </li>
-            {% endfor %}
-        </ul>
-    </section>
-    {% endfor %}
-    <aside id="wechat" class="wechat-follow" aria-labelledby="wechat-follow-title">
-        <div class="wechat-follow-copy">
-            <p class="wechat-follow-kicker">持续更新中</p>
-            <h2 id="wechat-follow-title">更多新文章，欢迎关注「吃灰思考」</h2>
-            <p>这里保留过去的技术文章。现在的思考、开发记录和新项目进展，主要更新在微信公众号。</p>
-        </div>
-        <img src="{{ site.baseurl }}/images/wechat-official-account.png"
-             alt="微信搜索公众号吃灰思考，或扫描二维码关注"
-             width="612" height="262" loading="lazy" decoding="async">
-    </aside>
-</main>
-<script src="/assets/xnu/js/archive.js?v={{ site.time | date: '%s' }}" defer></script>
+    {% include xnu/writing_archive.html %}
+</div>

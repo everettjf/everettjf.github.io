@@ -2,12 +2,13 @@
 
 ## Purpose
 
-This Jekyll site is Everett’s personal blog and open-source notebook. Released commercial apps and games live in the sibling `website-company` repository at https://atomsprout.com. Legacy product routes redirect there; keep historical article URLs and the RSS feed stable. Project names, availability, GitHub URLs, App Store URLs, privacy statements, and feature claims must match the current repositories and shipped products.
+This Jekyll site is Everett’s personal blog. Its homepage is the chronological article list; keep project catalogs and product showcases out of the blog navigation and homepage. Released commercial apps and games live in the sibling `website-company` repository at https://atomsprout.com. Legacy product routes redirect there; keep historical article URLs and the RSS feed stable. Project names, availability, GitHub URLs, App Store URLs, privacy statements, and feature claims must match the current repositories and shipped products.
 
 ## Source of Truth
 
-- `_data/xnu.json`: canonical structured data for the `/projects/` catalog and product pages.
-- `projects/index.html`: public project-list layout.
+- `_data/xnu.json`: legacy product metadata retained for older templates; do not add a new public catalog here.
+- `_includes/xnu/writing_archive.html`: shared article list, title search, topic filters, and WeChat follow section for `/` and `/archive`.
+- `projects/index.html`: legacy works entry; redirects to the company homepage.
 - `_includes/xnu/`: reusable product and navigation components.
 - `<product>/index.html`: product landing-page front matter and data binding.
 - `<product>/privacy.html`: product privacy routes where present.

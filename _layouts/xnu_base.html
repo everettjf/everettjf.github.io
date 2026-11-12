@@ -21,7 +21,6 @@
   <!-- Version assets per build so cached CSS cannot lag behind new markup. -->
   <!-- Precompiled Tailwind (sources in _build/, rebuild with `make assets`). -->
   <link rel="stylesheet" href="/assets/xnu/css/tailwind.css?v={{ asset_version }}" />
-  {% if page.url == '/' %}<link rel="stylesheet" href="/assets/xnu/css/home-motion.css?v={{ asset_version }}" />{% endif %}
   {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'default' %}<link rel="stylesheet" href="/assets/xnu/css/blog.css?v={{ asset_version }}" />{% endif %}
 
   <link rel="stylesheet" href="/assets/xnu/css/site.css?v={{ asset_version }}" />
@@ -102,7 +101,6 @@
 
   <!-- Self-hosted subset of lucide icons (sources in _build/lucide-entry.js, rebuild with `make assets`). -->
   <script src="/assets/xnu/js/lucide-icons.min.js?v={{ asset_version }}"></script>
-  {% if page.url == '/' %}<script src="/assets/xnu/js/anime.umd.min.js"></script>{% endif %}
   <script>
     (function () {
       function icons() { if (window.lucide) window.lucide.createIcons(); }
@@ -147,6 +145,5 @@
       });
     })();
   </script>
-  {% if page.url == '/' %}<script src="/assets/xnu/js/home-motion.js"></script>{% endif %}
 </body>
 </html>
