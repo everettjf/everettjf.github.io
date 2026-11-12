@@ -2,7 +2,7 @@ name: Everett
 title: Everett — writing and ideas
 description: Personal writing, technical notes, and open-source explorations by Everett.
 meta_description: "Everett’s personal blog — software, curiosity, and things learned along the way."
-company_url: https://atomsprout.github.io
+company_url: https://atomsprout.com
 
 markdown: kramdown
 highlighter: rouge
