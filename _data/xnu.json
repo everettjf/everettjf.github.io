@@ -2,686 +2,197 @@
   "support_email": "xnuapp@gmail.com",
   "discord_url": "https://discord.gg/eGzEaP6TzR",
   "featured_apps": [
-    { "name": "TypeTide", "pitch": "Translate where you type. Built-in offline translation on Apple Silicon Macs and Windows. Ollama and your API are optional.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows", "badges": ["Homebrew", "Open source"], "home_featured": true, "screenshot": "/images/products/typetide.png", "screenshot_alt": "TypeTide’s floating translation button beside selected text", "screenshot_width": 1240, "screenshot_height": 340, "screenshot_source": "https://raw.githubusercontent.com/everettjf/typetide/main/docs/screenshots/icon.png", "download_url": "https://xnu.app/typetide/#top", "download_label": "Download TypeTide", "home_url": "https://xnu.app/typetide/", "status": "Active development", "store_note": "Built-in translation needs a one-time model download on Apple Silicon Macs or Windows; Intel Macs use Ollama or an API." },
-    { "name": "GrapeCompare", "pitch": "See what changed. Compare files, folders, and images locally on your Mac.", "href": "/grapecompare/", "icon": "diff", "platform": "macOS 15+", "badges": ["Mac App Store"], "home_featured": true, "status": "Available", "screenshot": "/images/products/grapecompare.png", "screenshot_alt": "GrapeCompare highlighting additions and removals in two Swift files", "screenshot_width": 2560, "screenshot_height": 1600, "home_url": "https://xnu.app/grapecompare/", "download_url": "https://apps.apple.com/us/app/grapecompare/id6796778424?mt=12", "download_label": "Mac App Store", "store_note": "Available on the Mac App Store. Requires macOS 15 or later." }
+    {
+      "name": "TypeTide",
+      "pitch": "Translate where you type. Built-in offline translation on Apple Silicon Macs and Windows. Ollama and your API are optional.",
+      "href": "/typetide/",
+      "icon": "languages",
+      "platform": "macOS · Windows",
+      "badges": [
+        "Homebrew",
+        "Open source"
+      ],
+      "home_featured": true,
+      "screenshot": "/images/products/typetide.png",
+      "screenshot_alt": "TypeTide’s floating translation button beside selected text",
+      "screenshot_width": 1240,
+      "screenshot_height": 340,
+      "screenshot_source": "https://raw.githubusercontent.com/everettjf/typetide/main/docs/screenshots/icon.png",
+      "download_url": "https://xnu.app/typetide/#top",
+      "download_label": "Download TypeTide",
+      "home_url": "https://xnu.app/typetide/",
+      "status": "Active development",
+      "store_note": "Built-in translation needs a one-time model download on Apple Silicon Macs or Windows; Intel Macs use Ollama or an API."
+    }
   ],
   "legacy_apps": [
-    { "name": "Remoboard", "pitch": "Use your computer's keyboard to type directly on your iPhone.", "href": "/remoboard/", "icon": "keyboard", "platform": "iOS", "badges": ["App Store", "Established"], "screenshot": "/images/products/remoboard.jpg", "screenshot_alt": "Remote Keyboard for iPhone, the App Store version of Remoboard", "screenshot_width": 392, "screenshot_height": 696, "screenshot_source": "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/e9/66/d4/e966d406-274c-bd4d-3039-ee2f0bacc8d8/pr_source.jpg/392x696bb.jpg", "download_url": "https://apps.apple.com/us/app/remote-keyboard/id1474458879", "download_label": "Get Remote Keyboard", "home_url": "https://xnu.app/remoboard/", "store_note": "Available on the App Store as Remote Keyboard.", "home_maintained": true, "status": "Maintained" },
-    { "name": "ScriptWidget", "pitch": "Create native widgets for iOS and macOS using JavaScript and a JSX-like syntax.", "href": "/scriptwidget/", "icon": "code", "platform": "iOS · macOS", "badges": ["App Store", "Open source"], "screenshot": "/images/products/scriptwidget.jpg", "screenshot_alt": "A gallery of widgets created with ScriptWidget", "screenshot_width": 1900, "screenshot_height": 1560, "screenshot_source": "https://raw.githubusercontent.com/everettjf/scriptwidget/main/Resource/WidgetDemoScreenshots/_contact-sheet-1.jpg", "download_url": "https://apps.apple.com/us/app/scriptwidget/id1555600758", "download_label": "Get ScriptWidget", "home_url": "https://xnu.app/scriptwidget/", "home_maintained": true, "status": "Maintained" },
-    { "name": "BSSIDScan", "pitch": "Discover and analyze nearby Wi-Fi networks.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS", "badges": ["App Store", "Established"], "status": "Maintained" },
-    { "name": "LaunchDeck", "pitch": "Find apps, files, and reusable actions from your keyboard.", "href": "https://xnu.app/launchdeck/", "icon": "zap", "platform": "macOS 26+", "badges": ["Homebrew", "Open source"], "status": "Maintained" },
-    { "name": "Dayvella", "pitch": "Keep meaningful dates close, with countdowns, widgets, and iCloud sync.", "href": "/dayvella/", "icon": "clock", "platform": "iOS", "badges": ["App Store", "Established"], "status": "Maintained" },
-    { "name": "Titled", "pitch": "Save web pages as PDFs with filenames you can recognize later.", "href": "/titled/", "icon": "file-text", "platform": "iOS · iPadOS", "badges": ["App Store — In preparation"], "status": "In preparation" }
+    {
+      "name": "LaunchDeck",
+      "pitch": "Find apps, files, and reusable actions from your keyboard.",
+      "href": "https://xnu.app/launchdeck/",
+      "icon": "zap",
+      "platform": "macOS 26+",
+      "badges": [
+        "Homebrew",
+        "Open source"
+      ],
+      "status": "Maintained"
+    }
   ],
   "developer_tools": [
-    { "name": "Hexlora", "pitch": "Statically inspect apps, packages, archives, and PE, Mach-O, or ELF binaries.", "href": "/hexlora/", "icon": "binary", "platform": "macOS · Windows · Linux", "install": "brew install --cask everettjf/tap/hexlora", "badges": ["Homebrew", "CLI", "Open source"], "status": "Maintained" },
-    { "name": "MicroClaw", "pitch": "An agentic AI assistant rewritten in Rust.", "href": "https://github.com/microclaw/microclaw", "icon": "bot", "platform": "Rust", "install": "brew tap microclaw/tap && brew install microclaw", "badges": ["Homebrew", "Open source"], "status": "Maintained" },
-    { "name": "Liney", "pitch": "A native terminal workspace for vibe coding.", "href": "https://github.com/everettjf/liney", "icon": "terminal", "platform": "macOS", "install": "brew install --cask everettjf/tap/liney", "badges": ["Homebrew", "Open source"], "status": "Maintained", "home_maintained": true },
-    { "name": "MachOExplorer", "pitch": "Explore Mach-O binary files on macOS and Windows.", "href": "/machoexplorer/", "icon": "binary", "platform": "macOS", "install": "brew install --cask everettjf/homebrew-tap/machoexplorer", "badges": ["Homebrew", "Open source"], "status": "Maintained" },
-    { "name": "AppleTrace", "pitch": "Trace Objective-C method calls and export Perfetto timelines.", "href": "/appletrace/", "icon": "activity", "platform": "C · Objective-C", "badges": ["Open source"], "status": "Maintained" },
-    { "name": "atosl-rs", "pitch": "Symbolicate Apple crash addresses on Linux with a Rust replacement for atos.", "href": "/atosl-rs/", "icon": "terminal", "platform": "Rust · CLI", "badges": ["Open source"], "status": "Maintained" },
-    { "name": "WasmPatch", "pitch": "WebAssembly-driven patching for iOS and macOS Objective-C apps.", "href": "/wasmpatch/", "icon": "blocks", "platform": "Swift · C++", "badges": ["Open source"], "status": "Maintained" },
-    { "name": "EditSmith", "pitch": "Create, test, and run local text actions from Xcode's Editor menu.", "href": "https://xnu.app/editsmith/", "icon": "hammer", "platform": "Swift · Xcode", "badges": ["Open source"], "status": "Maintained" }
+    {
+      "name": "Hexlora",
+      "pitch": "Statically inspect apps, packages, archives, and PE, Mach-O, or ELF binaries.",
+      "href": "/hexlora/",
+      "icon": "binary",
+      "platform": "macOS · Windows · Linux",
+      "install": "brew install --cask everettjf/tap/hexlora",
+      "badges": [
+        "Homebrew",
+        "CLI",
+        "Open source"
+      ],
+      "status": "Maintained"
+    },
+    {
+      "name": "MicroClaw",
+      "pitch": "An agentic AI assistant rewritten in Rust.",
+      "href": "https://github.com/microclaw/microclaw",
+      "icon": "bot",
+      "platform": "Rust",
+      "install": "brew tap microclaw/tap && brew install microclaw",
+      "badges": [
+        "Homebrew",
+        "Open source"
+      ],
+      "status": "Maintained"
+    },
+    {
+      "name": "Liney",
+      "pitch": "A native terminal workspace for vibe coding.",
+      "href": "https://github.com/everettjf/liney",
+      "icon": "terminal",
+      "platform": "macOS",
+      "install": "brew install --cask everettjf/tap/liney",
+      "badges": [
+        "Homebrew",
+        "Open source"
+      ],
+      "status": "Maintained",
+      "home_maintained": true
+    },
+    {
+      "name": "MachOExplorer",
+      "pitch": "Explore Mach-O binary files on macOS and Windows.",
+      "href": "/machoexplorer/",
+      "icon": "binary",
+      "platform": "macOS",
+      "install": "brew install --cask everettjf/homebrew-tap/machoexplorer",
+      "badges": [
+        "Homebrew",
+        "Open source"
+      ],
+      "status": "Maintained"
+    },
+    {
+      "name": "AppleTrace",
+      "pitch": "Trace Objective-C method calls and export Perfetto timelines.",
+      "href": "/appletrace/",
+      "icon": "activity",
+      "platform": "C · Objective-C",
+      "badges": [
+        "Open source"
+      ],
+      "status": "Maintained"
+    },
+    {
+      "name": "atosl-rs",
+      "pitch": "Symbolicate Apple crash addresses on Linux with a Rust replacement for atos.",
+      "href": "/atosl-rs/",
+      "icon": "terminal",
+      "platform": "Rust · CLI",
+      "badges": [
+        "Open source"
+      ],
+      "status": "Maintained"
+    },
+    {
+      "name": "WasmPatch",
+      "pitch": "WebAssembly-driven patching for iOS and macOS Objective-C apps.",
+      "href": "/wasmpatch/",
+      "icon": "blocks",
+      "platform": "Swift · C++",
+      "badges": [
+        "Open source"
+      ],
+      "status": "Maintained"
+    }
   ],
   "research_labs": [
-    { "name": "Veilpath", "pitch": "A guarded iPhone and iPad container explorer built for security research.", "href": "/veilpath/", "icon": "shield", "platform": "Swift · Security research", "badges": ["Open source", "Experimental"], "status": "Experimental" },
-    { "name": "BabelTable", "pitch": "Offline two-way speech translation on one iPhone.", "href": "/babeltable/", "icon": "messages-square", "platform": "iOS 27", "badges": ["App Store", "Experimental"], "status": "Experimental" }
+    {
+      "name": "Veilpath",
+      "pitch": "A guarded iPhone and iPad container explorer built for security research.",
+      "href": "/veilpath/",
+      "icon": "shield",
+      "platform": "Swift · Security research",
+      "badges": [
+        "Open source",
+        "Experimental"
+      ],
+      "status": "Experimental"
+    }
   ],
   "independent_projects": [
-    { "name": "MWFL", "pitch": "A modern C++20 foundation for native Windows desktop apps with real HWND controls.", "href": "https://github.com/mwfl/mwfl", "icon": "panels-top-left", "platform": "C++20 · Windows", "badges": ["Open source", "Independent"] }
+    {
+      "name": "MWFL",
+      "pitch": "A modern C++20 foundation for native Windows desktop apps with real HWND controls.",
+      "href": "https://github.com/mwfl/mwfl",
+      "icon": "panels-top-left",
+      "platform": "C++20 · Windows",
+      "badges": [
+        "Open source",
+        "Independent"
+      ]
+    }
   ],
   "apps": [
-    { "name": "BabelTable", "pitch": "Real-time speech translation between two people, on one iPhone.", "href": "/babeltable/", "icon": "messages-square", "platform": "iOS" },
-    { "name": "ScriptWidget", "pitch": "Build iOS, iPadOS and macOS widgets with JavaScript and JSX.", "href": "/scriptwidget/", "icon": "code", "platform": "iOS · macOS" },
-    { "name": "LaunchDeck", "pitch": "A keyboard-first app launcher for macOS with optional Apple Intelligence search.", "href": "https://xnu.app/launchdeck/", "icon": "zap", "platform": "macOS" },
-    { "name": "TypeTide", "pitch": "Translate where you type. Built-in offline translation on Apple Silicon Macs and Windows. Ollama and your API are optional.", "href": "/typetide/", "icon": "languages", "platform": "macOS · Windows" },
-    { "name": "Dayvella", "pitch": "Countdowns and day-counters in beautiful, offline-first cards.", "href": "/dayvella/", "icon": "clock", "platform": "iOS" },
-    { "name": "Titled", "pitch": "Save web pages as correctly titled PDFs.", "href": "/titled/", "icon": "file-text", "platform": "iOS · iPadOS" },
-    { "name": "JSON Compare", "pitch": "A simple, native JSON diff tool for macOS.", "href": "/jsoncompare/", "icon": "diff", "platform": "macOS" },
-    { "name": "Remoboard", "pitch": "Type on your iPhone using the keyboard of your computer.", "href": "https://everettjf.github.io/remoboard/", "icon": "keyboard", "platform": "iOS · macOS" },
-    { "name": "BSSIDScan", "pitch": "Review Wi-Fi observations recorded on your device.", "href": "/bssidscan/", "icon": "wifi", "platform": "iOS" },
-    { "name": "NotbadBookmark", "pitch": "A modern, fast replacement for Chrome's bookmark manager.", "href": "/notbadbookmark/", "icon": "bookmark", "platform": "Chrome" }
+    {
+      "name": "LaunchDeck",
+      "pitch": "A keyboard-first app launcher for macOS with optional Apple Intelligence search.",
+      "href": "https://xnu.app/launchdeck/",
+      "icon": "zap",
+      "platform": "macOS"
+    },
+    {
+      "name": "TypeTide",
+      "pitch": "Translate where you type. Built-in offline translation on Apple Silicon Macs and Windows. Ollama and your API are optional.",
+      "href": "/typetide/",
+      "icon": "languages",
+      "platform": "macOS · Windows"
+    },
+    {
+      "name": "Titled",
+      "pitch": "Save web pages as correctly titled PDFs.",
+      "href": "/titled/",
+      "icon": "file-text",
+      "platform": "iOS · iPadOS"
+    },
+    {
+      "name": "JSON Compare",
+      "pitch": "A simple, native JSON diff tool for macOS.",
+      "href": "/jsoncompare/",
+      "icon": "diff",
+      "platform": "macOS"
+    },
+    {
+      "name": "NotbadBookmark",
+      "pitch": "A modern, fast replacement for Chrome's bookmark manager.",
+      "href": "/notbadbookmark/",
+      "icon": "bookmark",
+      "platform": "Chrome"
+    }
   ],
   "products": {
-    "grapecompare": {
-      "name": "GrapeCompare",
-      "platform": "macOS 15+",
-      "icon": "diff",
-      "icon_image": "/images/products/grapecompare-icon.png",
-      "badges": [
-        "Mac App Store"
-      ],
-      "tagline": "See every difference. Keep complete control.",
-      "description": "GrapeCompare compares files, folders, images, structured data and three-way merges on your Mac, inside the macOS App Sandbox. There is no account, analytics or cloud upload. The core app is free; GrapeCompare Pro is an optional upgrade.",
-      "links": [
-        {
-          "label": "Download on the Mac App Store",
-          "href": "https://apps.apple.com/us/app/grapecompare/id6796778424?mt=12",
-          "primary": true
-        },
-        {
-          "label": "Get help",
-          "href": "/grapecompare/support.html"
-        }
-      ],
-      "features": [
-        {
-          "title": "Files and text",
-          "body": "Side-by-side line and character differences, navigation, filters, unchanged-text folding, editable output and unified patch export."
-        },
-        {
-          "title": "Folders",
-          "body": "Recursive folder comparison with search, inline preview, and reviewed copy, replace, move and recoverable delete, with preflight checks and durable undo."
-        },
-        {
-          "title": "Images",
-          "body": "Two-up, split, blink and difference views with synchronized zoom, metadata, pixel sampling, thresholds and channels."
-        },
-        {
-          "title": "Developer formats",
-          "body": "Semantic JSON, property list, XCStrings and Xcode project comparison, plus app bundle, signature, entitlement, Mach-O and asset catalog inspection."
-        },
-        {
-          "title": "Native Mac workflow",
-          "body": "Finder Open With, drag and drop, a file shelf for up to 16 versions, and the Compare Files Shortcut. Access is limited to items you select."
-        },
-        {
-          "title": "GrapeCompare Pro",
-          "body": "Three-way merge, on-device AI change summaries, moved-block detection, .app/.ipa/.xcarchive build comparison, PDF/Word/Excel/CSV comparison, screenshot regression, folder snapshots, HTML reports, replacement rules and color themes."
-        }
-      ],
-      "pricing": {
-        "heading": "Free for everyday comparison. Pro for specialist work.",
-        "intro": "File, folder, image and developer-format comparison stay free. Pro adds specialist tools. Every Pro feature can be tried three times for free.",
-        "availability": "GrapeCompare Pro requires GrapeCompare 1.1.0 or later. Earlier versions do not include Pro.",
-        "plans": [
-          {
-            "name": "Free",
-            "status": "Available now",
-            "price": "$0",
-            "billing": "No purchase required",
-            "description": "Files, folders, images, structured data and app bundle inspection."
-          },
-          {
-            "name": "Pro Lifetime",
-            "status": "Version 1.1.0 or later",
-            "price": "US$19.99",
-            "billing": "One-time purchase",
-            "description": "Every current Pro feature, unlocked permanently.",
-            "note": "Local prices are shown in the app."
-          },
-          {
-            "name": "Pro Yearly",
-            "status": "Version 1.1.0 or later",
-            "price": "US$7.99",
-            "billing": "Per year · auto-renewing",
-            "description": "Every Pro feature for as long as the subscription is active.",
-            "note": "Manage or cancel in your Apple Account subscriptions."
-          }
-        ],
-        "rows": [
-          {
-            "feature": "Text and file comparison, patch export",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Folder comparison and reviewed file operations",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Image comparison",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "JSON, plist, XCStrings, Xcode project and app bundle inspection",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "PDF comparison report",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Three-way text and image merge",
-            "free": "3 free tries",
-            "pro": "Included"
-          },
-          {
-            "feature": "On-device AI change summary (Apple Intelligence)",
-            "free": "3 free tries",
-            "pro": "Included"
-          },
-          {
-            "feature": "Moved-block detection",
-            "free": "3 free tries",
-            "pro": "Included"
-          },
-          {
-            "feature": ".app, .ipa and .xcarchive build comparison",
-            "free": "3 free tries",
-            "pro": "Included"
-          },
-          {
-            "feature": "PDF, Word, Excel and CSV document comparison",
-            "free": "3 free tries",
-            "pro": "Included"
-          },
-          {
-            "feature": "Screenshot regression and folder snapshots",
-            "free": "3 free tries",
-            "pro": "Included"
-          },
-          {
-            "feature": "Rich HTML reports, replacement rules and color themes",
-            "free": "3 free tries",
-            "pro": "Included"
-          }
-        ],
-        "notes": [
-          {
-            "title": "Existing users",
-            "body": "If you downloaded GrapeCompare before version 1.1.0, every Pro feature is unlocked for you at no cost."
-          },
-          {
-            "title": "Restore purchases",
-            "body": "Open GrapeCompare Pro in the app menu or Settings and choose Restore Purchases on any Mac signed in to the same Apple Account."
-          }
-        ]
-      },
-      "privacy": true,
-      "privacy_sections": [
-        {
-          "heading": "Overview",
-          "body": "Effective November 7, 2026. GrapeCompare compares files privately on your Mac. Your files and their contents never leave your device. The only information exchanged over the network is anonymous purchase status for GrapeCompare Pro."
-        },
-        {
-          "heading": "Data collection",
-          "body": "GrapeCompare does not collect personal information, usage analytics, diagnostics, advertising identifiers or tracking data, and it does not require an account. To unlock GrapeCompare Pro, the app checks App Store purchase history through RevenueCat, our in-app purchase provider, using a random anonymous identifier. Purchase history is not linked to your identity and is never used for tracking or advertising."
-        },
-        {
-          "heading": "Files and folders",
-          "body": "App Sandbox limits GrapeCompare to files and folders you explicitly select. They are read and compared locally. Their contents and metadata are not uploaded to the developer or any third party."
-        },
-        {
-          "heading": "Data stored on your Mac",
-          "body": "GrapeCompare stores app preferences, security-scoped bookmarks for comparisons you choose to keep, recent comparison names, Pro trial counts and transactional operation journals inside its sandbox container. This data is used only to provide app features and is not transmitted off the device."
-        },
-        {
-          "heading": "Demo data",
-          "body": "The optional demo files and folders are generated locally by the app and stay on your Mac. Loading demo data does not make a network request."
-        },
-        {
-          "heading": "Third-party services",
-          "list": [
-            "RevenueCat: verifies in-app purchases using an anonymous identifier and App Store transaction data. See RevenueCat's privacy policy at https://www.revenuecat.com/privacy.",
-            "Apple: processes payments through the App Store.",
-            "Apple Intelligence: AI change summaries run on your Mac. Diff content is never sent to the developer or a cloud service."
-          ]
-        },
-        {
-          "heading": "No tracking",
-          "body": "GrapeCompare contains no analytics, advertising, social or tracking SDKs."
-        },
-        {
-          "heading": "Data retention and deletion",
-          "body": "The developer stores no file data. RevenueCat keeps anonymous purchase records so purchases can be restored; contact us to request their deletion. You can clear recent comparisons and operation history in the app. Uninstalling GrapeCompare and removing its sandbox container deletes its remaining local data."
-        },
-        {
-          "heading": "Children",
-          "body": "GrapeCompare does not knowingly collect personal data from children."
-        },
-        {
-          "heading": "Changes",
-          "body": "If the app's data practices change, this policy will be updated before the change is released."
-        },
-        {
-          "heading": "Contact",
-          "body": "Questions about this policy: xnuapp@gmail.com. Please do not include confidential comparison content."
-        }
-      ]
-    },
-    "babeltable": {
-      "name": "BabelTable",
-      "platform": "iOS · iPadOS 27+",
-      "icon": "messages-square",
-      "icon_image": "/images/products/babeltable-icon.png",
-      "badges": ["App Store"],
-      "tagline": "Two people. Two languages. One phone on the table.",
-      "description": "BabelTable transcribes speech on your device and translates each completed phrase. Choose the speaking language and take turns — even in airplane mode once the language models are prepared.",
-      "links": [
-        {
-          "label": "Download on the App Store",
-          "href": "https://apps.apple.com/us/app/babeltable/id6807469213",
-          "primary": true
-        },
-        {
-          "label": "Get help",
-          "href": "/babeltable/support/"
-        }
-      ],
-      "features": [
-        {
-          "title": "Live two-way translation",
-          "body": "Choose the speaking language, watch progressive captions, and read the translation after each phrase. Switch languages when the other person speaks."
-        },
-        {
-          "title": "Face-to-face mode",
-          "body": "The top panel is rotated 180° for the person across the table, so each side reads their own language the right way up."
-        },
-        {
-          "title": "Side-by-side chat",
-          "body": "One chronological thread shows every phrase and its translation in order. Switch layouts without losing the conversation."
-        },
-        {
-          "title": "Offline after setup",
-          "body": "Download Apple's speech and translation models once while online. Prepared language pairs then work without a connection, including airplane mode."
-        },
-        {
-          "title": "Local history",
-          "body": "Conversations are saved on your device. Read, delete, or share a transcript as text whenever you choose."
-        },
-        {
-          "title": "13 language choices",
-          "body": "English, Chinese, Spanish, Portuguese, French, German, Italian, Japanese, Korean, Russian, Hindi, Indonesian and Vietnamese. Availability depends on your device and Apple's models."
-        }
-      ],
-      "pricing": {
-        "heading": "Free for everyday conversations. Pro for unlimited time and extra tools.",
-        "intro": "Live translation is free for 2 hours a day, with read-aloud, large text, and History search included. BabelTable Pro removes the daily limit and adds tools for travel and work.",
-        "availability": "BabelTable Pro and the new tools below arrive in version 1.1, now in TestFlight testing. The current App Store version has no daily limit and no purchases.",
-        "plans": [
-          {
-            "name": "Free",
-            "status": "Included",
-            "price": "$0",
-            "billing": "2 hours of live translation a day",
-            "description": "Face-to-face and side-by-side translation, offline use, all 13 languages, tap-to-hear read-aloud, large text, and local history with search and stars.",
-            "note": "Only live listening counts toward the 2 hours. The allowance resets at local midnight."
-          },
-          {
-            "name": "BabelTable Pro",
-            "status": "Optional upgrade",
-            "price": "US$14.99",
-            "billing": "once, unlimited for good · or US$9.99 a year · or US$1.99 a month",
-            "description": "Everything in Free with no daily limit, plus auto read-aloud, a phrasebook, bilingual PDF export, on-device summaries, and themes and app icons. Lifetime is the best value: pay once, no subscription.",
-            "note": "Your local App Store price is shown in the app. Subscriptions renew automatically until cancelled in your App Store account settings; Lifetime is a one-time purchase."
-          }
-        ],
-        "rows": [
-          {
-            "feature": "Face-to-face and side-by-side translation",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Offline use after preparing language models",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "All 13 language choices",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Local history, transcript sharing and diagnostics",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Tap to read aloud and large-text display",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "History search and stars",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "No account, no cloud translation",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Daily live translation time",
-            "free": "2 hours",
-            "pro": "Unlimited"
-          },
-          {
-            "feature": "Auto read-aloud of every translation",
-            "free": "Not included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Phrasebook in all 13 languages, plus your own phrases",
-            "free": "Not included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Bilingual PDF export",
-            "free": "Not included",
-            "pro": "Included"
-          },
-          {
-            "feature": "On-device conversation summaries (Apple Intelligence)",
-            "free": "Not included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Color themes and alternate app icons",
-            "free": "Not included",
-            "pro": "Included"
-          }
-        ],
-        "notes": [
-          {
-            "title": "What counts toward the 2 hours",
-            "body": "Only time the microphone is listening during a conversation. Preparing models, pauses, and reading History don't count. If time runs out mid-conversation, the current phrase finishes and the conversation is saved to History before the upgrade screen appears."
-          },
-          {
-            "title": "Pro works offline",
-            "body": "Pro status is kept on your device, so it keeps working in airplane mode. Restore Purchases brings Pro to your other devices signed in with the same Apple Account."
-          },
-          {
-            "title": "Early supporters keep unlimited time",
-            "body": "If you installed version 1.0 before the daily limit existed, you keep unlimited translation and every Pro tool automatically, with no purchase needed."
-          },
-          {
-            "title": "Summaries need Apple Intelligence",
-            "body": "Conversation summaries are created on your device by Apple Intelligence, so they need a supported device with Apple Intelligence turned on. The transcript is never sent to a server."
-          }
-        ]
-      },
-      "privacy": true,
-      "privacy_sections": [
-        {
-          "heading": "On-device speech and translation",
-          "body": "BabelTable uses Apple's on-device speech recognition and Translation frameworks. Conversation audio and text are not sent to a developer server or a cloud translation provider. There is no account, API key, advertising SDK, analytics, tracking, or remote text refinement. Make sure everyone agrees before using the microphone."
-        },
-        {
-          "heading": "Microphone audio",
-          "body": "Microphone audio is processed in memory and is not saved as recordings. Capture stops when you stop the conversation, background the app, or an interruption pauses the session. Speech during a pause is not recorded."
-        },
-        {
-          "heading": "Language models and Apple services",
-          "body": "An internet connection is required to download speech and translation models before first use, and when preparing a different pair or replacing removed models. Apple manages these downloads, and the app does not fall back to a cloud translation service. Apple's frameworks may collect API usage and performance metrics, including app identity and language information; Apple states these metrics exclude original and translated content. Apple's services are governed by Apple's privacy policy."
-        },
-        {
-          "heading": "Local history and sharing",
-          "body": "Transcripts and translations are saved in local app storage, and you can delete them in History. Device backups may include this storage depending on your system settings. The developer does not receive these archives. Sharing uses the system share sheet only when you request it; the destination you choose controls the shared copy."
-        },
-        {
-          "heading": "Read-aloud, phrasebook, PDF export, and summaries",
-          "body": "Translations you choose to hear are read aloud with voices installed on your device, and the microphone pauses while they play so the phone does not transcribe itself. Phrases you save in the phrasebook are stored only on your device and translated with installed models. Bilingual PDF exports are created on your device and leave it only when you share them. Conversation summaries (BabelTable Pro) are created on your device by Apple Intelligence; the transcript is not sent to the developer or to a server. A summary is saved with its conversation in History and is deleted with it."
-        },
-        {
-          "heading": "Diagnostics and usage",
-          "body": "Conversation duration and a bounded diagnostic log are stored only on your device. Diagnostics do not intentionally include conversation text or audio. You can inspect, clear, or share diagnostics in Settings. The free daily translation allowance is counted on your device from time only. There is no remote usage reporting."
-        },
-        {
-          "heading": "Permissions",
-          "list": [
-            "Microphone: captures speech for live transcription and translation on your device."
-          ]
-        },
-        {
-          "heading": "Purchases",
-          "body": "Starting with version 1.1, translation is free for 2 hours a day, and BabelTable Pro, an optional subscription or one-time purchase, removes the daily limit. Purchases are processed by Apple and recorded by RevenueCat, Inc., a purchase-management service, so the app can confirm your Pro status and restore it on your devices. RevenueCat receives a random anonymous app user ID, your purchase and subscription records, the app version, basic device information such as the operating system version and App Store storefront, and the IP address that any web request carries. RevenueCat does not receive your name, email, conversations, audio, transcripts, translations, language choices, or usage time. This information is not used for advertising or tracking. Pro status is cached on your device so it keeps working offline. RevenueCat processes this information under its own privacy policy at https://www.revenuecat.com/privacy/ . Payment details are handled only by Apple."
-        },
-        {
-          "heading": "Early supporters",
-          "body": "People who installed version 1.0 before the daily limit existed keep unlimited translation without a purchase. The app checks this on the device using Apple's signed app transaction; nothing is sent to the developer."
-        },
-        {
-          "heading": "Contact",
-          "body": "Questions about this policy: xnuapp@gmail.com. Please do not include private conversations or other sensitive information."
-        }
-      ]
-    },
-    "sixup": {
-      "name": "SixUp",
-      "platform": "iOS · iPadOS",
-      "icon": "graduation-cap",
-      "icon_image": "/images/products/sixup-icon.png",
-      "tagline": "A 90-day study plan for the new TOEFL iBT.",
-      "description": "SixUp builds a daily TOEFL plan from your exam date and study time, with practice for all 12 task types of the 2026 test, 4,000 TOEFL words with spaced repetition, and a daily commute playlist of lectures and speaking models.",
-      "links": [
-        {
-          "label": "Get help",
-          "href": "/sixup/support/",
-          "primary": true
-        }
-      ],
-      "features": [
-        {
-          "title": "Daily plan",
-          "body": "Foundation, intensive and sprint phases sized to your exam date and the minutes you set, with check-ins, reminders and widgets."
-        },
-        {
-          "title": "All 12 task types",
-          "body": "Over 1,200 original reading, listening, writing and speaking questions, each with an explanation."
-        },
-        {
-          "title": "Commute listening",
-          "body": "A daily playlist of lectures, conversations, passages and speaking models that keeps playing with the screen locked."
-        },
-        {
-          "title": "4,000 TOEFL words",
-          "body": "IPA, meanings and example sentences with spaced repetition, a vocabulary test and a word notebook."
-        },
-        {
-          "title": "On-device scoring",
-          "body": "Speaking is transcribed and scored on your device; writing feedback uses Apple's on-device model where available."
-        }
-      ],
-      "privacy": true,
-      "privacy_sections": [
-        {
-          "heading": "What we collect",
-          "body": "SixUp has no account system, no advertising, no analytics and no tracking. The only data that leaves your device is purchase information for SixUp Pro, described below."
-        },
-        {
-          "heading": "Purchases",
-          "body": "SixUp Pro is a one-time in-app purchase processed by Apple. To confirm and restore it, the app uses RevenueCat, which receives a random anonymous ID created by the app and your App Store purchase record (product, price and date). It is used only to unlock SixUp Pro on your devices, is not linked to your name or email, and is never used for tracking or advertising. RevenueCat's privacy policy: https://www.revenuecat.com/privacy."
-        },
-        {
-          "heading": "Study data stays on your device",
-          "body": "Your plan, check-ins, answers, scores, word reviews and saved words are stored on your device."
-        },
-        {
-          "heading": "Recordings and writing",
-          "body": "Recordings made for speaking practice are transcribed and scored on your device and are never uploaded. Essays and answers are scored on your device, including by Apple's on-device model on supported devices."
-        },
-        {
-          "heading": "iCloud sync",
-          "body": "If you are signed in to iCloud, your study progress syncs between your own devices through Apple's iCloud key-value storage under Apple's privacy policy. The developer cannot access it. Recordings are not synced."
-        },
-        {
-          "heading": "Permissions",
-          "list": [
-            "Microphone: records your spoken answers for speaking practice.",
-            "Speech recognition: transcribes those recordings on your device.",
-            "Notifications: the daily study reminder you choose."
-          ]
-        },
-        {
-          "heading": "Contact",
-          "body": "Questions about this policy: xnuapp@gmail.com."
-        }
-      ]
-    },
-    "bssidscan": {
-      "name": "BSSIDScan",
-      "platform": "iOS",
-      "icon": "wifi",
-      "tagline": "Review Wi-Fi observations recorded on your device.",
-      "description": "BSSIDScan keeps a local history of Wi-Fi events made available through Apple's Hotspot Helper capability. Inspect network identifiers, signal levels and timestamps, then search, filter or export observations for diagnostics. Available events depend on your device and iOS.",
-      "links": [
-        { "label": "Download on the App Store", "href": "https://apps.apple.com/us/app/bssid-scan/id1442586100", "primary": true }
-      ],
-      "features": [
-        { "title": "Event history", "body": "Review Wi-Fi connection and scan events available to the app." },
-        { "title": "Network details", "body": "Inspect recorded SSIDs, BSSIDs, signal strength, security status and timestamps." },
-        { "title": "Search and filter", "body": "Find events by network identifier, time range or event type." },
-        { "title": "Export", "body": "Save selected observations as JSON or Markdown for your own analysis." },
-        { "title": "Local storage", "body": "Keep recorded events on your device in an encrypted database." },
-        { "title": "No login", "body": "Use the app without creating an account." }
-      ],
-      "privacy": true,
-      "privacy_sections": [
-        { "heading": "Wi-Fi observations", "body": "BSSIDScan records Wi-Fi events and network identifiers that iOS makes available to the app. These records are stored in an encrypted database on your device. The developer does not receive your Wi-Fi history." },
-        { "heading": "Analytics and advertising", "body": "The app has no advertising or in-app analytics SDK and does not send usage data or crash reports to a developer-operated service. Apple may handle device diagnostics according to your Apple settings." },
-        { "heading": "Export", "body": "You choose when to export observations as JSON or Markdown and where to save or share them. Network identifiers in exported files may be sensitive; review a file before sharing it." },
-        { "heading": "Contact", "body": "If you email us for support, we receive your message and email address so we can reply. For privacy questions, email xnuapp@gmail.com. This policy was updated September 27, 2026." }
-      ]
-    },
-    "dayvella": {
-      "name": "Dayvella",
-      "platform": "iOS · iPadOS",
-      "icon": "clock",
-      "tagline": "Keep the dates worth remembering close.",
-      "description": "Dayvella (formerly CountMyDays) is for the dates worth remembering and the dates worth waiting for. Track birthdays, anniversaries, trips, and personal milestones with cards and widgets. Entries are stored locally for offline access and automatically synchronized through your iCloud account.",
-      "links": [
-        {
-          "label": "Download on the App Store",
-          "href": "https://apps.apple.com/app/id6753280745",
-          "primary": true
-        }
-      ],
-      "features": [
-        {
-          "title": "Count up or down",
-          "body": "Track how long since something happened, or how long until something will. Repeat birthdays and anniversaries every year."
-        },
-        {
-          "title": "Gradient cards",
-          "body": "Pick a color and a style. Pin favorites to the top, and share a card as an image."
-        },
-        {
-          "title": "Reminders",
-          "body": "Get notified on the day, or a few days before it arrives."
-        },
-        {
-          "title": "Widgets",
-          "body": "Surface the dates you care about on the Home Screen and Lock Screen."
-        },
-        {
-          "title": "Offline access + iCloud",
-          "body": "Use your entries offline. Changes sync automatically through your iCloud account when available."
-        },
-        {
-          "title": "Import & export",
-          "body": "Move your cards between devices via a JSON file you own."
-        },
-        {
-          "title": "Live Activities & alarms",
-          "body": "With Pro, keep a countdown in the Dynamic Island and set an alarm that rings on the day, even in Silent mode."
-        },
-        {
-          "title": "11 languages",
-          "body": "English, Chinese, Japanese, Korean, German, French, Spanish, Italian, Portuguese, Russian and Vietnamese."
-        }
-      ],
-      "pricing": {
-        "heading": "Free for the dates that matter. Pro for unlimited entries and more ways to see them.",
-        "intro": "The free plan covers up to 20 active entries with reminders, widgets, iCloud sync, and import and export. Dayvella Pro is a single one-time purchase that removes the limit and adds Live Activities, target-day alarms, and extra widget styles.",
-        "availability": "Dayvella Pro requires Dayvella 1.5 or later. Earlier versions have no entry limit and no purchases.",
-        "plans": [
-          {
-            "name": "Free",
-            "status": "Included",
-            "price": "$0",
-            "billing": "Up to 20 active entries",
-            "description": "Countdowns and count-ups, reminders, the Home Screen and Lock Screen widget, iCloud sync, import and export, and card sharing.",
-            "note": "Archived entries don't count toward the 20, and nothing is locked or deleted when you reach the limit."
-          },
-          {
-            "name": "Dayvella Pro",
-            "status": "One-time purchase",
-            "price": "US$4.99",
-            "billing": "once, yours for good · no subscription",
-            "description": "Everything in Free with unlimited entries, plus Live Activities and the Dynamic Island, target-day alarms that ring in Silent mode, the Upcoming List, Progress Ring and Color Card widgets, and every future Pro feature.",
-            "note": "Your local App Store price is shown in the app. Restore Purchase brings Pro to your other devices signed in with the same Apple Account."
-          }
-        ],
-        "rows": [
-          {
-            "feature": "Active entries",
-            "free": "20",
-            "pro": "Unlimited"
-          },
-          {
-            "feature": "Countdowns and count-ups",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Reminders",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Home Screen and Lock Screen widget",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "iCloud sync",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Import and export",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Live Activities and Dynamic Island",
-            "free": "Not included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Alarms that ring in Silent mode",
-            "free": "Not included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Upcoming List, Progress Ring and Color Card widgets",
-            "free": "Not included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Every future Pro feature",
-            "free": "Not included",
-            "pro": "Included"
-          }
-        ],
-        "notes": [
-          {
-            "title": "Early supporters already have Pro",
-            "body": "If you downloaded Dayvella before version 1.5, Pro is unlocked automatically, with no purchase needed. Thank you for your support."
-          },
-          {
-            "title": "Reaching the free limit",
-            "body": "Every entry stays visible and editable. To add a new one, archive an entry you no longer need or upgrade to Pro."
-          },
-          {
-            "title": "Live Activities",
-            "body": "Start one from an entry's detail screen. iOS keeps a Live Activity for up to 12 hours, and opening Dayvella refreshes the count."
-          },
-          {
-            "title": "No subscription",
-            "body": "Pro is a single purchase processed by Apple. Refunds are handled by Apple at reportaproblem.apple.com."
-          }
-        ]
-      },
-      "privacy": true
-    },
     "titled": {
       "name": "Titled",
       "platform": "iOS · iPadOS",
@@ -689,21 +200,52 @@
       "tagline": "Save web pages as PDFs with titles you can recognize later.",
       "description": "Preview a web page, create a PDF, and keep its filename and internal title in sync. Titled includes a searchable library and a Safari share extension.",
       "links": [
-        { "label": "Get help", "href": "/titled/support/", "primary": true }
+        {
+          "label": "Get help",
+          "href": "/titled/support/",
+          "primary": true
+        }
       ],
       "features": [
-        { "title": "Meaningful names", "body": "Extract page titles and keep PDF filenames and internal titles aligned, including after renaming." },
-        { "title": "Review before saving", "body": "Check the page preview before creating a PDF; some sites limit printing or need a login." },
-        { "title": "Saved library", "body": "Search, sort, read, rename, and delete PDFs stored locally or in your iCloud documents." },
-        { "title": "Share extension", "body": "Create a PDF from a web URL shared through the system share sheet." }
+        {
+          "title": "Meaningful names",
+          "body": "Extract page titles and keep PDF filenames and internal titles aligned, including after renaming."
+        },
+        {
+          "title": "Review before saving",
+          "body": "Check the page preview before creating a PDF; some sites limit printing or need a login."
+        },
+        {
+          "title": "Saved library",
+          "body": "Search, sort, read, rename, and delete PDFs stored locally or in your iCloud documents."
+        },
+        {
+          "title": "Share extension",
+          "body": "Create a PDF from a web URL shared through the system share sheet."
+        }
       ],
       "privacy": true,
       "privacy_sections": [
-        { "heading": "Documents and settings", "body": "Titled converts web pages on your device. PDFs remain in the app's local storage, shared App Group storage, or your own iCloud document storage. Settings and reading positions are stored on your device. iCloud storage and synchronization are provided by Apple under your Apple account." },
-        { "heading": "Website connections", "body": "Loading a page connects directly to that website and its resources. The website may receive your IP address, use cookies, or require a login. Its privacy policy applies. Titled does not bypass website access restrictions. Deleting a PDF does not delete website cookies." },
-        { "heading": "Sharing", "body": "You choose which PDF to share and where. Generated PDFs include the source web address in their metadata; the address may contain query parameters and travels with exported copies. Review it before sharing." },
-        { "heading": "Analytics and advertising", "body": "Titled contains no advertising or analytics SDKs. The developer does not operate a content-upload service for PDF conversion." },
-        { "heading": "Contact", "body": "For privacy questions, email xnuapp@gmail.com. This policy was updated September 22, 2026." }
+        {
+          "heading": "Documents and settings",
+          "body": "Titled converts web pages on your device. PDFs remain in the app's local storage, shared App Group storage, or your own iCloud document storage. Settings and reading positions are stored on your device. iCloud storage and synchronization are provided by Apple under your Apple account."
+        },
+        {
+          "heading": "Website connections",
+          "body": "Loading a page connects directly to that website and its resources. The website may receive your IP address, use cookies, or require a login. Its privacy policy applies. Titled does not bypass website access restrictions. Deleting a PDF does not delete website cookies."
+        },
+        {
+          "heading": "Sharing",
+          "body": "You choose which PDF to share and where. Generated PDFs include the source web address in their metadata; the address may contain query parameters and travels with exported copies. Review it before sharing."
+        },
+        {
+          "heading": "Analytics and advertising",
+          "body": "Titled contains no advertising or analytics SDKs. The developer does not operate a content-upload service for PDF conversion."
+        },
+        {
+          "heading": "Contact",
+          "body": "For privacy questions, email xnuapp@gmail.com. This policy was updated September 22, 2026."
+        }
       ]
     },
     "jsoncompare": {
@@ -714,16 +256,41 @@
       "description": "Paste two JSON documents into the panes and compare a deterministic, sorted representation side by side. Everything runs locally in a native SwiftUI app, so private payloads never leave your Mac.",
       "install": "brew install --cask everettjf/tap/jsoncompare",
       "links": [
-        { "label": "Install with Homebrew", "href": "https://github.com/everettjf/jsoncompare#install", "primary": true },
-        { "label": "View source on GitHub", "href": "https://github.com/everettjf/jsoncompare" }
+        {
+          "label": "Install with Homebrew",
+          "href": "https://github.com/everettjf/jsoncompare#install",
+          "primary": true
+        },
+        {
+          "label": "View source on GitHub",
+          "href": "https://github.com/everettjf/jsoncompare"
+        }
       ],
       "features": [
-        { "title": "Side-by-side diff", "body": "Added and removed lines stay aligned in two readable panes." },
-        { "title": "Order-insensitive", "body": "Object keys are sorted before comparison so key order does not create noise." },
-        { "title": "Format & validate", "body": "JSON is parsed and pretty-printed, with clear errors for invalid input." },
-        { "title": "Keyboard friendly", "body": "Compare, edit, clear, and navigate with native controls and shortcuts." },
-        { "title": "Native performance", "body": "Built in SwiftUI. Opens instantly, idles cheaply." },
-        { "title": "No cloud", "body": "Your payloads never leave the app. No telemetry." }
+        {
+          "title": "Side-by-side diff",
+          "body": "Added and removed lines stay aligned in two readable panes."
+        },
+        {
+          "title": "Order-insensitive",
+          "body": "Object keys are sorted before comparison so key order does not create noise."
+        },
+        {
+          "title": "Format & validate",
+          "body": "JSON is parsed and pretty-printed, with clear errors for invalid input."
+        },
+        {
+          "title": "Keyboard friendly",
+          "body": "Compare, edit, clear, and navigate with native controls and shortcuts."
+        },
+        {
+          "title": "Native performance",
+          "body": "Built in SwiftUI. Opens instantly, idles cheaply."
+        },
+        {
+          "title": "No cloud",
+          "body": "Your payloads never leave the app. No telemetry."
+        }
       ],
       "privacy": true
     },
@@ -734,15 +301,37 @@
       "tagline": "A modern replacement for Chrome's default bookmark manager.",
       "description": "If you save a lot of links, the built-in manager is painful. NotbadBookmark is a clean, fast extension with real search, drag-and-drop folders, and light and dark themes. It uses Chrome's own bookmark store, so your existing bookmarks and browser sync remain available.",
       "links": [
-        { "label": "Add to Chrome", "href": "https://chromewebstore.google.com/detail/notbadbookmark/mablekconlhfomebomdjbohbjmgceana", "primary": true }
+        {
+          "label": "Add to Chrome",
+          "href": "https://chromewebstore.google.com/detail/notbadbookmark/mablekconlhfomebomdjbohbjmgceana",
+          "primary": true
+        }
       ],
       "features": [
-        { "title": "Real search", "body": "Live filtering across titles and URLs, instant results." },
-        { "title": "Folder DnD", "body": "Drag bookmarks into folders, drag folders into folders." },
-        { "title": "Chrome bookmarks", "body": "Manage your existing bookmarks without migrating to a separate service." },
-        { "title": "Keyboard navigation", "body": "Arrow keys, enter, escape — get around without a mouse." },
-        { "title": "Light + dark", "body": "Follows your system theme." },
-        { "title": "No new account", "body": "Sits on top of Chrome's own bookmark store. Sync still works." }
+        {
+          "title": "Real search",
+          "body": "Live filtering across titles and URLs, instant results."
+        },
+        {
+          "title": "Folder DnD",
+          "body": "Drag bookmarks into folders, drag folders into folders."
+        },
+        {
+          "title": "Chrome bookmarks",
+          "body": "Manage your existing bookmarks without migrating to a separate service."
+        },
+        {
+          "title": "Keyboard navigation",
+          "body": "Arrow keys, enter, escape — get around without a mouse."
+        },
+        {
+          "title": "Light + dark",
+          "body": "Follows your system theme."
+        },
+        {
+          "title": "No new account",
+          "body": "Sits on top of Chrome's own bookmark store. Sync still works."
+        }
       ],
       "privacy": true
     },
@@ -805,230 +394,6 @@
         }
       ]
     },
-    "palmino": {
-      "name": "Palmino",
-      "platform": "iOS · iPadOS",
-      "icon": "bot",
-      "icon_image": "/images/products/palmino-icon.png",
-      "tagline": "A native assistant for multi-step work on iPhone and iPad.",
-      "description": "Palmino combines a Swift-native conversation interface with model providers, sessions, governed tools, and optional MCP or Linux tools. You configure the provider and approve sensitive actions.",
-      "links": [
-        {
-          "label": "Get help",
-          "href": "/palmino/support/",
-          "primary": true
-        }
-      ],
-      "features": [
-        {
-          "title": "Model choice",
-          "body": "Connect an OpenAI-compatible or DeepSeek provider with your own account and key."
-        },
-        {
-          "title": "Sessions and attachments",
-          "body": "Keep conversations and selected files in local app storage."
-        },
-        {
-          "title": "Governed tools",
-          "body": "Control access to Apple capabilities and confirm sensitive write actions."
-        },
-        {
-          "title": "Optional MCP",
-          "body": "Connect a remote HTTPS MCP server or a local guest server when you configure one."
-        },
-        {
-          "title": "Optional Linux tools",
-          "body": "Run approved shell and Git work in an isolated local Linux environment."
-        }
-      ],
-      "privacy": true,
-      "privacy_sections": [
-        {
-          "heading": "Conversations and local storage",
-          "body": "Palmino stores conversations, activity history, settings, and attachments on your device. Provider and MCP credentials are held in Apple Keychain. Starting with version 1.0.26 build 38, Palmino disables automatic conversation and attachment sync to iCloud and excludes its app-managed files from automatic device backup to protect health information. Earlier builds may include app data in backups or cloud sync according to your settings. Updating does not delete previously stored cloud data or backups. You control any explicit exports and their destination."
-        },
-        {
-          "heading": "Model providers",
-          "body": "When you use remote AI, data goes directly from your device to the provider endpoint you configure, such as DeepSeek, OpenAI, or an OpenAI-compatible service. Chat requests can include your messages and conversation history, task instructions, saved personalization, attached images, extracted document text, and tool results. Depending on the tools you choose, results may include contacts, calendar events, reminders, location, or health information. These data are used to generate your requested response. Image Studio sends your prompt and, for edits, the selected original image to its configured image provider; it is not always OpenAI. Palmino does not operate a model relay. Remote providers require your own account and API key and may charge for use."
-        },
-        {
-          "heading": "Consent before AI data sharing",
-          "body": "Starting with version 1.0.26 build 39, Palmino names the actual recipient and endpoint, describes the data sent and its purpose, and requests your permission before that AI feature sends data. Consent is separate for chat, images, transcript organization, and live voice, and applies to future requests for that recipient and feature, including scheduled tasks. Each fallback service requires its own approval. Changing a provider name or endpoint asks again. Declining sends no request to that service. Reset future sharing permissions in Settings → AI Data Sharing. This does not recall data already sent. HealthKit actions also retain their separate per-action sharing confirmation and system authorization."
-        },
-        {
-          "heading": "Third-party protection and provider choice",
-          "body": "We do not permit third parties engaged by Palmino to sell shared personal data, use health data for advertising, or use shared data for unrelated purposes, and require protection at least equivalent to this policy. Palmino has no developer-operated AI service or model relay. Independently configured providers are chosen and contracted by you; we cannot verify or guarantee the practices of an arbitrary custom endpoint. Only configure a service whose privacy, security, retention and deletion protections meet these standards. OpenAI and DeepSeek process requests under their respective privacy policies and your account terms; review those policies and retention controls before granting sharing permission. Do not send sensitive information to a provider whose protections you have not verified."
-        },
-        {
-          "heading": "Tools and permissions",
-          "body": "Apple capability tools may access files, photos, location, contacts, calendars, reminders, or other device data when the relevant feature is used and the applicable system permissions and in-app tool controls allow it. Returned tool data can become part of a model request. Review the destination and action confirmations before using sensitive data."
-        },
-        {
-          "heading": "Apple Health",
-          "body": "Optional health tools help you review activity, heart rate, sleep, and workouts, or separately record user-confirmed nutrition, hydration, and body mass. In version 1.0.26 build 38 and later, each HealthKit action requires an additional confirmation naming the configured model services that may receive the requested health values and results; declining stops that action. HealthKit system authorization is separate. If automatic backup protection cannot be verified, Palmino disables health access and shows a warning. Palmino does not use health information for advertising or tracking. Apple Health’s own data storage and iCloud settings are managed separately by Apple and iOS."
-        },
-        {
-          "heading": "Voice and local transcription",
-          "body": "After separate voice-sharing consent, Voice Conversation sends live microphone audio, voice transcripts, recent chat context, and delegated task instructions, status and results to OpenAI to provide spoken responses. Recording organization can send transcript excerpts, intermediate summaries and your instructions to your selected AI provider after separate consent; original recording audio is not sent by that feature. On-device Whisper transcription uses a model you explicitly download. Apple speech recognition uses Apple’s system permission and service behavior. On-device document generation stays on the device; the separately selected Private Cloud Compute option sends transcript text and instructions to Apple after confirmation. Content you later attach to a chat is covered by that chat’s sharing consent."
-        },
-        {
-          "heading": "Optional MCP and Linux",
-          "body": "A remote MCP server receives tool requests and data you send through that connection. Local guest tools run on your device; network commands and connected services can send data off-device when you approve their use. These external services have their own privacy practices."
-        },
-        {
-          "heading": "Retention and deletion",
-          "body": "Saved conversations remain in local app storage until you delete them. Delete a conversation from the conversation list. Documents, recordings, workspace files, and any exports you keep separately may need to be managed in their respective locations or retention settings. Removing local content does not recall data already sent to model providers or MCP servers, delete earlier cloud copies or backups, or delete records in Apple Health. Manage those copies with the relevant service or in Apple Health. Palmino has no account to delete, and we cannot remotely access or erase your on-device conversations."
-        },
-        {
-          "heading": "Withdrawing permission and removing keys",
-          "body": "To stop future access, disable the relevant capability in More → Settings → Tool Permissions and revoke system access in iOS Settings or Apple Health. You can decline an individual action confirmation. Remove a provider or clear its key in Settings and save; manage MCP connections separately. Voice Conversation has its own OpenAI key setting. Removing a saved key does not revoke it at the provider: revoke it in the provider’s account controls if needed. These actions do not undo earlier disclosures or Health records."
-        },
-        {
-          "heading": "Sharing and contact",
-          "body": "You control exports and shared files. Choose a destination suitable for any sensitive health information they contain. Palmino has no advertising or tracking SDK. If you email support, we receive your message and any material you send so we can respond; contact us to request deletion of support correspondence. Do not send API keys or personal health records. For privacy questions or requests, contact xnuapp@gmail.com. Updated October 23, 2026. Effective for the build 39 consent flow when that update is installed."
-        }
-      ]
-    },
-    "folucent": {
-      "name": "页澄 · Folucent",
-      "platform": "iPhone · iPad · Mac",
-      "icon": "book-open",
-      "tagline": "Read PDFs, explore passages, and keep what you learn.",
-      "description": "Read and annotate PDFs, explore selected passages, and keep your own understanding linked to the source. Your library stays on your device.",
-      "links": [
-        {
-          "label": "Get help",
-          "href": "/folucent/support/",
-          "primary": true
-        },
-        {
-          "label": "Pricing",
-          "href": "/folucent/#pricing"
-        }
-      ],
-      "features": [
-        {
-          "title": "Read and annotate",
-          "body": "Search PDFs, bookmark pages, highlight text, and add Apple Pencil handwriting on iPad."
-        },
-        {
-          "title": "Understand passages",
-          "body": "Choose Apple on-device AI, Private Cloud Compute, or your own compatible AI service for explanations and translation. Availability depends on your device and selected service."
-        },
-        {
-          "title": "Study notes",
-          "body": "Save and edit your own understanding with source-page links."
-        },
-        {
-          "title": "Back up and export",
-          "body": "Choose when and where to export notes, annotated PDFs, or a library backup."
-        }
-      ],
-      "privacy": true,
-      "privacy_sections": [
-        {
-          "heading": "About this policy",
-          "body": "Folucent is a PDF reading and learning app developed by Feng Zhu. Updated November 7, 2026. Custom-service provisions apply to Folucent 1.3.0 and later when installed. In-app purchase provisions apply to Folucent 1.6.0 and later when installed."
-        },
-        {
-          "heading": "Your documents and notes",
-          "body": "Imported PDFs, annotations, reading positions, and study notes are stored locally on your device. Folucent does not operate a server that receives your library. This release does not enable Folucent's optional CloudKit library sync. Device backups and file locations you choose may be managed by Apple or another storage provider under that provider's policies."
-        },
-        {
-          "heading": "Apple AI",
-          "body": "You choose the AI model in AI Settings. On-device requests are processed on your device. When you choose Private Cloud Compute and request AI assistance, selected text, page references, limited nearby context for explanations, your optional question, and task instructions are processed using Apple's Private Cloud Compute service. Folucent does not attach the PDF file, handwriting, library filename, or personal study notes. Selected source text and nearby context may themselves contain titles or other identifying information. Apple controls service availability and usage limits. Apple describes PCC as processing requests without retaining the submitted personal data or making it accessible to Apple. Read Apple's explanation at https://security.apple.com/documentation/private-cloud-compute/ . AI responses are cached in memory during use. Responses you choose to save become part of your locally stored study notes. Folucent does not collect AI prompts or responses on a developer-operated server and does not use them to train models."
-        },
-        {
-          "heading": "Optional custom AI services",
-          "body": "You may explicitly configure an HTTPS OpenAI-compatible text Chat Completions endpoint and model. After you allow sending to that endpoint and request an explanation, translation, or follow-up, Folucent sends the task instructions, selected text and page references, your optional question, and limited nearby context for explanations directly to the configured service. The PDF file, library filename, handwriting and personal notes are not attached; selected source text and nearby context may themselves contain identifying information. OCR text must be reviewed first. Opening the panel, changing pages, and restoring drafts do not start custom requests. Folucent does not automatically switch services. The API key is stored in this device’s Keychain with synchronization disabled and device-only accessibility. It is excluded from Folucent library backups, exports, and sync. The key is sent as an authorization header only to the configured endpoint; redirects are rejected. Changing the endpoint requires a key and permission again. You can remove the key in AI Settings and save the change; existing saved notes and answers are retained. OS device migration and app removal behavior follow Apple’s Keychain rules. The configured service can associate requests with your service account through the API key. The configured service receives your requests under its own privacy, retention, availability and billing policies. Folucent does not promise that a third-party service retains no data. Connection tests send fixed test text, without a PDF passage, and may incur charges. Long translations and output repair may involve additional requests. All results still require comparison with the source."
-        },
-        {
-          "heading": "In-app purchases",
-          "body": "Folucent Pro purchases are made through Apple's App Store. Starting with Folucent 1.6.0, Folucent sends purchase information to RevenueCat, Inc., a third-party purchase-processing service, so it can confirm and restore Pro access. This includes the product purchased, transaction identifiers, purchase dates, App Store country and price information, and a random anonymous app user identifier created by the app. Folucent does not create an app account and does not send your PDFs, notes, highlights, or AI requests to RevenueCat. RevenueCat processes this information under its own privacy policy at https://www.revenuecat.com/privacy/ . Apple processes payment details; Folucent never receives them."
-        },
-        {
-          "heading": "Tracking and analytics",
-          "body": "Folucent includes no advertising or tracking SDK and does not use purchase information for tracking. Purchase records in RevenueCat are used to provide Pro access and aggregate purchase reporting. Apple may provide App Store or diagnostic information under your Apple privacy settings and Apple's policies."
-        },
-        {
-          "heading": "Export, deletion, and support",
-          "body": "You can export notes, annotated PDFs, or a library backup to a destination you choose. Removing a document or note affects its local app copy; separately exported files and backups must be managed separately. Deleting the app removes its local app data, subject to operating-system backup behavior. If you contact support, information you choose to send is used to respond to your request. Avoid sending private PDFs or unnecessary personal information. For privacy questions, email xnuapp@gmail.com. The public policy is https://xnu.app/folucent/privacy/."
-        }
-      ],
-      "pricing": {
-        "heading": "Free to read. Pro to bring ideas together.",
-        "intro": "The everyday reading and learning tools stay free. Pro adds ways to organize notes across books and shape a study guide your way.",
-        "availability": "Pro is in TestFlight testing in version 1.4.0. It is not yet available to purchase in the App Store release.",
-        "plans": [
-          {
-            "name": "Free",
-            "status": "Available now",
-            "price": "$0",
-            "billing": "No purchase required",
-            "description": "Read, annotate, understand passages, and keep your own notes."
-          },
-          {
-            "name": "Folucent Pro",
-            "status": "TestFlight preview",
-            "price": "US$14.99",
-            "billing": "Planned price · one-time purchase",
-            "description": "Everything in Free, plus cross-book study collections and custom Markdown study guides.",
-            "note": "No subscription. Local prices and availability will be shown in the app when Pro launches."
-          }
-        ],
-        "rows": [
-          {
-            "feature": "PDF reading, search, bookmarks and annotations",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "OCR and text review",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Apple AI and custom AI service configuration",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Study notes, source-page links and basic review",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Existing Markdown / PDF exports and library backups",
-            "free": "Included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Create and organize collections across books",
-            "free": "Not included",
-            "pro": "Included"
-          },
-          {
-            "feature": "Custom Markdown study guides: title, passages, saved AI results and book grouping",
-            "free": "Not included",
-            "pro": "Included"
-          }
-        ],
-        "notes": [
-          {
-            "title": "AI fees are separate",
-            "body": "Pro does not include API credits or change Apple AI availability. Any third-party AI service charges you under its own terms; you choose and configure that service."
-          },
-          {
-            "title": "Your work stays yours",
-            "body": "If Pro access is refunded or revoked, your saved collections and notes remain readable and available for standard export. You can still remove members and delete collections."
-          },
-          {
-            "title": "Restore purchases, keep data local",
-            "body": "Restore Purchases is included on iPhone, iPad and native Mac. Purchase and cross-device restoration are being tested in TestFlight. Restoring a purchase does not sync your library; app-level cloud sync is not enabled."
-          }
-        ]
-      }
-    },
     "launchdeck": {
       "name": "LaunchDeck",
       "platform": "macOS 26+",
@@ -1036,26 +401,70 @@
       "tagline": "Apps, files, and actions at your fingertips.",
       "description": "A keyboard-first macOS launcher for apps, files, and reusable workflows. Optional on-device intent search uses Apple Intelligence on supported hardware. Distributed through Homebrew and GitHub Releases.",
       "links": [
-        { "label": "Download from GitHub Releases", "href": "https://github.com/everettjf/launchdeck/releases/latest", "primary": true },
-        { "label": "View source on GitHub", "href": "https://github.com/everettjf/launchdeck" }
+        {
+          "label": "Download from GitHub Releases",
+          "href": "https://github.com/everettjf/launchdeck/releases/latest",
+          "primary": true
+        },
+        {
+          "label": "View source on GitHub",
+          "href": "https://github.com/everettjf/launchdeck"
+        }
       ],
       "features": [
-        { "title": "Instant launch", "body": "Open any installed application with a global shortcut and a few keystrokes." },
-        { "title": "Fuzzy search", "body": "Match by name, category, or aliases — typos and abbreviations are fine." },
-        { "title": "Optional intent search", "body": "Describe what you want to do. Requires Apple Intelligence-capable hardware and an available on-device model." },
-        { "title": "Keyboard-first", "body": "Built for power users. The mouse is optional, end to end." },
-        { "title": "Categories & ordering", "body": "Group apps the way you think about them, not how the Finder sorts them." },
-        { "title": "Native and lightweight", "body": "A small Swift app. No Electron, no background bloat." }
+        {
+          "title": "Instant launch",
+          "body": "Open any installed application with a global shortcut and a few keystrokes."
+        },
+        {
+          "title": "Fuzzy search",
+          "body": "Match by name, category, or aliases — typos and abbreviations are fine."
+        },
+        {
+          "title": "Optional intent search",
+          "body": "Describe what you want to do. Requires Apple Intelligence-capable hardware and an available on-device model."
+        },
+        {
+          "title": "Keyboard-first",
+          "body": "Built for power users. The mouse is optional, end to end."
+        },
+        {
+          "title": "Categories & ordering",
+          "body": "Group apps the way you think about them, not how the Finder sorts them."
+        },
+        {
+          "title": "Native and lightweight",
+          "body": "A small Swift app. No Electron, no background bloat."
+        }
       ],
       "privacy": true,
       "install": "brew install --cask everettjf/tap/launchdeck"
     }
   },
   "catalog_sections": [
-    { "key": "featured_apps", "id": "featured", "title": "Current focus", "description": "The two products I am focusing on now. Availability is shown on each card." },
-    { "key": "legacy_apps", "id": "legacy-apps", "title": "Everyday apps", "description": "Apps I continue to maintain for everyday tasks." },
-    { "key": "developer_tools", "id": "developer-tools", "title": "Developer tools", "description": "Focused tools for building, debugging, and working with code." },
-    { "key": "research_labs", "id": "research-labs", "title": "Experiments", "description": "Public projects still being explored. Features and direction may change." },
-    { "key": "independent_projects", "id": "independent-projects", "title": "Independent projects", "description": "Projects with their own audience, brand, and community." }
+    {
+      "key": "featured_apps",
+      "id": "current",
+      "title": "Current explorations",
+      "description": "Open-source projects and tools I am exploring."
+    },
+    {
+      "key": "developer_tools",
+      "id": "developer-tools",
+      "title": "Developer tools",
+      "description": "Open-source tools for building and understanding software."
+    },
+    {
+      "key": "research_labs",
+      "id": "research-labs",
+      "title": "Experiments",
+      "description": "Public research and experiments; direction may change."
+    },
+    {
+      "key": "independent_projects",
+      "id": "independent-projects",
+      "title": "Independent projects",
+      "description": "Projects with their own communities."
+    }
   ]
 }

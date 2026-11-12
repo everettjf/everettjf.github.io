@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This Jekyll site is the public catalog and documentation home for Everett's apps and open-source projects. Project names, availability, GitHub URLs, App Store URLs, privacy statements, and feature claims must match the current repositories and shipped products.
+This Jekyll site is Everett’s personal blog and open-source notebook. Released commercial apps and games live in the sibling `website-company` repository at https://atomsprout.github.io. Legacy product routes redirect there; keep historical article URLs and the RSS feed stable. Project names, availability, GitHub URLs, App Store URLs, privacy statements, and feature claims must match the current repositories and shipped products.
 
 ## Source of Truth
 

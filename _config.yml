@@ -1,7 +1,8 @@
 name: Everett
-title: XNU — apps and tools by Everett
-description: Independent apps for everyday work. Open-source tools for developers.
-meta_description: "XNU — independent apps and open-source tools by Everett."
+title: Everett — writing and ideas
+description: Personal writing, technical notes, and open-source explorations by Everett.
+meta_description: "Everett’s personal blog — software, curiosity, and things learned along the way."
+company_url: https://atomsprout.github.io
 
 markdown: kramdown
 highlighter: rouge

@@ -1,6 +1,6 @@
 # xnu.app
 
-Personal site & blog of everettjf, built with Jekyll and served at https://xnu.app
+Personal blog of everettjf, built with Jekyll and served at https://xnu.app
 (GitHub Pages, built from the `master` branch).
 
 ## 最常用流程 (TL;DR)
@@ -114,3 +114,7 @@ force one with `make redeploy`, and check progress with `make deploy-status`.
   (`assets/xnu/js/lucide-icons.min.js`) — no runtime CDN requests. After adding
   new Tailwind classes or lucide icon names, rebuild both with `make assets`
   (requires Node; sources live in `_build/`).
+
+## AtomSprout migration
+
+Released apps and games now live at https://atomsprout.github.io, maintained in the sibling `website-company` checkout. The blog homepage focuses on writing and the project index on open-source work. Existing product landing, support, and privacy URLs use `_layouts/company_redirect.html` and `company_url` from `_config.yml`; redirects preserve query strings and fragments. Historical articles and RSS URLs remain unchanged. Product policy text is maintained in the company repository. Update `company_url` after the verified custom domain goes live.

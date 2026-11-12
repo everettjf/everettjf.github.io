@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% assign destination = site.company_url | append: page.company_path %}
+  <title>{{ page.title | escape }}</title>
+  <meta http-equiv="refresh" content="0;url={{ destination | escape }}">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="{{ destination | escape }}">
+</head>
+<body>
+  <p>This product now lives at AtomSprout.</p>
+  <p><a href="{{ destination | escape }}">Continue to AtomSprout →</a></p>
+  <script>location.replace({{ destination | jsonify }} + location.search + location.hash);</script>
+</body>
+</html>
