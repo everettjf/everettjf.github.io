@@ -8,14 +8,15 @@ archive: false
 {% assign en_html = parts[0] %}
 {% assign zh_html = parts[1] %}
 {% assign post_topic = site.data.writing_topics | where: 'id', page.topic | first %}
-<article{% unless has_zh %} lang="{{ page.lang | default: 'en' }}"{% endunless %}>
+<article class="post-article"{% if has_zh %} data-bilingual lang="en"{% else %} lang="{{ page.lang | default: 'en' }}"{% endif %}>
   <header>
-    <p class="terminal-label mb-5"><span class="lang-en">writing</span><span class="lang-zh">文章</span></p>
+    <p class="terminal-label mb-5">writing</p>
     <h1 class="page-title post-title">{% include xnu/post_title.html post=page %}<span class="terminal-cursor" aria-hidden="true"></span></h1>
     <p class="page-subtitle">
       <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time>
-      {% if post_topic %} · <span class="lang-en">{{ post_topic.en }}</span><span class="lang-zh">{{ post_topic.zh }}</span>{% endif %}
+      {% if post_topic %} · {{ post_topic.en }}{% endif %}
     </p>
+    {% if has_zh %}{% include xnu/language_switch.html %}{% endif %}
   </header>
   {% if has_zh %}
   <div class="lang-en" lang="en">
@@ -31,8 +32,8 @@ archive: false
     {% else %}{% include xnu/article_body.html html=content language='en' %}{% endif %}
   {% endif %}
   <aside class="author-note">
-    <p><span class="lang-en">Written by Everett / everettjf. Notes on building software and exploring how things work.</span><span class="lang-zh">作者 Everett / everettjf，记录构建软件的过程和对技术细节的探索。</span></p>
-    <p><a href="/about"><span class="lang-en">About me</span><span class="lang-zh">关于我</span></a> · <a href="/feed.xml">RSS · EN</a> · <a href="/feed-zh.xml" lang="zh-Hans">RSS · 中文</a> · <a href="/archive#wechat" lang="zh-Hans">吃灰思考</a></p>
+    <p>Written by Everett / everettjf. Notes on building software and exploring how things work.</p>
+    <p><a href="/about">About me</a> · <a href="/feed.xml">RSS · EN</a> · <a href="/feed-zh.xml">RSS · Chinese</a> · <a href="/archive#wechat" lang="zh-Hans">吃灰思考</a></p>
   </aside>
   {% unless page.comments == false %}<section class="comments">{% include disqus.html %}</section>{% endunless %}
 </article>

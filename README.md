@@ -81,7 +81,7 @@ English content here.
 中文正文。
 ```
 
-The shared **EN / 中文** control changes navigation, article titles, archive filters, and bilingual article text together. It remembers an explicit choice in `localStorage`; first visits follow the browser language. A link with `?lang=zh` or `?lang=en` opens in that language. For a bilingual post set `lang_original` to `zh` or `en` to identify the original.
+The **EN / 中文** control appears only inside bilingual articles and switches the article title and content. Articles default to English and remember an explicit reading preference under `article_lang` in `localStorage`. Links with `?lang=zh` or `?lang=en` select the article language. The homepage, archive, About page, navigation, and filters always stay in English, regardless of browser language or article preferences. For a bilingual post set `lang_original` to `zh` or `en` to identify the original.
 
 For a Chinese-only post, omit `title_zh` and `<!--ZH-->`, and add:
 
@@ -90,7 +90,7 @@ lang: zh-Hans
 lang_original: zh
 ```
 
-Single-language articles stay readable in either interface language and carry a language badge. Translations are optional; do not leave placeholder translations in published articles.
+Single-language articles retain their original content and carry a language badge. Use `listing_title_en` for an English archive title when the original title is Chinese. Translations are optional; do not leave placeholder translations in published articles.
 
 ### Topics and historical writing
 

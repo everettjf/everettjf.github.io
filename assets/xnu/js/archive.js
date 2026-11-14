@@ -20,9 +20,7 @@
     document.querySelectorAll('.archive-year-group').forEach(function (group) {
       group.hidden = !group.querySelector('li:not([hidden])');
     });
-    status.textContent = document.documentElement.dataset.lang === 'zh'
-      ? '显示 ' + count + ' / ' + rows.length + ' 篇文章'
-      : count + ' of ' + rows.length + ' articles';
+    status.textContent = count + ' of ' + rows.length + ' articles';
     empty.hidden = count !== 0;
   }
   form.hidden = false;
@@ -30,7 +28,6 @@
   form.addEventListener('submit', function (event) { event.preventDefault(); });
   search.addEventListener('input', filter);
   topic.addEventListener('change', filter);
-  document.addEventListener('blog:language', filter);
   form.addEventListener('reset', function () { search.value = ''; topic.value = ''; filter(); });
   filter();
 })();

@@ -4,19 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="{% if page.product == 'palmino' %}#172019{% else %}#0e0d0b{% endif %}" />
+  {% if page.layout == 'post' %}
   <script>
     (function () {
-      var language = navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en';
+      var language = 'en';
       try {
-        var saved = localStorage.getItem('app_lang');
+        var saved = localStorage.getItem('article_lang');
         if (saved === 'zh' || saved === 'en') language = saved;
       } catch (e) {}
       var requested = new URLSearchParams(location.search).get('lang');
       if (requested === 'zh' || requested === 'en') language = requested;
-      document.documentElement.dataset.lang = language;
-      document.documentElement.lang = language === 'zh' ? 'zh-Hans' : 'en';
+      document.documentElement.dataset.articleLang = language;
     })();
   </script>
+  {% endif %}
   {% seo %}
   <link rel="alternate" type="application/rss+xml" title="Everett — English" href="/feed.xml" hreflang="en" />
   <link rel="alternate" type="application/rss+xml" title="Everett — 中文" href="/feed-zh.xml" hreflang="zh-Hans" />

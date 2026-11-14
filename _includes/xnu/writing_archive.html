@@ -1,23 +1,23 @@
 <form class="archive-filters" role="search" hidden>
-  <div><label for="post-search"><span class="lang-en">Search titles</span><span class="lang-zh">搜索标题</span></label><input id="post-search" type="search" placeholder="Title in English or 中文" data-placeholder-en="Title in English or 中文" data-placeholder-zh="输入中文或英文标题" autocomplete="off"></div>
-  <div><label for="post-topic"><span class="lang-en">Topic</span><span class="lang-zh">主题</span></label><select id="post-topic"><option value="" data-label-en="All topics" data-label-zh="全部主题">All topics</option>
+  <div><label for="post-search">Search titles</label><input id="post-search" type="search" placeholder="Title in English or Chinese" autocomplete="off"></div>
+  <div><label for="post-topic">Topic</label><select id="post-topic"><option value="">All topics</option>
   {% for topic in site.data.writing_topics %}
     {% assign topic_posts = site.posts | where: 'topic', topic.id %}
-    <option value="{{ topic.id }}" data-label-en="{{ topic.en | escape }} ({{ topic_posts.size }})" data-label-zh="{{ topic.zh | escape }}（{{ topic_posts.size }}）">{{ topic.en | escape }} ({{ topic_posts.size }})</option>
+    <option value="{{ topic.id }}">{{ topic.en | escape }} ({{ topic_posts.size }})</option>
   {% endfor %}
   </select></div>
-  <button type="reset"><span class="lang-en">Reset</span><span class="lang-zh">重置</span></button>
+  <button type="reset">Reset</button>
 </form>
 <p id="archive-results" class="archive-results" role="status" aria-live="polite" hidden></p>
-<p id="archive-empty" class="reading-copy" hidden><span class="lang-en">No matching articles. Try another title or choose All topics.</span><span class="lang-zh">没有匹配的文章。试试其他标题，或选择全部主题。</span></p>
+<p id="archive-empty" class="reading-copy" hidden>No matching articles. Try another title or choose All topics.</p>
 {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
 {% for year in posts_by_year %}
 <section class="archive-year-group">
   <h2 class="archive-year">{{ year.name }}</h2>
   <ul class="archive-list">
   {% for post in year.items %}
-    <li data-post-title="{{ post.title | append: ' ' | append: post.title_zh | escape }}" data-post-topic="{{ post.topic }}">
-      <a class="archive-title" href="{{ post.url }}">{% include xnu/post_title.html post=post %}</a>
+    <li data-post-title="{{ post.title | append: ' ' | append: post.title_zh | append: ' ' | append: post.listing_title_en | escape }}" data-post-topic="{{ post.topic }}">
+      <a class="archive-title" href="{{ post.url }}">{{ post.listing_title_en | default: post.title | escape }}{% if post.lang_original == 'zh' and post.title_zh == nil %} <small class="language-badge">Chinese</small>{% endif %}</a>
       <time class="archive-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y-%m-%d' }}</time>
     </li>
   {% endfor %}
@@ -26,10 +26,10 @@
 {% endfor %}
 <aside id="wechat" class="wechat-follow" aria-labelledby="wechat-follow-title">
   <div class="wechat-follow-copy">
-    <p class="wechat-follow-kicker"><span class="lang-en">Keep in touch</span><span class="lang-zh">继续交流</span></p>
-    <h2 id="wechat-follow-title"><span class="lang-en">Find me on WeChat: <span lang="zh-Hans">吃灰思考</span></span><span class="lang-zh">微信公众号「吃灰思考」</span></h2>
-    <p><span class="lang-en">Thoughts and development notes in Chinese. For blog updates, subscribe via <a href="/feed.xml">RSS (English)</a> or <a href="/feed-zh.xml" lang="zh-Hans">RSS（中文）</a>.</span><span class="lang-zh">在这里分享中文想法和开发笔记。博客新文章也可以通过 <a href="/feed-zh.xml">中文 RSS</a> 或 <a href="/feed.xml">英文 RSS</a> 订阅。</span></p>
+    <p class="wechat-follow-kicker">Keep in touch</p>
+    <h2 id="wechat-follow-title">Find me on WeChat: <span lang="zh-Hans">吃灰思考</span></h2>
+    <p>Thoughts and development notes in Chinese. For blog updates, subscribe via <a href="/feed.xml">RSS (English)</a> or <a href="/feed-zh.xml">RSS (Chinese)</a>.</p>
   </div>
-  <img src="/images/wechat-official-account.png" alt="微信搜索公众号吃灰思考，或扫描二维码关注" width="612" height="262" loading="lazy" decoding="async">
+  <img src="/images/wechat-official-account.png" alt="Scan the QR code or search WeChat for 吃灰思考" width="612" height="262" loading="lazy" decoding="async">
 </aside>
 <script src="/assets/xnu/js/archive.js?v={{ site.time | date: '%s' }}" defer></script>

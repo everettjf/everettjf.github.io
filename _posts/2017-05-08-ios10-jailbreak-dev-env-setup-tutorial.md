@@ -1,5 +1,6 @@
 ---
 layout: post
+listing_title_en: "Setting Up an iOS 10 Jailbreak Development Environment"
 title: "iOS 10 越狱开发环境搭建教程"
 categories: Skill
 comments: true

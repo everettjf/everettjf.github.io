@@ -115,13 +115,6 @@ header nav a { min-height: 44px; display: inline-flex; align-items: center; }
   .pricing-comparison th, .pricing-comparison td { padding-top: .875rem; padding-bottom: .875rem; }
 }
 
-/* Shared language controls are usable on every page with the blog navigation. */
-.lang-zh { display: none; }
-:root[data-lang="zh"] .lang-en { display: none; }
-:root[data-lang="zh"] .lang-zh { display: revert; }
-.lang-switch { display: inline-flex; gap: .2rem; padding: .2rem; border: 1px solid hsl(var(--border)); background: hsl(var(--card)); }
-.lang-switch button { min-width: 2.5rem; min-height: 36px; padding: .25rem .5rem; border: 0; background: transparent; color: hsl(var(--foreground)); font: inherit; font-size: .75rem; cursor: pointer; }
-.lang-switch button:hover, .lang-switch button.active { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
-header > div > .lang-switch { margin: 0 0 0 1rem; }
+/* Translation controls belong to the article, not the site navigation. */
+.post-article .lang-switch button { min-width: 2.5rem; min-height: 36px; font-size: .75rem; }
 @media (min-width: 640px) { header .desktop-nav { margin-left: auto; } }
-@media (max-width: 639px) { header > div > .lang-switch { margin-left: auto; margin-right: 1rem; } }
