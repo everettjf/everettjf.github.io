@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Simplest Model for Categorizing and Scheduling iOS App Launch Tasks"
+title: "A Simple Model for Scheduling iOS Launch Tasks"
 title_zh: "iOS 应用启动任务分类与调度的最简模型"
 lang_original: zh
 categories:
@@ -8,6 +8,7 @@ categories:
 tags:
   - 简单
 comments: true
+topic: systems
 ---
 
 For an "aging" app, the work done during launch keeps piling up, the code in didFinishLaunchingWithOptions gets longer and longer, and the line count of AppDelegate.m keeps growing. It's time to categorize and organize them.
@@ -155,8 +156,6 @@ This article really couldn't be any simpler. Bit of a filler. Ha.
 
 
 
-Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](/images/fun.png)
 
 <!--ZH-->
 
@@ -302,8 +301,3 @@ TaskDeclare(TTRenderTask)
 通过简单的分类和反射调用，可以把任务分类存放在不同的文件中，便于维护，也便于调整任务的先后执行顺序。
 
 这篇文章确实简单的不能再简单了。有点水。哈。
-
-
-
-欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](/images/fun.png)

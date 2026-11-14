@@ -5,6 +5,9 @@ title_zh: "iOS 简单反调试与反反调试实践"
 lang_original: zh
 categories: Skill
 comments: true
+topic: debugging
+historical_context_en: "The jailbroken iOS and debugger environment used in 2015."
+historical_context_zh: "2015 年使用的越狱 iOS 与调试环境。"
 ---
 
 

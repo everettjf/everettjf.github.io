@@ -5,6 +5,9 @@ title_zh: "保存支付宝聊天语音的 Tweak 开发"
 lang_original: zh
 categories: Skill
 comments: true
+topic: debugging
+historical_context_en: "The Alipay client and jailbreak toolchain used in 2015."
+historical_context_zh: "2015 年使用的支付宝客户端与越狱工具链。"
 ---
 
 
@@ -473,4 +476,3 @@ cy# [#0x319c400 chatDataSource]
 虽然远没有《iOS应用逆向工程》最后一章的例子复杂，但也作为自己看完这本书的小小的句号吧，既是句号，也是新的起点。这本书的内容也只是引导自己走进了iOS逆向的大门，入门而已。
 
 期待未来……
-

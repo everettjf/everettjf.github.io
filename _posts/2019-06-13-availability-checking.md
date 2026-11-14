@@ -8,6 +8,7 @@ categories:
 tags:
   - 原理
 comments: true
+topic: systems
 ---
 
 In this article we'll explore the essence of `@avaliable` step by step.
@@ -147,14 +148,6 @@ I'm not too familiar with llvm specifically, so I won't go into detail (I can't 
 ## Final Summary
 
 Once you understand this essence, you'll use it more confidently from now on. Very interesting.
-
----
-
-Welcome to subscribe :)
-
-![](/images/fun.png)
-
-
 
 
 <!--ZH-->
@@ -296,13 +289,3 @@ https://github.com/llvm-mirror/clang/blob/master/include/clang/AST/Availability.
 ## 再总结
 
 了解了这个本质，以后用起来就更自信了哈。很有趣。
-
----
-
-欢迎订阅 :)
-
-![](/images/fun.png)
-
-
-
-

@@ -5,6 +5,9 @@ title_zh: "In-App Purchase 接入踩坑与一个未解答的问题"
 lang_original: zh
 categories: Skill
 comments: true
+topic: development
+historical_context_en: "The StoreKit integration investigated in 2016; the open question is preserved as a historical record."
+historical_context_zh: "2016 年排查的 StoreKit 接入问题；文中的未解问题按历史记录保留。"
 ---
 
 
@@ -87,4 +90,3 @@ See these two questions:
 - 如果为了更安全，可以与客户端上传的再比较一次。
 - 凭据中有可能包含多个产品。（可能上次有网络异常等问题，导致凭据中包含多个产品）。
 - 服务端要仔细看文档，验证凭据返回的json中有的字段是数组（array）。
-

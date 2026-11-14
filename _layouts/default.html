@@ -4,35 +4,3 @@ layout: xnu_base
 <div class="blog-shell">
   {{ content }}
 </div>
-
-<script>
-  (function () {
-    var root = document.documentElement;
-    try {
-      var saved = localStorage.getItem('app_lang');
-      root.dataset.lang = saved === 'zh' ? 'zh' : 'en';
-    } catch (e) { root.dataset.lang = 'en'; }
-
-    function syncLang() {
-      var current = root.dataset.lang || 'en';
-      root.lang = current === 'zh' ? 'zh-Hans' : 'en';
-      document.querySelectorAll('.lang-switch button[data-lang-value]').forEach(function (button) {
-        button.classList.toggle('active', button.dataset.langValue === current);
-      });
-    }
-
-    document.querySelectorAll('[data-lang-value]').forEach(function (button) {
-      button.addEventListener('click', function () {
-        root.dataset.lang = button.dataset.langValue;
-        try { localStorage.setItem('app_lang', button.dataset.langValue); } catch (e) {}
-        syncLang();
-      });
-    });
-
-    document.querySelectorAll('.md-reader img, .archive-list img').forEach(function (image) {
-      if (!image.hasAttribute('loading')) image.setAttribute('loading', 'lazy');
-      if (!image.hasAttribute('decoding')) image.setAttribute('decoding', 'async');
-    });
-    syncLang();
-  })();
-</script>

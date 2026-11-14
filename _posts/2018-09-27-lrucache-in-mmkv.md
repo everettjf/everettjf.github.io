@@ -8,6 +8,9 @@ categories:
 tags:
   - 基础知识
 comments: true
+topic: systems
+historical_context_en: "MMKV source code read in 2018; the exact revision was not recorded."
+historical_context_zh: "2018 年阅读的 MMKV 源码；原文未记录准确的提交版本。"
 ---
 
 LRU (Least recently used) is a cache update strategy: when the number of cached items reaches the maximum capacity, or some condition is met, the least recently used element is evicted. Not long ago WeChat open-sourced a client-side Key-Value storage library MMKV <https://github.com/Tencent/MMKV>, which contains a very compact LRU cache implementation (the LRUCache class).
@@ -186,8 +189,6 @@ The output is as follows:
 LeetCode has a similar problem <https://leetcode.com/problems/lru-cache/description/> that you can practice with.
 
 
-Welcome to follow the official account "Client Tech Review":
-![happyhackingstudio](/images/fun.png)
 
 <!--ZH-->
 
@@ -365,7 +366,3 @@ public:
 # LeetCode
 
 LeetCode 中就有个类似的题目 <https://leetcode.com/problems/lru-cache/description/> 可以练习一下。
-
-
-欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](/images/fun.png)

@@ -5,6 +5,9 @@ title_zh: "逆向探索微信聊天界面的 UI 实现逻辑"
 lang_original: zh
 categories: Skill
 comments: true
+topic: debugging
+historical_context_en: "The WeChat iOS client inspected in 2016."
+historical_context_zh: "2016 年分析的微信 iOS 客户端。"
 ---
 
 

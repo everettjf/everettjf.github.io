@@ -8,6 +8,7 @@ categories:
 tags:
   - iOS14
 comments: true
+topic: debugging
 ---
 
 iOS 14 added a privacy feature: when an app reads content that another app copied to the clipboard, a brief banner is shown. Like this:

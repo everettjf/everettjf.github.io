@@ -5,6 +5,9 @@ title_zh: "探索 Facebook iOS 客户端 - Section FBSessionGKs"
 lang_original: zh
 categories: Skill
 comments: true
+topic: systems
+historical_context_en: "The Facebook iOS binary inspected in 2016."
+historical_context_zh: "2016 年分析的 Facebook iOS 二进制文件。"
 ---
  
 
@@ -119,4 +122,3 @@ void * +[FBFeatureGatingConfigFactory applicationSpecificFeatureGatingConfig](vo
 **具体探索过程类似上一篇文章 [探索 Facebook iOS 客户端 - Section FBInjectable](/2016/08/20/facebook-explore-section-fbinjectable/)**
 
 **Demo有时间再补充啦**
-

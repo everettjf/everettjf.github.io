@@ -9,6 +9,7 @@ tags:
   - objc
   - dealloc
 comments: true
+topic: systems
 ---
 
 When using Objective-C++, you can store Objective-C objects in a C++ struct or class.
@@ -118,11 +119,6 @@ From now on you can boldly use C++ structs to store Objective-C objects.
 
 Pretty interesting :)
 
----
-
-If you like it, follow the official account to show your support:
-
-![](/images/fun.png)
 
 <!--ZH-->
 
@@ -233,10 +229,3 @@ https://github.com/LGCooci/objc4_debug
 
 
 很有趣 :)
-
----
-
-大家喜欢的话，就关注下订阅号，以示鼓励：
-
-![](/images/fun.png)
-

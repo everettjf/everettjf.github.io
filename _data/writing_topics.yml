@@ -1,0 +1,15 @@
+- id: systems
+  en: Performance & internals
+  zh: 性能与底层
+- id: debugging
+  en: Debugging & reverse engineering
+  zh: 调试与逆向
+- id: building
+  en: Building tools & products
+  zh: 工具与产品开发
+- id: development
+  en: Development notes
+  zh: 开发笔记
+- id: personal
+  en: Personal essays
+  zh: 个人随笔

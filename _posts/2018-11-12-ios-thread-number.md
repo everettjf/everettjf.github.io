@@ -8,6 +8,7 @@ categories:
 tags:
   - 线程
 comments: true
+topic: systems
 ---
 
 In performance-optimization work you often need to obtain the thread identifier. This article briefly lists and compares four ways to get the thread identifier.
@@ -79,8 +80,6 @@ pthread_threadid_np(NULL, &tid);
 ```
 
 
-Welcome to follow the official account "Client Tech Review":
-![](/images/fun.png)
 
 <!--ZH-->
 
@@ -151,7 +150,3 @@ pthread_t tid = pthread_self()
 uint64_t tid;
 pthread_threadid_np(NULL, &tid);
 ```
-
-
-欢迎关注订阅号「客户端技术评论」：
-![](/images/fun.png)

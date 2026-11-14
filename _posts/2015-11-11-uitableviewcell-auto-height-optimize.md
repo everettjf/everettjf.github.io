@@ -1,10 +1,11 @@
 ---
 layout: post
-title: "Summary of Performance Optimization for UITableViewCell Automatic Height Calculation"
+title: "Optimizing UITableViewCell Automatic Height Calculation"
 title_zh: "UITableViewCell 自动高度计算性能优化总结"
 lang_original: zh
 categories: Skill
 comments: true
+topic: systems
 ---
 
 
@@ -173,5 +174,3 @@ Since messages are produced too fast — faster than the speed of scrolling to t
 
 # 参考文章
 <http://blog.sunnyxx.com/2015/05/17/cell-height-calculation/>
-
-

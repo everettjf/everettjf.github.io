@@ -10,6 +10,9 @@ tags:
   - stdout
   - stderr
 comments: true
+topic: development
+historical_context_en: "An iOS stdout experiment from 2020 that accesses C library implementation details."
+historical_context_zh: "2020 年的 iOS 标准输出实验，涉及 C 库的内部实现细节。"
 ---
 
 I came across a pretty interesting piece of code: an iOS project that redirects the content printed by printf into a UITextView.
@@ -107,11 +110,6 @@ These two functions set standard output to "line-buffered" and "unbuffered" resp
 
 Writing fluff pieces is just relaxing and fun~ As long as it's interesting~
 
----
-
-If you like it, follow the official account to show your support:
-
-![](/images/fun.png)
 
 <!--ZH-->
 
@@ -209,9 +207,3 @@ static void current_output(const char* buff, int len) {
 ---
 
 水文写起来就是轻松愉快啊~ 有趣就好~
-
----
-
-大家喜欢的话，就关注下订阅号，以示鼓励：
-
-![](/images/fun.png)

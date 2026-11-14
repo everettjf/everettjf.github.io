@@ -4,8 +4,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="{% if page.product == 'palmino' %}#172019{% else %}#0e0d0b{% endif %}" />
+  <script>
+    (function () {
+      var language = navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en';
+      try {
+        var saved = localStorage.getItem('app_lang');
+        if (saved === 'zh' || saved === 'en') language = saved;
+      } catch (e) {}
+      var requested = new URLSearchParams(location.search).get('lang');
+      if (requested === 'zh' || requested === 'en') language = requested;
+      document.documentElement.dataset.lang = language;
+      document.documentElement.lang = language === 'zh' ? 'zh-Hans' : 'en';
+    })();
+  </script>
   {% seo %}
-  <link rel="alternate" type="application/rss+xml" title="Everett — writing" href="/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Everett — English" href="/feed.xml" hreflang="en" />
+  <link rel="alternate" type="application/rss+xml" title="Everett — 中文" href="/feed-zh.xml" hreflang="zh-Hans" />
   {% if page.product == 'palmino' %}
   <link rel="icon" type="image/png" href="/images/products/palmino-icon.png" />
   <link rel="apple-touch-icon" href="/images/products/palmino-icon.png" />
@@ -145,5 +159,6 @@
       });
     })();
   </script>
+  <script src="/assets/xnu/js/blog.js?v={{ asset_version }}" defer></script>
 </body>
 </html>

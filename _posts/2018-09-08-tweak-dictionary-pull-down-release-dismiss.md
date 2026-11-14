@@ -8,6 +8,9 @@ categories:
 tags:
   - 逆向工程
 comments: true
+topic: debugging
+historical_context_en: "The system dictionary UI and jailbreak environment used in 2018."
+historical_context_zh: "2018 年分析的系统词典界面与越狱环境。"
 ---
 
 
@@ -169,8 +172,6 @@ The four points above are pure nonsense.
 Having implemented this feature, reading English with iBooks or Safari is more enjoyable. Happy.
 
 
-Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](/images/fun.png)
 
 <!--ZH-->
 
@@ -331,7 +332,3 @@ NSLog(@"%p",self);
 上面四条纯属瞎掰掰。
 
 实现了这个功能，用iBooks或Safari看英文更愉快了，开森。
-
-
-欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](/images/fun.png)

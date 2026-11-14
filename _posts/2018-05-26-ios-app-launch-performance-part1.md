@@ -8,6 +8,7 @@ categories:
 tags:
   - 性能优化
 comments: true
+topic: systems
 ---
 
 > At work I've been continuously working on app launch performance, and I've also read many articles about "optimizing app launch performance." This article summarizes the articles I've read, plus some of my own understanding — there's nothing really new here. I've recently run into some difficulties and bottlenecks at work too, so I'm summarizing here while also organizing my thoughts.

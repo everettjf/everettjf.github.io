@@ -5,6 +5,9 @@ title_zh: "Windows 下实现鼠标滚轮的自然滚动"
 lang_original: zh
 comments: true
 categories: Skill
+topic: development
+historical_context_en: "Windows mouse settings and utilities available in 2014."
+historical_context_zh: "2014 年的 Windows 鼠标设置与工具。"
 ---
 
 

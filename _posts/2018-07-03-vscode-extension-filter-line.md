@@ -10,6 +10,8 @@ tags:
   - filterline
   - log
 comments: true
+topic: building
+release_history: true
 ---
 
 

@@ -5,6 +5,9 @@ title_zh: "Spacemacs 入门总结"
 lang_original: zh
 categories: Skill
 comments: true
+topic: development
+historical_context_en: "The Spacemacs configuration used in 2017."
+historical_context_zh: "2017 年使用的 Spacemacs 配置。"
 ---
 
 

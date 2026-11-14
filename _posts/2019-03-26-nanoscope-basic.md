@@ -9,6 +9,9 @@ tags:
   - 工具
   - Android
 comments: true
+topic: debugging
+historical_context_en: "The Nanoscope and Android environment used in 2019."
+historical_context_zh: "2019 年使用的 Nanoscope 与 Android 环境。"
 ---
 
 When optimizing app performance, I've always wished for a tool that could accurately record the time spent in the various methods an app executes within a given time window.
@@ -100,8 +103,6 @@ Android's openness has brought a large number of handy "homegrown" tools. Compar
 
 Interesting :)
 
-Welcome to follow the official account "Client Tech Review":
-![](/images/fun.png)
 
 <!--ZH-->
 
@@ -193,6 +194,3 @@ Android的开源，带来了大量“民间”的好用工具。相比iOS那难�
 ---
 
 有趣 :)
-
-欢迎关注订阅号「客户端技术评论」：
-![](/images/fun.png)

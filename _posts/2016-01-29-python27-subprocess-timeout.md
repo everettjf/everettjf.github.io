@@ -5,6 +5,9 @@ title_zh: "Python 2.7 下用 subprocess 调用 Perl 脚本并实现超时控制"
 lang_original: zh
 categories: Skill
 comments: true
+topic: development
+historical_context_en: "Python 2.7 and the subprocess behavior investigated in 2016."
+historical_context_zh: "2016 年使用的 Python 2.7 与当时排查的 subprocess 行为。"
 ---
 
 
@@ -161,4 +164,3 @@ command.run(timeout=15)
 - <http://stackoverflow.com/questions/1191374/using-module-subprocess-with-timeout>
 - <http://stackoverflow.com/questions/4789837/how-to-terminate-a-python-subprocess-launched-with-shell-true>
 - <http://www.cnblogs.com/zhaoyl/archive/2012/07/07/2580749.html>
-

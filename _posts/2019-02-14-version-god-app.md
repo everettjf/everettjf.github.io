@@ -9,6 +9,8 @@ tags:
   - 工具
   - 娱乐
 comments: true
+topic: building
+release_history: true
 ---
 
 From an app's release cadence you can get a glimpse of the operational state of the team behind it, and to some extent how much that team cares about app quality and user experience. So this article takes everyone on a look at the release situation of those "excellent" apps.
@@ -115,8 +117,6 @@ https://github.com/everettjf/chatterbox/tree/master/spider/result
 
 Yeah, interesting :)
 
-Welcome to follow the official account "Client Tech Review":
-![](/images/fun.png)
 
 
 <!--ZH-->
@@ -225,7 +225,3 @@ https://github.com/everettjf/chatterbox/tree/master/spider/result
 ---
 
 嗯，有趣 :)
-
-欢迎关注订阅号「客户端技术评论」：
-![](/images/fun.png)
-

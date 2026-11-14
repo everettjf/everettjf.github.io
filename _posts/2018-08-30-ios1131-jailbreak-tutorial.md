@@ -8,6 +8,9 @@ categories:
 tags:
   - 逆向
 comments: true
+topic: debugging
+historical_context_en: "iOS 11.3.1 and the jailbreak tools used in 2018."
+historical_context_zh: "2018 年使用的 iOS 11.3.1 与越狱工具。"
 ---
 
 Reverse engineering lets us understand the system's internals more deeply, and lets us peek into apps we're interested in. It's very fun, and it can also be quite evil.
@@ -127,8 +130,6 @@ Open WeChat and take a look — passionfruit is really Niubility.
 
 With this jailbroken device, there's a lot more to play with, and it can be a great aid in exploring performance optimization methods. For books on iOS reverse engineering, you can refer to "iOS Application Reverse Engineering" and "iOS Application Reverse Engineering and Security".
 
-Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](/images/fun.png)
 
 <!--ZH-->
 
@@ -249,6 +250,3 @@ Welcome to follow the WeChat official account "客户端技术评论":
 # 总结
 
 有了这台越狱设备，能玩耍的事情就多了，对探索性能优化的方法可以起到辅助作用。关于iOS逆向工程方面的书籍可以参考《iOS应用逆向工程》和《iOS应用逆向与安全》。
-
-欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](/images/fun.png)

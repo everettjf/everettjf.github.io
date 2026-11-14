@@ -8,6 +8,7 @@ categories:
 tags:
   - doc
 comments: true
+topic: systems
 ---
 
 I collect good resources here whenever I find them. *Updated continuously, last updated August 19, 2018*

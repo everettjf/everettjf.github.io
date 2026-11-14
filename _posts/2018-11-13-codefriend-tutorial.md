@@ -9,6 +9,7 @@ tags:
   - XcodeExtension
   - CodeFriend
 comments: true
+topic: building
 ---
 
 

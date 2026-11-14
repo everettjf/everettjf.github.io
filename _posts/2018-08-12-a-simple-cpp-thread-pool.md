@@ -8,6 +8,7 @@ categories:
 tags:
   - threadpool
 comments: true
+topic: systems
 ---
 
 
@@ -190,8 +191,6 @@ There are many ways to create threads on iOS; the above is just one C++ implemen
 - <https://github.com/tghosgor/threadpool11>
 
 
-Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](/images/fun.png)
 
 
 
@@ -375,9 +374,3 @@ iOS上有多种线程创建方法，上面只是一种C++的实现。GitHub还�
 
 - <https://github.com/nbsdx/ThreadPool>
 - <https://github.com/tghosgor/threadpool11>
-
-
-欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](/images/fun.png)
-
-

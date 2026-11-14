@@ -5,6 +5,7 @@ title_zh: "SegmentFault Hackathon 2016 总结"
 lang_original: zh
 categories: Essay
 comments: true
+topic: personal
 ---
 
 
@@ -175,29 +176,3 @@ In the end, I made it work using buttons and voice. The code is here. <https://g
 - 没落实的这几个想法，视频绘画教学等，如果做出来其实还是很不错的。放弃的太过草率。
 - 想想我们技术是有的，但还有更多其他因素。解决问题的思路，想法的商业价值。单纯的玩具意义并不大。等等。
 - 比赛虽然很累，但还是很享受这个过程。（尤其是做出了这个辅助还原魔方的App。虽然使用时有些细节需要注意。哈）
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -5,6 +5,7 @@ title_zh: "Windows 转 iOS 开发一年总结"
 lang_original: zh
 categories: Essay
 comments: true
+topic: personal
 ---
 
 
@@ -293,4 +294,3 @@ I can interleave WWDC study. Finishing the above plan should be fast (depending 
 - 优先级：优先级很重要，尤其是“知道的越多，不知道的越多”的时候。
 
 **可以走的慢，但要按照优先级。不要总学新知识的入门资料，至少要在某一个方面继续学习。**
-

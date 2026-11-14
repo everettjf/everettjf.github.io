@@ -8,6 +8,9 @@ categories:
 tags:
   - image
 comments: true
+topic: systems
+historical_context_en: "FastImageCache source code read in 2018; the exact revision was not recorded."
+historical_context_zh: "2018 年阅读的 FastImageCache 源码；原文未记录准确的提交版本。"
 ---
 
 
@@ -168,8 +171,6 @@ Personally, I feel FastImageCache is too customized for the Path app. Some place
 If we only want to optimize the home page loading speed of an app, there could be a super-streamlined version. If you need it, then go make one.
 
 
-Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](/images/fun.png)
 
 
 <!--ZH-->
@@ -330,8 +331,3 @@ inline size_t FICByteAlignForCoreAnimation(size_t bytesPerRow) {
 个人感觉，FastImageCache太过于为Path这个应用定制了，一些该灵活的地方（例如图片大小不固定）没有灵活，反而很多其他参数特别多。为了通用性，还加入了MRU算法、文件保护属性等，导致代码复杂（乱）了很多。
 
 如果我们仅仅为了优化App的首页加载速度，可以有一个超级精简的版本。如果你需要，那么来做一个吧。
-
-
-欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](/images/fun.png)
-

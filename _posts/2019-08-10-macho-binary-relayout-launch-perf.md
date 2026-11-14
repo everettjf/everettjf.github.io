@@ -8,6 +8,7 @@ categories:
 tags:
   - 启动速度优化
 comments: true
+topic: systems
 ---
 
 Improving iOS Startup Performance with Binary Layout Optimizations
@@ -42,5 +43,3 @@ Improving iOS Startup Performance with Binary Layout Optimizations
 Performance @Scale 2019: Improving iOS Startup Performance with Binary Layout Optimizations
 
 <https://www.facebook.com/atscaleevents/videos/664302790740440/>
-
-

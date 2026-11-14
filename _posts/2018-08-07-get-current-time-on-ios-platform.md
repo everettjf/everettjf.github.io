@@ -8,6 +8,7 @@ categories:
 tags:
   - time
 comments: true
+topic: systems
 ---
 
 
@@ -178,8 +179,6 @@ Finally, to use CACurrentMediaTime in a dynamic library, you need to link Quartz
 That's it — simple and easy to use.
 
 
-Welcome to follow the WeChat official account "客户端技术评论" (Client Technology Review):
-![happyhackingstudio](/images/fun.png)
 
 <!--ZH-->
 
@@ -349,8 +348,3 @@ NSLog(@"timeresult (s)= %ju", timeresult);
 ![](/media/15346417934621.jpg){:width="344" height="110"}
 
 就这样，简单易用。
-
-
-欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](/images/fun.png)
-

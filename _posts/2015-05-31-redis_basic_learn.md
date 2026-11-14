@@ -5,6 +5,7 @@ title_zh: "Redis 基础使用方式总结"
 lang_original: zh
 categories: Skill
 comments: true
+topic: development
 ---
 
 

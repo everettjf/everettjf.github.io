@@ -8,6 +8,9 @@ categories:
 tags:
   - 入门
 comments: true
+topic: debugging
+historical_context_en: "The iBooks and jailbroken iOS versions used in 2018."
+historical_context_zh: "2018 年使用的 iBooks 与越狱 iOS 版本。"
 ---
 
 
@@ -110,8 +113,6 @@ This article doesn't have much to do with performance optimization, but I always
 
 Very beginner-level, but it solved my own need, and I'm very happy.
 
-Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](/images/fun.png)
 
 
 
@@ -217,10 +218,3 @@ viewWillAppear时，左下角加一个UIButton就行了，事件可以调用 DDP
 这篇文章和性能优化关系不大，但自己总感觉逆向工程和性能优化就是个邻居，相互有影响。
 
 很入门，但解决了自己的需求，很开森。
-
-欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](/images/fun.png)
-
-
-
-

@@ -5,6 +5,7 @@ title_zh: "SegmentFault Hackathon 2015 北京站总结"
 lang_original: zh
 categories: Essay
 comments: true
+topic: personal
 ---
 
 
@@ -235,4 +236,3 @@ I should study this [http://developer.vuforia.com/](http://developer.vuforia.com
 # 总结
 
 研究下这个[http://developer.vuforia.com/](http://developer.vuforia.com/)哈，很炫的效果。
-

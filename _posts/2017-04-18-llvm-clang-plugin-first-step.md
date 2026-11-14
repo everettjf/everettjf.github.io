@@ -3,6 +3,11 @@ layout: post
 title: LLVM Clang 插件开发第一步
 categories: Skill
 comments: true
+topic: development
+lang: zh-Hans
+lang_original: zh
+historical_context_en: "The LLVM/Clang and Xcode toolchain used in 2017."
+historical_context_zh: "2017 年使用的 LLVM/Clang 与 Xcode 工具链。"
 ---
 
 
@@ -93,5 +98,3 @@ All came from :
 官方文档各种坑...
 
 应该是我太菜...的原因...
-
-

@@ -8,6 +8,8 @@ categories:
 tags:
   - filterline
 comments: true
+topic: building
+release_history: true
 ---
 
 After developing the VSCode Extension <https://github.com/everettjf/vscode-filter-line>, it saved me a lot of the time I always spend reading logs to troubleshoot at work, and I wanted to share it with everyone. But everyone has their own habits and favorite editor. So, should I develop a SublimeText plugin? A Vim plugin? An Atom plugin? After thinking it over and over, I decided to just make a command-line version.

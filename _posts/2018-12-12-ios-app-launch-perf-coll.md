@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Table of Contents for the iOS Launch Performance Optimization Series"
+title: "iOS Launch Performance: A Reading Guide"
 title_zh: "iOS 启动性能优化系列文章目录"
 lang_original: zh
 categories:
@@ -8,6 +8,7 @@ categories:
 tags:
   - 汇总
 comments: true
+topic: systems
 ---
 
 Over the past two-plus years, I've written a number of articles on iOS app launch performance optimization. This article puts together a simple table of contents.
@@ -86,8 +87,6 @@ As for ideas on iOS app launch optimization, this article covers most of them at
 In the future I probably won't focus "so intensely on app launch optimization" the way I used to. Although "launch optimization" covers a lot of content, it's still too narrow. There are many, many more directions to explore. Let's get going... to put it more formally... let's set sail~
 
 
-Welcome to follow the official account "Client Tech Review":
-![](/images/fun.png)
 
 <!--ZH-->
 
@@ -165,7 +164,3 @@ main函数到didFinishLaunching，再到首页显示完成的阶段。
 iOS应用的启动优化思路，本文至少涵盖了大多数了。当然上面的很多文章都比较简单，部分优化方向仅仅开了个头，深入研究就交给读者啦。业务治理与技术突破需要双管齐下，也要同步搭建起各类自动化分析和监控平台，细水长流，可持续发展，绿色地球（扯远了哈）……
 
 未来我应该不会像以前那样“如此关注App的启动优化”，“启动优化”虽然包含很多内容，但还是太窄了。可以探索的方向还有很多很多，搞起来……正式点……启航吧～
-
-
-欢迎关注订阅号「客户端技术评论」：
-![](/images/fun.png)

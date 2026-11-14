@@ -40,7 +40,7 @@ header nav a { min-height: 44px; display: inline-flex; align-items: center; }
   .mobile-menu summary { display: flex; align-items: center; gap: .75rem; min-height: 44px; cursor: pointer; font-size: .875rem; color: hsl(var(--primary)); list-style: none; }
   .mobile-menu summary::-webkit-details-marker { display: none; }
   .mobile-menu summary:focus-visible { outline: 1px solid hsl(var(--primary)); outline-offset: 3px; }
-  .mobile-menu[open] summary span { transform: rotate(45deg); }
+  .mobile-menu[open] summary span[aria-hidden] { transform: rotate(45deg); }
   .mobile-menu nav { position: absolute; top: 100%; left: 0; right: 0; display: grid; padding: .75rem 1.25rem; background: hsl(var(--background)); border-bottom: 1px solid hsl(var(--border)); box-shadow: 0 12px 20px #0004; }
   .mobile-menu nav a { justify-content: flex-start; width: 100%; padding: .5rem; font-size: .875rem; }
   .product-showcase { grid-template-columns: 1fr; }
@@ -114,3 +114,14 @@ header nav a { min-height: 44px; display: inline-flex; align-items: center; }
   .pricing-comparison th:first-child { width: 48%; }
   .pricing-comparison th, .pricing-comparison td { padding-top: .875rem; padding-bottom: .875rem; }
 }
+
+/* Shared language controls are usable on every page with the blog navigation. */
+.lang-zh { display: none; }
+:root[data-lang="zh"] .lang-en { display: none; }
+:root[data-lang="zh"] .lang-zh { display: revert; }
+.lang-switch { display: inline-flex; gap: .2rem; padding: .2rem; border: 1px solid hsl(var(--border)); background: hsl(var(--card)); }
+.lang-switch button { min-width: 2.5rem; min-height: 36px; padding: .25rem .5rem; border: 0; background: transparent; color: hsl(var(--foreground)); font: inherit; font-size: .75rem; cursor: pointer; }
+.lang-switch button:hover, .lang-switch button.active { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+header > div > .lang-switch { margin: 0 0 0 1rem; }
+@media (min-width: 640px) { header .desktop-nav { margin-left: auto; } }
+@media (max-width: 639px) { header > div > .lang-switch { margin-left: auto; margin-right: 1rem; } }

@@ -10,6 +10,8 @@ tags:
   - 输入法
   - 剪贴板
 comments: true
+topic: building
+release_history: true
 ---
 
 **Paste Keyboard has now been transferred**. See: <https://mp.weixin.qq.com/s/0dqe4Rj_pUGXwzRUKsj7iQ>
@@ -91,7 +93,6 @@ If you find it useful, please share it around~
 
 Be sure to follow my WeChat official account too :)
 
-![wechatgroup](/images/fun.png)
 
 
 
@@ -171,14 +172,3 @@ Be sure to follow my WeChat official account too :)
 ~~原价6元，现价免费哦~~ 6块钱太贵，那就免费咯 :)
 
 大家觉得好用，多多分享哦～
-
----
-
-
-也要关注我的微信订阅号哈 :)
-
-![wechatgroup](/images/fun.png)
-
-
-
-

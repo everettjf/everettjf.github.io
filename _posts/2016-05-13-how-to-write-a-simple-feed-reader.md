@@ -5,6 +5,7 @@ title_zh: "如何编写一款 RSS 阅读器 App"
 lang_original: zh
 categories: Skill
 comments: true
+topic: development
 ---
 
 
@@ -350,7 +351,3 @@ RSS/Atom订阅拿到的文章内容是一段html代码。缺少css。程序内�
 自己做iOS工作接近一年（中间暂停了3个月在家做奶爸了）,这是第一个上架的App。虽然App较为简单，但这个想法的演变过程，值得我反思和总结。
 
 开发这个App还有个目的，就是可以把自己平时学到的新知识、新技巧应用到这个App中来，作为自己的小实验室。
-
-
-
-

@@ -8,6 +8,7 @@ categories:
 tags:
   - 性能优化
 comments: true
+topic: systems
 ---
 
 The os_signpost API is a lightweight code performance analysis tool added in iOS 12. It can collect data and visualize it. In Apple's own words: The os_signpost APIs let clients add lightweight instrumentation to code for collection and visualization by performance analysis tooling.
@@ -160,8 +161,6 @@ With a dark theme in the future, it really looks cool.
 
 ![](/media/15341777359950.jpg){:width="1222" height="704"}
 
-Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](/images/fun.png)
 
 
 <!--ZH-->
@@ -315,7 +314,3 @@ iOS12 开始更加关注性能的苹果团队，也发现了直观展示的重�
 未来配上黑色主题，确实很炫。
 
 ![](/media/15341777359950.jpg){:width="1222" height="704"}
-
-欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](/images/fun.png)
-

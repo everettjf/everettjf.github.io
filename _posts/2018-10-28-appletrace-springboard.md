@@ -8,6 +8,9 @@ categories:
 tags:
   - 探索
 comments: true
+topic: debugging
+historical_context_en: "The SpringBoard and AppleTrace environment used in 2018."
+historical_context_zh: "2018 年使用的 SpringBoard 与 AppleTrace 环境。"
 ---
 
 A while ago, "A First Look at LaunchScreen" used IDA and lldb to explore part of SpringBoard. This article takes another preliminary look at SpringBoard, this time with AppleTrace. AppleTrace currently uses HookZz to inline-hook `objc_msgSend`. It can be used to analyze the time spent in each Objective-C method, and the call relationships.
@@ -170,4 +173,3 @@ SpringBoard我们能Trace，其他App更是可以了。可以参考过去的文�
 # 总结
 
 这篇文章很简短，主要广而告之下AppleTrace也是一个探索的工具，很有意思。
-

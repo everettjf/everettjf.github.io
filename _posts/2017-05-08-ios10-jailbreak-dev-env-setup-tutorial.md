@@ -3,6 +3,11 @@ layout: post
 title: "iOS 10 越狱开发环境搭建教程"
 categories: Skill
 comments: true
+topic: debugging
+lang: zh-Hans
+lang_original: zh
+historical_context_en: "iOS 10 and the jailbreak toolchain used in 2017."
+historical_context_zh: "2017 年使用的 iOS 10 与越狱工具链。"
 ---
 
 
@@ -55,5 +60,3 @@ Connect via `usbmux`.
 6. Frida
 7. cycript
 8. lldb
-
-

@@ -5,7 +5,7 @@ layout: default
 <main>
     <article>
         <p class="terminal-label mb-5">page</p>
-        <h1 class="page-title">{{ page.title }}<span class="terminal-cursor" aria-hidden="true"></span></h1>
+        <h1 class="page-title"><span class="lang-en">{{ page.title }}</span><span class="lang-zh">{{ page.title_zh | default: page.title }}</span><span class="terminal-cursor" aria-hidden="true"></span></h1>
         <section class="md-reader" style="margin-top: 3rem;">
             {{ content }}
         </section>

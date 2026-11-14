@@ -2,80 +2,37 @@
 layout: default
 archive: false
 ---
-
 {% assign has_zh = false %}
 {% if content contains '<!--ZH-->' %}{% assign has_zh = true %}{% endif %}
 {% assign parts = content | split: '<!--ZH-->' %}
 {% assign en_html = parts[0] %}
 {% assign zh_html = parts[1] %}
-
-<main>
-    <article>
-        <header>
-            <p class="terminal-label mb-5">blogs</p>
-            <h1 class="page-title post-title">
-                {% if has_zh %}
-                <span class="lang-en" lang="en">{{ page.title }}</span>
-                <span class="lang-zh" lang="zh">{{ page.title_zh | default: page.title }}</span>
-                {% else %}
-                {{ page.title }}
-                {% endif %}<span class="terminal-cursor" aria-hidden="true"></span>
-            </h1>
-            <p class="page-subtitle">
-                <time datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%B %-d, %Y" }}</time>
-                {% if page.categories.size > 0 %}
-                    &middot; {{ page.categories | array_to_sentence_string }}
-                {% endif %}
-            </p>
-            {% if has_zh %}
-            <div class="lang-switch" role="group" aria-label="Language">
-                <button type="button" data-lang-value="en">EN</button>
-                <button type="button" data-lang-value="zh">中</button>
-            </div>
-            {% endif %}
-        </header>
-
-        {% if has_zh %}
-        <div class="lang-en" lang="en">
-            {% if page.lang_original == 'zh' %}
-            <p class="translation-note">Translated from Chinese — <button type="button" class="translation-note-link" data-lang-value="zh">view original</button>.</p>
-            {% endif %}
-            <section class="md-reader" style="margin-top: 2rem;">
-                {% include toc.html html=en_html class="toc" %}
-                {{ en_html }}
-            </section>
-        </div>
-        <div class="lang-zh" lang="zh">
-            <section class="md-reader" style="margin-top: 2rem;">
-                {% include toc.html html=zh_html class="toc" %}
-                {{ zh_html }}
-            </section>
-        </div>
-        {% else %}
-        <section class="md-reader" style="margin-top: 4rem;">
-            {% include toc.html html=content class="toc" %}
-            {{ content }}
-        </section>
-        {% endif %}
-
-        {% if page.archive %}
-        <section class="archive-list">
-            <h2>Archive</h2>
-            <ul>
-                {% for post in site.posts %}
-                <li>
-                    <a class="archive-title" href="{{ post.url }}">{{ post.title }}</a>
-                    <span class="archive-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-                </li>
-                {% endfor %}
-            </ul>
-        </section>
-        {% endif %}
-
-        {% unless page.comments == false %}
-        <section class="comments">
-            {% include disqus.html %}
-        </section>
-        {% endunless %}
-    </article>
-</main>
+{% assign post_topic = site.data.writing_topics | where: 'id', page.topic | first %}
+<article{% unless has_zh %} lang="{{ page.lang | default: 'en' }}"{% endunless %}>
+  <header>
+    <p class="terminal-label mb-5"><span class="lang-en">writing</span><span class="lang-zh">文章</span></p>
+    <h1 class="page-title post-title">{% include xnu/post_title.html post=page %}<span class="terminal-cursor" aria-hidden="true"></span></h1>
+    <p class="page-subtitle">
+      <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time>
+      {% if post_topic %} · <span class="lang-en">{{ post_topic.en }}</span><span class="lang-zh">{{ post_topic.zh }}</span>{% endif %}
+    </p>
+  </header>
+  {% if has_zh %}
+  <div class="lang-en" lang="en">
+    {% if page.lang_original == 'zh' and page.source_url == nil %}<p class="translation-note">Translated from Chinese — <button type="button" class="translation-note-link" data-lang-value="zh">view original</button>.</p>{% endif %}
+    {% include xnu/article_body.html html=en_html language='en' %}
+  </div>
+  <div class="lang-zh" lang="zh-Hans">
+    {% if page.lang_original == 'en' %}<p class="translation-note">译自英文 — <button type="button" class="translation-note-link" data-lang-value="en">查看原文</button>。</p>{% endif %}
+    {% include xnu/article_body.html html=zh_html language='zh' %}
+  </div>
+  {% else %}
+    {% if page.lang_original == 'zh' %}{% include xnu/article_body.html html=content language='zh' %}
+    {% else %}{% include xnu/article_body.html html=content language='en' %}{% endif %}
+  {% endif %}
+  <aside class="author-note">
+    <p><span class="lang-en">Written by Everett / everettjf. Notes on building software and exploring how things work.</span><span class="lang-zh">作者 Everett / everettjf，记录构建软件的过程和对技术细节的探索。</span></p>
+    <p><a href="/about"><span class="lang-en">About me</span><span class="lang-zh">关于我</span></a> · <a href="/feed.xml">RSS · EN</a> · <a href="/feed-zh.xml" lang="zh-Hans">RSS · 中文</a> · <a href="/archive#wechat" lang="zh-Hans">吃灰思考</a></p>
+  </aside>
+  {% unless page.comments == false %}<section class="comments">{% include disqus.html %}</section>{% endunless %}
+</article>

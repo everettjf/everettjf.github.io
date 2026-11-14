@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "QVKeyboard Released: An Input Method for Typing on iOS Using a macOS Keyboard"
+title: "Building QVKeyboard: Typing on iOS from a Mac"
 title_zh: "QVKeyboard 发布：通过 macOS 用键盘给 iOS 打字的输入法"
 lang_original: zh
 categories:
@@ -8,6 +8,8 @@ categories:
 tags:
   - 作品
 comments: true
+topic: building
+release_history: true
 ---
 
 *USB Keyboard was formerly named QVKeyboard; the rename was perhaps to make it easier to remember and search for.*
@@ -105,8 +107,6 @@ Because the review process involved coordinating multiple devices, I even record
 Developing such a simple app also takes quite a bit of time, so in the future do support independent developers more. Also, in order to develop this app, I went nearly a month without updating the official account. Now it's finally released, and the next step is to keep learning and sharing.
 
 
-Welcome to follow the official account "Client Tech Review":
-![](/images/fun.png)
 
 
 <!--ZH-->
@@ -204,8 +204,3 @@ Emmm...这次不开源了。
 审核过程由于涉及多个端配合，还专门录了个视频，放在了 <https://youtu.be/-vr_rHpgwAM> ，很菜的口语哈。
 
 开发如此简单的App也挺耗费时间的，所以以后还是多多支持一些独立开发者啦。另外为了开发这个App，快一个月没有更新订阅号了，现在终于发布了，下一步继续学习和分享啦。
-
-
-欢迎关注订阅号「客户端技术评论」：
-![](/images/fun.png)
-

@@ -5,6 +5,8 @@ title_zh: "2016 年总结：加入蚂蚁金服三个月"
 lang_original: zh
 categories: Essay
 comments: true
+topic: personal
+editorial_note: true
 ---
 
 
@@ -22,27 +24,13 @@ Joining Ant Financial fulfilled a "little dream" I had back when I was in a seco
 
 ## A Bit of Long-Winded Background
 
-In June 2016, a friend at Alibaba said he had an internal referral quota, and each person was required to refer 3 people. With the mindset of "testing my own iOS skill level," I handed over my resume. But due to a series of mix-ups—this friend's manager was constantly traveling—it ended up being another Alibaba friend who referred me, which meant I had to choose a position through Alibaba's social recruitment channel.
+In the summer of 2016, I applied for several roles through referrals. Some applications reached phone and video interviews, but none led to an offer at first.
 
-So I submitted my resume three times in succession: Xianyu iOS, DingTalk Mac, and Mobile Taobao iOS.
+These interviews showed me that technical experience alone was not enough: I also needed to explain my career changes, the problems I had solved, and the kind of work I wanted to do. I moved between overconfidence and self-doubt, and did not always communicate naturally.
 
-Xianyu's phone interview passed quickly, followed by a video interview. The first round of the video interview was with one HR person and two technical colleagues (a manager and a P7). But that manager was constantly on the phone—he didn't even finish listening to my self-introduction, and barely asked any questions. The P7 technical colleague asked quite a few questions (he was also the one who did the phone interview); since we'd already talked a lot about iOS reverse engineering on the phone, this video interview leaned more toward the application level. The third round was with another HR person and Xianyu's head, Chuduan, who had me talk about my experience and my journey of learning technology, without asking technical questions. But having not done a non-technical interview in a long time, even though I was confident, the conversation exposed various "non-technical" problems, and I didn't pass the interview. (Too overconfident this time.)
+My experience in 2015 included a short role, time as a full-time parent, freelancing, and an attempt at entrepreneurship. I had not presented that period clearly on my resume. Looking back, I could have explained those choices more coherently, without trying to guess why each application failed.
 
-DingTalk Mac development—when I applied, both my friend and I thought I was a good fit. A comprehensive tech stack, 5 years of Windows client development experience and 1 year of iOS experience, and it met the requirements too. But contrary to expectations, my resume was deemed unsuitable outright.
-
-Mobile Taobao also passed the phone interview quickly, and the second round of the video interview went fairly smoothly, but there was one problem: the other party hadn't read my blog at all, knew very little about reverse engineering, and showed no interest in it. So we lacked some common ground. The third round was basically a non-technical interview too, and the HR opened with: do you know why Xianyu didn't pass you? I went through what I believed were the reasons one by one. Then they asked some common questions, like the biggest difficulty you've experienced—those "haha" kinds of questions. For these little non-technical questions, I had my own answers, but they may not have matched the interviewer's expected answers; I won't go into the details. The simple summary is: this time I was too eager to know why the previous interview failed, to the point that I came across as unnatural, answered while reading the other party's face too much, and lacked poise. (Too lacking in confidence this time.)
-
-There was also an important issue: I had once spent less than two months at a small company. At the time I didn't include this experience in my work history, but I did mention it in my growth narrative. This is a deducting factor that adds a bad impression, and may have been the main cause of failure.
-
-Of course, there were other issues. I had read the book "Rework," had stayed too long at traditional companies, and was set on getting out to pursue so-called freedom. The events of 2015—"spent less than two months at a small company," "stay-at-home full-time dad," "freelancing," "tried entrepreneurship (never really started)," "moving my whole family to Beijing to drift, despite already having bought a house in Jinan." These events one by one are hard to understand for those classmates who "just want a stable job," and even easier to misunderstand, haha.
-
-Later my friend also submitted an application to "Mogujie" in Hangzhou. The phone interview went well too, but they needed someone with more iOS experience. I later learned that the person who phone-interviewed me was "Yinshi," and I added him on WeChat.
-
-Four resume submissions, three phone or video interviews. They let this little rookie, who had never interviewed at a "big company," "get a taste of it." The interviews revealed many of my own shortcomings, and gave me a deeper understanding of myself. And so 2 months passed.
-
-And so, just work in peace.
-
-About that first interview failure, I also wrote an [experience summary](http://iosre.com/t/topic/4167) at the time.
+After about two months, I decided to return my attention to my current work and keep learning.
 
 ## However
 
@@ -50,13 +38,11 @@ On a social platform I came across the WeChat of an Ant Financial colleague, and
 
 This time I had zero hope (because it was already August, and I didn't want to interview anymore; I figured I'd wait until after the new year). I just wanted to make another friend, and it'd be even better if I could help solve some problems day to day.
 
-But this time Ant Financial valued my past C++ experience more, and valued reverse engineering skills more. The chat with HR was more natural this time too, and the HR colleague was younger and more cheerful.
+But this time Ant Financial valued my past C++ experience more, and valued reverse engineering skills more. I also felt more at ease explaining my experience and goals.
 
 After 1 month of work handover and vacation, I joined Ant Financial on September 20th.
 
-Perhaps this is fate—people not meant to meet naturally won't. Things always develop in the direction most suited to oneself. Perhaps if I'd joined Xianyu or Taobao, I'd mostly be doing a pile of pure UI business work, which wouldn't have suited me. After joining Ant Financial, my main focus is Alipay's performance and stability, relatively distant from business—and this may be exactly where I'm good.
-
-Yes, that's just how it is.
+After joining Ant Financial, I focused on Alipay’s performance and stability. This gave me a chance to apply both my C++ experience and my interest in reverse engineering. For me, finding work that matched those interests mattered more than the outcome of any single interview.
 
 ## However
 
@@ -170,11 +156,6 @@ Detailed mind map:
 <!--ZH-->
 
 
-
-
----
-
-
 # 每次换工作都是人生的一大改变
 
 加入蚂蚁金服，实现了我曾经在二线城市时的“小梦想”。
@@ -184,27 +165,13 @@ Detailed mind map:
 
 ## 啰嗦下背景
 
-2016年6月份，阿里的一位朋友说有内推名额，而且要求每个人内推3个人。当时抱着“测验自己iOS水平”的心态，交上了简历。但阴差阳错，因为这位朋友的主管一直出差，反而让另一位阿里的朋友内推，这样就要从阿里巴巴社会招聘上选择职位。
+2016 年夏天，我通过朋友内推，先后尝试了几个岗位。有的进入了电话和视频面试，但最初都没有拿到录用机会。
 
-于是先后提交了3次简历，闲鱼iOS、钉钉Mac、手淘iOS。
+这些面试让我发现，除了技术积累，我还需要更清楚地解释自己的职业选择、解决过的问题，以及希望从事的工作。我在过于自信和缺乏自信之间摇摆，表达也不总是自然。
 
-闲鱼的电话面试很快通过，然后视频面试。视频面试第一轮是一位HR和两位技术同学（主管和一位P7），可这位主管一直电话缠身，我的自我介绍也没听完，更是没怎么问问题。P7技术同学问了不少问题（电话面试也是他）由于电话中已经聊了不少iOS逆向工程的话题，这次视频面试更偏向应用层面。三面是另一位HR和闲鱼的负责人处端，让我讲了下我的经验和技术学习历程，没有问技术问题。但长久不进行非技术面试的我，虽然很自信，但交流中暴露了各种“非技术”问题，没有通过面试。（这次太自信）
+2015 年，我经历过短期任职、全职带娃、自由职业和一次创业尝试。那段经历在简历里没有梳理清楚。回头看，我能改进的是把这些选择讲得更连贯，而不是猜测每次面试没有通过的原因。
 
-钉钉Mac开发，当时投递时和朋友都认为我比较合适。技术栈全面，有5年Windows客户端开发经验和1年iOS经验，而且要求上也，但事与愿违，直接简历不合适。
-
-手淘也很快通过电话面试，视频面试的二面也比较顺利，但有个问题是：对方压根没有看我的博客，而且对逆向工程了解很少且没有表现出兴趣。这下缺少了些共同语言。三面也基本是非技术面试，HR也上来就问：你知道闲鱼为什么没有通过吗？我把自己认为的原因逐条讲了下。后来又问了下一些常见题目，比如你经历过的最大困难这些”哈哈“的问题。这些小非技术问题，我有自己的回答，但可能不符合面试官的答案，细节就不再说了，最后没有通过。简单总结就是：这次太想知道上次面试失败的原因了，以至于表现的不自然，过于看对方脸色回答，没有气质。（这次太不自信）
-
-还有个重要的问题，我曾经在一家小公司待了不到两个月，这段经历当时没有写入工作经历中，但在成长经历中提了。这个是个减分、增加不好印象的因素，也可能是导致失败的主因。
-
-当然，还有问题，曾经看过《Rework》这本书，在传统公司待了太久，一心想出来，去追求所谓的自由。2015年发生的”在小公司待了不到两个月“、”在家全职奶爸“、”自由职业“、”尝试创业（没有真正开始）”、“在济南已经买房的情况下携全家来北漂”。这一个个事件，相信”那些只求稳定工作“的同学们是很难以理解的，更是很容易理解偏的哈。
-
-后来朋友又投递了下杭州的”蘑菇街“，电话面试也不错，但对方需要iOS经验更丰富的。后来了解到电话面试我的是”银时“，加了下微信。
-
-四次简历投递，三次电话或视频面试。让我这从来没有面试过”大公司“的小菜鸟”过了把瘾“。面试发现了自己很多不足，也对自己有了更深入的认识。时间也过去了2个月。
-
-就这样，平静的工作吧。
-
-关于第一次面试失败，当时还写了篇[经验总结](http://iosre.com/t/topic/4167)。
+大约两个月后，我决定先把注意力放回手头的工作，继续学习。
 
 ## 然而
 
@@ -212,13 +179,11 @@ Detailed mind map:
 
 这次心里没有报任何希望（因为已经8月份，当时就不想再面试了，想过了年再说了），仅想着多交个朋友，平时如果能辅助解决点问题更好了。
 
-但这次蚂蚁金服更重视我曾经的C++经验，更看重逆向工程的技能。这次与HR的聊天也更自然，HR同学也更年轻爱笑。
+但这次蚂蚁金服更重视我曾经的C++经验，更看重逆向工程的技能。这次我也能更自然地说明自己的经历和目标。
 
 经过1个月的工作交接和假期，9月20号入职了蚂蚁金服。
 
-或许这就是缘分，无缘的人自然不会相见。事情总是朝向最适合自己的方向发展。或许加入了闲鱼或淘宝，或许更多是做一堆UI上的纯业务类事情，反而不适合自己。加入蚂蚁金服后，主要关注的是支付宝的性能和稳定性，相对远离业务，这或许才是我擅长的地方。
-
-是的，就是这样。
+加入蚂蚁金服后，我主要关注支付宝的性能和稳定性，能够用上过去的 C++ 经验和对逆向工程的兴趣。对我来说，找到与这些兴趣契合的工作，比某一次面试的结果更重要。
 
 ## 然而
 

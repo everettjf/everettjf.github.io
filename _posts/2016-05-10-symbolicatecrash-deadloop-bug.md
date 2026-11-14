@@ -5,6 +5,9 @@ title_zh: "symbolicatecrash 死循环 Bug 排查记录"
 lang_original: zh
 categories: Skill
 comments: true
+topic: debugging
+historical_context_en: "The symbolicatecrash script shipped with the Xcode version used in 2016."
+historical_context_zh: "2016 年使用的 Xcode 所附带的 symbolicatecrash 脚本。"
 ---
 
 

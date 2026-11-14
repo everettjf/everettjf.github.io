@@ -5,6 +5,9 @@ title_zh: "iOS 调试速查表（iOS Debug Cheatsheet）"
 lang_original: zh
 categories: Skill
 comments: true
+topic: debugging
+historical_context_en: "The Xcode, LLDB, and jailbreak tools used in 2016."
+historical_context_zh: "2016 年使用的 Xcode、LLDB 与越狱工具。"
 ---
 
 
@@ -579,5 +582,3 @@ ssh root@localhost -p 2222
 ---
 
 PS：[文章首次发布于iosre.com](http://iosre.com/t/debug/3778)
-
-

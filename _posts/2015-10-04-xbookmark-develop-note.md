@@ -1,10 +1,12 @@
 ---
 layout: post
-title: "Development Notes for XBookmark, an Xcode Bookmark Plugin"
+title: "Building XBookmark: Bookmarks for Xcode"
 title_zh: "Xcode 书签插件 XBookmark 开发笔记"
 lang_original: zh
 categories: Skill
 comments: true
+topic: building
+release_history: true
 ---
 
 
@@ -259,6 +261,3 @@ XBookmarkEntity *bookmark = [[XBookmarkEntity alloc]initWithSourcePath:sourcePat
 # 2017年1月24日更新
 
 现在已经支持Xcode8了。模仿的XVim的安装方式（重签名Xcode后，make）。
-
-
-

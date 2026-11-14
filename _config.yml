@@ -1,7 +1,7 @@
 name: Everett
 title: Everett — personal blog
-description: Personal writing and technical notes by Everett.
-meta_description: "Everett’s personal blog — software, curiosity, and things learned along the way."
+description: Building software, exploring how things work, and lessons from work and life.
+meta_description: "Everett’s personal blog — building software, exploring technical details, and reflecting on work and life."
 company_url: https://atomsprout.com
 
 markdown: kramdown

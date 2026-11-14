@@ -5,6 +5,7 @@ title_zh: "supotato：class-dump 头文件自动分类工具"
 lang_original: zh
 categories: Essay
 comments: true
+topic: building
 ---
 
 
@@ -201,7 +202,3 @@ optional arguments:
 2. 或许还能做：
 	- 解析.h文件，构造类图。
 	- 对.h文件进一步分类。（根据父类，或最后的几个字符）
-
-	
-	
-

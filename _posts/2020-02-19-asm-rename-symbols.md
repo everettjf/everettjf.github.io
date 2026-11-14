@@ -8,6 +8,7 @@ categories:
 tags:
   - 
 comments: true
+topic: systems
 ---
 
 The objc source code contains code like `__asm__("_objc_retain")`. What is this `__asm__` thing?
@@ -70,11 +71,6 @@ Seems like you could use this to do a simple export symbol obfuscation for a dyl
 - https://stackoverflow.com/questions/1034852/adding-leading-underscores-to-assembly-symbols-with-gcc-on-win32
 
 
----
-
-If you like it, follow the official account to show your support:
-
-![](/images/fun.png)
 
 <!--ZH-->
 
@@ -137,10 +133,3 @@ int counter __asm__("counter_v1") = 0;
 - http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.kui0097a/armcc_bcfggcdh.htm
 - http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0491f/Cacgegch.html
 - https://stackoverflow.com/questions/1034852/adding-leading-underscores-to-assembly-symbols-with-gcc-on-win32
-
-
----
-
-大家喜欢的话，就关注下订阅号，以示鼓励：
-
-![](/images/fun.png)

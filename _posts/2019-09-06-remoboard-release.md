@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "RemoBoard Remote Keyboard Released: Type on Your Phone Using Your Computer Keyboard"
+title: "Building RemoBoard: Typing on a Phone from a Computer"
 title_zh: "远程输入法 RemoBoard 发布：用电脑键盘给手机打字"
 lang_original: zh
 categories:
@@ -8,6 +8,8 @@ categories:
 tags:
   - 工具
 comments: true
+topic: building
+release_history: true
 ---
 
 
@@ -402,4 +404,3 @@ Windows端：
 去年我开发了一个[USBKeyboard](/2018/10/22/qvkeyboard-release/)，这个输入法需要手机和电脑通过「USB」连接才可以输入，当时就有网友说能否支持「无线输入」，于是断断续续今年就开发了这个「远程输入法」。
 
 最近又恰逢我学习Android开发，因此iOS/Android/macOS/Windows四个平台就都支持了。
-

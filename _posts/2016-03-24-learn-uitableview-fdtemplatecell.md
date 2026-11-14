@@ -5,6 +5,9 @@ title_zh: "UITableView-FDTemplateLayoutCell 源码阅读笔记"
 lang_original: zh
 categories: Skill
 comments: true
+topic: systems
+historical_context_en: "UITableView-FDTemplateLayoutCell source code read in 2016; the exact revision was not recorded."
+historical_context_zh: "2016 年阅读的 UITableView-FDTemplateLayoutCell 源码；原文未记录准确的提交版本。"
 ---
 
 

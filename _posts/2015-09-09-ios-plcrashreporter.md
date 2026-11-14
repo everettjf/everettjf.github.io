@@ -5,6 +5,9 @@ title_zh: "使用 PLCrashReporter 进行 iOS 崩溃收集与分析"
 lang_original: zh
 categories: Skill
 comments: true
+topic: debugging
+historical_context_en: "The PLCrashReporter and iOS toolchain used in 2015."
+historical_context_zh: "2015 年使用的 PLCrashReporter 与 iOS 工具链。"
 ---
 
 
@@ -467,6 +470,3 @@ $ xcrun atos -o plcrashreportertest2.app/plcrashreportertest2 -l 0x107d23000
 
 # 参考文章
 - <http://www.jamiegrove.com/software/fixing-bugs-using-os-x-crash-logs-and-atos-to-symbolicate-and-find-line-numbers>
-
-
-

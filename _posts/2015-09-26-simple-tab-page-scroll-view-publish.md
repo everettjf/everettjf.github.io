@@ -1,10 +1,12 @@
 ---
 layout: post
-title: "Development Notes for the Open-Source Tab Page Scroll Control TabPageScrollView"
+title: "Building TabPageScrollView"
 title_zh: "开源标签页滚动控件 TabPageScrollView 开发笔记"
 lang_original: zh
 categories: Skill
 comments: true
+topic: building
+release_history: true
 ---
 
 

@@ -5,6 +5,9 @@ title_zh: "Vim 与 Emacs 常用快捷键对比"
 lang_original: zh
 categories: Skill
 comments: true
+topic: development
+historical_context_en: "The editor configurations used in 2015; key bindings depend on your setup."
+historical_context_zh: "2015 年使用的编辑器配置；快捷键取决于具体配置。"
 ---
 
 

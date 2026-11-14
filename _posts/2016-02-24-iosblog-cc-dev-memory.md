@@ -5,6 +5,7 @@ title_zh: "iOSBlog.cc 网站：iOS 博客精选的由来、目标与反思"
 lang_original: zh
 categories: Essay
 comments: true
+topic: personal
 ---
 
 

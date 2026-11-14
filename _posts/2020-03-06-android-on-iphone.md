@@ -8,6 +8,9 @@ categories:
 tags:
   - sandcastle
 comments: true
+topic: debugging
+historical_context_en: "Project Sandcastle on an iPhone 7 in March 2020."
+historical_context_zh: "2020 年 3 月在 iPhone 7 上体验的 Project Sandcastle。"
 ---
 
 For the first time in history, the Android system can run on an iPhone. The current version (as of March 6, 2020) only supports the iPhone 7 / 7 Plus. (No requirement on the iOS version.)
@@ -140,11 +143,6 @@ Finally success — Android booted up on the iPhone.
 
 Still pretty interesting. For a video, you can search everettjf on Douyin.
 
----
-
-If you like it, follow the official account to show your support:
-
-![](/images/fun.png)
 
 <!--ZH-->
 
@@ -278,12 +276,3 @@ scp -P2222 -o StrictHostKeyChecking=no isetup root@localhost:/tmp/setup.sh
 2. 重启就恢复iOS。
 
 还是挺有趣的，视频可抖音搜索 everettjf 查看。
-
----
-
-大家喜欢的话，就关注下订阅号，以示鼓励：
-
-![](/images/fun.png)
-
-
-

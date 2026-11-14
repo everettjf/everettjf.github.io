@@ -14,8 +14,9 @@
     <nav aria-label="Main navigation" class="desktop-nav flex items-center gap-3 text-xs text-muted-foreground sm:gap-5">
       {% include xnu/nav_links.html %}
     </nav>
+    {% include xnu/language_switch.html %}
     <details class="mobile-menu">
-      <summary>menu <span aria-hidden="true">+</span></summary>
+      <summary><span class="lang-en">menu</span><span class="lang-zh">菜单</span> <span aria-hidden="true">+</span></summary>
       <nav aria-label="Mobile navigation">
         {% include xnu/nav_links.html %}
       </nav>

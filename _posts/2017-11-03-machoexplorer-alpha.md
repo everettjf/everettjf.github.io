@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MachOExplorer, a Mach-O File Visualization Tool, Alpha Release"
+title: "MachOExplorer: Visualizing Mach-O Files"
 title_zh: "Mach-O 文件可视化工具 MachOExplorer Alpha 发布"
 lang_original: zh
 categories:
@@ -9,6 +9,8 @@ tags:
   - Tool
   - Security
 comments: true
+topic: building
+release_history: true
 ---
 
 
@@ -88,5 +90,3 @@ After more than half a year of on-and-off development, I finally released a beta
 
 [https://github.com/everettjf/MachOExplorer](https://github.com/everettjf/MachOExplorer
 )
-
-

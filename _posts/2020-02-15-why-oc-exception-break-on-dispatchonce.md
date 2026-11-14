@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Why Does an Exception Thrown by NSAssert Break at dispatch_once"
+title: "Why Does NSAssert Break at dispatch_once?"
 title_zh: "为什么 NSAssert 抛出的异常会在 dispatch_once 处中断"
 lang_original: zh
 categories:
@@ -11,6 +11,7 @@ tags:
   - tips
   - ios
 comments: true
+topic: debugging
 ---
 
 I believe everyone's company codebase has, to some degree, a number of assertions (such as NSAssert). A common assertion scenario is: to avoid the SDK's initialization method and feature interfaces being misused, the SDK developer checks in the feature interface whether initialization has already happened, and otherwise triggers an assertion. Of course there are all kinds of other scenarios.
@@ -130,9 +131,7 @@ https://stackoverflow.com/questions/8412630/how-to-execute-a-piece-of-code-only-
 
 
 
-If you like it, please follow the official account as encouragement:
 
-![](/images/fun.png)
 
 
 <!--ZH-->
@@ -251,11 +250,3 @@ Xcode会尝试在Callstack中找到最后一个有匹配代码的行，并定位
 
 更多方法参考：
 https://stackoverflow.com/questions/8412630/how-to-execute-a-piece-of-code-only-once
-
-
-
-大家喜欢的话，就关注下订阅号，以示鼓励：
-
-![](/images/fun.png)
-
-

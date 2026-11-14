@@ -9,6 +9,8 @@ tags:
   - appletrace
   - performance
 comments: true
+topic: building
+release_history: true
 ---
 
 (Related article: <https://xnu.app/2017/10/12/appletrace-dancewith-monkeydev/> )

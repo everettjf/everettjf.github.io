@@ -10,6 +10,7 @@ tags:
   - load
   - breakpoint
 comments: true
+topic: debugging
 ---
 
 
@@ -87,7 +88,6 @@ http://satanwoo.github.io/2020/04/26/TrampolineHookOpenSource/
 
 If you enjoyed this, follow my WeChat official account to show some encouragement:
 
-![](/images/fun.png)
 
 <!--ZH-->
 
@@ -159,9 +159,3 @@ breakpoint set -r "正则"
 哎，我好菜，我要去学习《基于桥的全量方法Hook》了
 
 http://satanwoo.github.io/2020/04/26/TrampolineHookOpenSource/
-
----
-
-大家喜欢的话，就关注下订阅号，以示鼓励：
-
-![](/images/fun.png)

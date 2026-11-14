@@ -1,10 +1,13 @@
 ---
 layout: post
-title: "A Roundup of Tools I Often Used in 5 Years of Windows C++ Development"
+title: "My Windows C++ Development Toolkit, 2010–2015"
 title_zh: "过去 5 年我在 Windows C++ 开发中常用的工具汇总"
 lang_original: zh
 categories: Skill
 comments: true
+topic: development
+historical_context_en: "A personal Windows development toolkit recorded in 2015."
+historical_context_zh: "2015 年记录的个人 Windows 开发工具清单。"
 ---
 
 

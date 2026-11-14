@@ -10,6 +10,7 @@ tags:
   - load
   - category
 comments: true
+topic: systems
 ---
 
 This article is for learning reference only, but the approach it describes has poor performance. I recommend using <https://github.com/huakucha/TTAnalyzeLoadTime>, which performs better.
@@ -240,8 +241,6 @@ When I first wrote the code, I referenced the code of my classmate Jiale <https:
 
 Two years, gone in the blink of an eye, and yet all the ups and downs are still vivid. A single thought rises and a thousand mountains and rivers appear; a single thought fades and seas turn to fields. Press on bravely, young one.
 
-Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](/images/fun.png)
 
 # Addendum
 
@@ -478,10 +477,7 @@ Hopper中看到Category中的+load，最终的符号没有体现出来。
 
 两年，眨眼而过，而是是非非，却历历在目。一念起万水千山，一念灭沧海桑田。勇往直前，少年。
 
-欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](/images/fun.png)
 
 # 补充
 
 *同事告知Hook所有+load有性能更好的方法，但不便于公开了了。哈。*
-

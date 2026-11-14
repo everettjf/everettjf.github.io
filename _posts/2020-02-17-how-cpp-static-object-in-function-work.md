@@ -10,6 +10,7 @@ tags:
   - threadsafe
   - local-object
 comments: true
+topic: systems
 ---
 
 
@@ -100,11 +101,6 @@ From now on you can happily use this pattern:
     }
 ```
 
----
-
-If you like it, follow the official account to show your support:
-
-![](/images/fun.png)
 
 <!--ZH-->
 
@@ -196,9 +192,3 @@ Hopper中找到这个obj_guard
         return obj;
     }
 ```
-
----
-
-大家喜欢的话，就关注下订阅号，以示鼓励：
-
-![](/images/fun.png)

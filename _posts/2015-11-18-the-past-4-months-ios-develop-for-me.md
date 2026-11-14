@@ -5,6 +5,7 @@ title_zh: "转行 iOS 五个月总结"
 lang_original: zh
 categories: Skill
 comments: true
+topic: personal
 ---
 
 
@@ -369,4 +370,3 @@ If there's anything incorrect, please point it out.
 以上是我这几个月的iOS学习经历，可能有遗漏，分享给大家，希望能帮助到其他C++转iOS的同行们。
 
 如有不正确的地方，请指正。
-

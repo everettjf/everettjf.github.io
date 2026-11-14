@@ -5,6 +5,9 @@ title_zh: "Windows 程序猿的 OSX 入门笔记"
 lang_original: zh
 categories: Skill
 comments: true
+topic: development
+historical_context_en: "The OS X and developer tools available in 2015."
+historical_context_zh: "2015 年的 OS X 和开发工具。"
 ---
 
 

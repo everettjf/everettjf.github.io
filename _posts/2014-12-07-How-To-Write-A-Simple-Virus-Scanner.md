@@ -6,6 +6,9 @@ lang_original: zh
 tags: Security
 categories: Skill
 comments: true
+topic: development
+historical_context_en: "A learning exercise from 2014, rather than a maintained antivirus product."
+historical_context_zh: "2014 年的学习实验，并非持续维护的杀毒产品。"
 ---
 
 
@@ -700,5 +703,3 @@ QVM -> xiao70 -> me(everettjf)
 前期铺垫知识过多，导致前期时间占用较多。最后的“机器学习实现”部分讲解时间不够充分。
 
 总体来说，相信这次分享加深了大家对病毒的了解。相信再有机会还会进行分享，为济南营造好的程序员氛围做出努力哈。
-
-

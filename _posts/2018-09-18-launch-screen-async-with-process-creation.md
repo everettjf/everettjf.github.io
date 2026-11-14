@@ -9,6 +9,7 @@ tags:
   - 逆向工程
   - 性能优化
 comments: true
+topic: systems
 ---
 
 
@@ -287,8 +288,6 @@ Interesting, but also quite time-consuming, heh~
 
 
 
-Welcome to follow the WeChat official account "客户端技术评论":
-![happyhackingstudio](/images/fun.png)
 
 
 <!--ZH-->
@@ -566,9 +565,3 @@ step-in 之后是这样
 其实本来是想继续探索到App进程的创建流程，是怎么通知launchd把App进程启动的，但dyld_shared_cache总是不能分析完成，就暂时这样吧，继续前行，有空再回顾。
 
 有趣，但也挺耗费时间的额～
-
-
-
-欢迎关注订阅号「客户端技术评论」：
-![happyhackingstudio](/images/fun.png)
-

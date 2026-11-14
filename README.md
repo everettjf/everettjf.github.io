@@ -41,7 +41,7 @@ make serve    # local preview at http://localhost:4000
 
 ## Writing a post
 
-English is the default. Most new posts are English-only:
+Write the original in whichever language makes the subject easiest to express. English-only, Chinese-only, and bilingual posts are all supported. For an English post:
 
 ```sh
 make new title="My New Post"
@@ -81,9 +81,28 @@ English content here.
 中文正文。
 ```
 
-The post page then shows an **EN / 中** toggle (default English, remembered via
-`localStorage`) and a "Translated from Chinese" note. Posts without a
-`<!--ZH-->` block render as plain English with no toggle.
+The shared **EN / 中文** control changes navigation, article titles, archive filters, and bilingual article text together. It remembers an explicit choice in `localStorage`; first visits follow the browser language. A link with `?lang=zh` or `?lang=en` opens in that language. For a bilingual post set `lang_original` to `zh` or `en` to identify the original.
+
+For a Chinese-only post, omit `title_zh` and `<!--ZH-->`, and add:
+
+```yaml
+lang: zh-Hans
+lang_original: zh
+```
+
+Single-language articles stay readable in either interface language and carry a language badge. Translations are optional; do not leave placeholder translations in published articles.
+
+### Topics and historical writing
+
+Set `topic` to one of `systems`, `debugging`, `building`, `development`, or `personal`. The bilingual labels live in `_data/writing_topics.yml`; original categories and tags remain intact for historical metadata.
+
+For old version-specific instructions, add `historical_context_en` and `historical_context_zh` with the actual environment; do not invent a version when it was not recorded. Set `release_history: true` on historical release posts, or `personal_case: true` for an individual support case. These notices preserve the original publication date and do not imply current compatibility.
+
+For a translated external article, record `source_url`, `source_title`, `source_author`, and `source_published`. Link to the original English rather than back-translating a Chinese adaptation.
+
+### Subscriptions
+
+`/feed.xml` retains the English feed and its stable article GUIDs. `/feed-zh.xml` serves Chinese versions, falling back to the available original when a translation is absent. Feed links select the corresponding reading language. Both feeds contain the latest ten posts.
 
 ### Images
 

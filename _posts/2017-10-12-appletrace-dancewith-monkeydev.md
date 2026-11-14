@@ -8,6 +8,9 @@ categories:
 tags:
   - Tool
 comments: true
+topic: debugging
+historical_context_en: "AppleTrace and MonkeyDev as used in 2017."
+historical_context_zh: "2017 年使用的 AppleTrace 与 MonkeyDev。"
 ---
 
 AppleTrace paired with MonkeyDev can trace any App

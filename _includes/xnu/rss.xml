@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.title | xml_escape }}{% if page.feed_lang == 'zh' %} · 中文{% endif %}</title>
+    <description>{{ site.description | xml_escape }}</description>
+    <language>{% if page.feed_lang == 'zh' %}zh-Hans{% else %}en{% endif %}</language>
+    <link>{{ '/' | absolute_url }}</link>
+    <atom:link href="{{ page.url | absolute_url }}" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    {% for post in site.posts limit:10 %}
+      {% assign feed_parts = post.content | split: '<!--ZH-->' %}
+      {% assign feed_content = feed_parts | first %}
+      {% assign feed_title = post.title %}
+      {% assign entry_language = 'en' %}
+      {% if page.feed_lang == 'zh' and post.title_zh %}
+        {% assign feed_content = feed_parts | last %}
+        {% assign feed_title = post.title_zh %}
+        {% assign entry_language = 'zh' %}
+      {% elsif post.lang_original == 'zh' and post.title_zh == nil %}
+        {% assign entry_language = 'zh' %}
+      {% endif %}
+      {% capture feed_html %}
+        {% if page.feed_lang == 'zh' and entry_language == 'en' %}<p>此篇暂无中文版本，以下为英文原文。</p>{% endif %}
+        {% if page.feed_lang == 'en' and entry_language == 'zh' %}<p>This article is available in Chinese only.</p>{% endif %}
+        {% if post.source_url %}
+        <p>{% if page.feed_lang == 'zh' %}编译：Everett。原文作者：{% else %}Chinese adaptation by Everett. Original by {% endif %}{{ post.source_author | escape }} · {{ post.source_published }} · {% include xnu/external_link.html href=post.source_url label=post.source_title %}</p>
+        {% endif %}
+        {% if post.historical_context_en %}<p>{% if page.feed_lang == 'zh' %}历史文章：{{ post.historical_context_zh | escape }} 未按当前版本重新验证。{% else %}Historical note: {{ post.historical_context_en | escape }} Not revalidated against current versions.{% endif %}</p>{% endif %}
+        {{ feed_content | markdownify }}
+      {% endcapture %}
+      {% assign feed_base = site.url | append: site.baseurl %}
+      {% assign src_abs = 'src="' | append: feed_base | append: '/' %}
+      {% assign href_abs = 'href="' | append: feed_base | append: '/' %}
+      {% assign feed_html = feed_html | replace: 'src="/', src_abs | replace: 'href="/', href_abs %}
+      <item>
+        <title>{{ feed_title | xml_escape }}</title>
+        <description>{{ feed_html | xml_escape }}</description>
+        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+        <link>{{ post.url | absolute_url }}?lang={{ page.feed_lang }}</link>
+        <guid isPermaLink="true">{{ post.url | absolute_url }}</guid>
+        {% for tag in post.tags %}<category>{{ tag | xml_escape }}</category>{% endfor %}
+        {% for cat in post.categories %}<category>{{ cat | xml_escape }}</category>{% endfor %}
+      </item>
+    {% endfor %}
+  </channel>
+</rss>

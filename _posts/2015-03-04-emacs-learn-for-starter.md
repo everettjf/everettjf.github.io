@@ -1,10 +1,13 @@
 ---
 layout: post
-title: "Emacs Beginner Notes and Pitfall Records"
+title: "Getting Started with Emacs: Notes and Pitfalls"
 title_zh: "Emacs 新手入门笔记与踩坑记录"
 lang_original: zh
 categories: Skill
 comments: true
+topic: development
+historical_context_en: "The Emacs configuration and packages used in 2015."
+historical_context_zh: "2015 年使用的 Emacs 配置与扩展包。"
 ---
 
 

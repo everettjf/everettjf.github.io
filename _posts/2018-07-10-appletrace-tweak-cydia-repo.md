@@ -9,6 +9,9 @@ tags:
   - appletrace
   - tweak
 comments: true
+topic: debugging
+historical_context_en: "The Cydia and jailbreak environment used in 2018."
+historical_context_zh: "2018 年使用的 Cydia 与越狱环境。"
 ---
 
 Add the Cydia repo `http://7we.win/cydia/` in Cydia, and you can install AppleTraceLoader, which then makes it easier to trace the objc_msgSend of any app.

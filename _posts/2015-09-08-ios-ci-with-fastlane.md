@@ -5,6 +5,9 @@ title_zh: "使用 fastlane 实现 iOS 持续集成"
 lang_original: zh
 categories: Skill
 comments: true
+topic: development
+historical_context_en: "The fastlane and Xcode workflow used in 2015."
+historical_context_zh: "2015 年使用的 fastlane 与 Xcode 工作流。"
 ---
 
 

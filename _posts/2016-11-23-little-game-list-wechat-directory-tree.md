@@ -5,6 +5,9 @@ title_zh: "从 __FILE__ 日志推测微信 iOS 客户端的源码目录组织"
 lang_original: zh
 categories: Skill
 comments: true
+topic: debugging
+historical_context_en: "The WeChat 6.3.29 binary inspected in 2016."
+historical_context_zh: "2016 年分析的微信 6.3.29 二进制文件。"
 ---
 
 

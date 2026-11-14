@@ -1,0 +1,6 @@
+{% if include.post.title_zh %}
+<span class="lang-en" lang="en">{{ include.post.title | escape }}</span><span class="lang-zh" lang="zh-Hans">{{ include.post.title_zh | escape }}</span>
+{% else %}
+<span lang="{{ include.post.lang | default: 'en' }}">{{ include.post.title | escape }}</span>
+<small class="language-badge">{% if include.post.lang_original == 'zh' %}中文{% else %}EN{% endif %}</small>
+{% endif %}

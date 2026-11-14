@@ -8,6 +8,7 @@ categories:
 tags:
   - unicode
 comments: true
+topic: debugging
 ---
 
 Welcome to this episode of "Approaching Science: The Mysterious Symbol of WhatsApp"~
@@ -109,9 +110,7 @@ This way, when the code fetches `CFBundleDisplayName` and concatenates it with o
 
 Pretty interesting :)
 
-If you like it, follow the official account to show your support:
 
-![](/images/fun.png)
 
 <!--ZH-->
 
@@ -214,7 +213,3 @@ Wikipedia也有解释
 ---
 
 很有趣 :)
-
-大家喜欢的话，就关注下订阅号，以示鼓励：
-
-![](/images/fun.png)

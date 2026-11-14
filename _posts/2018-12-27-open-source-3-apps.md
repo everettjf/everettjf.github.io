@@ -8,6 +8,8 @@ categories:
 tags:
   - 开源
 comments: true
+topic: building
+release_history: true
 ---
 
 ![](/media/15459608773004.jpg){:width="1190" height="768"}
@@ -64,13 +66,6 @@ This year, the way I spend my spare time has gradually shifted from "research-dr
 Keep it up ⛽️ :)
 
 
----
-
-Emmmmm... ad time...
-
-
-Welcome to follow the official account "Client Tech Review":
-![](/images/fun.png)
 
 <!--ZH-->
 
@@ -126,12 +121,3 @@ USB Keyboard 是一个输入法应用，通过USB连接iPhone到Mac后，可以�
 
 
 加油⛽️ :)
-
-
----
-
-Emmmmm...广告时间到...
-
-
-欢迎关注订阅号「客户端技术评论」：
-![](/images/fun.png)

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "RemoBoard Remote Keyboard New Version Released: Type on Your Phone Using a Browser"
+title: "RemoBoard: Adding Browser-Based Typing"
 title_zh: "远程输入法 RemoBoard 新版发布：用浏览器给手机打字"
 lang_original: zh
 categories:
@@ -10,6 +10,8 @@ tags:
   - 输入法
   - 作品
 comments: true
+topic: building
+release_history: true
 ---
 
 Thanks to:

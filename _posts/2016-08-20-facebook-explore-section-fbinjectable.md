@@ -5,6 +5,9 @@ title_zh: "探索 Facebook iOS 客户端 - Section FBInjectable"
 lang_original: zh
 categories: Skill
 comments: true
+topic: systems
+historical_context_en: "The Facebook iOS binary inspected in 2016."
+historical_context_zh: "2016 年分析的 Facebook iOS 二进制文件。"
 ---
  
 
@@ -717,7 +720,3 @@ char * kNoteDisplayDefaultConfiguration FBInjectableDATA = "+[NoteDisplayDefault
 以上步骤只是我在探索后重新整理的步骤，真正探索过程中可能步骤相互穿插。
 
 奇怪的是Facebook 貌似没有在任何文章中提到这个“配置选择”的小方法。Twitter和Google都没有搜到任何关于FBInjectable的信息。还好可以通过逆向来探索。
-
-
-
-

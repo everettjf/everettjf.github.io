@@ -10,6 +10,7 @@ tags:
   - return
   - breakpoint
 comments: true
+topic: debugging
 ---
 
 You have a complex function with lots of lines and many returns inside. Single-stepping through it is slow — how can you quickly find which line it returns from?
@@ -81,11 +82,6 @@ Then continue, and it will break at the line where the function returns.
 
 Pretty interesting~
 
----
-
-If you like it, follow the official account to show your support:
-
-![](/images/fun.png)
 
 <!--ZH-->
 
@@ -158,9 +154,3 @@ br set -p return
 
 
 很有趣~
-
----
-
-大家喜欢的话，就关注下订阅号，以示鼓励：
-
-![](/images/fun.png)

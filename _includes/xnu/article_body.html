@@ -1,0 +1,11 @@
+{% include xnu/post_notice.html language=include.language %}
+{% capture article_toc %}{% include toc.html html=include.html class="toc" %}{% endcapture %}
+<div class="md-reader">
+  {% if article_toc contains '<li>' %}
+  <details class="article-toc">
+    <summary>{% if include.language == 'zh' %}文章目录{% else %}On this page{% endif %}</summary>
+    {{ article_toc }}
+  </details>
+  {% endif %}
+  {{ include.html }}
+</div>

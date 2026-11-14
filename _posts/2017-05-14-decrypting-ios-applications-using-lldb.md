@@ -5,6 +5,9 @@ title_zh: "使用 LLDB 手动解密 iOS AppStore 应用"
 lang_original: zh
 categories: Skill
 comments: true
+topic: debugging
+historical_context_en: "The jailbroken iOS and LLDB environment used in 2017."
+historical_context_zh: "2017 年使用的越狱 iOS 与 LLDB 环境。"
 ---
  
 

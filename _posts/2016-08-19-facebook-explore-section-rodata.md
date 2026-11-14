@@ -5,6 +5,9 @@ title_zh: "探索 Facebook iOS 客户端 - Section RODATA"
 lang_original: zh
 categories: Skill
 comments: true
+topic: systems
+historical_context_en: "The Facebook iOS binary inspected in 2016."
+historical_context_zh: "2016 年分析的 Facebook iOS 二进制文件。"
 ---
  
 
@@ -291,15 +294,3 @@ segment的权限，可以通过下面的链接参数改为VM_PROT_READ.
 - 《链接器与加载器》
 - <https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/MachOTopics/0-Introduction/introduction.html>
 - OS X ABI Mach-O File Format Reference <https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/MachORuntime/index.html>
-
-
-
-
-
-
-
-
-
-
- 
-

@@ -8,6 +8,9 @@ categories:
 tags:
   - 逆向
 comments: true
+topic: debugging
+historical_context_en: "A reverse-engineering resource collection compiled in 2018."
+historical_context_zh: "2018 年整理的逆向工程资源清单。"
 ---
 
 

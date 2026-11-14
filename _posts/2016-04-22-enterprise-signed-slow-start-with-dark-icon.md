@@ -5,6 +5,9 @@ title_zh: "企业证书签名的 App 启动慢（停在暗色图标 N 秒）"
 lang_original: zh
 categories: Skill
 comments: true
+topic: development
+historical_context_en: "The enterprise distribution and iOS behavior investigated in 2016."
+historical_context_zh: "2016 年排查的企业分发与 iOS 启动行为。"
 ---
 
 

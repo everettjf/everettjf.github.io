@@ -8,6 +8,7 @@ categories:
 tags:
   - vscode
 comments: true
+topic: building
 ---
 
 
@@ -78,8 +79,6 @@ Then go ahead and start implementing your ideas~ Don't forget to install the vsc
 
 Yeah, interesting :)
 
-Welcome to follow the official account "Client Tech Review":
-![](/images/fun.png)
 
 
 
@@ -153,10 +152,3 @@ Pubspec Dependency Search
 
 
 嗯，有趣 :)
-
-欢迎关注订阅号「客户端技术评论」：
-![](/images/fun.png)
-
-
-
-

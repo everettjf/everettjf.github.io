@@ -5,6 +5,9 @@ title_zh: "破解高德地图 iOS 客户端的 ptrace 反调试保护"
 lang_original: zh
 categories: Skill
 comments: true
+topic: debugging
+historical_context_en: "AMap 7.5.4 and the jailbroken iOS environment used in 2015."
+historical_context_zh: "2015 年使用的高德地图 7.5.4 及越狱 iOS 环境。"
 ---
 
 
@@ -173,4 +176,3 @@ ptrace 的第一个参数当是31时，会detach调试器。所以，newptrace�
 3. 开始hook ptrace。
 
 PS：发现高德、支付宝都只是简单的调用ptrace(31,0,0,0)，并没有处理返回值。（返回值并无法带来有作用的意义）
-

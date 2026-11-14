@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "FolderSizeView: A Tool to Visualize Folder Space Usage with a TreeMap"
+title: "FolderSizeView: Visualizing Directory Sizes with a Treemap"
 title_zh: "FolderSizeView：用 TreeMap 直观展示文件夹空间占用的工具"
 lang_original: zh
 categories:
@@ -8,6 +8,8 @@ categories:
 tags:
   - 工具
 comments: true
+topic: building
+release_history: true
 ---
 
 FolderSizeView can use a TreeMap to display the proportion of file sizes within a folder.
@@ -70,15 +72,6 @@ The current version was developed quickly. `Traversing the folder is done recurs
 ## Summary
 
 Too simple — the article is finished already.
-
-
----
-
-Welcome to subscribe :)
-
-![](/images/fun.png)
-
-
 
 
 
@@ -145,15 +138,3 @@ macOS和Windows
 ## 总结
 
 太简单了，文章也写完了。
-
-
----
-
-欢迎订阅 :)
-
-![](/images/fun.png)
-
-
-
-
-

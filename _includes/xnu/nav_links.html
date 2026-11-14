@@ -1,3 +1,3 @@
-      <a href="/"{% if blogs_active %} aria-current="page"{% endif %} class="hover:text-primary transition-colors{% if blogs_active %} text-primary{% endif %}">blog</a>
-      <a href="/about"{% if page.url contains '/about' %} aria-current="page"{% endif %} class="hover:text-primary transition-colors{% if page.url contains '/about' %} text-primary{% endif %}">about</a>
-      <a href="{{ site.company_url }}" target="_blank" rel="noopener noreferrer" aria-label="Works at AtomSprout">works ↗</a>
+      <a href="/"{% if blogs_active %} aria-current="page"{% endif %} class="hover:text-primary transition-colors{% if blogs_active %} text-primary{% endif %}"><span class="lang-en">blog</span><span class="lang-zh">文章</span></a>
+      <a href="/about"{% if page.url contains '/about' %} aria-current="page"{% endif %} class="hover:text-primary transition-colors{% if page.url contains '/about' %} text-primary{% endif %}"><span class="lang-en">about</span><span class="lang-zh">关于</span></a>
+      <a href="{{ site.company_url }}" target="_blank" rel="noopener noreferrer" aria-label="Works at AtomSprout"><span class="lang-en">works ↗</span><span class="lang-zh">作品 ↗</span></a>

@@ -1,10 +1,12 @@
 ---
 layout: post
-title: "Development Notes for XSourceNote, an Xcode Source Code Note Plugin"
+title: "Building XSourceNote: Source Notes in Xcode"
 title_zh: "Xcode 源码笔记插件 XSourceNote 开发记录"
 lang_original: zh
 categories: Skill
 comments: true
+topic: building
+release_history: true
 ---
 
 
@@ -277,5 +279,3 @@ PS: 此想法意义不大，不再开发和维护。
 - 自动查找RootPath。
 
 以后使用过程中慢慢优化。
-
-

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Quickly Print the Signature of a Block Parameter in an Objective-C Method with LLDB"
+title: "Inspecting Objective-C Block Signatures with LLDB"
 title_zh: "LLDB 快速打印 Objective-C 方法中 Block 参数的签名"
 lang_original: zh
 categories:
@@ -10,6 +10,9 @@ tags:
   - block
   - oc
 comments: true
+topic: debugging
+historical_context_en: "Xcode 11, its Python 3 LLDB scripting environment, and the script tested in 2020."
+historical_context_zh: "2020 年使用的 Xcode 11、Python 3 LLDB 脚本环境和当时测试的脚本。"
 ---
 
 
@@ -123,9 +126,7 @@ Since the lldb script built into Xcode 11 started defaulting to Python 3, Facebo
 Enjoy :)
 
 
-If you like it, please follow the official account as encouragement:
 
-![](/images/fun.png)
 
 
 <!--ZH-->
@@ -239,10 +240,3 @@ https://github.com/everettjf/zlldb
 ---
 
 Enjoy :)
-
-
-大家喜欢的话，就关注下订阅号，以示鼓励：
-
-![](/images/fun.png)
-
-

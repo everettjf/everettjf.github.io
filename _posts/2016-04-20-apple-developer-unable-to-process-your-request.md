@@ -1,10 +1,12 @@
 ---
 layout: post
-title: "Apple Developer Account Can't Log In: Solved via a 400 Phone Call"
+title: "An Apple Developer Login Issue: A 2016 Support Experience"
 title_zh: "Apple Developer 账号无法登录：通过 400 电话沟通解决"
 lang_original: zh
 categories: Skill
 comments: true
+topic: development
+personal_case: true
 ---
 
 
