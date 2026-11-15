@@ -18,24 +18,6 @@
       "repo": "everettjf/remoboard",
       "stars": 7,
       "priority": "established"
-    },
-    {
-      "name": "IPAView",
-      "repo": "everettjf/ipaview",
-      "stars": 1,
-      "priority": "low"
-    },
-    {
-      "name": "EditSmith",
-      "repo": "everettjf/editsmith",
-      "stars": 1,
-      "priority": "incubating"
-    },
-    {
-      "name": "LaunchDeck",
-      "repo": "everettjf/launchdeck",
-      "stars": 0,
-      "priority": "maintained"
     }
   ],
   "snapshots": [

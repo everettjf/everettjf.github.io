@@ -20,8 +20,6 @@ module.exports = {
     '../jsondiff/**/*.html',
     '../jsoncompare/**/*.html',
     '../babeltable/**/*.html',
-    '../startmyapp/**/*.html',
-    '../launchdeck/**/*.html',
   ],
   theme: {
     extend: {

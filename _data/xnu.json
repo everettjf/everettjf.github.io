@@ -25,20 +25,7 @@
       "store_note": "Built-in translation needs a one-time model download on Apple Silicon Macs or Windows; Intel Macs use Ollama or an API."
     }
   ],
-  "legacy_apps": [
-    {
-      "name": "LaunchDeck",
-      "pitch": "Find apps, files, and reusable actions from your keyboard.",
-      "href": "https://atomsprout.com/launchdeck/",
-      "icon": "zap",
-      "platform": "macOS 26+",
-      "badges": [
-        "Homebrew",
-        "Open source"
-      ],
-      "status": "Maintained"
-    }
-  ],
+  "legacy_apps": [],
   "developer_tools": [
     {
       "name": "Hexlora",
@@ -156,13 +143,6 @@
     }
   ],
   "apps": [
-    {
-      "name": "LaunchDeck",
-      "pitch": "A keyboard-first app launcher for macOS with optional Apple Intelligence search.",
-      "href": "https://atomsprout.com/launchdeck/",
-      "icon": "zap",
-      "platform": "macOS"
-    },
     {
       "name": "TypeTide",
       "pitch": "Translate where you type. Built-in offline translation on Apple Silicon Macs and Windows. Ollama and your API are optional.",
@@ -393,52 +373,6 @@
           "body": "VoiceDraft has no advertising or analytics SDK and does not operate a server for your content. If you email support, we receive the information you choose to send so we can reply. Contact atomsprout@gmail.com. Updated September 30, 2026."
         }
       ]
-    },
-    "launchdeck": {
-      "name": "LaunchDeck",
-      "platform": "macOS 26+",
-      "icon": "zap",
-      "tagline": "Apps, files, and actions at your fingertips.",
-      "description": "A keyboard-first macOS launcher for apps, files, and reusable workflows. Optional on-device intent search uses Apple Intelligence on supported hardware. Distributed through Homebrew and GitHub Releases.",
-      "links": [
-        {
-          "label": "Download from GitHub Releases",
-          "href": "https://github.com/everettjf/launchdeck/releases/latest",
-          "primary": true
-        },
-        {
-          "label": "View source on GitHub",
-          "href": "https://github.com/everettjf/launchdeck"
-        }
-      ],
-      "features": [
-        {
-          "title": "Instant launch",
-          "body": "Open any installed application with a global shortcut and a few keystrokes."
-        },
-        {
-          "title": "Fuzzy search",
-          "body": "Match by name, category, or aliases — typos and abbreviations are fine."
-        },
-        {
-          "title": "Optional intent search",
-          "body": "Describe what you want to do. Requires Apple Intelligence-capable hardware and an available on-device model."
-        },
-        {
-          "title": "Keyboard-first",
-          "body": "Built for power users. The mouse is optional, end to end."
-        },
-        {
-          "title": "Categories & ordering",
-          "body": "Group apps the way you think about them, not how the Finder sorts them."
-        },
-        {
-          "title": "Native and lightweight",
-          "body": "A small Swift app. No Electron, no background bloat."
-        }
-      ],
-      "privacy": true,
-      "install": "brew install --cask everettjf/tap/launchdeck"
     }
   },
   "catalog_sections": [
