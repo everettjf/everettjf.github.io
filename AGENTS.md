@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This Jekyll site is Everett’s personal blog. Its homepage is the chronological article list; keep project catalogs and product showcases out of the blog navigation and homepage. Released commercial apps and games live in the sibling `website-company` repository at https://atomsprout.com. Legacy product routes redirect there; keep historical article URLs and the RSS feed stable. Project names, availability, GitHub URLs, App Store URLs, privacy statements, and feature claims must match the current repositories and shipped products.
+This Jekyll site is Everett’s personal blog. Its homepage is a personal entry page linking to `/blog/` and AtomSprout. The article list lives at `/blog/`; dated article URLs and feeds stay unchanged. Personal projects are listed at `/projects/` using `_data/personal-projects.json`. Released commercial apps and games live in the sibling `website-company` repository at https://atomsprout.com. Legacy product routes redirect there; keep historical article URLs and the RSS feed stable. Project names, availability, GitHub URLs, App Store URLs, privacy statements, and feature claims must match the current repositories and shipped products.
 
 ## Source of Truth
 

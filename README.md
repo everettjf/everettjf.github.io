@@ -137,3 +137,9 @@ force one with `make redeploy`, and check progress with `make deploy-status`.
 ## AtomSprout migration
 
 Released apps and games now live at https://atomsprout.com, maintained in the sibling `website-company` checkout. The homepage opens directly to the complete chronological article list, with title search and topic filters. `/archive` remains available for existing links. The navigation links works directly to AtomSprout, and `/projects/` redirects to the company homepage instead of showing a separate catalog. Existing product landing, support, and privacy URLs use `_layouts/company_redirect.html` and `company_url` from `_config.yml`; redirects preserve query strings and fragments. Historical articles and RSS URLs remain unchanged. Product policy text is maintained in the company repository. The verified company domain is configured through `company_url`.
+
+## Personal domain and product ownership (2026-11-15)
+
+The user-site domain is `asp.run`. `/` is the personal entry page, `/blog/` is the article index, and `/projects/` lists personal projects. Dated article paths and RSS feeds are unchanged. Individual personal repositories publish their own Pages under `asp.run/<repository>/`; the user-site repository must not replace those routes with Company redirects. ScriptWidget's functional Web Studio is published by `everettjf/scriptwidget` at `/scriptwidget/studio/`. Company-only product routes retain compatibility redirects to `atomsprout.com`. Palmino and Rho PDF landing, support and original privacy content are maintained here.
+
+Cloudflare forwards `xnu.app` to `asp.run`, preserving paths and query strings. Company product URLs remain on `atomsprout.com`.

@@ -7,14 +7,14 @@ company_url: https://atomsprout.com
 markdown: kramdown
 highlighter: rouge
 baseurl: ''
-domain_name: 'https://xnu.app'
+domain_name: 'https://asp.run'
 
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
 # Details for the RSS feed generator and SEO tags
-url:            'https://xnu.app'
+url:            'https://asp.run'
 author:         'Everett'
 authorimage: /images/android-chrome-512x512.png
 logo:           /images/android-chrome-512x512.png
@@ -41,3 +41,7 @@ exclude:
   - new.sh
   - push.sh
   - serve.sh
+
+# Keep subscriber identities stable for articles published before this migration.
+feed_guid_origin: 'https://xnu.app'
+feed_guid_cutover: '2026-11-16T00:00:00-08:00'

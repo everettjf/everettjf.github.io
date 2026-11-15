@@ -1,0 +1,158 @@
+[
+  {
+    "slug": "scriptwidget",
+    "name": "ScriptWidget Web Studio",
+    "description": "Browser editor, templates and widget previews.",
+    "url": "/scriptwidget/studio/"
+  },
+  {
+    "slug": "riftvm",
+    "name": "RiftVM",
+    "description": "A native Linux virtual machine workspace.",
+    "url": "https://github.com/riftvm/riftvm"
+  },
+  {
+    "slug": "palmino",
+    "name": "Palmino",
+    "description": "AI conversations and tools for iPhone and iPad.",
+    "url": "/palmino/"
+  },
+  {
+    "slug": "rhopdf",
+    "name": "Rho PDF",
+    "description": "Private PDF reading and local tools for Windows.",
+    "url": "/rhopdf/"
+  },
+  {
+    "slug": "appletrace",
+    "name": "AppleTrace",
+    "description": "An independently maintained personal project.",
+    "url": "/appletrace/"
+  },
+  {
+    "slug": "atosl-rs",
+    "name": "atosl-rs",
+    "description": "An independently maintained personal project.",
+    "url": "/atosl-rs/"
+  },
+  {
+    "slug": "beanbao",
+    "name": "beanbao",
+    "description": "An independently maintained personal project.",
+    "url": "/beanbao/"
+  },
+  {
+    "slug": "coding-agent-visualizer",
+    "name": "coding-agent-visualizer",
+    "description": "An independently maintained personal project.",
+    "url": "/coding-agent-visualizer/"
+  },
+  {
+    "slug": "copyapp",
+    "name": "copyapp",
+    "description": "An independently maintained personal project.",
+    "url": "/copyapp/"
+  },
+  {
+    "slug": "crab-stick",
+    "name": "crab-stick",
+    "description": "An independently maintained personal project.",
+    "url": "/crab-stick/"
+  },
+  {
+    "slug": "dsh-ios",
+    "name": "dsh-ios",
+    "description": "An independently maintained personal project.",
+    "url": "/dsh-ios/"
+  },
+  {
+    "slug": "ezjev",
+    "name": "ezjev",
+    "description": "An independently maintained personal project.",
+    "url": "/ezjev/"
+  },
+  {
+    "slug": "ezvm",
+    "name": "ezvm",
+    "description": "An independently maintained personal project.",
+    "url": "/ezvm/"
+  },
+  {
+    "slug": "ios-atlas",
+    "name": "iOS Atlas",
+    "description": "An independently maintained personal project.",
+    "url": "/ios-atlas/"
+  },
+  {
+    "slug": "ipatool-rs",
+    "name": "ipatool-rs",
+    "description": "An independently maintained personal project.",
+    "url": "/ipatool-rs/"
+  },
+  {
+    "slug": "machoexplorer",
+    "name": "MachOExplorer",
+    "description": "An independently maintained personal project.",
+    "url": "/machoexplorer/"
+  },
+  {
+    "slug": "oort",
+    "name": "oort",
+    "description": "An independently maintained personal project.",
+    "url": "/oort/"
+  },
+  {
+    "slug": "pi-graph-chat",
+    "name": "pi-graph-chat",
+    "description": "An independently maintained personal project.",
+    "url": "/pi-graph-chat/"
+  },
+  {
+    "slug": "pixel6ios",
+    "name": "Pixel6iOS",
+    "description": "An independently maintained personal project.",
+    "url": "/pixel6ios/"
+  },
+  {
+    "slug": "readwrite",
+    "name": "readwrite",
+    "description": "An independently maintained personal project.",
+    "url": "/readwrite/"
+  },
+  {
+    "slug": "shuang",
+    "name": "shuang",
+    "description": "An independently maintained personal project.",
+    "url": "/shuang/"
+  },
+  {
+    "slug": "toeflbook",
+    "name": "toeflbook",
+    "description": "An independently maintained personal project.",
+    "url": "/toeflbook/"
+  },
+  {
+    "slug": "treescope",
+    "name": "treescope",
+    "description": "An independently maintained personal project.",
+    "url": "/treescope/"
+  },
+  {
+    "slug": "veilpath",
+    "name": "veilpath",
+    "description": "An independently maintained personal project.",
+    "url": "/veilpath/"
+  },
+  {
+    "slug": "wasmpatch",
+    "name": "wasmpatch",
+    "description": "An independently maintained personal project.",
+    "url": "/wasmpatch/"
+  },
+  {
+    "slug": "xcodefit",
+    "name": "XcodeFit",
+    "description": "An independently maintained personal project.",
+    "url": "/xcodefit/"
+  }
+]
