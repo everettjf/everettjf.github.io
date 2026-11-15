@@ -149,6 +149,6 @@ sibling `website-company` checkout.
 Individual personal repositories publish their own Pages under
 `asp.run/<repository>/`. ScriptWidget's own repository publishes a two-option entry
 page at `/scriptwidget/` and functional Web Studio at `/scriptwidget/studio/`.
-Palmino and Rho PDF landing, support and original privacy content are maintained here.
+Palmino landing, support and original privacy content are maintained here. Rho PDF is a Company product; its pages live at https://atomsprout.com/rhopdf/.
 
 Cloudflare forwards `xnu.app` to `asp.run`, preserving paths and query strings.

@@ -18,12 +18,6 @@
     "url": "/palmino/"
   },
   {
-    "slug": "rhopdf",
-    "name": "Rho PDF",
-    "description": "Private PDF reading and local tools for Windows.",
-    "url": "/rhopdf/"
-  },
-  {
     "slug": "appletrace",
     "name": "AppleTrace",
     "description": "An independently maintained personal project.",
