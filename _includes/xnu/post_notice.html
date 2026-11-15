@@ -27,10 +27,10 @@
 <aside class="post-notice">
   {% if notice_language == 'zh' %}
   <strong>发布记录 · {{ page.date | date: '%Y' }}</strong>
-  <p>本文保留当时的开发背景与发布情况。功能、价格、下载及兼容性信息以项目当前说明为准。我的应用与游戏现统一放在 {% include xnu/external_link.html href=site.company_url label='AtomSprout' %}。</p>
+  <p>本文保留当时的开发背景与发布情况。功能、价格、下载及兼容性信息以项目当前说明为准。</p>
   {% else %}
   <strong>Release notes · {{ page.date | date: '%Y' }}</strong>
-  <p>This post records the development and release at that time. See the project’s current documentation for features, pricing, downloads, and compatibility. My apps and games now live at {% include xnu/external_link.html href=site.company_url label='AtomSprout' %}.</p>
+  <p>This post records the development and release at that time. See the project’s current documentation for features, pricing, downloads, and compatibility.</p>
   {% endif %}
 </aside>
 {% endif %}
