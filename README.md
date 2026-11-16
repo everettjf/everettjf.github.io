@@ -1,6 +1,6 @@
-# xnu.app
+# asp.run
 
-Personal blog of everettjf, built with Jekyll and served at https://xnu.app
+Personal website and blog of everettjf, built with Jekyll and served at https://asp.run
 (GitHub Pages, built from the `master` branch).
 
 ## 最常用流程 (TL;DR)
@@ -136,6 +136,21 @@ force one with `make redeploy`, and check progress with `make deploy-status`.
 
 ## Personal domain and product ownership
 
+The two domains have complementary roles:
+
+| Domain | Projects and content |
+| --- | --- |
+| `atomsprout.com` | Formal products intended for long-term operation, including paid products and explicitly selected free products. Company owns their product information, downloads, support, documentation and privacy pages. |
+| `asp.run` | The personal entry page and blog, experimental projects, temporary tools and short-term projects. Individual project sites are normally published by their own repositories using GitHub Pages. |
+
+Give each project one primary website owner. Avoid duplicate product sites and
+redirect-only project routes between the two domains. Cross-domain links should
+serve the homepage/Founder navigation or a real product function.
+
+Apply this policy to new projects and explicitly requested migrations. Existing
+project locations and independently maintained domains remain until the owner
+requests a change.
+
 The user-site domain is `asp.run`. `/` is the personal entry page, `/blog/` is the
 article index, and `/projects/` lists personal projects. The homepage's **The works**
 card is the personal site's single Company entry point at https://atomsprout.com/.
@@ -149,6 +164,11 @@ sibling `website-company` checkout.
 Individual personal repositories publish their own Pages under
 `asp.run/<repository>/`. ScriptWidget's own repository publishes a two-option entry
 page at `/scriptwidget/` and functional Web Studio at `/scriptwidget/studio/`.
+Company owns ScriptWidget's official product page, app downloads, support,
+documentation and privacy pages at https://atomsprout.com/scriptwidget/. Keep
+useful links between that website and Studio; do not copy the compiled Studio
+into this blog repository or Company.
+
 Palmino landing, support and original privacy content are maintained here. Rho PDF is a Company product; its pages live at https://atomsprout.com/rhopdf/.
 
 Cloudflare forwards `xnu.app` to `asp.run`, preserving paths and query strings.
